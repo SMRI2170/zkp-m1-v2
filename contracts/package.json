@@ -1,0 +1,14 @@
+{
+  "name": "uav-attestation-contracts",
+  "version": "1.0.0",
+  "description": "マルチ端末 UAV 接近証明のオンチェーン結合レジストリ (M1)",
+  "license": "MIT",
+  "scripts": {
+    "test": "hardhat test",
+    "compile": "hardhat compile"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.10"
+  }
+}

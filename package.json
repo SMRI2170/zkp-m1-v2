@@ -20,5 +20,8 @@
   "homepage": "https://github.com/SMRI2170/zkp-m1#readme",
   "dependencies": {
     "circomlib": "^2.0.5"
+  },
+  "devDependencies": {
+    "circomlibjs": "^0.1.7"
   }
 }
