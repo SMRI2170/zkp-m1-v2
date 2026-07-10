@@ -1,0 +1,68 @@
+# 許可型EVM: Besu QBFT 4バリデータ（BFT合意でK台合意の検閲耐性・全複製=DA内蔵）。
+#
+# 手順:
+#   1. genesis と各ノード鍵を生成（besu operator ツール）:
+#        besu operator generate-blockchain-config \
+#          --config-file=qbftConfigFile.json --to=networkFiles --private-key-file-name=key
+#      → networkFiles/genesis.json と networkFiles/keys/<addr>/key(.pub) が生成される
+#   2. 生成物を node1..node4 のディレクトリへ配置し、このcomposeで起動
+#   3. RPC(http://127.0.0.1:8545)へデプロイ:
+#        cd .. && DEPLOYER_KEY=<開発鍵> npx hardhat run scripts/deploy.js --network besu
+#
+# バリデータの正直クォーラム(≧3/4)がある限り、提出Txは必ずブロックに入り(検閲不可)、
+# 全ノードが複製する(DA内蔵)。検閲するにはクォーラム共謀が必要でガバナンスで排除可能。
+services:
+  node1:
+    image: hyperledger/besu:latest
+    command:
+      - --genesis-file=/data/genesis.json
+      - --data-path=/data/node
+      - --node-private-key-file=/data/key
+      - --rpc-http-enabled
+      - --rpc-http-api=ETH,NET,QBFT,WEB3
+      - --rpc-http-host=0.0.0.0
+      - --rpc-http-cors-origins=*
+      - --host-allowlist=*
+      - --p2p-port=30303
+    ports:
+      - "8545:8545"
+      - "30303:30303"
+    volumes:
+      - ./networkFiles/genesis.json:/data/genesis.json:ro
+      - ./node1:/data
+
+  node2:
+    image: hyperledger/besu:latest
+    command:
+      - --genesis-file=/data/genesis.json
+      - --data-path=/data/node
+      - --node-private-key-file=/data/key
+      - --bootnodes=${BOOTNODE:-}
+      - --p2p-port=30303
+    volumes:
+      - ./networkFiles/genesis.json:/data/genesis.json:ro
+      - ./node2:/data
+
+  node3:
+    image: hyperledger/besu:latest
+    command:
+      - --genesis-file=/data/genesis.json
+      - --data-path=/data/node
+      - --node-private-key-file=/data/key
+      - --bootnodes=${BOOTNODE:-}
+      - --p2p-port=30303
+    volumes:
+      - ./networkFiles/genesis.json:/data/genesis.json:ro
+      - ./node3:/data
+
+  node4:
+    image: hyperledger/besu:latest
+    command:
+      - --genesis-file=/data/genesis.json
+      - --data-path=/data/node
+      - --node-private-key-file=/data/key
+      - --bootnodes=${BOOTNODE:-}
+      - --p2p-port=30303
+    volumes:
+      - ./networkFiles/genesis.json:/data/genesis.json:ro
+      - ./node4:/data
