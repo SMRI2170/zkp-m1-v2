@@ -66,7 +66,9 @@ async function main() {
     ])
   );
   const frameBinding = o(poseidon([base.frame_commitment_hi, base.frame_commitment_lo]));
-  const M = o(poseidon([droneId, targetCommit, frameBinding, WITHIN30_AND_DETECTED]));
+  // 新鮮さビーコン（直近ブロックハッシュ等の想定。デモ用固定値）
+  const FRESHNESS = 987654321987654321n;
+  const M = o(poseidon([droneId, targetCommit, frameBinding, WITHIN30_AND_DETECTED, FRESHNESS]));
 
   // ── ドローン署名 RemoteID（M3）: オペレータ鍵で放送内容に署名 ─────────────
   // 3端末は同一ドローンの同一放送を受けるので、署名は全端末で共通。
@@ -109,6 +111,9 @@ async function main() {
     input.drone_sig_s = droneSig.S.toString();
     input.drone_sig_r8x = o(droneSig.R8[0]).toString();
     input.drone_sig_r8y = o(droneSig.R8[1]).toString();
+
+    // 新鮮さ（device 署名 M に含まれる。リプレイ対策）
+    input.freshness = FRESHNESS.toString();
 
     fs.writeFileSync(
       path.join(witnessDir, `input_dev${i}.json`),

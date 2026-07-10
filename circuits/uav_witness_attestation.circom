@@ -178,6 +178,11 @@ template UavWitnessAttestation(
     signal input drone_sig_r8x;
     signal input drone_sig_r8y;
 
+    // ── Private input: 新鮮さビーコン（M3・リプレイ対策）─────────────────────
+    // 直近のブロックハッシュ/エポック等を体上要素に符号化した値。device 署名に
+    // 混ぜ、公開もするので、古い proof の使い回しをチェーン側の窓検査で弾ける。
+    signal input freshness;
+
     // ── Private inputs: EdDSA 署名 ──────────────────────────────────────────
     // device_pubkey (Ax, Ay) は public にするが、S / R8 は private。
     signal input device_pubkey_ax;
@@ -221,6 +226,9 @@ template UavWitnessAttestation(
     // drone_operator_commitment で「どのオペレータか」をチェーン側で照合できる。
     signal output drone_auth_ok;
     signal output drone_operator_commitment;
+
+    // ── Public output: 新鮮さ（チェーン側で直近窓に入るか検査）────────────────
+    signal output freshness_pub;
 
     // ── 内部 signal ──────────────────────────────────────────────────────────
     signal detection_time_gate;
@@ -371,11 +379,15 @@ template UavWitnessAttestation(
 
     // ── 署名対象メッセージ M の計算 ──────────────────────────────────────────
     // 端末が「このドローン・この観測・このフレーム・接近検知の成否」を束縛して署名した値。
-    component msgHash = Poseidon(4);
+    // 署名対象に freshness を含め、古い proof の使い回し（リプレイ）を封じる
+    freshness_pub <== freshness;
+
+    component msgHash = Poseidon(5);
     msgHash.inputs[0] <== drone_id_commitment;
     msgHash.inputs[1] <== target_commitment;
     msgHash.inputs[2] <== frame_binding;
     msgHash.inputs[3] <== within30_and_detected;
+    msgHash.inputs[4] <== freshness;
 
     // ── EdDSA-Poseidon 署名検証 ──────────────────────────────────────────────
     component sigVerify = EdDSAPoseidonVerifier();
