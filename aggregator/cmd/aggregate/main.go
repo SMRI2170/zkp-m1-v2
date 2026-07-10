@@ -8,11 +8,16 @@
 package main
 
 import (
+	"encoding/hex"
+	"encoding/json"
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/consensys/gnark-crypto/ecc"
+	"github.com/consensys/gnark/backend"
 	"github.com/consensys/gnark/backend/groth16"
+	"github.com/consensys/gnark/backend/solidity"
 	"github.com/consensys/gnark/frontend"
 	"github.com/consensys/gnark/frontend/cs/r1cs"
 	"github.com/consensys/gnark/std/algebra/emulated/sw_bn254"
@@ -136,26 +141,53 @@ func main() {
 	fullWit, err := frontend.NewWitness(asg, ecc.BN254.ScalarField())
 	must(err)
 
-	proverOpt := recursion.GetNativeProverOptions(ecc.BN254.ScalarField(), ecc.BN254.ScalarField())
-	verifierOpt := recursion.GetNativeVerifierOptions(ecc.BN254.ScalarField(), ecc.BN254.ScalarField())
+	// 集約回路は commitment を含むため recursion 用オプション、
+	// かつオンチェーン検証のため Solidity ターゲットで prove/verify する。
+	proverOpts := []backend.ProverOption{
+		recursion.GetNativeProverOptions(ecc.BN254.ScalarField(), ecc.BN254.ScalarField()),
+		solidity.WithProverTargetSolidityVerifier(backend.GROTH16),
+	}
+	verifierOpts := []backend.VerifierOption{
+		recursion.GetNativeVerifierOptions(ecc.BN254.ScalarField(), ecc.BN254.ScalarField()),
+		solidity.WithVerifierTargetSolidityVerifier(backend.GROTH16),
+	}
 
-	fmt.Println("[2/3] Groth16 setup...")
+	fmt.Println("[2/4] Groth16 setup...")
 	t0 = time.Now()
 	pk, vk, err := groth16.Setup(ccs)
 	must(err)
 	fmt.Printf("   setup %s\n", time.Since(t0).Round(time.Millisecond))
 
-	fmt.Println("[3/3] Prove + Verify...")
+	fmt.Println("[3/4] Prove + Verify...")
 	t0 = time.Now()
-	proof, err := groth16.Prove(ccs, pk, fullWit, proverOpt)
+	proof, err := groth16.Prove(ccs, pk, fullWit, proverOpts...)
 	must(err)
 	fmt.Printf("   prove %s\n", time.Since(t0).Round(time.Millisecond))
 	pubOnly, err := fullWit.Public()
 	must(err)
 	t0 = time.Now()
-	must(groth16.Verify(proof, vk, pubOnly, verifierOpt))
-	fmt.Printf("   verify %s\n", time.Since(t0).Round(time.Millisecond))
-	fmt.Printf("OK: N=%d を集約し関係強制＋consistentCount=2 を検証（詐称1台はsuspicious）\n", N)
+	must(groth16.Verify(proof, vk, pubOnly, verifierOpts...))
+	fmt.Printf("   verify %s (go)\n", time.Since(t0).Round(time.Millisecond))
+
+	fmt.Println("[4/4] Export Solidity verifier + proof calldata...")
+	sol, err := os.Create("../contracts/contracts/AggregateVerifier.sol")
+	must(err)
+	must(vk.ExportSolidity(sol))
+	must(sol.Close())
+
+	pm, ok := proof.(interface{ MarshalSolidity() []byte })
+	if !ok {
+		panic("proof has no MarshalSolidity")
+	}
+	out := map[string]any{
+		"proof":           "0x" + hex.EncodeToString(pm.MarshalSolidity()),
+		"consistentCount": 2,
+		"suspiciousCount": 1,
+	}
+	buf, _ := json.MarshalIndent(out, "", "  ")
+	must(os.WriteFile("../contracts/test/fixtures/aggregate.json", buf, 0644))
+
+	fmt.Printf("OK: N=%d 集約・consistentCount=2 を検証。AggregateVerifier.sol と aggregate.json を出力\n", N)
 }
 
 func must(err error) {
