@@ -68,6 +68,21 @@ async function main() {
   const frameBinding = o(poseidon([base.frame_commitment_hi, base.frame_commitment_lo]));
   const M = o(poseidon([droneId, targetCommit, frameBinding, WITHIN30_AND_DETECTED]));
 
+  // ── ドローン署名 RemoteID（M3）: オペレータ鍵で放送内容に署名 ─────────────
+  // 3端末は同一ドローンの同一放送を受けるので、署名は全端末で共通。
+  const DRONE_PRIV = Buffer.from("0a".repeat(32), "hex");
+  const dronePub = eddsa.prv2pub(DRONE_PRIV);
+  const droneMsg = o(
+    poseidon([
+      base.remote_id,
+      base.drone_lat_e7_norm,
+      base.drone_lon_e7_norm,
+      base.drone_alt_cm,
+      base.drone_time_sec,
+    ])
+  );
+  const droneSig = eddsa.signPoseidon(DRONE_PRIV, F.e(droneMsg));
+
   const outDir = path.join(__dirname, "..", "zk-distance", "samples");
   const witnessDir = path.join(outDir, "witness");
   fs.mkdirSync(witnessDir, { recursive: true });
@@ -86,6 +101,14 @@ async function main() {
     input.sig_s = sig.S.toString();
     input.sig_r8x = o(sig.R8[0]).toString();
     input.sig_r8y = o(sig.R8[1]).toString();
+
+    // ドローン署名 RemoteID（M3・全端末共通）
+    input.drone_auth_enabled = "1";
+    input.drone_pubkey_ax = o(dronePub[0]).toString();
+    input.drone_pubkey_ay = o(dronePub[1]).toString();
+    input.drone_sig_s = droneSig.S.toString();
+    input.drone_sig_r8x = o(droneSig.R8[0]).toString();
+    input.drone_sig_r8y = o(droneSig.R8[1]).toString();
 
     fs.writeFileSync(
       path.join(witnessDir, `input_dev${i}.json`),
