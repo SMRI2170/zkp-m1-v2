@@ -45,6 +45,11 @@ const DEVICE_PRIV_HEX = [
   "03".repeat(32),
 ];
 
+// 各端末の RSSI 実測レンジ[cm]（中央値集約済み想定）。
+// 放送位置(drone) と自端末(target) の実距離は約 3.4m ≈ 341cm。
+// dev0/dev1 は整合(≈341cm)、dev2 は矛盾(5000cm=放送は近いと言うが実測は遠い)。
+const MEASURED_RANGE_CM = ["341", "360", "5000"];
+
 async function main() {
   const poseidon = await buildPoseidon();
   const eddsa = await buildEddsa();
@@ -75,6 +80,7 @@ async function main() {
 
     const input = {};
     for (const [k, v] of Object.entries(base)) input[k] = v.toString();
+    input.measured_range_cm = MEASURED_RANGE_CM[i] ?? "341";
     input.device_pubkey_ax = o(pub[0]).toString();
     input.device_pubkey_ay = o(pub[1]).toString();
     input.sig_s = sig.S.toString();

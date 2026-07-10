@@ -21,8 +21,8 @@ function toCallData(proof, pub) {
   };
 }
 
-const IDX = { WITHIN30: 6, DRONE_ID: 10, PUBX: 11, PUBY: 12, BUCKET: 13 };
-const K = 3;
+const IDX = { WITHIN30: 6, DRONE_ID: 10, PUBX: 11, PUBY: 12, BUCKET: 13, CONSISTENCY: 14 };
+const K = 2;
 
 describe("E2E: 実証明 → 実 Groth16Verifier → AttestationRegistry (K=3)", function () {
   let registry, verifier;
@@ -38,22 +38,28 @@ describe("E2E: 実証明 → 実 Groth16Verifier → AttestationRegistry (K=3)",
     }
   });
 
-  it("実証明を検証しつつ 3 端末で consensus 成立", async function () {
+  it("実証明: 整合2台で trusted 合意、詐称1台は suspicious", async function () {
     const droneId = devs[0].pub[IDX.DRONE_ID];
     const bucket = devs[0].pub[IDX.BUCKET];
+    // dev0/dev1 は consistency_ok=1（整合）, dev2 は =0（詐称: 放送は近いが実測は遠い）
+    expect(devs[0].pub[IDX.CONSISTENCY]).to.equal("1");
+    expect(devs[2].pub[IDX.CONSISTENCY]).to.equal("0");
 
-    for (let i = 0; i < devs.length; i++) {
-      const cd = toCallData(devs[i].proof, devs[i].pub);
-      const tx = registry.submitAttestation(cd.a, cd.b, cd.c, cd.input);
-      if (i === devs.length - 1) {
-        await expect(tx).to.emit(registry, "ConsensusReached");
-      } else {
-        await tx;
-        expect(await registry.isConsensus(droneId, bucket)).to.equal(false);
-      }
-    }
+    const s0 = toCallData(devs[0].proof, devs[0].pub);
+    await registry.submitAttestation(s0.a, s0.b, s0.c, s0.input);
+    expect(await registry.isConsensus(droneId, bucket)).to.equal(false);
+
+    const s1 = toCallData(devs[1].proof, devs[1].pub);
+    await expect(
+      registry.submitAttestation(s1.a, s1.b, s1.c, s1.input)
+    ).to.emit(registry, "ConsensusReached"); // 整合 K=2 台 → 裏取り成立
+
+    const s2 = toCallData(devs[2].proof, devs[2].pub);
+    await registry.submitAttestation(s2.a, s2.b, s2.c, s2.input); // 詐称は suspicious 側
 
     expect(await registry.isConsensus(droneId, bucket)).to.equal(true);
+    expect(await registry.consistentCountOf(droneId, bucket)).to.equal(2n);
+    expect(await registry.isSpoofAlert(droneId, bucket)).to.equal(false);
     expect(await registry.countOf(droneId, bucket)).to.equal(3n);
   });
 

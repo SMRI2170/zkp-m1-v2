@@ -18,7 +18,7 @@ contract MockVerifier is IGroth16Verifier {
         uint[2] calldata,
         uint[2][2] calldata,
         uint[2] calldata,
-        uint[14] calldata
+        uint[15] calldata
     ) external view override returns (bool) {
         return result;
     }

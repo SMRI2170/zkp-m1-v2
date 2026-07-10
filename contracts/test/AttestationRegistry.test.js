@@ -8,6 +8,7 @@ const IDX = {
   DEVICE_PUBKEY_X: 11,
   DEVICE_PUBKEY_Y: 12,
   TIME_BUCKET: 13,
+  CONSISTENCY_OK: 14,
 };
 
 // mock verifier は proof を無視するのでダミーで良い
@@ -24,13 +25,15 @@ function makeInput({
   pubX,
   pubY,
   bucket,
+  consistent = 1,
 }) {
-  const input = new Array(14).fill(0n);
+  const input = new Array(15).fill(0n);
   input[IDX.WITHIN30_AND_DETECTED] = BigInt(within30);
   input[IDX.DRONE_ID_COMMITMENT] = BigInt(droneId);
   input[IDX.DEVICE_PUBKEY_X] = BigInt(pubX);
   input[IDX.DEVICE_PUBKEY_Y] = BigInt(pubY);
   input[IDX.TIME_BUCKET] = BigInt(bucket);
+  input[IDX.CONSISTENCY_OK] = BigInt(consistent);
   return input;
 }
 
@@ -67,6 +70,7 @@ describe("AttestationRegistry (M1, K=3)", function () {
       pubX: d.pubX,
       pubY: d.pubY,
       within30: opts.within30 ?? 1,
+      consistent: opts.consistent ?? 1,
     });
   }
 
@@ -137,6 +141,29 @@ describe("AttestationRegistry (M1, K=3)", function () {
     expect(await registry.isConsensus(DRONE, BUCKET)).to.equal(false);
     expect(await registry.countOf(DRONE, BUCKET)).to.equal(2n);
     expect(await registry.countOf(OTHER, BUCKET)).to.equal(1n);
+  });
+
+  it("K 台が矛盾(consistency_ok=0)を検出 → SpoofAlert", async function () {
+    for (const d of devices.slice(0, 3)) await register(d);
+    await registry.submitAttestation(DUMMY_A, DUMMY_B, DUMMY_C, proofFor(devices[0], { consistent: 0 }));
+    await registry.submitAttestation(DUMMY_A, DUMMY_B, DUMMY_C, proofFor(devices[1], { consistent: 0 }));
+    await expect(
+      registry.submitAttestation(DUMMY_A, DUMMY_B, DUMMY_C, proofFor(devices[2], { consistent: 0 }))
+    ).to.emit(registry, "SpoofAlert");
+    expect(await registry.isSpoofAlert(DRONE, BUCKET)).to.equal(true);
+    expect(await registry.isConsensus(DRONE, BUCKET)).to.equal(false);
+  });
+
+  it("整合と矛盾が混在: 整合K台で trusted, 矛盾は別カウント", async function () {
+    for (const d of devices.slice(0, 4)) await register(d);
+    // 整合 3 台 → trusted、矛盾 1 台 → suspicious だが K 未満
+    await registry.submitAttestation(DUMMY_A, DUMMY_B, DUMMY_C, proofFor(devices[0], { consistent: 1 }));
+    await registry.submitAttestation(DUMMY_A, DUMMY_B, DUMMY_C, proofFor(devices[1], { consistent: 1 }));
+    await registry.submitAttestation(DUMMY_A, DUMMY_B, DUMMY_C, proofFor(devices[3], { consistent: 0 }));
+    await registry.submitAttestation(DUMMY_A, DUMMY_B, DUMMY_C, proofFor(devices[2], { consistent: 1 }));
+    expect(await registry.isConsensus(DRONE, BUCKET)).to.equal(true);
+    expect(await registry.consistentCountOf(DRONE, BUCKET)).to.equal(3n);
+    expect(await registry.isSpoofAlert(DRONE, BUCKET)).to.equal(false);
   });
 
   it("別時間窓は別グループ", async function () {

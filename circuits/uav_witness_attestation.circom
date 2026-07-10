@@ -136,7 +136,9 @@ template UavWitnessAttestation(
     TIME_LIMIT_SEC,
     DETECTION_MIN_SCORE_BPS,
     UAV_CLASS_ID,
-    TIME_BUCKET_SEC
+    TIME_BUCKET_SEC,
+    TOL_NUM,
+    TOL_DEN
 ) {
     // ── Private inputs: ドローン側ログ ──────────────────────────────────────
     signal input drone_lat_e7_norm;
@@ -157,6 +159,9 @@ template UavWitnessAttestation(
     signal input frame_time_sec;
     signal input frame_commitment_hi;
     signal input frame_commitment_lo;
+
+    // ── Private input: RSSI 実測レンジ（cm。中央値集約済みの値を回路外で算出）──
+    signal input measured_range_cm;
 
     // ── Private inputs: ドローン RemoteID ───────────────────────────────────
     // RemoteID(operator id / uas id) を体系的に 1 つの体上要素へ符号化した値。
@@ -195,6 +200,10 @@ template UavWitnessAttestation(
     // target_time_sec を TIME_BUCKET_SEC 粒度に丸めた値。正確な時刻は隠したまま
     // 「同じ時間窓の同じドローン」でオンチェーン集計できるようにする。
     signal output time_bucket;
+
+    // ── Public output: RSSI 整合（放送位置 vs 実測レンジの相対帯判定）──────────
+    // 1=整合（放送は物理的に妥当）/ 0=矛盾（なりすまし疑い）。座標は秘匿のまま。
+    signal output consistency_ok;
 
     // ── 内部 signal ──────────────────────────────────────────────────────────
     signal detection_time_gate;
@@ -299,6 +308,50 @@ template UavWitnessAttestation(
     component bucketBits = Num2Bits(32);
     bucketBits.in <== time_bucket;
 
+    // ── RSSI 整合判定（放送位置 vs 実測レンジの相対帯）────────────────────────
+    // 放送位置(drone_*)と自端末(target_*)の二乗距離が、実測レンジ measured_range_cm の
+    // 相対帯 [±(TOL_NUM/TOL_DEN)] に入るかを、平方根を避けて二乗＋DEN^2倍で判定する。
+    component cLat = AbsDiff(32);
+    component cLon = AbsDiff(32);
+    component cAlt = AbsDiff(32);
+    cLat.a <== drone_lat_e7_norm;  cLat.b <== target_lat_e7_norm;
+    cLon.a <== drone_lon_e7_norm;  cLon.b <== target_lon_e7_norm;
+    cAlt.a <== drone_alt_cm;       cAlt.b <== target_alt_cm;
+
+    signal c_lat_scaled; signal c_lon_scaled; signal c_alt_scaled;
+    c_lat_scaled <== cLat.out * LAT_CM_NUM;
+    c_lon_scaled <== cLon.out * LON_CM_NUM;
+    c_alt_scaled <== cAlt.out * GEO_DEN;
+
+    signal c_lat_sq; signal c_lon_sq; signal c_alt_sq;
+    c_lat_sq <== c_lat_scaled * c_lat_scaled;
+    c_lon_sq <== c_lon_scaled * c_lon_scaled;
+    c_alt_sq <== c_alt_scaled * c_alt_scaled;
+    signal claimed_dist_sq;
+    claimed_dist_sq <== c_lat_sq + c_lon_sq + c_alt_sq;
+
+    var C_LOWER = TOL_DEN - TOL_NUM;
+    var C_UPPER = TOL_DEN + TOL_NUM;
+
+    signal c_base;
+    c_base <== measured_range_cm * GEO_DEN;
+    signal c_lower_num; signal c_upper_num;
+    c_lower_num <== c_base * C_LOWER;
+    c_upper_num <== c_base * C_UPPER;
+    signal c_lower_sq; signal c_upper_sq;
+    c_lower_sq <== c_lower_num * c_lower_num;
+    c_upper_sq <== c_upper_num * c_upper_num;
+    signal c_claimed_scaled;
+    c_claimed_scaled <== claimed_dist_sq * (TOL_DEN * TOL_DEN);
+
+    component cGeLower = LessEqThan(200);
+    cGeLower.in[0] <== c_lower_sq;
+    cGeLower.in[1] <== c_claimed_scaled;
+    component cLeUpper = LessEqThan(200);
+    cLeUpper.in[0] <== c_claimed_scaled;
+    cLeUpper.in[1] <== c_upper_sq;
+    consistency_ok <== cGeLower.out * cLeUpper.out;
+
     // ── 署名対象メッセージ M の計算 ──────────────────────────────────────────
     // 端末が「このドローン・この観測・このフレーム・接近検知の成否」を束縛して署名した値。
     component msgHash = Poseidon(4);
@@ -326,5 +379,7 @@ component main = UavWitnessAttestation(
     5,          // TIME_LIMIT_SEC:     5 秒
     7000,       // DETECTION_MIN_SCORE_BPS: 70.00% (basis points)
     1,          // UAV_CLASS_ID
-    60          // TIME_BUCKET_SEC: 時間窓 60 秒
+    60,         // TIME_BUCKET_SEC: 時間窓 60 秒
+    90,         // TOL_NUM  ┐ RSSI 整合の相対許容 90/100 = ±90%（実機較正後に更新）
+    100         // TOL_DEN  ┘
 );

@@ -9,6 +9,6 @@ interface IGroth16Verifier {
         uint[2] calldata a,
         uint[2][2] calldata b,
         uint[2] calldata c,
-        uint[14] calldata input
+        uint[15] calldata input
     ) external view returns (bool);
 }
