@@ -31,6 +31,9 @@ contract AttestationRegistry {
     uint256 private constant IDX_DEVICE_PUBKEY_Y = 12;
     uint256 private constant IDX_TIME_BUCKET = 13;
     uint256 private constant IDX_CONSISTENCY_OK = 14;
+    uint256 private constant IDX_DRONE_AUTH_OK = 15;         // M3: ドローン署名RemoteID
+    uint256 private constant IDX_DRONE_OPERATOR = 16;        // M3: オペレータ commitment
+    uint256 private constant IDX_FRESHNESS = 17;             // M3: 新鮮さビーコン
 
     IGroth16Verifier public immutable verifier;
     uint256 public immutable threshold; // K
@@ -38,6 +41,10 @@ contract AttestationRegistry {
 
     // 登録端末（Sybil 対策）: deviceId = keccak256(pubkey_x, pubkey_y)
     mapping(bytes32 => bool) public registeredDevice;
+    // 登録オペレータ（M3: ドローン鍵の Sybil 対策）: drone_operator_commitment
+    mapping(uint256 => bool) public registeredOperator;
+    // 新鮮さの下限（M3: これ未満の freshness を持つ古い proof を拒否＝リプレイ対策）
+    uint256 public minFreshness;
 
     // グループ = keccak256(drone_id_commitment, time_bucket)
     mapping(bytes32 => uint256) public witnessCount;      // 総提出数（整合＋矛盾）
@@ -99,6 +106,16 @@ contract AttestationRegistry {
         return keccak256(abi.encodePacked(pubkeyX, pubkeyY));
     }
 
+    // ── オペレータ登録（M3: ドローン鍵の Sybil 対策）─────────────────────────
+    function registerOperator(uint256 operatorCommitment) external onlyOwner {
+        registeredOperator[operatorCommitment] = true;
+    }
+
+    // ── 新鮮さ下限の更新（M3: 直近窓。これ未満の古い proof を弾く）────────────
+    function setMinFreshness(uint256 v) external onlyOwner {
+        minFreshness = v;
+    }
+
     function groupKeyOf(uint256 droneIdCommitment, uint256 timeBucket) public pure returns (bytes32) {
         return keccak256(abi.encodePacked(droneIdCommitment, timeBucket));
     }
@@ -108,10 +125,18 @@ contract AttestationRegistry {
         uint[2] calldata a,
         uint[2][2] calldata b,
         uint[2] calldata c,
-        uint[15] calldata input
+        uint[18] calldata input
     ) external {
         require(input[IDX_WITHIN30_AND_DETECTED] == 1, "within30_and_detected != 1");
         require(verifier.verifyProof(a, b, c, input), "invalid proof");
+
+        // ── M3: 入力真正性 ────────────────────────────────────────────────
+        // ドローン署名RemoteIDが検証済み（偽造対策）
+        require(input[IDX_DRONE_AUTH_OK] == 1, "drone RemoteID not authenticated");
+        // 登録オペレータの機体のみ（Sybil対策）
+        require(registeredOperator[input[IDX_DRONE_OPERATOR]], "operator not registered");
+        // 新鮮さが直近窓内（古いproofの使い回し＝リプレイ対策）
+        require(input[IDX_FRESHNESS] >= minFreshness, "stale (replay)");
 
         bytes32 deviceId = keccak256(
             abi.encodePacked(input[IDX_DEVICE_PUBKEY_X], input[IDX_DEVICE_PUBKEY_Y])

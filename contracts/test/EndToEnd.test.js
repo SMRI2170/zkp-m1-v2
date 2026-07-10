@@ -21,7 +21,10 @@ function toCallData(proof, pub) {
   };
 }
 
-const IDX = { WITHIN30: 6, DRONE_ID: 10, PUBX: 11, PUBY: 12, BUCKET: 13, CONSISTENCY: 14 };
+const IDX = {
+  WITHIN30: 6, DRONE_ID: 10, PUBX: 11, PUBY: 12, BUCKET: 13, CONSISTENCY: 14,
+  DRONE_AUTH: 15, OPERATOR: 16, FRESHNESS: 17,
+};
 const K = 2;
 
 describe("E2E: 実証明 → 実 Groth16Verifier → AttestationRegistry (K=3)", function () {
@@ -36,6 +39,9 @@ describe("E2E: 実証明 → 実 Groth16Verifier → AttestationRegistry (K=3)",
     for (const d of devs) {
       await registry.registerDevice(d.pub[IDX.PUBX], d.pub[IDX.PUBY]);
     }
+    // M3: オペレータ登録 + 新鮮さ下限（fixture の freshness 以下を許容）
+    await registry.registerOperator(devs[0].pub[IDX.OPERATOR]);
+    await registry.setMinFreshness(devs[0].pub[IDX.FRESHNESS]);
   });
 
   it("実証明: 整合2台で trusted 合意、詐称1台は suspicious", async function () {

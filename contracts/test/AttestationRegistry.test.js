@@ -9,7 +9,13 @@ const IDX = {
   DEVICE_PUBKEY_Y: 12,
   TIME_BUCKET: 13,
   CONSISTENCY_OK: 14,
+  DRONE_AUTH_OK: 15,
+  DRONE_OPERATOR: 16,
+  FRESHNESS: 17,
 };
+
+const OPERATOR = 7777n; // 登録オペレータ commitment
+const FRESHNESS = 1000n; // 新鮮さビーコン
 
 // mock verifier は proof を無視するのでダミーで良い
 const DUMMY_A = [0, 0];
@@ -26,14 +32,20 @@ function makeInput({
   pubY,
   bucket,
   consistent = 1,
+  droneAuth = 1,
+  operator = OPERATOR,
+  freshness = FRESHNESS,
 }) {
-  const input = new Array(15).fill(0n);
+  const input = new Array(18).fill(0n);
   input[IDX.WITHIN30_AND_DETECTED] = BigInt(within30);
   input[IDX.DRONE_ID_COMMITMENT] = BigInt(droneId);
   input[IDX.DEVICE_PUBKEY_X] = BigInt(pubX);
   input[IDX.DEVICE_PUBKEY_Y] = BigInt(pubY);
   input[IDX.TIME_BUCKET] = BigInt(bucket);
   input[IDX.CONSISTENCY_OK] = BigInt(consistent);
+  input[IDX.DRONE_AUTH_OK] = BigInt(droneAuth);
+  input[IDX.DRONE_OPERATOR] = BigInt(operator);
+  input[IDX.FRESHNESS] = BigInt(freshness);
   return input;
 }
 
@@ -57,6 +69,9 @@ describe("AttestationRegistry (M1, K=3)", function () {
     mock = await Mock.deploy();
     const Registry = await ethers.getContractFactory("AttestationRegistry");
     registry = await Registry.deploy(await mock.getAddress(), K);
+    // M3: オペレータ登録 + 新鮮さ下限を設定（FRESHNESS 以下を許容）
+    await registry.registerOperator(OPERATOR);
+    await registry.setMinFreshness(FRESHNESS);
   });
 
   async function register(d) {
@@ -71,8 +86,32 @@ describe("AttestationRegistry (M1, K=3)", function () {
       pubY: d.pubY,
       within30: opts.within30 ?? 1,
       consistent: opts.consistent ?? 1,
+      droneAuth: opts.droneAuth ?? 1,
+      operator: opts.operator ?? OPERATOR,
+      freshness: opts.freshness ?? FRESHNESS,
     });
   }
+
+  it("M3: 未認証ドローン(drone_auth_ok=0)は拒否", async function () {
+    await register(devices[0]);
+    await expect(
+      registry.submitAttestation(DUMMY_A, DUMMY_B, DUMMY_C, proofFor(devices[0], { droneAuth: 0 }))
+    ).to.be.revertedWith("drone RemoteID not authenticated");
+  });
+
+  it("M3: 未登録オペレータは拒否", async function () {
+    await register(devices[0]);
+    await expect(
+      registry.submitAttestation(DUMMY_A, DUMMY_B, DUMMY_C, proofFor(devices[0], { operator: 9999n }))
+    ).to.be.revertedWith("operator not registered");
+  });
+
+  it("M3: 古い freshness(リプレイ)は拒否", async function () {
+    await register(devices[0]);
+    await expect(
+      registry.submitAttestation(DUMMY_A, DUMMY_B, DUMMY_C, proofFor(devices[0], { freshness: FRESHNESS - 1n }))
+    ).to.be.revertedWith("stale (replay)");
+  });
 
   it("K 台の相異なる登録端末が揃うと consensus 成立", async function () {
     for (const d of devices.slice(0, 3)) await register(d);
