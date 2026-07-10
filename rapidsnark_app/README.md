@@ -5,7 +5,8 @@ Flutter で動く UAV Safety Proof デモアプリです。
 
 ## 機能
 
-- ドローン側ログを `手入力` または `Raspberry Pi BLE 受信` で取得
+- ドローン側ログを `手入力` / `Raspberry Pi BLE 受信` / `WiFi Beacon 受信` で取得
+  - WiFi Beacon は DJI など市販機の Remote ID 方式（**Android 11 以上のみ**、BLE と並行して常時受信）
 - 利用者側ログをスマホの `GPS + 気圧センサー` で取得
 - カメラで動画を撮影
 - 動画から UAV 候補を検知
@@ -40,6 +41,7 @@ flutter run
 - `BLUETOOTH_CONNECT`
 - `ACCESS_FINE_LOCATION`
 - `CAMERA`
+- `ACCESS_WIFI_STATE` / `CHANGE_WIFI_STATE` / `NEARBY_WIFI_DEVICES`（WiFi Beacon 受信用）
 
 ### iOS
 
@@ -81,6 +83,18 @@ python3 ../uav/remote_id.py --lat 35.6891390 --lon 139.6917000 --alt 12.0
 ```
 
 アプリは `company_id = 0x02E5` の manufacturer data を探して、緯度・経度・高度・時刻を復元します。
+
+## WiFi Beacon 受信（DJI 等）
+
+DJI をはじめ市販ドローンの多くは Remote ID を **WiFi ビーコンフレームのベンダ固有
+Information Element (IE)** でブロードキャストします（ASTM F3411 / OUI `FA 0B BC`, type `0x0D`）。
+本アプリは BLE と並行してこの IE を常時受信し、同じ証明フローに合流させます。
+
+- 受信はネイティブ実装（`android/.../WifiOdidScanner.kt` + EventChannel `uav/wifi_odid`）
+- 生 IE 取得 API (`ScanResult.getInformationElements`) の都合で **Android 11 (API 30) 以上**が必要
+  - API 30 未満／iOS では自動的に無効になり、BLE のみで動作します
+- 追加権限: `ACCESS_WIFI_STATE` / `CHANGE_WIFI_STATE` / `NEARBY_WIFI_DEVICES`
+  （スキャン結果取得には既存の `ACCESS_FINE_LOCATION` も必要）
 
 ## 補足
 

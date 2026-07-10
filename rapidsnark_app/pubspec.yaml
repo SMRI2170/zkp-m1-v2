@@ -47,6 +47,8 @@ dependencies:
   tflite_flutter: ^0.11.0
   
   video_thumbnail: ^0.5.6
+  flutter_riverpod: ^3.3.1
+  permission_handler: ^11.3.1
 
 dev_dependencies:
   flutter_test:
@@ -69,3 +71,4 @@ flutter:
     - assets/circuits/distance30_feature_classifier/
     - assets/circuits/distance30_time_series/
     - assets/models/
+    - assets/models/new-models/

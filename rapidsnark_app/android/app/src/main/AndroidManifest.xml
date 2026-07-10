@@ -9,6 +9,13 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- WiFi Beacon 経由の OpenDroneID 受信用 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES"
+        android:usesPermissionFlags="neverForLocation" tools:targetApi="tiramisu" />
+    <!-- WiFi NAN (Wi-Fi Aware) 経由の Remote ID 受信。非対応端末でもインストール可 -->
+    <uses-feature android:name="android.hardware.wifi.aware" android:required="false" />
     <application
         android:label="rapidsnark_app"
         android:name="${applicationName}"

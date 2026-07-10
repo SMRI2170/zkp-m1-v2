@@ -21,17 +21,20 @@ class DroneDetectionState {
   const DroneDetectionState({
     required this.status,
     required this.detections,
+    required this.selectedModelPath,
     this.latencyMs,
     this.errorMessage,
   });
 
-  factory DroneDetectionState.loading() => const DroneDetectionState(
+  factory DroneDetectionState.loading({String selectedModelPath = 'assets/models/new-models/best_float32.tflite'}) => DroneDetectionState(
         status: DetectorStatus.loading,
-        detections: [],
+        detections: const [],
+        selectedModelPath: selectedModelPath,
       );
 
   final DetectorStatus status;
   final List<DroneDetection> detections;
+  final String selectedModelPath;
   final double? latencyMs;   // 直近推論の所要時間 (ms)
   final String? errorMessage;
 
@@ -40,12 +43,14 @@ class DroneDetectionState {
   DroneDetectionState copyWith({
     DetectorStatus? status,
     List<DroneDetection>? detections,
+    String? selectedModelPath,
     double? latencyMs,
     String? errorMessage,
   }) =>
       DroneDetectionState(
         status: status ?? this.status,
         detections: detections ?? this.detections,
+        selectedModelPath: selectedModelPath ?? this.selectedModelPath,
         latencyMs: latencyMs ?? this.latencyMs,
         errorMessage: errorMessage ?? this.errorMessage,
       );

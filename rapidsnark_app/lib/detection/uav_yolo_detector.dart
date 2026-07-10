@@ -66,6 +66,8 @@ class UavYoloDetector {
        _labels = labels;
 
   static const defaultConfigAsset = 'assets/models/uav_yolo_config.json';
+  static const newModelConfigAsset =
+      'assets/models/new-models/best_float32_config.json';
   static const visdroneFinetunedConfigAsset =
       'assets/models/uav_visdrone_finetuned_config.json';
   static const roboflowDroneConfigAsset =
@@ -213,7 +215,7 @@ class UavYoloDetector {
     final outputLength = outputShape.fold<int>(1, (acc, dim) => acc * dim);
     final output = Float32List(outputLength);
 
-    await _isolateInterpreter.run(input.buffer, output.buffer);
+    await _isolateInterpreter.run(input.buffer.asUint8List(), output.buffer);
 
     final rawDetections = _parseDetections(
       output.toList(),
@@ -233,9 +235,9 @@ class UavYoloDetector {
       for (var y = 0; y < image.height; y++) {
         for (var x = 0; x < image.width; x++) {
           final pixel = image.getPixel(x, y);
-          tensor[i++] = pixel.b / 255.0;
-          tensor[i++] = pixel.g / 255.0;
           tensor[i++] = pixel.r / 255.0;
+          tensor[i++] = pixel.g / 255.0;
+          tensor[i++] = pixel.b / 255.0;
         }
       }
       return tensor;
@@ -246,11 +248,11 @@ class UavYoloDetector {
         for (var x = 0; x < image.width; x++) {
           final pixel = image.getPixel(x, y);
           if (channel == 0) {
-            tensor[i++] = pixel.b / 255.0;
+            tensor[i++] = pixel.r / 255.0;
           } else if (channel == 1) {
             tensor[i++] = pixel.g / 255.0;
           } else {
-            tensor[i++] = pixel.r / 255.0;
+            tensor[i++] = pixel.b / 255.0;
           }
         }
       }

@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "model_asset": "assets/models/new-models/best_float32.tflite",
+  "labels_asset": "assets/models/new-models/labels.txt",
+  "score_threshold": 0.25,
+  "iou_threshold": 0.45,
+  "uses_objectness": false
+}
