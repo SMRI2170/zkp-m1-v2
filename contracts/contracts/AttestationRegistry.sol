@@ -45,6 +45,10 @@ contract AttestationRegistry {
     mapping(uint256 => bool) public registeredOperator;
     // 新鮮さの下限（M3: これ未満の freshness を持つ古い proof を拒否＝リプレイ対策）
     uint256 public minFreshness;
+    // 登録端末の Merkle ルート（#3: M2集約の Sybil メンバーシップ用）。
+    // 集約回路が公開する Root がこれと一致することを submitAggregate 側で確認する。
+    // MiMC ベース（回路 aggregator/membership と一致）。registerDevice と併せて owner が更新。
+    uint256 public deviceRoot;
 
     // グループ = keccak256(drone_id_commitment, time_bucket)
     mapping(bytes32 => uint256) public witnessCount;      // 総提出数（整合＋矛盾）
@@ -114,6 +118,13 @@ contract AttestationRegistry {
     // ── 新鮮さ下限の更新（M3: 直近窓。これ未満の古い proof を弾く）────────────
     function setMinFreshness(uint256 v) external onlyOwner {
         minFreshness = v;
+    }
+
+    // ── 登録端末ルートの更新（#3: M2集約のSybilメンバーシップ）───────────────
+    // registerDevice で登録集合が変わったら、その MiMC Merkle ルートを設定する。
+    // 集約証明が公開する Root == deviceRoot を submitAggregate が確認する（定数gas）。
+    function setDeviceRoot(uint256 root) external onlyOwner {
+        deviceRoot = root;
     }
 
     function groupKeyOf(uint256 droneIdCommitment, uint256 timeBucket) public pure returns (bytes32) {
