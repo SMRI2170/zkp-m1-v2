@@ -8,7 +8,6 @@ package membership
 
 import (
 	"github.com/consensys/gnark/frontend"
-	"github.com/consensys/gnark/std/hash/mimc"
 )
 
 const (
@@ -27,29 +26,15 @@ type Circuit struct {
 
 func (c *Circuit) Define(api frontend.API) error {
 	for i := 0; i < N; i++ {
-		// leaf = MiMC(ax, ay)
-		h, err := mimc.NewMiMC(api)
+		leaf, err := Leaf(api, c.Ax[i], c.Ay[i])
 		if err != nil {
 			return err
 		}
-		h.Write(c.Ax[i], c.Ay[i])
-		cur := h.Sum()
-
-		// Merkle パスを畳んでルートへ
-		for d := 0; d < Depth; d++ {
-			bit := c.PathBits[i][d]
-			api.AssertIsBoolean(bit)
-			sib := c.Siblings[i][d]
-			left := api.Select(bit, sib, cur)  // bit=1: 自分は右 → 左は sibling
-			right := api.Select(bit, cur, sib) // bit=1: 右は自分
-			hh, err := mimc.NewMiMC(api)
-			if err != nil {
-				return err
-			}
-			hh.Write(left, right)
-			cur = hh.Sum()
+		root, err := ComputeRoot(api, leaf, c.Siblings[i], c.PathBits[i])
+		if err != nil {
+			return err
 		}
-		api.AssertIsEqual(cur, c.Root)
+		api.AssertIsEqual(root, c.Root)
 	}
 	return nil
 }

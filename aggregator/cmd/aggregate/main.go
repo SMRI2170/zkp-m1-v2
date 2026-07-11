@@ -11,6 +11,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"math/big"
 	"os"
 	"time"
 
@@ -24,6 +25,7 @@ import (
 	"github.com/consensys/gnark/std/math/emulated"
 	recursion "github.com/consensys/gnark/std/recursion/groth16"
 
+	"uav/aggregator/membership"
 	"uav/aggregator/snarkimport"
 )
 
@@ -44,8 +46,27 @@ type AggCircuit struct {
 	Proof [N]recursion.Proof[sw_bn254.G1Affine, sw_bn254.G2Affine]
 	Wit   [N]recursion.Witness[sw_bn254.ScalarField]
 
+	// #3a: 各 device_pubkey が登録端末ルートのメンバーであることの Merkle パス
+	Siblings [N][membership.Depth]frontend.Variable
+	PathBits [N][membership.Depth]frontend.Variable
+
 	ConsistentCount frontend.Variable `gnark:",public"`
 	SuspiciousCount frontend.Variable `gnark:",public"`
+	Root            frontend.Variable `gnark:",public"` // 登録端末ルート（契約が deviceRoot と照合）
+}
+
+// recompose: emulated BN254 要素（4リムb×64bit）を native BN254 値へ戻す。
+// 外側も BN254 なので、reduce 済みの値は native 要素に一致する。
+func recompose(api frontend.API, f *emulated.Field[sw_bn254.ScalarField],
+	e *emulated.Element[sw_bn254.ScalarField]) frontend.Variable {
+	red := f.ReduceStrict(e)
+	acc := frontend.Variable(0)
+	coef := big.NewInt(1)
+	for _, limb := range red.Limbs {
+		acc = api.Add(acc, api.Mul(limb, new(big.Int).Set(coef)))
+		coef.Lsh(coef, 64)
+	}
+	return acc
 }
 
 func (c *AggCircuit) Define(api frontend.API) error {
@@ -84,8 +105,54 @@ func (c *AggCircuit) Define(api frontend.API) error {
 		}
 	}
 
+	// ⑥ 各 device_pubkey が登録端末ルート(Root)のメンバーか（#3a Sybil対策）
+	for i := 0; i < N; i++ {
+		axN := recompose(api, field, &c.Wit[i].Public[idxPubX])
+		ayN := recompose(api, field, &c.Wit[i].Public[idxPubY])
+		leaf, err := membership.Leaf(api, axN, ayN)
+		if err != nil {
+			return err
+		}
+		root, err := membership.ComputeRoot(api, leaf, c.Siblings[i], c.PathBits[i])
+		if err != nil {
+			return err
+		}
+		api.AssertIsEqual(root, c.Root)
+	}
+
 	api.AssertIsEqual(c.ConsistentCount, consCount)
 	api.AssertIsEqual(api.Add(c.ConsistentCount, c.SuspiciousCount), N)
+	return nil
+}
+
+// 集約に含める N 台の (ax,ay) から登録木を構築し、Root と各パスを circuit へ設定する。
+func setMembership(c *AggCircuit, base string) error {
+	axs := make([]*big.Int, N)
+	ays := make([]*big.Int, N)
+	for i := 0; i < N; i++ {
+		var pub []string
+		b, err := os.ReadFile(fmt.Sprintf("%s/proofs/input_dev%d_public.json", base, i))
+		if err != nil {
+			return err
+		}
+		if err := json.Unmarshal(b, &pub); err != nil {
+			return err
+		}
+		axs[i], _ = new(big.Int).SetString(pub[idxPubX], 10)
+		ays[i], _ = new(big.Int).SetString(pub[idxPubY], 10)
+	}
+	leaves := make([]*big.Int, N)
+	for i := range leaves {
+		leaves[i] = membership.MimcHash(axs[i], ays[i])
+	}
+	root, siblings, bits := membership.BuildTree(leaves)
+	c.Root = root
+	for i := 0; i < N; i++ {
+		for d := 0; d < membership.Depth; d++ {
+			c.Siblings[i][d] = siblings[i][d]
+			c.PathBits[i][d] = bits[i][d]
+		}
+	}
 	return nil
 }
 
@@ -122,6 +189,9 @@ func main() {
 			}
 			c.Proof[i] = cp
 			c.Wit[i] = cw
+		}
+		if err := setMembership(&c, base); err != nil {
+			return nil, err
 		}
 		return &c, nil
 	}

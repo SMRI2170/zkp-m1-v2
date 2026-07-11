@@ -1,13 +1,13 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
-// gnark が出力した集約証明（N=3 の witness を1つに集約）。
-// verifyProof(bytes proof, uint256[2] input) は失敗時 revert（view）。
+// gnark が出力した集約証明（N=3 の witness を1つに集約、#3a 登録メンバーシップ込み）。
+// verifyProof(bytes proof, uint256[3] input): input=[consistentCount, suspiciousCount, Root]。
 const agg = require("./fixtures/aggregate.json");
 
-describe("Spike C: 集約証明のオンチェーン検証（定数gas）", function () {
+describe("Spike C+#3a: 集約証明のオンチェーン検証（定数gas / 登録Root束縛）", function () {
   let verifier;
-  const input = [BigInt(agg.consistentCount), BigInt(agg.suspiciousCount)];
+  const input = [BigInt(agg.consistentCount), BigInt(agg.suspiciousCount), BigInt(agg.root)];
 
   beforeEach(async function () {
     const V = await ethers.getContractFactory("Verifier"); // AggregateVerifier.sol
@@ -25,12 +25,19 @@ describe("Spike C: 集約証明のオンチェーン検証（定数gas）", func
 
   it("公開入力(consistent/suspicious)を偽ると revert", async function () {
     await expect(
-      verifier.verifyProof.staticCall(agg.proof, [1n, 2n])
+      verifier.verifyProof.staticCall(agg.proof, [1n, 2n, BigInt(agg.root)])
     ).to.be.reverted;
   });
 
+  it("#3a: 登録Root を偽ると revert（未登録端末の集約を弾く）", async function () {
+    const wrongRoot = [BigInt(agg.consistentCount), BigInt(agg.suspiciousCount), BigInt(agg.root) + 1n];
+    await expect(verifier.verifyProof.staticCall(agg.proof, wrongRoot)).to.be.reverted;
+  });
+
   it("proof を改ざんすると revert", async function () {
-    const tampered = "0x" + "00" + agg.proof.slice(4); // 先頭バイトを潰す
+    const hex = agg.proof.slice(2);
+    const last = hex.slice(-2);
+    const tampered = "0x" + hex.slice(0, -2) + (last === "ff" ? "00" : "ff"); // 末尾バイトを反転
     await expect(verifier.verifyProof.staticCall(tampered, input)).to.be.reverted;
   });
 });
