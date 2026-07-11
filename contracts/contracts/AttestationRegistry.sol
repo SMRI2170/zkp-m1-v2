@@ -2,6 +2,8 @@
 pragma solidity ^0.8.24;
 
 import "./IGroth16Verifier.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {Ownable2Step} from "@openzeppelin/contracts/access/Ownable2Step.sol";
 
 /// @title AttestationRegistry
 /// @notice マルチ端末 UAV 接近証明のオンチェーン結合（M1: 個別検証＋閾値レジストリ）。
@@ -23,7 +25,7 @@ import "./IGroth16Verifier.sol";
 /// 同一グループで相異なる登録端末が K 台:
 ///   consistency_ok=1 で揃う → ConsensusReached（放送位置が物理的に裏取りされた）
 ///   consistency_ok=0 で揃う → SpoofAlert（放送位置が実測と矛盾＝なりすまし疑い）
-contract AttestationRegistry {
+contract AttestationRegistry is Ownable2Step {
     // ── public signal インデックス ───────────────────────────────────────────
     uint256 private constant IDX_WITHIN30_AND_DETECTED = 6;
     uint256 private constant IDX_DRONE_ID_COMMITMENT = 10;
@@ -37,7 +39,8 @@ contract AttestationRegistry {
 
     IGroth16Verifier public immutable verifier;
     uint256 public immutable threshold; // K
-    address public owner;
+    // owner は Ownable2Step が提供（2段階移転で誤送金/乗っ取りに強い）。
+    // 本番は owner を TimelockController / マルチシグ(Safe) にして「compromise=即時全制御」を防ぐ。
 
     // 登録端末（Sybil 対策）: deviceId = keccak256(pubkey_x, pubkey_y)
     mapping(bytes32 => bool) public registeredDevice;
@@ -81,16 +84,10 @@ contract AttestationRegistry {
         uint256 count
     );
 
-    modifier onlyOwner() {
-        require(msg.sender == owner, "not owner");
-        _;
-    }
-
-    constructor(IGroth16Verifier _verifier, uint256 _threshold) {
+    constructor(IGroth16Verifier _verifier, uint256 _threshold) Ownable(msg.sender) {
         require(_threshold > 0, "threshold must be > 0");
         verifier = _verifier;
         threshold = _threshold;
-        owner = msg.sender;
     }
 
     // ── 端末登録（デモは owner 制御。実運用はハード鍵アテステーション等へ）────────
