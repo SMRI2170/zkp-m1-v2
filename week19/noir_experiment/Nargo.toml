@@ -1,0 +1,6 @@
+[package]
+name = "uav_rssi_consensus"
+type = "bin"
+authors = [""]
+
+[dependencies]

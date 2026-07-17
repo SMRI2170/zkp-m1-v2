@@ -71,3 +71,8 @@ zk-distance/build/distance_30m_time_js/
 zk-distance/optimization-compare/O0/
 zk-distance/optimization-compare/O1/
 zk-distance/optimization-compare/O2/
+
+# week19: mobile ZKP build artifacts / generated scaffolds (reproducible via 08_Mopro_PoC結果.md)
+week19/mopro_uav_circom/
+week19/mopro_uav/
+week19/noir_experiment/target/
