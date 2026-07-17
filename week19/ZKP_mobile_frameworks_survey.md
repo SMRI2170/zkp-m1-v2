@@ -8,7 +8,7 @@
 
 ## 0. 現行回路の要件（この基準で各FWを評価する）
 
-対象回路: `circuits/uav_witness_attestation.circom`（~18k制約）＋ `remoteid_consistency_rel.circom`（~650制約）
+対象回路: `circuits/uav_witness_attestation.circom`（約11.8k制約(実測)）＋ `remoteid_consistency_rel.circom`（~650制約）
 
 必要なプリミティブ:
 - **Poseidon ハッシュ**（各種コミットメント・drone_id_commitment・operator_commitment）
@@ -19,11 +19,11 @@
 制約: 証明系 **Groth16 / BN254**、**オンチェーン検証**（AttestationRegistry, 約348k gas）、
 **gnark による再帰集約（M2, サーバ側）**。★1=トラステッドセットアップは実施済みだが根治はしたい。
 
-→ 評価軸: ①回路実現性（上記プリミティブが書けるか）②モバイル証明の現実性（~18k制約）
+→ 評価軸: ①回路実現性（上記プリミティブが書けるか）②モバイル証明の現実性（約11.8k制約(実測)）
 ③移行コスト（circom資産の再利用度）④トラステッドセットアップ ⑤オンチェーン検証コスト ⑥集約適性。
 
 **全般の前提（FibRace, 2025）**: 現代のスマホの多くは**5秒以内**で証明生成が可能。
-性能は主に **RAM と SoC** に依存し、**3GB以上のRAM**で安定。~18k制約は Groth16 では小規模で、
+性能は主に **RAM と SoC** に依存し、**3GB以上のRAM**で安定。約11.8k制約(実測)は Groth16 では小規模で、
 どのFWでも「証明が回るか」自体は問題になりにくい。差が出るのは③〜⑥。
 
 ---
@@ -31,7 +31,7 @@
 ## 1. circom + rapidsnark（現行・基準）
 
 - ①実現性: ◎ すでに実装済み（circomlib の Poseidon/EdDSAPoseidonVerifier/comparators）
-- ②モバイル: ○ rapidsnark は arm64 対応。~18k制約は数百ms〜秒級
+- ②モバイル: ○ rapidsnark は arm64 対応。約11.8k制約(実測)は数百ms〜秒級
 - ③移行: 基準（ゼロ）
 - ④セットアップ: △ 回路別 Groth16 セレモニー必要（実施済み）
 - ⑤オンチェーン: ◎ 348k gas・定数
