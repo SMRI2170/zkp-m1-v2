@@ -37,8 +37,10 @@
 
 ## Phase 3 — 実機 RSSI 収集と較正（feasibility）
 
-- [ ] **3-1. アプリにログ収集機能**
-  `(rssi, broadcast_pos, phone_gps, timestamp)` を CSV/JSON 保存（既存の RSSI-check ログを永続化）
+- [x] **3-1. アプリにログ収集機能** ✅ `lib/core/rssi_logger.dart`
+  `(timestamp, source, rssi, claimed_m, est_m, verdict, phone/drone 位置)` を CSV 追記
+  （documents/rssi_calibration_log.csv）。main.dart から unawaited で1行呼び出し。analyze clean
+  - ※ 実機 DJI での収集（3-2）はセッションが要るため保留
 - [ ] **3-2. 実機 DJI で較正データ収集**
   既知距離（3/10/30m 等）で複数サンプル取得（`week18/rssi_calibration.csv`）
 - [ ] **3-3. 較正と検証**

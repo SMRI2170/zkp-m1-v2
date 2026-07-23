@@ -70,5 +70,6 @@ flutter:
     - assets/circuits/distance30_detection_flag/
     - assets/circuits/distance30_feature_classifier/
     - assets/circuits/distance30_time_series/
+    - assets/circuits/remoteid_consistency/
     - assets/models/
     - assets/models/new-models/

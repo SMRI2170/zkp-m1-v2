@@ -131,6 +131,7 @@ flutter run
   - `BLUETOOTH_CONNECT`
   - `ACCESS_FINE_LOCATION`
   - `CAMERA`
+  - `ACCESS_WIFI_STATE` / `CHANGE_WIFI_STATE` / `NEARBY_WIFI_DEVICES`（WiFi Beacon 受信用）
 - iOS
   - `NSBluetoothAlwaysUsageDescription`
   - `NSLocationWhenInUseUsageDescription`
@@ -138,10 +139,11 @@ flutter run
 
 ### 現在の入力方式
 
-アプリの `収集` タブでは、ドローン側ログを 2 通りで入れられます。
+アプリの `収集` タブでは、ドローン側ログを次の方法で入れられます。
 
 - `手入力`
 - `Raspberry Pi BLE 受信`
+- `WiFi Beacon 受信`（DJI 等の市販機 Remote ID。Android 11 以上で BLE と並行して常時受信）
 
 利用者側ログはスマホの GPS と気圧センサーから取得します。
 
@@ -162,6 +164,7 @@ flutter run
 - 回路は `30m以内` と `5秒以内` を同時に判定
 - アプリ内で witness 計算、Groth16 証明、検証まで完結
 - Raspberry Pi の BLE 広告をアプリで受信可能
+- DJI 等の WiFi Beacon (ベンダ固有 IE) による Remote ID もアプリで受信可能（Android 11+）
 - VisDrone で事前学習・ファインチューニングした YOLO モデルによるドローンのリアルタイム画像認識機能
 - OpenDroneID に準拠した BLE アドバタイズパケットの生成と実機 GPS / 気圧センサーとの連携
 - `--O0 / --O1 / --O2` の比較レポートも含む

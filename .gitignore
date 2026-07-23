@@ -76,3 +76,7 @@ zk-distance/optimization-compare/O2/
 week19/mopro_uav_circom/
 week19/mopro_uav/
 week19/noir_experiment/target/
+
+# Compiled x86_64 binaries (regenerate on target arch)
+aggregator/aggregate
+aggregator/verify1

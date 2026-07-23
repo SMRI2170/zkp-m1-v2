@@ -1,6 +1,0 @@
-# データセット・学習成果物はコミットしない(容量・ライセンス)
-data/
-*.json
-!*config*.json
-__pycache__/
-*.pyc

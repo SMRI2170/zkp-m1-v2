@@ -131,6 +131,7 @@ enum SafetyCircuitProfile {
   detectionCommitment,
   featureClassifier,
   timeSeries,
+  rssiConsistency,
 }
 
 class SafetyCircuitConfig {
@@ -516,6 +517,13 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
       label: 'Time Series (20点)',
       assetPrefix: 'distance30_time_series',
       description: '録画中に収集した最大 20 ペアの時系列データを使い、いずれか 1 点でも接近していれば接近を証明します。',
+      requiresVideo: false,
+    ),
+    SafetyCircuitConfig(
+      profile: SafetyCircuitProfile.rssiConsistency,
+      label: 'RSSI Consistency',
+      assetPrefix: 'remoteid_consistency',
+      description: 'RSSI から推定した実測レンジと放送位置の幾何距離が相対許容帯(±90%)で整合するかを、座標を回路内に秘匿したまま証明します。',
       requiresVideo: false,
     ),
   ];
@@ -1330,6 +1338,9 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
     if (_selectedCircuitProfile == SafetyCircuitProfile.timeSeries) {
       return _buildTimeSeriesInputPayload();
     }
+    if (_selectedCircuitProfile == SafetyCircuitProfile.rssiConsistency) {
+      return _buildConsistencyInputPayload();
+    }
     final payload = _buildBaseInputPayload();
     final targetTime = _seconds(_targetTimeController.text);
 
@@ -1386,9 +1397,53 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
       case SafetyCircuitProfile.timeSeries:
         // handled by early return above
         break;
+      case SafetyCircuitProfile.rssiConsistency:
+        // handled by early return above
+        break;
     }
 
     return payload;
+  }
+
+  /// RSSI 整合回路 (remoteid_consistency_rel) の入力。
+  /// 放送位置・端末位置（座標は回路内に秘匿）＋ RSSI から推定した実測レンジ(cm)。
+  Map<String, dynamic> _buildConsistencyInputPayload() {
+    return <String, String>{
+      'drone_lat_e7_norm': _normalizeLatitude(_droneLatController.text).toString(),
+      'drone_lon_e7_norm': _normalizeLongitude(_droneLonController.text).toString(),
+      'drone_alt_cm': _metersToCentimeters(_droneAltController.text).toString(),
+      'target_lat_e7_norm': _normalizeLatitude(_targetLatController.text).toString(),
+      'target_lon_e7_norm': _normalizeLongitude(_targetLonController.text).toString(),
+      'target_alt_cm': _metersToCentimeters(_targetAltController.text).toString(),
+      'measured_range_cm': _measuredRangeCmForProof().toString(),
+    };
+  }
+
+  /// 証明に渡す measured_range_cm。直近 RSSI があれば中央値集約で推定、
+  /// なければ放送位置と端末位置の幾何距離をそのまま用いる（＝整合するデモ）。
+  int _measuredRangeCmForProof() {
+    if (_recentDroneRssi.isNotEmpty) {
+      final est = const RssiRangingModel().distanceFromSamples(_recentDroneRssi);
+      final cm = (est * 100).round();
+      if (cm > 0) return cm;
+    }
+    return _claimedRangeCm();
+  }
+
+  /// 放送位置と端末位置の幾何距離[cm]（フォールバック用）。
+  int _claimedRangeCm() {
+    final dLat = double.tryParse(_droneLatController.text);
+    final dLon = double.tryParse(_droneLonController.text);
+    final tLat = double.tryParse(_targetLatController.text);
+    final tLon = double.tryParse(_targetLonController.text);
+    if (dLat == null || dLon == null || tLat == null || tLon == null) {
+      return 3000; // 位置未入力時の既定値 30m
+    }
+    final horiz = Geolocator.distanceBetween(tLat, tLon, dLat, dLon);
+    final dAltM = (double.tryParse(_droneAltController.text) ?? 0) -
+        (double.tryParse(_targetAltController.text) ?? 0);
+    final claimed = math.sqrt(horiz * horiz + dAltM * dAltM);
+    return (claimed * 100).round();
   }
 
   String _buildInputsJson() {

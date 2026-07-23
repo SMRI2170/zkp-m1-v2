@@ -335,7 +335,8 @@ Location.timestamp    → drone_time_sec    = _reconstructUnixTime(tsRaw)
 | 項目 | 内容 |
 |---|---|
 | BT5 Long Range | Extended Advertising を使い MessagePack で複数メッセージを1パケットで送信 |
-| Wi-Fi NaN | より広範囲への送信（Pixel 8 は Wi-Fi NaN 受信対応）|
+| Wi-Fi Beacon | **受信側実装済み**。DJI 等の市販機が使うベンダ固有 IE (OUI `FA 0B BC`, type `0x0D`) をアプリが受信（Android 11+、BLE と並行）|
+| Wi-Fi NaN | より広範囲への送信（Pixel 8 は Wi-Fi NaN 受信対応）。受信は将来拡張 |
 | Authentication | OpenDroneID Auth メッセージで機体の署名検証を追加 |
 | IPFS 連携 | BasicID の UAS_ID をキーに IPFS から Merkle Tree を取得 |
 | Merkle 証明 | 取得した飛行ログの Merkle Proof を ZK 回路に組み込む |
