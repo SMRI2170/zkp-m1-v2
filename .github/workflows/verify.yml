@@ -1,0 +1,28 @@
+name: Verify
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  contracts-and-aggregator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: contracts/package-lock.json
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.7"
+      - name: Install contract dependencies
+        working-directory: contracts
+        run: npm ci
+      - name: Run contract tests
+        working-directory: contracts
+        run: npm test
+      - name: Run Go tests
+        working-directory: aggregator
+        run: go test ./...

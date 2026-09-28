@@ -72,11 +72,27 @@ zk-distance/optimization-compare/O0/
 zk-distance/optimization-compare/O1/
 zk-distance/optimization-compare/O2/
 
-# week19: mobile ZKP build artifacts / generated scaffolds (reproducible via 08_Mopro_PoC結果.md)
+# week19: mobile ZKP build artifacts / generated scaffolds (reproducible via 08_Mopro_PoC結果.md, week20/09)
 week19/mopro_uav_circom/
+week19/mopro_uav_noir/
 week19/mopro_uav/
 week19/noir_experiment/target/
 
 # Compiled x86_64 binaries (regenerate on target arch)
 aggregator/aggregate
 aggregator/verify1
+
+# Rust (nova_poc) — sonobeはvendored clone(週20/08参照、再生成手順は同ファイル§7)。
+# nova-mobile配下の自作コード(Cargo.toml/src/tests)は nova_poc/nova-mobile/ に追跡用コピーがあり、
+# sonobe/nova-mobile/ へは手動コピーしてビルドする(week20/09参照)。
+nova_poc/sonobe/
+nova_poc/kotlin_bindings/
+
+# nova-android-demo（week20/09 §5.3.1）— gradle生成物・SDK固有パス・libのビルド成果物のみ除外
+nova_poc/nova-android-demo/local.properties
+nova_poc/nova-android-demo/.gradle/
+nova_poc/nova-android-demo/build/
+nova_poc/nova-android-demo/app/build/
+nova_poc/nova-android-demo/gradle/wrapper/gradle-wrapper.jar
+nova_poc/nova-android-demo/app/src/main/jniLibs/
+nova_poc/nova-android-demo/app/src/main/kotlin/uniffi/

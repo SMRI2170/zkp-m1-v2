@@ -100,3 +100,13 @@ echo "[8/8] 完了"
 echo "  セレモニー成果物: $CEREMONY_DIR （中間ファイルは監査後に破棄可）"
 echo "  ${NUM_CONTRIB} コントリビューション + ビーコンで確定。verify 済。"
 echo "  ※ 本番は各コントリビューションを独立参加者が別マシンで実行すること。"
+
+# Releaseに添付するmanifest。最終回路のsource/r1cs/zkey/vkey/verifierの対応を
+# SHA-256で固定し、第三者が差し替えを検出できるようにする。
+"$ROOT_DIR/scripts/zk_artifact_manifest.sh" create "$BUILD_DIR/release-manifest.json" \
+  "$CIRCUIT_PATH" \
+  "$BUILD_DIR/${CIRCUIT_STEM}.r1cs" \
+  "$BUILD_DIR/${ASSET_PREFIX}.zkey" \
+  "$BUILD_DIR/${ASSET_PREFIX}_vkey.json" \
+  "$CONTRACTS_DIR/Groth16Verifier.sol"
+echo "  manifest: $BUILD_DIR/release-manifest.json"

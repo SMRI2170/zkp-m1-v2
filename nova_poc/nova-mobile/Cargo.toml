@@ -1,0 +1,32 @@
+[package]
+name = "nova-mobile"
+version = "0.1.0"
+edition.workspace = true
+
+# week20/09 §2.3.1の設計に基づく、Nova(Sonobe)チェーンステップのUniFFIラッパー。
+# uav_chain_step.rs(folding-schemes/examples)と同じ回路(ChainStepCircuit)を、
+# スマホ(Swift/Kotlin)から呼べる薄いオブジェクトAPIとして公開する。
+
+[lib]
+name = "nova_mobile"
+crate-type = ["lib", "cdylib", "staticlib"]
+
+[[bin]]
+name = "uniffi-bindgen"
+path = "src/bin/uniffi-bindgen.rs"
+
+[[bin]]
+name = "on_device_bench"
+path = "src/bin/on_device_bench.rs"
+
+[dependencies]
+folding-schemes = { workspace = true }
+ark-bn254 = { workspace = true, features = ["r1cs"] }
+ark-grumpkin = { workspace = true, features = ["r1cs"] }
+ark-ff = { workspace = true }
+ark-r1cs-std = { workspace = true }
+ark-relations = { workspace = true }
+ark-crypto-primitives = { workspace = true, features = ["constraints", "crh", "sponge"] }
+rand = { workspace = true }
+thiserror = { workspace = true }
+uniffi = { version = "0.32", features = ["cli"] }

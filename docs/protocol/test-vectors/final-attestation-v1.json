@@ -1,0 +1,51 @@
+{
+  "protocol": "final-attestation-v1",
+  "bn254ScalarField": "21888242871839275222246405745257275088548364400416034343698204186575808495617",
+  "publicInputOrder": [
+    "protocolVersion",
+    "droneIdCommitment",
+    "timeBucket",
+    "policyCommitment",
+    "memberRoot",
+    "nullifierRoot",
+    "consistentCount",
+    "suspiciousCount",
+    "verdict"
+  ],
+  "vectors": [
+    {
+      "name": "trusted-three-observation-session",
+      "publicInputs": [
+        "1",
+        "424242",
+        "100001",
+        "123456789",
+        "999",
+        "777",
+        "2",
+        "1",
+        "1"
+      ],
+      "sessionIdPreimageTypes": ["uint8", "uint256", "uint64", "uint256"],
+      "sessionIdPreimage": ["1", "424242", "100001", "123456789"],
+      "sessionId": "0x6e241bc572d59d92aa92ed9f1110f955abd9568e5a506cb15b95d82a79685968"
+    },
+    {
+      "name": "suspicious-two-observation-session",
+      "publicInputs": [
+        "1",
+        "424242",
+        "100002",
+        "123456789",
+        "999",
+        "778",
+        "0",
+        "2",
+        "2"
+      ],
+      "sessionIdPreimageTypes": ["uint8", "uint256", "uint64", "uint256"],
+      "sessionIdPreimage": ["1", "424242", "100002", "123456789"],
+      "sessionId": "0x5989be22f18e7cec05a2ef0159f7a33db9abd21be267fbaa1b59e44497a4e3bb"
+    }
+  ]
+}

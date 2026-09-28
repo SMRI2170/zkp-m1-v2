@@ -23,7 +23,9 @@ import 'package:video_thumbnail/video_thumbnail.dart' as video_thumbnail;
 import 'core/rssi_ranging.dart';
 import 'core/rssi_logger.dart';
 import 'detection/uav_yolo_detector.dart';
+import 'domain/chain_session.dart';
 import 'features/ble_raw_scan/ble_raw_scan_page.dart';
+import 'features/chain_session/chain_session_page.dart';
 import 'features/wifi_raw_scan/wifi_raw_scan_page.dart';
 
 List<CameraDescription> _availableCameras = [];
@@ -73,12 +75,9 @@ class PositionSnapshot {
 
 // 動画録画時に Remote ID・GPS と同時にスナップショットした証拠データ
 class VideoEvidence {
-  const VideoEvidence({
-    required this.path,
-    required this.recordedAt,
-  });
+  const VideoEvidence({required this.path, required this.recordedAt});
 
-  final String path;         // 録画した動画のファイルパス
+  final String path; // 録画した動画のファイルパス
   final DateTime recordedAt; // 録画完了時刻（Remote ID スナップショットと紐付け）
 }
 
@@ -215,10 +214,10 @@ class UavSystemPacket {
   final double operatorLongitude;
   final double operatorAltitudeGeo; // m, float32 から読み出し
   final int areaCount;
-  final int areaRadiusMeters;       // AreaRadius × 10
+  final int areaRadiusMeters; // AreaRadius × 10
   final double areaCeilingMeters;
   final double areaFloorMeters;
-  final int operatorLocationType;   // 0=TakeOff, 1=LiveGNSS, 2=Fixed, 3=Dynamic
+  final int operatorLocationType; // 0=TakeOff, 1=LiveGNSS, 2=Fixed, 3=Dynamic
   final int classificationType;
 
   @override
@@ -249,10 +248,10 @@ class UavTelemetryPacket {
   static const serviceUuid = '0000fffa-0000-1000-8000-00805f9b34fb';
 
   // opendroneid-core-c ODID_MsgType_t
-  static const _msgTypeBasicId  = 0;
+  static const _msgTypeBasicId = 0;
   static const _msgTypeLocation = 1;
-  static const _msgTypeSystem   = 4; // オペレーター位置
-  static const _msgTypeMsgPack  = 0xF; // Message Pack (複数メッセージ束)
+  static const _msgTypeSystem = 4; // オペレーター位置
+  static const _msgTypeMsgPack = 0xF; // Message Pack (複数メッセージ束)
 
   // opendroneid-core-c BLE App Code (0x0D) — Service Data の先頭に付くことがある
   static const _odidAppCode = 0x0D;
@@ -271,12 +270,12 @@ class UavTelemetryPacket {
 
   final double latitude;
   final double longitude;
-  final double altitudeMeters;     // AltitudeBaro (QFE, BME280)
-  final double altitudeGeoMeters;  // AltitudeGeo (GPS WGS84)
-  final double speedH;             // 水平速度 m/s
-  final double speedV;             // 垂直速度 m/s (正=上昇)
-  final double direction;          // 進行方向 degrees (0-359)
-  final bool statusIsAirborne;     // Status == AIRBORNE
+  final double altitudeMeters; // AltitudeBaro (QFE, BME280)
+  final double altitudeGeoMeters; // AltitudeGeo (GPS WGS84)
+  final double speedH; // 水平速度 m/s
+  final double speedV; // 垂直速度 m/s (正=上昇)
+  final double direction; // 進行方向 degrees (0-359)
+  final bool statusIsAirborne; // Status == AIRBORNE
   final int unixTimeSec;
   final int sequence;
   final String? uasId;
@@ -321,31 +320,31 @@ class UavTelemetryPacket {
     if (msgType != _msgTypeLocation) return null;
 
     // Byte 1: Status[7:4] | Reserved[3] | HeightType[2] | EWDirection[1] | SpeedMult[0]
-    final byte1     = rawBytes[1] & 0xFF;
-    final status    = (byte1 >> 4) & 0x0F;
-    final ewDir     = (byte1 >> 1) & 0x01;
+    final byte1 = rawBytes[1] & 0xFF;
+    final status = (byte1 >> 4) & 0x0F;
+    final ewDir = (byte1 >> 1) & 0x01;
     final speedMult = byte1 & 0x01;
 
     final data = ByteData.sublistView(Uint8List.fromList(rawBytes));
-    final latI32   = data.getInt32(5,  Endian.little);
-    final lonI32   = data.getInt32(9,  Endian.little);
-    final altBaro  = data.getUint16(13, Endian.little);
-    final altGeo   = data.getUint16(15, Endian.little);
-    final tsRaw    = data.getUint16(21, Endian.little);
+    final latI32 = data.getInt32(5, Endian.little);
+    final lonI32 = data.getInt32(9, Endian.little);
+    final altBaro = data.getUint16(13, Endian.little);
+    final altGeo = data.getUint16(15, Endian.little);
+    final tsRaw = data.getUint16(21, Endian.little);
 
     if (latI32 == 0 && lonI32 == 0) return null; // 無効座標
 
     return UavTelemetryPacket(
-      latitude:         latI32 / 1e7,
-      longitude:        lonI32 / 1e7,
-      altitudeMeters:   _decodeAltitude(altBaro),
+      latitude: latI32 / 1e7,
+      longitude: lonI32 / 1e7,
+      altitudeMeters: _decodeAltitude(altBaro),
       altitudeGeoMeters: _decodeAltitude(altGeo),
-      speedH:           _decodeSpeedH(rawBytes[3] & 0xFF, speedMult),
-      speedV:           _decodeSpeedV(rawBytes[4] & 0xFF),
-      direction:        _decodeDirection(rawBytes[2] & 0xFF, ewDir),
+      speedH: _decodeSpeedH(rawBytes[3] & 0xFF, speedMult),
+      speedV: _decodeSpeedV(rawBytes[4] & 0xFF),
+      direction: _decodeDirection(rawBytes[2] & 0xFF, ewDir),
       statusIsAirborne: status == _statusAirborne,
-      unixTimeSec:      _reconstructUnixTime(tsRaw),
-      sequence:         seq,
+      unixTimeSec: _reconstructUnixTime(tsRaw),
+      sequence: seq,
     );
   }
 
@@ -359,9 +358,9 @@ class UavTelemetryPacket {
 
     final idBytes = rawBytes.sublist(2, 22);
     final nullIdx = idBytes.indexOf(0);
-    return String.fromCharCodes(nullIdx >= 0 ? idBytes.sublist(0, nullIdx) : idBytes)
-        .trim()
-        .replaceAll('\x00', '');
+    return String.fromCharCodes(
+      nullIdx >= 0 ? idBytes.sublist(0, nullIdx) : idBytes,
+    ).trim().replaceAll('\x00', '');
   }
 
   /// System メッセージ (type=4) をパースしてオペレーター位置等を返す。
@@ -372,7 +371,7 @@ class UavTelemetryPacket {
     if (msgType != _msgTypeSystem) return null;
 
     final byte1 = rawBytes[1] & 0xFF;
-    final data  = ByteData.sublistView(Uint8List.fromList(rawBytes));
+    final data = ByteData.sublistView(Uint8List.fromList(rawBytes));
     final latI32 = data.getInt32(2, Endian.little);
     final lonI32 = data.getInt32(6, Endian.little);
 
@@ -383,21 +382,23 @@ class UavTelemetryPacket {
     final altGeoRaw = data.getFloat32(18, Endian.little);
 
     return UavSystemPacket(
-      operatorLatitude:    latI32 / 1e7,
-      operatorLongitude:   lonI32 / 1e7,
+      operatorLatitude: latI32 / 1e7,
+      operatorLongitude: lonI32 / 1e7,
       operatorAltitudeGeo: altGeoRaw.isFinite ? altGeoRaw : 0.0,
-      areaCount:           data.getUint16(10, Endian.little),
-      areaRadiusMeters:    (rawBytes[12] & 0xFF) * 10,
-      areaCeilingMeters:   _decodeAltitude(data.getUint16(13, Endian.little)),
-      areaFloorMeters:     _decodeAltitude(data.getUint16(15, Endian.little)),
+      areaCount: data.getUint16(10, Endian.little),
+      areaRadiusMeters: (rawBytes[12] & 0xFF) * 10,
+      areaCeilingMeters: _decodeAltitude(data.getUint16(13, Endian.little)),
+      areaFloorMeters: _decodeAltitude(data.getUint16(15, Endian.little)),
       operatorLocationType: byte1 & 0x03,
-      classificationType:   (byte1 >> 2) & 0x07,
+      classificationType: (byte1 >> 2) & 0x07,
     );
   }
 
   /// Service Data マップから OpenDroneID のペイロードを取り出す。
   /// App Code (0x0D) プレフィックスを除去してから返す。
-  static List<int>? extractFromServiceData(Map<dynamic, List<int>> serviceData) {
+  static List<int>? extractFromServiceData(
+    Map<dynamic, List<int>> serviceData,
+  ) {
     for (final entry in serviceData.entries) {
       final key = entry.key.toString().toLowerCase();
       if (!key.contains('fffa')) continue;
@@ -411,7 +412,9 @@ class UavTelemetryPacket {
 
   /// 全既知メーカーの Manufacturer Data から OpenDroneID ペイロードを取り出す。
   /// App Code (0x0D) プレフィックスを除去してから返す。
-  static List<int>? extractFromManufacturerData(Map<int, List<int>> manufacturerData) {
+  static List<int>? extractFromManufacturerData(
+    Map<int, List<int>> manufacturerData,
+  ) {
     for (final id in _knownManufacturerIds.keys) {
       final raw = manufacturerData[id];
       if (raw == null || raw.isEmpty) continue;
@@ -523,13 +526,15 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
       profile: SafetyCircuitProfile.rssiConsistency,
       label: 'RSSI Consistency',
       assetPrefix: 'remoteid_consistency',
-      description: 'RSSI から推定した実測レンジと放送位置の幾何距離が相対許容帯(±90%)で整合するかを、座標を回路内に秘匿したまま証明します。',
+      description:
+          'RSSI から推定した実測レンジと放送位置の幾何距離が相対許容帯(±90%)で整合するかを、座標を回路内に秘匿したまま証明します。',
       requiresVideo: false,
     ),
   ];
   int _selectedTabIndex = 0;
   DroneInputMode _droneInputMode = DroneInputMode.manual;
   SafetyCircuitProfile _selectedCircuitProfile = SafetyCircuitProfile.base;
+  bool _isDemoMeasurement = false;
 
   final _droneLatController = TextEditingController();
   final _droneLonController = TextEditingController();
@@ -549,7 +554,8 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
 
   void _log(String msg) {
     final now = DateTime.now();
-    final ts = '${now.hour.toString().padLeft(2, '0')}:'
+    final ts =
+        '${now.hour.toString().padLeft(2, '0')}:'
         '${now.minute.toString().padLeft(2, '0')}:'
         '${now.second.toString().padLeft(2, '0')}';
     if (!mounted) return;
@@ -560,10 +566,13 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
     });
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_logScrollController.hasClients) {
-        _logScrollController.jumpTo(_logScrollController.position.maxScrollExtent);
+        _logScrollController.jumpTo(
+          _logScrollController.position.maxScrollExtent,
+        );
       }
     });
   }
+
   String _inputJson = '';
   String _publicSignals = '';
   String _proof = '';
@@ -577,7 +586,7 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
   Duration? _proofElapsed;
   Timer? _proofTimer;
   bool _uavDetectedInVideo = false;
-  double? _groundPressureHpa;     // アプリ起動時に記録した地上気圧 (QFE 基準)
+  double? _groundPressureHpa; // アプリ起動時に記録した地上気圧 (QFE 基準)
   double? _currentAltitudeMeters;
   Timer? _autoLocationTimer;
   Timer? _bleRescanTimer;
@@ -710,7 +719,10 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
     );
     try {
       await controller.initialize();
-      if (!mounted) { await controller.dispose(); return; }
+      if (!mounted) {
+        await controller.dispose();
+        return;
+      }
       setState(() {
         _cameraController = controller;
         _cameraReady = true;
@@ -726,7 +738,9 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
   void _startLiveDetection() {
     if (_yoloDetector == null || _isLiveDetecting) return;
     _isLiveDetecting = true;
-    _liveDetectionTimer = Timer.periodic(const Duration(milliseconds: 800), (_) async {
+    _liveDetectionTimer = Timer.periodic(const Duration(milliseconds: 800), (
+      _,
+    ) async {
       if (!mounted || _isRecording || _isCapturing) return;
       final ctrl = _cameraController;
       if (ctrl == null || !ctrl.value.isInitialized) return;
@@ -749,7 +763,12 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
   // ── 動画録画 (Plan A) ─────────────────────────────────────────
   Future<void> _startVideoRecording() async {
     final ctrl = _cameraController;
-    if (ctrl == null || !_cameraReady || _isRecording || _isCapturing || _isBusy) return;
+    if (ctrl == null ||
+        !_cameraReady ||
+        _isRecording ||
+        _isCapturing ||
+        _isBusy)
+      return;
     _stopLiveDetection();
     try {
       await ctrl.startVideoRecording();
@@ -778,13 +797,19 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
     if (ctrl == null || !_isRecording) return;
     _recordingTimer?.cancel();
     _recordingTimer = null;
-    setState(() { _isRecording = false; _isCapturing = true; });
+    setState(() {
+      _isRecording = false;
+      _isCapturing = true;
+    });
     try {
       final videoFile = await ctrl.stopVideoRecording();
       final recordedAt = DateTime.now();
       _selectBestDataPair();
       setState(() {
-        _videoEvidence = VideoEvidence(path: videoFile.path, recordedAt: recordedAt);
+        _videoEvidence = VideoEvidence(
+          path: videoFile.path,
+          recordedAt: recordedAt,
+        );
         _uavDetectedInVideo = false;
         _videoDetectionLabels = const [];
         _videoDetectionDetails = const [];
@@ -824,45 +849,48 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
         _targetAltController.text = bestLocation.alt.toStringAsFixed(1);
         _targetTimeController.text = bestLocation.unixTimeSec.toString();
       });
-      _log('撮影時点スナップショット: ドローン ${_droneHistory.length}件・位置 ${_locationHistory.length}件 → 最適ペア選択（時刻差 ${minDiff}s）。');
+      _log(
+        '撮影時点スナップショット: ドローン ${_droneHistory.length}件・位置 ${_locationHistory.length}件 → 最適ペア選択（時刻差 ${minDiff}s）。',
+      );
     }
   }
 
   void _startLocationStream() {
     _locationStream?.cancel();
     _autoLocationTimer?.cancel();
-    _locationStream = Geolocator.getPositionStream(
-      locationSettings: Platform.isAndroid
-          ? AndroidSettings(
-              accuracy: LocationAccuracy.best,
-              distanceFilter: 0,
-              intervalDuration: const Duration(seconds: 1),
-            )
-          : const LocationSettings(
-              accuracy: LocationAccuracy.best,
-              distanceFilter: 0,
-            ),
-    ).listen((position) async {
-      double alt = _currentAltitudeMeters ?? 0.0;
-      final unixSec = DateTime.now().millisecondsSinceEpoch ~/ 1000;
-      final snapshot = PositionSnapshot(
-        lat: position.latitude,
-        lon: position.longitude,
-        alt: alt,
-        unixTimeSec: unixSec,
-      );
-      if (!mounted) return;
-      setState(() {
-        // 常時蓄積（最大20件）
-        _locationHistory.add(snapshot);
-        if (_locationHistory.length > 20) _locationHistory.removeAt(0);
-        // 現在値を常時更新
-        _targetLatController.text = position.latitude.toStringAsFixed(7);
-        _targetLonController.text = position.longitude.toStringAsFixed(7);
-        _targetAltController.text = alt.toStringAsFixed(1);
-        _targetTimeController.text = unixSec.toString();
-      });
-    }, onError: (_) {});
+    _locationStream =
+        Geolocator.getPositionStream(
+          locationSettings: Platform.isAndroid
+              ? AndroidSettings(
+                  accuracy: LocationAccuracy.best,
+                  distanceFilter: 0,
+                  intervalDuration: const Duration(seconds: 1),
+                )
+              : const LocationSettings(
+                  accuracy: LocationAccuracy.best,
+                  distanceFilter: 0,
+                ),
+        ).listen((position) async {
+          double alt = _currentAltitudeMeters ?? 0.0;
+          final unixSec = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+          final snapshot = PositionSnapshot(
+            lat: position.latitude,
+            lon: position.longitude,
+            alt: alt,
+            unixTimeSec: unixSec,
+          );
+          if (!mounted) return;
+          setState(() {
+            // 常時蓄積（最大20件）
+            _locationHistory.add(snapshot);
+            if (_locationHistory.length > 20) _locationHistory.removeAt(0);
+            // 現在値を常時更新
+            _targetLatController.text = position.latitude.toStringAsFixed(7);
+            _targetLonController.text = position.longitude.toStringAsFixed(7);
+            _targetAltController.text = alt.toStringAsFixed(1);
+            _targetTimeController.text = unixSec.toString();
+          });
+        }, onError: (_) {});
   }
 
   void _startContinuousBleScan() {
@@ -889,7 +917,12 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
   /// 直近 _rssiWindow 件の RSSI を中央値集約してから判定（単発は粗いため）。
   /// ドローンを一切改造せず、地上側の受信強度だけで放送値の矛盾を検出する土台。
   void _logRssiConsistency(
-      double droneLat, double droneLon, double droneAltM, int rssi, String source) {
+    double droneLat,
+    double droneLon,
+    double droneAltM,
+    int rssi,
+    String source,
+  ) {
     final pLat = _tryParseDouble(_targetLatController.text);
     final pLon = _tryParseDouble(_targetLonController.text);
     if (pLat == null || pLon == null || rssi == 0) return;
@@ -902,33 +935,44 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
     final dAlt = droneAltM - pAlt;
     final claimed = math.sqrt(horiz * horiz + dAlt * dAlt);
     final r = checkRssiConsistencyFromSamples(
-        claimedDistanceM: claimed, rssiSamples: _recentDroneRssi);
+      claimedDistanceM: claimed,
+      rssiSamples: _recentDroneRssi,
+    );
     if (r.verdict == RssiVerdict.unknown) return;
-    _log('[$source RSSI-check] ${r.label} '
-        'n=${_recentDroneRssi.length} '
-        'claimed=${claimed.toStringAsFixed(1)}m '
-        'est=${r.estimatedRangeM.toStringAsFixed(1)}m '
-        'band[${r.lowerM.toStringAsFixed(1)},${r.upperM.toStringAsFixed(1)}]m');
+    _log(
+      '[$source RSSI-check] ${r.label} '
+      'n=${_recentDroneRssi.length} '
+      'claimed=${claimed.toStringAsFixed(1)}m '
+      'est=${r.estimatedRangeM.toStringAsFixed(1)}m '
+      'band[${r.lowerM.toStringAsFixed(1)},${r.upperM.toStringAsFixed(1)}]m',
+    );
 
     // 実機較正用に CSV へ蓄積（UI は止めない）
-    unawaited(_rssiLogger.append(RssiLogRow(
-      t: DateTime.now(),
-      source: source,
-      rssi: rssi,
-      claimedM: claimed,
-      estM: r.estimatedRangeM,
-      verdict: r.label,
-      phoneLat: pLat,
-      phoneLon: pLon,
-      droneLat: droneLat,
-      droneLon: droneLon,
-      droneAltM: droneAltM,
-    )));
+    unawaited(
+      _rssiLogger.append(
+        RssiLogRow(
+          t: DateTime.now(),
+          source: source,
+          rssi: rssi,
+          claimedM: claimed,
+          estM: r.estimatedRangeM,
+          verdict: r.label,
+          phoneLat: pLat,
+          phoneLon: pLon,
+          droneLat: droneLat,
+          droneLon: droneLon,
+          droneAltM: droneAltM,
+        ),
+      ),
+    );
   }
 
   Future<void> _restartBleScan() async {
     if (_isScanningDrone) return;
-    if (mounted) setState(() { _isScanningDrone = true; });
+    if (mounted)
+      setState(() {
+        _isScanningDrone = true;
+      });
     try {
       // Bluetooth ON 確認
       final adapterState = await FlutterBluePlus.adapterState.first;
@@ -947,7 +991,9 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
           final ad = result.advertisementData;
           final odidBytes =
               UavTelemetryPacket.extractFromServiceData(ad.serviceData) ??
-              UavTelemetryPacket.extractFromManufacturerData(ad.manufacturerData);
+              UavTelemetryPacket.extractFromManufacturerData(
+                ad.manufacturerData,
+              );
           if (odidBytes == null) continue;
 
           // 単一メッセージ / Message Pack を統一処理
@@ -966,16 +1012,26 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
 
             // Location (type=1) → 即座に UI へ反映
             if (msgType == 1) {
-              final packet = UavTelemetryPacket.tryParseLocation(msg, _scanSeq++);
+              final packet = UavTelemetryPacket.tryParseLocation(
+                msg,
+                _scanSeq++,
+              );
               if (packet != null && mounted) {
-                _log('[BLE Location] seq=${packet.sequence} '
-                    'lat=${packet.latitude.toStringAsFixed(6)} '
-                    'lon=${packet.longitude.toStringAsFixed(6)} '
-                    'alt=${packet.altitudeMeters.toStringAsFixed(1)}m '
-                    'airborne=${packet.statusIsAirborne} '
-                    'rssi=${result.rssi}dBm');
-                _logRssiConsistency(packet.latitude, packet.longitude,
-                    packet.altitudeMeters, result.rssi, 'BLE');
+                _log(
+                  '[BLE Location] seq=${packet.sequence} '
+                  'lat=${packet.latitude.toStringAsFixed(6)} '
+                  'lon=${packet.longitude.toStringAsFixed(6)} '
+                  'alt=${packet.altitudeMeters.toStringAsFixed(1)}m '
+                  'airborne=${packet.statusIsAirborne} '
+                  'rssi=${result.rssi}dBm',
+                );
+                _logRssiConsistency(
+                  packet.latitude,
+                  packet.longitude,
+                  packet.altitudeMeters,
+                  result.rssi,
+                  'BLE',
+                );
                 setState(() => _applyDroneTelemetry(packet, source: 'BLE'));
               }
               continue;
@@ -991,7 +1047,9 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
             }
 
             // その他 (SelfID=3, OperatorID=5, Auth=2 等) → 型番だけログ
-            _log('[BLE type=$msgType] ${msg.length}B (未パース) rssi=${result.rssi}dBm');
+            _log(
+              '[BLE type=$msgType] ${msg.length}B (未パース) rssi=${result.rssi}dBm',
+            );
           }
         }
       });
@@ -1003,7 +1061,10 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
     } catch (e) {
       _log('BLE スキャンエラー: $e');
     } finally {
-      if (mounted) setState(() { _isScanningDrone = false; });
+      if (mounted)
+        setState(() {
+          _isScanningDrone = false;
+        });
     }
   }
 
@@ -1060,14 +1121,21 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
       if (msgType == 1) {
         final packet = UavTelemetryPacket.tryParseLocation(msg, _scanSeq++);
         if (packet != null && mounted) {
-          _log('[$tag Location] seq=${packet.sequence} '
-              'lat=${packet.latitude.toStringAsFixed(6)} '
-              'lon=${packet.longitude.toStringAsFixed(6)} '
-              'alt=${packet.altitudeMeters.toStringAsFixed(1)}m '
-              'airborne=${packet.statusIsAirborne} '
-              'ssid=$ssid rssi=${rssi}dBm');
-          _logRssiConsistency(packet.latitude, packet.longitude,
-              packet.altitudeMeters, rssi, 'WiFi/$transport');
+          _log(
+            '[$tag Location] seq=${packet.sequence} '
+            'lat=${packet.latitude.toStringAsFixed(6)} '
+            'lon=${packet.longitude.toStringAsFixed(6)} '
+            'alt=${packet.altitudeMeters.toStringAsFixed(1)}m '
+            'airborne=${packet.statusIsAirborne} '
+            'ssid=$ssid rssi=${rssi}dBm',
+          );
+          _logRssiConsistency(
+            packet.latitude,
+            packet.longitude,
+            packet.altitudeMeters,
+            rssi,
+            'WiFi/$transport',
+          );
           setState(() => _applyDroneTelemetry(packet, source: 'WiFi'));
         }
         continue;
@@ -1151,6 +1219,7 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
 
     _droneInputMode = DroneInputMode.manual;
     _selectedCircuitProfile = SafetyCircuitProfile.base;
+    _isDemoMeasurement = false;
     _lastDroneTelemetry = null;
     _log('ドローン側は手入力 / BLE 受信 / WiFi 受信、利用者側は端末の GPS と気圧センサーで取得できます。');
     _inputJson = '';
@@ -1282,8 +1351,9 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
     const n = 20;
 
     final droneEntries = _droneHistory.take(n).toList();
-    final UavTelemetryPacket? lastDrone =
-        droneEntries.isNotEmpty ? droneEntries.last : null;
+    final UavTelemetryPacket? lastDrone = droneEntries.isNotEmpty
+        ? droneEntries.last
+        : null;
     while (droneEntries.length < n) {
       droneEntries.add(
         lastDrone ??
@@ -1303,8 +1373,9 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
     }
 
     final locationEntries = _locationHistory.take(n).toList();
-    final PositionSnapshot? lastLoc =
-        locationEntries.isNotEmpty ? locationEntries.last : null;
+    final PositionSnapshot? lastLoc = locationEntries.isNotEmpty
+        ? locationEntries.last
+        : null;
     while (locationEntries.length < n) {
       locationEntries.add(
         lastLoc ??
@@ -1317,20 +1388,22 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
     String altCm(double alt) => (alt * 100).round().toString();
 
     return {
-      'drone_lat_e7_norm':
-          droneEntries.map((d) => normLat(d.latitude)).toList(),
-      'drone_lon_e7_norm':
-          droneEntries.map((d) => normLon(d.longitude)).toList(),
+      'drone_lat_e7_norm': droneEntries
+          .map((d) => normLat(d.latitude))
+          .toList(),
+      'drone_lon_e7_norm': droneEntries
+          .map((d) => normLon(d.longitude))
+          .toList(),
       'drone_alt_cm': droneEntries.map((d) => altCm(d.altitudeMeters)).toList(),
-      'drone_time_sec':
-          droneEntries.map((d) => d.unixTimeSec.toString()).toList(),
-      'target_lat_e7_norm':
-          locationEntries.map((l) => normLat(l.lat)).toList(),
-      'target_lon_e7_norm':
-          locationEntries.map((l) => normLon(l.lon)).toList(),
+      'drone_time_sec': droneEntries
+          .map((d) => d.unixTimeSec.toString())
+          .toList(),
+      'target_lat_e7_norm': locationEntries.map((l) => normLat(l.lat)).toList(),
+      'target_lon_e7_norm': locationEntries.map((l) => normLon(l.lon)).toList(),
       'target_alt_cm': locationEntries.map((l) => altCm(l.alt)).toList(),
-      'target_time_sec':
-          locationEntries.map((l) => l.unixTimeSec.toString()).toList(),
+      'target_time_sec': locationEntries
+          .map((l) => l.unixTimeSec.toString())
+          .toList(),
     };
   }
 
@@ -1370,8 +1443,14 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
           'frame_time_sec': frameTimeSec.toString(),
           // 動画フレームの外部ハッシュ（254-bit を hi/lo に分割）
           // 回路内で Poseidon(hi, lo) として frame_binding にバインドされる
-          'frame_commitment_hi': _deriveStableHash(commitmentSeed, 17).toString(),
-          'frame_commitment_lo': _deriveStableHash(commitmentSeed, 97).toString(),
+          'frame_commitment_hi': _deriveStableHash(
+            commitmentSeed,
+            17,
+          ).toString(),
+          'frame_commitment_lo': _deriveStableHash(
+            commitmentSeed,
+            97,
+          ).toString(),
         });
         break;
       case SafetyCircuitProfile.featureClassifier:
@@ -1408,22 +1487,59 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
   /// RSSI 整合回路 (remoteid_consistency_rel) の入力。
   /// 放送位置・端末位置（座標は回路内に秘匿）＋ RSSI から推定した実測レンジ(cm)。
   Map<String, dynamic> _buildConsistencyInputPayload() {
-    return <String, String>{
-      'drone_lat_e7_norm': _normalizeLatitude(_droneLatController.text).toString(),
-      'drone_lon_e7_norm': _normalizeLongitude(_droneLonController.text).toString(),
-      'drone_alt_cm': _metersToCentimeters(_droneAltController.text).toString(),
-      'target_lat_e7_norm': _normalizeLatitude(_targetLatController.text).toString(),
-      'target_lon_e7_norm': _normalizeLongitude(_targetLonController.text).toString(),
-      'target_alt_cm': _metersToCentimeters(_targetAltController.text).toString(),
-      'measured_range_cm': _measuredRangeCmForProof().toString(),
+    // circom_witnesscalc はスカラー入力も JSON 配列として受け取る。
+    // 文字列のまま渡すと値が欠落し、ネイティブ側で中断する場合がある。
+    List<String> scalar(int value) => <String>[value.toString()];
+    return <String, List<String>>{
+      'drone_lat_e7_norm': scalar(_normalizeLatitude(_droneLatController.text)),
+      'drone_lon_e7_norm': scalar(
+        _normalizeLongitude(_droneLonController.text),
+      ),
+      'drone_alt_cm': scalar(_metersToCentimeters(_droneAltController.text)),
+      'target_lat_e7_norm': scalar(
+        _normalizeLatitude(_targetLatController.text),
+      ),
+      'target_lon_e7_norm': scalar(
+        _normalizeLongitude(_targetLonController.text),
+      ),
+      'target_alt_cm': scalar(_metersToCentimeters(_targetAltController.text)),
+      'measured_range_cm': scalar(_measuredRangeCmForProof()),
     };
+  }
+
+  /// 実機で証明時間を確認するための、明示的なデモ用入力を投入する。
+  /// Remote ID の受信結果や実際の観測ではなく、通常フローの代替には使わない。
+  Future<void> _runDemoConsistencyMeasurement() async {
+    if (_isBusy) return;
+
+    final now = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+    setState(() {
+      _droneInputMode = DroneInputMode.manual;
+      _selectedCircuitProfile = SafetyCircuitProfile.rssiConsistency;
+      _isDemoMeasurement = true;
+      // 約3.4m離れた、RSSI整合回路の正常系サンプルと同じ位置関係。
+      _droneLatController.text = '35.6891390';
+      _droneLonController.text = '139.6917000';
+      _droneAltController.text = '12.0';
+      _droneTimeController.text = now.toString();
+      _targetLatController.text = '35.6891590';
+      _targetLonController.text = '139.6917180';
+      _targetAltController.text = '10.0';
+      _targetTimeController.text = now.toString();
+      _recentDroneRssi.clear();
+      _status = 'デモ用整合観測で、端末内の証明生成・検証を計測しています。';
+    });
+    _log('⚠ デモ計測: 実Remote ID・実録画を使わない固定入力で RSSI Consistency 回路を実行します。');
+    await _runProofFlow();
   }
 
   /// 証明に渡す measured_range_cm。直近 RSSI があれば中央値集約で推定、
   /// なければ放送位置と端末位置の幾何距離をそのまま用いる（＝整合するデモ）。
   int _measuredRangeCmForProof() {
     if (_recentDroneRssi.isNotEmpty) {
-      final est = const RssiRangingModel().distanceFromSamples(_recentDroneRssi);
+      final est = const RssiRangingModel().distanceFromSamples(
+        _recentDroneRssi,
+      );
       final cm = (est * 100).round();
       if (cm > 0) return cm;
     }
@@ -1440,7 +1556,8 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
       return 3000; // 位置未入力時の既定値 30m
     }
     final horiz = Geolocator.distanceBetween(tLat, tLon, dLat, dLon);
-    final dAltM = (double.tryParse(_droneAltController.text) ?? 0) -
+    final dAltM =
+        (double.tryParse(_droneAltController.text) ?? 0) -
         (double.tryParse(_targetAltController.text) ?? 0);
     final claimed = math.sqrt(horiz * horiz + dAltM * dAltM);
     return (claimed * 100).round();
@@ -1502,6 +1619,20 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
   }
 
   void _applySemanticResult(List<dynamic> publicSignals) {
+    if (_selectedCircuitProfile == SafetyCircuitProfile.rssiConsistency) {
+      final consistent =
+          publicSignals.isNotEmpty && publicSignals[0].toString() == '1';
+      _verdictTitle = consistent ? 'RSSI 整合: 成立' : 'RSSI 整合: 不成立';
+      _verdictSummary = consistent
+          ? '放送位置からの距離と、電波強度から推定した距離が許容範囲内でした。'
+          : '放送位置からの距離と、電波強度から推定した距離が許容範囲外でした。';
+      if (_isDemoMeasurement) {
+        _verdictSummary += '\n※ これは処理時間確認用の固定デモ入力であり、実際の Remote ID 観測ではありません。';
+      }
+      _privacySummary = '座標と電波強度の生データは端末内に留め、RSSI 整合の判定だけを証明しています。';
+      return;
+    }
+
     final within30 =
         publicSignals.isNotEmpty && publicSignals[0].toString() == '1';
     final distanceOk =
@@ -1523,8 +1654,7 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
       _verdictSummary =
           '空間的には近くても、検知時刻との差が ${approxTimeDelta}s あり、同一瞬間の接近とは見なされません。';
     } else {
-      _verdictSummary =
-          '距離も時刻も閾値外でした。第三者の位置や飛行ルートを公開せず、安全側の判定だけを共有できます。';
+      _verdictSummary = '距離も時刻も閾値外でした。第三者の位置や飛行ルートを公開せず、安全側の判定だけを共有できます。';
     }
 
     // Commitment 回路（public outputs 10 個）の追加解釈
@@ -1545,16 +1675,18 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
             '30m 以内の接近と UAV 検知の両方が成立しています。'
             'Poseidon コミットメント付きの証明として記録できます。';
       } else if (within30 && !detectionOk) {
-        _verdictSummary +=
-            '\n(距離は 30m 以内ですが、UAV 検知スコアが基準を下回っています)';
+        _verdictSummary += '\n(距離は 30m 以内ですが、UAV 検知スコアが基準を下回っています)';
       }
 
-      final droneShort =
-          droneCommit.length > 8 ? '${droneCommit.substring(0, 8)}...' : droneCommit;
-      final targetShort =
-          targetCommit.length > 8 ? '${targetCommit.substring(0, 8)}...' : targetCommit;
-      final frameShort =
-          frameBinding.length > 8 ? '${frameBinding.substring(0, 8)}...' : frameBinding;
+      final droneShort = droneCommit.length > 8
+          ? '${droneCommit.substring(0, 8)}...'
+          : droneCommit;
+      final targetShort = targetCommit.length > 8
+          ? '${targetCommit.substring(0, 8)}...'
+          : targetCommit;
+      final frameShort = frameBinding.length > 8
+          ? '${frameBinding.substring(0, 8)}...'
+          : frameBinding;
 
       _privacySummary =
           'Poseidon ハッシュにより、座標の実値は非公開のまま証明に結びついています。\n'
@@ -1566,8 +1698,10 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
         publicSignals.length >= 21) {
       // Time Series 回路: outputs = within30[0..19] (indices 0-19) + any_within30 (index 20)
       final anyWithin30 = publicSignals[20].toString() == '1';
-      final hitCount = List.generate(20, (i) => publicSignals[i].toString() == '1' ? 1 : 0)
-          .fold(0, (a, b) => a + b);
+      final hitCount = List.generate(
+        20,
+        (i) => publicSignals[i].toString() == '1' ? 1 : 0,
+      ).fold(0, (a, b) => a + b);
       _verdictTitle = anyWithin30 ? '接近あり: 要注意 (時系列)' : '安全距離を維持 (時系列)';
       _verdictSummary = anyWithin30
           ? '$hitCount / 20 ペアで 30m 以内への接近が確認されました。録画中のデータが証拠として記録されます。'
@@ -1649,7 +1783,9 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
         _assetPathFor('_verification_key.json'),
       );
 
-      setState(() { _inputJson = inputsJson; });
+      setState(() {
+        _inputJson = inputsJson;
+      });
       _log('① Witness を計算しています...');
 
       final zkeyPath = await _copyAssetToTemp(
@@ -1692,19 +1828,26 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
 
       setState(() {
         _proofValid = proofValid;
-        _publicSignals = const JsonEncoder.withIndent('  ').convert(decodedPublic);
-        _proof = const JsonEncoder.withIndent('  ').convert(jsonDecode(proveResult.proof));
+        _publicSignals = const JsonEncoder.withIndent(
+          '  ',
+        ).convert(decodedPublic);
+        _proof = const JsonEncoder.withIndent(
+          '  ',
+        ).convert(jsonDecode(proveResult.proof));
         _applySemanticResult(decodedPublic);
       });
-      _log(proofValid
-          ? '✓ 証明・検証 完了（$elapsed）'
-          : '✗ 証明は生成できましたが検証に失敗しました（$elapsed）');
+      _log(
+        proofValid
+            ? '✓ 証明・検証 完了（$elapsed）'
+            : '✗ 証明は生成できましたが検証に失敗しました（$elapsed）',
+      );
     } catch (error) {
       _stopProofTimer();
       final elapsed = _elapsedLabel;
       setState(() {
         _verdictTitle = '実行失敗';
-        _verdictSummary = '証明生成フローの途中で停止しました。端末内の witness / zkey / verification key を確認してください。';
+        _verdictSummary =
+            '証明生成フローの途中で停止しました。端末内の witness / zkey / verification key を確認してください。';
         _privacySummary = '失敗時も座標の生データは外部送信していません。';
       });
       _log('✗ エラー（$elapsed）: $error');
@@ -1799,14 +1942,15 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
     }
   }
 
-
   Future<void> _analyzeVideoEvidence() async {
     final evidence = _videoEvidence;
     if (evidence == null) {
       _log('動画がまだありません。先に録画してください。');
       return;
     }
-    setState(() { _videoDetectionSummary = '動画フレームの UAV 候補を解析しています...'; });
+    setState(() {
+      _videoDetectionSummary = '動画フレームの UAV 候補を解析しています...';
+    });
 
     try {
       final frames = await _extractVideoFrames(evidence.path);
@@ -1824,7 +1968,8 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
       for (final detail in details) {
         for (final label in detail.labels) {
           labels.add(label);
-          if (_looksLikeUavLabel(label.split(':').first.toLowerCase())) detected = true;
+          if (_looksLikeUavLabel(label.split(':').first.toLowerCase()))
+            detected = true;
         }
         for (final region in detail.regions) {
           labels.add('${region.label}:${region.confidence.toStringAsFixed(2)}');
@@ -2031,10 +2176,18 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
 
     for (final frame in frames) {
       final detections = await detector.detectImageFile(frame.path);
-      final regions = detections.map((d) => VideoDetectedRegion(
-        left: d.left, top: d.top, right: d.right, bottom: d.bottom,
-        label: d.label, confidence: d.score,
-      )).toList();
+      final regions = detections
+          .map(
+            (d) => VideoDetectedRegion(
+              left: d.left,
+              top: d.top,
+              right: d.right,
+              bottom: d.bottom,
+              label: d.label,
+              confidence: d.score,
+            ),
+          )
+          .toList();
 
       // bbox を描いたプレビュー画像を生成
       String? previewPath;
@@ -2045,38 +2198,52 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
           if (decoded != null) {
             for (final r in regions) {
               // バウンディングボックス
-              img.drawRect(decoded,
-                x1: r.left.toInt(), y1: r.top.toInt(),
-                x2: r.right.toInt(), y2: r.bottom.toInt(),
-                color: img.ColorRgb8(48, 209, 88), thickness: 4);
+              img.drawRect(
+                decoded,
+                x1: r.left.toInt(),
+                y1: r.top.toInt(),
+                x2: r.right.toInt(),
+                y2: r.bottom.toInt(),
+                color: img.ColorRgb8(48, 209, 88),
+                thickness: 4,
+              );
               // ラベル背景
-              img.fillRect(decoded,
-                x1: r.left.toInt(), y1: (r.top - 22).toInt().clamp(0, decoded.height),
+              img.fillRect(
+                decoded,
+                x1: r.left.toInt(),
+                y1: (r.top - 22).toInt().clamp(0, decoded.height),
                 x2: (r.left + 140).toInt().clamp(0, decoded.width),
                 y2: r.top.toInt().clamp(0, decoded.height),
-                color: img.ColorRgb8(0, 0, 0));
-              img.drawString(decoded,
+                color: img.ColorRgb8(0, 0, 0),
+              );
+              img.drawString(
+                decoded,
                 '${r.label} ${(r.confidence * 100).toStringAsFixed(0)}%',
                 font: img.arial14,
                 x: r.left.toInt() + 4,
                 y: (r.top - 18).toInt().clamp(0, decoded.height),
-                color: img.ColorRgb8(48, 209, 88));
+                color: img.ColorRgb8(48, 209, 88),
+              );
             }
             previewPath = '${tempDir.path}/yolo_preview_${frame.timeMs}.jpg';
-            await File(previewPath).writeAsBytes(img.encodeJpg(decoded, quality: 92));
+            await File(
+              previewPath,
+            ).writeAsBytes(img.encodeJpg(decoded, quality: 92));
           }
         } catch (_) {}
       }
 
-      details.add(VideoDetectionDetail(
-        timeMs: frame.timeMs,
-        backend: 'YOLO TFLite',
-        labels: detections
-            .map((d) => '${d.label}:${d.score.toStringAsFixed(2)}')
-            .toList(),
-        previewPath: previewPath,
-        regions: regions,
-      ));
+      details.add(
+        VideoDetectionDetail(
+          timeMs: frame.timeMs,
+          backend: 'YOLO TFLite',
+          labels: detections
+              .map((d) => '${d.label}:${d.score.toStringAsFixed(2)}')
+              .toList(),
+          previewPath: previewPath,
+          regions: regions,
+        ),
+      );
     }
     return details;
   }
@@ -2121,9 +2288,11 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
 
   Future<void> _runProofFromVideoEvidence() async {
     if (!_hasDroneInputsReady()) {
-      _log(_droneInputMode == DroneInputMode.ble
-          ? '証明前に BLE または WiFi からドローン側ログを受信してください。'
-          : '証明前にドローン側ログを手入力してください。');
+      _log(
+        _droneInputMode == DroneInputMode.ble
+            ? '証明前に BLE または WiFi からドローン側ログを受信してください。'
+            : '証明前にドローン側ログを手入力してください。',
+      );
       return;
     }
     if (_videoEvidence == null) {
@@ -2173,7 +2342,10 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
         labelText: label,
         filled: true,
         fillColor: const Color(0xFFF8F7F1),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 14,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(color: Color(0xFFD9D6C8)),
@@ -2349,7 +2521,9 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
     final bottomPad = MediaQuery.of(context).padding.bottom;
 
     // 現在のステップ (0-3)
-    final step = provenOnce ? 3 : (videoReady ? 2 : (droneReady && locationReady ? 1 : 0));
+    final step = provenOnce
+        ? 3
+        : (videoReady ? 2 : (droneReady && locationReady ? 1 : 0));
 
     // 次のアクションヒント
     final String nextHint;
@@ -2377,29 +2551,40 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
         // ── カメラプレビュー（全画面）+ ライブ bbox オーバーレイ ──
         Positioned.fill(
           child: _cameraReady && _cameraController != null
-              ? LayoutBuilder(builder: (context, constraints) {
-                  return CustomPaint(
-                    foregroundPainter: _liveDetections.isNotEmpty && _previewSize != null
-                        ? _BboxPainter(
-                            detections: _liveDetections,
-                            previewSize: _previewSize!,
-                            screenSize: Size(constraints.maxWidth, constraints.maxHeight),
-                          )
-                        : null,
-                    child: CameraPreview(_cameraController!),
-                  );
-                })
+              ? LayoutBuilder(
+                  builder: (context, constraints) {
+                    return CustomPaint(
+                      foregroundPainter:
+                          _liveDetections.isNotEmpty && _previewSize != null
+                          ? _BboxPainter(
+                              detections: _liveDetections,
+                              previewSize: _previewSize!,
+                              screenSize: Size(
+                                constraints.maxWidth,
+                                constraints.maxHeight,
+                              ),
+                            )
+                          : null,
+                      child: CameraPreview(_cameraController!),
+                    );
+                  },
+                )
               : const ColoredBox(
                   color: Color(0xFF0A0F0D),
                   child: Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.camera_alt_rounded,
-                            color: Color(0xFF4E6762), size: 52),
+                        Icon(
+                          Icons.camera_alt_rounded,
+                          color: Color(0xFF4E6762),
+                          size: 52,
+                        ),
                         SizedBox(height: 12),
-                        Text('カメラを初期化中...',
-                            style: TextStyle(color: Color(0xFF4E6762))),
+                        Text(
+                          'カメラを初期化中...',
+                          style: TextStyle(color: Color(0xFF4E6762)),
+                        ),
                       ],
                     ),
                   ),
@@ -2408,7 +2593,9 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
 
         // ── 上部: アプリ名 + ステップインジケーター ──
         Positioned(
-          top: 0, left: 0, right: 0,
+          top: 0,
+          left: 0,
+          right: 0,
           child: Container(
             padding: EdgeInsets.fromLTRB(16, topPad + 10, 16, 14),
             decoration: BoxDecoration(
@@ -2454,18 +2641,24 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
         // ── 録画中 / 解析中: 上端バー ──
         if (_isRecording || _isCapturing)
           Positioned(
-            top: 0, left: 0, right: 0,
+            top: 0,
+            left: 0,
+            right: 0,
             child: LinearProgressIndicator(
               value: null,
               backgroundColor: Colors.white24,
-              color: _isRecording ? const Color(0xFFFF3B30) : const Color(0xFFFF9500),
+              color: _isRecording
+                  ? const Color(0xFFFF3B30)
+                  : const Color(0xFFFF9500),
               minHeight: 3,
             ),
           ),
 
         // ── 下部オーバーレイ ──
         Positioned(
-          bottom: 0, left: 0, right: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -2496,8 +2689,8 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                         line2: drone != null
                             ? '${drone.longitude.toStringAsFixed(4)}°  ${drone.altitudeMeters.toStringAsFixed(0)}m'
                             : (_wifiOdidSeen
-                                ? 'BLE / WiFi 受信中...'
-                                : 'BLE / WiFi スキャン中...'),
+                                  ? 'BLE / WiFi 受信中...'
+                                  : 'BLE / WiFi スキャン中...'),
                         count: _droneHistory.length,
                         sourceBadge: drone != null ? _lastDroneSource : null,
                       ),
@@ -2550,17 +2743,17 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                 // ── 次のアクションヒント ──
                 Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 7,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Text(
                     nextHint,
-                    style: const TextStyle(
-                      color: Colors.white70,
-                      fontSize: 12,
-                    ),
+                    style: const TextStyle(color: Colors.white70, fontSize: 12),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -2568,22 +2761,34 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                 const SizedBox(height: 12),
 
                 // ── ライブ検知バッジ（録画前のみ）──
-                if (_liveDetections.isNotEmpty && !_isRecording && !_isCapturing) ...[
+                if (_liveDetections.isNotEmpty &&
+                    !_isRecording &&
+                    !_isCapturing) ...[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 4,
+                        ),
                         decoration: BoxDecoration(
                           color: const Color(0xFF30D158).withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: const Color(0xFF30D158).withValues(alpha: 0.6)),
+                          border: Border.all(
+                            color: const Color(
+                              0xFF30D158,
+                            ).withValues(alpha: 0.6),
+                          ),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(Icons.airplanemode_active_rounded,
-                                color: Color(0xFF30D158), size: 13),
+                            const Icon(
+                              Icons.airplanemode_active_rounded,
+                              color: Color(0xFF30D158),
+                              size: 13,
+                            ),
                             const SizedBox(width: 4),
                             Text(
                               'UAV をプレビューで検知中',
@@ -2615,14 +2820,22 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          width: 18, height: 18,
+                          width: 18,
+                          height: 18,
                           child: CircularProgressIndicator(
-                              strokeWidth: 2, color: Color(0xFFFF9500)),
+                            strokeWidth: 2,
+                            color: Color(0xFFFF9500),
+                          ),
                         ),
                         SizedBox(width: 10),
-                        Text('フレームを解析しています...',
-                            style: TextStyle(color: Color(0xFFFF9500),
-                                fontWeight: FontWeight.w700, fontSize: 15)),
+                        Text(
+                          'フレームを解析しています...',
+                          style: TextStyle(
+                            color: Color(0xFFFF9500),
+                            fontWeight: FontWeight.w700,
+                            fontSize: 15,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -2632,17 +2845,27 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                     children: [
                       // タイマー表示
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 14,
+                          vertical: 10,
+                        ),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFFF3B30).withValues(alpha: 0.15),
+                          color: const Color(
+                            0xFFFF3B30,
+                          ).withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(14),
-                          border: Border.all(color: const Color(0xFFFF3B30).withValues(alpha: 0.5)),
+                          border: Border.all(
+                            color: const Color(
+                              0xFFFF3B30,
+                            ).withValues(alpha: 0.5),
+                          ),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Container(
-                              width: 8, height: 8,
+                              width: 8,
+                              height: 8,
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Color(0xFFFF3B30),
@@ -2668,13 +2891,19 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                         child: FilledButton.icon(
                           onPressed: _stopVideoRecordingAndAnalyze,
                           icon: const Icon(Icons.stop_rounded, size: 20),
-                          label: const Text('録画停止',
-                              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 15)),
+                          label: const Text(
+                            '録画停止',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 15,
+                            ),
+                          ),
                           style: FilledButton.styleFrom(
                             backgroundColor: const Color(0xFFFF3B30),
                             padding: const EdgeInsets.symmetric(vertical: 14),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18)),
+                              borderRadius: BorderRadius.circular(18),
+                            ),
                           ),
                         ),
                       ),
@@ -2686,15 +2915,22 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                     children: [
                       Expanded(
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 12,
+                          ),
                           decoration: BoxDecoration(
                             color: _uavDetectedInVideo
-                                ? const Color(0xFF30D158).withValues(alpha: 0.15)
+                                ? const Color(
+                                    0xFF30D158,
+                                  ).withValues(alpha: 0.15)
                                 : Colors.white10,
                             borderRadius: BorderRadius.circular(14),
                             border: Border.all(
                               color: _uavDetectedInVideo
-                                  ? const Color(0xFF30D158).withValues(alpha: 0.5)
+                                  ? const Color(
+                                      0xFF30D158,
+                                    ).withValues(alpha: 0.5)
                                   : Colors.white24,
                             ),
                           ),
@@ -2734,9 +2970,13 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                         style: OutlinedButton.styleFrom(
                           foregroundColor: Colors.white70,
                           side: const BorderSide(color: Colors.white30),
-                          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 14),
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 14,
+                            horizontal: 14,
+                          ),
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18)),
+                            borderRadius: BorderRadius.circular(18),
+                          ),
                         ),
                       ),
                     ],
@@ -2746,16 +2986,24 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                   SizedBox(
                     width: double.infinity,
                     child: FilledButton.icon(
-                      onPressed: (_cameraReady && !_isBusy) ? _startVideoRecording : null,
+                      onPressed: (_cameraReady && !_isBusy)
+                          ? _startVideoRecording
+                          : null,
                       icon: const Icon(Icons.videocam_rounded, size: 22),
-                      label: const Text('録画開始',
-                          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+                      label: const Text(
+                        '録画開始',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 16,
+                        ),
+                      ),
                       style: FilledButton.styleFrom(
                         backgroundColor: const Color(0xFFFF3B30),
                         disabledBackgroundColor: Colors.white12,
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18)),
+                          borderRadius: BorderRadius.circular(18),
+                        ),
                       ),
                     ),
                   ),
@@ -2775,24 +3023,29 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                       disabledBackgroundColor: Colors.white12,
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18)),
+                        borderRadius: BorderRadius.circular(18),
+                      ),
                     ),
                     child: _isBusy
                         ? Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const SizedBox(
-                                width: 18, height: 18,
+                                width: 18,
+                                height: 18,
                                 child: CircularProgressIndicator(
-                                    strokeWidth: 2, color: Colors.white),
+                                  strokeWidth: 2,
+                                  color: Colors.white,
+                                ),
                               ),
                               const SizedBox(width: 10),
                               Text(
                                 '証明生成中... $_elapsedLabel',
                                 style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 15),
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 15,
+                                ),
                               ),
                             ],
                           )
@@ -2802,13 +3055,17 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                               Icon(
                                 Icons.verified_rounded,
                                 size: 18,
-                                color: canProve ? Colors.black87 : Colors.white24,
+                                color: canProve
+                                    ? Colors.black87
+                                    : Colors.white24,
                               ),
                               const SizedBox(width: 8),
                               Text(
                                 canProve ? 'ZK 証明を実行' : '準備中...',
                                 style: TextStyle(
-                                  color: canProve ? Colors.black87 : Colors.white24,
+                                  color: canProve
+                                      ? Colors.black87
+                                      : Colors.white24,
                                   fontWeight: FontWeight.w800,
                                   fontSize: 16,
                                 ),
@@ -2818,12 +3075,41 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                   ),
                 ),
 
+                const SizedBox(height: 8),
+                SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton.icon(
+                    onPressed: _isBusy ? null : _runDemoConsistencyMeasurement,
+                    icon: const Icon(Icons.timer_outlined, size: 18),
+                    label: const Text('デモ用整合観測で回路計測'),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: const Color(0xFFFFD166),
+                      side: const BorderSide(color: Color(0x66FFD166)),
+                      padding: const EdgeInsets.symmetric(vertical: 13),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                    ),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 5),
+                  child: Text(
+                    '固定デモ入力で、端末内の証明生成・検証時間だけを測定します。実観測には使いません。',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white54, fontSize: 10),
+                  ),
+                ),
+
                 // ── 証明結果カード ──
                 if (provenOnce) ...[
                   const SizedBox(height: 10),
                   Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 11,
+                    ),
                     decoration: BoxDecoration(
                       color: _proofValid
                           ? const Color(0xFF30D158).withValues(alpha: 0.15)
@@ -2861,7 +3147,9 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                           Text(
                             _elapsedLabel,
                             style: const TextStyle(
-                                color: Colors.white54, fontSize: 11),
+                              color: Colors.white54,
+                              fontSize: 11,
+                            ),
                           ),
                       ],
                     ),
@@ -2875,7 +3163,12 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
     );
   }
 
-  Widget _buildStepDot(int index, int currentStep, IconData icon, String label) {
+  Widget _buildStepDot(
+    int index,
+    int currentStep,
+    IconData icon,
+    String label,
+  ) {
     final done = currentStep > index;
     final active = currentStep == index;
     final color = done
@@ -2885,23 +3178,32 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          width: 28, height: 28,
+          width: 28,
+          height: 28,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: done
                 ? const Color(0xFF30D158).withValues(alpha: 0.25)
-                : (active ? Colors.white.withValues(alpha: 0.15) : Colors.transparent),
+                : (active
+                      ? Colors.white.withValues(alpha: 0.15)
+                      : Colors.transparent),
             border: Border.all(color: color, width: done ? 0 : 1.5),
           ),
           child: Icon(
             done ? Icons.check_rounded : icon,
-            size: 14, color: color,
+            size: 14,
+            color: color,
           ),
         ),
         const SizedBox(height: 3),
-        Text(label,
-            style: TextStyle(
-                color: color, fontSize: 10, fontWeight: FontWeight.w600)),
+        Text(
+          label,
+          style: TextStyle(
+            color: color,
+            fontSize: 10,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       ],
     );
   }
@@ -2943,8 +3245,11 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
         children: [
           Row(
             children: [
-              Icon(icon, size: 14,
-                  color: ready ? const Color(0xFF30D158) : Colors.white54),
+              Icon(
+                icon,
+                size: 14,
+                color: ready ? const Color(0xFF30D158) : Colors.white54,
+              ),
               const SizedBox(width: 4),
               Flexible(
                 child: Text(
@@ -2962,18 +3267,23 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
               if (sourceBadge != null) ...[
                 const SizedBox(width: 6),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 1,
+                  ),
                   decoration: BoxDecoration(
-                    color: (sourceBadge == 'WiFi'
-                            ? const Color(0xFF0A84FF)
-                            : const Color(0xFF5E5CE6))
-                        .withValues(alpha: 0.25),
+                    color:
+                        (sourceBadge == 'WiFi'
+                                ? const Color(0xFF0A84FF)
+                                : const Color(0xFF5E5CE6))
+                            .withValues(alpha: 0.25),
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-                      color: (sourceBadge == 'WiFi'
-                              ? const Color(0xFF0A84FF)
-                              : const Color(0xFF5E5CE6))
-                          .withValues(alpha: 0.8),
+                      color:
+                          (sourceBadge == 'WiFi'
+                                  ? const Color(0xFF0A84FF)
+                                  : const Color(0xFF5E5CE6))
+                              .withValues(alpha: 0.8),
                       width: 0.8,
                     ),
                   ),
@@ -3008,15 +3318,16 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                 const Spacer(),
                 Container(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 5, vertical: 1),
+                    horizontal: 5,
+                    vertical: 1,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.white12,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
                     '$count件',
-                    style: const TextStyle(
-                        color: Colors.white54, fontSize: 10),
+                    style: const TextStyle(color: Colors.white54, fontSize: 10),
                   ),
                 ),
               ],
@@ -3112,7 +3423,9 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                 // 回路セレクター（コンパクト版）
                 Container(
                   padding: const EdgeInsets.all(14),
-                  decoration: _surfaceDecoration(color: const Color(0xFFF8F6EE)),
+                  decoration: _surfaceDecoration(
+                    color: const Color(0xFFF8F6EE),
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -3137,9 +3450,9 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                             onSelected: _isBusy
                                 ? null
                                 : (_) => setState(
-                                      () => _selectedCircuitProfile =
-                                          config.profile,
-                                    ),
+                                    () => _selectedCircuitProfile =
+                                        config.profile,
+                                  ),
                           );
                         }).toList(),
                       ),
@@ -3228,7 +3541,9 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.all(14),
-                    decoration: _surfaceDecoration(color: const Color(0xFFF5F7F5)),
+                    decoration: _surfaceDecoration(
+                      color: const Color(0xFFF5F7F5),
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -3278,39 +3593,51 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                         ..._videoDetectionDetails
                             .where((d) => d.previewPath != null)
                             .map((d) {
-                          final file = File(d.previewPath!);
-                          return Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: file.existsSync()
-                                  ? Image.file(file, fit: BoxFit.contain)
-                                  : const SizedBox.shrink(),
-                            ),
-                          );
-                        }),
+                              final file = File(d.previewPath!);
+                              return Padding(
+                                padding: const EdgeInsets.only(top: 10),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: file.existsSync()
+                                      ? Image.file(file, fit: BoxFit.contain)
+                                      : const SizedBox.shrink(),
+                                ),
+                              );
+                            }),
                         if (_videoDetectionLabels.isNotEmpty) ...[
                           const SizedBox(height: 8),
                           Wrap(
                             spacing: 6,
                             runSpacing: 4,
-                            children: _videoDetectionLabels.map((label) => Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                              decoration: BoxDecoration(
-                                color: const Color(0xFF0B6E69).withValues(alpha: 0.1),
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(
-                                    color: const Color(0xFF0B6E69).withValues(alpha: 0.3)),
-                              ),
-                              child: Text(
-                                label,
-                                style: const TextStyle(
-                                  fontSize: 11,
-                                  color: Color(0xFF0B6E69),
-                                  fontFamily: 'monospace',
-                                ),
-                              ),
-                            )).toList(),
+                            children: _videoDetectionLabels
+                                .map(
+                                  (label) => Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 8,
+                                      vertical: 3,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: const Color(
+                                        0xFF0B6E69,
+                                      ).withValues(alpha: 0.1),
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                        color: const Color(
+                                          0xFF0B6E69,
+                                        ).withValues(alpha: 0.3),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      label,
+                                      style: const TextStyle(
+                                        fontSize: 11,
+                                        color: Color(0xFF0B6E69),
+                                        fontFamily: 'monospace',
+                                      ),
+                                    ),
+                                  ),
+                                )
+                                .toList(),
                           ),
                         ],
                       ],
@@ -3335,9 +3662,13 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                         Row(
                           children: [
                             Icon(
-                              _proofValid ? Icons.verified_rounded : Icons.cancel_rounded,
+                              _proofValid
+                                  ? Icons.verified_rounded
+                                  : Icons.cancel_rounded,
                               size: 16,
-                              color: _proofValid ? const Color(0xFF1A7F4B) : Colors.red.shade700,
+                              color: _proofValid
+                                  ? const Color(0xFF1A7F4B)
+                                  : Colors.red.shade700,
                             ),
                             const SizedBox(width: 6),
                             Text(
@@ -3345,7 +3676,9 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 14,
-                                color: _proofValid ? const Color(0xFF1A7F4B) : Colors.red.shade700,
+                                color: _proofValid
+                                    ? const Color(0xFF1A7F4B)
+                                    : Colors.red.shade700,
                               ),
                             ),
                           ],
@@ -3364,7 +3697,11 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                         const SizedBox(height: 10),
                         Row(
                           children: const [
-                            Icon(Icons.lock_outline_rounded, size: 13, color: Color(0xFF5C6765)),
+                            Icon(
+                              Icons.lock_outline_rounded,
+                              size: 13,
+                              color: Color(0xFF5C6765),
+                            ),
                             SizedBox(width: 5),
                             Text(
                               'プライバシー',
@@ -3394,7 +3731,9 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                 _buildResultPanel(title: 'Witness Inputs', body: _inputJson),
                 const SizedBox(height: 10),
                 _buildResultPanel(
-                    title: 'Public Signals', body: _publicSignals),
+                  title: 'Public Signals',
+                  body: _publicSignals,
+                ),
                 const SizedBox(height: 10),
                 _buildResultPanel(title: 'Proof JSON', body: _proof),
                 const SizedBox(height: 20),
@@ -3437,32 +3776,46 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
   Widget build(BuildContext context) {
     final approxDistance = _approxDistanceMeters();
     final approxTimeDelta = _approxTimeDelta();
+    final chainSession = ChainSession(
+      status: _proofValid
+          ? ChainSessionStatus.awaitingAggregation
+          : ChainSessionStatus.localOnly,
+      observedAt: _videoEvidence?.recordedAt ?? _proofStartedAt,
+      remoteIdSource: _lastDroneSource,
+      leafProofValid: _proofValid,
+    );
     return Scaffold(
       extendBody: true,
       backgroundColor: Colors.black,
       body: _selectedTabIndex == 0
           ? _buildMainTab(approxDistance, approxTimeDelta)
           : _selectedTabIndex == 1
-              ? Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Color(0xFFE8F3EE), Color(0xFFF3F2EA), Color(0xFFF8F5EC)],
-                    ),
-                  ),
-                  child: SafeArea(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                      child: _buildDetailsTab(),
-                    ),
-                  ),
-                )
-              : _selectedTabIndex == 2
-                  ? _buildLogTab()
-                  : _selectedTabIndex == 3
-                      ? const BleRawScanPage()
-                      : const WifiRawScanPage(),
+          ? Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xFFE8F3EE),
+                    Color(0xFFF3F2EA),
+                    Color(0xFFF8F5EC),
+                  ],
+                ),
+              ),
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                  child: _buildDetailsTab(),
+                ),
+              ),
+            )
+          : _selectedTabIndex == 2
+          ? _buildLogTab()
+          : _selectedTabIndex == 3
+          ? const BleRawScanPage()
+          : _selectedTabIndex == 4
+          ? const WifiRawScanPage()
+          : ChainSessionPage(session: chainSession),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedTabIndex,
         onDestinationSelected: (index) {
@@ -3496,6 +3849,11 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
             selectedIcon: Icon(Icons.wifi_find_rounded),
             label: 'WiFi Raw',
           ),
+          NavigationDestination(
+            icon: Icon(Icons.account_tree_outlined),
+            selectedIcon: Icon(Icons.account_tree_rounded),
+            label: 'チェーン',
+          ),
         ],
       ),
     );
@@ -3512,7 +3870,11 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: Row(
                 children: [
-                  const Icon(Icons.terminal_rounded, color: Color(0xFF58A6FF), size: 18),
+                  const Icon(
+                    Icons.terminal_rounded,
+                    color: Color(0xFF58A6FF),
+                    size: 18,
+                  ),
                   const SizedBox(width: 8),
                   const Text(
                     'コンソールログ',
@@ -3526,13 +3888,19 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                   const Spacer(),
                   Text(
                     '${_logs.length} 件',
-                    style: const TextStyle(color: Color(0xFF8B949E), fontSize: 12),
+                    style: const TextStyle(
+                      color: Color(0xFF8B949E),
+                      fontSize: 12,
+                    ),
                   ),
                   const SizedBox(width: 12),
                   GestureDetector(
                     onTap: () => setState(() => _logs.clear()),
-                    child: const Icon(Icons.delete_outline_rounded,
-                        color: Color(0xFF8B949E), size: 18),
+                    child: const Icon(
+                      Icons.delete_outline_rounded,
+                      color: Color(0xFF8B949E),
+                      size: 18,
+                    ),
                   ),
                 ],
               ),
@@ -3544,17 +3912,25 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
                   ? const Center(
                       child: Text(
                         'ログがまだありません',
-                        style: TextStyle(color: Color(0xFF484F58), fontSize: 13),
+                        style: TextStyle(
+                          color: Color(0xFF484F58),
+                          fontSize: 13,
+                        ),
                       ),
                     )
                   : ListView.builder(
                       controller: _logScrollController,
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 8,
+                      ),
                       itemCount: _logs.length,
                       itemBuilder: (context, i) {
                         final line = _logs[i];
-                        final isError = line.contains('エラー') || line.contains('✗');
-                        final isSuccess = line.contains('✓') || line.contains('完了');
+                        final isError =
+                            line.contains('エラー') || line.contains('✗');
+                        final isSuccess =
+                            line.contains('✓') || line.contains('完了');
                         final isBle = line.contains('[BLE');
                         final isWifi = line.contains('[WiFi');
                         Color textColor = const Color(0xFFC9D1D9);
@@ -3593,17 +3969,17 @@ class _BboxPainter extends CustomPainter {
   });
 
   final List<UavYoloDetection> detections;
-  final Size previewSize;   // カメラ解像度（width × height、横向きでは縦横が入れ替わる）
-  final Size screenSize;    // 描画領域サイズ
+  final Size previewSize; // カメラ解像度（width × height、横向きでは縦横が入れ替わる）
+  final Size screenSize; // 描画領域サイズ
 
   @override
   void paint(Canvas canvas, Size size) {
     // プレビューをスクリーンにフィットさせる際の拡縮比
-    final scaleX = screenSize.width  / previewSize.height;
+    final scaleX = screenSize.width / previewSize.height;
     final scaleY = screenSize.height / previewSize.width;
-    final scale  = scaleX < scaleY ? scaleX : scaleY;
-    final offsetX = (screenSize.width  - previewSize.height * scale) / 2;
-    final offsetY = (screenSize.height - previewSize.width  * scale) / 2;
+    final scale = scaleX < scaleY ? scaleX : scaleY;
+    final offsetX = (screenSize.width - previewSize.height * scale) / 2;
+    final offsetY = (screenSize.height - previewSize.width * scale) / 2;
 
     final boxPaint = Paint()
       ..color = const Color(0xFF30D158)
@@ -3613,9 +3989,9 @@ class _BboxPainter extends CustomPainter {
     final bgPaint = Paint()..color = const Color(0xBB000000);
 
     for (final det in detections) {
-      final left   = det.left   * scale + offsetX;
-      final top    = det.top    * scale + offsetY;
-      final right  = det.right  * scale + offsetX;
+      final left = det.left * scale + offsetX;
+      final top = det.top * scale + offsetY;
+      final right = det.right * scale + offsetX;
       final bottom = det.bottom * scale + offsetY;
 
       canvas.drawRect(Rect.fromLTRB(left, top, right, bottom), boxPaint);

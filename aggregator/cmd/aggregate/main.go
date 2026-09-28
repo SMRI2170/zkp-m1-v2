@@ -1,10 +1,15 @@
 // Spike B拡張: N=3 の witness 証明を1回路で再帰検証し、関係を回路内で強制する。
-//   ① 全 drone_id_commitment(idx10) が一致（同一ドローン）
-//   ② 全 time_bucket(idx13) が一致（同一時間窓）
-//   ③ 各 within30_and_detected(idx6) == 1
-//   ④ device_pubkey(idx11,12) が相異なる（Sybil対策）
-//   ⑤ consistentCount = Σ consistency_ok(idx14) を集計 → public 出力
-// 出力: ConsistentCount / SuspiciousCount（=N-ConsistentCount）。
+//
+//	① 全 drone_id_commitment(idx10) が一致（同一ドローン）
+//	② 全 time_bucket(idx13) が一致（同一時間窓）
+//	③ 各 within30_and_detected(idx6) == 1
+//	④ device_pubkey(idx11,12) が相異なる（Sybil対策）
+//	⑤ 各 drone_auth_ok(idx15) == 1（署名付きRemote IDのみ受理）
+//	⑥ consistentCount = Σ consistency_ok(idx14) を集計 → public 出力
+//
+// 出力: droneId / timeBucket / ConsistentCount / SuspiciousCount / Root。
+// droneId と timeBucket も public output に出すことで、最終 proof を別の観測
+// セッションとしてオンチェーン登録する「付け替え」を防ぐ。
 package main
 
 import (
@@ -33,12 +38,14 @@ const N = 3
 
 // public signal インデックス
 const (
-	idxWithin30 = 6
-	idxDroneID  = 10
-	idxPubX     = 11
-	idxPubY     = 12
-	idxBucket   = 13
-	idxConsist  = 14
+	idxWithin30  = 6
+	idxDroneID   = 10
+	idxPubX      = 11
+	idxPubY      = 12
+	idxBucket    = 13
+	idxConsist   = 14
+	idxDroneAuth = 15
+	idxFreshness = 17
 )
 
 type AggCircuit struct {
@@ -50,6 +57,9 @@ type AggCircuit struct {
 	Siblings [N][membership.Depth]frontend.Variable
 	PathBits [N][membership.Depth]frontend.Variable
 
+	// FinalAttestationRegistry / IAggregateVerifier の publicInputs 順。
+	DroneID         frontend.Variable `gnark:",public"`
+	TimeBucket      frontend.Variable `gnark:",public"`
 	ConsistentCount frontend.Variable `gnark:",public"`
 	SuspiciousCount frontend.Variable `gnark:",public"`
 	Root            frontend.Variable `gnark:",public"` // 登録端末ルート（契約が deviceRoot と照合）
@@ -91,7 +101,10 @@ func (c *AggCircuit) Define(api frontend.API) error {
 		field.AssertIsEqual(&c.Wit[i].Public[idxBucket], &c.Wit[0].Public[idxBucket])
 		// ③ within30_and_detected == 1
 		field.AssertIsEqual(&c.Wit[i].Public[idxWithin30], one)
-		// ⑤ consistency_ok を集計（0/1）
+		// ⑤ drone_auth_ok == 1。leaf circuit 内で EdDSA-Poseidon 署名を
+		// 検証済みのRemote IDだけを最終集計へ取り込む。
+		field.AssertIsEqual(&c.Wit[i].Public[idxDroneAuth], one)
+		// ⑥ consistency_ok を集計（0/1）
 		isZero := field.IsZero(&c.Wit[i].Public[idxConsist]) // 1 なら consistency==0
 		consCount = api.Add(consCount, api.Sub(1, isZero))
 	}
@@ -122,6 +135,10 @@ func (c *AggCircuit) Define(api frontend.API) error {
 
 	api.AssertIsEqual(c.ConsistentCount, consCount)
 	api.AssertIsEqual(api.Add(c.ConsistentCount, c.SuspiciousCount), N)
+	// すでに各 leaf proof 間の一致は上で検証済み。ここでは最終 proof の公開値にも
+	// 同じ観測セッションを束縛する。
+	api.AssertIsEqual(c.DroneID, recompose(api, field, &c.Wit[0].Public[idxDroneID]))
+	api.AssertIsEqual(c.TimeBucket, recompose(api, field, &c.Wit[0].Public[idxBucket]))
 	return nil
 }
 
@@ -140,6 +157,10 @@ func setMembership(c *AggCircuit, base string) error {
 		}
 		axs[i], _ = new(big.Int).SetString(pub[idxPubX], 10)
 		ays[i], _ = new(big.Int).SetString(pub[idxPubY], 10)
+		if i == 0 {
+			c.DroneID, _ = new(big.Int).SetString(pub[idxDroneID], 10)
+			c.TimeBucket, _ = new(big.Int).SetString(pub[idxBucket], 10)
+		}
 	}
 	leaves := make([]*big.Int, N)
 	for i := range leaves {
@@ -250,9 +271,12 @@ func main() {
 		panic("proof has no MarshalSolidity")
 	}
 	out := map[string]any{
-		"proof":           "0x" + hex.EncodeToString(pm.MarshalSolidity()),
-		"consistentCount": 2,
-		"suspiciousCount": 1,
+		"proof":             "0x" + hex.EncodeToString(pm.MarshalSolidity()),
+		"droneIdCommitment": asg.DroneID,
+		"timeBucket":        asg.TimeBucket,
+		"consistentCount":   2,
+		"suspiciousCount":   1,
+		"root":              asg.Root,
 	}
 	buf, _ := json.MarshalIndent(out, "", "  ")
 	must(os.WriteFile("../contracts/test/fixtures/aggregate.json", buf, 0644))

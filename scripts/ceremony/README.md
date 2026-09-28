@@ -38,6 +38,17 @@ snarkjs zkey contribute prev.zkey mine.zkey --name="participant-i" -v
 - 全 zkey を `snarkjs zkey verify` で公開監査。
 - 参加者・寄与ハッシュ・ビーコン値を公開し、透明性を担保。
 
+## Release manifest
+
+ビルド完了時に `release-manifest.json` が生成される。回路source、R1CS、zkey、
+verification key、Solidity verifierのSHA-256対応表である。公開時はこのファイルを
+release assetとして添付し、受領側は次で差し替えを検出できる。
+
+```bash
+scripts/zk_artifact_manifest.sh verify \
+  zk-distance/build/uav_witness_attestation/release-manifest.json
+```
+
 ## 注意
 - `zk-distance/build/**/ceremony/` の中間ファイルは監査後に破棄してよい（zkey は gitignore 済）。
 - 参加者が全員結託し、かつ全員が乱数を保持した場合のみ安全性が崩れる（1-of-N 前提）。
