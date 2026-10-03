@@ -1,0 +1,17 @@
+# なりすまし観測(zk-distance/samples/sample_remoteid_spoof.json)。ok=0を期待。
+drone_id = "424242"
+time_bucket = "100001"
+prev_consistent_count = "2"
+prev_suspicious_count = "0"
+prev_step_count = "2"
+consistent_count = "2"
+suspicious_count = "1"
+step_count = "3"
+
+drone_lat = "1256891390"
+drone_lon = "3196917000"
+drone_alt = "1200"
+target_lat = "1256891590"
+target_lon = "3196917180"
+target_alt = "1000"
+measured_range_cm = "5000"
