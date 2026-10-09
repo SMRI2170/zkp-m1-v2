@@ -2,6 +2,8 @@
 
 # zk-UAV-Proximity-Proof (旧: zkp-m1)
 
+> **研究目的・新規性・比較評価計画:** [Research Vision（研究構想）](RESEARCH_VISION.md) — 分散ZKP検証、提出集合の完全性、Nova/再帰SNARK/ブロックチェーンの比較。
+
 ドローンの位置情報と利用者の端末センサー情報を使って、`30m以内かつ5秒以内の接近` をゼロ知識証明で示すデモプロジェクトです。
 
 <p float="left">
