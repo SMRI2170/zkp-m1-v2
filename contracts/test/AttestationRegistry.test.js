@@ -92,7 +92,7 @@ describe("AttestationRegistry (M1, K=3)", function () {
     });
   }
 
-  it("M3: 未認証ドローン(drone_auth_ok=0)は拒否", async function () {
+  it("legacy drone_auth_ok=0 flag is rejected by the registry", async function () {
     await register(devices[0]);
     await expect(
       registry.submitAttestation(DUMMY_A, DUMMY_B, DUMMY_C, proofFor(devices[0], { droneAuth: 0 }))

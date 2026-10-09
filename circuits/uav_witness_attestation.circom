@@ -167,10 +167,10 @@ template UavWitnessAttestation(
     // RemoteID(operator id / uas id) を体系的に 1 つの体上要素へ符号化した値。
     signal input remote_id;
 
-    // ── Private inputs: ドローン署名 RemoteID（M3・入力真正性）───────────────
-    // オペレータ鍵で放送内容(remote_id+位置+時刻)に EdDSA-Poseidon 署名した値。
-    // drone_auth_enabled=1 のとき署名検証を強制する（0 なら未署名 RemoteID を許容）。
-    // 署名付き RemoteID(DRIP/F3411 Auth) を先取りした設計。実運用は規格普及に依存。
+    // ── Private inputs: legacy実験用のドローン自己署名 ──────────────────────
+    // proverが与える公開鍵で放送内容(remote_id+位置+時刻)のEdDSA-Poseidon署名を検査する。
+    // drone_auth_enabled=1 で署名検証を強制するが、鍵とRIDの登録関係は証明しない。
+    // DRIP/F3411準拠の認証や信頼根検証として扱ってはならない。
     signal input drone_auth_enabled;
     signal input drone_pubkey_ax;
     signal input drone_pubkey_ay;
@@ -221,9 +221,9 @@ template UavWitnessAttestation(
     // 1=整合（放送は物理的に妥当）/ 0=矛盾（なりすまし疑い）。座標は秘匿のまま。
     signal output consistency_ok;
 
-    // ── Public output: ドローン署名 RemoteID の真正性（M3）────────────────────
-    // 1=放送内容がオペレータ鍵で署名されている（本物）/ 0=未署名。
-    // drone_operator_commitment で「どのオペレータか」をチェーン側で照合できる。
+    // ── Public output: legacy自己署名検査の有無 ─────────────────────────────
+    // 1=prover supplied keyで署名検査した。登録済み鍵・正規Remote IDの証明ではない。
+    // drone_operator_commitmentはその鍵だけのhashで、RIDとのtrust bindingはない。
     signal output drone_auth_ok;
     signal output drone_operator_commitment;
 
@@ -399,8 +399,8 @@ template UavWitnessAttestation(
     sigVerify.R8y <== sig_r8y;
     sigVerify.M   <== msgHash.out;
 
-    // ── ドローン署名 RemoteID の検証（M3・入力真正性）────────────────────────
-    // 署名対象 = 放送内容: Poseidon(remote_id, drone_lat, drone_lon, drone_alt, drone_time)
+    // ── legacy実験用の自己署名チェック（Remote ID認証ではない）───────────────
+    // 署名対象 = Poseidon(remote_id, drone_lat, drone_lon, drone_alt, drone_time)
     drone_auth_enabled * (drone_auth_enabled - 1) === 0;
 
     component droneMsg = Poseidon(5);

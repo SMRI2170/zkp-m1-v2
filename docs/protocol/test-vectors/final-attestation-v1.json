@@ -12,6 +12,13 @@
     "suspiciousCount",
     "verdict"
   ],
+  "policy": {
+    "hash": "Circomlib Poseidon over BN254, 3 inputs",
+    "domainTag": "1901255031385829779341467108224662776848537137",
+    "protocolVersion": "1",
+    "minimumQuorum": "2",
+    "policyCommitment": "1791950082637333959260344209857081584058079814184145123235554669090060789867"
+  },
   "vectors": [
     {
       "name": "trusted-three-observation-session",
@@ -19,7 +26,7 @@
         "1",
         "424242",
         "100001",
-        "123456789",
+        "1791950082637333959260344209857081584058079814184145123235554669090060789867",
         "999",
         "777",
         "2",
@@ -27,8 +34,8 @@
         "1"
       ],
       "sessionIdPreimageTypes": ["uint8", "uint256", "uint64", "uint256"],
-      "sessionIdPreimage": ["1", "424242", "100001", "123456789"],
-      "sessionId": "0x6e241bc572d59d92aa92ed9f1110f955abd9568e5a506cb15b95d82a79685968"
+      "sessionIdPreimage": ["1", "424242", "100001", "1791950082637333959260344209857081584058079814184145123235554669090060789867"],
+      "sessionId": "0x0374c25109dc27748c776565e1d62dfa19ce5de4b030e2daceb377e66f29aac5"
     },
     {
       "name": "suspicious-two-observation-session",
@@ -36,7 +43,7 @@
         "1",
         "424242",
         "100002",
-        "123456789",
+        "1791950082637333959260344209857081584058079814184145123235554669090060789867",
         "999",
         "778",
         "0",
@@ -44,8 +51,8 @@
         "2"
       ],
       "sessionIdPreimageTypes": ["uint8", "uint256", "uint64", "uint256"],
-      "sessionIdPreimage": ["1", "424242", "100002", "123456789"],
-      "sessionId": "0x5989be22f18e7cec05a2ef0159f7a33db9abd21be267fbaa1b59e44497a4e3bb"
+      "sessionIdPreimage": ["1", "424242", "100002", "1791950082637333959260344209857081584058079814184145123235554669090060789867"],
+      "sessionId": "0x31d2a7bedeb49fff35fff591d79a1af52624f27221d7ecad58bd147b25d53ba2"
     }
   ]
 }

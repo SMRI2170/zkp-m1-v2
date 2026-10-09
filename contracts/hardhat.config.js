@@ -1,5 +1,10 @@
 require("@nomicfoundation/hardhat-toolbox");
 
+const hardhatNetwork = {};
+if (process.env.PCD3_V2_EVM_INITIAL_DATE) {
+  hardhatNetwork.initialDate = process.env.PCD3_V2_EVM_INITIAL_DATE;
+}
+
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: {
@@ -9,6 +14,9 @@ module.exports = {
     },
   },
   networks: {
+    // Synthetic proof tests can pin local chain time to the capture bucket;
+    // production and ordinary tests retain Hardhat's default current time.
+    hardhat: hardhatNetwork,
     // 許可型EVM（Besu QBFT / Quorum）へのデプロイ先。
     // besu-qbft/ のネットワークを起動し、DEPLOYER_KEY を渡して使う。
     besu: {

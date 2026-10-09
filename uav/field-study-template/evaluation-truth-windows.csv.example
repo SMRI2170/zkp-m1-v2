@@ -1,0 +1,1 @@
+sample_id,decision_window_id,run_id,observer_id,calibration_profile_id,uas_id_tag,window_start_unix_ms,window_end_unix_ms,time_uncertainty_ms,observer_lat_deg,observer_lon_deg,observer_alt_m,truth_lat_deg,truth_lon_deg,truth_alt_m

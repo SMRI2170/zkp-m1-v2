@@ -1,0 +1,28 @@
+{
+  "schema": "signal.rssi-study-preregistration.v1",
+  "study_id": "replace-with-opaque-study-id",
+  "calibration_run_ids": [
+    "replace-cal-run-01",
+    "replace-cal-run-02"
+  ],
+  "evaluation_run_ids": [
+    "replace-eval-run-01",
+    "replace-eval-run-02",
+    "replace-eval-run-03",
+    "replace-eval-run-04",
+    "replace-eval-run-05",
+    "replace-eval-run-06",
+    "replace-eval-run-07",
+    "replace-eval-run-08",
+    "replace-eval-run-09",
+    "replace-eval-run-10",
+    "replace-eval-run-11",
+    "replace-eval-run-12"
+  ],
+  "position_error_threshold_m": 30,
+  "max_time_uncertainty_ms": 50,
+  "tolerance_ratio": 0.9,
+  "minimum_quorum": 2,
+  "minimum_independent_runs_per_class": 6,
+  "maximum_95_false_rate_ci_width": 0.2
+}

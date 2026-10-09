@@ -33,8 +33,8 @@ contract AttestationRegistry is Ownable2Step {
     uint256 private constant IDX_DEVICE_PUBKEY_Y = 12;
     uint256 private constant IDX_TIME_BUCKET = 13;
     uint256 private constant IDX_CONSISTENCY_OK = 14;
-    uint256 private constant IDX_DRONE_AUTH_OK = 15;         // M3: ドローン署名RemoteID
-    uint256 private constant IDX_DRONE_OPERATOR = 16;        // M3: オペレータ commitment
+    uint256 private constant IDX_DRONE_AUTH_OK = 15;         // legacy leaf self-signature check bit
+    uint256 private constant IDX_DRONE_OPERATOR = 16;        // commitment to supplied key; no RID binding
     uint256 private constant IDX_FRESHNESS = 17;             // M3: 新鮮さビーコン
 
     IGroth16Verifier public immutable verifier;
@@ -44,7 +44,7 @@ contract AttestationRegistry is Ownable2Step {
 
     // 登録端末（Sybil 対策）: deviceId = keccak256(pubkey_x, pubkey_y)
     mapping(bytes32 => bool) public registeredDevice;
-    // 登録オペレータ（M3: ドローン鍵の Sybil 対策）: drone_operator_commitment
+    // 登録済み鍵 commitment の gate。現行mappingは claimed droneId との対応を証明しない。
     mapping(uint256 => bool) public registeredOperator;
     // 新鮮さの下限（M3: これ未満の freshness を持つ古い proof を拒否＝リプレイ対策）
     uint256 public minFreshness;

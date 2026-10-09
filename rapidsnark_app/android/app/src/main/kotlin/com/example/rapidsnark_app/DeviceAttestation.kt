@@ -9,17 +9,19 @@ import java.security.cert.Certificate
 import java.security.spec.ECGenParameterSpec
 
 /**
- * 端末アテステーション（M3 / ★2 入力真正性・Sybil対策）。
+ * Android Key Attestation の試験用実装。
  *
- * AndroidKeyStore に TEE/StrongBox 由来の EC 鍵を生成し、Key Attestation の
- * 証明書チェーンを取得する。challenge に device_pubkey の束縛値（nonce）を入れることで、
- * 「このハード端末がこの device_pubkey を裏書きした」ことを検証側（verify_attestation.js）で
- * 確認でき、正当な実機だけが端末登録を通る。
+ * AndroidKeyStore に TEE/StrongBox 由来の P-256 鍵を生成し、証明書chainと
+ * 呼び出し元提供challengeを返す。challengeの一致だけでは、V2回路のBabyJubJub
+ * observer鍵をこのP-256鍵へ結び付けたり、観測statementへの署名を証明したりしない。
+ * 現状は呼び出しごとに既存aliasを削除して鍵を作り直すため、安定したobserver
+ * credentialとしても使えない。統合には鍵の対応を検証するproof-of-possessionと
+ * 固定trust-rootを使う登録処理が別途必要。
  */
 object DeviceAttestation {
     private const val ALIAS = "uav_device_attest_key"
 
-    /** nonce(=device_pubkey束縛値)に対するアテステーションを生成し、公開鍵とPEMチェーンを返す。 */
+    /** 呼び出し元challengeを含むP-256 Key AttestationとPEM chainを返す。 */
     fun attest(nonce: ByteArray): Map<String, Any> {
         val ks = KeyStore.getInstance("AndroidKeyStore").apply { load(null) }
         if (ks.containsAlias(ALIAS)) ks.deleteEntry(ALIAS)

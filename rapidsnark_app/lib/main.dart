@@ -580,6 +580,7 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
   String _verdictSummary = 'まだ証明は生成されていません。';
   String _privacySummary = '座標そのものは公開せず、真偽だけを共有します。';
   bool _proofValid = false;
+  bool _lastProofCryptographicallyVerified = false;
   bool _isBusy = false;
   bool _isScanningDrone = false;
   DateTime? _proofStartedAt;
@@ -1229,6 +1230,7 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
     _verdictSummary = 'まだ証明は生成されていません。';
     _privacySummary = '端末内で証明を生成し、公開するのは安全判定だけです。';
     _proofValid = false;
+    _lastProofCryptographicallyVerified = false;
   }
 
   int _normalizeLatitude(String value) {
@@ -1763,6 +1765,7 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
       _publicSignals = '';
       _proof = '';
       _proofValid = false;
+      _lastProofCryptographicallyVerified = false;
       _proofElapsed = Duration.zero;
     });
     _log('ドローン入力値と端末取得ログをもとに証明条件を準備しています...');
@@ -1828,6 +1831,7 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
 
       setState(() {
         _proofValid = proofValid;
+        _lastProofCryptographicallyVerified = proofValid;
         _publicSignals = const JsonEncoder.withIndent(
           '  ',
         ).convert(decodedPublic);
@@ -1845,6 +1849,7 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
       _stopProofTimer();
       final elapsed = _elapsedLabel;
       setState(() {
+        _lastProofCryptographicallyVerified = false;
         _verdictTitle = '実行失敗';
         _verdictSummary =
             '証明生成フローの途中で停止しました。端末内の witness / zkey / verification key を確認してください。';
@@ -3777,12 +3782,10 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
     final approxDistance = _approxDistanceMeters();
     final approxTimeDelta = _approxTimeDelta();
     final chainSession = ChainSession(
-      status: _proofValid
-          ? ChainSessionStatus.awaitingAggregation
-          : ChainSessionStatus.localOnly,
-      observedAt: _videoEvidence?.recordedAt ?? _proofStartedAt,
-      remoteIdSource: _lastDroneSource,
-      leafProofValid: _proofValid,
+      status: ChainSessionStatus.localDemoOnly,
+      inputCapturedAt: _videoEvidence?.recordedAt ?? _proofStartedAt,
+      inputSource: _lastDroneSource,
+      localDemoProofValid: _lastProofCryptographicallyVerified,
     );
     return Scaffold(
       extendBody: true,
@@ -3852,7 +3855,7 @@ class _SafetyUseCasePageState extends State<SafetyUseCasePage> {
           NavigationDestination(
             icon: Icon(Icons.account_tree_outlined),
             selectedIcon: Icon(Icons.account_tree_rounded),
-            label: 'チェーン',
+            label: 'PoC状況',
           ),
         ],
       ),

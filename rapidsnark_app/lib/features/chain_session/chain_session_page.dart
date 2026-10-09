@@ -26,7 +26,7 @@ class ChainSessionPage extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(16, 18, 16, 28),
           children: [
             const Text(
-              'チェーン記録',
+              '証明・チェーン接続の状態',
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.w800,
@@ -35,10 +35,14 @@ class ChainSessionPage extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             const Text(
-              'ハッシュではなく、観測がどの判定になったかを確認します。',
+              '単体デモproofと、未接続の複数端末・EVM工程を分けて表示します。',
               style: TextStyle(color: _muted, fontSize: 13),
             ),
             const SizedBox(height: 16),
+            if (session.status == ChainSessionStatus.localDemoOnly) ...[
+              _notConnectedBanner(),
+              const SizedBox(height: 14),
+            ],
             _statusCard(status, statusColor),
             const SizedBox(height: 20),
             const Text(
@@ -47,38 +51,38 @@ class ChainSessionPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             _flowStep(
-              icon: Icons.sensors_rounded,
-              title: '観測',
-              detail: session.observedAt == null
-                  ? 'まだ観測されていません'
-                  : '${_formatTime(session.observedAt!)}${session.remoteIdSource == null ? '' : ' ・ ${session.remoteIdSource} Remote ID'}',
-              complete: session.observedAt != null,
+              icon: Icons.input_rounded,
+              title: 'デモ入力',
+              detail: session.inputCapturedAt == null
+                  ? '入力時刻はありません'
+                  : '${_formatTime(session.inputCapturedAt!)}${session.inputSource == null ? '' : ' ・ ${session.inputSource}'}',
+              complete: session.inputCapturedAt != null,
               last: false,
             ),
             _flowStep(
-              icon: Icons.verified_user_rounded,
-              title: '端末内 ZK 証明',
-              detail: session.leafProofValid
-                  ? '位置・生 RSSI を公開せず、端末内で検証済み'
-                  : '証明の生成・検証を待っています',
-              complete: session.leafProofValid,
+              icon: Icons.science_outlined,
+              title: 'ローカルデモ ZK proof',
+              detail: session.localDemoProofValid
+                  ? '選択中のデモ回路でproofを検証済み（V2 Remote ID leaf proofではありません）'
+                  : 'デモproofは未検証です',
+              complete: session.localDemoProofValid,
               last: false,
             ),
             _flowStep(
               icon: Icons.account_tree_rounded,
-              title: '複数端末の集約',
+              title: 'V2 複数観測者の集約',
               detail: session.hasAggregate
-                  ? '整合 ${session.consistentCount} 件 / 矛盾 ${session.suspiciousCount} 件'
-                  : 'ほかの登録端末の証明を集約待ち',
+                  ? '位置整合 ${session.consistentCount} 件 / 不整合の疑い ${session.suspiciousCount} 件'
+                  : '未接続 — 他の観測端末のproofは集約していません',
               complete: session.hasAggregate,
               last: false,
             ),
             _flowStep(
-              icon: Icons.link_rounded,
-              title: 'チェーンへの最終記録',
+              icon: Icons.link_off_rounded,
+              title: '最終ZK proof → EVM検証',
               detail: session.blockNumber == null
-                  ? '集約 proof を確定後、1 セッション 1 件だけ登録します'
-                  : 'Block #${session.blockNumber} に Finalized として確定',
+                  ? '未接続 — この画面はFinal proofをregistryへ送信・照会していません'
+                  : 'Block #${session.blockNumber} のFinalized record',
               complete: session.status == ChainSessionStatus.finalized,
               last: true,
             ),
@@ -90,9 +94,11 @@ class ChainSessionPage extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.w800, color: _ink),
             ),
             const SizedBox(height: 8),
-            const Text(
-              'この画面では、正確な位置・生 RSSI・proof 本文・端末名は表示しません。最終確定後は、判定、件数、登録端末集合の検証結果だけをチェーンから読みます。',
-              style: TextStyle(color: _muted, height: 1.5, fontSize: 13),
+            Text(
+              session.status == ChainSessionStatus.localDemoOnly
+                  ? 'この画面はチェーンを読み書きしていません。将来接続するregistryでは、公開する判定・件数と、集約者や通信metadataに見える情報を別途監査します。'
+                  : 'オンチェーン公開値だけでなく、集約者が見られるleaf情報や通信metadataもプライバシー境界として扱います。',
+              style: const TextStyle(color: _muted, height: 1.5, fontSize: 13),
             ),
           ],
         ),
@@ -101,14 +107,14 @@ class ChainSessionPage extends StatelessWidget {
   }
 
   Widget _statusCard(String status, Color statusColor) {
-    final title = switch (session.verdict) {
-      ChainVerdict.trusted => 'Trusted — 裏取り成立',
-      ChainVerdict.spoofSuspected => 'Spoof suspected — 矛盾を検知',
-      ChainVerdict.undetermined =>
-        session.status == ChainSessionStatus.localOnly
-            ? 'ローカル証明を確認済み'
-            : '最終判定を待機中',
-    };
+    final title = session.status == ChainSessionStatus.localDemoOnly
+        ? '単体デモproof — V2/チェーン未接続'
+        : switch (session.verdict) {
+            ChainVerdict.noInconsistencyObserved => '位置不整合はこのpolicyでは観測されず',
+            ChainVerdict.positionInconsistencySuspected =>
+              '位置不整合の疑い — 機体認証ではありません',
+            ChainVerdict.undetermined => '最終判定を待機中',
+          };
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -119,7 +125,13 @@ class ChainSessionPage extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(Icons.verified_rounded, color: statusColor, size: 30),
+          Icon(
+            session.status == ChainSessionStatus.finalized
+                ? Icons.fact_check_outlined
+                : Icons.info_outline_rounded,
+            color: statusColor,
+            size: 30,
+          ),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -145,6 +157,21 @@ class ChainSessionPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _notConnectedBanner() {
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: _amber.withValues(alpha: 0.08),
+        border: Border.all(color: _amber.withValues(alpha: 0.45)),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: const Text(
+        '現在表示できるのは汎用デモ回路のローカルproof状態だけです。Remote IDの真正性・観測者登録・複数端末の集約・最終proof・EVM記録は、このアプリ画面に接続されていません。',
+        style: TextStyle(color: _ink, fontSize: 13, height: 1.45),
       ),
     );
   }
@@ -224,7 +251,7 @@ class ChainSessionPage extends StatelessWidget {
           border: Border.all(color: _line),
         ),
         child: const Text(
-          '最終判定には、別々の登録端末から集めた複数の証明が必要です。現在はこの端末の証明だけを確認済みです。',
+          '集約結果はありません。現在の単体デモproofは、登録済みRemote ID観測者の証明として数えていません。',
           style: TextStyle(color: _muted, fontSize: 13, height: 1.45),
         ),
       );
@@ -259,7 +286,7 @@ class ChainSessionPage extends StatelessWidget {
                       color: _green,
                       alignment: Alignment.center,
                       child: Text(
-                        '整合 ${session.consistentCount}',
+                        '位置整合 ${session.consistentCount}',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12,
@@ -272,7 +299,7 @@ class ChainSessionPage extends StatelessWidget {
                         color: _amber,
                         alignment: Alignment.center,
                         child: Text(
-                          '矛盾 ${session.suspiciousCount}',
+                          '不整合の疑い ${session.suspiciousCount}',
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 12,
@@ -288,7 +315,7 @@ class ChainSessionPage extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            '閾値 K=${session.threshold}。件数だけを公開し、各端末の位置・RSSI は公開しません。',
+            '閾値 K=${session.threshold}。この結果は位置不整合のpolicy判定であり、Remote IDの真正性や機体の物理位置を証明しません。',
             style: const TextStyle(color: _muted, fontSize: 12),
           ),
         ],
@@ -297,20 +324,28 @@ class ChainSessionPage extends StatelessWidget {
   }
 
   String _statusText() {
+    if (session.status == ChainSessionStatus.localDemoOnly) {
+      return session.localDemoProofValid
+          ? 'デモ回路のproofはローカルで検証済みです。V2 observer proofやオンチェーンの最終記録とは別物です。'
+          : 'ローカルデモproofは未検証です。複数端末集約やチェーン状態は確認していません。';
+    }
     return switch (session.status) {
-      ChainSessionStatus.localOnly => 'この端末の ZK 証明は検証済みですが、まだチェーンには登録されていません。',
+      ChainSessionStatus.localDemoOnly => 'ローカルデモproofの状態です。',
       ChainSessionStatus.awaitingAggregation =>
-        '複数端末の proof を集約し、最終 proof を生成しています。',
-      ChainSessionStatus.finalized => '集約 proof がオンチェーンで検証され、最終判定として確定しました。',
+        'V2観測proofは確認済みで、複数端末の集約proofを待っています。',
+      ChainSessionStatus.finalized =>
+        '最終proofはEVMで検証されました。この結果もRemote IDの真正性や物理的真実を保証しません。',
     };
   }
 
   Color _statusColor() {
+    if (session.status == ChainSessionStatus.localDemoOnly) {
+      return session.localDemoProofValid ? const Color(0xFF2B63C0) : _muted;
+    }
     return switch (session.verdict) {
-      ChainVerdict.trusted => _green,
-      ChainVerdict.spoofSuspected => _amber,
-      ChainVerdict.undetermined =>
-        session.leafProofValid ? const Color(0xFF2B63C0) : _muted,
+      ChainVerdict.noInconsistencyObserved => const Color(0xFF2B63C0),
+      ChainVerdict.positionInconsistencySuspected => _amber,
+      ChainVerdict.undetermined => _muted,
     };
   }
 

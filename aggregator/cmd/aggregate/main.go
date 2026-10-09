@@ -4,7 +4,7 @@
 //	② 全 time_bucket(idx13) が一致（同一時間窓）
 //	③ 各 within30_and_detected(idx6) == 1
 //	④ device_pubkey(idx11,12) が相異なる（Sybil対策）
-//	⑤ 各 drone_auth_ok(idx15) == 1（署名付きRemote IDのみ受理）
+//	⑤ 各 drone_auth_ok(idx15) == 1（legacy自己署名bit。登録IDとの鍵対応は証明しない）
 //	⑥ consistentCount = Σ consistency_ok(idx14) を集計 → public 出力
 //
 // 出力: droneId / timeBucket / ConsistentCount / SuspiciousCount / Root。
@@ -49,9 +49,10 @@ const (
 )
 
 type AggCircuit struct {
-	VK    recursion.VerifyingKey[sw_bn254.G1Affine, sw_bn254.G2Affine, sw_bn254.GTEl]
-	Proof [N]recursion.Proof[sw_bn254.G1Affine, sw_bn254.G2Affine]
-	Wit   [N]recursion.Witness[sw_bn254.ScalarField]
+	// The leaf VK is a compile-time circuit constant, never a prover witness.
+	verifyingKey recursion.VerifyingKey[sw_bn254.G1Affine, sw_bn254.G2Affine, sw_bn254.GTEl] `gnark:"-"`
+	Proof        [N]recursion.Proof[sw_bn254.G1Affine, sw_bn254.G2Affine]
+	Wit          [N]recursion.Witness[sw_bn254.ScalarField]
 
 	// #3a: 各 device_pubkey が登録端末ルートのメンバーであることの Merkle パス
 	Siblings [N][membership.Depth]frontend.Variable
@@ -93,7 +94,7 @@ func (c *AggCircuit) Define(api frontend.API) error {
 	consCount := frontend.Variable(0)
 	for i := 0; i < N; i++ {
 		// 各証明を回路内検証
-		if err := verifier.AssertProof(c.VK, c.Proof[i], c.Wit[i]); err != nil {
+		if err := verifier.AssertProof(c.verifyingKey, c.Proof[i], c.Wit[i]); err != nil {
 			return err
 		}
 		// ① 同一ドローン ② 同一時間窓
@@ -101,8 +102,8 @@ func (c *AggCircuit) Define(api frontend.API) error {
 		field.AssertIsEqual(&c.Wit[i].Public[idxBucket], &c.Wit[0].Public[idxBucket])
 		// ③ within30_and_detected == 1
 		field.AssertIsEqual(&c.Wit[i].Public[idxWithin30], one)
-		// ⑤ drone_auth_ok == 1。leaf circuit 内で EdDSA-Poseidon 署名を
-		// 検証済みのRemote IDだけを最終集計へ取り込む。
+		// ⑤ legacy drone_auth_ok == 1 filter. The leaf checks an EdDSA-Poseidon
+		// signature under a prover-supplied key; this does not authorize the key for the RID.
 		field.AssertIsEqual(&c.Wit[i].Public[idxDroneAuth], one)
 		// ⑥ consistency_ok を集計（0/1）
 		isZero := field.IsZero(&c.Wit[i].Public[idxConsist]) // 1 なら consistency==0
@@ -186,11 +187,11 @@ func main() {
 	// N 端末の証明/公開witnessを読み込む（dev0,dev1 整合 / dev2 詐称）
 	load := func() (*AggCircuit, error) {
 		var c AggCircuit
-		vk, err := recursion.ValueOfVerifyingKey[sw_bn254.G1Affine, sw_bn254.G2Affine, sw_bn254.GTEl](nativeVK)
+		vk, err := recursion.ValueOfVerifyingKeyFixed[sw_bn254.G1Affine, sw_bn254.G2Affine, sw_bn254.GTEl](nativeVK)
 		if err != nil {
 			return nil, err
 		}
-		c.VK = vk
+		c.verifyingKey = vk
 		for i := 0; i < N; i++ {
 			pr, err := snarkimport.LoadProof(fmt.Sprintf("%s/proofs/input_dev%d_proof.json", base, i))
 			if err != nil {

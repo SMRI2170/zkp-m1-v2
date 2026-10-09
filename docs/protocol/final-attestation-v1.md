@@ -28,7 +28,8 @@ inputs or stored on-chain.
 - `timeBucket` is a Unix-time bucket encoded as an unsigned `uint64` and then
   represented by the same integer in the scalar field.
 - `consistentCount` and `suspiciousCount` are unsigned `uint32` values.
-- `policyCommitment` is a Poseidon commitment in the BN254 scalar field.
+- `policyCommitment` is the Circomlib Poseidon (BN254, input arity 3) commitment
+  to the v1 minimum quorum, with the preimage defined below.
 - `memberRoot` and `nullifierRoot` use the domain-separated `MiMC_BN254`
   Merkle construction defined by the aggregation circuit.  The existing
   `aggregator/membership` implementation is the reference until a versioned
@@ -45,7 +46,7 @@ part of the protocol and may not be reordered.
 | 0 | `protocolVersion` | constant `1` | Selects this statement and ABI. |
 | 1 | `droneIdCommitment` | field element | Privacy-preserving commitment to the claimed Remote ID. |
 | 2 | `timeBucket` | `uint64` | Observation time window. |
-| 3 | `policyCommitment` | field element | Poseidon commitment to the signed RSSI/freshness/policy parameters. |
+| 3 | `policyCommitment` | field element | Poseidon commitment to the v1 policy, including its minimum quorum. |
 | 4 | `memberRoot` | field element | Root of the authorised witness-device Merkle tree. |
 | 5 | `nullifierRoot` | field element | Root committing to the devices already counted for this session. |
 | 6 | `consistentCount` | `uint32` | Number of valid observations consistent with the claim. |
@@ -59,8 +60,44 @@ The final circuit MUST constrain the following:
 3. no device nullifier is counted twice, and the resulting state is
    `nullifierRoot`;
 4. `consistentCount + suspiciousCount` is the number of accepted leaves;
-5. `verdict` is calculated from these counts and the threshold encoded by
+5. `verdict` is calculated from these counts and the minimum quorum encoded by
    `policyCommitment`, rather than chosen by the prover.
+
+## V1 policy commitment and verdict
+
+The quorum policy commitment is exactly:
+
+```text
+Poseidon_BN254_Circomlib(
+  [
+    1901255031385829779341467108224662776848537137, // ASCII "UAV_FINAL_POLICY_V1"
+    1,                                               // protocol version
+    minimumQuorum                                    // uint32, greater than zero
+  ]
+)
+```
+
+This uses Circomlib's original Poseidon parameters for three inputs (`t=4`,
+`N_ROUNDS_F=8`, `N_ROUNDS_P=56`), not Poseidon2. RSSI, freshness, geometry,
+and leaf-acceptance rules are fixed by the v1 leaf circuit and the
+release-pinned leaf verification key. Changing those rules requires a new
+versioned leaf key and policy/protocol migration; they are not prover-chosen
+parameters in v1. An EVM registry admits only an explicitly approved
+`policyCommitment`.
+
+`minimumQuorum` is a nonzero `uint32`. Let `C` be `consistentCount` and `S` be
+`suspiciousCount`:
+
+| Condition | Verdict |
+| --- | --- |
+| `C >= minimumQuorum` and `S < minimumQuorum` | `Trusted` (`1`) |
+| `S >= minimumQuorum` and `C < minimumQuorum` | `SpoofSuspected` (`2`) |
+| Both counts below quorum | `Undetermined` (`0`) |
+| Both counts reach quorum | Invalid / no final proof |
+
+The conflict case is rejected, matching the earlier registry's explicit
+conflicting-verdict behavior. The quorum preimage and Circomlib Poseidon
+parameters are covered by Go vectors and the canonical JSON test vectors.
 
 ## EVM session identifier
 
@@ -110,5 +147,6 @@ requirements are implemented.
 Canonical values and the expected EVM `sessionId` are in
 [`test-vectors/final-attestation-v1.json`](test-vectors/final-attestation-v1.json).
 The Hardhat test validates that the Solidity ABI derivation matches these
-vectors.  Circom and recursive-prover implementations must consume the same
-vector before claiming v1 compatibility.
+vectors. Go policy tests cross-check the Circomlib Poseidon commitment and
+constrain the quorum-derived verdict. Circom and recursive-prover
+implementations must consume the same vector before claiming v1 compatibility.

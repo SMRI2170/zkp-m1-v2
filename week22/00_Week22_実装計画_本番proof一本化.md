@@ -58,11 +58,12 @@ Week 20で作った再帰proofチェーンPoCと、Week 21で作ったmembership
 Bridgeが必ず確認すること:
 
 1. leaf proofのVKはrelease artifactに固定されている。
-2. `within30_and_detected == 1` と `drone_auth_ok == 1`。
+2. `within30_and_detected == 1` と legacy `drone_auth_ok == 1`。このbitはprover提供鍵の署名検証だけを表し、Remote IDと登録鍵の対応・DRIP trust chainを証明しないため、「登録機認証」の完了条件にはならない。
 3. 端末公開鍵が `memberRoot` のmemberである。
 4. 同端末のnullifierを `oldRoot` から `newRoot` へ一度だけ遷移する。
 5. `consistency_ok` を `consistentCount` または `suspiciousCount` のどちらか一方へ
    加算する。
+6. Remote ID署名鍵をID/DETへ結び付ける認証連鎖と、固定したtrust root/失効状態を検証する（現行leafでは未実装）。
 
 完了条件:
 

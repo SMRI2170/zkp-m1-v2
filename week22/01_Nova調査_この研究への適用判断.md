@@ -135,3 +135,40 @@ proof形式・Solidity ABI・trusted setup要否は選ぶDeciderに依存する�
 
 このPoCに成功しても、既存leafを安全に接続するBridgeと実機性能測定が終わるまで、
 Novaを最終アーキテクチャとして確定しない。
+
+## 2026-10-02時点の実装照合
+
+Week 20以降にNovaの3ステップPoC、Android実機実行、Kotlin UI組込みまでは完了している。
+ただし、これは「RSSI整合を逐次加算できる」ことの確認であり、最終アーキテクチャの全条件を
+満たしたことを意味しない。
+
+| Week 22で必要としたもの | 現在の状態 | 根拠・不足点 |
+| --- | --- | --- |
+| Rustの最小 `F` | ✅ 実装済み | `nova_poc/uav_chain_step.rs`。RSSI整合とcount更新を3ステップで実証。 |
+| 逐次proofの検証 | ✅ 実装済み | `nova_poc/nova-mobile/`、Pixel 8実機まで確認。 |
+| count改ざん拒否 | ✅ 実装済み | IVC proofのcountを書き換えた否定系あり。 |
+| `memberRoot`・`nullifierRoot` の状態遷移 | ❌ 未実装 | Novaのstateは5値のみで、登録端末確認・二重計上防止が入っていない。 |
+| 既存Circom leaf proofの固定VK検証 | ❌ 未実装 | Nova stepは観測値を直接受ける。署名・freshnessを含む実leaf proofを検証していない。 |
+| 異session / 異policy / 異droneの混入拒否 | △ 一部 | drone/timeは初期stateを引き継ぐが、外部leafとの束縛・policy・sessionの否定系がない。 |
+| 10 step程度の性能・メモリ測定 | ❌ 未実施 | 3 stepのPoCのみ。参加台数増加時の評価が必要。 |
+| EVM DeciderとV1 ABIの接続 | ❌ 未実装 | Solidity verifier、gas、calldata、テストネット実証がない。 |
+| iOS実機 | ❌ 未実施 | Androidは確認済み。iOSクロスコンパイル・実機評価は未確認。 |
+
+## 採用判断を更新するための必須条件
+
+Novaを「有力候補」から「採用」に進めるには、次の流れを1本の実proofで通す必要がある。
+
+```mermaid
+flowchart LR
+  L[端末: Circom BN254 leaf proof] --> B[Bridge: 固定VK検証]
+  B --> M[memberRoot と nullifierRootを検証]
+  M --> N[Nova step: 状態を1件更新]
+  N --> R[10台程度まで繰返し]
+  R --> D[Decider proofへ圧縮]
+  D --> E[EVM verifier / V1 ABI]
+  E --> G[gas・proofサイズ・時間を記録]
+```
+
+途中でどれか1つでも外部アプリの申告値だけを信頼すると、最終proofは
+「登録端末が観測した」という意味を失う。そのため、最優先は高速化ではなく
+leaf proof・membership・nullifierの束縛である。

@@ -1,18 +1,22 @@
-enum ChainSessionStatus { localOnly, awaitingAggregation, finalized }
+enum ChainSessionStatus { localDemoOnly, awaitingAggregation, finalized }
 
-enum ChainVerdict { undetermined, trusted, spoofSuspected }
+enum ChainVerdict {
+  undetermined,
+  noInconsistencyObserved,
+  positionInconsistencySuspected,
+}
 
-/// チェーンに保存する最終レコードを、人が読める画面へ変換するための状態。
+/// PoC画面が表示する入力・proof・集約・チェーンの状態。
 ///
-/// 座標・RSSI・proof bytes は持たない。将来は FinalAttestationRegistry の
-/// Finalized event をこの型に変換して表示する。
+/// 現在のアプリからは単体デモproofしか渡していない。V2 observer proof、
+/// 複数端末集約、FinalAttestationRegistry eventはまだ接続されていない。
+/// verdict名は「信頼済み」「詐称確定」と誤読しないV2意味に揃える。
 class ChainSession {
   const ChainSession({
     required this.status,
-    required this.observedAt,
-    required this.remoteIdSource,
-    required this.leafProofValid,
-    this.leafProofCount = 1,
+    required this.inputCapturedAt,
+    required this.inputSource,
+    required this.localDemoProofValid,
     this.consistentCount,
     this.suspiciousCount,
     this.threshold = 2,
@@ -21,10 +25,9 @@ class ChainSession {
   });
 
   final ChainSessionStatus status;
-  final DateTime? observedAt;
-  final String? remoteIdSource;
-  final bool leafProofValid;
-  final int leafProofCount;
+  final DateTime? inputCapturedAt;
+  final String? inputSource;
+  final bool localDemoProofValid;
   final int? consistentCount;
   final int? suspiciousCount;
   final int threshold;

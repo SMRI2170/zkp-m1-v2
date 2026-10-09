@@ -1,16 +1,12 @@
 import 'package:flutter/services.dart';
 
-/// 端末アテステーション（M3・Sybil/端末真正性）。
+/// Android Key Attestation のアプリ側呼び出し口。
 ///
-/// 目的: 回路が検証する device_pubkey が「改ざんされていない実機・実アプリの
-/// ハードウェア鍵」であることを、プラットフォームの証明で裏取りする。
-///   - Android: Key Attestation（StrongBox/TEE 由来の証明書チェーン）
-///   - iOS: App Attest / DeviceCheck
-/// これにより「1人が大量の偽端末を作る」Sybil を、鍵の出所レベルで抑止する。
-///
-/// 本ファイルはアプリ側の統合点（インターフェース＋MethodChannel骨組み）。
-/// 実際の証明生成・検証はネイティブ実装と、証明書チェーンの検証（オンチェーン/
-/// バックエンド）が必要。ここではその差し込み口を定義する。
+/// 返る公開鍵は Android 側で作る P-256 鍵で、V2 leaf 回路の
+/// BabyJubJub EdDSA observer key とは別物。このAPIは観測statementへの署名も、
+/// 2つの鍵の対応関係も証明しない。証明書chainのtrust-root検証と明示的な
+/// proof-of-possession付き登録が接続されるまでは、observer credentialや
+/// Sybil対策が実装済みとは扱わない。
 class AttestationStatement {
   const AttestationStatement({
     required this.publicKey,
@@ -18,13 +14,15 @@ class AttestationStatement {
     required this.nonce,
   });
 
-  /// 端末鍵（回路の device_pubkey に対応）。
+  /// Android Key Attestation が証明する P-256 公開鍵（base64 encoded key）。
+  /// V2回路の BabyJubJub 公開鍵ではない。
   final String publicKey;
 
   /// ハードウェア由来の証明書チェーン（検証側が信頼ルートまで辿る）。
   final List<String> certChain;
 
-  /// リプレイ防止のチャレンジ（回路 freshness と同期させる）。
+  /// Android attestation certificate に含める呼び出し元提供challenge。
+  /// それ自体は観測署名でも、回路freshnessの証明でもない。
   final String nonce;
 
   bool get isEmpty => certChain.isEmpty;

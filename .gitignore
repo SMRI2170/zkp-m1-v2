@@ -49,6 +49,12 @@ rapidsnark_app/.dart_tool/
 rapidsnark_app/android/.gradle/
 rapidsnark_app/android/.kotlin/
 runs/
+.tmp/
+captures/
+uav/captures/
+aggregator/pcd3-artifacts/
+**/proof-cache-v1/
+**/proofs-v2/
 
 # Local clones / backups / datasets
 flutter-rapidsnark/

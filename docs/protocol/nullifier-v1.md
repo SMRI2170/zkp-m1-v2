@@ -6,8 +6,9 @@ This transition prevents a registered device from contributing more than once
 to one observation session without revealing the device identity in the final
 proof or on-chain record.
 
-It applies to an append transition.  A binary PCD merge needs a disjoint-set
-union proof and is deliberately not enabled until that proof is implemented.
+The one-device transition is an append from a zero slot. Independently created
+child reports are combined with a binary disjoint-set union proof; neither
+operation may trust a relayer-supplied root transition.
 
 ## Trees and indexing
 
@@ -64,16 +65,31 @@ oldRoot -- authorised device A --> intermediateRoot
 ```
 
 The second path is checked against `intermediateRoot`, not `oldRoot`; this is
-what makes an attempted second use of device A fail.  It provides a safe
-two-device building block for a recursive node without exposing either
-nullifier.
+what makes an attempted second use of device A fail. `PairCircuit` is a
+sequential append primitive. The recursive PCD instead uses the independent
+set-union relation below, because observers produce their child proofs in
+parallel rather than sharing an ordered root handoff.
 
-This is deliberately an ordered append, **not** a general binary union of two
-already-populated child nullifier roots.  A recursive merge of arbitrary child
-subtrees still needs a proof that their sets are disjoint and that their
-canonical union has the advertised root.  It is not yet connected to a leaf
-proof or to the fixed recursive PCD family.  Those integrations belong to
-Issues #4 and #2 respectively.
+`aggregator/nullifier/MergeCircuit` provides the native BN254 fixed-depth
+(16-slot) union primitive. The same relation is now implemented with an
+emulated BN254 MiMC gadget in `aggregator/pcd/NodeBLS` and `NodeBW`: each parent
+privately opens both child leaf vectors, binds them to the child roots, rejects
+overlapping occupied indexes, and recomputes the union root. Each child's
+`consistentCount + suspiciousCount` is also bound to its occupied nullifier
+slots. Tests accept disjoint roots and reject duplicate-slot and forged-root
+assignments. `BridgeBW` initializes a singleton session tree from a verified
+leaf proof.
+
+This is binary set union, not an ordered `left.newRoot == right.oldRoot`
+handoff. Both child states retain the same initial session root while their
+populated roots are unioned. The finalizer requires the shared initial root to
+be the canonical empty tree, so independently created reports can be merged
+without an artificial arrival order.
+
+The index-based uniqueness invariant assumes the authorized membership tree
+contains each observer key at most once. The current owner-operated root
+workflow does not itself prove enrollment uniqueness; production registration
+must reject duplicate keys or use a canonical unique-set tree.
 
 The final v1 proof exposes only `memberRoot` and the resulting
 `nullifierRoot`; it does not expose `deviceLeaf`, the path, or `nullifier`.
