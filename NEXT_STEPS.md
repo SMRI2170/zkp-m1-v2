@@ -1,5 +1,27 @@
 # NEXT_STEPS — 研究進捗・次の作業
 
+## 2026-10-11 研究方針を更新：Nova/SuperNova/HyperNovaの位置付けとWi-Fi Beacon実機観測
+
+**[研究移行ADR（一次記録）](docs/research/2026-10-11_nova-to-remoteid-besu_adr.md)** を参照。2026年7月時点のNova実装成果は維持し、**2026年10月の研究上の次の問いは「独立した観測端末の秘密ZKPを、検証者/受付者を無条件に信用せず集計・監査できるか」**とする。
+
+- **Nova**：端末内IVCの効率・実行を実測済み。一方、既存のSonobe走行`IVCProof`の跨端末受け渡しはWitness漏洩の懸念があり、登録・重複・共同受付/確定の仕組みは別途必要。
+- **SuperNova**：非一様ステップのIVCに強いが、今回の独立観測者・受付合意の問題は自動的には解決しないのでMVPでは保留。
+- **HyperNova**：CCS・複数インスタンスのFoldingでPCDなどの可能性があり、**数学的に不適合と断定しない**。Witnessを安全に保持する分散Proverプロトコル、提出順と重複の管理、最終証明とEVM検証の性能評価は別途必要。将来の集約方式比較として残す。
+- **Besu/QBFT＋Solidity**：各端末の独立Groth16 proofをオンチェーン直接検証し、同じRemote ID session内の登録、重複、確定、監査履歴を扱う**参照アーキテクチャの候補**。Novaの計算圧縮機能を置き換えるものではない。
+- **実験で得た情報**：研究室のDJIはBLEではなく**Wi-Fi BeaconのRemote IDを受信した**との報告。機体はMatrice 300 RTK/350 RTKのどちらか未確定（型番/FW/チャネル/生Beaconデータを確認）。Pi4×2・Pixel8全員の同時Beacon/RSSI受信は**未実証**。
+
+**次の作業（優先順）**
+1. [#13](https://github.com/SMRI2170/zkp-m1-v2/issues/13)・[#14](https://github.com/SMRI2170/zkp-m1-v2/issues/14)：Wi-Fi Beacon ODID IEとRSSI/時刻/受信チャネルをPixel8とPi4×2で採集可能か確認。対応受信機を確定。
+2. [#17](https://github.com/SMRI2170/zkp-m1-v2/issues/17)・[#29](https://github.com/SMRI2170/zkp-m1-v2/issues/29)：申告位置とRTK/飛行ログの真値を分け、誤差付き判定と公開入力ABIを固定。
+3. [#31](https://github.com/SMRI2170/zkp-m1-v2/issues/31)：保存済みWi-Fi Beacon実データのreplayから各端末独立Groth16を生成し、同一zkeyのSolidity verifierで検証。
+4. [#30](https://github.com/SMRI2170/zkp-m1-v2/issues/30)・[#34](https://github.com/SMRI2170/zkp-m1-v2/issues/34)：Besu QBFT 4 Validatorの機能テストで証明を登録し、確定遅延・gas・エラーを記録。
+5. [#35](https://github.com/SMRI2170/zkp-m1-v2/issues/35)・[#36](https://github.com/SMRI2170/zkp-m1-v2/issues/36)：速報とBC確定の遅延を分け、BCなし共同署名やMerkleログと公平比較する。
+
+**注意**：Wi-Fi Beaconの電波観測自体も、BCやZKPも、センサー入力と物理位置の真実性を自動保証しない。過去のNova実験値は新しいフル回路/RapidSnark/複数端末/BCの実測値ではない。
+
+---
+
+
 ## 2026-10-11 次フェーズ：Remote ID×Groth16×Besu/Solidity（進捗正本 #28）
 
 > **前の研究フェーズ**：Nova/Sonobe調査・逐次IVC PoC、Pixel 8 3ステップ実機実証は完了（`week20/08`、`week20/09`）。ただし**別端末へ秘密Witnessを漏らさずNova内部状態を引き継ぐ実装は未完成**（`week20/12`、`week20/13`、`week21/01`）。下の従来Next Stepsは歴史的な研究メモで、新しい着手優先順位ではない。
