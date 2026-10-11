@@ -1,0 +1,79 @@
+{
+  "scope": "single-process relation/API probes; not a ZK cross-prover handoff",
+  "upstream_ivc_tests": {
+    "adapters": [
+      "HyperNovaNovaIVC",
+      "HyperNovaOvaIVC"
+    ],
+    "steps_each": 20,
+    "passed": 2,
+    "failed": 0,
+    "ignored": 0
+  },
+  "probe": [
+    {
+      "phase": "keys",
+      "ms": 1288
+    },
+    {
+      "phase": "ivc-step",
+      "stage": 1,
+      "verified": true,
+      "incoming_canaries": 7,
+      "ms": 226
+    },
+    {
+      "phase": "ivc-step",
+      "stage": 2,
+      "verified": true,
+      "incoming_canaries": 7,
+      "ms": 443
+    },
+    {
+      "phase": "ivc-step",
+      "stage": 3,
+      "verified": true,
+      "incoming_canaries": 7,
+      "ms": 464
+    },
+    {
+      "phase": "random-fold",
+      "fold_relation_verified": true,
+      "nimfs_verified": true,
+      "running_canary_matches": 0,
+      "ms": 350
+    },
+    {
+      "phase": "direct-error",
+      "error": "IVCVerificationFail"
+    },
+    {
+      "phase": "replace-running-state",
+      "full_ivc_rejected": true,
+      "reason": "incoming public hash still binds original accumulator"
+    },
+    {
+      "phase": "resume-direct-blind",
+      "prover_returned_proof": true,
+      "final_verified": false
+    },
+    {
+      "phase": "rebound-error",
+      "error": "FoldingError(ArithError(UnsatisfiedAssignments(\"Evaluation contains non-zero values\")))"
+    },
+    {
+      "phase": "rebind-public-hash-only",
+      "full_ivc_rejected": true,
+      "reason": "incoming witness is not a valid assignment for the re-bound statement"
+    },
+    {
+      "phase": "erase-incoming-witness",
+      "full_ivc_rejected": true
+    },
+    {
+      "phase": "claimed-state-tamper",
+      "rejected_fields": 5
+    }
+  ],
+  "secret_handoff_established": false
+}

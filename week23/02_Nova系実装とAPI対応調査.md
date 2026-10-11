@@ -149,3 +149,8 @@ Folding/IVC adapterの存在と、元Witnessを共有しない継続APIを分離
 当該mainのraw Proofは7合成canaryを露出することを両Hで実行確認した。
 一般再帰の別方式は新しい観測のA/B/Cで秘密assignment非共有と最終native verifyに成功。
 HyperNovaのZK継続成立や全論文照合の完了とはしない。
+
+HyperNova IVCのcompile確認から実行へ進め、Nova/Ovaの両adapterで各20stepの上流テストが成功。
+[11](11_HyperNova_IVCとブラインド状態引継ぎの検証.md)ではrandom LCCCS foldも検証できたが、
+既存IVC Proofへの差替えはhash binding、hashだけの更新はassignment relationで拒否された。
+追加ZK binderと次段回路でのbinding検証が残る。Folding成功を秘密継続成功とは扱わない。

@@ -1,0 +1,17 @@
+{
+  "branch_commit": "9c4e61f8d1a5be87c00f28838a0ef657a3cf479f",
+  "base_patch_manifest": "hypernova-current-and-secret.json",
+  "date": "2026-10-12",
+  "library_changes_this_experiment": false,
+  "sources_sha256": {
+    "week23/poc/hypernova-handoff/blinding.rs": "f3aa447b494afbe470ced5e9c76699994b10f269350ff77765c6b137001b1008",
+    "week23/poc/hypernova-handoff/README.md": "477161485c7978f09ab9841bae796cf4dcd1d0c6796e6a7e8fee337250cd2849",
+    "week23/poc/hypernova-handoff/handoff-relation.md": "f701513806b252c0db0f944bb1e060893aa0789fc6b8786a7ca171836e23afe1"
+  },
+  "preflight": {
+    "physical_GiB": 16,
+    "memory_pressure_free_percent": 56,
+    "swap_used_MiB": 5203.69
+  },
+  "source_of_proof_validity": "actual native IVC and NIMFS verifiers; no weakened checks"
+}

@@ -1,0 +1,13 @@
+   Compiling sonobe-primitives v0.1.0 (/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/sonobe-hypernova-fixed-v1/crates/primitives)
+   Compiling ark-grumpkin v0.6.0
+   Compiling sonobe-fs v0.1.0 (/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/sonobe-hypernova-fixed-v1/crates/fs)
+   Compiling sonobe-ivc v0.1.0 (/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/sonobe-hypernova-fixed-v1/crates/ivc)
+    Finished `release` profile [optimized] target(s) in 33.43s
+     Running unittests src/lib.rs (.cache/week23/target-hypernova-fixed/release/deps/sonobe_ivc-3f4ffffc1272cda1)
+
+running 2 tests
+test compilers::cyclefold::adapters::hypernova::tests::test_hypernova_nova ... ok
+test compilers::cyclefold::adapters::hypernova::tests::test_hypernova_ova ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 4 filtered out; finished in 22.68s
+

@@ -36,3 +36,5 @@ GitHub Issueの状態変更は行っていない。
 2026-10-12追加：[08 ZKP→Besu統合・資格管理](08_ZKP検証からBesu履歴への統合と資格管理.md)、[09 BCなし4レプリカ・Besu障害比較](09_BCなし4レプリカとBesu障害比較.md)。
 
 指定P0の実行結果：[10 HyperNova実行・秘密引継ぎ・最新Sonobe](10_HyperNova実行と最新Sonobe安全性と秘密引継ぎ.md)。
+
+HyperNova固有の継続ゲート追加：[11 IVC実行とblinding/state binding](11_HyperNova_IVCとブラインド状態引継ぎの検証.md)。
