@@ -1,0 +1,36 @@
+name: Shared ZKP correctness and security
+on:
+  pull_request:
+    paths:
+      - 'aggregator/**'
+      - 'contracts/**'
+      - 'circuits/**'
+      - '.github/workflows/shared-quality.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'aggregator/**'
+      - 'contracts/**'
+      - 'circuits/**'
+      - '.github/workflows/shared-quality.yml'
+  schedule:
+    - cron: '23 2 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: shared-zkp-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  proof-and-contracts:
+    uses: SMRI2170/SMRI2170/.github/workflows/reusable-zkp.yml@02c792695426aed3e45333abf64d2fc3de9a505f
+    permissions:
+      contents: read
+    with:
+      go_directory: aggregator
+      contracts_directory: contracts
+      run_race_detector: false
+  security:
+    uses: SMRI2170/SMRI2170/.github/workflows/reusable-security.yml@02c792695426aed3e45333abf64d2fc3de9a505f
+    permissions:
+      contents: read
