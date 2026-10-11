@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-12",
+  "sources_sha256": {
+    "week23/poc/integrated-history/run.py": "4329b296707ad5c827d01ef3a03a1a68ceb40a5febe4e84c7c6ef905dc506a2e",
+    "week23/poc/integrated-history/receipt_worker.py": "5c3fd02773cb2dd1d03d885b260df9012b417e19bfd20e07f8fcb8e79c809c85",
+    "week23/poc/integrated-history/experiment.cjs": "c8fae08bd0079875e6bf40417b93b1e8e6a551195d97b4f4ba2dd50fda8ca25f",
+    "week23/poc/integrated-history/VerifiedHistory.sol": "8367fe01b94c67864db5ef0d8fbc8cb467b1e3f973af8373bbb8f1f624b4e699",
+    "week23/poc/quorum-log/run.py": "dd59979cd4d89402f12418cae11b622b32efa6112c3043e8d18f0ad185ed2cac",
+    "week23/poc/quorum-log/replica.py": "f7e8ff330e6a0ff5fe01778e29a41e619b4d00bc0e44d6e693a27760b0d99bef",
+    "week23/poc/network-faults/submit.cjs": "4e69f961c296393147142aa0297b6f0da3ae080d564909ac49e60ffa4b1bba34",
+    "week23/poc/network-faults/run.py": "625a17104a1170d68ffdbd4b268948816b2657d0ad9844f6ae63df67b919326b",
+    "week23/poc/network-faults/proxy.py": "f0e8970bdc752d7f575a456ec6058321a25866e1e979c276aa50b70d67d10f73",
+    "week23/poc/private-pcd/inspect.go": "517f03d38fe3d5547913f6b2df06edac979f3bf892880727532fc04cc7cb95ad",
+    "week23/poc/besu-local/native_qbft.py": "f8214185425cd9857224ef2444bbff7bd6512069b4b224013586ea3291246094",
+    "week23/poc/private-pcd/go.mod": "e98047cd1670a4721e31523e476340905d403d79838be6f44a426d8734a98ff9",
+    "week23/poc/private-pcd/go.sum": "1e44c1a5e3c186a0593d503a9e98dec9892096ccf39bce80725cb254a26da556",
+    "contracts/package-lock.json": "07c94cd4f6b4a6ab95f34594d4794aabcaaa41794be8774550dc999b083698d7",
+    "week23/poc/quorum-log/security_check.py": "b8d6e955f2c6d1dab4ab1ddbbf9482f6f1c254df8d4d3aaa7ab3593a58a5930e"
+  },
+  "go_version": "go version go1.26.5 darwin/arm64",
+  "besu_manifest": "besu.json",
+  "compiler": "solc 0.8.26, evmVersion paris",
+  "fixtures": "previous synthetic Groth16 proofs, deliberately preserved; verify-only; trusted VKs local; no setup/prove/cache PK reuse",
+  "scope": "research PoC, one host/operator; no onchain Groth16"
+}

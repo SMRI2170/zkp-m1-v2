@@ -1,0 +1,85 @@
+{
+  "host": "one Mac arm64; one operator; actual four Besu 26.9.0 processes",
+  "transport": "12 directed loopback TCP proxies; static peers, discovery disabled",
+  "tests": [
+    {
+      "case": "normal",
+      "receipt_ms": 2520.6380000000017,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "partition-2-2",
+      "height_before": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "height_after": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "observation_seconds": 12,
+      "pending_no_receipt": true
+    },
+    {
+      "case": "heal-2-2",
+      "all_four_same_receipt": true,
+      "recovery_receipt_ms": 43174.814333
+    },
+    {
+      "case": "partition-3-1",
+      "majority_progress": true,
+      "minority_height_before": 5,
+      "minority_height_after": 5,
+      "majority_receipt_ms": 3807.7735829999992,
+      "minority_no_receipt": true
+    },
+    {
+      "case": "heal-3-1",
+      "all_four_same_receipt": true,
+      "catchup_receipt_ms": 42018.721500000014
+    },
+    {
+      "case": "p2p-delay-200ms-per-read",
+      "all_four_same_receipt": true,
+      "receipt_ms": 2980.7328329999905
+    },
+    {
+      "case": "raw-transaction-replay",
+      "outcome": "RPC rejection: {'code': -32001, 'message': 'Nonce too low'}",
+      "no_extra_decision_event": true
+    },
+    {
+      "case": "competing-valid-receipt",
+      "status": 0,
+      "all_four_same_receipt": true,
+      "receipt_ms": 808.6134160000142
+    },
+    {
+      "case": "ingress-refusal",
+      "http_status": 403,
+      "forwarded_to_besu": false,
+      "all_four_no_transaction": true,
+      "proof_status": "VALID_OFFCHAIN_PRECONDITION"
+    },
+    {
+      "case": "alternate-ingress-after-refusal",
+      "all_four_same_receipt": true,
+      "receipt_ms": 1481.83958300001
+    }
+  ],
+  "all_four_same_event_history": true,
+  "decision_events": 5,
+  "proxied_bytes": 697794,
+  "denied_connection_attempts": 0,
+  "inputs": "same normal/outlier verified evidence digests as integrated-history; fresh unanimous 3/3 signature fixture for history-only comparison",
+  "limits": [
+    "200ms delay applies per TCP read/chunk, not a calibrated per-packet WAN delay",
+    "Ingress refusal is controlled harness policy, not a Byzantine Besu validator attack",
+    "No malicious validator signing/QBFT fork attack or independent organizations",
+    "No ZKP/proof/VK deployed; signatures do not prove RF truth or complete observations"
+  ]
+}

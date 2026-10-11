@@ -47,7 +47,7 @@ def percentile(values, fraction):
     return values[low] + (values[high] - values[low]) * (position - low)
 
 
-def main(experiment=None):
+def main(experiment=None, static_nodes=None):
     for port in RPC_PORTS + P2P_PORTS:
         with socket.socket() as s:
             s.bind(('127.0.0.1', port))
@@ -83,7 +83,8 @@ def main(experiment=None):
         for i in range(4):
             data = BASE / ('node' + str(i + 1))
             data.mkdir(mode=0o700)
-            (data / 'static-nodes.json').write_text(json.dumps([e for j, e in enumerate(enodes) if j != i]))
+            peers = static_nodes(i, enodes) if static_nodes else [e for j, e in enumerate(enodes) if j != i]
+            (data / 'static-nodes.json').write_text(json.dumps(peers))
             log = (BASE / ('node' + str(i + 1) + '.log')).open('w')
             logs.append(log)
             command = [str(BESU), '--genesis-file=' + str(BASE / 'network/genesis.json'), '--data-path=' + str(data),

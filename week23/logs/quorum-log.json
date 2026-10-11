@@ -1,0 +1,107 @@
+{
+  "replicas": 4,
+  "quorum": 3,
+  "protocol": "fixed-leader, two-phase signed receipt quorum log; NO blockchain, view-change or general PBFT claim",
+  "tests": [
+    {
+      "case": "normal",
+      "progress": true,
+      "same_decision": true,
+      "deciding_replicas": 4,
+      "minority_catchup": false,
+      "replay_idempotent": false,
+      "wall_ms": 48.09508299999998,
+      "ipc_request_response_bytes": 21759,
+      "ipc_request_count": 13
+    },
+    {
+      "case": "one-follower-offline",
+      "progress": true,
+      "same_decision": true,
+      "deciding_replicas": 3,
+      "minority_catchup": false,
+      "replay_idempotent": false,
+      "wall_ms": 47.499083999999996,
+      "ipc_request_response_bytes": 13855,
+      "ipc_request_count": 10
+    },
+    {
+      "case": "two-offline",
+      "progress": false,
+      "quorum_rejected": true,
+      "wall_ms": 44.36745900000005,
+      "ipc_request_response_bytes": 3666,
+      "ipc_request_count": 4
+    },
+    {
+      "case": "leader-offline",
+      "progress": false,
+      "reason": "fixed leader; no view change implemented",
+      "wall_ms": 66.93974999999996,
+      "ipc_request_response_bytes": 0,
+      "ipc_request_count": 0
+    },
+    {
+      "case": "partition-2-2",
+      "progress": false,
+      "two_competing_minority_qcs_rejected": true,
+      "healed_liveness": "not guaranteed without a view-change/unlock protocol",
+      "wall_ms": 39.43112499999996,
+      "ipc_request_response_bytes": 7332,
+      "ipc_request_count": 8
+    },
+    {
+      "case": "partition-3-1",
+      "progress": true,
+      "same_decision": true,
+      "deciding_replicas": 3,
+      "minority_catchup": true,
+      "replay_idempotent": false,
+      "wall_ms": 39.98716700000004,
+      "ipc_request_response_bytes": 15402,
+      "ipc_request_count": 11
+    },
+    {
+      "case": "delay-reorder-replay",
+      "progress": true,
+      "same_decision": true,
+      "deciding_replicas": 4,
+      "minority_catchup": false,
+      "replay_idempotent": true,
+      "wall_ms": 258.26979099999994,
+      "ipc_request_response_bytes": 25149,
+      "ipc_request_count": 15
+    },
+    {
+      "case": "byzantine-equivocation",
+      "one_decision": true,
+      "conflicting_vote_refused": true,
+      "wall_ms": 54.83845799999998,
+      "ipc_request_response_bytes": 16644,
+      "ipc_request_count": 14
+    },
+    {
+      "case": "restart-lock",
+      "restart_double_vote_refused": true,
+      "wall_ms": 81.89754199999999,
+      "ipc_request_response_bytes": 3069,
+      "ipc_request_count": 4
+    },
+    {
+      "case": "invalid-signature",
+      "modified_signed_proposal_rejected": true,
+      "wall_ms": 44.921750000000095,
+      "ipc_request_response_bytes": 1307,
+      "ipc_request_count": 2
+    }
+  ],
+  "inputs": "same independently verified recursive normal/outlier receipt hashes from integrated-history.json",
+  "network": "coordinator-controlled delivery schedule to four independent local processes; no measured real WAN",
+  "limits": [
+    "Transport bytes include JSON/stdio harness requests, not WAN protocol traffic",
+    "A first prepare vote locks the slot permanently; safety is conservative, liveness can stall after split votes",
+    "Leader failure does not recover: no view change",
+    "Uses locally preverified receipts as application precondition; no new proof generation",
+    "Not independent operators, production BFT, sensor truth or hardware authentication"
+  ]
+}

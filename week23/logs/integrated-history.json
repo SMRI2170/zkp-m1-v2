@@ -1,0 +1,369 @@
+{
+  "compiler": "0.8.26+commit.8a97fa7a.Emscripten.clang",
+  "worker_rejections": [
+    {
+      "case": "tampered-proof",
+      "rejected": true,
+      "reason": "native Groth16 verification rejected"
+    },
+    {
+      "case": "tampered-public",
+      "rejected": true,
+      "reason": "native Groth16 verification rejected"
+    },
+    {
+      "case": "wrong-proof-session",
+      "rejected": true,
+      "reason": "wrong proof session/policy/RID/bucket"
+    },
+    {
+      "case": "wrong-proof-policy",
+      "rejected": true,
+      "reason": "wrong proof session/policy/RID/bucket"
+    },
+    {
+      "case": "expired-observation",
+      "rejected": true,
+      "reason": "expired/future observation (synthetic clock)"
+    },
+    {
+      "case": "future-observation",
+      "rejected": true,
+      "reason": "expired/future observation (synthetic clock)"
+    }
+  ],
+  "verified_certificates": [
+    {
+      "kind": "individual",
+      "verifier_pids": [
+        77376,
+        77400,
+        77433
+      ],
+      "verify_ms": [
+        101.892292,
+        102.42420800000001,
+        87.909875
+      ],
+      "evidence_sha256": "9f23647fb9b9ef25d426f7e320f14166ae5ffdfa8b99ac96193aa928027ac60d",
+      "proof_public_bytes": 1392,
+      "signature_ms": 3.014832999999271,
+      "public_status": {
+        "proof": "VALID_OFFCHAIN",
+        "rid_auth": "UNVERIFIED",
+        "physical_risk": "UNKNOWN"
+      }
+    },
+    {
+      "kind": "recursive",
+      "verifier_pids": [
+        77628,
+        77650,
+        77672
+      ],
+      "verify_ms": [
+        34.809290999999995,
+        32.035666000000006,
+        29.821749999999998
+      ],
+      "evidence_sha256": "85fcad17bd1e9e3eade0ba3848d6342ccf7ee0791684b0f850daf3576a1ed5eb",
+      "proof_public_bytes": 496,
+      "signature_ms": 2.3602090000003955,
+      "public_status": {
+        "proof": "VALID_OFFCHAIN",
+        "rid_auth": "UNVERIFIED",
+        "physical_risk": "UNKNOWN"
+      }
+    },
+    {
+      "kind": "recursive",
+      "verifier_pids": [
+        78144,
+        78166,
+        78188
+      ],
+      "verify_ms": [
+        33.757292,
+        33.118958,
+        33.344125000000005
+      ],
+      "evidence_sha256": "85fcad17bd1e9e3eade0ba3848d6342ccf7ee0791684b0f850daf3576a1ed5eb",
+      "proof_public_bytes": 496,
+      "signature_ms": 2.3667920000007143,
+      "public_status": {
+        "proof": "VALID_OFFCHAIN",
+        "rid_auth": "UNVERIFIED",
+        "physical_risk": "UNKNOWN"
+      }
+    },
+    {
+      "kind": "normal",
+      "verifier_pids": [
+        78728,
+        78750,
+        78772
+      ],
+      "verify_ms": [
+        64.80037499999999,
+        31.126708,
+        30.324125000000002
+      ],
+      "evidence_sha256": "945988b64c9e1f3176fe7a05640b2216f75ea4d6bd2933a844046a0c70bd01bd",
+      "proof_public_bytes": 496,
+      "signature_ms": 2.1542499999995925,
+      "public_status": {
+        "proof": "VALID_OFFCHAIN",
+        "rid_auth": "UNVERIFIED",
+        "physical_risk": "UNKNOWN"
+      }
+    },
+    {
+      "kind": "outlier",
+      "verifier_pids": [
+        78794,
+        78816,
+        78838
+      ],
+      "verify_ms": [
+        30.742167000000002,
+        30.257666999999998,
+        32.471666
+      ],
+      "evidence_sha256": "34da9b5c28f3b3c522d3bd122349279ec6c0aa04579615e4ab73661fe2cb327b",
+      "proof_public_bytes": 496,
+      "signature_ms": 1.985292000001209,
+      "public_status": {
+        "proof": "VALID_OFFCHAIN",
+        "rid_auth": "UNVERIFIED",
+        "physical_risk": "UNKNOWN"
+      }
+    },
+    {
+      "kind": "recursive",
+      "verifier_pids": [
+        79213,
+        79235,
+        79257
+      ],
+      "verify_ms": [
+        30.5515,
+        31.485166000000003,
+        31.027250000000002
+      ],
+      "evidence_sha256": "85fcad17bd1e9e3eade0ba3848d6342ccf7ee0791684b0f850daf3576a1ed5eb",
+      "proof_public_bytes": 496,
+      "signature_ms": 3.734792000002926,
+      "public_status": {
+        "proof": "VALID_OFFCHAIN",
+        "rid_auth": "UNVERIFIED",
+        "physical_risk": "UNKNOWN"
+      }
+    }
+  ],
+  "transactions": [
+    {
+      "case": "verified-independent-set",
+      "status": 1,
+      "gas_used": 86906,
+      "ms": 2026.9509580000004,
+      "block": 6,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "replay",
+      "status": 0,
+      "gas_used": 35142,
+      "ms": 1265.8904160000002,
+      "block": 7,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "wrong-session",
+      "status": 0,
+      "gas_used": 32255,
+      "ms": 1988.6134160000001,
+      "block": 8,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "wrong-policy",
+      "status": 0,
+      "gas_used": 31029,
+      "ms": 2027.063458999999,
+      "block": 9,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "signed-expired-envelope",
+      "status": 0,
+      "gas_used": 32474,
+      "ms": 1721.4735419999997,
+      "block": 10,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "rotate-epoch-2",
+      "status": 1,
+      "gas_used": 45251,
+      "ms": 1954.9377079999995,
+      "block": 11,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "old-epoch-certificate",
+      "status": 0,
+      "gas_used": 31069,
+      "ms": 2021.2609169999996,
+      "block": 12,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "missing-observer",
+      "status": 0,
+      "gas_used": 33745,
+      "ms": 1797.3156249999993,
+      "block": 13,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "duplicate-observer",
+      "status": 0,
+      "gas_used": 54502,
+      "ms": 1905.215791999999,
+      "block": 14,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "unknown-observer",
+      "status": 0,
+      "gas_used": 64348,
+      "ms": 2026.3322079999998,
+      "block": 15,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "changed-evidence",
+      "status": 0,
+      "gas_used": 49811,
+      "ms": 1960.1462079999983,
+      "block": 16,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "verified-recursive-final",
+      "status": 1,
+      "gas_used": 86947,
+      "ms": 2128.191167000001,
+      "block": 17,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "rotate-epoch-3",
+      "status": 1,
+      "gas_used": 45251,
+      "ms": 1899.628499999999,
+      "block": 18,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "verified-fork-0",
+      "status": 0,
+      "gas_used": 35142,
+      "ms": 1388.5199169999978,
+      "block": 19,
+      "index": 1,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "verified-fork-1",
+      "status": 1,
+      "gas_used": 86930,
+      "ms": 1388.5222920000015,
+      "block": 19,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "double-sign-evidence",
+      "status": 1,
+      "gas_used": 75435,
+      "ms": 2077.0280830000047,
+      "block": 20,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "replace-observer-epoch-4",
+      "status": 1,
+      "gas_used": 48051,
+      "ms": 1842.0534170000028,
+      "block": 21,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "removed-observer",
+      "status": 0,
+      "gas_used": 56191,
+      "ms": 1755.4682909999974,
+      "block": 22,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "revoke-active-observer",
+      "status": 1,
+      "gas_used": 45086,
+      "ms": 1979.0357079999958,
+      "block": 23,
+      "index": 0,
+      "all_four_same_receipt": true
+    },
+    {
+      "case": "revoked-observer",
+      "status": 0,
+      "gas_used": 56179,
+      "ms": 2052.4277500000026,
+      "block": 24,
+      "index": 0,
+      "all_four_same_receipt": true
+    }
+  ],
+  "conflict_exactly_one_accepted": true,
+  "all_four_same_states": true,
+  "all_four_same_history": true,
+  "decision_events": 3,
+  "epoch_changes": 3,
+  "double_sign_detected_and_revoked": true,
+  "durable_signer_restart_refused_double_vote": true,
+  "session_golden_vectors": {
+    "individual": "0x0e20cf7928e9ef3c49eb1fa5c2b27506b4f5d4d553d52cc30959996310c0d9c5",
+    "recursive": "0xdb0262b304f2f50971b2ca8c912303f38babe8939584e9753652bb2727369e08"
+  },
+  "signature_bytes": 195,
+  "limits": [
+    "Groth16 is checked by local offchain verifiers, not the contract",
+    "Fixed synthetic proof session 777/policy 20261011; no dynamic recursive circuit membership",
+    "Qualification authority can replace or censor observers; three-of-three receipt requires all three",
+    "Proof observation age uses synthetic clock; envelope deadline uses Besu block timestamp",
+    "Conflicting valid proofs describe different synthetic observations, not forged cryptography",
+    "No release setup keys, VKs, proofs or private assignments deployed or published"
+  ],
+  "host": "one Mac arm64, four loopback Besu validators, one operator",
+  "besu_version": "26.9.0",
+  "proof_generation": "previous synthetic fixtures; reverified now, no new setup/prove",
+  "guarantee": "onchain verifies receipt signatures/digests, NOT Groth16 or physical truth"
+}

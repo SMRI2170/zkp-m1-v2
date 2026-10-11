@@ -1,0 +1,54 @@
+{
+  "tests": [
+    {
+      "case": "wrong-slot",
+      "rejected": true,
+      "reason": "session/epoch/policy/history"
+    },
+    {
+      "case": "wrong-epoch",
+      "rejected": true,
+      "reason": "session/epoch/policy/history"
+    },
+    {
+      "case": "wrong-policy",
+      "rejected": true,
+      "reason": "session/epoch/policy/history"
+    },
+    {
+      "case": "wrong-parent",
+      "rejected": true,
+      "reason": "session/epoch/policy/history"
+    },
+    {
+      "case": "wrong-evidence",
+      "rejected": true,
+      "reason": "not a verified evidence receipt"
+    },
+    {
+      "case": "wrong-leader",
+      "rejected": true,
+      "reason": "wrong leader"
+    },
+    {
+      "case": "mixed-prepare-QC",
+      "rejected": true,
+      "reason": "mixed candidates"
+    },
+    {
+      "case": "duplicate-prepare-QC",
+      "rejected": true,
+      "reason": "duplicate vote"
+    },
+    {
+      "case": "wrong-phase-QC",
+      "rejected": true,
+      "reason": "domain/phase"
+    },
+    {
+      "case": "two-vote-decision",
+      "rejected": true,
+      "reason": "no quorum"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "tests": [
+    {
+      "case": "individual",
+      "verified": true,
+      "sha256": "9f23647fb9b9ef25d426f7e320f14166ae5ffdfa8b99ac96193aa928027ac60d"
+    },
+    {
+      "case": "recursive",
+      "verified": true,
+      "sha256": "85fcad17bd1e9e3eade0ba3848d6342ccf7ee0791684b0f850daf3576a1ed5eb"
+    },
+    {
+      "case": "normal",
+      "verified": true,
+      "sha256": "945988b64c9e1f3176fe7a05640b2216f75ea4d6bd2933a844046a0c70bd01bd"
+    },
+    {
+      "case": "outlier",
+      "verified": true,
+      "sha256": "34da9b5c28f3b3c522d3bd122349279ec6c0aa04579615e4ab73661fe2cb327b"
+    },
+    {
+      "case": "tampered-proof",
+      "rejected": true,
+      "reason": "native Groth16 verification rejected"
+    },
+    {
+      "case": "tampered-public",
+      "rejected": true,
+      "reason": "native Groth16 verification rejected"
+    },
+    {
+      "case": "sender-owned-trust-pins-ignored",
+      "verified_against_receiver_owned_pin": true
+    }
+  ]
+}
