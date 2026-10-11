@@ -23,7 +23,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   proof-and-contracts:
-    uses: SMRI2170/SMRI2170/.github/workflows/reusable-zkp.yml@02c792695426aed3e45333abf64d2fc3de9a505f
+    uses: SMRI2170/SMRI2170/.github/workflows/reusable-zkp.yml@7cdeb265e17900c8475685198d19ff029bd51cda
     permissions:
       contents: read
     with:
@@ -31,6 +31,6 @@ jobs:
       contracts_directory: contracts
       run_race_detector: false
   security:
-    uses: SMRI2170/SMRI2170/.github/workflows/reusable-security.yml@02c792695426aed3e45333abf64d2fc3de9a505f
+    uses: SMRI2170/SMRI2170/.github/workflows/reusable-security.yml@7cdeb265e17900c8475685198d19ff029bd51cda
     permissions:
       contents: read
