@@ -1,0 +1,21 @@
+20:42:31 DBG verifier done backend=groth16 curve=bn254 took=0.929459
+20:42:31 INF compiling circuit
+20:42:31 INF parsed circuit inputs nbPublic=9 nbSecret=83
+20:42:34 INF building constraint builder nbConstraints=1253359
+{"constraints":1253359,"ms":2827,"phase":"compile","stage":2}
+{"created":true,"phase":"pre-setup-witness","solver_checked":false,"stage":2}
+{"ms":286897,"phase":"setup","stage":2}
+20:47:41 DBG constraint system solver done nbConstraints=1253359 took=830.102208
+20:47:56 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=1253359 took=15219.767959
+20:47:56 DBG verifier done backend=groth16 curve=bn254 took=1.915375
+{"phase":"prove","pid":56177,"prove_ms":16050,"setup_ms":286897,"stage":2,"state":{"Version":1,"Session":777,"RID":424242,"Bucket":100001,"Policy":20261011,"Members":3,"Consistent":2,"Suspicious":0,"Steps":2},"verified":true,"verify_us":1972}
+20:47:56 ERR error="constraint #1 is not satisfied: 1 ⋅ 778 != 777" nbConstraints=1253359
+{"case":"session","phase":"negative-prover","rejected":true,"stage":2}
+20:47:57 ERR error="constraint #2 is not satisfied: 1 ⋅ 424243 != 424242" nbConstraints=1253359
+{"case":"rid","phase":"negative-prover","rejected":true,"stage":2}
+20:47:57 ERR error="constraint #4 is not satisfied: 1 ⋅ 0 != 20261011" nbConstraints=1253359
+{"case":"policy","phase":"negative-prover","rejected":true,"stage":2}
+20:47:57 ERR error="constraint #53866 is not satisfied: 1 ⋅ 0 != 3" nbConstraints=1253359
+{"case":"duplicate","phase":"negative-prover","rejected":true,"stage":2}
+20:47:57 ERR error="constraint #18 is not satisfied: 3 ⋅ 1 != 2" nbConstraints=1253359
+{"case":"count","phase":"negative-prover","rejected":true,"stage":2}

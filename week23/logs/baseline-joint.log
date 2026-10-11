@@ -1,0 +1,4 @@
+20:41:32 DBG verifier done backend=groth16 curve=bn254 took=0.928125
+20:41:32 DBG verifier done backend=groth16 curve=bn254 took=0.926042
+20:41:32 DBG verifier done backend=groth16 curve=bn254 took=0.939458
+{"all_verified":true,"baseline":"three-independent-groth16-joint-signatures","common_set_sha256":"08ad06f9820bebea28f458d5ffaa951bd74e131fe2300c384a40b84dd4670fc8","proof_public_bytes":1392,"signature_bytes":192,"signing_keys":"test-only in-memory","tampered_set_rejected":true}

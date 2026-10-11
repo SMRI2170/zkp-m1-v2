@@ -1,0 +1,64 @@
+20:49:35 DBG constraint system solver done nbConstraints=6420 took=1.451583
+20:49:35 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=44.455792
+20:49:35 DBG verifier done backend=groth16 curve=bn254 took=1.125792
+20:49:35 DBG constraint system solver done nbConstraints=6420 took=0.708959
+20:49:35 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=38.7045
+20:49:35 DBG verifier done backend=groth16 curve=bn254 took=1.106708
+20:49:35 DBG constraint system solver done nbConstraints=6420 took=0.7135
+20:49:35 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=40.135208
+20:49:35 DBG verifier done backend=groth16 curve=bn254 took=1.148625
+20:49:35 DBG constraint system solver done nbConstraints=6420 took=0.675833
+20:49:35 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=40.149875
+20:49:35 DBG verifier done backend=groth16 curve=bn254 took=1.21975
+20:49:35 DBG constraint system solver done nbConstraints=6420 took=0.808708
+20:49:35 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=45.502792
+20:49:35 DBG verifier done backend=groth16 curve=bn254 took=1.240583
+20:49:35 DBG constraint system solver done nbConstraints=6420 took=0.781209
+20:49:35 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=41.140333
+20:49:35 DBG verifier done backend=groth16 curve=bn254 took=1.29725
+20:49:35 DBG constraint system solver done nbConstraints=6420 took=0.802167
+20:49:35 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=47.936208
+20:49:35 DBG verifier done backend=groth16 curve=bn254 took=1.10125
+20:49:35 DBG constraint system solver done nbConstraints=6420 took=0.764958
+20:49:35 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=42.982709
+20:49:35 DBG verifier done backend=groth16 curve=bn254 took=1.336
+20:49:35 DBG constraint system solver done nbConstraints=6420 took=0.776584
+20:49:36 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=43.614917
+20:49:36 DBG verifier done backend=groth16 curve=bn254 took=1.058875
+20:49:36 DBG constraint system solver done nbConstraints=6420 took=0.843417
+20:49:36 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=40.261916
+20:49:36 DBG verifier done backend=groth16 curve=bn254 took=1.124292
+20:49:36 DBG constraint system solver done nbConstraints=6420 took=0.765625
+20:49:36 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=45.747833
+20:49:36 DBG verifier done backend=groth16 curve=bn254 took=1.269958
+20:49:36 DBG constraint system solver done nbConstraints=6420 took=0.749959
+20:49:36 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=41.820292
+20:49:36 DBG verifier done backend=groth16 curve=bn254 took=1.234584
+20:49:36 DBG constraint system solver done nbConstraints=6420 took=0.880167
+20:49:36 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=44.866666
+20:49:36 DBG verifier done backend=groth16 curve=bn254 took=1.284125
+20:49:36 DBG constraint system solver done nbConstraints=6420 took=0.775042
+20:49:36 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=41.276083
+20:49:36 DBG verifier done backend=groth16 curve=bn254 took=1.275542
+20:49:36 DBG constraint system solver done nbConstraints=6420 took=0.795042
+20:49:36 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=40.434584
+20:49:36 DBG verifier done backend=groth16 curve=bn254 took=1.045416
+20:49:36 DBG constraint system solver done nbConstraints=6420 took=1.563583
+20:49:36 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=40.903333
+20:49:36 DBG verifier done backend=groth16 curve=bn254 took=1.190208
+20:49:36 DBG constraint system solver done nbConstraints=6420 took=0.701542
+20:49:36 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=41.196041
+20:49:36 DBG verifier done backend=groth16 curve=bn254 took=1.122
+20:49:36 DBG constraint system solver done nbConstraints=6420 took=0.773084
+20:49:36 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=39.563166
+20:49:36 DBG verifier done backend=groth16 curve=bn254 took=1.121708
+20:49:36 DBG constraint system solver done nbConstraints=6420 took=0.717333
+20:49:36 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=36.425959
+20:49:36 DBG verifier done backend=groth16 curve=bn254 took=1.109208
+20:49:36 DBG constraint system solver done nbConstraints=6420 took=0.6775
+20:49:36 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=40.717625
+20:49:36 DBG verifier done backend=groth16 curve=bn254 took=1.112167
+20:49:36 DBG constraint system solver done nbConstraints=6420 took=0.639375
+20:49:36 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=37.908334
+20:49:36 DBG verifier done backend=groth16 curve=bn254 took=1.197791
+{"artifact_sha256":{"ccs.bin":"951e24b5013ee26ccfac7a803a7f8d3c5853a0fa58b43e10db2d1687f4ecc3ab","pk.bin":"11550fda0ef0cafbdd9377153bbb35644ec1dd90da5a7a764c67e7d9d17efab6","vk.bin":"f3c70e3e6ff904fd74b084324f32013a5304ce304f0c54177f9f01c62e22d90f"},"baseline":"singleton","condition":"shared local host; recursive setup may run concurrently","n":20,"prove_p50_ms":42.0845,"prove_p95_ms":48.823667,"stage":3,"verify_p50_ms":1.215125,"verify_p95_ms":1.363167,"warmup":1}

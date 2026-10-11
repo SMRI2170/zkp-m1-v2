@@ -1,0 +1,8 @@
+{"bytes":8441240,"hiding":false,"pid":29217,"prove_ms":132.242958,"role":"A","setup_ms":3119.950875,"verified":true}
+{"W_i_W_len":63662,"canary_matches":[{"W_i_indices":[],"field":0,"w_i_indices":[12]},{"W_i_indices":[],"field":1,"w_i_indices":[13]},{"W_i_indices":[],"field":2,"w_i_indices":[14]},{"W_i_indices":[],"field":3,"w_i_indices":[15]},{"W_i_indices":[],"field":4,"w_i_indices":[16]},{"W_i_indices":[],"field":5,"w_i_indices":[17]},{"W_i_indices":[],"field":6,"w_i_indices":[18]}],"cf_W_len":1347,"hiding":false,"pid":30366,"role":"B","verify_ms":69.801042,"w_i_W_len":63662}
+{"case":"valid","continue_ms":573.339334,"final_verify_ok":true,"hiding":false,"received_verify_ok":true,"restore_ok":true,"step_error":null,"step_ok":true}
+{"case":"count","continue_ms":476.91166699999997,"final_verify_ok":false,"hiding":false,"received_verify_ok":false,"restore_ok":true,"step_error":null,"step_ok":true}
+{"case":"rid","continue_ms":496.084417,"final_verify_ok":false,"hiding":false,"received_verify_ok":false,"restore_ok":true,"step_error":null,"step_ok":true}
+{"case":"bucket","continue_ms":466.012291,"final_verify_ok":false,"hiding":false,"received_verify_ok":false,"restore_ok":true,"step_error":null,"step_ok":true}
+{"case":"witness","continue_ms":485.074583,"final_verify_ok":false,"hiding":false,"received_verify_ok":false,"restore_ok":true,"step_error":null,"step_ok":true}
+{"case":"commitment","continue_ms":497.483417,"final_verify_ok":true,"hiding":false,"received_verify_ok":true,"restore_ok":true,"step_error":null,"step_ok":true}

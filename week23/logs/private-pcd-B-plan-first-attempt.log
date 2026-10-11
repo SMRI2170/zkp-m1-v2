@@ -1,0 +1,7 @@
+20:41:14 DBG verifier done backend=groth16 curve=bn254 took=1.0035
+20:41:14 INF compiling circuit
+20:41:14 INF parsed circuit inputs nbPublic=9 nbSecret=83
+20:41:17 INF building constraint builder nbConstraints=1253359
+{"constraints":1253359,"ms":2837,"phase":"compile","stage":2}
+20:41:17 ERR error="placeholder function: to be replaced by commitment computation" nbConstraints=1253359
+pre-setup solver: placeholder function: to be replaced by commitment computation

@@ -1,0 +1,25 @@
+[package]
+name = "week23-witness-transfer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+folding-schemes = { path = "../../../.cache/week23/sources/sonobe-repro/folding-schemes" }
+ark-bn254 = { version = "=0.6.0", features = ["r1cs"] }
+ark-grumpkin = { version = "=0.6.0", features = ["r1cs"] }
+ark-ff = "=0.6.0"
+ark-r1cs-std = "=0.6.0"
+ark-relations = "=0.6.0"
+ark-crypto-primitives = { version = "=0.6.0", features = ["constraints", "sponge", "crh"] }
+ark-serialize = "=0.6.0"
+rand = "0.8.5"
+serde_json = "1"
+ark-ec = "=0.6.0"
+
+[features]
+resume-api-probe = []
+
+[[bin]]
+name = "resume-api-probe"
+path = "probes/resume_randomized.rs"
+required-features = ["resume-api-probe"]

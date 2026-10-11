@@ -1,0 +1,83 @@
+
+> uav-attestation-contracts@1.0.0 test
+> hardhat test
+
+
+
+  Spike C+#3a: 集約証明のオンチェーン検証（定数gas / 登録Root束縛）
+      集約検証 gas = 354454  (N=3を1回で検証／台数非依存)
+    ✔ 正しい集約証明は1回の検証で通り、gas を計測 (54ms)
+    ✔ 公開入力(consistent/suspicious)を偽ると revert
+    ✔ #3a: 登録Root を偽ると revert（未登録端末の集約を弾く）
+    ✔ proof を改ざんすると revert
+
+  AttestationRegistry (M1, K=3)
+    ✔ legacy drone_auth_ok=0 flag is rejected by the registry
+    ✔ M3: 未登録オペレータは拒否
+    ✔ M3: 古い freshness(リプレイ)は拒否
+    ✔ K 台の相異なる登録端末が揃うと consensus 成立
+    ✔ 同一端末の二重提出は計上されない
+    ✔ 未登録端末は拒否
+    ✔ within30_and_detected != 1 は拒否
+    ✔ 無効な証明は拒否（verifier=false）
+    ✔ 別ドローンは別グループとして数え、混ぜても consensus しない
+    ✔ K 台が矛盾(consistency_ok=0)を検出 → SpoofAlert
+    ✔ 整合と矛盾が混在: 整合K台で trusted, 矛盾は別カウント
+    ✔ 別時間窓は別グループ
+
+  E2E: 実証明 → 実 Groth16Verifier → AttestationRegistry (K=3)
+    ✔ 実証明: 整合2台で trusted 合意、詐称1台は suspicious
+    ✔ 改ざんした public signal は実 verifier が弾く
+
+  final-attestation-v1 public-input ABI
+    ✔ uses the fixed nine-field public-input order
+    ✔ derives sessionId with Solidity abi.encode semantics, not packed encoding
+    ✔ rejects values outside the BN254 scalar field
+    ✔ rejects malformed v1 input ranges before calling a verifier
+
+  FinalAttestationRegistry (M2 final record)
+    ✔ 集約 proof を検証し、意味のある最終レコードと Finalized event を残す
+    ✔ 閾値未満なら Undetermined として残す
+    ✔ 登録端末 Root が現在の Root と違えば、検証前に拒否する
+    ✔ 同じセッションの再確定と、同じ proof の別セッションへの付け替えを拒否する
+    ✔ 整合と矛盾がどちらも閾値以上の、意味の衝突する結果を拒否する
+    ✔ 無効な集約 proof は最終レコードにできない
+
+  FinalAttestationRegistryV1
+    ✔ v1 proofを検証し、versionedな最終recordを不変に保存する
+    ✔ policy、member root、入力versionが認可条件を満たさなければ拒否する
+    ✔ 同一sessionとproofの再利用を拒否し、policy違いは別sessionとして扱う
+    ✔ verifierが拒否したproofは確定recordにならない
+
+  FinalAttestationRegistryV2
+    ✔ 10入力のV2 proofを検証し、profile-set rootと限定的な結果コードを保存する
+    ✔ version、canonical profile-set root、policy、member root、empty batchを検査する
+    ✔ uint32を超える正準profile-set rootをそのまま保存する
+    ✔ stale/future time bucketsをlive registry窓で拒否する
+    ✔ 同一sessionとproofの再利用を拒否する
+    ✔ verifierが拒否したproofを確定しない
+
+  IFinalAttestationVerifierV1
+    ✔ uses the fixed nine-input ABI and rejects malformed inputs
+
+  generated FinalBN verifier compiler
+    ✔ requires all ten FinalBNV2 public inputs to be canonical BN254 scalars
+    ✔ requires the FinalBNV2 artifact quorum to match the independently approved value
+    ✔ requires the FinalBNV2 artifact verifier hash to match an independent approval
+    ✔ compiles only the v1 verifyProof(bytes,uint256[9]) boundary (253ms)
+    ✔ rejects a verifier with a different public-input width
+    ✔ compiles only the v2 verifyProof(bytes,uint256[10]) boundary (97ms)
+
+  Governance: Ownable2Step + Timelock
+    ✔ 2段階の所有権移転（transfer→pending→accept）
+    ✔ 移転後、旧ownerは onlyOwner を呼べない
+    ✔ owner=Timelock: 方針変更は遅延を経てのみ実行できる
+
+
+  48 passing (1s)
+
+npm notice
+npm notice New major version of npm available! 11.16.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

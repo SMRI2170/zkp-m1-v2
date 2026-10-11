@@ -1,0 +1,6 @@
+20:34:45 DBG verifier done backend=groth16 curve=bn254 took=0.961542
+20:34:45 INF compiling circuit
+20:34:45 INF parsed circuit inputs nbPublic=9 nbSecret=83
+20:34:48 INF building constraint builder nbConstraints=1253359
+{"constraints":1253359,"ms":2952,"phase":"compile","stage":2}
+can't set fr.Element from type expr.LinearExpression[github.com/consensys/gnark/constraint.U64]

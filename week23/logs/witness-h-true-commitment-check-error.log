@@ -1,0 +1,4 @@
+
+thread 'main' (35649746) panicked at src/main.rs:233:16:
+assertion failed: row["received_verify_ok"] == false
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

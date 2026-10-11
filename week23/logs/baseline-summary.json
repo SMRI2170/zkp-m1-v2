@@ -1,0 +1,200 @@
+[
+  {
+    "constraints": 6420,
+    "ms": 24,
+    "phase": "compile",
+    "stage": 1
+  },
+  {
+    "phase": "pre-setup-solver",
+    "stage": 1,
+    "valid": true
+  },
+  {
+    "ms": 877,
+    "phase": "setup",
+    "stage": 1
+  },
+  {
+    "phase": "prove",
+    "pid": 53367,
+    "prove_ms": 32,
+    "setup_ms": 877,
+    "stage": 1,
+    "state": {
+      "Version": 1,
+      "Session": 777,
+      "RID": 424242,
+      "Bucket": 100001,
+      "Policy": 20261011,
+      "Members": 1,
+      "Consistent": 1,
+      "Suspicious": 0,
+      "Steps": 1
+    },
+    "verified": true,
+    "verify_us": 1010
+  },
+  {
+    "case": "session",
+    "phase": "negative-solver",
+    "rejected": true,
+    "stage": 1
+  },
+  {
+    "case": "rid",
+    "phase": "negative-solver",
+    "rejected": true,
+    "stage": 1
+  },
+  {
+    "case": "policy",
+    "phase": "negative-solver",
+    "rejected": true,
+    "stage": 1
+  },
+  {
+    "case": "duplicate",
+    "phase": "negative-solver",
+    "rejected": true,
+    "stage": 1
+  },
+  {
+    "case": "count",
+    "phase": "negative-solver",
+    "rejected": true,
+    "stage": 1
+  },
+  {
+    "constraints": 6420,
+    "ms": 25,
+    "phase": "compile",
+    "stage": 2
+  },
+  {
+    "phase": "pre-setup-solver",
+    "stage": 2,
+    "valid": true
+  },
+  {
+    "ms": 891,
+    "phase": "setup",
+    "stage": 2
+  },
+  {
+    "phase": "prove",
+    "pid": 53368,
+    "prove_ms": 32,
+    "setup_ms": 891,
+    "stage": 2,
+    "state": {
+      "Version": 1,
+      "Session": 777,
+      "RID": 424242,
+      "Bucket": 100001,
+      "Policy": 20261011,
+      "Members": 2,
+      "Consistent": 1,
+      "Suspicious": 0,
+      "Steps": 1
+    },
+    "verified": true,
+    "verify_us": 944
+  },
+  {
+    "case": "session",
+    "phase": "negative-solver",
+    "rejected": true,
+    "stage": 2
+  },
+  {
+    "case": "rid",
+    "phase": "negative-solver",
+    "rejected": true,
+    "stage": 2
+  },
+  {
+    "case": "policy",
+    "phase": "negative-solver",
+    "rejected": true,
+    "stage": 2
+  },
+  {
+    "case": "duplicate",
+    "phase": "negative-solver",
+    "rejected": true,
+    "stage": 2
+  },
+  {
+    "case": "count",
+    "phase": "negative-solver",
+    "rejected": true,
+    "stage": 2
+  },
+  {
+    "constraints": 6420,
+    "ms": 23,
+    "phase": "compile",
+    "stage": 3
+  },
+  {
+    "phase": "pre-setup-solver",
+    "stage": 3,
+    "valid": true
+  },
+  {
+    "ms": 908,
+    "phase": "setup",
+    "stage": 3
+  },
+  {
+    "phase": "prove",
+    "pid": 53459,
+    "prove_ms": 35,
+    "setup_ms": 908,
+    "stage": 3,
+    "state": {
+      "Version": 1,
+      "Session": 777,
+      "RID": 424242,
+      "Bucket": 100001,
+      "Policy": 20261011,
+      "Members": 4,
+      "Consistent": 0,
+      "Suspicious": 1,
+      "Steps": 1
+    },
+    "verified": true,
+    "verify_us": 971
+  },
+  {
+    "case": "session",
+    "phase": "negative-solver",
+    "rejected": true,
+    "stage": 3
+  },
+  {
+    "case": "rid",
+    "phase": "negative-solver",
+    "rejected": true,
+    "stage": 3
+  },
+  {
+    "case": "policy",
+    "phase": "negative-solver",
+    "rejected": true,
+    "stage": 3
+  },
+  {
+    "case": "duplicate",
+    "phase": "negative-solver",
+    "rejected": true,
+    "stage": 3
+  },
+  {
+    "case": "count",
+    "phase": "negative-solver",
+    "rejected": true,
+    "stage": 3
+  }
+]

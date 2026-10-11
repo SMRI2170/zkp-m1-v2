@@ -1,0 +1,6 @@
+20:48:08 DBG verifier done backend=groth16 curve=bn254 took=2.064833
+20:48:08 INF compiling circuit
+20:48:08 INF parsed circuit inputs nbPublic=9 nbSecret=91
+20:48:11 INF building constraint builder nbConstraints=1706641
+{"constraints":1706641,"ms":3693,"phase":"compile","stage":3}
+{"created":true,"phase":"pre-setup-witness","solver_checked":false,"stage":3}

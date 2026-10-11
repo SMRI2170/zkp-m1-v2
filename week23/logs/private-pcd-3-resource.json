@@ -1,0 +1,9 @@
+{
+  "stage": 3,
+  "exit_code": 0,
+  "peak_rss_bytes": 3368435712,
+  "elapsed_s": 420.774863,
+  "ceiling": null,
+  "rss_ceiling_GiB": 4.5,
+  "swap_ceiling_MiB": 7500
+}

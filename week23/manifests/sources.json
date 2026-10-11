@@ -1,0 +1,47 @@
+{
+  "retrieved": "2026-10-11",
+  "original_poc_revision": "not recorded in tracked files; not recovered",
+  "repositories": {
+    "sonobe-main": {
+      "url": "https://github.com/privacy-ethereum/sonobe",
+      "commit": "7f042351e73d38f99c05167ba41f1e282178b067"
+    },
+    "sonobe-legacy": {
+      "url": "https://github.com/privacy-ethereum/sonobe",
+      "commit": "9b7dd34f0e0341046baeabc6f900f5ee63007f18"
+    },
+    "microsoft-nova": {
+      "url": "https://github.com/microsoft/Nova",
+      "commit": "01b1e2d662a847ed7029770ecbaf6687398899dd"
+    }
+  },
+  "legacy_patch_sha256": "a6f966fc297e663798f953746e6d81aef1abea6a1f6b940ae3811e992e7e4e9e",
+  "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "lock_sha256": "663f0e6e83cc598bc114278399d109727a90b01a689bdaaea131ecc3d26112fb",
+  "private_pcd": {
+    "go": "go version go1.26.5 darwin/arm64",
+    "gnark": "v0.16.3",
+    "gnark_crypto": "v0.21.0",
+    "module_sha256": "e98047cd1670a4721e31523e476340905d403d79838be6f44a426d8734a98ff9",
+    "go_sum_sha256": "1e44c1a5e3c186a0593d503a9e98dec9892096ccf39bce80725cb254a26da556"
+  },
+  "python_cryptography": "49.0.0",
+  "research_sources_sha256": {
+    "poc/witness-transfer/Cargo.lock": "663f0e6e83cc598bc114278399d109727a90b01a689bdaaea131ecc3d26112fb",
+    "poc/witness-transfer/Cargo.toml": "6588c198ce0d6b546d4305349f9dea523e7f2060df221e2f371501ce14136301",
+    "poc/witness-transfer/prepare.py": "7b4443ed440f55f60211ed2ba7225289e9f63238fa3ef7647daf6c324bd117c4",
+    "poc/witness-transfer/probes/resume_randomized.rs": "af90e69a9a47da39cd90ac203b88f60cb9f48fd792cdd78b464b08680b222d9b",
+    "poc/witness-transfer/src/main.rs": "91a66d0ba2ecc5b36a24b75fec5b2cbce610c372caaaf23d26ff813bad2122f4",
+    "poc/private-pcd/baseline.go": "fe0f8f8e24e382ac3df5f748acce2696065e228ef525cfbf7a676400e9516ac6",
+    "poc/private-pcd/benchmark.go": "1f21a1dc627bbb3718a537b720683119e5e386b1907a5cadf8c2006ef9d27d8a",
+    "poc/private-pcd/check_transport.py": "7165993cc4f0f7a6638cda60fe04b4d24fd3a9d2b4f47412e87cebc3c6e5920f",
+    "poc/private-pcd/eligibility.go": "1d946fa014d729d8a050b295f4cc8bb8240469ea1f1bb65989a51f08486a8b85",
+    "poc/private-pcd/go.sum": "1e44c1a5e3c186a0593d503a9e98dec9892096ccf39bce80725cb254a26da556",
+    "poc/private-pcd/main.go": "71bc431282f123db6854eda9348531c1d123bd454f3ee4cd50662809a19e62b0",
+    "poc/private-pcd/relations.go": "03887ee0f59a0b78696745d1dd76b29557bca4908cba144333070a32fc798899",
+    "poc/private-pcd/requirements.txt": "d5b937414245e4fb32db031c55333d8b10144cdde9e4b9ec2f4574a887eb9ec9",
+    "poc/private-pcd/resource_run.py": "246feb332d7908975d3292a49c43d1a572502b9d52028e51016bdb76e21cafb3",
+    "poc/private-pcd/signed_transport.py": "619d8634de229bdb3d810efb7835ebecfb07c81a334ae2dfe133f19e35c25b1b"
+  }
+}

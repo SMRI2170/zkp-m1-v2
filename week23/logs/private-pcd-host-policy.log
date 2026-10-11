@@ -1,0 +1,15 @@
+20:45:20 DBG verifier done backend=groth16 curve=bn254 took=1.328083
+{"accepted":true,"case":"fresh","clock":"synthetic","expected_accept":true,"phase":"host-policy-test","stage":1}
+{"accepted":false,"case":"expired","clock":"synthetic","expected_accept":false,"phase":"host-policy-test","stage":1}
+{"accepted":false,"case":"future","clock":"synthetic","expected_accept":false,"phase":"host-policy-test","stage":1}
+{"accepted":false,"case":"replay","clock":"synthetic","expected_accept":false,"phase":"host-policy-test","stage":1}
+20:48:08 DBG verifier done backend=groth16 curve=bn254 took=2.723083
+{"accepted":true,"case":"fresh","clock":"synthetic","expected_accept":true,"phase":"host-policy-test","stage":2}
+{"accepted":false,"case":"expired","clock":"synthetic","expected_accept":false,"phase":"host-policy-test","stage":2}
+{"accepted":false,"case":"future","clock":"synthetic","expected_accept":false,"phase":"host-policy-test","stage":2}
+{"accepted":false,"case":"replay","clock":"synthetic","expected_accept":false,"phase":"host-policy-test","stage":2}
+20:55:38 DBG verifier done backend=groth16 curve=bn254 took=1.94775
+{"accepted":true,"case":"fresh","clock":"synthetic","expected_accept":true,"phase":"host-policy-test","stage":3}
+{"accepted":false,"case":"expired","clock":"synthetic","expected_accept":false,"phase":"host-policy-test","stage":3}
+{"accepted":false,"case":"future","clock":"synthetic","expected_accept":false,"phase":"host-policy-test","stage":3}
+{"accepted":false,"case":"replay","clock":"synthetic","expected_accept":false,"phase":"host-policy-test","stage":3}

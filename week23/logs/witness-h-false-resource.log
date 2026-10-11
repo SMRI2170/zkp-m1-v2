@@ -1,0 +1,40 @@
+        4.05 real         2.79 user         0.94 sys
+           371851264  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               38552  page reclaims
+                   0  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                   0  voluntary context switches
+                 865  involuntary context switches
+         36771489457  instructions retired
+         12033019622  cycles elapsed
+           316785384  peak memory footprint
+
+thread 'main' (35622992) panicked at src/main.rs:232:16:
+assertion failed: row["received_verify_ok"] == false
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+        5.63 real         6.08 user         0.28 sys
+           565231616  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               97774  page reclaims
+                 131  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                   3  voluntary context switches
+               15566  involuntary context switches
+         76046709056  instructions retired
+         20219845341  cycles elapsed
+           452445024  peak memory footprint

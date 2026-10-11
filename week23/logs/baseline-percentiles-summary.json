@@ -1,0 +1,56 @@
+[
+  {
+    "artifact_sha256": {
+      "ccs.bin": "fd6d1c8716dec410e60686a1025a4c7f9795050fdc43f9ee26a6e6e21bdec4e1",
+      "pk.bin": "6cee69f5c63c230b9c08d57d99647382741a003eb5e6cea6ed857d333e616600",
+      "vk.bin": "da48a8527c72c0d36b417157671ebd6d740cecb40018b35cda17601f851ced0c"
+    },
+    "baseline": "singleton",
+    "condition": "shared local host; recursive setup may run concurrently",
+    "n": 20,
+    "percentile_method": "linear interpolation over sorted samples",
+    "prove_p50_ms": 45.200583,
+    "prove_p95_ms": 53.091902099999984,
+    "stage": 1,
+    "verify_p50_ms": 1.3287499999999999,
+    "verify_p95_ms": 1.6964187499999996,
+    "warmup": 1,
+    "peak_rss_bytes": 26918912
+  },
+  {
+    "artifact_sha256": {
+      "ccs.bin": "5141ac862ecde4d242c851ec5f29478bf161dfa30b70d72c5535f265ec575962",
+      "pk.bin": "7f5a18de4d07c1498654ccd1fca293b5b5f25fda91e0f7be7ba59020d464c717",
+      "vk.bin": "7efaea8a8a7223f2b91f193930964445075a88f302220fbbab82d01a833dc7b8"
+    },
+    "baseline": "singleton",
+    "condition": "shared local host; recursive setup may run concurrently",
+    "n": 20,
+    "percentile_method": "linear interpolation over sorted samples",
+    "prove_p50_ms": 41.8293125,
+    "prove_p95_ms": 44.30373395,
+    "stage": 2,
+    "verify_p50_ms": 1.2040005,
+    "verify_p95_ms": 1.37076665,
+    "warmup": 1,
+    "peak_rss_bytes": 27131904
+  },
+  {
+    "artifact_sha256": {
+      "ccs.bin": "951e24b5013ee26ccfac7a803a7f8d3c5853a0fa58b43e10db2d1687f4ecc3ab",
+      "pk.bin": "11550fda0ef0cafbdd9377153bbb35644ec1dd90da5a7a764c67e7d9d17efab6",
+      "vk.bin": "f3c70e3e6ff904fd74b084324f32013a5304ce304f0c54177f9f01c62e22d90f"
+    },
+    "baseline": "singleton",
+    "condition": "shared local host; recursive setup may run concurrently",
+    "n": 20,
+    "percentile_method": "linear interpolation over sorted samples",
+    "prove_p50_ms": 42.035833,
+    "prove_p95_ms": 45.919943450000005,
+    "stage": 3,
+    "verify_p50_ms": 1.272229,
+    "verify_p95_ms": 1.6109603999999997,
+    "warmup": 1,
+    "peak_rss_bytes": 27328512
+  }
+]
