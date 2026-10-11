@@ -1,0 +1,9 @@
+{"accepted":true,"case":"valid","commitments_match":true,"continued":false,"hiding":false,"probe":"guarded_receive","raw_verify_ok":true}
+{"accepted":false,"case":"incoming_cmW","commitments_match":false,"continued":false,"hiding":false,"probe":"guarded_receive","raw_verify_ok":true}
+{"accepted":false,"case":"incoming_cmE","commitments_match":false,"continued":false,"hiding":false,"probe":"guarded_receive","raw_verify_ok":false}
+{"accepted":false,"case":"running_cmW","commitments_match":false,"continued":false,"hiding":false,"probe":"guarded_receive","raw_verify_ok":false}
+{"accepted":false,"case":"running_cmE","commitments_match":false,"continued":false,"hiding":false,"probe":"guarded_receive","raw_verify_ok":false}
+{"accepted":false,"case":"cyclefold_cmW","commitments_match":false,"continued":false,"hiding":false,"probe":"guarded_receive","raw_verify_ok":false}
+{"accepted":false,"case":"cyclefold_cmE","commitments_match":false,"continued":false,"hiding":false,"probe":"guarded_receive","raw_verify_ok":false}
+{"accepted":false,"case":"count","commitments_match":true,"continued":false,"hiding":false,"probe":"guarded_receive","raw_verify_ok":false}
+{"accepted":false,"case":"witness","commitments_match":false,"continued":false,"hiding":false,"probe":"guarded_receive","raw_verify_ok":false}

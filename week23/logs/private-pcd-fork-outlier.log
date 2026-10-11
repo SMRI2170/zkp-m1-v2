@@ -1,0 +1,8 @@
+22:40:20 DBG verifier done backend=groth16 curve=bn254 took=3.349417
+22:40:20 INF compiling circuit
+22:40:20 INF parsed circuit inputs nbPublic=9 nbSecret=91
+22:40:25 INF building constraint builder nbConstraints=1706641
+22:41:56 DBG constraint system solver done nbConstraints=1706641 took=1236.443916
+22:42:15 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=1706641 took=18269.827166
+22:42:15 DBG verifier done backend=groth16 curve=bn254 took=2.323584
+{"fixture_artifact_sha256":{"2/ccs":"a4f838e8563c5fd4b8000cbaf41198692e0a083638addb679c628dd04baf1ef4","2/pk":"eb72e7018ea3d5459a3e95d75e983fb61bfe6d170bbeee981ae6d79850dfbc9d","2/proof":"1b15d1cf982a381ef73923b6ad486942d189af7d41b4548f65b20949b1baa7e6","2/public":"7f19e86ed2bfb6cd85efeaba45b397d660086ca39bdec7f168fa8969efa0d196","2/vk":"acf5bfa9ff96087267b806607fe5c6f84ba03d7ef7acdc8a17bc5c621c4835bb","3/ccs":"3e350853e36c466ec0004f998e857378123e2f082af778d6946009c5fa8e8338","3/pk":"0acdab238ac2d22250716feef249f5205abddd297dee1c8572d5b71ce748cf58","3/proof":"a14d4163d2c4532f3044789fe7971a7ea05053cdb4cb8e628739aabf7407bcd6","3/public":"9c43f082e9618e7709c76881c395d7558a04e41b81a133f51d5dd55e2197cae9","3/vk":"538cf294a5945b1abf024ba79b4f251493292fe46a6af8f16d05af56b4124995"},"phase":"fork-prove","pid":73122,"private_assignment_cached":false,"prove_ms":19506,"rebuilt_ccs_identical":true,"scope":"two C continuations from the same B; fixed roster; no unique-history consensus","source_hashes_match":true,"state":{"Version":1,"Session":777,"RID":424242,"Bucket":100001,"Policy":20261011,"Members":7,"Consistent":2,"Suspicious":1,"Steps":3},"variant":"outlier","verified":true}

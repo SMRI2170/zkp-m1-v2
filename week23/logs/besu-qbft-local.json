@@ -1,0 +1,159 @@
+{
+  "besu_version": "26.9.0",
+  "validators": 4,
+  "host": "one Mac arm64; loopback; one operator",
+  "java": "26.0.2",
+  "heap_limit_MiB_per_validator": 384,
+  "blockperiod_seconds": 2,
+  "workload": "zero-value EOA self-transfer, no ZKP/VK deployment",
+  "warmup": 1,
+  "samples": [
+    {
+      "warmup": true,
+      "rpc_submit_to_receipt_ms": 1540.5505830000018,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 1880.013625,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 1945.3887500000028,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 2057.5378750000013,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 1958.0660409999987,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 1964.2232919999997,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 2007.4450000000006,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 2033.3455829999955,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 1952.1526249999965,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 1979.1522919999948,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 2021.463500000003,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 1941.4124170000023,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 1974.7642499999997,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 2013.7610839999952,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 1991.845000000005,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 1997.5722499999974,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 1967.1561669999987,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 2066.405541999998,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 1991.4174159999973,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 1919.2909160000013,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    },
+    {
+      "warmup": false,
+      "rpc_submit_to_receipt_ms": 2007.5707079999959,
+      "gas_used": 21000,
+      "all_four_same_receipt_block": true
+    }
+  ],
+  "submit_to_receipt_p50_ms": 1985.284853999996,
+  "submit_to_receipt_p95_ms": 2057.981258350001,
+  "polled_peak_rss_bytes_per_validator": [
+    430538752,
+    427294720,
+    424394752,
+    428277760
+  ],
+  "receipt_poll_interval_ms": 50,
+  "one_offline": {
+    "height_before": 23,
+    "height_after": 26,
+    "progress": true
+  },
+  "two_offline": {
+    "height_before": 26,
+    "height_after": 26,
+    "observation_seconds": 12,
+    "progress": false
+  },
+  "scope": "local QBFT functionality only; not independent operators, censorship resistance, ZKP gas, or sensor truth"
+}

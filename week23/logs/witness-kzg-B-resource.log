@@ -1,0 +1,22 @@
+
+thread 'main' (36107276) panicked at src/main.rs:280:13:
+assertion failed: row["received_verify_ok"] == false
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+        6.23 real         8.66 user         0.23 sys
+           531775488  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               82028  page reclaims
+                   0  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                   0  voluntary context switches
+               19544  involuntary context switches
+        104456234323  instructions retired
+         28542789103  cycles elapsed
+           432948064  peak memory footprint

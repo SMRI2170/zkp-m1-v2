@@ -1,0 +1,7 @@
+   Compiling arecibo v0.2.0 (/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/arecibo)
+    Finished `release` profile [optimized] target(s) in 3m 28s
+     Running unittests src/lib.rs (target/release/deps/arecibo-04c0ecf1c539f2cb)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 87 filtered out; finished in 0.00s

@@ -1,0 +1,4 @@
+error: package ID specification `rand@0.10.3` did not match any packages
+help: there are similar package ID specifications:
+
+  rand@0.8.8

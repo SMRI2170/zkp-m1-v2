@@ -1,0 +1,8 @@
+    Finished `release` profile [optimized] target(s) in 0.30s
+     Running unittests src/lib.rs (target/release/deps/arecibo-04c0ecf1c539f2cb)
+
+running 1 test
+test supernova::snark::test::test_nivc_trivial_with_compression has been running for over 60 seconds
+test supernova::snark::test::test_nivc_trivial_with_compression ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 86 filtered out; finished in 114.18s

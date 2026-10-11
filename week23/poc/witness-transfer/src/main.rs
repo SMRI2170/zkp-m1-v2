@@ -167,14 +167,8 @@ use std::io::Write;
 use std::os::unix::fs::{OpenOptionsExt, PermissionsExt};
 use std::{fs, path::Path};
 
-type N<const H: bool> = Nova<
-    Projective,
-    Projective2,
-    ChainStepCircuit<Fr>,
-    Pedersen<Projective, H>,
-    Pedersen<Projective2, H>,
-    H,
->;
+type N<const H: bool, CS = Pedersen<Projective, H>> =
+    Nova<Projective, Projective2, ChainStepCircuit<Fr>, CS, Pedersen<Projective2, H>, H>;
 // Entirely invented coordinates/range; never read capture files.
 const CANARY: [u64; 7] = [71001, 82003, 93007, 71019, 82021, 94009, 10103];
 fn save<T: CanonicalSerialize>(p: &Path, value: &T) -> Result<(), Box<dyn std::error::Error>> {
@@ -192,14 +186,17 @@ fn read<T: CanonicalDeserialize>(p: &Path) -> Result<T, Box<dyn std::error::Erro
     let bytes = fs::read(p)?;
     Ok(T::deserialize_compressed(&bytes[..])?)
 }
-fn experiment<const H: bool>(mode: &str, dir: &Path) -> Result<(), Box<dyn std::error::Error>> {
+fn experiment<const H: bool, CS: folding_schemes::commitment::CommitmentScheme<Projective, H>>(
+    mode: &str,
+    dir: &Path,
+) -> Result<(), Box<dyn std::error::Error>> {
     let mut rng = rand::rngs::OsRng;
     let circuit = ChainStepCircuit::<Fr>::new(())?;
     if mode == "a" {
         fs::create_dir(dir)?;
         fs::set_permissions(dir, fs::Permissions::from_mode(0o700))?;
         let t = Instant::now();
-        let params = N::<H>::preprocess(
+        let params = N::<H, CS>::preprocess(
             &mut rng,
             &PreprocessorParam::new(poseidon_canonical_config::<Fr>(), circuit.clone()),
         )?;
@@ -211,12 +208,12 @@ fn experiment<const H: bool>(mode: &str, dir: &Path) -> Result<(), Box<dyn std::
             Fr::from(0u64),
             Fr::from(0u64),
         ];
-        let mut prover = N::<H>::init(&params, circuit, z0)?;
+        let mut prover = N::<H, CS>::init(&params, circuit, z0)?;
         let t = Instant::now();
         prover.prove_step(&mut rng, CANARY.map(Fr::from), None)?;
         let prove_ms = t.elapsed().as_secs_f64() * 1000.;
         let proof = prover.ivc_proof();
-        N::<H>::verify(params.1.clone(), proof.clone())?;
+        N::<H, CS>::verify(params.1.clone(), proof.clone())?;
         save(&dir.join("pp.bin"), &params.0)?;
         save(&dir.join("vp.bin"), &params.1)?;
         save(&dir.join("state.bin"), &proof)?;
@@ -226,10 +223,10 @@ fn experiment<const H: bool>(mode: &str, dir: &Path) -> Result<(), Box<dyn std::
         );
         return Ok(());
     }
-    let pp: <N<H> as FoldingScheme<Projective, Projective2, ChainStepCircuit<Fr>>>::ProverParam =
+    let pp: <N<H, CS> as FoldingScheme<Projective, Projective2, ChainStepCircuit<Fr>>>::ProverParam =
         read(&dir.join("pp.bin"))?;
     let vp_bytes = fs::read(dir.join("vp.bin"))?;
-    let vp = N::<H>::vp_deserialize_with_mode(
+    let vp = N::<H, CS>::vp_deserialize_with_mode(
         &vp_bytes[..],
         ark_serialize::Compress::Yes,
         ark_serialize::Validate::Yes,
@@ -238,7 +235,7 @@ fn experiment<const H: bool>(mode: &str, dir: &Path) -> Result<(), Box<dyn std::
     let proof: folding_schemes::folding::nova::IVCProof<Projective, Projective2> =
         read(&dir.join("state.bin"))?;
     let t = Instant::now();
-    N::<H>::verify(vp.clone(), proof.clone())?;
+    N::<H, CS>::verify(vp.clone(), proof.clone())?;
     let verify_ms = t.elapsed().as_secs_f64() * 1000.;
     let matches: Vec<_> = CANARY.iter().enumerate().map(|(field, &value)| {
         let needle = Fr::from(value);
@@ -258,19 +255,17 @@ fn experiment<const H: bool>(mode: &str, dir: &Path) -> Result<(), Box<dyn std::
             "commitment" => p.u_i.cmW += Projective::from(ark_bn254::G1Affine::generator()),
             _ => (),
         }
-        let incoming_matches = p
-            .w_i
-            .commit::<Pedersen<Projective, H>, H>(&pp.cs_pp, p.u_i.x.clone())?
-            == p.u_i;
-        let verify = N::<H>::verify(vp.clone(), p.clone());
+        let incoming_matches = p.w_i.commit::<CS, H>(&pp.cs_pp, p.u_i.x.clone())? == p.u_i;
+        let verify = N::<H, CS>::verify(vp.clone(), p.clone());
         let t = Instant::now();
-        let restore = N::<H>::from_ivc_proof(p, (), (pp.clone(), vp.clone()));
+        let restore = N::<H, CS>::from_ivc_proof(p, (), (pp.clone(), vp.clone()));
         let mut row = json!({"case":kind,"hiding":H,"received_verify_ok":verify.is_ok(),"restore_ok":restore.is_ok(),"incoming_commitment_matches_witness":incoming_matches});
         if let Ok(mut next) = restore {
             let step = next.prove_step(&mut rng, CANARY.map(|v| Fr::from(v + 2)), None);
             row["step_ok"] = json!(step.is_ok());
             row["step_error"] = json!(step.err().map(|e| format!("{e:?}")));
-            row["final_verify_ok"] = json!(N::<H>::verify(vp.clone(), next.ivc_proof()).is_ok());
+            row["final_verify_ok"] =
+                json!(N::<H, CS>::verify(vp.clone(), next.ivc_proof()).is_ok());
         }
         row["continue_ms"] = json!(t.elapsed().as_secs_f64() * 1000.);
         println!("{row}");
@@ -329,8 +324,157 @@ fn zk_experiment(dir: &Path) -> Result<(), Box<dyn std::error::Error>> {
     result?;
     Ok(())
 }
+// Application-side receive gate for this pinned legacy Pedersen/Pedersen experiment.
+// This supplements the library verifier; it does not change the original negative test.
+fn guarded_receive<const H: bool>(dir: &Path) -> Result<(), Box<dyn std::error::Error>> {
+    use ark_ec::PrimeGroup;
+    let pp: <N<H> as FoldingScheme<Projective, Projective2, ChainStepCircuit<Fr>>>::ProverParam =
+        read(&dir.join("pp.bin"))?;
+    let vp_bytes = fs::read(dir.join("vp.bin"))?;
+    let vp = N::<H>::vp_deserialize_with_mode(
+        &vp_bytes[..],
+        ark_serialize::Compress::Yes,
+        ark_serialize::Validate::Yes,
+        (),
+    )?;
+    let proof: folding_schemes::folding::nova::IVCProof<Projective, Projective2> =
+        read(&dir.join("state.bin"))?;
+    for kind in [
+        "valid",
+        "incoming_cmW",
+        "incoming_cmE",
+        "running_cmW",
+        "running_cmE",
+        "cyclefold_cmW",
+        "cyclefold_cmE",
+        "count",
+        "witness",
+    ] {
+        let mut p = proof.clone();
+        match kind {
+            "incoming_cmW" => p.u_i.cmW += Projective::generator(),
+            "incoming_cmE" => p.u_i.cmE += Projective::generator(),
+            "running_cmW" => p.U_i.cmW += Projective::generator(),
+            "running_cmE" => p.U_i.cmE += Projective::generator(),
+            "cyclefold_cmW" => p.cf_U_i.cmW += Projective2::generator(),
+            "cyclefold_cmE" => p.cf_U_i.cmE += Projective2::generator(),
+            "count" => p.z_i[2] += Fr::from(1u64),
+            "witness" => p.w_i.W[0] += Fr::from(1u64),
+            _ => (),
+        }
+        let raw_ok = N::<H>::verify(vp.clone(), p.clone()).is_ok();
+        let incoming = p
+            .w_i
+            .commit::<Pedersen<Projective, H>, H>(&pp.cs_pp, p.u_i.x.clone())?;
+        let running = p
+            .W_i
+            .commit::<Pedersen<Projective, H>, H>(&pp.cs_pp, p.U_i.x.clone())?;
+        let cyclefold = p
+            .cf_W_i
+            .commit::<Pedersen<Projective2, H>, H>(&pp.cf_cs_pp, p.cf_U_i.x.clone())?;
+        let commitments_ok = incoming.cmW == p.u_i.cmW
+            && incoming.cmE == p.u_i.cmE
+            && running.cmW == p.U_i.cmW
+            && running.cmE == p.U_i.cmE
+            && cyclefold.cmW == p.cf_U_i.cmW
+            && cyclefold.cmE == p.cf_U_i.cmE;
+        let accepted = raw_ok && commitments_ok;
+        println!(
+            "{}",
+            json!({"probe":"guarded_receive", "case":kind, "hiding":H, "raw_verify_ok":raw_ok, "commitments_match":commitments_ok, "accepted":accepted, "continued":false})
+        );
+        assert_eq!(accepted, kind == "valid");
+    }
+    Ok(())
+}
+fn inverse_fold<const H: bool>(dir: &Path) -> Result<(), Box<dyn std::error::Error>> {
+    use ark_crypto_primitives::sponge::poseidon::PoseidonSponge;
+    use ark_ff::{BigInteger, Field, Zero};
+    use folding_schemes::folding::nova::nifs::{nova::NIFS, NIFSTrait};
+    use folding_schemes::transcript::Transcript;
+    let pp: <N<H> as FoldingScheme<Projective, Projective2, ChainStepCircuit<Fr>>>::ProverParam =
+        read(&dir.join("pp.bin"))?;
+    let vp_bytes = fs::read(dir.join("vp.bin"))?;
+    let vp = N::<H>::vp_deserialize_with_mode(
+        &vp_bytes[..],
+        ark_serialize::Compress::Yes,
+        ark_serialize::Validate::Yes,
+        (),
+    )?;
+    let p: folding_schemes::folding::nova::IVCProof<Projective, Projective2> =
+        read(&dir.join("state.bin"))?;
+    N::<H>::verify(vp.clone(), p.clone())?;
+    let n = N::<H>::from_ivc_proof(p.clone(), (), (pp.clone(), vp))?;
+    let mut prover_transcript =
+        PoseidonSponge::<Fr>::new_with_pp_hash(&n.poseidon_config, n.pp_hash);
+    let (folded, folded_instance, cm_t, prover_bits) =
+        NIFS::<Projective, Pedersen<Projective, H>, PoseidonSponge<Fr>, H>::prove(
+            &pp.cs_pp,
+            &n.r1cs,
+            &mut prover_transcript,
+            &p.W_i,
+            &p.U_i,
+            &p.w_i,
+            &p.u_i,
+        )?;
+    // The challenge is recovered using public instances + cmT, without incoming witness.
+    let mut verifier_transcript =
+        PoseidonSponge::<Fr>::new_with_pp_hash(&n.poseidon_config, n.pp_hash);
+    let (checked_instance, bits) = NIFS::<
+        Projective,
+        Pedersen<Projective, H>,
+        PoseidonSponge<Fr>,
+        H,
+    >::verify(&mut verifier_transcript, &p.U_i, &p.u_i, &cm_t)?;
+    assert_eq!(bits, prover_bits);
+    assert_eq!(checked_instance, folded_instance);
+    let r = Fr::from_bigint(<Fr as PrimeField>::BigInt::from_bits_le(&bits))
+        .ok_or("challenge out of range")?;
+    let inv = r.inverse().ok_or("zero challenge; inverse undefined")?;
+    let recovered: Vec<Fr> = folded
+        .W
+        .iter()
+        .zip(&p.W_i.W)
+        .map(|(next, prev)| (*next - prev) * inv)
+        .collect();
+    let all_match = recovered == p.w_i.W;
+    let fields: Vec<_> = CANARY.iter().enumerate().map(|(field, &v)| json!({
+        "field":field,
+        "recovered_indices":recovered.iter().enumerate().filter(|(_, x)| **x == Fr::from(v)).map(|(i,_)|i).collect::<Vec<_>>()
+    })).collect();
+    println!(
+        "{}",
+        json!({"probe":"single_fold_inverse", "hiding":H,
+        "challenge_reproduced_from_public":true, "challenge_nonzero":!r.is_zero(),
+        "prior_running_witness_all_zero":p.W_i.W.iter().all(|v|v.is_zero()),
+        "whole_incoming_witness_recovered":all_match, "canary_fields":fields,
+        "assumptions":"folded raw witness and prior running witness available; public instances/cmT/pp_hash available; isolated NIFS, not randomized final ZK proof"})
+    );
+    assert!(all_match);
+    Ok(())
+}
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<_> = std::env::args().collect();
+    if args.len() == 4 && args[2] == "kzg" && ["a", "b"].contains(&args[1].as_str()) {
+        return experiment::<false, folding_schemes::commitment::kzg::KZG<'static, ark_bn254::Bn254>>(
+            &args[1],
+            Path::new(&args[3]),
+        );
+    }
+    if args.len() == 4 && args[1] == "inverse" {
+        return match args[2].as_str() {
+            "true" => inverse_fold::<true>(Path::new(&args[3])),
+            "false" => inverse_fold::<false>(Path::new(&args[3])),
+            _ => Err("inverse requires false|true".into()),
+        };
+    }
+    if args.len() == 4 && args[1] == "guard" {
+        return match args[2].as_str() {
+            "true" => guarded_receive::<true>(Path::new(&args[3])),
+            "false" => guarded_receive::<false>(Path::new(&args[3])),
+            _ => Err("guard requires false|true".into()),
+        };
+    }
     if args.len() == 4 && args[1] == "zk" && args[2] == "true" {
         return zk_experiment(Path::new(&args[3]));
     }
@@ -341,8 +485,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         return Err("usage: week23-witness-transfer a|b false|true PRIVATE_DIRECTORY".into());
     }
     if args[2] == "true" {
-        experiment::<true>(&args[1], Path::new(&args[3]))
+        experiment::<true, Pedersen<Projective, true>>(&args[1], Path::new(&args[3]))
     } else {
-        experiment::<false>(&args[1], Path::new(&args[3]))
+        experiment::<false, Pedersen<Projective, false>>(&args[1], Path::new(&args[3]))
     }
 }

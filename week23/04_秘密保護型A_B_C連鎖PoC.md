@@ -44,7 +44,7 @@ preflightではWitness作成まで確認する。再帰回路のBSB22 commitment
 `from_ivc_proof` の入力型不一致（E0308）を再現した。
 これはそのAPIへ直接渡せないという限定的結果であり、追加実装や他方式の不可能性ではない。
 
-未実装: 外部資格レジストリ、永続expiry/replayストア、別観測による並列追加・分岐proof実験、端末移植。
+初回時点の残件: 外部資格レジストリ、永続expiry/replayストア、別観測の分岐proof、端末移植。追加結果は後節。
 未実証: FinalBNV2/EVM。この一般再帰PoCは既存V2実装と同一構成ではない。
 
 ## Bの再実行結果
@@ -85,3 +85,34 @@ payload/session/policyの改竄、合成時計の期限切れ、hostのseen状�
 判定は「有限3段Go一般再帰のローカルPoCとして成立」。
 旧SonobeのZK folding引継ぎAPI、動的member登録・匿名性、実機RF入力の真正性、任意深さPCD、
 端末移植、FinalBNV2/EVMの成立まで拡大しない。Issue #41全条件をDONEにしたという意味ではない。
+
+
+## 別観測の分岐proof・永続受信ポリシー：追加実行
+
+同じB証明を入力に、別Go processのCでnormal（range=300）とoutlier（range=5000）の2本を生成し、
+両方のnative最終verifyに成功した。公開結果はそれぞれ member=7 / consistent=3,suspicious=0 と 2,1。
+[normal](logs/private-pcd-fork-normal.log)、[outlier](logs/private-pcd-fork-outlier.log)。
+元assignmentの保存・転送は行わず、前段proof/publicと当段の合成観測だけを入力にした。
+
+既存の使い捨てlocal setup fixtureは明示的に検査して使用した。
+元main/relations/go.mod/go.sumのsource/dependency hash一致、現在ソースから再compileしたCCSと保存CCSの**byte完全一致**、
+前段proofの検証、使用artifact全hashの記録、生成proofの元VKによる最終verifyを確認。
+setup/proof/private fixtureはignored owner-only領域で保存し、release keysとして使用しない。
+これは `pcd3` のsetup-cache実装ではなく、この固定3段fixtureの追加実験である。
+normal/outlier proveは約24.775/19.506秒、setupを含まない（loaded PKの検査/読み込み時間も別）。
+実行が一部重なった共有Mac測定なので、専用ホストでの性能分位値ではない。
+
+`persistent_gate.py` は固定ローカルrosterのEd25519署名とtrusted stage VKによる実proof検証を行い、
+SQLiteの主キー(session/policy/RID/bucket/stage)とtransactionで受理を永続化する。
+合成clockで期限/futureを拒否し、受信process再起動後のreplayを拒否した。
+A受信後Bが提出しない場合、Cのcryptographic proofが正しくてもhostの前packet受付がないため停止する。
+既存B証明が手元にあれば別C proverへ引継ぎ可能であるが、B段そのものを飛ばす方式ではない。
+
+異なるC観測で生成した2本のproofを同じB parentへ署名し、**2つの同時受信process**で同じDBへ提出。
+両者のproof/署名は正しいが、transactionで1件のみ受理、他方は競合/replayとして拒否した。
+独立した2個のDBには別々のC分岐を受理できることも実行で確認した。
+[受信テスト全結果](logs/private-pcd-persistent-gate.json)。
+
+この検査は固定ordinal Cからの2つの競合提出であり、任意の異なる2観測者の動的参加を実装したものではない。
+SQLiteは単一受信者内の競合制御を与え、複数独立主体の合意・グローバルreplay/fork拒否を与えない。
+外部資格registry、任意参加者/離脱時の順序再構成、Rust ZK-folding、Pi/Pixel移植、FinalBNV2/EVMは残る。

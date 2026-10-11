@@ -9,10 +9,10 @@ DRIP trust chain、センサーの真実性、観測者ハードウェア認証�
 
 | 作業 | 状態 | 記録 |
 |---|---|---|
-| #39 | IN_PROGRESS：main/旧版/開発ブランチのソースを固定、論文改訂を確認 | [02](02_Nova系実装とAPI対応調査.md) |
-| #40 | IN_PROGRESS：A/B・両Hで元canaryの直接露出を再現。commitment改竄の拒否テストは未達 | [03](03_旧Sonobe_Witness露出再現.md) |
-| #41 | IN_PROGRESS：有限3段Go一般再帰のA/B/C生成・最終verify成功。署名転送・否定系も確認 | [04](04_秘密保護型A_B_C連鎖PoC.md) |
-| #42 | IN_PROGRESS：個別proof＋共同署名baseline成功。比較の採否判断は保留 | [05](05_PCD_BC比較と技術選定ADR.md) |
+| #39 | IN_PROGRESS：API入出力・検証責務を追記。Arecibo標準テスト成功、HyperNovaブランチ依存不整合を記録 | [02](02_Nova系実装とAPI対応調査.md) |
+| #40 | LOCAL_COMPLETE_WITH_FINDINGS：両Hの露出・単一fold逆算・元KZG構成を再現。受信ゲートは改竄拒否、元verifyの失敗は保存 | [03](03_旧Sonobe_Witness露出再現.md) |
+| #41 | IN_PROGRESS：A/B/Cと別観測のC分岐2本を検証。永続replay・離脱・同時提出の受信テスト成功 | [04](04_秘密保護型A_B_C連鎖PoC.md) |
+| #42 | IN_PROGRESS：個別proof＋共同署名とローカルQBFT実測済み。ZKPオンチェーンの同等比較は残る | [05](05_PCD_BC比較と技術選定ADR.md) |
 
 状態はローカルの実行証拠に合わせて更新する。GitHubへのコメント投稿・Issueクローズはまだ行っていない。
 旧成果を変更せず、実験ソースは `poc/`、依存版・パッチは `manifests/`、公開できるログは `logs/` に残す。
@@ -21,3 +21,12 @@ DRIP trust chain、センサーの真実性、観測者ハードウェア認証�
 今回のローカルPoCはA→B→Cの秘密非共有計算連鎖まで成立した。
 旧Sonobeの最終ZK proofをそのままfold継続するAPIは型不一致を再現したため、別方式として記録する。
 全IssueをDONEとはしていない。Rust版の秘密継続、動的資格/参加、Pi/Pixel実機、Besu実測、同等条件の比較は残る。
+
+
+2026-10-11の追加実施: #40の固定旧API再現はLOCAL_COMPLETE_WITH_FINDINGS。
+#39はArecibo標準テスト成功・API追加調査、HyperNova依存固定と論文の詳細照合は残る。
+#41は別観測の分岐proof・永続受信・同時提出/離脱を追加。固定rosterのローカルPoCであり任意参加/実機は残る。
+#42は4-validator自己転送の確定遅延/停止台数を測定。ZKP用の使い捨てVK/proofはデプロイしない。
+GitHub Issueの状態変更は行っていない。
+
+追加実行と残件の一覧: [06](06_追加実行と残件.md)。

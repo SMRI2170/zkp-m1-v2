@@ -1,0 +1,8 @@
+{
+  "version": "26.9.0",
+  "url": "https://github.com/besu-eth/besu/releases/download/26.9.0/besu-26.9.0.tar.gz",
+  "sha256": "172b29069837f13436a20bd7c8234aeca67917d8a378e81e2bd4a205c57540ea",
+  "checksum_source": "official release .sha256 asset",
+  "java": "OpenJDK 26.0.2 Homebrew existing installation",
+  "retrieved": "2026-10-11"
+}

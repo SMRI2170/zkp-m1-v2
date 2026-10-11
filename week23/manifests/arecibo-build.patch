@@ -1,0 +1,26 @@
+diff --git a/src/spartan/polys/multilinear.rs b/src/spartan/polys/multilinear.rs
+index 7ce2047..ee362f3 100644
+--- a/src/spartan/polys/multilinear.rs
++++ b/src/spartan/polys/multilinear.rs
+@@ -156,7 +156,7 @@ impl<Scalar: PrimeField> SparsePolynomial<Scalar> {
+       .sum();
+ 
+     let common = (0..self.num_vars - 1 - num_vars_z)
+-      .map(|i| (Scalar::ONE - r[i]))
++      .map(|i| Scalar::ONE - r[i])
+       .product::<Scalar>();
+ 
+     common * eval_partial
+diff --git a/src/spartan/ppsnark.rs b/src/spartan/ppsnark.rs
+index 5cc723c..5806bfe 100644
+--- a/src/spartan/ppsnark.rs
++++ b/src/spartan/ppsnark.rs
+@@ -32,7 +32,7 @@ use crate::{
+     snark::{DigestHelperTrait, RelaxedR1CSSNARKTrait},
+     Engine, TranscriptEngineTrait, TranscriptReprTrait,
+   },
+-  zip_with, Commitment, CommitmentKey, CompressedCommitment,
++  Commitment, CommitmentKey, CompressedCommitment,
+ };
+ use core::cmp::max;
+ use ff::Field;

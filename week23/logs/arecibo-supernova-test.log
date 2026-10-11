@@ -1,0 +1,432 @@
+    Updating crates.io index
+    Updating git repository `https://github.com/argumentcomputer/bellpepper`
+    Updating git repository `https://github.com/argumentcomputer/neptune`
+    Updating git repository `https://github.com/argumentcomputer/grumpkin-msm`
+     Locking 284 packages to latest compatible versions
+      Adding bincode v1.3.3 (available: v3.0.0)
+      Adding criterion v0.5.1 (available: v0.8.2)
+      Adding crypto-common v0.1.6 (available: v0.1.7)
+      Adding derive_more v0.99.20 (available: v2.1.1)
+      Adding digest v0.10.7 (available: v0.11.3)
+      Adding ff v0.13.1 (available: v0.14.0)
+      Adding getrandom v0.2.17 (available: v0.4.3)
+      Adding group v0.13.0 (available: v0.14.0)
+      Adding halo2curves v0.6.1 (available: v0.10.0)
+      Adding itertools v0.13.0 (available: v0.15.0)
+      Adding num-bigint v0.4.8 (available: v0.5.1)
+      Adding pairing v0.23.0 (available: v0.24.0)
+      Adding pasta_curves v0.5.2 (available: v0.6.1)
+      Adding pprof v0.13.0 (available: v0.15.0)
+      Adding psm v0.1.24 (available: v0.1.32)
+      Adding rand v0.8.8 (available: v0.10.3)
+      Adding rand_chacha v0.3.1 (available: v0.10.0)
+      Adding rand_core v0.6.4 (available: v0.10.1)
+      Adding sha2 v0.10.9 (available: v0.11.0)
+      Adding sha3 v0.10.9 (available: v0.12.0)
+      Adding thiserror v1.0.69 (available: v2.0.21)
+      Adding vergen v8.3.2 (available: v10.0.3)
+ Downloading crates ...
+  Downloaded convert_case v0.4.0
+  Downloaded abomonation_derive_ng v0.1.0
+  Downloaded core_detect v1.0.0
+  Downloaded abomonation v0.7.3
+  Downloaded expect-test v1.5.1
+  Downloaded borsh v1.8.1
+  Downloaded borsh-derive v1.8.1
+  Downloaded chacha20 v0.10.2
+  Downloaded clap_lex v1.1.1
+  Downloaded darling_macro v0.20.11
+  Downloaded derive_builder_macro v0.20.2
+  Downloaded bellpepper-core v0.4.0
+  Downloaded bit-set v0.11.1
+  Downloaded bit-vec v0.10.1
+  Downloaded dissimilar v1.0.11
+  Downloaded derive_builder_core v0.20.2
+  Downloaded darling v0.20.11
+  Downloaded matchers v0.2.0
+  Downloaded derive_builder v0.20.2
+  Downloaded derive_more v0.99.20
+  Downloaded clap v4.6.7
+  Downloaded darling_core v0.20.11
+  Downloaded num_threads v0.1.7
+  Downloaded num-order v1.2.0
+  Downloaded num-modular v0.6.6
+  Downloaded quick-error v1.2.3
+  Downloaded pest_derive v2.9.3
+  Downloaded pest_generator v2.9.3
+  Downloaded psm v0.1.24
+  Downloaded rand_xorshift v0.5.0
+  Downloaded handlebars v6.4.4
+  Downloaded pest_meta v2.9.3
+  Downloaded halo2curves v0.6.1
+  Downloaded rayon-scan v0.1.1
+  Downloaded rand_chacha v0.10.0
+  Downloaded itertools v0.12.1
+  Downloaded aho-corasick v1.1.5
+  Downloaded clap_builder v4.6.7
+  Downloaded rusty-fork v0.3.1
+  Downloaded rand v0.10.3
+  Downloaded pest v2.9.3
+  Downloaded term_size v0.3.2
+  Downloaded stacker v0.1.25
+  Downloaded wait-timeout v0.2.1
+  Downloaded tracing-test-macro v0.2.6
+  Downloaded tracing-test v0.2.6
+  Downloaded tracing-texray v0.2.0
+  Downloaded toml_datetime v1.1.2+spec-1.1.0
+  Downloaded vergen v8.3.2
+  Downloaded toml_edit v0.25.17+spec-1.1.0
+  Downloaded toml_parser v1.1.5+spec-1.1.0
+  Downloaded semolina v0.1.5
+  Downloaded proptest v1.12.0
+  Downloaded zerocopy-derive v0.8.62
+  Downloaded rustix v1.1.5
+  Downloaded regex-automata v0.4.18
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling libc v0.2.190
+   Compiling cfg-if v1.0.5
+   Compiling shlex v2.0.1
+   Compiling find-msvc-tools v0.1.14
+   Compiling autocfg v1.5.1
+   Compiling cc v1.7.0
+   Compiling radium v0.7.0
+   Compiling serde_core v1.0.229
+   Compiling num-traits v0.2.19
+   Compiling serde v1.0.229
+   Compiling zerocopy v0.8.62
+   Compiling num-bigint v0.3.3
+   Compiling syn v1.0.109
+   Compiling syn v2.0.119
+   Compiling syn v3.0.7
+   Compiling getrandom v0.2.17
+   Compiling rand_core v0.6.4
+   Compiling psm v0.1.24
+   Compiling either v1.19.0
+   Compiling tap v1.0.1
+   Compiling once_cell v1.21.4
+   Compiling wyz v0.5.1
+   Compiling stacker v0.1.25
+   Compiling blst v0.3.17
+   Compiling serde_derive v1.0.229
+   Compiling num-integer v0.1.47
+   Compiling crossbeam-utils v0.8.23
+   Compiling funty v2.0.0
+   Compiling byteorder v1.5.0
+   Compiling bitvec v1.1.1
+   Compiling version_check v0.9.5
+   Compiling rustix v0.38.44
+   Compiling addchain v0.2.1
+   Compiling subtle v2.6.1
+   Compiling rand_core v0.10.1
+   Compiling crossbeam-epoch v0.9.21
+   Compiling spin v0.9.9
+   Compiling lazy_static v1.5.1
+   Compiling generic-array v0.14.9
+   Compiling zerocopy-derive v0.8.62
+   Compiling zeroize_derive v1.5.0
+   Compiling errno v0.3.14
+   Compiling arrayvec v0.7.8
+   Compiling rustversion v1.0.23
+   Compiling typenum v1.20.1
+   Compiling crossbeam-deque v0.8.8
+   Compiling bitflags v2.13.2
+   Compiling ff_derive v0.13.1
+   Compiling regex-syntax v0.8.11
+   Compiling constant_time_eq v0.4.2
+   Compiling ff v0.13.1
+   Compiling rand v0.8.8
+   Compiling rand_xorshift v0.3.0
+   Compiling getrandom v0.4.3
+   Compiling fnv v1.0.7
+   Compiling anyhow v1.0.104
+   Compiling ident_case v1.0.1
+   Compiling strsim v0.11.1
+   Compiling home v0.5.12
+   Compiling rayon-core v1.13.0
+   Compiling which v4.4.2
+   Compiling regex-automata v0.4.18
+   Compiling darling_core v0.20.11
+   Compiling group v0.13.0
+   Compiling num_cpus v1.17.0
+   Compiling zmij v1.0.23
+   Compiling threadpool v1.8.1
+   Compiling zeroize v1.9.1
+   Compiling tracing-core v0.1.36
+   Compiling thiserror v1.0.69
+   Compiling smallvec v1.16.3
+   Compiling darling_macro v0.20.11
+   Compiling ucd-trie v0.1.7
+   Compiling serde_json v1.0.152
+   Compiling memchr v2.8.3
+   Compiling rustix v1.1.5
+   Compiling log v0.4.34
+   Compiling ppv-lite86 v0.2.21
+   Compiling blake2b_simd v1.0.5
+   Compiling pest v2.9.3
+   Compiling rand_chacha v0.3.1
+   Compiling darling v0.20.11
+   Compiling rayon v1.12.0
+   Compiling vergen v8.3.2
+   Compiling hex v0.4.3
+   Compiling pairing v0.23.0
+   Compiling sppark v0.1.15
+   Compiling thiserror-impl v1.0.69
+   Compiling tracing-attributes v0.1.31
+   Compiling num_threads v0.1.7
+   Compiling semolina v0.1.5
+   Compiling byte-slice-cast v1.2.3
+   Compiling itoa v1.0.18
+   Compiling powerfmt v0.2.1
+   Compiling deranged v0.5.8
+   Compiling static_assertions v1.1.0
+   Compiling pin-project-lite v0.2.17
+   Compiling num-conv v0.2.2
+   Compiling time-core v0.1.9
+   Compiling parking_lot_core v0.9.12
+   Compiling paste v1.0.15
+   Compiling pasta_curves v0.5.2
+   Compiling tracing v0.1.44
+   Compiling time v0.3.55
+   Compiling blstrs v0.7.1
+   Compiling pest_meta v2.9.3
+   Compiling derive_builder_core v0.20.2
+   Compiling tracing-log v0.2.0
+   Compiling half v2.7.1
+   Compiling matchers v0.2.0
+   Compiling crypto-common v0.1.6
+   Compiling block-buffer v0.10.4
+   Compiling blake2s_simd v1.0.5
+   Compiling sharded-slab v0.1.7
+   Compiling chacha20 v0.10.2
+   Compiling cpufeatures v0.2.17
+   Compiling thread_local v1.1.10
+   Compiling crc32fast v1.5.2
+   Compiling halo2curves v0.6.1
+   Compiling plotters-backend v0.3.7
+   Compiling scopeguard v1.2.0
+   Compiling thiserror v2.0.21
+   Compiling anstyle v1.0.14
+   Compiling clap_lex v1.1.1
+   Compiling fastrand v2.5.0
+   Compiling nu-ansi-term v0.50.3
+   Compiling ciborium-io v0.2.2
+   Compiling ciborium-ll v0.2.2
+   Compiling tempfile v3.27.0
+   Compiling clap_builder v4.6.7
+   Compiling tracing-subscriber v0.3.23
+   Compiling plotters-svg v0.3.7
+   Compiling lock_api v0.4.14
+   Compiling rand v0.10.3
+   Compiling derive_builder_macro v0.20.2
+   Compiling bellpepper-core v0.4.0
+   Compiling num-bigint v0.4.8
+   Compiling digest v0.10.7
+   Compiling pest_generator v2.9.3
+   Compiling neptune v13.0.0 (https://github.com/argumentcomputer/neptune?branch=dev#3df907eb)
+   Compiling grumpkin-msm v0.1.0 (https://github.com/argumentcomputer/grumpkin-msm?branch=dev#414da3bc)
+   Compiling serde_arrays v0.1.0
+   Compiling thiserror-impl v2.0.21
+   Compiling itertools v0.10.5
+   Compiling itertools v0.12.1
+   Compiling wait-timeout v0.2.1
+   Compiling ref-cast v1.0.27
+   Compiling quick-error v1.2.3
+   Compiling simd-adler32 v0.3.10
+   Compiling cast v0.3.0
+   Compiling same-file v1.0.6
+   Compiling num-modular v0.6.6
+   Compiling adler2 v2.0.1
+   Compiling bit-vec v0.10.1
+   Compiling rusty-fork v0.3.1
+   Compiling bit-set v0.11.1
+   Compiling num-order v1.2.0
+   Compiling miniz_oxide v0.9.1
+   Compiling walkdir v2.5.0
+   Compiling criterion-plot v0.5.0
+   Compiling bellpepper v0.4.1 (https://github.com/argumentcomputer/bellpepper?branch=dev#d0225bf6)
+   Compiling arecibo v0.2.0 (/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/arecibo)
+   Compiling parking_lot v0.12.5
+   Compiling pest_derive v2.9.3
+   Compiling clap v4.6.7
+   Compiling derive_builder v0.20.2
+   Compiling plotters v0.3.7
+   Compiling ciborium v0.2.2
+   Compiling keccak v0.1.6
+   Compiling tinytemplate v1.2.1
+   Compiling rand_chacha v0.10.0
+warning: grumpkin-msm@0.1.0: src/grumpkin_pippenger.cpp:13:38: error: unknown type name 'fp_t'; did you mean 'alt_bn128::fp_t'?
+warning: grumpkin-msm@0.1.0:    13 | void mult_pippenger_bn254(jacobian_t<fp_t>& ret,
+warning: grumpkin-msm@0.1.0:       |                                      ^~~~
+warning: grumpkin-msm@0.1.0:       |                                      alt_bn128::fp_t
+warning: grumpkin-msm@0.1.0: /Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sppark-0.1.15/sppark/ff/alt_bn128.hpp:110:8: note: 'alt_bn128::fp_t' declared here
+warning: grumpkin-msm@0.1.0:   110 | struct fp_t : public fp_mont {
+warning: grumpkin-msm@0.1.0:       |        ^
+warning: grumpkin-msm@0.1.0: src/grumpkin_pippenger.cpp:14:40: error: unknown type name 'fp_t'; did you mean 'alt_bn128::fp_t'?
+warning: grumpkin-msm@0.1.0:    14 |                           const xyzz_t<fp_t>::affine_t points[],
+warning: grumpkin-msm@0.1.0:       |                                        ^~~~
+warning: grumpkin-msm@0.1.0:       |                                        alt_bn128::fp_t
+warning: grumpkin-msm@0.1.0: /Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sppark-0.1.15/sppark/ff/alt_bn128.hpp:110:8: note: 'alt_bn128::fp_t' declared here
+warning: grumpkin-msm@0.1.0:   110 | struct fp_t : public fp_mont {
+warning: grumpkin-msm@0.1.0:       |        ^
+warning: grumpkin-msm@0.1.0: src/grumpkin_pippenger.cpp:15:49: error: unknown type name 'fr_t'; did you mean 'alt_bn128::fr_t'?
+warning: grumpkin-msm@0.1.0:    15 |                           size_t npoints, const fr_t scalars[])
+warning: grumpkin-msm@0.1.0:       |                                                 ^~~~
+warning: grumpkin-msm@0.1.0:       |                                                 alt_bn128::fr_t
+warning: grumpkin-msm@0.1.0: /Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sppark-0.1.15/sppark/ff/alt_bn128.hpp:132:8: note: 'alt_bn128::fr_t' declared here
+warning: grumpkin-msm@0.1.0:   132 | struct fr_t : public fr_mont {
+warning: grumpkin-msm@0.1.0:       |        ^
+warning: grumpkin-msm@0.1.0: src/grumpkin_pippenger.cpp:16:27: error: use of undeclared identifier 'fp_t'
+warning: grumpkin-msm@0.1.0:    16 | {   mult_pippenger<xyzz_t<fp_t>>(ret, points, npoints, scalars, true,
+warning: grumpkin-msm@0.1.0:       |                           ^~~~
+warning: grumpkin-msm@0.1.0: src/grumpkin_pippenger.cpp:21:41: error: unknown type name 'fr_t'; did you mean 'alt_bn128::fr_t'?
+warning: grumpkin-msm@0.1.0:    21 | void mult_pippenger_grumpkin(jacobian_t<fr_t>& ret,
+warning: grumpkin-msm@0.1.0:       |                                         ^~~~
+warning: grumpkin-msm@0.1.0:       |                                         alt_bn128::fr_t
+warning: grumpkin-msm@0.1.0: /Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sppark-0.1.15/sppark/ff/alt_bn128.hpp:132:8: note: 'alt_bn128::fr_t' declared here
+warning: grumpkin-msm@0.1.0:   132 | struct fr_t : public fr_mont {
+warning: grumpkin-msm@0.1.0:       |        ^
+warning: grumpkin-msm@0.1.0: src/grumpkin_pippenger.cpp:22:41: error: unknown type name 'fr_t'; did you mean 'alt_bn128::fr_t'?
+warning: grumpkin-msm@0.1.0:    22 |                            const xyzz_t<fr_t>::affine_t points[],
+warning: grumpkin-msm@0.1.0:       |                                         ^~~~
+warning: grumpkin-msm@0.1.0:       |                                         alt_bn128::fr_t
+warning: grumpkin-msm@0.1.0: /Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sppark-0.1.15/sppark/ff/alt_bn128.hpp:132:8: note: 'alt_bn128::fr_t' declared here
+warning: grumpkin-msm@0.1.0:   132 | struct fr_t : public fr_mont {
+warning: grumpkin-msm@0.1.0:       |        ^
+warning: grumpkin-msm@0.1.0: src/grumpkin_pippenger.cpp:23:50: error: unknown type name 'fp_t'; did you mean 'alt_bn128::fp_t'?
+warning: grumpkin-msm@0.1.0:    23 |                            size_t npoints, const fp_t scalars[])
+warning: grumpkin-msm@0.1.0:       |                                                  ^~~~
+warning: grumpkin-msm@0.1.0:       |                                                  alt_bn128::fp_t
+warning: grumpkin-msm@0.1.0: /Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sppark-0.1.15/sppark/ff/alt_bn128.hpp:110:8: note: 'alt_bn128::fp_t' declared here
+warning: grumpkin-msm@0.1.0:   110 | struct fp_t : public fp_mont {
+warning: grumpkin-msm@0.1.0:       |        ^
+warning: grumpkin-msm@0.1.0: src/grumpkin_pippenger.cpp:24:27: error: use of undeclared identifier 'fr_t'
+warning: grumpkin-msm@0.1.0:    24 | {   mult_pippenger<xyzz_t<fr_t>>(ret, points, npoints, scalars, true,
+warning: grumpkin-msm@0.1.0:       |                           ^~~~
+warning: grumpkin-msm@0.1.0: 8 errors generated.
+error: failed to run custom build command for `grumpkin-msm v0.1.0 (https://github.com/argumentcomputer/grumpkin-msm?branch=dev#414da3bc)`
+
+Caused by:
+  process didn't exit successfully: `/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/arecibo/target/release/build/grumpkin-msm-69dc1c5c39c7d9e6/build-script-build` (exit status: 1)
+  --- stdout
+  cargo:rerun-if-env-changed=CC_FORCE_DISABLE
+  CC_FORCE_DISABLE = None
+  cargo:rerun-if-env-changed=CXX_aarch64-apple-darwin
+  CXX_aarch64-apple-darwin = None
+  cargo:rerun-if-env-changed=CXX_aarch64_apple_darwin
+  CXX_aarch64_apple_darwin = None
+  cargo:rerun-if-env-changed=HOST_CXX
+  HOST_CXX = None
+  cargo:rerun-if-env-changed=CXX
+  CXX = None
+  cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+  cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+  CRATE_CC_NO_DEFAULTS = None
+  cargo:rerun-if-env-changed=MACOSX_DEPLOYMENT_TARGET
+  MACOSX_DEPLOYMENT_TARGET = None
+  cargo:rerun-if-env-changed=CXXFLAGS
+  CXXFLAGS = None
+  cargo:rerun-if-env-changed=HOST_CXXFLAGS
+  HOST_CXXFLAGS = None
+  cargo:rerun-if-env-changed=CXXFLAGS_aarch64_apple_darwin
+  CXXFLAGS_aarch64_apple_darwin = None
+  cargo:rerun-if-env-changed=CXXFLAGS_aarch64-apple-darwin
+  CXXFLAGS_aarch64-apple-darwin = None
+  cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+  CRATE_CC_NO_DEFAULTS = None
+  cargo:rerun-if-env-changed=CXXFLAGS
+  CXXFLAGS = None
+  cargo:rerun-if-env-changed=HOST_CXXFLAGS
+  HOST_CXXFLAGS = None
+  cargo:rerun-if-env-changed=CXXFLAGS_aarch64_apple_darwin
+  CXXFLAGS_aarch64_apple_darwin = None
+  cargo:rerun-if-env-changed=CXXFLAGS_aarch64-apple-darwin
+  CXXFLAGS_aarch64-apple-darwin = None
+  cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+  CRATE_CC_NO_DEFAULTS = None
+  cargo:rerun-if-env-changed=CXXFLAGS
+  CXXFLAGS = None
+  cargo:rerun-if-env-changed=HOST_CXXFLAGS
+  HOST_CXXFLAGS = None
+  cargo:rerun-if-env-changed=CXXFLAGS_aarch64_apple_darwin
+  CXXFLAGS_aarch64_apple_darwin = None
+  cargo:rerun-if-env-changed=CXXFLAGS_aarch64-apple-darwin
+  CXXFLAGS_aarch64-apple-darwin = None
+  cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+  CRATE_CC_NO_DEFAULTS = None
+  cargo:rerun-if-env-changed=CXXFLAGS
+  CXXFLAGS = None
+  cargo:rerun-if-env-changed=HOST_CXXFLAGS
+  HOST_CXXFLAGS = None
+  cargo:rerun-if-env-changed=CXXFLAGS_aarch64_apple_darwin
+  CXXFLAGS_aarch64_apple_darwin = None
+  cargo:rerun-if-env-changed=CXXFLAGS_aarch64-apple-darwin
+  CXXFLAGS_aarch64-apple-darwin = None
+  cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+  CRATE_CC_NO_DEFAULTS = None
+  cargo:rerun-if-env-changed=CXXFLAGS
+  CXXFLAGS = None
+  cargo:rerun-if-env-changed=HOST_CXXFLAGS
+  HOST_CXXFLAGS = None
+  cargo:rerun-if-env-changed=CXXFLAGS_aarch64_apple_darwin
+  CXXFLAGS_aarch64_apple_darwin = None
+  cargo:rerun-if-env-changed=CXXFLAGS_aarch64-apple-darwin
+  CXXFLAGS_aarch64-apple-darwin = None
+  cargo:warning=src/grumpkin_pippenger.cpp:13:38: error: unknown type name 'fp_t'; did you mean 'alt_bn128::fp_t'?
+  cargo:warning=   13 | void mult_pippenger_bn254(jacobian_t<fp_t>& ret,
+  cargo:warning=      |                                      ^~~~
+  cargo:warning=      |                                      alt_bn128::fp_t
+  cargo:warning=/Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sppark-0.1.15/sppark/ff/alt_bn128.hpp:110:8: note: 'alt_bn128::fp_t' declared here
+  cargo:warning=  110 | struct fp_t : public fp_mont {
+  cargo:warning=      |        ^
+  cargo:warning=src/grumpkin_pippenger.cpp:14:40: error: unknown type name 'fp_t'; did you mean 'alt_bn128::fp_t'?
+  cargo:warning=   14 |                           const xyzz_t<fp_t>::affine_t points[],
+  cargo:warning=      |                                        ^~~~
+  cargo:warning=      |                                        alt_bn128::fp_t
+  cargo:warning=/Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sppark-0.1.15/sppark/ff/alt_bn128.hpp:110:8: note: 'alt_bn128::fp_t' declared here
+  cargo:warning=  110 | struct fp_t : public fp_mont {
+  cargo:warning=      |        ^
+  cargo:warning=src/grumpkin_pippenger.cpp:15:49: error: unknown type name 'fr_t'; did you mean 'alt_bn128::fr_t'?
+  cargo:warning=   15 |                           size_t npoints, const fr_t scalars[])
+  cargo:warning=      |                                                 ^~~~
+  cargo:warning=      |                                                 alt_bn128::fr_t
+  cargo:warning=/Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sppark-0.1.15/sppark/ff/alt_bn128.hpp:132:8: note: 'alt_bn128::fr_t' declared here
+  cargo:warning=  132 | struct fr_t : public fr_mont {
+  cargo:warning=      |        ^
+  cargo:warning=src/grumpkin_pippenger.cpp:16:27: error: use of undeclared identifier 'fp_t'
+  cargo:warning=   16 | {   mult_pippenger<xyzz_t<fp_t>>(ret, points, npoints, scalars, true,
+  cargo:warning=      |                           ^~~~
+  cargo:warning=src/grumpkin_pippenger.cpp:21:41: error: unknown type name 'fr_t'; did you mean 'alt_bn128::fr_t'?
+  cargo:warning=   21 | void mult_pippenger_grumpkin(jacobian_t<fr_t>& ret,
+  cargo:warning=      |                                         ^~~~
+  cargo:warning=      |                                         alt_bn128::fr_t
+  cargo:warning=/Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sppark-0.1.15/sppark/ff/alt_bn128.hpp:132:8: note: 'alt_bn128::fr_t' declared here
+  cargo:warning=  132 | struct fr_t : public fr_mont {
+  cargo:warning=      |        ^
+  cargo:warning=src/grumpkin_pippenger.cpp:22:41: error: unknown type name 'fr_t'; did you mean 'alt_bn128::fr_t'?
+  cargo:warning=   22 |                            const xyzz_t<fr_t>::affine_t points[],
+  cargo:warning=      |                                         ^~~~
+  cargo:warning=      |                                         alt_bn128::fr_t
+  cargo:warning=/Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sppark-0.1.15/sppark/ff/alt_bn128.hpp:132:8: note: 'alt_bn128::fr_t' declared here
+  cargo:warning=  132 | struct fr_t : public fr_mont {
+  cargo:warning=      |        ^
+  cargo:warning=src/grumpkin_pippenger.cpp:23:50: error: unknown type name 'fp_t'; did you mean 'alt_bn128::fp_t'?
+  cargo:warning=   23 |                            size_t npoints, const fp_t scalars[])
+  cargo:warning=      |                                                  ^~~~
+  cargo:warning=      |                                                  alt_bn128::fp_t
+  cargo:warning=/Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sppark-0.1.15/sppark/ff/alt_bn128.hpp:110:8: note: 'alt_bn128::fp_t' declared here
+  cargo:warning=  110 | struct fp_t : public fp_mont {
+  cargo:warning=      |        ^
+  cargo:warning=src/grumpkin_pippenger.cpp:24:27: error: use of undeclared identifier 'fr_t'
+  cargo:warning=   24 | {   mult_pippenger<xyzz_t<fr_t>>(ret, points, npoints, scalars, true,
+  cargo:warning=      |                           ^~~~
+  cargo:warning=8 errors generated.
+
+  --- stderr
+
+
+  error occurred in cc-rs: command did not execute successfully (status code exit status: 1): "c++" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "--target=arm64-apple-macosx" "-mmacosx-version-min=26.5" "-I" "/Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blst-0.3.17/blst/src" "-I" "/Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/semolina-0.1.5/src" "-I" "/Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sppark-0.1.15/sppark" "-Wall" "-Wextra" "-fno-builtin" "-std=c++11" "-Wno-unused-command-line-argument" "-DNDEBUG" "-o" "/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/arecibo/target/release/build/grumpkin-msm-e5635810da107c8e/out/0602fb52cb66f316-grumpkin_pippenger.o" "-c" "src/grumpkin_pippenger.cpp"
+
+
+warning: build failed, waiting for other jobs to finish...

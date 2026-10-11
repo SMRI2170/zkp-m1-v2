@@ -1,0 +1,85 @@
+ Downloading crates ...
+  Downloaded sppark v0.1.6
+   Compiling sppark v0.1.6
+   Compiling regex v1.13.1
+   Compiling grumpkin-msm v0.1.0 (https://github.com/argumentcomputer/grumpkin-msm?branch=dev#414da3bc)
+   Compiling anyhow v1.0.104
+   Compiling rand_xorshift v0.5.0
+   Compiling trait-set v0.3.0
+   Compiling ref-cast-impl v1.0.27
+   Compiling abomonation_derive_ng v0.1.0
+   Compiling is-terminal v0.4.17
+   Compiling tracing-test-macro v0.2.6
+   Compiling term_size v0.3.2
+   Compiling convert_case v0.4.0
+   Compiling unarray v0.1.4
+   Compiling oorandom v11.1.5
+   Compiling abomonation v0.7.3
+   Compiling anes v0.1.6
+   Compiling dissimilar v1.0.11
+   Compiling core_detect v1.0.0
+   Compiling proptest v1.12.0
+error[E0432]: unresolved import `rand::RngCore`
+   --> /Users/shivio/.cargo/git/checkouts/grumpkin-msm-992023f89257a081/414da3b/src/pasta.rs:130:16
+    |
+130 |     use rand::{RngCore, SeedableRng};
+    |                ^^^^^^^ no `RngCore` in the root
+
+error[E0432]: unresolved import `rand::RngCore`
+ --> /Users/shivio/.cargo/git/checkouts/grumpkin-msm-992023f89257a081/414da3b/src/utils.rs:7:12
+  |
+7 | use rand::{RngCore, SeedableRng};
+  |            ^^^^^^^ no `RngCore` in the root
+
+error[E0599]: no associated function or constant named `from_entropy` found for struct `ChaCha20Rng` in the current scope
+   --> /Users/shivio/.cargo/git/checkouts/grumpkin-msm-992023f89257a081/414da3b/src/pasta.rs:140:22
+    |
+140 |         ChaCha20Rng::from_entropy().fill_bytes(&mut rnd);
+    |                      ^^^^^^^^^^^^ associated function or constant not found in `ChaCha20Rng`
+    |
+help: there is an associated function `from_rng` with a similar name
+   --> /Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rand_core-0.10.1/src/seedable_rng.rs:147:5
+    |
+147 |     fn from_rng<R: Rng + ?Sized>(rng: &mut R) -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0599]: no associated function or constant named `from_entropy` found for struct `ChaCha20Rng` in the current scope
+   --> /Users/shivio/.cargo/git/checkouts/grumpkin-msm-992023f89257a081/414da3b/src/pasta.rs:197:48
+    |
+197 |                     let mut rng = ChaCha20Rng::from_entropy();
+    |                                                ^^^^^^^^^^^^ associated function or constant not found in `ChaCha20Rng`
+    |
+help: there is an associated function `from_rng` with a similar name
+   --> /Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rand_core-0.10.1/src/seedable_rng.rs:147:5
+    |
+147 |     fn from_rng<R: Rng + ?Sized>(rng: &mut R) -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0599]: no associated function or constant named `from_entropy` found for struct `ChaCha20Rng` in the current scope
+   --> /Users/shivio/.cargo/git/checkouts/grumpkin-msm-992023f89257a081/414da3b/src/utils.rs:18:18
+    |
+ 18 |     ChaCha20Rng::from_entropy().fill_bytes(&mut rnd);
+    |                  ^^^^^^^^^^^^ associated function or constant not found in `ChaCha20Rng`
+    |
+help: there is an associated function `from_rng` with a similar name
+   --> /Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rand_core-0.10.1/src/seedable_rng.rs:147:5
+    |
+147 |     fn from_rng<R: Rng + ?Sized>(rng: &mut R) -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0599]: no associated function or constant named `from_entropy` found for struct `ChaCha20Rng` in the current scope
+   --> /Users/shivio/.cargo/git/checkouts/grumpkin-msm-992023f89257a081/414da3b/src/utils.rs:69:44
+    |
+ 69 |                 let mut rng = ChaCha20Rng::from_entropy();
+    |                                            ^^^^^^^^^^^^ associated function or constant not found in `ChaCha20Rng`
+    |
+help: there is an associated function `from_rng` with a similar name
+   --> /Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rand_core-0.10.1/src/seedable_rng.rs:147:5
+    |
+147 |     fn from_rng<R: Rng + ?Sized>(rng: &mut R) -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Some errors have detailed explanations: E0432, E0599.
+For more information about an error, try `rustc --explain E0432`.
+error: could not compile `grumpkin-msm` (lib) due to 6 previous errors
+warning: build failed, waiting for other jobs to finish...

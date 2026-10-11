@@ -1,0 +1,24 @@
+    Updating crates.io index
+ Downgrading bit-set v0.11.1 -> v0.5.3
+ Downgrading bit-vec v0.10.1 -> v0.6.3
+    Removing borsh v1.8.1
+    Removing borsh-derive v1.8.1
+    Removing bytes v1.12.1
+    Removing cfg_aliases v0.2.2
+    Removing chacha20 v0.10.2
+    Removing core_detect v1.0.0
+    Removing cpufeatures v0.3.1
+    Removing getrandom v0.4.3
+      Adding libm v0.2.16
+    Removing proc-macro-crate v3.5.0
+ Downgrading proptest v1.12.0 -> v1.2.0
+    Removing r-efi v6.0.0
+    Removing rand v0.10.3
+    Removing rand_core v0.10.1
+    Removing rand_xorshift v0.5.0
+      Adding regex-syntax v0.6.29
+    Removing toml_datetime v1.1.2+spec-1.1.0
+    Removing toml_edit v0.25.17+spec-1.1.0
+    Removing toml_parser v1.1.5+spec-1.1.0
+    Removing winnow v1.0.4
+note: pass `--verbose` to see 23 unchanged dependencies behind latest

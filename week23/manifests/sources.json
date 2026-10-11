@@ -13,6 +13,19 @@
     "microsoft-nova": {
       "url": "https://github.com/microsoft/Nova",
       "commit": "01b1e2d662a847ed7029770ecbaf6687398899dd"
+    },
+    "arecibo": {
+      "url": "https://github.com/lurk-lang/arecibo",
+      "commit": "8997d733aa69c3b6db5a44e06f7c0f74ad315d6f",
+      "toolchain": "stable override: rustc 1.97.1; upstream requests 1.79",
+      "lock_sha256": "2b8266d357a697bb0dc8756ece63ef574f3eb66ec6459cd2c2ce5223ab4091cb",
+      "build_patch_sha256": "573038be8ff1a0dbf0f044bf395e918e1c8c55c081829577d7f10d0a2ea75128"
+    },
+    "sonobe-hypernova": {
+      "url": "https://github.com/privacy-ethereum/sonobe",
+      "commit": "9c4e61f8d1a5be87c00f28838a0ef657a3cf479f",
+      "lock_sha256": "35ff53c782318cc44b113fd4e608bbdc5e5413c8c890dc6df2237e9c0f342f02",
+      "build": "failed: mixed arkworks revisions; source unchanged"
     }
   },
   "legacy_patch_sha256": "a6f966fc297e663798f953746e6d81aef1abea6a1f6b940ae3811e992e7e4e9e",
@@ -32,7 +45,7 @@
     "poc/witness-transfer/Cargo.toml": "6588c198ce0d6b546d4305349f9dea523e7f2060df221e2f371501ce14136301",
     "poc/witness-transfer/prepare.py": "7b4443ed440f55f60211ed2ba7225289e9f63238fa3ef7647daf6c324bd117c4",
     "poc/witness-transfer/probes/resume_randomized.rs": "af90e69a9a47da39cd90ac203b88f60cb9f48fd792cdd78b464b08680b222d9b",
-    "poc/witness-transfer/src/main.rs": "91a66d0ba2ecc5b36a24b75fec5b2cbce610c372caaaf23d26ff813bad2122f4",
+    "poc/witness-transfer/src/main.rs": "19d33a91da97c50dcd17f9a9223787b201c09df5bf97fbd5b745b8fc6d87e206",
     "poc/private-pcd/baseline.go": "fe0f8f8e24e382ac3df5f748acce2696065e228ef525cfbf7a676400e9516ac6",
     "poc/private-pcd/benchmark.go": "1f21a1dc627bbb3718a537b720683119e5e386b1907a5cadf8c2006ef9d27d8a",
     "poc/private-pcd/check_transport.py": "7165993cc4f0f7a6638cda60fe04b4d24fd3a9d2b4f47412e87cebc3c6e5920f",
@@ -42,6 +55,11 @@
     "poc/private-pcd/relations.go": "03887ee0f59a0b78696745d1dd76b29557bca4908cba144333070a32fc798899",
     "poc/private-pcd/requirements.txt": "d5b937414245e4fb32db031c55333d8b10144cdde9e4b9ec2f4574a887eb9ec9",
     "poc/private-pcd/resource_run.py": "246feb332d7908975d3292a49c43d1a572502b9d52028e51016bdb76e21cafb3",
-    "poc/private-pcd/signed_transport.py": "619d8634de229bdb3d810efb7835ebecfb07c81a334ae2dfe133f19e35c25b1b"
+    "poc/private-pcd/signed_transport.py": "619d8634de229bdb3d810efb7835ebecfb07c81a334ae2dfe133f19e35c25b1b",
+    "poc/private-pcd/go.mod": "e98047cd1670a4721e31523e476340905d403d79838be6f44a426d8734a98ff9",
+    "poc/besu-local/native_qbft.py": "8cfe426d93de562399d3f4277eb26269fc000bf6384dc9740258ad1f2c756505",
+    "poc/private-pcd/persistent_gate.py": "e959f74f4d521a3580a2a7096ddaf3e7d85fd97b9aba21da44d0964ed686b4b5",
+    "poc/private-pcd/fork.go": "66d57880837fc272981d16952f991d0b4e6ab228a3b97b3631bcc8750770c49c",
+    "poc/api-survey/prepare_arecibo.py": "6bc0bde25b301752b996cdbbb714ad1b99ea13aad46ca5847e690694b24898b1"
   }
 }

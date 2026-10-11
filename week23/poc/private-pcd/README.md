@@ -44,3 +44,18 @@ python3 week23/poc/private-pcd/signed_transport.py
 それぞれowner-onlyの新規fixture directoryを作るため、既存directoryは削除せず別の実行先を用意する。
 script中のbinary pathは実行例では `private-pcd-bench`。通常の単一buildで使う場合はそのbinary名に合わせる。
 `bench-singleton` はwarmup 1回＋20回のprove/verify。再帰proofの反復benchはまだ行っていない。
+
+
+追加の分岐/永続受信実験（repo rootから実行）:
+
+```sh
+(cd week23/poc/private-pcd && go build -o ../../../.cache/week23/private-pcd-forks .)
+GOMAXPROCS=2 .cache/week23/private-pcd-forks fork-prove .cache/week23/private/pcd .cache/week23/private/pcd-fork-normal normal
+GOMAXPROCS=2 .cache/week23/private-pcd-forks fork-prove .cache/week23/private/pcd .cache/week23/private/pcd-fork-outlier outlier
+python3 week23/poc/private-pcd/persistent_gate.py
+```
+
+元A/B/C proofとsigned_transportの固定roster/keysが必要。以前の実験directoryは保存し、同名への再実行は拒否する。
+分岐では元source/deps hashと再compile CCSのbyte一致を要求してsetup fixtureを明示検査する。
+保存source metadataが異なると失敗する。異なる回路や任意のsetupキャッシュを自動採用しない。
+永続ゲートは合成clock・固定メンバー・trusted local VK。独立DB間の合意ではない。

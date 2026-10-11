@@ -1,0 +1,161 @@
+Full log retained in ignored .cache/week23/logs/sonobe-hypernova-test-full.log
+SHA256: 836cf9a457abbb40357fb17bfc74fc30bfd99982ea5cd1b2d37ec6d970f3bc22
+Exit: 101; dependency mismatch, no tests ran.
+
+    Updating git repository `https://github.com/winderica/crypto-primitives`
+    Updating git repository `https://github.com/winderica/r1cs-std`
+    Updating git repository `https://github.com/arkworks-rs/algebra`
+    Updating git repository `https://github.com/arkworks-rs/std`
+    Updating git repository `https://github.com/arkworks-rs/crypto-primitives`
+    Updating git repository `https://github.com/arkworks-rs/poly-commit`
+    Updating git repository `https://github.com/arkworks-rs/r1cs-std`
+    Updating git repository `https://github.com/arkworks-rs/snark`
+    Updating crates.io index
+    Updating git repository `https://github.com/arkworks-rs/std`
+     Locking 142 packages to latest compatible versions
+      Adding generic-array v0.14.7 (available: v0.14.9)
+      Adding getrandom v0.2.17 (available: v0.4.3)
+      Adding minicov v0.3.8 (available: v0.3.9)
+      Adding num-bigint v0.4.8 (available: v0.5.1)
+      Adding sha3 v0.10.9 (available: v0.12.0)
+ Downloading crates ...
+  Downloaded num-bigint v0.5.1
+  Downloaded educe v0.8.1
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.26
+   Compiling quote v1.0.47
+   Compiling autocfg v1.5.1
+   Compiling libc v0.2.190
+   Compiling syn v2.0.119
+   Compiling version_check v0.9.5
+   Compiling cfg-if v1.0.5
+   Compiling zerocopy v0.8.62
+   Compiling libm v0.2.16
+   Compiling getrandom v0.2.17
+   Compiling generic-array v0.14.7
+   Compiling num-traits v0.2.19
+   Compiling rand_core v0.6.4
+   Compiling typenum v1.20.1
+   Compiling ppv-lite86 v0.2.21
+   Compiling rand_chacha v0.3.1
+   Compiling rand v0.8.8
+   Compiling crypto-common v0.1.7
+   Compiling block-buffer v0.10.4
+   Compiling syn v3.0.7
+   Compiling subtle v2.6.1
+   Compiling digest v0.10.7
+   Compiling num-integer v0.1.47
+   Compiling zeroize_derive v1.5.0
+   Compiling zeroize v1.9.1
+
+--- first compiler errors ---
+error[E0277]: the trait bound `F: ark_ff::fields::prime::PrimeField` is not satisfied
+   --> crates/primitives/src/algebra/field/emulated.rs:165:27
+    |
+165 |     pub(crate) limbs: Vec<FpVar<F>>,
+    |                           ^^^^^^^^ the trait `ark_ff::fields::prime::PrimeField` is not implemented for `F`
+    |
+note: there are multiple different versions of crate `ark_ff` in the dependency graph
+   --> /Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-ff-0.5.0/src/fields/prime.rs:27:1
+    |
+ 27 | / pub trait PrimeField:
+ 28 | |     Field<BasePrimeField = Self>
+ 29 | |     + FftField
+ 30 | |     + FromStr
+...   |
+ 33 | |     + From<BigUint>
+ 34 | |     + Into<BigUint>
+    | |___________________^ this is the expected trait
+    |
+   ::: /Users/shivio/.cargo/git/checkouts/algebra-5142117e1244ae01/4a19a1c/ff/src/fields/prime.rs:27:1
+    |
+ 27 | / pub trait PrimeField:
+ 28 | |     Field<BasePrimeField = Self>
+ 29 | |     + FftField
+ 30 | |     + FromStr
+...   |
+ 33 | |     + From<BigUint>
+ 34 | |     + Into<BigUint>
+    | |___________________- this is the trait that was imported
+    = help: you can use `cargo tree` to explore your dependency tree
+note: required by a bound in `FpVar`
+   --> /Users/shivio/.cargo/git/checkouts/r1cs-std-4c4906dd7dd98f5c/ae8283a/src/fields/fp/mod.rs:39:19
+    |
+ 39 | pub enum FpVar<F: PrimeField> {
+    |                   ^^^^^^^^^^ required by this bound in `FpVar`
+help: consider further restricting type parameter `F` with trait `PrimeField`
+    |
+163 | pub struct LimbedVar<F: PrimeField + ark_ff::fields::prime::PrimeField, Cfg, const ALIGNED: bool> {
+    |                                    +++++++++++++++++++++++++++++++++++
+
+error[E0277]: the trait bound `F: ark_relations::gr1cs::Field` is not satisfied
+   --> crates/primitives/src/algebra/field/emulated.rs:183:5
+    |
+183 |     fn cs(&self) -> ConstraintSystemRef<F> {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `ark_relations::gr1cs::Field` is not implemented for `F`
+    |
+note: there are multiple different versions of crate `ark_ff` in the dependency graph
+   --> /Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-ff-0.5.0/src/fields/mod.rs:159:1
+    |
+159 | / pub trait Field:
+160 | |     'static
+161 | |     + Copy
+162 | |     + Clone
+...   |
+199 | |     + From<bool>
+200 | |     + Product<Self>
+    | |___________________^ this is the expected trait
+    |
+   ::: /Users/shivio/.cargo/git/checkouts/algebra-5142117e1244ae01/4a19a1c/ff/src/fields/mod.rs:160:1
+    |
+160 | / pub trait Field:
+161 | |     'static
+162 | |     + Copy
+163 | |     + Clone
+...   |
+200 | |     + From<bool>
+201 | |     + Product<Self>
+    | |___________________- this is the trait that was imported
+    = help: you can use `cargo tree` to explore your dependency tree
+note: required by a bound in `ConstraintSystemRef`
+   --> /Users/shivio/.cargo/git/checkouts/snark-9b8ad64dbe105ad6/845ce9d/relations/src/gr1cs/constraint_system_ref.rs:26:33
+    |
+ 26 | pub enum ConstraintSystemRef<F: Field> {
+    |                                 ^^^^^ required by this bound in `ConstraintSystemRef`
+help: consider further restricting type parameter `F` with trait `Field`
+    |
+180 | impl<F: SonobeField + ark_relations::gr1cs::Field, const ALIGNED: bool> GR1CSVar<F> for LimbedVar<F, (), ALIGNED> {
+    |                     +++++++++++++++++++++++++++++
+
+error[E0277]: the trait bound `F: ark_relations::gr1cs::Field` is not satisfied
+   --> crates/primitives/src/algebra/field/emulated.rs:187:5
+    |
+187 |     fn value(&self) -> Result<Self::Value, SynthesisError> {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `ark_relations::gr1cs::Field` is not implemented for `F`
+    |
+note: there are multiple different versions of crate `ark_ff` in the dependency graph
+   --> /Users/shivio/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ark-ff-0.5.0/src/fields/mod.rs:159:1
+    |
+159 | / pub trait Field:
+160 | |     'static
+161 | |     + Copy
+162 | |     + Clone
+...   |
+199 | |     + From<bool>
+200 | |     + Product<Self>
+    | |___________________^ this is the expected trait
+    |
+   ::: /Users/shivio/.cargo/git/checkouts/algebra-5142117e1244ae01/4a19a1c/ff/src/fields/mod.rs:160:1
+    |
+160 | / pub trait Field:
+161 | |     'static
+
+--- final summary ---
+help: consider further restricting type parameter `F` with trait `Field`
+    |
+ 73 | impl<F: Field + ark_relations::gr1cs::Field> GR1CSVar<F> for Null {
+    |               +++++++++++++++++++++++++++++
+
+Some errors have detailed explanations: E0271, E0276, E0277, E0308, E0368, E0369, E0599.
+For more information about an error, try `rustc --explain E0271`.
+error: could not compile `sonobe-primitives` (lib) due to 1064 previous errors

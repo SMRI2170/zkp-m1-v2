@@ -1,0 +1,88 @@
+warning: unnecessary parentheses around assigned value
+   --> /Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/sonobe-repro/folding-schemes/src/commitment/ipa.rs:526:18
+    |
+526 |             G += (g[n - 1].scalar_mul_le(s[n - 1].to_bits_le()?.iter())? + (&g[n - 2]).scalar_mul_le(s[n - 2].to_bits_le()?.iter())?);
+    |                  ^                                                                                                                  ^
+    |
+    = note: `#[warn(unused_parens)]` (part of `#[warn(unused)]`) on by default
+help: remove these parentheses
+    |
+526 -             G += (g[n - 1].scalar_mul_le(s[n - 1].to_bits_le()?.iter())? + (&g[n - 2]).scalar_mul_le(s[n - 2].to_bits_le()?.iter())?);
+526 +             G += g[n - 1].scalar_mul_le(s[n - 1].to_bits_le()?.iter())? + (&g[n - 2]).scalar_mul_le(s[n - 2].to_bits_le()?.iter())?;
+    |
+
+warning: unnecessary parentheses around assigned value
+   --> /Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/sonobe-repro/folding-schemes/src/commitment/ipa.rs:529:18
+    |
+529 |             G += (g[i - 1].scalar_mul_le(s[i - 1].to_bits_le()?.iter())? + (&g[i]).scalar_mul_le(s[i].to_bits_le()?.iter())?);
+    |                  ^                                                                                                          ^
+    |
+help: remove these parentheses
+    |
+529 -             G += (g[i - 1].scalar_mul_le(s[i - 1].to_bits_le()?.iter())? + (&g[i]).scalar_mul_le(s[i].to_bits_le()?.iter())?);
+529 +             G += g[i - 1].scalar_mul_le(s[i - 1].to_bits_le()?.iter())? + (&g[i]).scalar_mul_le(s[i].to_bits_le()?.iter())?;
+    |
+
+warning: unnecessary parentheses around block return value
+   --> /Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/sonobe-repro/folding-schemes/src/commitment/ipa.rs:548:13
+    |
+548 |             (G.scalar_mul_le(p.a.to_bits_le()?.iter())? + (U).scalar_mul_le((p.a.clone() * b).to_bits_le()?.iter())?)
+    |             ^                                                                                                       ^
+    |
+help: remove these parentheses
+    |
+548 -             (G.scalar_mul_le(p.a.to_bits_le()?.iter())? + (U).scalar_mul_le((p.a.clone() * b).to_bits_le()?.iter())?)
+548 +             G.scalar_mul_le(p.a.to_bits_le()?.iter())? + (U).scalar_mul_le((p.a.clone() * b).to_bits_le()?.iter())?
+    |
+
+warning: unnecessary parentheses around assigned value
+   --> /Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/sonobe-repro/folding-schemes/src/commitment/pedersen.rs:196:20
+    |
+196 | ...es += (g[n - 1].scalar_mul_le(v[n - 1].to_bits_le()?.iter())? + (&g[n - 2]).scalar_mul_le(v[n - 2].to_bits_le()?.iter())?);
+    |          ^                                                                                                                  ^
+    |
+help: remove these parentheses
+    |
+196 -             res += (g[n - 1].scalar_mul_le(v[n - 1].to_bits_le()?.iter())? + (&g[n - 2]).scalar_mul_le(v[n - 2].to_bits_le()?.iter())?);
+196 +             res += g[n - 1].scalar_mul_le(v[n - 1].to_bits_le()?.iter())? + (&g[n - 2]).scalar_mul_le(v[n - 2].to_bits_le()?.iter())? ;
+    |
+
+warning: unnecessary parentheses around assigned value
+   --> /Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/sonobe-repro/folding-schemes/src/commitment/pedersen.rs:199:20
+    |
+199 |             res += (g[i - 1].scalar_mul_le(v[i - 1].to_bits_le()?.iter())? + (&g[i]).scalar_mul_le(v[i].to_bits_le()?.iter())?);
+    |                    ^                                                                                                          ^
+    |
+help: remove these parentheses
+    |
+199 -             res += (g[i - 1].scalar_mul_le(v[i - 1].to_bits_le()?.iter())? + (&g[i]).scalar_mul_le(v[i].to_bits_le()?.iter())?);
+199 +             res += g[i - 1].scalar_mul_le(v[i - 1].to_bits_le()?.iter())? + (&g[i]).scalar_mul_le(v[i].to_bits_le()?.iter())? ;
+    |
+
+warning: unnecessary parentheses around closure body
+   --> /Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/sonobe-repro/folding-schemes/src/folding/circuits/nonnative/uint.rs:679:31
+    |
+679 |                 .map(|(v, t)| (&v.v * *t))
+    |                               ^         ^
+    |
+help: remove these parentheses
+    |
+679 -                 .map(|(v, t)| (&v.v * *t))
+679 +                 .map(|(v, t)| &v.v * *t )
+    |
+
+warning: unnecessary parentheses around closure body
+   --> /Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/sonobe-repro/folding-schemes/src/folding/circuits/nonnative/uint.rs:688:31
+    |
+688 |                 .map(|(v, t)| (&v.v * *t))
+    |                               ^         ^
+    |
+help: remove these parentheses
+    |
+688 -                 .map(|(v, t)| (&v.v * *t))
+688 +                 .map(|(v, t)| &v.v * *t )
+    |
+
+warning: `folding-schemes` (lib) generated 7 warnings (run `cargo fix --lib -p folding-schemes` to apply 7 suggestions)
+   Compiling week23-witness-transfer v0.1.0 (/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/week23/poc/witness-transfer)
+    Finished `release` profile [optimized] target(s) in 52.01s
