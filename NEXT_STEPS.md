@@ -1,4 +1,25 @@
-# NEXT_STEPS — 次にやること（M2 Mac で着手）
+# NEXT_STEPS — 研究進捗・次の作業
+
+## 2026-10-11 次フェーズ：Remote ID×Groth16×Besu/Solidity（進捗正本 #28）
+
+> **前の研究フェーズ**：Nova/Sonobe調査・逐次IVC PoC、Pixel 8 3ステップ実機実証は完了（`week20/08`、`week20/09`）。ただし**別端末へ秘密Witnessを漏らさずNova内部状態を引き継ぐ実装は未完成**（`week20/12`、`week20/13`、`week21/01`）。下の従来Next Stepsは歴史的な研究メモで、新しい着手優先順位ではない。
+
+**現在の実装Epic**：[#28 Remote ID×Groth16×Solidity×Besu/QBFT](https://github.com/SMRI2170/zkp-m1-v2/issues/28)
+
+**NEXT ACTION**
+- [ ] [#29](https://github.com/SMRI2170/zkp-m1-v2/issues/29) Remote ID sessionId／public signals ABI／結果の状態機械・攻撃モデルを確定してgolden vectorsを作る
+- [ ] [#30](https://github.com/SMRI2170/zkp-m1-v2/issues/30) Besu QBFT（4 Validator+RPC）をローカル再現起動し、deploy/tx/finalityを確認
+- [ ] [#31](https://github.com/SMRI2170/zkp-m1-v2/issues/31) Circom/Groth16 proofをSolidityで検証。RapidSnarkとのEVM互換性を別途実測（過去のPixel 8 Mopro/arkworks 402msと混同しない）
+- [ ] [#32–#35](https://github.com/SMRI2170/zkp-m1-v2/issues/28) 端末認証・Registry・共同提出・BC確定と独立した速報
+- [ ] [#36–#37](https://github.com/SMRI2170/zkp-m1-v2/issues/28) BCなし比較、攻撃・遅延実測、標準化向け仕様
+
+**G1完了条件**：有効な秘密入力由来のGroth16 proofがBesu上のSolidity verifierで正しく検証され、改竄proofと公開入力すり替えが拒否される。テスト・commit・ガス・レイテンシを残す。
+
+現行の進捗と受け入れ条件は[#28](https://github.com/SMRI2170/zkp-m1-v2/issues/28)の「現在の進捗ダッシュボード」を正本とする。
+
+---
+
+## 旧フェーズの作業メモ（2026-07時点。現行の着手順ではない）
 
 最終更新: 2026-07-26 / 前提を掴むには先に `CLAUDE.md` → `week20/04_再帰ZKP_証明チェーン設計.md` を読む。
 **【2026-07-26追記】Noirも実機で完全動作を確認（詳細`week20/09` §5.2.2）。「残るのはNoir側の
