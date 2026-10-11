@@ -1,0 +1,12 @@
+{
+  "sources": {
+    "week23/poc/besu-local/ConflictHistory.sol": "5e17dbcca3826bf0f1db8b322538f7505398bca90f151ad399f8a8a5df454cd7",
+    "week23/poc/besu-local/conflict_experiment.cjs": "ce6f22f8aa481b96e754433727f9b0f1a9cdb9e7b879746f2233d2b4ea9b7a1f"
+  },
+  "dependencies": "contracts/package-lock.json",
+  "package_lock_sha256": "07c94cd4f6b4a6ab95f34594d4794aabcaaa41794be8774550dc999b083698d7",
+  "compiler": "solc 0.8.26",
+  "evm_version": "paris",
+  "besu_manifest": "besu.json",
+  "private_artifacts": "ignored owner-only .cache/week23/private/besu-conflict-42-v1; preserved"
+}

@@ -1,0 +1,216 @@
+{
+  "compiler": "0.8.26+commit.8a97fa7a.Emscripten.clang",
+  "evm_version": "paris",
+  "workload": "same 2-of-3 observer certificates, synthetic digest candidates; first valid transaction wins",
+  "no_bc": {
+    "two_of_three_conflicting_certificates_both_verify": true,
+    "byzantine_double_signer": 1,
+    "independent_verifier_X": "0xb5a0de5117215c03a0e33178475b0ae9869c74a7627e7894aa91ac1499e93512",
+    "independent_verifier_Y": "0x50d87fb425c9617d50de40ce38b2dcdf48163408304594de17cffe70ef07ea1c",
+    "unique_history": false,
+    "three_of_three_with_persistent_locks": {
+      "valid": true,
+      "conflict_refused": true,
+      "restart_lock_read": true,
+      "one_missing_signer_no_certificate": true
+    },
+    "certificate_p50_ms": 1.4402294999981677,
+    "certificate_p95_ms": 2.6197848999971027,
+    "signature_bytes_per_certificate": 130
+  },
+  "besu": {
+    "conflict_exactly_one_accepted": true,
+    "winner": "0x50d87fb425c9617d50de40ce38b2dcdf48163408304594de17cffe70ef07ea1c",
+    "all_four_same_state": true,
+    "all_four_same_event_history": true,
+    "event_count": 12,
+    "history": [
+      {
+        "label": "conflict-X",
+        "status": 0,
+        "submit_to_receipt_ms": 2583.690208,
+        "gas_used": 28020,
+        "block_number": 5,
+        "transaction_index": 1,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "conflict-Y",
+        "status": 1,
+        "submit_to_receipt_ms": 2583.711375,
+        "gas_used": 65742,
+        "block_number": 5,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "replay",
+        "status": 0,
+        "submit_to_receipt_ms": 1258.545666,
+        "gas_used": 28020,
+        "block_number": 6,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "missing-signer",
+        "status": 0,
+        "submit_to_receipt_ms": 1963.627375,
+        "gas_used": 37974,
+        "block_number": 7,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "duplicate-signer",
+        "status": 0,
+        "submit_to_receipt_ms": 2021.146999999999,
+        "gas_used": 43481,
+        "block_number": 8,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "unknown-signer",
+        "status": 0,
+        "submit_to_receipt_ms": 2026.666000000001,
+        "gas_used": 44056,
+        "block_number": 9,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "candidate-tamper",
+        "status": 0,
+        "submit_to_receipt_ms": 1937.3638329999994,
+        "gas_used": 39158,
+        "block_number": 10,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "slot-tamper",
+        "status": 0,
+        "submit_to_receipt_ms": 2029.0142909999995,
+        "gas_used": 39158,
+        "block_number": 11,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "warmup",
+        "status": 1,
+        "submit_to_receipt_ms": 1986.7869170000013,
+        "gas_used": 65715,
+        "block_number": 12,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "sample-1",
+        "status": 1,
+        "submit_to_receipt_ms": 2053.2636249999996,
+        "gas_used": 65715,
+        "block_number": 13,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "sample-2",
+        "status": 1,
+        "submit_to_receipt_ms": 1986.455332999998,
+        "gas_used": 65732,
+        "block_number": 14,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "sample-3",
+        "status": 1,
+        "submit_to_receipt_ms": 1945.2248749999999,
+        "gas_used": 65715,
+        "block_number": 15,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "sample-4",
+        "status": 1,
+        "submit_to_receipt_ms": 2017.613583000002,
+        "gas_used": 65732,
+        "block_number": 16,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "sample-5",
+        "status": 1,
+        "submit_to_receipt_ms": 2030.8866669999989,
+        "gas_used": 65703,
+        "block_number": 17,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "sample-6",
+        "status": 1,
+        "submit_to_receipt_ms": 1944.4542919999985,
+        "gas_used": 65703,
+        "block_number": 18,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "sample-7",
+        "status": 1,
+        "submit_to_receipt_ms": 2010.3651669999963,
+        "gas_used": 65715,
+        "block_number": 19,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "sample-8",
+        "status": 1,
+        "submit_to_receipt_ms": 2012.6862079999992,
+        "gas_used": 65691,
+        "block_number": 20,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "sample-9",
+        "status": 1,
+        "submit_to_receipt_ms": 1956.9462500000009,
+        "gas_used": 65715,
+        "block_number": 21,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      },
+      {
+        "label": "sample-10",
+        "status": 1,
+        "submit_to_receipt_ms": 2021.7220000000016,
+        "gas_used": 65686,
+        "block_number": 22,
+        "transaction_index": 0,
+        "all_four_same_receipt": true
+      }
+    ],
+    "latency_samples": 10,
+    "warmup": 1,
+    "submit_to_receipt_p50_ms": 2011.5256874999977,
+    "submit_to_receipt_p95_ms": 2043.1939938999992
+  },
+  "limitations": [
+    "2-of-3 observers tolerates no Byzantine equivocation for unique certificates; differs from 3-of-4 QBFT validator quorum",
+    "3-of-3 lock safety depends on honest durable signers; no total order for independent slots",
+    "Contract verifies signatures and a first-write slot policy, not observation completeness, ZKP validity, or physical truth",
+    "No censorship, independent operators, adversarial network partition or validator fault injection in this experiment",
+    "Signing time excludes proof generation, proof verification, network distribution and disk locks; chain latency includes RPC/receipt replication"
+  ],
+  "host": "one Mac arm64; four loopback validators; one operator",
+  "besu_version": "26.9.0",
+  "blockperiod_seconds": 2,
+  "scope": "synthetic digest certificates and ordering; no ZKP/VK deployment, independent operators, or sensor truth"
+}

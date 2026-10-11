@@ -47,7 +47,7 @@ def percentile(values, fraction):
     return values[low] + (values[high] - values[low]) * (position - low)
 
 
-def main():
+def main(experiment=None):
     for port in RPC_PORTS + P2P_PORTS:
         with socket.socket() as s:
             s.bind(('127.0.0.1', port))
@@ -118,6 +118,9 @@ def main():
         validators = rpc(0, 'qbft_getValidatorsByBlockNumber', ['latest'])
         if len(validators) != 4:
             raise RuntimeError('wrong QBFT validator set')
+        if experiment is not None:
+            experiment(keyfile)
+            return
         signing = "const fs=require('fs');const{Wallet}=require('ethers');(async()=>{const x=JSON.parse(fs.readFileSync(" + json.dumps(str(keyfile)) + "));const w=new Wallet(x.key);const a=[];for(let nonce=0;nonce<21;nonce++)a.push(await w.signTransaction({chainId:237023,nonce,to:w.address,value:0,gasLimit:21000,gasPrice:0,type:0}));console.log(JSON.stringify(a))})();"
         signed = json.loads(node_js(signing))
         samples = []
