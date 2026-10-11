@@ -1,0 +1,8 @@
+07:29:39 INF compiling circuit
+07:29:39 INF parsed circuit inputs nbPublic=9 nbSecret=7
+07:29:39 INF building constraint builder nbConstraints=6420
+{"constraints":6420,"ms":26,"phase":"fresh-compile","rebuilt_ccs_identical":true,"stage":1}
+07:29:40 DBG constraint system solver done nbConstraints=6420 took=0.945542
+07:29:40 DBG prover done acceleration=none backend=groth16 curve=bn254 nbConstraints=6420 took=32.547167
+07:29:40 DBG verifier done backend=groth16 curve=bn254 took=1.289083
+{"phase":"fresh-prove","pid":75055,"prior_assignment_read":false,"private_assignment_cached":false,"prove_ms":33,"setup":"inspected existing fixture; all hashes/source/CCS matched","stage":1,"state":{"Version":1,"Session":777,"RID":424242,"Bucket":100001,"Policy":20261011,"Members":1,"Consistent":1,"Suspicious":0,"Steps":1},"verified":true}

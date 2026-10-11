@@ -138,3 +138,14 @@ commit `8997d733`。初回は依存 `sppark 0.1.15` のnamespace変更でC++ bui
 [成功ログ](logs/arecibo-supernova-final-test.log)、[再現手順](poc/api-survey/README.md)、[Cargo.lock](manifests/arecibo.Cargo.lock)。
 最初のfilter誤指定で0 testsだった結果もbuild-onlyとして保存し、テスト成功の証拠に使わない。
 SuperNova/圧縮が実行可能であることを確認したが、秘密非共有のクロスprover継続はこのテストの対象ではない。
+
+## 2026-10-12：HyperNova実行と継続APIの追加検証
+
+[10の実験](10_HyperNova実行と最新Sonobe安全性と秘密引継ぎ.md)で依存混在を修正し、
+固定revamp/hypernova＋明示patchの240fold/関連38テストを実行した。
+core arkworks 0.6.0に統一し、MSM APIだけを互換移植。旧失敗ツリー/lock/logは保存。
+HyperNovaのCycleFold IVC adapterはcompile確認できた。NovaBlindFoldというAPI名は当該ツリーにない。
+Folding/IVC adapterの存在と、元Witnessを共有しない継続APIを分離した。
+当該mainのraw Proofは7合成canaryを露出することを両Hで実行確認した。
+一般再帰の別方式は新しい観測のA/B/Cで秘密assignment非共有と最終native verifyに成功。
+HyperNovaのZK継続成立や全論文照合の完了とはしない。

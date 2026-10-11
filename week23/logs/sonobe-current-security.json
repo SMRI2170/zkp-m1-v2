@@ -1,0 +1,2162 @@
+{
+  "main_commit": "7f042351e73d38f99c05167ba41f1e282178b067",
+  "remote_main_verified_on": "2026-10-12",
+  "upstream_source_modified": false,
+  "valid_independent_prover_steps": 6,
+  "tamper_rejections": 132,
+  "omitted_incoming_witness_rejections": 6,
+  "all_seven_own_canaries_in_incoming_witness": true,
+  "scope": "raw current IVC state transfer; safe verification does not make raw state zero-knowledge; no sensor truth or hardware authentication",
+  "runs": [
+    {
+      "hiding": true,
+      "stage": 1,
+      "pid": 72013,
+      "prove_ms": 142,
+      "bytes": 5273696,
+      "count": 1,
+      "verified": true,
+      "tamper_tests": [
+        {
+          "case": "running-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "running-e",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "running-cm-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "running-cm-e",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "running-u",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "running-x",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "incoming-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "incoming-cm-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "incoming-x",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "cycle-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "cycle-e",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "cycle-cm-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "cycle-cm-e",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "cycle-u",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "cycle-x",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "step",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "initial-state",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "session",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "rid",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "bucket",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "policy",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "count",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        }
+      ],
+      "omit_incoming_witness": {
+        "hiding": true,
+        "phase": "omit-incoming-witness",
+        "rejected": true,
+        "stage": 1
+      },
+      "leak_audits": [
+        {
+          "bytes": 5273696,
+          "canaries": [
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [
+                47051
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [
+                47052
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [
+                47053
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [
+                47054
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [
+                47055
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [
+                47056
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [
+                47057
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            }
+          ],
+          "hiding": true,
+          "phase": "leak-audit",
+          "pid": 72013,
+          "stage": 1
+        }
+      ]
+    },
+    {
+      "hiding": true,
+      "stage": 2,
+      "pid": 72050,
+      "prove_ms": 193,
+      "bytes": 5273696,
+      "count": 2,
+      "verified": true,
+      "tamper_tests": [
+        {
+          "case": "running-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "running-e",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "running-cm-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "running-cm-e",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "running-u",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "running-x",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "incoming-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "incoming-cm-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "incoming-x",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "cycle-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "cycle-e",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "cycle-cm-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "cycle-cm-e",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "cycle-u",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "cycle-x",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "step",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "initial-state",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "session",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "rid",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "bucket",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "policy",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "count",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        }
+      ],
+      "omit_incoming_witness": {
+        "hiding": true,
+        "phase": "omit-incoming-witness",
+        "rejected": true,
+        "stage": 2
+      },
+      "leak_audits": [
+        {
+          "bytes": 5273696,
+          "canaries": [
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [
+                47051
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [
+                47052
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [
+                47053
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [
+                47054
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [
+                47055
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [
+                47056
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [
+                47057
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            }
+          ],
+          "hiding": true,
+          "phase": "leak-audit",
+          "pid": 72050,
+          "stage": 1
+        },
+        {
+          "bytes": 5273696,
+          "canaries": [
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [
+                47051
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [
+                47052
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [
+                47053
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [
+                47054
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [
+                47055
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [
+                47056
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [
+                47057
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            }
+          ],
+          "hiding": true,
+          "phase": "leak-audit",
+          "pid": 72050,
+          "stage": 2
+        }
+      ]
+    },
+    {
+      "hiding": true,
+      "stage": 3,
+      "pid": 72376,
+      "prove_ms": 302,
+      "bytes": 5273696,
+      "count": 3,
+      "verified": true,
+      "tamper_tests": [
+        {
+          "case": "running-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "running-e",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "running-cm-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "running-cm-e",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "running-u",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "running-x",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "incoming-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "incoming-cm-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "incoming-x",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "cycle-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "cycle-e",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "cycle-cm-w",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "cycle-cm-e",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "cycle-u",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "cycle-x",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "step",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "initial-state",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "session",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "rid",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "bucket",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "policy",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "count",
+          "hiding": true,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        }
+      ],
+      "omit_incoming_witness": {
+        "hiding": true,
+        "phase": "omit-incoming-witness",
+        "rejected": true,
+        "stage": 3
+      },
+      "leak_audits": [
+        {
+          "bytes": 5273696,
+          "canaries": [
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [
+                47051
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [
+                47052
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [
+                47053
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [
+                47054
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [
+                47055
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [
+                47056
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [
+                47057
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            }
+          ],
+          "hiding": true,
+          "phase": "leak-audit",
+          "pid": 72376,
+          "stage": 2
+        },
+        {
+          "bytes": 5273696,
+          "canaries": [
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [
+                47051
+              ],
+              "owner_stage": 3,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [
+                47052
+              ],
+              "owner_stage": 3,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [
+                47053
+              ],
+              "owner_stage": 3,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [
+                47054
+              ],
+              "owner_stage": 3,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [
+                47055
+              ],
+              "owner_stage": 3,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [
+                47056
+              ],
+              "owner_stage": 3,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [
+                47057
+              ],
+              "owner_stage": 3,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            }
+          ],
+          "hiding": true,
+          "phase": "leak-audit",
+          "pid": 72376,
+          "stage": 3
+        }
+      ]
+    },
+    {
+      "hiding": false,
+      "stage": 1,
+      "pid": 72513,
+      "prove_ms": 120,
+      "bytes": 5273536,
+      "count": 1,
+      "verified": true,
+      "tamper_tests": [
+        {
+          "case": "running-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "running-e",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "running-cm-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "running-cm-e",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "running-u",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "running-x",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "incoming-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "incoming-cm-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "incoming-x",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "cycle-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "cycle-e",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "cycle-cm-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "cycle-cm-e",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "cycle-u",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "cycle-x",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "step",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "initial-state",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "session",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "rid",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "bucket",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "policy",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        },
+        {
+          "case": "count",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 1
+        }
+      ],
+      "omit_incoming_witness": {
+        "hiding": false,
+        "phase": "omit-incoming-witness",
+        "rejected": true,
+        "stage": 1
+      },
+      "leak_audits": [
+        {
+          "bytes": 5273536,
+          "canaries": [
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [
+                47051
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [
+                47052
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [
+                47053
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [
+                47054
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [
+                47055
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [
+                47056
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [
+                47057
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            }
+          ],
+          "hiding": false,
+          "phase": "leak-audit",
+          "pid": 72513,
+          "stage": 1
+        }
+      ]
+    },
+    {
+      "hiding": false,
+      "stage": 2,
+      "pid": 72552,
+      "prove_ms": 189,
+      "bytes": 5273536,
+      "count": 2,
+      "verified": true,
+      "tamper_tests": [
+        {
+          "case": "running-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "running-e",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "running-cm-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "running-cm-e",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "running-u",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "running-x",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "incoming-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "incoming-cm-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "incoming-x",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "cycle-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "cycle-e",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "cycle-cm-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "cycle-cm-e",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "cycle-u",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "cycle-x",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "step",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "initial-state",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "session",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "rid",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "bucket",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "policy",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        },
+        {
+          "case": "count",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 2
+        }
+      ],
+      "omit_incoming_witness": {
+        "hiding": false,
+        "phase": "omit-incoming-witness",
+        "rejected": true,
+        "stage": 2
+      },
+      "leak_audits": [
+        {
+          "bytes": 5273536,
+          "canaries": [
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [
+                47051
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [
+                47052
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [
+                47053
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [
+                47054
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [
+                47055
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [
+                47056
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [
+                47057
+              ],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            }
+          ],
+          "hiding": false,
+          "phase": "leak-audit",
+          "pid": 72552,
+          "stage": 1
+        },
+        {
+          "bytes": 5273536,
+          "canaries": [
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [
+                47051
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [
+                47052
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [
+                47053
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [
+                47054
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [
+                47055
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [
+                47056
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [
+                47057
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            }
+          ],
+          "hiding": false,
+          "phase": "leak-audit",
+          "pid": 72552,
+          "stage": 2
+        }
+      ]
+    },
+    {
+      "hiding": false,
+      "stage": 3,
+      "pid": 72858,
+      "prove_ms": 297,
+      "bytes": 5273536,
+      "count": 3,
+      "verified": true,
+      "tamper_tests": [
+        {
+          "case": "running-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "running-e",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "running-cm-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "running-cm-e",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "running-u",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "running-x",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "incoming-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "incoming-cm-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "incoming-x",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "cycle-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "cycle-e",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "cycle-cm-w",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "cycle-cm-e",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "cycle-u",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "cycle-x",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "step",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "initial-state",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "session",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "rid",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "bucket",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "policy",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        },
+        {
+          "case": "count",
+          "hiding": false,
+          "phase": "tamper",
+          "rejected": true,
+          "stage": 3
+        }
+      ],
+      "omit_incoming_witness": {
+        "hiding": false,
+        "phase": "omit-incoming-witness",
+        "rejected": true,
+        "stage": 3
+      },
+      "leak_audits": [
+        {
+          "bytes": 5273536,
+          "canaries": [
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [
+                47051
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [
+                47052
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [
+                47053
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [
+                47054
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [
+                47055
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [
+                47056
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [
+                47057
+              ],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            }
+          ],
+          "hiding": false,
+          "phase": "leak-audit",
+          "pid": 72858,
+          "stage": 2
+        },
+        {
+          "bytes": 5273536,
+          "canaries": [
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [],
+              "owner_stage": 1,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [],
+              "owner_stage": 2,
+              "running_w_matches": 0,
+              "serialized_matches": 0
+            },
+            {
+              "canary_index": 0,
+              "incoming_w_indices": [
+                47051
+              ],
+              "owner_stage": 3,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 1,
+              "incoming_w_indices": [
+                47052
+              ],
+              "owner_stage": 3,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 2,
+              "incoming_w_indices": [
+                47053
+              ],
+              "owner_stage": 3,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 3,
+              "incoming_w_indices": [
+                47054
+              ],
+              "owner_stage": 3,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 4,
+              "incoming_w_indices": [
+                47055
+              ],
+              "owner_stage": 3,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 5,
+              "incoming_w_indices": [
+                47056
+              ],
+              "owner_stage": 3,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            },
+            {
+              "canary_index": 6,
+              "incoming_w_indices": [
+                47057
+              ],
+              "owner_stage": 3,
+              "running_w_matches": 0,
+              "serialized_matches": 1
+            }
+          ],
+          "hiding": false,
+          "phase": "leak-audit",
+          "pid": 72858,
+          "stage": 3
+        }
+      ]
+    }
+  ]
+}

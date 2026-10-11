@@ -1,0 +1,20 @@
+[package]
+name = "week23-sonobe-current"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+sonobe-ivc = { path = "../../../.cache/week23/sources/sonobe/crates/ivc" }
+sonobe-fs = { path = "../../../.cache/week23/sources/sonobe/crates/fs" }
+sonobe-primitives = { path = "../../../.cache/week23/sources/sonobe/crates/primitives" }
+ark-bn254 = { version = "=0.6.0", features = ["r1cs"] }
+ark-grumpkin = { version = "=0.6.0", features = ["r1cs"] }
+ark-crypto-primitives = { version = "=0.6.0", features = ["sponge"] }
+ark-ff = "=0.6.0"
+ark-ec = "=0.6.0"
+ark-r1cs-std = "=0.6.0"
+ark-relations = "=0.6.0"
+ark-serialize = "=0.6.0"
+ark-std = "=0.6.0"
+serde_json = "1"
+sha2 = "0.10"

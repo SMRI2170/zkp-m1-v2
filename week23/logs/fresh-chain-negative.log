@@ -1,0 +1,9 @@
+{"case":"version","phase":"fresh-negative-native-verifier","rejected":true}
+{"case":"session","phase":"fresh-negative-native-verifier","rejected":true}
+{"case":"rid","phase":"fresh-negative-native-verifier","rejected":true}
+{"case":"bucket","phase":"fresh-negative-native-verifier","rejected":true}
+{"case":"policy","phase":"fresh-negative-native-verifier","rejected":true}
+{"case":"members","phase":"fresh-negative-native-verifier","rejected":true}
+{"case":"consistent","phase":"fresh-negative-native-verifier","rejected":true}
+{"case":"suspicious","phase":"fresh-negative-native-verifier","rejected":true}
+{"case":"steps","phase":"fresh-negative-native-verifier","rejected":true}

@@ -116,3 +116,11 @@ A受信後Bが提出しない場合、Cのcryptographic proofが正しくてもh
 この検査は固定ordinal Cからの2つの競合提出であり、任意の異なる2観測者の動的参加を実装したものではない。
 SQLiteは単一受信者内の競合制御を与え、複数独立主体の合意・グローバルreplay/fork拒否を与えない。
 外部資格registry、任意参加者/離脱時の順序再構成、Rust ZK-folding、Pi/Pixel移植、FinalBNV2/EVMは残る。
+
+## 2026-10-12：新しい観測・証明で秘密非共有チェーンを再実行
+
+[10](10_HyperNova実行と最新Sonobe安全性と秘密引継ぎ.md)で、同じ固定回路/検査済みsetupのもと、新しい合成観測でA/B/Cを独立processからproveした。
+全source/artifact hash照合と現在ソースからのCCS再構築一致を必須とした。前段からproof/publicのみ読み、private assignmentは保存/転送しない。
+B prove 18.449秒、C 24.106秒（単回）、C最終native verify成功、転送464/496/496 bytes。
+Cの公開9入力改変は実verifierで全件拒否。exact canary照合はBへのA、CへのA/Bが0件。
+HyperNova/NovaBlindFoldの秘密継続は別の未成立課題であり、この成功で代替名を付けない。

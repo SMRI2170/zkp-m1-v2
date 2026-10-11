@@ -1,0 +1,59 @@
+{
+  "branch_commit": "9c4e61f8d1a5be87c00f28838a0ef657a3cf479f",
+  "dependency_fix": "one arkworks ff/ec/relations/r1cs-std family 0.6.0; macros helper 0.5.0 is upstream intentional",
+  "msm_fix": "replace removed fork-only joint_scalar_mul_be with sum of scalar_mul_le; reject insufficient generators; no commitment/relation checks removed",
+  "hypernova": {
+    "variants": [
+      "HyperNova",
+      "HyperNova2"
+    ],
+    "hiding": [
+      true,
+      false
+    ],
+    "M_N": [
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        5,
+        0
+      ]
+    ],
+    "rounds_per_case": 10,
+    "fold_prove_decide_verify_rounds": 240,
+    "passed": true
+  },
+  "final_tests": {
+    "sonobe_fs": 3,
+    "sonobe_primitives": 35,
+    "ignored": 0,
+    "failed": 0
+  },
+  "patch_sha256": "fcd35c63890840025eb795ba0780bae0fa09a32d7daaa62acedf92a8b3b95cd0",
+  "lock_sha256": "fbcce0f9f53755b724aae6f9f9643f284cd8d26726c1405d31a9c5e3c7107760",
+  "original_failure_preserved": ".cache/week23/logs/sonobe-hypernova-test-full.log",
+  "not_claimed": [
+    "NovaBlindFold implemented",
+    "witness-free HyperNova handoff",
+    "RF truth",
+    "EVM verification"
+  ]
+}

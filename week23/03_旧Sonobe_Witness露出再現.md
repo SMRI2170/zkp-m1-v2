@@ -100,3 +100,11 @@ setup約1.61秒、A prove約309ms、B verify約45ms（共有Mac、単回、同�
 #40のIssueに列挙されたローカル再現実験は完了し、**commitment検証漏れを発見した結果**として記録する。
 任意の複数stepからの回復範囲や新mainでの実行比較は追加研究であり、未実施のまま区別する。
 GitHubのチェックボックス/状態はこのローカル記録では変更しない。
+
+## 2026-10-12：最新mainの追加検証
+
+[10](10_HyperNova実行と最新Sonobe安全性と秘密引継ぎ.md)で最新main `7f042351`（remote mainを再確認）を無変更で検証した。
+22改竄×3段×両Hの132件と、incoming Witness省略6件は拒否。
+旧版で受理されたincoming cmW改竄も拒否した。一方raw Proofのincoming witnessには各元7canaryが残り、B/Cから読めた。
+この改竄拒否の改善と、raw状態転送のprivacy欠如は別の結果である。
+旧版の失敗結果は削除・green化していない。

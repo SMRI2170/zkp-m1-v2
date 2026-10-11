@@ -1,0 +1,95 @@
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -22,46 +22,26 @@
+ wasm-bindgen-test = { version = "0.3" }
+ 
+ # Arkworks family
+-ark-crypto-primitives = { git = "https://github.com/arkworks-rs/crypto-primitives", default-features = false }
+-ark-ec = { git = "https://github.com/arkworks-rs/algebra", default-features = false }
+-ark-ff = { git = "https://github.com/arkworks-rs/algebra", default-features = false }
+-ark-groth16 = { git = "https://github.com/arkworks-rs/groth16", default-features = false }
+-ark-poly = { git = "https://github.com/arkworks-rs/algebra", default-features = false }
+-ark-poly-commit = { git = "https://github.com/arkworks-rs/poly-commit", default-features = false }
+-ark-r1cs-std = { git = "https://github.com/arkworks-rs/r1cs-std", default-features = false }
+-ark-relations = { git = "https://github.com/arkworks-rs/snark", default-features = false }
+-ark-serialize = { git = "https://github.com/arkworks-rs/algebra", default-features = false }
+-ark-snark = { git = "https://github.com/arkworks-rs/snark", default-features = false }
+-ark-std = { git = "https://github.com/arkworks-rs/std", default-features = false }
++ark-crypto-primitives = { version = "=0.6.0", default-features = false }
++ark-ec = { version = "=0.6.0", default-features = false }
++ark-ff = { version = "=0.6.0", default-features = false }
++ark-groth16 = { version = "=0.6.0", default-features = false }
++ark-poly = { version = "=0.6.0", default-features = false }
++ark-poly-commit = { version = "=0.6.0", default-features = false }
++ark-r1cs-std = { version = "=0.6.0", default-features = false }
++ark-relations = { version = "=0.6.0", default-features = false }
++ark-serialize = { version = "=0.6.0", default-features = false }
++ark-snark = { version = "=0.6.0", default-features = false }
++ark-std = { version = "=0.6.0", default-features = false }
+ 
+ # Ark curves
+-ark-bn254 = { git = "https://github.com/arkworks-rs/algebra", default-features = false }
+-ark-grumpkin = { git = "https://github.com/arkworks-rs/algebra", default-features = false }
+-ark-pallas = { git = "https://github.com/arkworks-rs/algebra", default-features = false }
+-ark-vesta = { git = "https://github.com/arkworks-rs/algebra", default-features = false }
++ark-bn254 = { version = "=0.6.0", default-features = false }
++ark-grumpkin = { version = "=0.6.0", default-features = false }
++ark-pallas = { version = "=0.6.0", default-features = false }
++ark-vesta = { version = "=0.6.0", default-features = false }
+ 
+ # Local crates
+ sonobe-primitives = { path = "crates/primitives", default-features = false }
+ sonobe-fs = { path = "crates/fs", default-features = false }
+ sonobe-ivc = { path = "crates/ivc", default-features = false }
+ 
+-[patch.crates-io]
+-# We depend on git versions of arkworks crates, but some of our dependencies
+-# depend on crates.io versions, so we need to override them here to avoid
+-# version conflicts.
+-ark-ff = { git = "https://github.com/arkworks-rs/algebra" }
+-ark-ec = { git = "https://github.com/arkworks-rs/algebra" }
+-ark-serialize = { git = "https://github.com/arkworks-rs/algebra" }
+-ark-poly = { git = "https://github.com/arkworks-rs/algebra" }
+-ark-std = { git = "https://github.com/arkworks-rs/std" }
+-ark-crypto-primitives = { git = "https://github.com/winderica/crypto-primitives", rev = "af003fc" }
+-ark-r1cs-std = { git = "https://github.com/winderica/r1cs-std", rev = "ae8283a" } # "sw-fix-updated" branch
+-
+-# Curve crates also need git versions
+-ark-bn254 = { git = "https://github.com/arkworks-rs/algebra" }
+-
+-[patch."https://github.com/arkworks-rs/crypto-primitives"]
+-ark-crypto-primitives = { git = "https://github.com/winderica/crypto-primitives", rev = "af003fc" }
+-
+-[patch."https://github.com/arkworks-rs/r1cs-std"]
+-ark-r1cs-std = { git = "https://github.com/winderica/r1cs-std", rev = "ae8283a" } # "sw-fix-updated" branch--- a/crates/primitives/src/commitments/pedersen.rs
++++ b/crates/primitives/src/commitments/pedersen.rs
+@@ -157,22 +157,13 @@
+     /// with the given generators `g` and scalar bits `v`.
+     fn msm(g: &[C::Var], v: &[Vec<Boolean<CF2<C>>>]) -> Result<C::Var, SynthesisError> {
+         let mut res = C::Var::zero();
+-        let n = v.len();
+-        if n % 2 == 1 {
+-            res += g[n - 1].scalar_mul_le(v[n - 1].to_bits_le()?.iter())?;
+-        } else {
+-            res += g[n - 1].joint_scalar_mul_be(
+-                &g[n - 2],
+-                v[n - 1].to_bits_le()?.iter(),
+-                v[n - 2].to_bits_le()?.iter(),
+-            )?;
+-        }
+-        for i in (1..n - 1).step_by(2) {
+-            res += g[i - 1].joint_scalar_mul_be(
+-                &g[i],
+-                v[i - 1].to_bits_le()?.iter(),
+-                v[i].to_bits_le()?.iter(),
+-            )?;
++        // Arkworks 0.6 removed the fork-only joint multiplication API.
++        // Same MSM relation as current Sonobe main; retain every scalar term.
++        if g.len() < v.len() {
++            return Err(SynthesisError::Unsatisfiable);
++        }
++        for (g_i, v_i) in g.iter().zip(v) {
++            res += g_i.scalar_mul_le(v_i.to_bits_le()?.iter())?;
+         }
+         Ok(res)
+     }

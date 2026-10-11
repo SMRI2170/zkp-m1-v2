@@ -9,8 +9,8 @@ DRIP trust chain、センサーの真実性、観測者ハードウェア認証�
 
 | 作業 | 状態 | 記録 |
 |---|---|---|
-| #39 | IN_PROGRESS：API入出力・検証責務を追記。Arecibo標準テスト成功、HyperNovaブランチ依存不整合を記録 | [02](02_Nova系実装とAPI対応調査.md) |
-| #40 | LOCAL_COMPLETE_WITH_FINDINGS：両Hの露出・単一fold逆算・元KZG構成を再現。受信ゲートは改竄拒否、元verifyの失敗は保存 | [03](03_旧Sonobe_Witness露出再現.md) |
+| #39 | IN_PROGRESS：API入出力・検証責務を追記。HyperNova修正版240fold成功。ZK継続API/原論文の詳細照合は残る | [02](02_Nova系実装とAPI対応調査.md) |
+| #40 | LOCAL_COMPLETE_WITH_FINDINGS：両Hの露出・単一fold逆算・元KZG構成を再現。最新mainの132改竄拒否とraw stateの漏洩も検証 | [03](03_旧Sonobe_Witness露出再現.md) |
 | #41 | IN_PROGRESS：A/B/Cと別観測のC分岐2本を検証。永続replay・離脱・同時提出の受信テスト成功 | [04](04_秘密保護型A_B_C連鎖PoC.md) |
 | #42 | IN_PROGRESS：ZKP→署名→Besu統合、4レプリカQCと実P2P分断を検証。オンチェーンZKPの同等比較は残る | [05](05_PCD_BC比較と技術選定ADR.md) |
 
@@ -34,3 +34,5 @@ GitHub Issueの状態変更は行っていない。
 #42の共同署名・競合解決・共通履歴の比較結果：[07](07_BCなし共同署名とBesu共通履歴の比較実験.md)。
 
 2026-10-12追加：[08 ZKP→Besu統合・資格管理](08_ZKP検証からBesu履歴への統合と資格管理.md)、[09 BCなし4レプリカ・Besu障害比較](09_BCなし4レプリカとBesu障害比較.md)。
+
+指定P0の実行結果：[10 HyperNova実行・秘密引継ぎ・最新Sonobe](10_HyperNova実行と最新Sonobe安全性と秘密引継ぎ.md)。

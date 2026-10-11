@@ -1,0 +1,53 @@
+   Compiling sonobe-primitives v0.1.0 (/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/sonobe-hypernova-fixed-v1/crates/primitives)
+   Compiling sonobe-fs v0.1.0 (/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week23/sources/sonobe-hypernova-fixed-v1/crates/fs)
+    Finished `release` profile [optimized] target(s) in 39.81s
+     Running unittests src/lib.rs (.cache/week23/target-hypernova-fixed/release/deps/sonobe_fs-fa0b2a268655ae23)
+
+running 3 tests
+test ova::tests::test_ova ... ok
+test nova::tests::test_nova ... ok
+test hypernova::tests::test_hypernova ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.91s
+
+     Running unittests src/lib.rs (.cache/week23/target-hypernova-fixed/release/deps/sonobe_primitives-1d582c5102db610c)
+
+running 35 tests
+test algebra::group::emulated::tests::test_alloc_zero ... ok
+test algebra::group::emulated::tests::test_inputize ... ok
+test arithmetizations::ccs::tests::test_check ... ok
+test arithmetizations::ccs::tests::test_eval ... ok
+test algebra::group::emulated::tests::test_to_hash_preimage ... ok
+test arithmetizations::r1cs::circuits::tests::test_check ... ok
+test arithmetizations::r1cs::circuits::tests::test_eval ... ok
+test arithmetizations::r1cs::tests::test_constraint_extraction ... ok
+test arithmetizations::r1cs::tests::test_satisfiability ... ok
+test arithmetizations::r1cs::tests::test_witness_extraction ... ok
+test sumcheck::tests::test_sumcheck ... ok
+test algebra::field::emulated::tests::test_pow ... ok
+test sumcheck::utils::tests::test_interpolation ... ok
+test transcripts::griffin::sponge::tests::test_absorb_canonical_point ... ok
+test sumcheck::utils::tests::test_compute_lagrange_interpolated_poly ... ok
+test algebra::field::emulated::tests::test_mul_fq ... ok
+test transcripts::griffin::sponge::tests::test_absorb_emulated_point ... ok
+test transcripts::griffin::sponge::tests::test_challenge_field_element ... ok
+test transcripts::griffin::sponge::tests::test_challenge_bits ... ok
+test transcripts::griffin::tests::test_affine_4 ... ok
+test transcripts::griffin::tests::test_affine_3 ... ok
+test transcripts::griffin::tests::test_affine_60 ... ok
+test transcripts::griffin::tests::test_affine_8 ... ok
+test transcripts::griffin::tests::test_consistent_perm ... ok
+test transcripts::griffin::tests::test ... ok
+test transcripts::poseidon::sponge::tests::check_against_circom_poseidon ... ok
+test transcripts::poseidon::sponge::tests::test_absorb_canonical_point ... ok
+test transcripts::poseidon::sponge::tests::test_absorb_emulated_point ... ok
+test transcripts::poseidon::sponge::tests::test_challenge_bits ... ok
+test transcripts::poseidon::sponge::tests::test_challenge_field_element ... ok
+test sumcheck::circuits::tests::test_sum_check_circuit ... ok
+test algebra::field::emulated::tests::test_mul_bigint ... ok
+test algebra::field::emulated::tests::test_alloc ... ok
+test commitments::pedersen::tests::test_pedersen_commitment ... ok
+test algebra::field::emulated::tests::test_vec_vec_mul ... ok
+
+test result: ok. 35 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.77s
+

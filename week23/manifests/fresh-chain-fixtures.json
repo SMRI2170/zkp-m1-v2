@@ -1,0 +1,26 @@
+{
+  "sources": {
+    "week23/poc/private-pcd/main.go": "71bc431282f123db6854eda9348531c1d123bd454f3ee4cd50662809a19e62b0",
+    "week23/poc/private-pcd/relations.go": "03887ee0f59a0b78696745d1dd76b29557bca4908cba144333070a32fc798899",
+    "week23/poc/private-pcd/go.mod": "e98047cd1670a4721e31523e476340905d403d79838be6f44a426d8734a98ff9",
+    "week23/poc/private-pcd/go.sum": "1e44c1a5e3c186a0593d503a9e98dec9892096ccf39bce80725cb254a26da556"
+  },
+  "artifacts": {
+    "1/ccs.bin": "fd6d1c8716dec410e60686a1025a4c7f9795050fdc43f9ee26a6e6e21bdec4e1",
+    "1/pk.bin": "ea920cf3b1b71c18e9a86f515771a65dceb5bee3c84e320d90447a2f539d05e8",
+    "1/vk.bin": "96d6bc1dc58b45efafbf9e15f59c9bab6a0c14c0fd59f5c801dce9cff0cb5386",
+    "1/proof.bin": "58a404e6114c6e9e1dc9ada5765941b48b2910505f9f680a65667105501e1742",
+    "1/public.bin": "6279eef9a8073cfcc6ecd105213a88ef72ede578f0a7c5c5e86bb1f9c648a91e",
+    "2/ccs.bin": "a4f838e8563c5fd4b8000cbaf41198692e0a083638addb679c628dd04baf1ef4",
+    "2/pk.bin": "eb72e7018ea3d5459a3e95d75e983fb61bfe6d170bbeee981ae6d79850dfbc9d",
+    "2/vk.bin": "acf5bfa9ff96087267b806607fe5c6f84ba03d7ef7acdc8a17bc5c621c4835bb",
+    "2/proof.bin": "1b15d1cf982a381ef73923b6ad486942d189af7d41b4548f65b20949b1baa7e6",
+    "2/public.bin": "7f19e86ed2bfb6cd85efeaba45b397d660086ca39bdec7f168fa8969efa0d196",
+    "3/ccs.bin": "3e350853e36c466ec0004f998e857378123e2f082af778d6946009c5fa8e8338",
+    "3/pk.bin": "0acdab238ac2d22250716feef249f5205abddd297dee1c8572d5b71ce748cf58",
+    "3/vk.bin": "538cf294a5945b1abf024ba79b4f251493292fe46a6af8f16d05af56b4124995",
+    "3/proof.bin": "a14d4163d2c4532f3044789fe7971a7ea05053cdb4cb8e628739aabf7407bcd6",
+    "3/public.bin": "9c43f082e9618e7709c76881c395d7558a04e41b81a133f51d5dd55e2197cae9"
+  },
+  "inspection": "stage2/3 match previous published artifact hashes; stage1 source + native proof checked, fresh source compilation must match CCS before reuse"
+}

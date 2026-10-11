@@ -1,0 +1,57 @@
+{
+  "arkworks_packages": {
+    "ark-bn254": [
+      "0.6.0"
+    ],
+    "ark-crypto-primitives": [
+      "0.6.0"
+    ],
+    "ark-crypto-primitives-macros": [
+      "0.5.0"
+    ],
+    "ark-ec": [
+      "0.6.0"
+    ],
+    "ark-ff": [
+      "0.6.0"
+    ],
+    "ark-ff-asm": [
+      "0.6.0"
+    ],
+    "ark-ff-macros": [
+      "0.6.0"
+    ],
+    "ark-grumpkin": [
+      "0.6.0"
+    ],
+    "ark-pallas": [
+      "0.6.0"
+    ],
+    "ark-poly": [
+      "0.6.0"
+    ],
+    "ark-poly-commit": [
+      "0.6.0"
+    ],
+    "ark-r1cs-std": [
+      "0.6.0"
+    ],
+    "ark-relations": [
+      "0.6.0"
+    ],
+    "ark-serialize": [
+      "0.6.0"
+    ],
+    "ark-serialize-derive": [
+      "0.6.0"
+    ],
+    "ark-snark": [
+      "0.6.0"
+    ],
+    "ark-std": [
+      "0.6.0"
+    ]
+  },
+  "no_duplicate_field_or_curve_versions": true,
+  "macro_package_note": "ark-crypto-primitives 0.6.0 upstream intentionally depends on ark-crypto-primitives-macros 0.5.0; procedural macro package, not a second ark-ff/ec family"
+}

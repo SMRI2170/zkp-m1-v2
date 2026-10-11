@@ -1,0 +1,14 @@
+{
+  "probes": [
+    {
+      "probe": "blindfold",
+      "exit_code": 101,
+      "conclusion": "No NovaBlindFold symbol; not evidence that every ZK API is impossible"
+    },
+    {
+      "probe": "hypernova_ivc",
+      "exit_code": 0,
+      "conclusion": "HyperNova/CycleFold IVC type bridge compiles; execution and ZK/blinded handoff are separate requirements"
+    }
+  ]
+}
