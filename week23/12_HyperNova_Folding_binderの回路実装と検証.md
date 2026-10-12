@@ -1,5 +1,9 @@
 # HyperNova Folding binderの回路実装と検証
 
+後続判断：ユーザー承認によりSonobe／HyperNovaは今回の秘密非共有継続に不採用。
+本報告の「次の実装」「直近の残件」は実験時点の記録で、追加binder開発とprove再試行は停止する。
+現在の方針は[採用ADR](05_PCD_BC比較と技術選定ADR.md)を参照。
+
 2026-10-12。[11](11_HyperNova_IVCとブラインド状態引継ぎの検証.md)の追加binder課題について、
 最初の部品として **2→1 NIMFS foldの結び付け** を回路化した。
 [コード・再現手順](poc/hypernova-binder/README.md)、[実行ログ](logs/hypernova-binder-prove.log)。

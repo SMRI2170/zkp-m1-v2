@@ -3,24 +3,29 @@
 実施開始: 2026-10-11。親Issue: [#38](https://github.com/SMRI2170/zkp-m1-v2/issues/38)。
 順序: **#39（実装/API調査）・#40（旧版再現）→ #41（秘密非共有PoC）→ #42（比較ADR）**。
 
+現在の決定：**調査したSonobe／HyperNovaは秘密非共有継続に不採用。追加binder開発を停止する。**
+以後は成立済みのGo/gnark一般再帰ZKPを基準に評価する。
+根拠・範囲・残件は[採用ADR](05_PCD_BC比較と技術選定ADR.md)に記録。
+
 本リポジトリは研究PoCである。V2はclaimed RIDをグループ化し、観測者署名を検証する。
 DRIP trust chain、センサーの真実性、観測者ハードウェア認証、実UAVの同一性は証明しない。
 今回の入力は合成fixtureのみ。実キャプチャ、実座標、秘密鍵を使用しない。
 
 | 作業 | 状態 | 記録 |
 |---|---|---|
-| #39 | IN_PROGRESS：API入出力・検証責務を追記。HyperNova修正版240fold成功。ZK継続API/原論文の詳細照合は残る | [02](02_Nova系実装とAPI対応調査.md) |
+| #39 | Sonobe／HyperNovaの不採用を決定。追加binder開発は停止。調査証拠を保存 | [02](02_Nova系実装とAPI対応調査.md)、[05 ADR](05_PCD_BC比較と技術選定ADR.md) |
 | #40 | LOCAL_COMPLETE_WITH_FINDINGS：両Hの露出・単一fold逆算・元KZG構成を再現。最新mainの132改竄拒否とraw stateの漏洩も検証 | [03](03_旧Sonobe_Witness露出再現.md) |
 | #41 | IN_PROGRESS：A/B/Cと別観測のC分岐2本を検証。永続replay・離脱・同時提出の受信テスト成功 | [04](04_秘密保護型A_B_C連鎖PoC.md) |
 | #42 | IN_PROGRESS：ZKP→署名→Besu統合、4レプリカQCと実P2P分断を検証。オンチェーンZKPの同等比較は残る | [05](05_PCD_BC比較と技術選定ADR.md) |
 
-状態はローカルの実行証拠に合わせて更新する。GitHubへのコメント投稿・Issueクローズはまだ行っていない。
+状態はローカルの実行証拠と採用判断に合わせて更新する。GitHub Issue本文に証拠を反映済みで、Issue全体のクローズは行っていない。
 旧成果を変更せず、実験ソースは `poc/`、依存版・パッチは `manifests/`、公開できるログは `logs/` に残す。
 ビルド・合成秘密のシリアライズ・setup/proofは ignored `.cache/week23/` に保管し、Gitへ追加しない。
 
 今回のローカルPoCはA→B→Cの秘密非共有計算連鎖まで成立した。
 旧Sonobeの最終ZK proofをそのままfold継続するAPIは型不一致を再現したため、別方式として記録する。
-全IssueをDONEとはしていない。Rust版の秘密継続、動的資格/参加、Pi/Pixel実機、Besu実測、同等条件の比較は残る。
+全IssueをDONEとはしていない。動的資格/参加、Pi/Pixel実機、Besuの追加評価、同等条件の比較は残る。
+Sonobe／HyperNovaのRust版秘密継続は不採用に伴い開発停止とし、以後の必須残タスクには含めない。
 
 
 2026-10-11の追加実施: #40の固定旧API再現はLOCAL_COMPLETE_WITH_FINDINGS。
@@ -38,3 +43,5 @@ GitHub Issueの状態変更は行っていない。
 指定P0の実行結果：[10 HyperNova実行・秘密引継ぎ・最新Sonobe](10_HyperNova実行と最新Sonobe安全性と秘密引継ぎ.md)。
 
 HyperNova固有の継続ゲート追加：[11 IVC実行とblinding/state binding](11_HyperNova_IVCとブラインド状態引継ぎの検証.md)。
+
+Folding binderの中間実験：[12 回路実装と証明生成の資源上限](12_HyperNova_Folding_binderの回路実装と検証.md)。追加開発は停止。
