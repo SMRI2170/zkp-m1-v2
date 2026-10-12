@@ -1,0 +1,13 @@
+{
+  "mode": "prove",
+  "exit_code": -15,
+  "peak_rss_bytes": 3377053696,
+  "elapsed_s": 278.623370625,
+  "ceiling": {
+    "reason": "resource_ceiling",
+    "rss_bytes": 2982297600,
+    "swap_used_MiB": 7692.5
+  },
+  "rss_ceiling_GiB": 4.5,
+  "swap_ceiling_MiB": 7500
+}

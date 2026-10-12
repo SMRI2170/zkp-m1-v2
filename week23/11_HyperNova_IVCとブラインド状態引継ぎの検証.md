@@ -59,6 +59,10 @@ primaryとCycleFold両側、最新incoming、session/step/transcript、trusted V
 秘密非共有の成立例は10の一般再帰方式を維持する。
 HyperNova固有の秘密継続を不可能とは結論せず、追加binder/継続回路の課題として#39/#41へ記録する。
 
+後続：[12のFolding binder実装](12_HyperNova_Folding_binderの回路実装と検証.md)で、
+SumCheckと非ネイティブ群演算を回路化し、正常充足と6件の改竄拒否を確認した。
+Groth16はsetupまで成功し、prove中にswap上限で停止。元IVC履歴binderと秘密継続は引き続き未完了。
+
 ## 測定範囲
 
 追加probeは単一process。key生成1,288 ms、3stepのprove＋verifyは226/443/464 ms、random fold＋検証350 msの単回。

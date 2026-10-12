@@ -1,0 +1,14 @@
+{"constraints":2498769,"full_group_equation":true,"full_ivc_history_verified":false,"ms":21382,"phase":"plan","satisfied":true}
+Constraint trace requires `ConstraintLayer`
+{"case":"target-cm","phase":"negative","rejected":true}
+Constraint trace requires `ConstraintLayer`
+{"case":"target-scalar","phase":"negative","rejected":true}
+Constraint trace requires `ConstraintLayer`
+{"case":"input-cm","phase":"negative","rejected":true}
+Constraint trace requires `ConstraintLayer`
+{"case":"sumcheck","phase":"negative","rejected":true}
+Constraint trace requires `ConstraintLayer`
+{"case":"sigma","phase":"negative","rejected":true}
+Constraint trace requires `ConstraintLayer`
+{"case":"session-digest","phase":"negative","rejected":true}
+{"ms":67548,"phase":"setup"}

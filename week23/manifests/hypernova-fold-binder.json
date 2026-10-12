@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-12",
+  "hypernova_commit": "9c4e61f8d1a5be87c00f28838a0ef657a3cf479f",
+  "base_patch_manifest": "hypernova-current-and-secret.json",
+  "upstream_library_changed_this_experiment": false,
+  "sources_sha256": {
+    "week23/poc/hypernova-binder/Cargo.lock": "50da32fb692ad334fbddf7db3f79c521723bf0d2f7a87eb7ea0f78785acdab2e",
+    "week23/poc/hypernova-binder/Cargo.toml": "7485284d28384e8dd42413db2d92fd7b423cf25aa3de241b6e60540434a72534",
+    "week23/poc/hypernova-binder/README.md": "bd6c74ffb93471af1826e6414ae95543da9ffa40f0b4b6a93c7d886191ad7ef9",
+    "week23/poc/hypernova-binder/run.py": "224744ef23db56d54edc8b228340902d1cd09c6221a3ba7e5fc2c90e7301f908",
+    "week23/poc/hypernova-binder/src/curve.rs": "36fdef7e59792e437e2a145b957cbcdf95606b97fe0bd84f789b510dc6ef3c8b",
+    "week23/poc/hypernova-binder/src/main.rs": "eb2e0dce7a0f2f65fc7291cb202c972e13dfb17faf47d8e6caaca09d0c328d01"
+  },
+  "constraints": 2498769,
+  "negative_cases_rejected": 6,
+  "curve_unit_tests_passed": 3,
+  "setup_succeeded": true,
+  "groth16_proof_generated": false,
+  "groth16_verified": false,
+  "full_ivc_history_verified": false,
+  "private_handoff_demonstrated": false,
+  "resource": {
+    "mode": "prove",
+    "exit_code": -15,
+    "peak_rss_bytes": 3377053696,
+    "elapsed_s": 278.623370625,
+    "ceiling": {
+      "reason": "resource_ceiling",
+      "rss_bytes": 2982297600,
+      "swap_used_MiB": 7692.5
+    },
+    "rss_ceiling_GiB": 4.5,
+    "swap_ceiling_MiB": 7500
+  },
+  "private_fixture": {
+    "path": ".cache/week23/private/hypernova-fold-binder-v1",
+    "mode": "0700",
+    "artifacts": {
+      "pk.bin": {
+        "bytes": 531814832,
+        "sha256": "e5b33409cd544a2e96d00e61baa98037c441781fc7a2d8bb2cf782df1c0478f3",
+        "mode": "0600"
+      },
+      "vk.bin": {
+        "bytes": 456,
+        "sha256": "8295a1e79e777d103d061c60413e92ea31c70408ed6bc754bcc00b9b02528001",
+        "mode": "0600"
+      }
+    },
+    "private_assignment_cached": false,
+    "reuse_supported": false
+  },
+  "preflight": {
+    "host": "Apple M2",
+    "physical_GiB": 16,
+    "memory_pressure_free_percent": 41,
+    "swap_used_MiB": 4802.88
+  }
+}

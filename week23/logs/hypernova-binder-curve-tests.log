@@ -1,0 +1,10 @@
+   Compiling week23-hypernova-binder v0.1.0 (/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/week23/poc/hypernova-binder)
+    Finished `release` profile [optimized] target(s) in 4.45s
+     Running unittests src/main.rs (.cache/week23/target-hypernova-binder/release/deps/week23_hypernova_binder-ed23b3e73861f23b)
+
+running 3 tests
+test curve::tests::complete_group_edges_match_native ... ok
+test curve::tests::scalar_edges_match_native ... ok
+test curve::tests::wrong_sum_and_off_curve_are_unsatisfied ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.92s
