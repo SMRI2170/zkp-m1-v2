@@ -1,0 +1,10 @@
+{"arch":"aarch64","framework":"Bulletproofs 5.0.1 pinned git experimental R1CS/Ristretto","os":"macos","phase":"start","unstable_r1cs_api":true}
+{"phase":"keys","setup_ms":7.0117080000000005,"trusted_setup":false}
+{"case_id":0,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":929,"prove_ms":34.15475,"public_scalar_bytes":64,"tampered_proof_decode_rejected":false,"tampered_proof_rejected":true,"verified":true,"verify_ms":3.053917}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":929,"prove_ms":33.729542,"public_scalar_bytes":64,"tampered_proof_decode_rejected":false,"tampered_proof_rejected":true,"verified":true,"verify_ms":3.05775}
+{"case_id":2,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":929,"prove_ms":33.644417000000004,"public_scalar_bytes":64,"tampered_proof_decode_rejected":false,"tampered_proof_rejected":true,"verified":true,"verify_ms":3.0303750000000003}
+{"case_id":3,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":929,"prove_ms":33.811458,"public_scalar_bytes":64,"tampered_proof_decode_rejected":false,"tampered_proof_rejected":true,"verified":true,"verify_ms":3.040875}
+{"case_id":4,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":929,"prove_ms":33.591209,"public_scalar_bytes":64,"tampered_proof_decode_rejected":false,"tampered_proof_rejected":true,"verified":true,"verify_ms":3.090875}
+{"case_id":5,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":929,"prove_ms":33.893667,"public_scalar_bytes":64,"tampered_proof_decode_rejected":false,"tampered_proof_rejected":true,"verified":true,"verify_ms":3.059083}
+{"case_id":6,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":929,"prove_ms":33.881292,"public_scalar_bytes":64,"tampered_proof_decode_rejected":false,"tampered_proof_rejected":true,"verified":true,"verify_ms":3.02475}
+{"all_verified":true,"invalid_cases_rejected":6,"phase":"summary","proofs_saved":false,"samples":7}

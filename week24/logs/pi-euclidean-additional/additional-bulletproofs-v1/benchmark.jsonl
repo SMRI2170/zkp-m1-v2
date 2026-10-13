@@ -1,0 +1,2 @@
+{"arch":"aarch64","framework":"Bulletproofs 5.0.1 pinned git experimental R1CS/Ristretto","os":"linux","phase":"start","unstable_r1cs_api":true}
+{"phase":"keys","setup_ms":48.843092,"trusted_setup":false}

@@ -1,0 +1,2 @@
+{"arch":"aarch64","framework":"Plonky3 Goldilocks AIR/HidingFRI/Keccak","os":"macos","phase":"start"}
+{"batch_pow_bits":10,"fri_log_blowup":2,"fri_num_queries":100,"phase":"keys","query_pow_bits":16,"setup_ms":0.093125,"trace_rows":8,"trace_width":158,"trusted_setup":false,"zero_knowledge_config":true}

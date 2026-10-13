@@ -1,0 +1,1 @@
+Error: "prove: Pcs { phase: \"trace commitment\", source: HidingBudgetExceeded { mask_height: 8, num_queries: 100, num_opening_points: 1, extension_degree: 2 } }"

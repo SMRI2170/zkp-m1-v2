@@ -1,0 +1,51 @@
+{
+  "phase": "resource",
+  "exit_code": 2,
+  "parent_limits_bytes": {
+    "memory.high": 1258291200,
+    "memory.max": 1610612736,
+    "memory.swap.max": 0
+  },
+  "ssh_oom_score_adj": -900,
+  "watchdog_verified_outside_slice": true,
+  "elapsed_s": 0.01582107100000485,
+  "limits_bytes": {
+    "memory.max": 268435456,
+    "memory.high": 201326592,
+    "memory.swap.max": 0
+  },
+  "cgroup_peak_bytes": 8212480,
+  "sampled_swap_peak_bytes": 0,
+  "poll_interval_ms": 10,
+  "poll_samples": 1,
+  "memory_events_before": {
+    "low": 0,
+    "high": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0
+  },
+  "memory_events_after": {
+    "low": 0,
+    "high": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0
+  },
+  "temperature_before_C": 48.199,
+  "temperature_after_C": 48.686,
+  "throttled_before": "0x50000",
+  "throttled_after": "0x50000",
+  "throttle_samples": [
+    "0x50000",
+    "0x50000"
+  ],
+  "thermal_poll_interval_ms": 250,
+  "benchmark_cpu_affinity": [
+    0
+  ],
+  "stop_reason": null,
+  "scope": "whole unit including runner and all child processes; sampled process RSS is command leader only"
+}

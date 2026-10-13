@@ -33,3 +33,7 @@ jobs:
         run: go test ./...
       - name: Validate recorded Pi Euclidean experiment evidence
         run: python3 experiments/pi4-euclidean/check_results.py
+      - name: Validate additional Pi framework evaluation evidence
+        run: python3 experiments/pi4-euclidean-additional/check_results.py
+      - name: Test telemetry failure cleanup
+        run: python3 -m unittest discover -s experiments/pi4-euclidean-additional -p "test_*.py"

@@ -1,0 +1,8 @@
+[package]
+name="week24-euclidean-plonky2"
+version="0.1.0"
+edition="2021"
+[dependencies]
+plonky2={git="https://github.com/0xPolygonZero/plonky2",rev="5d9da5a65bbcba2c66eb29c035090eb2e9ccb05f"}
+anyhow="1"
+serde_json="1"

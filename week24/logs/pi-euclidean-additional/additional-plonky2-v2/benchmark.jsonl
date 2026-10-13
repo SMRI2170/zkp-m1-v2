@@ -1,0 +1,2 @@
+{"arch":"aarch64","framework":"Plonky2 PLONK/FRI Goldilocks ZK-config","os":"linux","phase":"start"}
+{"degree_bits":14,"phase":"keys","security_bits_config":100,"setup_ms":15094.891948,"zero_knowledge":true}

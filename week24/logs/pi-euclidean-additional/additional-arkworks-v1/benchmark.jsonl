@@ -1,0 +1,11 @@
+{"arch":"aarch64","framework":"arkworks Groth16 BN254","os":"linux","phase":"start","setup_scope":"disposable single-contributor RAM-only local test; no deploy"}
+{"constraints":163,"invalid_cases_rejected":6,"phase":"relation"}
+{"phase":"keys","pk_bytes":34256,"setup_ms":140.008083,"vk_bytes":328}
+{"case_id":0,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":128,"prove_ms":30.141794,"public_scalar_bytes":64,"tampered_proof_decode_rejected":true,"tampered_proof_rejected":true,"verified":true,"verify_ms":5.569921}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":128,"prove_ms":31.852621,"public_scalar_bytes":64,"tampered_proof_decode_rejected":false,"tampered_proof_rejected":true,"verified":true,"verify_ms":5.592661}
+{"case_id":2,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":128,"prove_ms":37.137954,"public_scalar_bytes":64,"tampered_proof_decode_rejected":true,"tampered_proof_rejected":true,"verified":true,"verify_ms":5.888991}
+{"case_id":3,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":128,"prove_ms":30.859395000000003,"public_scalar_bytes":64,"tampered_proof_decode_rejected":true,"tampered_proof_rejected":true,"verified":true,"verify_ms":5.483496}
+{"case_id":4,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":128,"prove_ms":34.109737,"public_scalar_bytes":64,"tampered_proof_decode_rejected":false,"tampered_proof_rejected":true,"verified":true,"verify_ms":5.734826}
+{"case_id":5,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":128,"prove_ms":34.169163000000005,"public_scalar_bytes":64,"tampered_proof_decode_rejected":true,"tampered_proof_rejected":true,"verified":true,"verify_ms":5.567884}
+{"case_id":6,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":128,"prove_ms":31.014595999999997,"public_scalar_bytes":64,"tampered_proof_decode_rejected":false,"tampered_proof_rejected":true,"verified":true,"verify_ms":5.535754000000001}
+{"all_verified":true,"phase":"summary","private_assignment_cached":false,"proofs_saved":false,"samples":7}

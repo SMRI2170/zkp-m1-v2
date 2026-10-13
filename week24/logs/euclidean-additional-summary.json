@@ -1,0 +1,132 @@
+{
+  "records": [
+    {
+      "framework": "arkworks Groth16",
+      "run": "additional-arkworks-v1",
+      "measured_samples": 7,
+      "flow_mean_ms": 38.37982757142857,
+      "flow_population_sd_ms": 2.4222626301872547,
+      "flow_min_ms": 35.711715,
+      "flow_max_ms": 43.026945,
+      "flow_scope": "sum of logged witness (if separate), prove and verify; setup/negative tests excluded",
+      "separate_witness_measured": false,
+      "memory_time_weighted_mean_bytes": 7991098.242798319,
+      "memory_kernel_peak_bytes": 8388608,
+      "proof_mean_bytes": 128,
+      "proof_min_bytes": 128,
+      "proof_max_bytes": 128,
+      "setup_once_ms": 140.008083,
+      "source_log_sha256": {
+        "benchmark.jsonl": "de191a8f6cfcebcd701cb44a25395eee06728303957cbef93ffbc73742384dac",
+        "resource.json": "e7286e445635f1255e012a2eaa6b84e944be7309c8c18adcc9a945ef96f1ce22",
+        "memory.jsonl": "93da264c1a360cef371cce93dbc11f571985b8028fa79d2b5037aee87aee30cb",
+        "memory-summary.json": "39866d4ef03b1658eb3991d117181aa8bb7c7d05ddf2f063faae64c518d613b6"
+      }
+    },
+    {
+      "framework": "Halo2 KZG / BN254",
+      "run": "additional-halo2-kzg-v1",
+      "measured_samples": 7,
+      "flow_mean_ms": 606.8164245714286,
+      "flow_population_sd_ms": 1.4044001099365733,
+      "flow_min_ms": 604.3445720000001,
+      "flow_max_ms": 608.9736869999999,
+      "flow_scope": "sum of logged witness (if separate), prove and verify; setup/negative tests excluded",
+      "separate_witness_measured": false,
+      "memory_time_weighted_mean_bytes": 8392044.909307087,
+      "memory_kernel_peak_bytes": 9224192,
+      "proof_mean_bytes": 1312,
+      "proof_min_bytes": 1312,
+      "proof_max_bytes": 1312,
+      "setup_once_ms": 1422.853987,
+      "source_log_sha256": {
+        "benchmark.jsonl": "673696e0d8f0d6daaff359ba63bbe19a4e7dc53a7f59b2d72888f979c7b2343c",
+        "resource.json": "e6e9105a40609f22b26a96cd6a89bc5106ca54e5e7d2261c9710e9b0b10027e1",
+        "memory.jsonl": "51c3d4ac82b30b84352702677c283dd10a59ed194cbe9df16c9d76ee38b428b1",
+        "memory-summary.json": "8bbaa7168ca533eca5305f6fb4f581b2744b25c67b2402eecbcd9c9df202bc0c"
+      }
+    },
+    {
+      "framework": "Spartan SNARK",
+      "run": "additional-spartan-v1",
+      "measured_samples": 7,
+      "flow_mean_ms": 567.8517272857143,
+      "flow_population_sd_ms": 6.232700883248812,
+      "flow_min_ms": 553.916384,
+      "flow_max_ms": 575.077134,
+      "flow_scope": "sum of logged witness (if separate), prove and verify; setup/negative tests excluded",
+      "separate_witness_measured": true,
+      "memory_time_weighted_mean_bytes": 8746693.482573917,
+      "memory_kernel_peak_bytes": 9895936,
+      "proof_mean_bytes": 29952,
+      "proof_min_bytes": 29952,
+      "proof_max_bytes": 29952,
+      "setup_once_ms": 215.841124,
+      "source_log_sha256": {
+        "benchmark.jsonl": "4cf742b7969d33cd81ac985cf32d9270af77eb31d82a057c6b195c1fd8578130",
+        "resource.json": "b64159bfabac51627ef9b944f8f05afd4df7aac085725bd305d81d8a8146f9b7",
+        "memory.jsonl": "de7bfb4feeeb86ef7cfd510898d4dca3126d2e72eed320d809dd61f58169152a",
+        "memory-summary.json": "dc787cfeb600e842249fc862228b75d5fef8052ec8a4f93144b0fb462425e131"
+      }
+    },
+    {
+      "framework": "Bulletproofs R1CS",
+      "run": "additional-bulletproofs-v2",
+      "measured_samples": 7,
+      "flow_mean_ms": 343.70878514285715,
+      "flow_population_sd_ms": 1.8958571036877367,
+      "flow_min_ms": 341.725851,
+      "flow_max_ms": 347.56944899999996,
+      "flow_scope": "sum of logged witness (if separate), prove and verify; setup/negative tests excluded",
+      "separate_witness_measured": false,
+      "memory_time_weighted_mean_bytes": 8032714.084058569,
+      "memory_kernel_peak_bytes": 8642560,
+      "proof_mean_bytes": 929,
+      "proof_min_bytes": 929,
+      "proof_max_bytes": 929,
+      "setup_once_ms": 46.176731,
+      "source_log_sha256": {
+        "benchmark.jsonl": "61bf03cf3c385b36fbcc0818d66dca190697c004d4fb0fcbb4282fa2d02a14f4",
+        "resource.json": "338c0df430253b297a826dea215f50123636b1787bbea55cd76dd447179bdeb0",
+        "memory.jsonl": "09e69f6aad498031a96c32b1e059a79cf3e9e7aa6ccab9a1c3273c904231ac53",
+        "memory-summary.json": "46012b98036f218fdf35862f03c45f6e189f08d0368ca949b006f7154dac848a"
+      }
+    },
+    {
+      "framework": "Plonky3 HidingFRI",
+      "run": "additional-plonky3-v1",
+      "measured_samples": 7,
+      "flow_mean_ms": 155.97067485714285,
+      "flow_population_sd_ms": 41.31813159228324,
+      "flow_min_ms": 107.02150100000001,
+      "flow_max_ms": 217.690446,
+      "flow_scope": "sum of logged witness (if separate), prove and verify; setup/negative tests excluded",
+      "separate_witness_measured": true,
+      "memory_time_weighted_mean_bytes": 10890199.279554144,
+      "memory_kernel_peak_bytes": 12759040,
+      "proof_mean_bytes": 290107.28571428574,
+      "proof_min_bytes": 286872,
+      "proof_max_bytes": 294183,
+      "setup_once_ms": 0.051665,
+      "source_log_sha256": {
+        "benchmark.jsonl": "6d92675d8e9a78e77f71710d356bec8d5cb0576758c98923aee1e53595926511",
+        "resource.json": "f946079c94126dbf3532f6575fe8196cfb40f0071a36b1949359626ec02ee084",
+        "memory.jsonl": "c0e2c82f7046461aa1a3b2c0708d25297a2a967daf691074085ea812233d5da3",
+        "memory-summary.json": "8e0724859369eccb9d700433345575d6776fc3c7c58b5d4f2f31a7184c058e0d"
+      }
+    }
+  ],
+  "unmeasured": {
+    "Plonky2": "No completed Pi proof: telemetry / reboot / undervoltage",
+    "RISC Zero": "Resource/toolchain preflight only; no Pi proof",
+    "SP1": "ARM64 CLI starts; resource preflight; no Pi proof"
+  },
+  "generator_sha256": "940feb4df722154ac7009c666e97f7f5c17a015cc5696edf94ba65f8d7618ffd",
+  "scope": "Five additional Pi4 native proof implementations, seven synthetic cases each",
+  "limitations": [
+    "One run per implementation; seven distinct inputs are not repeated statistical trials",
+    "Memory includes runner, startup and negative tests; timing excludes them",
+    "Different curves, security assumptions and binary formats; no universal ranking",
+    "Unmeasured proof performance is null/missing, not zero; CLI and Mac timings excluded"
+  ]
+}

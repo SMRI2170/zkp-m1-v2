@@ -1,0 +1,81 @@
+{
+  "checked_on": "2026-10-14",
+  "hardware_proof_success_runs": [
+    "additional-arkworks-v1",
+    "additional-halo2-kzg-v1",
+    "additional-spartan-v1",
+    "additional-bulletproofs-v2",
+    "additional-plonky3-v1"
+  ],
+  "plonky2": {
+    "evaluation_state": "Pi proof benchmark incomplete; telemetry/power failures",
+    "v1": {
+      "memory_max_mib": 512,
+      "stop": "vcgencmd get_throttled TimeoutExpired after 2 seconds; unit exit 1",
+      "source": "captured systemd/SSH console and partial files",
+      "kernel_peak_bytes": null,
+      "parent_high_events_after": 11740,
+      "parent_oom_events_after": 0,
+      "complete_memory_samples": 1322,
+      "invalid_or_truncated_memory_lines": [],
+      "sampled_max_bytes": 415862784,
+      "min_system_available_bytes": 3085299712,
+      "last_logged_elapsed_s": 32.52009066000028
+    },
+    "v2": {
+      "memory_max_mib": 1536,
+      "stop": "SSH connection lost; reconnect showed uptime about one minute and runtime guards inactive",
+      "source": "captured SSH console and partial files",
+      "kernel_peak_bytes": null,
+      "complete_memory_samples": 1365,
+      "invalid_or_truncated_memory_lines": [
+        1366
+      ],
+      "sampled_max_bytes": 580587520,
+      "min_system_available_bytes": 2921394176,
+      "last_logged_elapsed_s": 20.922815648000324
+    },
+    "v3": {
+      "memory_max_mib": 1536,
+      "requested_cpu_quota_percent": 25,
+      "stop": "current undervoltage/throttling; runner stopped group; terminal resource retained separately",
+      "source": "resource.json retrieved after SSH reconnection; earlier terminal capture retained",
+      "kernel_peak_bytes": 88723456
+    },
+    "cause_limit": "undervoltage is directly observed in v3; the v2 reboot cause is not conclusively established; no successful proof claimed"
+  },
+  "bulletproofs_initial_failure": {
+    "run": "additional-bulletproofs-v1",
+    "stop": "current undervoltage/throttling",
+    "followup": "v2 completed with same circuit, memory/power checks and limit"
+  },
+  "plonky3_initial_failure": {
+    "host_log": "additional-plonky3-host.jsonl",
+    "error_log": "additional-plonky3-host-stderr.log",
+    "trace_rows": 8,
+    "reason": "HidingBudgetExceeded: mask_height8, queries100, opening_points1, extension_degree2",
+    "fix": "trace256; queries100/blowup2/PoW16+10 preserved; no bypass"
+  },
+  "zkvm": {
+    "risc_zero": {
+      "version": "3.0.6",
+      "head": "1cc70cf05033a79ebc90f07c679cb4bd1cd301b9",
+      "pi_proof_executed": false,
+      "state": "preflight only",
+      "memory_basis": "official local proving recommendation >=16GB, not a measured hard lower bound for this tiny program",
+      "tooling_basis": "no Linux ARM64 CLI asset in pinned official release; source-build viability not disproved",
+      "source_url": "https://dev.risczero.com/api/zkvm"
+    },
+    "sp1": {
+      "version": "6.9.0",
+      "head": "b8387fa61e1361d90ee7de49f551863418ca0f08",
+      "pi_proof_executed": false,
+      "pi_cli_executed": true,
+      "cli_run": "additional-sp1-cli-v2",
+      "state": "CLI compatibility verified, real proof preflight deferred",
+      "memory_basis": "official Core/Compress16GB+, Groth16 16GB+, PLONK64GB+; above bounded Pi experiment budget; not an observed OOM",
+      "source_url": "https://docs.succinct.xyz/docs/sp1/getting-started/hardware-requirements"
+    }
+  },
+  "final_health": "euclidean-additional-final-health.json; runtime guard restored after reboot; no further proof load"
+}

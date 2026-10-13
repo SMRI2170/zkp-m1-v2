@@ -1,0 +1,11 @@
+{"arch":"aarch64","backend":"Halo2 KZG/BN254 (PSE v2023_04_20)","k":9,"os":"linux","phase":"start"}
+{"invalid_cases_rejected":6,"phase":"relation","valid_cases":7}
+{"phase":"keys","setup_ms":1422.853987}
+{"case_id":0,"changed_public_rejected":true,"phase":"sample","proof_bytes":1312,"prove_ms":590.073893,"tampered_proof_rejected":true,"verified":true,"verify_ms":17.139604}
+{"case_id":1,"changed_public_rejected":true,"phase":"sample","proof_bytes":1312,"prove_ms":590.485706,"tampered_proof_rejected":true,"verified":true,"verify_ms":17.540544}
+{"case_id":2,"changed_public_rejected":true,"phase":"sample","proof_bytes":1312,"prove_ms":588.458421,"tampered_proof_rejected":true,"verified":true,"verify_ms":17.476785000000003}
+{"case_id":3,"changed_public_rejected":true,"phase":"sample","proof_bytes":1312,"prove_ms":592.129374,"tampered_proof_rejected":true,"verified":true,"verify_ms":16.844313}
+{"case_id":4,"changed_public_rejected":true,"phase":"sample","proof_bytes":1312,"prove_ms":590.288643,"tampered_proof_rejected":true,"verified":true,"verify_ms":16.85146}
+{"case_id":5,"changed_public_rejected":true,"phase":"sample","proof_bytes":1312,"prove_ms":589.223344,"tampered_proof_rejected":true,"verified":true,"verify_ms":16.858313}
+{"case_id":6,"changed_public_rejected":true,"phase":"sample","proof_bytes":1312,"prove_ms":587.4718340000001,"tampered_proof_rejected":true,"verified":true,"verify_ms":16.872738000000002}
+{"all_verified":true,"phase":"summary","proofs_saved":false,"samples":7}

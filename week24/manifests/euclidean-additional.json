@@ -1,0 +1,74 @@
+{
+  "checked_on": "2026-10-14",
+  "source_sha256": {
+    ".gitignore": "62fa08358302c9f270dc6f31708007b0b01380986db370882f3e81e76a60cb15",
+    "README.md": "4fa4e8ee67de0d496de8ac4f9c180e60f7aba488f808dccc960e3445b26be22e",
+    "arkworks/Cargo.lock": "874e928e0013a71b05eb56ce9bc188dcedca34f36e0e7c6bffbe5ecae2ddbfd3",
+    "arkworks/Cargo.toml": "3f3e91f64cc756e904ae9c3c7cbd6d861fd6f424ad0d6385d4f9e703027d1f25",
+    "arkworks/src/main.rs": "ca8e1f8344747d30adf4128176195a19260e4b3f84fff8aa1672770e12d3e27b",
+    "build.py": "3a71818e3e26805f2ee2edca560299d11d40b85749b6228e6d25ebcf743f4eb6",
+    "bulletproofs/Cargo.lock": "26d595c02c53f203be5696770b3c4f21c2f12df72a4f08ca8cb5992d21bc2410",
+    "bulletproofs/Cargo.toml": "5fa19784100425cb41fe7a67c32bb4f89f8bc7550590468d13aecfb48ead4e67",
+    "bulletproofs/src/main.rs": "19f46c162fc4900a39ea6aef8f632bba3937e77c212d19d2c86a7d1cb5fa250f",
+    "check_results.py": "aec785aa51bf30cf9f15b310e7bd97279df7cf26c306b269ff7419a3ecb33c33",
+    "halo2-kzg/Cargo.lock": "2abe159efdc71568a78190456d27b5fc754093b0d2693539bf4c5f1d7a24ccab",
+    "halo2-kzg/Cargo.toml": "5e4f6c505e2d35cd39fd940a63e1d392fb74f401fea05f9bc80334224423bd2d",
+    "halo2-kzg/src/main.rs": "9f4e273a7575e909a74cc9de00686758d774192a36d7b79796a019b1a975fb8e",
+    "plonky2/Cargo.lock": "95b8f5fa324d2c8dacca642b12db6aba8e19f54d797bcb76b2bf3f58df28aa32",
+    "plonky2/Cargo.toml": "6f5d0d3e852b73931f07ab06892152566f36b8b1798deb362d64746a15bc0ee0",
+    "plonky2/src/main.rs": "df294ce9bbb5960dbe8983fac7c0405f4df0745b22ad9c571ede8ddcf6eca9ef",
+    "plonky3/Cargo.lock": "66c6e699029812faa2bed4524e9285f7a2e85d583fb8100000d45caab05df231",
+    "plonky3/Cargo.toml": "968c8707405caf5b5edd53d30a9e178f3cecd87a3f915329f5e6c9767e548cb6",
+    "plonky3/src/main.rs": "25d729764493ff2d80c8a85e99acef5b81a79f000d9b3506abbbab5fe3296e0a",
+    "plot_evaluation.py": "940feb4df722154ac7009c666e97f7f5c17a015cc5696edf94ba65f8d7618ffd",
+    "run_guarded.py": "c0a9afad104cf8c517232433b20645a6ae098c38cbb47d6a1ef5d3f3b4b393d3",
+    "spartan/Cargo.lock": "d2f16a2952a8929378a4fa7baaee101853f23f8f7caab325c11db06884c6f110",
+    "spartan/Cargo.toml": "5dcc01eabc530e725acb8e1ada26496acda5620009d91e0ea576cc714bf3ee7c",
+    "spartan/src/main.rs": "9f97535215775e6b734aad4efde7fc1b8d1d40211a5510b623d47532e0d981de",
+    "test_runner_cleanup.py": "c2d16a1736109a11fbb49db85301bb3d22b8983c7345ef0dfa01ee606abcd0b7"
+  },
+  "dependency_git_heads": {
+    "halo2-kzg": "be955686f86eb618f55d2320c0e042485b313d22",
+    "spartan": "d62b961f9497e3c07a921b6da1457cad467598d9",
+    "bulletproofs": "04bce4e66013ff857ed462fd4206210544101461",
+    "plonky2": "5d9da5a65bbcba2c66eb29c035090eb2e9ccb05f",
+    "plonky3": "f98331687e47106a64ab82a77e2e1d0d66c9161b"
+  },
+  "arkworks_version": "0.6.0",
+  "rustc_stable": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+  "plonky2_nightly": "nightly-2026-10-01",
+  "linux_target": "aarch64-unknown-linux-musl",
+  "linux_linker": "rust-lld",
+  "binary_sha256": {
+    "arkworks": "f49700929ecff39411a07ec7f4d96d935270456beee9dbb57e69e00ba916ad87",
+    "halo2-kzg": "c3e33e21af383e90b0fdd5e74108f282bc2a4820f26bcc3f87a763b89b8cc8ac",
+    "spartan": "b2febc014c44b571a095ebcdc1f0f8fdd895870a58a93f1252ddb1b31e116ab6",
+    "bulletproofs": "d6fc167c764b022c0b4c7af3144b003fa3b3b8bfd946041dfbfaf44825acbc52",
+    "plonky2": "c1e08e4ad3e62403f577a365191130b80a092a682dac7c2afb922c707cdf80d2",
+    "plonky3": "04dcdf2685adaeba378a6ac4a325911439606584f54d544587296e091ebfe082"
+  },
+  "test_setup_scope": "disposable RAM-only keys; no deploy/publish; no saved proofs or assignments",
+  "bulletproofs_cross_c": "clang --target=aarch64-linux-musl + Rust llvm-tools llvm-ar; clear_on_drop wiping retained",
+  "zkvm": {
+    "risc0": {
+      "version": "3.0.6",
+      "official_release_cli_assets": [
+        {
+          "digest": "sha256:efd2f26434ec60ca6c1b6a1398c00dfea7fb5e0cbac09aa99a504b6bd592f38b",
+          "name": "cargo-risczero-aarch64-apple-darwin.tgz",
+          "size": 70632246
+        },
+        {
+          "digest": "sha256:615d961bfb81d318db5071d7548389c850e324ac7f421c075176daf26082a60a",
+          "name": "cargo-risczero-x86_64-unknown-linux-gnu.tgz",
+          "size": 72347320
+        }
+      ]
+    },
+    "sp1": {
+      "version": "6.9.0",
+      "official_linux_arm64_cli_archive_sha256": "ae9d388254d710345fdef5cd2ec813fa23e383d57c91b09b3991b8e8c1cd69d8",
+      "native_cli_sha256": "ff7e8edf46c3b6160c0e684b10360df80131f957ecbf94e3f8139f60a3ebde70"
+    }
+  }
+}
