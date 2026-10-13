@@ -1,0 +1,67 @@
+{
+  "samples": 117,
+  "observed_span_s": 1.4587092189999566,
+  "quantile_definition": "sample quantiles: linear interpolation; time-weighted: previous sample held until next",
+  "whole_unit_sampled": {
+    "n": 117,
+    "min_bytes": 7540736,
+    "max_bytes": 27881472,
+    "mean_bytes": 23522347.76068376,
+    "stddev_bytes": 4548987.514791285,
+    "p50_bytes": 25329664.0,
+    "p95_bytes": 27582464.0,
+    "p99_bytes": 27874918.4
+  },
+  "time_weighted": {
+    "mean_bytes": 23570071.415431414,
+    "p50_bytes": 25329664,
+    "p95_bytes": 27598848,
+    "p99_bytes": 27881472
+  },
+  "cgroup_kernel_peak_bytes": 28016640,
+  "system_available": {
+    "n": 117,
+    "min_bytes": 3480428544,
+    "max_bytes": 3501506560,
+    "mean_bytes": 3485630919.111111,
+    "stddev_bytes": 4954542.884600316,
+    "p50_bytes": 3483705344.0,
+    "p95_bytes": 3496242380.8,
+    "p99_bytes": 3500949176.32
+  },
+  "system_swap_used_max_bytes": 0,
+  "cgroup_swap_max_bytes": 0,
+  "ols_whole_run_slope_bytes_per_s": 9032117.107242957,
+  "first_to_last_bytes": 16846848,
+  "limitation": "Short startup-inclusive, autocorrelated observations; slope is not evidence of a leak and is not a steady-state estimate",
+  "process_VmRSS": {
+    "n": 117,
+    "min_bytes": 786432,
+    "max_bytes": 58773504,
+    "mean_bytes": 51364155.07692308,
+    "stddev_bytes": 10406647.171045223,
+    "p50_bytes": 55758848.0,
+    "p95_bytes": 58642432.0,
+    "p99_bytes": 58752532.480000004
+  },
+  "process_VmHWM": {
+    "n": 117,
+    "min_bytes": 786432,
+    "max_bytes": 58904576,
+    "mean_bytes": 51376723.145299144,
+    "stddev_bytes": 10414854.945973825,
+    "p50_bytes": 55758848.0,
+    "p95_bytes": 58642432.0,
+    "p99_bytes": 58773504.0
+  },
+  "process_Pss": {
+    "n": 117,
+    "min_bytes": 188416,
+    "max_bytes": 52075520,
+    "mean_bytes": 44575892.786324784,
+    "stddev_bytes": 9602279.630401537,
+    "p50_bytes": 48246784.0,
+    "p95_bytes": 51891404.8,
+    "p99_bytes": 51985735.68
+  }
+}

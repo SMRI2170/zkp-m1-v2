@@ -1,0 +1,67 @@
+{
+  "samples": 1199,
+  "observed_span_s": 14.573983853000755,
+  "quantile_definition": "sample quantiles: linear interpolation; time-weighted: previous sample held until next",
+  "whole_unit_sampled": {
+    "n": 1199,
+    "min_bytes": 7553024,
+    "max_bytes": 194605056,
+    "mean_bytes": 58898040.84737281,
+    "stddev_bytes": 48550839.798727475,
+    "p50_bytes": 43352064.0,
+    "p95_bytes": 117201715.19999996,
+    "p99_bytes": 163418521.59999996
+  },
+  "time_weighted": {
+    "mean_bytes": 63125318.1603131,
+    "p50_bytes": 98713600,
+    "p95_bytes": 119980032,
+    "p99_bytes": 171012096
+  },
+  "cgroup_kernel_peak_bytes": 196702208,
+  "system_available": {
+    "n": 1199,
+    "min_bytes": 3307425792,
+    "max_bytes": 3494440960,
+    "mean_bytes": 3441113735.3661385,
+    "stddev_bytes": 49591065.088195294,
+    "p50_bytes": 3457384448.0,
+    "p95_bytes": 3493457920.0,
+    "p99_bytes": 3494182912.0
+  },
+  "system_swap_used_max_bytes": 0,
+  "cgroup_swap_max_bytes": 0,
+  "ols_whole_run_slope_bytes_per_s": 9815210.441603685,
+  "first_to_last_bytes": 92065792,
+  "limitation": "Short startup-inclusive, autocorrelated observations; slope is not evidence of a leak and is not a steady-state estimate",
+  "process_VmRSS": {
+    "n": 1199,
+    "min_bytes": 1572864,
+    "max_bytes": 186716160,
+    "mean_bytes": 53072145.29441201,
+    "stddev_bytes": 48424200.7148025,
+    "p50_bytes": 37756928.0,
+    "p95_bytes": 111144140.79999994,
+    "p99_bytes": 157384867.83999997
+  },
+  "process_VmHWM": {
+    "n": 1199,
+    "min_bytes": 1572864,
+    "max_bytes": 190648320,
+    "mean_bytes": 92501870.81234361,
+    "stddev_bytes": 89050640.48839568,
+    "p50_bytes": 37756928.0,
+    "p95_bytes": 190648320.0,
+    "p99_bytes": 190648320.0
+  },
+  "process_Pss": {
+    "n": 1199,
+    "min_bytes": 12288,
+    "max_bytes": 187506688,
+    "mean_bytes": 53154051.62969141,
+    "stddev_bytes": 48428257.034212954,
+    "p50_bytes": 37916672.0,
+    "p95_bytes": 111347302.39999995,
+    "p99_bytes": 157627269.11999997
+  }
+}

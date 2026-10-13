@@ -1,0 +1,11 @@
+{"arch":"aarch64","backend":"Halo2 IPA/Pasta","k":9,"os":"linux","phase":"start"}
+{"invalid_cases_rejected":6,"phase":"relation","valid_cases":7}
+{"phase":"keys","setup_ms":1829.56933}
+{"case_id":0,"changed_public_rejected":true,"phase":"sample","proof_bytes":2080,"prove_ms":1510.492659,"tampered_proof_rejected":true,"verified":true,"verify_ms":50.953261}
+{"case_id":1,"changed_public_rejected":true,"phase":"sample","proof_bytes":2080,"prove_ms":1513.350336,"tampered_proof_rejected":true,"verified":true,"verify_ms":50.778781}
+{"case_id":2,"changed_public_rejected":true,"phase":"sample","proof_bytes":2080,"prove_ms":1512.193558,"tampered_proof_rejected":true,"verified":true,"verify_ms":50.993396000000004}
+{"case_id":3,"changed_public_rejected":true,"phase":"sample","proof_bytes":2080,"prove_ms":1508.3333109999999,"tampered_proof_rejected":true,"verified":true,"verify_ms":50.815211999999995}
+{"case_id":4,"changed_public_rejected":true,"phase":"sample","proof_bytes":2080,"prove_ms":1513.27662,"tampered_proof_rejected":true,"verified":true,"verify_ms":51.477782}
+{"case_id":5,"changed_public_rejected":true,"phase":"sample","proof_bytes":2080,"prove_ms":1512.4742019999999,"tampered_proof_rejected":true,"verified":true,"verify_ms":51.672903}
+{"case_id":6,"changed_public_rejected":true,"phase":"sample","proof_bytes":2080,"prove_ms":1510.811041,"tampered_proof_rejected":true,"verified":true,"verify_ms":51.271038999999995}
+{"all_verified":true,"phase":"summary","proofs_saved":false,"samples":7}

@@ -1,0 +1,11 @@
+{"arch":"aarch64","os":"macos","phase":"start"}
+{"constraints":163,"invalid_cases_rejected":6,"phase":"relation","valid_cases":7}
+{"framework":"HyperNova/CycleFold","phase":"keys","setup_ms":1252.358375}
+{"case_id":0,"claimed_state_rejections":3,"phase":"sample","prove_ms":81.00854100000001,"verified":true,"verify_ms":127.645791}
+{"case_id":1,"claimed_state_rejections":3,"phase":"sample","prove_ms":213.613958,"verified":true,"verify_ms":227.6875}
+{"case_id":2,"claimed_state_rejections":3,"phase":"sample","prove_ms":250.64454200000003,"verified":true,"verify_ms":299.05683300000004}
+{"case_id":3,"claimed_state_rejections":3,"phase":"sample","prove_ms":249.603916,"verified":true,"verify_ms":261.05645799999996}
+{"case_id":4,"claimed_state_rejections":3,"phase":"sample","prove_ms":234.225875,"verified":true,"verify_ms":266.220375}
+{"case_id":5,"claimed_state_rejections":3,"phase":"sample","prove_ms":232.732667,"verified":true,"verify_ms":299.686958}
+{"case_id":6,"claimed_state_rejections":3,"phase":"sample","prove_ms":271.58125,"verified":true,"verify_ms":321.370667}
+{"all_verified":true,"final_zk":false,"framework":"HyperNova/CycleFold","phase":"summary","proofs_saved":false,"raw_ivc_contains_witness":true,"steps":7}

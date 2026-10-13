@@ -28,3 +28,8 @@ jobs:
       - name: Run Go tests
         working-directory: aggregator
         run: go test ./...
+      - name: Run Euclidean integer circuit tests
+        working-directory: experiments/pi4-euclidean/gnark
+        run: go test ./...
+      - name: Validate recorded Pi Euclidean experiment evidence
+        run: python3 experiments/pi4-euclidean/check_results.py

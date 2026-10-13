@@ -1,0 +1,67 @@
+{
+  "samples": 2618,
+  "observed_span_s": 32.61737155700001,
+  "quantile_definition": "sample quantiles: linear interpolation; time-weighted: previous sample held until next",
+  "whole_unit_sampled": {
+    "n": 2618,
+    "min_bytes": 7290880,
+    "max_bytes": 153255936,
+    "mean_bytes": 68860038.55156608,
+    "stddev_bytes": 31822620.831441604,
+    "p50_bytes": 83757056.0,
+    "p95_bytes": 96534528.0,
+    "p99_bytes": 106945781.75999996
+  },
+  "time_weighted": {
+    "mean_bytes": 70776560.14037913,
+    "p50_bytes": 84172800,
+    "p95_bytes": 96632832,
+    "p99_bytes": 113819648
+  },
+  "cgroup_kernel_peak_bytes": 156119040,
+  "system_available": {
+    "n": 2618,
+    "min_bytes": 3358748672,
+    "max_bytes": 3501858816,
+    "mean_bytes": 3442058671.0343776,
+    "stddev_bytes": 31219188.818219993,
+    "p50_bytes": 3428184064.0,
+    "p95_bytes": 3500843008.0,
+    "p99_bytes": 3501350912.0
+  },
+  "system_swap_used_max_bytes": 0,
+  "cgroup_swap_max_bytes": 0,
+  "ols_whole_run_slope_bytes_per_s": 2307494.0714028194,
+  "first_to_last_bytes": 9297920,
+  "limitation": "Short startup-inclusive, autocorrelated observations; slope is not evidence of a leak and is not a steady-state estimate",
+  "process_VmRSS": {
+    "n": 2618,
+    "min_bytes": 786432,
+    "max_bytes": 147095552,
+    "mean_bytes": 63099124.07028266,
+    "stddev_bytes": 31646087.118309908,
+    "p50_bytes": 78053376.0,
+    "p95_bytes": 90808320.0,
+    "p99_bytes": 102119342.07999992
+  },
+  "process_VmHWM": {
+    "n": 2618,
+    "min_bytes": 786432,
+    "max_bytes": 150765568,
+    "mean_bytes": 116440390.2093201,
+    "stddev_bytes": 60414142.07874194,
+    "p50_bytes": 150765568.0,
+    "p95_bytes": 150765568.0,
+    "p99_bytes": 150765568.0
+  },
+  "process_Pss": {
+    "n": 2618,
+    "min_bytes": 184320,
+    "max_bytes": 147730432,
+    "mean_bytes": 63176794.74407945,
+    "stddev_bytes": 31637246.009400792,
+    "p50_bytes": 78225408.0,
+    "p95_bytes": 90828800.0,
+    "p99_bytes": 102317998.07999997
+  }
+}

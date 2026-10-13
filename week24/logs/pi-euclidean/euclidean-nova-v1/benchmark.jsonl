@@ -1,0 +1,5 @@
+{"arch":"aarch64","os":"linux","phase":"start"}
+{"constraints":163,"invalid_cases_rejected":6,"phase":"relation","valid_cases":7}
+{"framework":"Nova/CycleFold","phase":"keys","setup_ms":8610.36225}
+{"case_id":0,"claimed_state_rejections":3,"phase":"sample","prove_ms":474.157269,"verified":true,"verify_ms":943.407379}
+{"case_id":1,"claimed_state_rejections":3,"phase":"sample","prove_ms":1034.999939,"verified":true,"verify_ms":1537.76768}

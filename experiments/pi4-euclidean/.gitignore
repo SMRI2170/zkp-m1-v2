@@ -1,0 +1,6 @@
+**/target/
+**/Prover.toml
+**/*.wtns
+**/*.zkey
+**/*.ptau
+**/gnark/week24-euclidean

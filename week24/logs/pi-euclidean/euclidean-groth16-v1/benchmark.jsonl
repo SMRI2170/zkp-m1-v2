@@ -1,0 +1,24 @@
+{"arch":"arm64","backend":"groth16","compile_ms":5.69,"compiled_cs_match":true,"constraints":163,"fixture_hashes_verified":true,"go":"go1.26.5","gomaxprocs":1,"key_load_ms":113.005,"os":"linux","phase":"start","scope":"u16 private coordinates; public d2 u33 and floor sqrt u17; no sensor/RID claim","source_digest":"c98af92ab81d977b450e996657bb0916c0b7da9e23afa807a32538fb06256484","visible_cpus":1}
+{"case_id":0,"iteration":-1,"phase":"sample","proof_bytes":164,"prove_ms":30.152,"public_bytes":76,"verified":true,"verify_ms":7.628,"warmup":true,"witness_ms":0.142}
+{"changed_public_rejected":true,"euclidean_extra_invalid_witnesses_rejected":7,"incorrect_output_witness_rejected":true,"out_of_range_input_rejected":true,"phase":"negative","tampered_proof_decode_rejected":true,"tampered_proof_rejected":true}
+{"case_id":1,"iteration":0,"phase":"sample","proof_bytes":164,"prove_ms":30.021,"public_bytes":76,"verified":true,"verify_ms":7.58,"warmup":false,"witness_ms":0.055}
+{"case_id":2,"iteration":1,"phase":"sample","proof_bytes":164,"prove_ms":29.932,"public_bytes":76,"verified":true,"verify_ms":7.608,"warmup":false,"witness_ms":0.129}
+{"case_id":3,"iteration":2,"phase":"sample","proof_bytes":164,"prove_ms":30.047,"public_bytes":76,"verified":true,"verify_ms":7.64,"warmup":false,"witness_ms":0.095}
+{"case_id":4,"iteration":3,"phase":"sample","proof_bytes":164,"prove_ms":32.467,"public_bytes":76,"verified":true,"verify_ms":7.775,"warmup":false,"witness_ms":0.131}
+{"case_id":5,"iteration":4,"phase":"sample","proof_bytes":164,"prove_ms":33.613,"public_bytes":76,"verified":true,"verify_ms":7.675,"warmup":false,"witness_ms":0.123}
+{"case_id":6,"iteration":5,"phase":"sample","proof_bytes":164,"prove_ms":29.965,"public_bytes":76,"verified":true,"verify_ms":7.521,"warmup":false,"witness_ms":0.094}
+{"case_id":0,"iteration":6,"phase":"sample","proof_bytes":164,"prove_ms":29.359,"public_bytes":76,"verified":true,"verify_ms":7.564,"warmup":false,"witness_ms":0.093}
+{"case_id":1,"iteration":7,"phase":"sample","proof_bytes":164,"prove_ms":30.082,"public_bytes":76,"verified":true,"verify_ms":7.662,"warmup":false,"witness_ms":0.115}
+{"case_id":2,"iteration":8,"phase":"sample","proof_bytes":164,"prove_ms":30.907,"public_bytes":76,"verified":true,"verify_ms":7.668,"warmup":false,"witness_ms":0.12}
+{"case_id":3,"iteration":9,"phase":"sample","proof_bytes":164,"prove_ms":30.186,"public_bytes":76,"verified":true,"verify_ms":7.826,"warmup":false,"witness_ms":0.102}
+{"case_id":4,"iteration":10,"phase":"sample","proof_bytes":164,"prove_ms":32.337,"public_bytes":76,"verified":true,"verify_ms":7.8,"warmup":false,"witness_ms":0.125}
+{"case_id":5,"iteration":11,"phase":"sample","proof_bytes":164,"prove_ms":31.805,"public_bytes":76,"verified":true,"verify_ms":7.574,"warmup":false,"witness_ms":0.126}
+{"case_id":6,"iteration":12,"phase":"sample","proof_bytes":164,"prove_ms":29.688,"public_bytes":76,"verified":true,"verify_ms":7.599,"warmup":false,"witness_ms":0.118}
+{"case_id":0,"iteration":13,"phase":"sample","proof_bytes":164,"prove_ms":29.39,"public_bytes":76,"verified":true,"verify_ms":7.519,"warmup":false,"witness_ms":0.116}
+{"case_id":1,"iteration":14,"phase":"sample","proof_bytes":164,"prove_ms":30.157,"public_bytes":76,"verified":true,"verify_ms":7.548,"warmup":false,"witness_ms":0.135}
+{"case_id":2,"iteration":15,"phase":"sample","proof_bytes":164,"prove_ms":31.34,"public_bytes":76,"verified":true,"verify_ms":7.571,"warmup":false,"witness_ms":0.092}
+{"case_id":3,"iteration":16,"phase":"sample","proof_bytes":164,"prove_ms":29.829,"public_bytes":76,"verified":true,"verify_ms":7.493,"warmup":false,"witness_ms":0.097}
+{"case_id":4,"iteration":17,"phase":"sample","proof_bytes":164,"prove_ms":31.111,"public_bytes":76,"verified":true,"verify_ms":7.712,"warmup":false,"witness_ms":0.116}
+{"case_id":5,"iteration":18,"phase":"sample","proof_bytes":164,"prove_ms":31.549,"public_bytes":76,"verified":true,"verify_ms":7.595,"warmup":false,"witness_ms":0.095}
+{"case_id":6,"iteration":19,"phase":"sample","proof_bytes":164,"prove_ms":29.84,"public_bytes":76,"verified":true,"verify_ms":7.558,"warmup":false,"witness_ms":0.095}
+{"all_verified":true,"percentile_definition":"linear interpolation of sorted samples","phase":"summary","private_assignment_cached":false,"process_peak_rss_bytes":15466496,"proofs_saved":false,"prove_p50_ms":30.119500000000002,"prove_p95_ms":32.5243,"prove_p99_ms":33.39526,"samples":20,"verify_p50_ms":7.5969999999999995,"verify_p95_ms":7.8012999999999995,"warmups":1,"witness_p50_ms":0.1155}

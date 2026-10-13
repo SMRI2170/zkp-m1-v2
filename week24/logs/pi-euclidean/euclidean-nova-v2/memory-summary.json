@@ -1,0 +1,67 @@
+{
+  "samples": 3029,
+  "observed_span_s": 38.152669272000026,
+  "quantile_definition": "sample quantiles: linear interpolation; time-weighted: previous sample held until next",
+  "whole_unit_sampled": {
+    "n": 3029,
+    "min_bytes": 7106560,
+    "max_bytes": 192241664,
+    "mean_bytes": 88031291.49950479,
+    "stddev_bytes": 39103140.27872781,
+    "p50_bytes": 104271872.0,
+    "p95_bytes": 115544064.0,
+    "p99_bytes": 127816663.03999995
+  },
+  "time_weighted": {
+    "mean_bytes": 90425127.71627879,
+    "p50_bytes": 104398848,
+    "p95_bytes": 115552256,
+    "p99_bytes": 130383872
+  },
+  "cgroup_kernel_peak_bytes": 196173824,
+  "system_available": {
+    "n": 3029,
+    "min_bytes": 3315732480,
+    "max_bytes": 3501871104,
+    "mean_bytes": 3422868117.25586,
+    "stddev_bytes": 38495135.624369584,
+    "p50_bytes": 3407245312.0,
+    "p95_bytes": 3500597248.0,
+    "p99_bytes": 3501764608.0
+  },
+  "system_swap_used_max_bytes": 0,
+  "cgroup_swap_max_bytes": 0,
+  "ols_whole_run_slope_bytes_per_s": 2391215.146247212,
+  "first_to_last_bytes": 3928064,
+  "limitation": "Short startup-inclusive, autocorrelated observations; slope is not evidence of a leak and is not a steady-state estimate",
+  "process_VmRSS": {
+    "n": 3029,
+    "min_bytes": 786432,
+    "max_bytes": 186478592,
+    "mean_bytes": 82197799.13106635,
+    "stddev_bytes": 38892060.63779086,
+    "p50_bytes": 98312192.0,
+    "p95_bytes": 109527040.0,
+    "p99_bytes": 122178600.95999998
+  },
+  "process_VmHWM": {
+    "n": 3029,
+    "min_bytes": 786432,
+    "max_bytes": 190648320,
+    "mean_bytes": 151656842.1842192,
+    "stddev_bytes": 73887798.32313214,
+    "p50_bytes": 190648320.0,
+    "p95_bytes": 190648320.0,
+    "p99_bytes": 190648320.0
+  },
+  "process_Pss": {
+    "n": 3029,
+    "min_bytes": 184320,
+    "max_bytes": 186454016,
+    "mean_bytes": 82251156.66424562,
+    "stddev_bytes": 38867675.81494107,
+    "p50_bytes": 98336768.0,
+    "p95_bytes": 109551616.0,
+    "p99_bytes": 122281492.47999997
+  }
+}

@@ -5,8 +5,9 @@
 | 作業 | 状態 | 記録 |
 |---|---|---|
 | HyperNova概念・PR #246対応 | IN_PROGRESS：版固定・ソース照合・API境界とギャップ整理。最新論文PDFは403で全文照合未完了 | [01](01_HyperNova_概念とPR246_実装対応.md) |
-| Pi4 4GB・複数ZKPベンチ | IN_PROGRESS：gnark Groth16 toyのPi-native 4trial成功。メモリ統計・上限・SSH保護を検証。他方式／RSSI／長期は残る | [02](02_Pi4_4GB_複数ZKP実装と性能評価.md) |
-| 追加方式／EVM適合性 | Issue上の机上調査あり。ローカル実装・実機/EVMの追加検証は未着手 | #45 |
+| Pi4 4GB・複数ZKPベンチ | IN_PROGRESS：gnark Groth16 toyのPi-native 4trial成功。メモリ統計・上限・SSH保護を検証。共通距離回路は[03](03_ユークリッド距離_各方式のPi実装.md)で7構成成功。RSSI／長期は残る | [02](02_Pi4_4GB_複数ZKP実装と性能評価.md) |
+| 共通ユークリッド距離回路 | COMPLETE：7構成のPi-native生成／検証。Nova／HyperNovaはIVCのみ、最終ZKなし | [03](03_ユークリッド距離_各方式のPi実装.md) |
+| 追加方式／EVM適合性 | Noir／Halo2の共通距離回路は[03](03_ユークリッド距離_各方式のPi実装.md)で実機確認。EVM適合性・他候補の調査は残る | #45 |
 | モバイル／Native FFI比較 | RESEARCH_PLANNED | #46 |
 
 Pi4のSSH接続と機種/OS/RAMを確認し、初回toyの暗号処理・資源測定を実施済み。

@@ -1,0 +1,10 @@
+{"phase":"start","os":"linux","arch":"arm64","framework":"Circom/RapidSnark","setup_host":"Mac","source_sha256":"048f8feb8a769238541b138cf3df8cb8a57b0ff9049ed5e8fd86960335b8e290"}
+{"phase":"sample","case_id":0,"witness_ms":8.015177,"prove_ms":45.846204,"verify_ms":21.976391,"verified":true,"changed_public_rejected":true,"tampered_proof_rejected":true,"proof_json_bytes":706}
+{"phase":"sample","case_id":1,"witness_ms":2.237452,"prove_ms":47.369671,"verify_ms":19.768514,"verified":true,"changed_public_rejected":true,"tampered_proof_rejected":true,"proof_json_bytes":709}
+{"phase":"sample","case_id":2,"witness_ms":1.814312,"prove_ms":41.598501,"verify_ms":18.57865,"verified":true,"changed_public_rejected":true,"tampered_proof_rejected":true,"proof_json_bytes":708}
+{"phase":"sample","case_id":3,"witness_ms":5.73769,"prove_ms":42.806418,"verify_ms":18.099235,"verified":true,"changed_public_rejected":true,"tampered_proof_rejected":true,"proof_json_bytes":705}
+{"phase":"sample","case_id":4,"witness_ms":1.61752,"prove_ms":40.15605,"verify_ms":18.20627,"verified":true,"changed_public_rejected":true,"tampered_proof_rejected":true,"proof_json_bytes":706}
+{"phase":"sample","case_id":5,"witness_ms":5.221034,"prove_ms":43.862581,"verify_ms":18.609872,"verified":true,"changed_public_rejected":true,"tampered_proof_rejected":true,"proof_json_bytes":709}
+{"phase":"sample","case_id":6,"witness_ms":1.785313,"prove_ms":61.099649,"verify_ms":32.840323,"verified":true,"changed_public_rejected":true,"tampered_proof_rejected":true,"proof_json_bytes":707}
+{"phase":"native-invalid-witness","rejected":true,"prover_rejected":false}
+{"phase":"summary","samples":7,"invalid_cases_rejected":6,"all_verified":true,"negative_verifier_exit_code":1,"transient_files":"owner-only tmpfs removed on exit","proofs_persisted":false}
