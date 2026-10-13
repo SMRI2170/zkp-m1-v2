@@ -10,7 +10,7 @@
     "check_results.py": "2de7f897c97d3fc02137873bbf024ef3249b2b2e7500d98493549c254c787a09",
     "reference.py": "b96e72e2fd32374fc29578798a98878ec4900607c4b005ab7b162e52ec1ef79d",
     "build_rapidsnark.sh": "dcb5878b40fe1047394ea2fc19069a16929f58793670b4b879a49cf8f8f20929",
-    "prepare_sonobe.py": "f075929508d936f363554ed65814ce624abd39467d27bec2dca877a0157e3fea",
+    "prepare_sonobe.py": "ef25bac0e550473f08e8389604c4211d6943da7579e0ee464e599c7c023743ac",
     "build_gnark.py": "8dc63724172cc251c3c1c1aed6e32b69cce3920d1eb87a70a601c90514314449",
     "noir/Nargo.toml": "8c8cc6804e5eb011badc5fc63918c60c7e9261980c4b0a7efeaff26e5b3ace9d",
     "noir/bench.py": "f794a2444c5100cced67b7630ccce3e2abaf801e0ac86b48d04d91da318da343",

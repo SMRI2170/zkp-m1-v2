@@ -16,9 +16,19 @@ if not fixed.exists():
         with tempfile.TemporaryDirectory(dir=original.parent) as tmp:
             archive=Path(tmp)/'source.tar.gz'
             urllib.request.urlretrieve(f'https://codeload.github.com/ethereum/sonobe/tar.gz/{head}',archive)
-            with tarfile.open(archive) as tar:
-                tar.extractall(tmp,filter='data')
             unpacked=Path(tmp)/f'sonobe-{head}'
+            # Write only the audited regular files; works on Python 3.9 too,
+            # without extracting symlinks or trusting archive path traversal.
+            with tarfile.open(archive) as tar:
+                for name, expected_hash in audit.items():
+                    assert not Path(name).is_absolute() and '..' not in Path(name).parts
+                    member=tar.getmember(f'sonobe-{head}/{name}')
+                    assert member.isfile(), 'Audited source must be a regular file'
+                    data=tar.extractfile(member).read()
+                    assert hashlib.sha256(data).hexdigest()==expected_hash
+                    dest=unpacked/name
+                    dest.parent.mkdir(parents=True,exist_ok=True)
+                    dest.write_bytes(data)
             verify(unpacked,audit)
             shutil.move(str(unpacked),original)
     verify(original,audit)
