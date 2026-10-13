@@ -1,0 +1,489 @@
+{
+  "data_scope": "Existing synthetic Pi4 integer Euclidean distance runs; no new measurements",
+  "sample_selection": "Same seven successful runs as report03; exclude gnark warmups; keep cold first cases of the other five",
+  "mean_definition": "Time: arithmetic mean of per-case logged intervals. Memory: duration-weighted whole-cgroup mean, previous value held until next sample.",
+  "limitations": [
+    "Different setup/serialization/public statements and sample counts; no universal speed ranking",
+    "IVC steps are ordered and not independent repeated trials; not final ZK proofs",
+    "No process launch, queue, sensor capture, negative tests, startup or teardown in reported per-case flow",
+    "Memory includes startup, normal and negative verification, and all child processes",
+    "Noir first case includes cold CRS/preparation costs; timings include VK generation and execute/compile",
+    "Proof size excludes public input, keys and transport envelope; missing IVC sizes are null, never zero"
+  ],
+  "generator_sha256": "c9f01a78f68b31cb9542d0d056b36881eb220c827122074462b1e6bc69954c5d",
+  "plot_library_versions": {
+    "matplotlib": "3.9.4",
+    "numpy": "2.0.2"
+  },
+  "records": [
+    {
+      "framework": "gnark Groth16",
+      "run": "euclidean-groth16-v1",
+      "ivc_only": false,
+      "measured_samples": 20,
+      "excluded_warmups": 1,
+      "flow_scope": "witness + prove + verify; compile/key load excluded",
+      "flow_ms": {
+        "n": 20,
+        "mean": 38.414249999999996,
+        "population_sd": 1.1937199786800912,
+        "min": 37.016000000000005,
+        "max": 41.410999999999994,
+        "p95": 40.4249
+      },
+      "witness_ms": {
+        "n": 20,
+        "mean": 0.1086,
+        "population_sd": 0.018842505141302205,
+        "min": 0.055,
+        "max": 0.135,
+        "p95": 0.1312
+      },
+      "prove_or_ivc_update_ms": {
+        "n": 20,
+        "mean": 30.68125,
+        "population_sd": 1.136640350990585,
+        "min": 29.359,
+        "max": 33.613,
+        "p95": 32.5243
+      },
+      "verify_ms": {
+        "n": 20,
+        "mean": 7.6244,
+        "population_sd": 0.09220976087161266,
+        "min": 7.493,
+        "max": 7.826,
+        "p95": 7.8012999999999995
+      },
+      "cgroup_memory_time_weighted_mean_bytes": 12172256.785426382,
+      "cgroup_memory_sample_distribution_bytes": {
+        "n": 81,
+        "mean": 12194196.543209877,
+        "population_sd": 1639971.099984056,
+        "min": 7680000,
+        "max": 14426112,
+        "p95": 14168064.0
+      },
+      "cgroup_memory_kernel_peak_bytes": 14426112,
+      "observed_memory_span_s": 0.9458124880002288,
+      "memory_samples": 81,
+      "serialized_proof_size_bytes": {
+        "n": 20,
+        "mean": 164,
+        "population_sd": 0.0,
+        "min": 164,
+        "max": 164,
+        "p95": 164.0
+      },
+      "size_encoding": "native serialized binary; not a uniform wire/EVM format",
+      "serialized_public_size_bytes": {
+        "n": 20,
+        "mean": 76,
+        "population_sd": 0.0,
+        "min": 76,
+        "max": 76,
+        "p95": 76.0
+      },
+      "pi_prepare_once_ms": null,
+      "pi_compile_once_ms": 5.69,
+      "pi_key_load_once_ms": 113.005,
+      "source_log_sha256": {
+        "benchmark.jsonl": "d2621c57a0107b84f451d03e59057dfa38c9eef704fc0068de08fc08c06724ed",
+        "resource.json": "74cd3f02191f1a3336624f3af79f9dddc7bc6a1417b978230698458035416e31",
+        "memory.jsonl": "23a9e8dac3dbeb60bf79271061f62e88bbfb59fac3a3488312d06e23a0238eb7"
+      }
+    },
+    {
+      "framework": "gnark PLONK",
+      "run": "euclidean-plonk-v1",
+      "ivc_only": false,
+      "measured_samples": 20,
+      "excluded_warmups": 1,
+      "flow_scope": "witness + prove + verify; compile/key load excluded",
+      "flow_ms": {
+        "n": 20,
+        "mean": 392.382,
+        "population_sd": 16.86746239065023,
+        "min": 347.673,
+        "max": 418.036,
+        "p95": 405.99475000000007
+      },
+      "witness_ms": {
+        "n": 20,
+        "mean": 0.11945,
+        "population_sd": 0.05259607875117689,
+        "min": 0.085,
+        "max": 0.339,
+        "p95": 0.15280000000000013
+      },
+      "prove_or_ivc_update_ms": {
+        "n": 20,
+        "mean": 379.445,
+        "population_sd": 16.84062976554024,
+        "min": 335.086,
+        "max": 405.087,
+        "p95": 393.19965
+      },
+      "verify_ms": {
+        "n": 20,
+        "mean": 12.81755,
+        "population_sd": 0.3859052312420758,
+        "min": 11.922,
+        "max": 13.801,
+        "p95": 13.6186
+      },
+      "cgroup_memory_time_weighted_mean_bytes": 13998858.459335035,
+      "cgroup_memory_sample_distribution_bytes": {
+        "n": 703,
+        "mean": 14009817.399715506,
+        "population_sd": 842290.4593350292,
+        "min": 7581696,
+        "max": 15024128,
+        "p95": 14856192.0
+      },
+      "cgroup_memory_kernel_peak_bytes": 15126528,
+      "observed_memory_span_s": 8.286945404999642,
+      "memory_samples": 703,
+      "serialized_proof_size_bytes": {
+        "n": 20,
+        "mean": 520,
+        "population_sd": 0.0,
+        "min": 520,
+        "max": 520,
+        "p95": 520.0
+      },
+      "size_encoding": "native serialized binary; not a uniform wire/EVM format",
+      "serialized_public_size_bytes": {
+        "n": 20,
+        "mean": 76,
+        "population_sd": 0.0,
+        "min": 76,
+        "max": 76,
+        "p95": 76.0
+      },
+      "pi_prepare_once_ms": null,
+      "pi_compile_once_ms": 1.697,
+      "pi_key_load_once_ms": 50,
+      "source_log_sha256": {
+        "benchmark.jsonl": "2652ba3477f094618e729ebe666a203ce90cfca809d411bd21b178c89a298e3e",
+        "resource.json": "5d659055ab14faab96de8a8403e966caca4b3c52c91204774b91a28391f31ca9",
+        "memory.jsonl": "30da1ad4f7395b3725ed3fefa3e4058c644e2bd28d977699280ef36e7bd48dde"
+      }
+    },
+    {
+      "framework": "Circom / RapidSnark",
+      "run": "euclidean-rapid-v3",
+      "ivc_only": false,
+      "measured_samples": 7,
+      "excluded_warmups": 0,
+      "flow_scope": "witness + prove + verify; native CLI launch included",
+      "flow_ms": {
+        "n": 7,
+        "mean": 75.82918414285714,
+        "population_sd": 14.422292302925314,
+        "min": 66.186423,
+        "max": 109.68645000000001,
+        "p95": 100.10760929999998
+      },
+      "witness_ms": {
+        "n": 7,
+        "mean": 6.333964571428571,
+        "population_sd": 3.1495950528415944,
+        "min": 1.598651,
+        "max": 10.161612,
+        "p95": 9.9054393
+      },
+      "prove_or_ivc_update_ms": {
+        "n": 7,
+        "mean": 46.97731171428571,
+        "population_sd": 7.845447631213106,
+        "min": 39.880873,
+        "max": 65.307958,
+        "p95": 60.099519999999984
+      },
+      "verify_ms": {
+        "n": 7,
+        "mean": 22.517907857142855,
+        "population_sd": 6.616662997556059,
+        "min": 18.436165,
+        "max": 38.606925,
+        "p95": 33.26477039999999
+      },
+      "cgroup_memory_time_weighted_mean_bytes": 23570071.415431414,
+      "cgroup_memory_sample_distribution_bytes": {
+        "n": 117,
+        "mean": 23522347.76068376,
+        "population_sd": 4548987.514791285,
+        "min": 7540736,
+        "max": 27881472,
+        "p95": 27582464.0
+      },
+      "cgroup_memory_kernel_peak_bytes": 28016640,
+      "observed_memory_span_s": 1.4587092189999566,
+      "memory_samples": 117,
+      "serialized_proof_size_bytes": {
+        "n": 7,
+        "mean": 706.5714285714286,
+        "population_sd": 1.2936264483053452,
+        "min": 704,
+        "max": 708,
+        "p95": 708.0
+      },
+      "size_encoding": "JSON text; not binary proof encoding",
+      "serialized_public_size_bytes": null,
+      "pi_prepare_once_ms": null,
+      "pi_compile_once_ms": null,
+      "pi_key_load_once_ms": null,
+      "source_log_sha256": {
+        "benchmark.jsonl": "3f3c89b0bf1f80ed36d96d82301d86a0eecbb6f4405bd8eb5213f8571f758f5d",
+        "resource.json": "0aeddeb21d44766c438f6cedbba689fb7a6b8cb6f70f2bac077b3352aafa1602",
+        "memory.jsonl": "bf9591a1cfc97bb2f01f78f67330365dd212ea1a0e350129905e97346e0c8805"
+      }
+    },
+    {
+      "framework": "Halo2 IPA / Pasta",
+      "run": "euclidean-halo2-v2",
+      "ivc_only": false,
+      "measured_samples": 7,
+      "excluded_warmups": 0,
+      "flow_scope": "prove (witness processing included) + verify",
+      "flow_ms": {
+        "n": 7,
+        "mean": 1562.6991572857141,
+        "population_sd": 1.819014872302028,
+        "min": 1559.1485229999998,
+        "max": 1564.754402,
+        "p95": 1564.5722128999998
+      },
+      "witness_ms": null,
+      "prove_or_ivc_update_ms": {
+        "n": 7,
+        "mean": 1511.5616752857143,
+        "population_sd": 1.6690847322526496,
+        "min": 1508.3333109999999,
+        "max": 1513.350336,
+        "p95": 1513.3282212
+      },
+      "verify_ms": {
+        "n": 7,
+        "mean": 51.137482,
+        "population_sd": 0.31792625425852544,
+        "min": 50.778781,
+        "max": 51.672903,
+        "p95": 51.6143667
+      },
+      "cgroup_memory_time_weighted_mean_bytes": 9390087.536955476,
+      "cgroup_memory_sample_distribution_bytes": {
+        "n": 1209,
+        "mean": 9386168.64185277,
+        "population_sd": 825243.7310605963,
+        "min": 7417856,
+        "max": 11141120,
+        "p95": 10607001.6
+      },
+      "cgroup_memory_kernel_peak_bytes": 11177984,
+      "observed_memory_span_s": 13.453587671000037,
+      "memory_samples": 1209,
+      "serialized_proof_size_bytes": {
+        "n": 7,
+        "mean": 2080,
+        "population_sd": 0.0,
+        "min": 2080,
+        "max": 2080,
+        "p95": 2080.0
+      },
+      "size_encoding": "native serialized binary; not a uniform wire/EVM format",
+      "serialized_public_size_bytes": null,
+      "pi_prepare_once_ms": 1829.56933,
+      "pi_compile_once_ms": null,
+      "pi_key_load_once_ms": null,
+      "source_log_sha256": {
+        "benchmark.jsonl": "530e0d3ba7aec3242010697dac15d9b0121f9749ea289cb3308ff9ea716ad2ca",
+        "resource.json": "3fb4256a87e66cc24fcbc481ef7d21505aa19e62a8aa8b46365206f7bdef6126",
+        "memory.jsonl": "c243338ec6d879167b0b036225d5160b6c5484da6beae5aeeb4a2fdd5632b551"
+      }
+    },
+    {
+      "framework": "Noir / Barretenberg",
+      "run": "euclidean-noir-v1",
+      "ivc_only": false,
+      "measured_samples": 7,
+      "excluded_warmups": 0,
+      "flow_scope": "execute (compile + witness) + prove (VK generation included) + verify",
+      "flow_ms": {
+        "n": 7,
+        "mean": 3076.073007857693,
+        "population_sd": 521.6628111227826,
+        "min": 2855.7850270008203,
+        "max": 4353.810877000797,
+        "p95": 3909.161590300754
+      },
+      "witness_ms": {
+        "n": 7,
+        "mean": 1164.4957442858868,
+        "population_sd": 2.301950540282541,
+        "min": 1161.968252999941,
+        "max": 1168.9273880001565,
+        "p95": 1168.1492801002605
+      },
+      "prove_or_ivc_update_ms": {
+        "n": 7,
+        "mean": 1884.9559728576944,
+        "population_sd": 522.4498453651114,
+        "min": 1665.833475000909,
+        "max": 3164.6546780011704,
+        "p95": 2718.8773307010697
+      },
+      "verify_ms": {
+        "n": 7,
+        "mean": 26.62129071411203,
+        "population_sd": 0.1377154280748687,
+        "min": 26.379098000688828,
+        "max": 26.75344499948551,
+        "p95": 26.748173099440464
+      },
+      "cgroup_memory_time_weighted_mean_bytes": 59292768.33747472,
+      "cgroup_memory_sample_distribution_bytes": {
+        "n": 2884,
+        "mean": 58605610.6074896,
+        "population_sd": 30184528.72563906,
+        "min": 7421952,
+        "max": 98803712,
+        "p95": 98414592.0
+      },
+      "cgroup_memory_kernel_peak_bytes": 98910208,
+      "observed_memory_span_s": 34.45523967400004,
+      "memory_samples": 2884,
+      "serialized_proof_size_bytes": {
+        "n": 7,
+        "mean": 7232,
+        "population_sd": 0.0,
+        "min": 7232,
+        "max": 7232,
+        "p95": 7232.0
+      },
+      "size_encoding": "native serialized binary; not a uniform wire/EVM format",
+      "serialized_public_size_bytes": null,
+      "pi_prepare_once_ms": null,
+      "pi_compile_once_ms": null,
+      "pi_key_load_once_ms": null,
+      "source_log_sha256": {
+        "benchmark.jsonl": "281b7b5e1597b9d728ac73ea7c9a0cfca752e1b918cd5ac12a14bda56c60d53f",
+        "resource.json": "198479499f5ec70dc750007a8b3638d1a325fd6718dae3c743f8df856efe5576",
+        "memory.jsonl": "cd04b610662b059a9d797c22a7a0d57462072c1062db6baad0688df176910e37"
+      }
+    },
+    {
+      "framework": "Nova / CycleFold",
+      "run": "euclidean-nova-v2",
+      "ivc_only": true,
+      "measured_samples": 7,
+      "excluded_warmups": 0,
+      "flow_scope": "prove/update + verify; separate witness time unmeasured",
+      "flow_ms": {
+        "n": 7,
+        "mean": 4205.892147285715,
+        "population_sd": 1504.8973487153005,
+        "min": 1422.543923,
+        "max": 5628.752483,
+        "p95": 5596.3511279
+      },
+      "witness_ms": null,
+      "prove_or_ivc_update_ms": {
+        "n": 7,
+        "mean": 1629.2532102857142,
+        "population_sd": 589.3243717917476,
+        "min": 472.72558599999996,
+        "max": 2137.996918,
+        "p95": 2127.8957986
+      },
+      "verify_ms": {
+        "n": 7,
+        "mean": 2576.638937,
+        "population_sd": 919.7689144216012,
+        "min": 949.8183369999999,
+        "max": 3490.7555650000004,
+        "p95": 3468.4553293000004
+      },
+      "cgroup_memory_time_weighted_mean_bytes": 90425127.71627879,
+      "cgroup_memory_sample_distribution_bytes": {
+        "n": 3029,
+        "mean": 88031291.49950479,
+        "population_sd": 39103140.27872781,
+        "min": 7106560,
+        "max": 192241664,
+        "p95": 115544064.0
+      },
+      "cgroup_memory_kernel_peak_bytes": 196173824,
+      "observed_memory_span_s": 38.152669272000026,
+      "memory_samples": 3029,
+      "serialized_proof_size_bytes": null,
+      "size_encoding": "unmeasured; raw IVC is not final ZK proof",
+      "serialized_public_size_bytes": null,
+      "pi_prepare_once_ms": 8610.061128,
+      "pi_compile_once_ms": null,
+      "pi_key_load_once_ms": null,
+      "source_log_sha256": {
+        "benchmark.jsonl": "3ef3fb3bd0a7398fdf1fb9e58815594cbba7c0a52d17a3d1b11198313ce1de5b",
+        "resource.json": "5731537cfaa3d4b9afc754fac81d7935418209f2d4c73d7be17e8a2a6d9538aa",
+        "memory.jsonl": "5dee0c71e0e320833f135b65412a4b0ffc9b337d218dd94960c8c730e6dd65aa"
+      }
+    },
+    {
+      "framework": "HyperNova / CycleFold",
+      "run": "euclidean-hypernova-v1",
+      "ivc_only": true,
+      "measured_samples": 7,
+      "excluded_warmups": 0,
+      "flow_scope": "prove/update + verify; separate witness time unmeasured",
+      "flow_ms": {
+        "n": 7,
+        "mean": 3424.631812714286,
+        "population_sd": 750.0083612133014,
+        "min": 1640.8348259999998,
+        "max": 3896.8067389999997,
+        "p95": 3892.1481008
+      },
+      "witness_ms": null,
+      "prove_or_ivc_update_ms": {
+        "n": 7,
+        "mean": 1591.4328257142856,
+        "population_sd": 407.07956371789595,
+        "min": 599.717419,
+        "max": 1786.6117190000002,
+        "p95": 1786.4856059
+      },
+      "verify_ms": {
+        "n": 7,
+        "mean": 1833.198987,
+        "population_sd": 352.28845162528177,
+        "min": 1041.117407,
+        "max": 2110.615397,
+        "p95": 2105.8306457
+      },
+      "cgroup_memory_time_weighted_mean_bytes": 70776560.14037913,
+      "cgroup_memory_sample_distribution_bytes": {
+        "n": 2618,
+        "mean": 68860038.55156608,
+        "population_sd": 31822620.831441604,
+        "min": 7290880,
+        "max": 153255936,
+        "p95": 96534528.0
+      },
+      "cgroup_memory_kernel_peak_bytes": 156119040,
+      "observed_memory_span_s": 32.61737155700001,
+      "memory_samples": 2618,
+      "serialized_proof_size_bytes": null,
+      "size_encoding": "unmeasured; raw IVC is not final ZK proof",
+      "serialized_public_size_bytes": null,
+      "pi_prepare_once_ms": 8544.626084000001,
+      "pi_compile_once_ms": null,
+      "pi_key_load_once_ms": null,
+      "source_log_sha256": {
+        "benchmark.jsonl": "d9459881b451619cbe80a54f0999237d940885f903c7e34ed5e3fadc1bd4e9ea",
+        "resource.json": "15b782372d50760ca47b7a93b0719016dec395f0de21d834eee2a5e5261f96b8",
+        "memory.jsonl": "5a00bdb1e429352d20b136a02bc77ce7653e62124ad2f1ad14d1f208061a774c"
+      }
+    }
+  ]
+}
