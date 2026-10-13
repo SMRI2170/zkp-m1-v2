@@ -1,0 +1,7 @@
+error: rustc 1.88.0-dev is not supported by the following packages:
+  enum-ordinalize@4.4.2 requires rustc 1.89
+  enum-ordinalize-derive@4.4.2 requires rustc 1.89
+  ruint@1.20.1 requires rustc 1.90
+Either upgrade rustc or select compatible dependency versions with
+`cargo update <name>@<current-ver> --precise <compatible-ver>`
+where `<compatible-ver>` is the latest version supporting rustc 1.88.0-dev

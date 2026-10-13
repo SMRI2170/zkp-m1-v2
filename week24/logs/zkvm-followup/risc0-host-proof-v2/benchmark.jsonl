@@ -1,0 +1,2 @@
+{"arch":"aarch64","backend":"explicit LocalProver composite","os":"macos","phase":"start"}
+{"all_verified":true,"arch":"aarch64","changed_public_rejected":true,"framework":"RISC Zero 3.0.6 local composite","os":"macos","phase":"summary","proofs_saved":false,"prove_ms":21212.531333000003,"receipt_serialized_bytes":209594,"samples":1,"scope":"Composite receipt; no recursion/Groth16 wrapper","verify_ms":24.510167,"wrong_image_rejected":true}

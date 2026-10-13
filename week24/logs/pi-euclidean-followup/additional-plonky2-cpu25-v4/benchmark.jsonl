@@ -1,0 +1,4 @@
+{"arch":"aarch64","framework":"Plonky2 PLONK/FRI Goldilocks ZK-config","os":"linux","phase":"start"}
+{"degree_bits":14,"phase":"keys","security_bits_config":100,"setup_ms":123382.276898,"zero_knowledge":true}
+{"case_id":0,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_with_public_bytes":148820,"prove_ms":331087.320069,"public_scalar_bytes":16,"tampered_proof_decode_rejected":false,"tampered_proof_rejected":true,"verified":true,"verify_ms":108.760886,"witness_ms":0.005555}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_with_public_bytes":148820,"prove_ms":330211.355352,"public_scalar_bytes":16,"tampered_proof_decode_rejected":false,"tampered_proof_rejected":true,"verified":true,"verify_ms":191.18561300000002,"witness_ms":0.005203}

@@ -1,0 +1,11 @@
+{
+  "os": "macos",
+  "exit_code": 1,
+  "stop_reason": null,
+  "elapsed_s": 1.5474298329999998,
+  "sampled_process_tree_peak_bytes": 32768,
+  "poll_samples": 11,
+  "rss_limit_bytes": 4294967296,
+  "system_swap_growth_limit_bytes": 536870912,
+  "scope": "100ms sampled process-tree RSS; soft monitor, not cgroup/hard limit; Mac results not Pi metrics"
+}

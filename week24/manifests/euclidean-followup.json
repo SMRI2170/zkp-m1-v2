@@ -1,0 +1,43 @@
+{
+  "checked_on": "2026-10-14",
+  "scope": "Followup source/binaries; original experimental sources remain unchanged",
+  "source_sha256": {
+    ".gitignore": "79bfca3649414cfb225b4a09a3b242b3687bcf7035f40dc09679ee6c1f85d2c8",
+    "README.md": "812bc5f5df3c7b4bb7e62a0ca97142e52cffcce22340ae424487dd9b921e0e8a",
+    "check_results.py": "edc2dc59091ca8be58f29d936e8a29d8258532fcfbc3777799a05f84af9c2c5f",
+    "halo2-kzg/Cargo.lock": "e2d1bdaa27e1c03f45fdb1a2d80ae0f916abcecb2ef3a41da982e22bcd896744",
+    "halo2-kzg/Cargo.toml": "428d3a752298e97e7faf2cd43e44dff09f522254a15b318e12a7371a6b139ef9",
+    "halo2-kzg/src/main.rs": "eb931f7cf9a5950572b0c6d0a4537026228ec9f802968095b51897ad246c9605",
+    "plot_memory.py": "f8e624f6afc0a69f9091bfbb2fc4b58ee0c154168f49a938a23153cda89a19bf",
+    "risc0/guest/Cargo.lock": "7d2bc5cafe743ad5eb75cff7ca4f6236b0a55b5b09207a3ba865fe1b4ca0d468",
+    "risc0/guest/Cargo.toml": "4200aa77c81b80190e3798c930253243f2b86addb6bff02ab56ffcbe0b0f1c9f",
+    "risc0/guest/src/main.rs": "5b869d9141f3260d99d2c6b4be456271afdc2c71ea3119376a5111a717cbac8b",
+    "risc0/host/Cargo.lock": "341298a8b096811f2b6aeabeebb77bbe7b1583be6cb137eb62f997db8e3f01eb",
+    "risc0/host/Cargo.toml": "f7a58ccdcb2e2c994a13a5e32ed4b2f6deed5281955120bfffc9e87414f15dd2",
+    "risc0/host/src/main.rs": "182d401811580d79ff23682cd404bd0d5483aa9c580fba2788e918eb42f1ecbb",
+    "run_host_guarded.py": "116d8d3463726efe41867c419e6a06b056fe039a69a4ad91c24f100099782f96",
+    "sp1/host/Cargo.lock": "d06b44acbb8449a60d58c2cb28415422e559ffa54ee63acc050b77198dcdfcfc",
+    "sp1/host/Cargo.toml": "1f709be31399358fe59f4a0a9d2c339157cfbfffdc2dea3b58b192f8e3db6305",
+    "sp1/host/src/main.rs": "9e3c3163de8e642f894d6eef3b1d46a2494147877d356d1579c9c040101806c8",
+    "sp1/program/Cargo.lock": "55a6663e8122a671f9d21c75c8e0583ddf03a8e136d64ae92b6ba6aa7f5a9122",
+    "sp1/program/Cargo.toml": "064eb5b455db0d2613689c9e3052f947b8ac072773a14eea10600a2734674b19",
+    "sp1/program/src/main.rs": "8dc09b8c1141ff1398d7526c76d63ce18cafa67db5ad3f855479c45a38bebe92",
+    "test_host_guard.py": "aabdd337c92aaf60b0085b7ba6f307ebdbdaaec74bca5d481ac87b2080fa23a5"
+  },
+  "artifact_sha256": {
+    "plonky2_pi_existing": "c1e08e4ad3e62403f577a365191130b80a092a682dac7c2afb922c707cdf80d2",
+    "plonky2_mac": "34979657a8b619af5bd2c01622da85e6fd88a9bbb19af53bdd2744a4bef9e751",
+    "halo2_kzg_pi": "0c7b238e2a293022ec198e2ade03ed42b959afcbb64de5ba2f5e4ce57469a444",
+    "sp1_guest": "58dde279ad0f014eababb24be40e87e830256c9f5ae6ffff57ab6f6d8ed1603d",
+    "sp1_mac": "41740b2ee50057a09924138b44f22748aa603295bf87763f00c73bb6be2abc5e",
+    "risc0_guest_bare_elf": "b41b4192da820311cfedc7f8e957e8e6c517d2312fa219b77937ef91004a4a8e",
+    "risc0_mac": "a667778fb7a1b1421d1469defcd0ecb6cda1b01937445b6766212ecd2941edea"
+  },
+  "artifact_scope": "Binary/guest hashes only; no binaries, private assignment, setup keys or proof bodies published",
+  "sp1_version": "6.9.0",
+  "risc0_version": "3.0.6",
+  "risc0_guest_toolchain": "risc0 Rust1.88.0; ruint1.16.0, enum-ordinalize4.3.0/derive4.3.1 match release lock",
+  "risc0_binary_wrapping": "risc0-binfmt3.0.5 ProgramBinary + risc0-zkos-v1compat2.2.3 default kernel; RAM only",
+  "failed_risc0_v1_binary_hash": null,
+  "failed_risc0_v1_binary_hash_note": "not captured before rebuild; host supplied bare ELF without ProgramBinary wrapping"
+}

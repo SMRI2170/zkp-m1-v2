@@ -1,0 +1,11 @@
+{
+  "scope": "Partial samples only; no final resource/kernel peak or terminal exit code; reboot observed",
+  "complete_samples": 8436,
+  "invalid_lines_preserved": [
+    8437
+  ],
+  "last_complete_elapsed_s": 900.5758970829993,
+  "sampled_max_cgroup_bytes": 591822848,
+  "minimum_system_available_bytes": 2896801792,
+  "sampled_swap_max_bytes": 0
+}

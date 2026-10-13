@@ -9,6 +9,7 @@
 | 共通ユークリッド距離回路 | COMPLETE：7構成のPi-native生成／検証。Nova／HyperNovaはIVCのみ、最終ZKなし | [03](03_ユークリッド距離_各方式のPi実装.md) |
 | 距離回路の平均・サイズ可視化 | COMPLETE：75ケースの平均フロー、生成／更新、平均・peakメモリ、proofサイズと内訳 | [04](04_ユークリッド距離_平均処理時間とサイズ比較.md) |
 | 追加方式／EVM適合性 | 追加5方式でPi-native生成／検証成功。Plonky2は低電圧等で未完了、RISC Zero／SP1は事前評価。EVM適合性は残る | [05](05_追加フレームワークのPi評価.md) |
+| 未完了方式の追加実行 | Plonky2はPi2件・Mac7件成功、RISC ZeroはMac実proof成功、Halo2 KZGのr改変拒否完了。SP1はswap保護停止。Pi長時間実行は電源条件が残る | [06](06_未完了方式の追加実行.md) |
 | モバイル／Native FFI比較 | RESEARCH_PLANNED | #46 |
 
 Pi4のSSH接続と機種/OS/RAMを確認し、初回toyの暗号処理・資源測定を実施済み。

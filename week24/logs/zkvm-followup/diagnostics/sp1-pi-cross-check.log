@@ -1,0 +1,33 @@
+  cargo::rerun-if-env-changed=CARGO_FEATURE_NO_NEON
+  cargo::rerun-if-env-changed=CARGO_FEATURE_NEON
+  cargo::rerun-if-env-changed=CARGO_FEATURE_NEON
+  cargo::rerun-if-env-changed=CARGO_FEATURE_NO_NEON
+  cargo::rerun-if-env-changed=CARGO_FEATURE_PURE
+  cargo::rustc-cfg=blake3_neon
+  CC_FORCE_DISABLE = None
+  CC_aarch64-unknown-linux-musl = None
+  CC_aarch64_unknown_linux_musl = Some(clang)
+  CC_KNOWN_WRAPPER_CUSTOM = None
+  cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+  CRATE_CC_NO_DEFAULTS = None
+  CRATE_CC_NO_DEFAULTS = None
+  CFLAGS = None
+  TARGET_CFLAGS = None
+  CFLAGS_aarch64_unknown_linux_musl = Some(--target=aarch64-linux-musl)
+  CC_SHELL_ESCAPED_FLAGS = None
+  CFLAGS_aarch64-unknown-linux-musl = None
+  CFLAGS = None
+  TARGET_CFLAGS = None
+  CFLAGS_aarch64_unknown_linux_musl = Some(--target=aarch64-linux-musl)
+  CC_SHELL_ESCAPED_FLAGS = None
+  CFLAGS_aarch64-unknown-linux-musl = None
+  cargo:warning=In file included from c/blake3_neon.c:1:
+  cargo:warning=c/blake3_impl.h:4:10: fatal error: 'assert.h' file not found
+  cargo:warning=    4 | #include <assert.h>
+  cargo:warning=      |          ^~~~~~~~~~
+  cargo:warning=1 error generated.
+
+  --- stderr
+
+
+  error occurred in cc-rs: command did not execute successfully (status code exit status: 1): "clang" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-gdwarf-4" "-fno-omit-frame-pointer" "-mno-omit-leaf-frame-pointer" "--target=aarch64-unknown-linux-musl" "-std=c11" "--target=aarch64-linux-musl" "-o" "<workspace>/.cache/week24/target-sp1-pi-check/aarch64-unknown-linux-musl/debug/build/blake3-07914702cdac2d4e/out/a1edd97dd51cd48d-blake3_neon.o" "-c" "c/blake3_neon.c"

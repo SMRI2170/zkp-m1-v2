@@ -1,0 +1,35 @@
+  Running: "xcrun" "--sdk" "macosx" "metal" "-o" "<home>/Library/Caches/com.risczero.RISC-Zero.risc0/.tmp3K0K3a/kernels/zkp/metal/eltwise.air" "-c" "kernels/zkp/metal/eltwise.metal" "-I" "<workspace>/.cache/week24/target-risc0-host/release/build/risc0-sys-f3586e2b1021a7ef/out/_sys_" "-Wno-unused-variable" "-I" "kernels/zkp/metal"
+  Running: "xcrun" "--sdk" "macosx" "metal" "-o" "<home>/Library/Caches/com.risczero.RISC-Zero.risc0/.tmp3K0K3a/kernels/zkp/metal/fri.air" "-c" "kernels/zkp/metal/fri.metal" "-I" "<workspace>/.cache/week24/target-risc0-host/release/build/risc0-sys-f3586e2b1021a7ef/out/_sys_" "-Wno-unused-variable" "-I" "kernels/zkp/metal"
+  Running: "xcrun" "--sdk" "macosx" "metal" "-o" "<home>/Library/Caches/com.risczero.RISC-Zero.risc0/.tmp3K0K3a/kernels/zkp/metal/poseidon2.air" "-c" "kernels/zkp/metal/poseidon2.metal" "-I" "<workspace>/.cache/week24/target-risc0-host/release/build/risc0-sys-f3586e2b1021a7ef/out/_sys_" "-Wno-unused-variable" "-I" "kernels/zkp/metal"
+  Running: "xcrun" "--sdk" "macosx" "metal" "-o" "<home>/Library/Caches/com.risczero.RISC-Zero.risc0/.tmp3K0K3a/kernels/zkp/metal/ntt.air" "-c" "kernels/zkp/metal/ntt.metal" "-I" "<workspace>/.cache/week24/target-risc0-host/release/build/risc0-sys-f3586e2b1021a7ef/out/_sys_" "-Wno-unused-variable" "-I" "kernels/zkp/metal"
+
+  --- stderr
+  error: error: cannot execute tool 'metal' due to missing Metal Toolchain; use: xcodebuild -downloadComponent MetalToolchain
+  error: error: cannot execute tool 'metal' due to missing Metal Toolchain; use: xcodebuild -downloadComponent MetalToolchain
+
+  thread '<unnamed>' (51542332) panicked at <home>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-build-kernel-2.0.1/src/lib.rs:253:29:
+  Could not build metal kernels
+  note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+  thread '<unnamed>' (51542329) panicked at <home>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-build-kernel-2.0.1/src/lib.rs:253:29:
+  Could not build metal kernels
+  error: error: cannot execute tool 'metal' due to missing Metal Toolchain; use: xcodebuild -downloadComponent MetalToolchain
+
+  thread '<unnamed>' (51542326) panicked at <home>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-build-kernel-2.0.1/src/lib.rs:253:29:
+  Could not build metal kernels
+  error: error: cannot execute tool 'metal' due to missing Metal Toolchain; use: xcodebuild -downloadComponent MetalToolchain
+
+  thread '<unnamed>' (51542325) panicked at <home>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-build-kernel-2.0.1/src/lib.rs:253:29:
+  Could not build metal kernels
+  error: error: cannot execute tool 'metal' due to missing Metal Toolchain; use: xcodebuild -downloadComponent MetalToolchain
+  error: error: cannot execute tool 'metal' due to missing Metal Toolchain; use: xcodebuild -downloadComponent MetalToolchain
+
+  thread '<unnamed>' (51542327) panicked at <home>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-build-kernel-2.0.1/src/lib.rs:253:29:
+  Could not build metal kernels
+
+  thread '<unnamed>' (51542330) panicked at <home>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-build-kernel-2.0.1/src/lib.rs:253:29:
+  Could not build metal kernels
+  error: error: cannot execute tool 'metal' due to missing Metal Toolchain; use: xcodebuild -downloadComponent MetalToolchain
+
+  thread '<unnamed>' (51542328) panicked at <home>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-build-kernel-2.0.1/src/lib.rs:253:29:
+  Could not build metal kernels

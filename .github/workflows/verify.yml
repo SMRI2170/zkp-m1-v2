@@ -37,3 +37,7 @@ jobs:
         run: python3 experiments/pi4-euclidean-additional/check_results.py
       - name: Test telemetry failure cleanup
         run: python3 -m unittest discover -s experiments/pi4-euclidean-additional -p "test_*.py"
+      - name: Validate followup framework evaluation evidence
+        run: python3 experiments/pi4-euclidean-followup/check_results.py
+      - name: Test host proof memory guard
+        run: python3 -m unittest discover -s experiments/pi4-euclidean-followup -p "test_*.py"

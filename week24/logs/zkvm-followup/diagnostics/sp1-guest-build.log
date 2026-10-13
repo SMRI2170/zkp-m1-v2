@@ -1,0 +1,15 @@
+[sp1]     Compiling elf v0.7.4
+[sp1]     Compiling getrandom v0.3.4
+[sp1]     Compiling const-default v1.0.0
+[sp1]     Compiling slop-primitives v6.9.0
+[sp1]     Compiling libm v0.2.16
+[sp1]     Compiling sp1-primitives v6.9.0
+[sp1]     Compiling rlsf v0.2.3
+[sp1]     Compiling linked_list_allocator v0.10.6
+[sp1]     Compiling critical-section v1.2.0
+[sp1]     Compiling sp1-zkvm v6.9.0
+[sp1]     Compiling embedded-alloc v0.6.0
+[sp1]     Compiling sp1-lib v6.9.0
+[sp1]     Compiling week24-euclidean-sp1-program v0.1.0 (<workspace>/experiments/pi4-euclidean-followup/sp1/program)
+[sp1]      Finished `release` profile [optimized] target(s) in 49.87s
+cargo:rustc-env=SP1_ELF_week24-euclidean-sp1-program=<workspace>/.cache/week24/target-sp1-guest/elf-compilation/riscv64im-succinct-zkvm-elf/release/week24-euclidean-sp1-program

@@ -1,0 +1,15 @@
+    Updating crates.io index
+ Downgrading ruint v1.20.1 -> v1.15.0
+note: pass `--verbose` to see 1 unchanged dependencies behind latest
+    Updating crates.io index
+ Downgrading enum-ordinalize v4.4.2 -> v4.3.0
+note: pass `--verbose` to see 2 unchanged dependencies behind latest
+    Updating crates.io index
+ Downgrading enum-ordinalize-derive v4.4.2 -> v4.3.0
+note: pass `--verbose` to see 3 unchanged dependencies behind latest
+    Updating crates.io index
+    Updating ruint v1.15.0 -> v1.16.0
+note: pass `--verbose` to see 3 unchanged dependencies behind latest
+    Updating crates.io index
+    Updating enum-ordinalize-derive v4.3.0 -> v4.3.1
+note: pass `--verbose` to see 3 unchanged dependencies behind latest

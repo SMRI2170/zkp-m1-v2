@@ -1,0 +1,40 @@
+{
+  "checked_on": "2026-10-14",
+  "plonky2": {
+    "pi_run": "additional-plonky2-cpu25-v4",
+    "pi_verified_cases": 2,
+    "full_pi_run_completed": false,
+    "pi_stop": "SSH lost; reconnect uptime about1min confirmed reboot; cause not conclusively established",
+    "pi_cpu_quota_percent": 25,
+    "pi_final_resource_available": false,
+    "mac_verified_cases": 7,
+    "mac_invalid_cases_rejected": 6
+  },
+  "halo2_kzg": {
+    "pi_run": "additional-halo2-kzg-root-v2",
+    "pi_verified_cases": 7,
+    "independent_modified_root_rejected": true,
+    "pi_cpu_quota_percent": 25
+  },
+  "risc0": {
+    "pi_proof_executed": false,
+    "mac_run": "risc0-host-proof-v2",
+    "mac_verified_cases": 1,
+    "proof_type": "Composite receipt, no recursion/Groth16 wrapper",
+    "pi_build_failure": "Linux ARM64 sysroot missing: nvtx stddef.h",
+    "mock_or_network_proving": false
+  },
+  "sp1": {
+    "pi_proof_executed": false,
+    "mac_verified_cases": 0,
+    "guest_and_mac_host_build_succeeded": true,
+    "mac_attempts": [
+      "sp1-host-proof-v1",
+      "sp1-host-proof-v2"
+    ],
+    "mac_stop": "system_swap_growth_limit512MiB in both runs; global swap, not attributable solely to SP1",
+    "pi_build_failure": "Linux ARM64 sysroot missing: Blake3 assert.h",
+    "proof_type_attempted": "local CPU Core, no final ZK wrapper",
+    "mock_or_network_proving": false
+  }
+}
