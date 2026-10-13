@@ -1,0 +1,18 @@
+# Week24：端末内時系列証明と軽量ZKPの評価
+
+親Issue [#43](https://github.com/SMRI2170/zkp-m1-v2/issues/43)。実行トラック [#44](https://github.com/SMRI2170/zkp-m1-v2/issues/44)、候補調査 [#45](https://github.com/SMRI2170/zkp-m1-v2/issues/45)、モバイル/FFI比較 [#46](https://github.com/SMRI2170/zkp-m1-v2/issues/46)。
+
+| 作業 | 状態 | 記録 |
+|---|---|---|
+| HyperNova概念・PR #246対応 | IN_PROGRESS：版固定・ソース照合・API境界とギャップ整理。最新論文PDFは403で全文照合未完了 | [01](01_HyperNova_概念とPR246_実装対応.md) |
+| Pi4 4GB・複数ZKPベンチ | 未着手・新規Pi実測なし | #44 |
+| 追加方式／EVM適合性 | Issue上の机上調査あり。ローカル実装・実機/EVMの追加検証は未着手 | #45 |
+| モバイル／Native FFI比較 | RESEARCH_PLANNED | #46 |
+
+Week23の跨Prover Sonobe／HyperNova不採用・binder開発停止を維持する。
+ここではWitnessを端末内に留める単一Prover時系列IVCを別用途として評価する。
+Folding／IVCの動作と、外部提出用の最終ZK証明の完成を区別する。
+今回のsource監査はPi性能や終端ZKの実証ではない。
+
+公開可能な報告・source hashは本directory、取得資料とビルドはignored `.cache/week24/`。
+秘密・VK/proofの扱いはroot AGENTS.mdに従う。実captureをこのdirectoryへ入れない。
