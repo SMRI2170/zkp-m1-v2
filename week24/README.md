@@ -5,9 +5,12 @@
 | 作業 | 状態 | 記録 |
 |---|---|---|
 | HyperNova概念・PR #246対応 | IN_PROGRESS：版固定・ソース照合・API境界とギャップ整理。最新論文PDFは403で全文照合未完了 | [01](01_HyperNova_概念とPR246_実装対応.md) |
-| Pi4 4GB・複数ZKPベンチ | 未着手・新規Pi実測なし | #44 |
+| Pi4 4GB・複数ZKPベンチ | IN_PROGRESS：gnark Groth16 toyのPi-native 4trial成功。メモリ統計・上限・SSH保護を検証。他方式／RSSI／長期は残る | [02](02_Pi4_4GB_複数ZKP実装と性能評価.md) |
 | 追加方式／EVM適合性 | Issue上の机上調査あり。ローカル実装・実機/EVMの追加検証は未着手 | #45 |
 | モバイル／Native FFI比較 | RESEARCH_PLANNED | #46 |
+
+Pi4のSSH接続と機種/OS/RAMを確認し、初回toyの暗号処理・資源測定を実施済み。
+実施順序・測定項目・停止条件：[実機評価計画](00_Pi4_実機評価計画.md)。
 
 Week23の跨Prover Sonobe／HyperNova不採用・binder開発停止を維持する。
 ここではWitnessを端末内に留める単一Prover時系列IVCを別用途として評価する。

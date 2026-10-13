@@ -1,0 +1,15 @@
+{
+  "source_digest": "7b9d6a8f0d85b2aabacb3fe5d3c3ee35c86d1fc0a481c3953fe5cc6bcb22cd5d",
+  "source_sha256": {
+    "main.go": "ccdf18a84c65cf31f75720a759fa8db3d149801088b05019548c993a3edd0cac",
+    "go.mod": "02f27fc3d26ddd221aa2dadea8e544d5810b0b8801b99fd8a8c3d03a476b3e2b",
+    "go.sum": "1e44c1a5e3c186a0593d503a9e98dec9892096ccf39bce80725cb254a26da556"
+  },
+  "binary_sha256": {
+    "gnark-tiny-darwin-arm64": "498a9cf15dd9a80bba158f791b82c4da689f3894eeca66a7b5eaf3fa88e30d2c",
+    "gnark-tiny-linux-arm64": "02a900dd05f4c83ffda305f72e67e4098dcf9d7b8070f162d76ae16564feccc5"
+  },
+  "go": "go version go1.26.5 darwin/arm64",
+  "cgo_enabled": false,
+  "pi_proof_executed": false
+}

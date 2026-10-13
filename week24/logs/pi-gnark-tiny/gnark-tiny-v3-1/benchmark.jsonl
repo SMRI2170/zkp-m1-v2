@@ -1,0 +1,24 @@
+{"arch":"arm64","compile_ms":0.504,"compiled_cs_match":true,"constraints":12,"fixture_hashes_verified":true,"go":"go1.26.5","gomaxprocs":1,"key_load_ms":13.514,"os":"linux","phase":"start","scope":"8-bit private x; public y=x^3+x+5; no RSSI/session/IVC","source_digest":"7b9d6a8f0d85b2aabacb3fe5d3c3ee35c86d1fc0a481c3953fe5cc6bcb22cd5d","visible_cpus":1}
+{"iteration":-1,"phase":"sample","proof_bytes":164,"prove_ms":13.903,"public_bytes":44,"verified":true,"verify_ms":7.499,"warmup":true,"witness_ms":0.136}
+{"changed_public_rejected":true,"incorrect_output_witness_rejected":true,"out_of_range_input_rejected":true,"phase":"negative","tampered_proof_decode_rejected":false,"tampered_proof_rejected":true}
+{"iteration":0,"phase":"sample","proof_bytes":164,"prove_ms":10.896,"public_bytes":44,"verified":true,"verify_ms":7.526,"warmup":false,"witness_ms":0.034}
+{"iteration":1,"phase":"sample","proof_bytes":164,"prove_ms":10.813,"public_bytes":44,"verified":true,"verify_ms":7.491,"warmup":false,"witness_ms":0.117}
+{"iteration":2,"phase":"sample","proof_bytes":164,"prove_ms":10.809,"public_bytes":44,"verified":true,"verify_ms":7.527,"warmup":false,"witness_ms":0.086}
+{"iteration":3,"phase":"sample","proof_bytes":164,"prove_ms":10.564,"public_bytes":44,"verified":true,"verify_ms":7.473,"warmup":false,"witness_ms":0.096}
+{"iteration":4,"phase":"sample","proof_bytes":164,"prove_ms":11.373,"public_bytes":44,"verified":true,"verify_ms":7.818,"warmup":false,"witness_ms":0.076}
+{"iteration":5,"phase":"sample","proof_bytes":164,"prove_ms":11.144,"public_bytes":44,"verified":true,"verify_ms":7.609,"warmup":false,"witness_ms":0.107}
+{"iteration":6,"phase":"sample","proof_bytes":164,"prove_ms":11.068,"public_bytes":44,"verified":true,"verify_ms":7.643,"warmup":false,"witness_ms":0.104}
+{"iteration":7,"phase":"sample","proof_bytes":164,"prove_ms":11.591,"public_bytes":44,"verified":true,"verify_ms":7.726,"warmup":false,"witness_ms":0.12}
+{"iteration":8,"phase":"sample","proof_bytes":164,"prove_ms":11.216,"public_bytes":44,"verified":true,"verify_ms":7.686,"warmup":false,"witness_ms":0.113}
+{"iteration":9,"phase":"sample","proof_bytes":164,"prove_ms":10.826,"public_bytes":44,"verified":true,"verify_ms":7.702,"warmup":false,"witness_ms":0.107}
+{"iteration":10,"phase":"sample","proof_bytes":164,"prove_ms":11.246,"public_bytes":44,"verified":true,"verify_ms":7.584,"warmup":false,"witness_ms":0.13}
+{"iteration":11,"phase":"sample","proof_bytes":164,"prove_ms":13.283,"public_bytes":44,"verified":true,"verify_ms":7.449,"warmup":false,"witness_ms":0.305}
+{"iteration":12,"phase":"sample","proof_bytes":164,"prove_ms":10.655,"public_bytes":44,"verified":true,"verify_ms":7.581,"warmup":false,"witness_ms":0.103}
+{"iteration":13,"phase":"sample","proof_bytes":164,"prove_ms":10.965,"public_bytes":44,"verified":true,"verify_ms":7.503,"warmup":false,"witness_ms":0.081}
+{"iteration":14,"phase":"sample","proof_bytes":164,"prove_ms":10.56,"public_bytes":44,"verified":true,"verify_ms":7.531,"warmup":false,"witness_ms":0.099}
+{"iteration":15,"phase":"sample","proof_bytes":164,"prove_ms":10.909,"public_bytes":44,"verified":true,"verify_ms":7.504,"warmup":false,"witness_ms":0.108}
+{"iteration":16,"phase":"sample","proof_bytes":164,"prove_ms":10.657,"public_bytes":44,"verified":true,"verify_ms":7.468,"warmup":false,"witness_ms":0.096}
+{"iteration":17,"phase":"sample","proof_bytes":164,"prove_ms":10.421,"public_bytes":44,"verified":true,"verify_ms":7.492,"warmup":false,"witness_ms":0.09}
+{"iteration":18,"phase":"sample","proof_bytes":164,"prove_ms":10.608,"public_bytes":44,"verified":true,"verify_ms":7.464,"warmup":false,"witness_ms":0.081}
+{"iteration":19,"phase":"sample","proof_bytes":164,"prove_ms":10.555,"public_bytes":44,"verified":true,"verify_ms":7.491,"warmup":false,"witness_ms":0.099}
+{"all_verified":true,"percentile_definition":"linear interpolation of sorted samples","phase":"summary","private_assignment_cached":false,"process_peak_rss_bytes":13107200,"proofs_saved":false,"prove_p50_ms":10.861,"prove_p95_ms":11.675599999999998,"prove_p99_ms":12.961519999999998,"samples":20,"verify_p50_ms":7.5265,"verify_p95_ms":7.7306,"warmups":1,"witness_p50_ms":0.101}

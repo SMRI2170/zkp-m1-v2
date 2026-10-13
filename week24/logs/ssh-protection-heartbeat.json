@@ -1,0 +1,56 @@
+{
+  "checks": [
+    {
+      "sample": 0,
+      "elapsed_ms": 58.953208,
+      "success": true
+    },
+    {
+      "sample": 1,
+      "elapsed_ms": 62.086583000000026,
+      "success": true
+    },
+    {
+      "sample": 2,
+      "elapsed_ms": 43.27408300000002,
+      "success": true
+    },
+    {
+      "sample": 3,
+      "elapsed_ms": 45.94354200000006,
+      "success": true
+    },
+    {
+      "sample": 4,
+      "elapsed_ms": 42.306374999999896,
+      "success": true
+    },
+    {
+      "sample": 5,
+      "elapsed_ms": 43.86279199999987,
+      "success": true
+    },
+    {
+      "sample": 6,
+      "elapsed_ms": 50.30891599999987,
+      "success": true
+    },
+    {
+      "sample": 7,
+      "elapsed_ms": 81.6110000000001,
+      "success": true
+    },
+    {
+      "sample": 8,
+      "elapsed_ms": 64.9932080000002,
+      "success": true
+    },
+    {
+      "sample": 9,
+      "elapsed_ms": 57.70908300000022,
+      "success": true
+    }
+  ],
+  "successes": 10,
+  "scope": "After capped trials; the SSH channel executing hard-OOM probe also remained connected"
+}

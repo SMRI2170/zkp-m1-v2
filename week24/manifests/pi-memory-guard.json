@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-13",
+  "memory_cgroup_enabled": true,
+  "experiment_slice_memory_max_bytes": 1610612736,
+  "initial_trial_memory_max_bytes": 268435456,
+  "initial_trial_memory_high_bytes": 201326592,
+  "experiment_swap_max_bytes": 0,
+  "os_reserve_bytes": 1073741824,
+  "sshd_oom_score_adj": -900,
+  "experiment_oom_score_adj": 500,
+  "watchdog_outside_experiment_slice": true,
+  "watchdog_root_owned": true,
+  "guard_config_runtime_only": true,
+  "boot_parameter_persistent": "cgroup_enable=memory",
+  "boot_config_backup_owner_only": true,
+  "limit_tests": {
+    "week24-limit-probe-v1.service": {
+      "Result": "timeout",
+      "ExecMainStatus": "15",
+      "MemoryHigh": "25165824",
+      "MemoryMax": "33554432",
+      "MemorySwapMax": "0"
+    },
+    "week24-hard-limit-probe-v2.service": {
+      "Result": "oom-kill",
+      "ExecMainStatus": "9",
+      "MemoryHigh": "infinity",
+      "MemoryMax": "33554432",
+      "MemorySwapMax": "0"
+    }
+  },
+  "normal_pi_trials": 4,
+  "normal_pi_proof_verifications": 84,
+  "measured_samples": 80,
+  "warmups": 4,
+  "negative_cases_rejected_on_pi": 16,
+  "source_sha256": {
+    "experiments/pi4-zkp-bench/plot_memory.py": "5f3aa60da1f3a9dad12419b210e9a56e95333ae4308cee4130abac9b442a2a96",
+    "experiments/pi4-zkp-bench/build_tiny.py": "fde849afce2ad7df872513df08fc38d795e19ce5201575acabbcb3d1e5f694ac",
+    "experiments/pi4-zkp-bench/enable_memory_cgroup.py": "f39e8529189e26f758edc025ce0ef3af53b040f55031bd6d400188c1a3032914",
+    "experiments/pi4-zkp-bench/run_tiny.py": "cb6e5fb9efb298944aeecfa3f89a423bf7a93b43b0781fed6af6026a27e147de",
+    "experiments/pi4-zkp-bench/memory_watchdog.py": "f1f72622b08685f2d31ecbcf58cd602de7d338ea1df93b6e2f266db12ea383ce",
+    "experiments/pi4-zkp-bench/install_memory_guard.py": "82d1c7c89dcb4759e39686707e3bf3a58ecca70f163a8418088418cae6cfd311",
+    "experiments/pi4-zkp-bench/analyze_memory.py": "d71a5000d74e5a7922ef0056e7438580245b335df8104ac8ff2bb1cf3ee0c4da",
+    "experiments/pi4-zkp-bench/inventory.py": "6e2da8164c60c02a85baacde0a479f277d2af505821f8faed510db09e5f39bbc",
+    "experiments/pi4-zkp-bench/gnark-tiny/go.mod": "02f27fc3d26ddd221aa2dadea8e544d5810b0b8801b99fd8a8c3d03a476b3e2b",
+    "experiments/pi4-zkp-bench/gnark-tiny/go.sum": "1e44c1a5e3c186a0593d503a9e98dec9892096ccf39bce80725cb254a26da556",
+    "experiments/pi4-zkp-bench/gnark-tiny/main.go": "ccdf18a84c65cf31f75720a759fa8db3d149801088b05019548c993a3edd0cac"
+  },
+  "slice_stop_action_test": {
+    "dummy_unit_before": "active",
+    "after": "inactive",
+    "slice_restored": true,
+    "ssh_alive": true,
+    "real_os_pressure_below_1GiB_tested": false
+  }
+}
