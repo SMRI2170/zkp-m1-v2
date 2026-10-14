@@ -1,0 +1,29 @@
+{
+  "run_id": "eval-kimchi-sameinput-v1",
+  "framework": "kimchi",
+  "variant": "Vesta IPA domain512",
+  "host_class": "Pi4B4GB Debian12 ARM64",
+  "cpu_quota_percent": 25,
+  "threads": 1,
+  "binary_sha256": "0002eeebd1b2334232eed7bd7c3607a4280890aca0846b0f69ce23b05db1fe85",
+  "binary_bytes": 5410192,
+  "source_revision": "9227444890bc56d63d95ce14b9cbe34e2cf58996",
+  "repeat_count": 3,
+  "warmup_count": 1,
+  "synthetic_case_id": 1,
+  "order": "kimchi then binius64 then jolt; no simultaneous Pi benchmark",
+  "build_metadata": {
+    "framework": "kimchi",
+    "revision": "9227444890bc56d63d95ce14b9cbe34e2cf58996",
+    "build_exit_code": 0,
+    "proof_executed": false,
+    "target": "aarch64-unknown-linux-musl",
+    "portable_blake3": false,
+    "source_sha256": {
+      "kimchi/Cargo.lock": "22e03c4a6f56351f105296418b0deba5b4b9807d21d99a205b31e1360e6353e4",
+      "kimchi/Cargo.toml": "d708c8f8881add0dafc0691966ad634e94698432761ec56ba42f3ba8b0723c7c",
+      "kimchi/src/main.rs": "e3487e228f5ff921953ab76affc4b1e0f80f959ac4667e8028e23dfbb40102a4"
+    },
+    "effective_manifest": "[package]\nname=\"week24-euclidean-kimchi-evaluation\"\nversion=\"0.1.0\"\nedition=\"2021\"\npublish=false\n[dependencies]\nark-ff=\"0.5\"\nrand=\"0.8\"\nserde_json=\"1\"\nrmp-serde=\"1\"\nanyhow=\"1\"\nkimchi={path=\"<verified-pinned-checkout>/kimchi\",features=[\"prover\"]}\nmina-curves={path=\"<verified-pinned-checkout>/curves\"}\nmina-poseidon={path=\"<verified-pinned-checkout>/poseidon\"}\ngroupmap={path=\"<verified-pinned-checkout>/groupmap\"}\npoly-commitment={path=\"<verified-pinned-checkout>/poly-commitment\"}\n"
+  }
+}

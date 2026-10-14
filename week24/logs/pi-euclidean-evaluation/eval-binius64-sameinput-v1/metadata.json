@@ -1,0 +1,29 @@
+{
+  "run_id": "eval-binius64-sameinput-v1",
+  "framework": "binius64",
+  "variant": "ZK SHA256 log_inv_rate1 portable BLAKE3",
+  "host_class": "Pi4B4GB Debian12 ARM64",
+  "cpu_quota_percent": 25,
+  "threads": 1,
+  "binary_sha256": "f7df5b098dc642c0386f6008058478cec6d5a5a8501c76fb5ed1eb4189131182",
+  "binary_bytes": 7856496,
+  "source_revision": "4428e759dd27956bd5b9ae5025d67eb8ccc1accf",
+  "repeat_count": 3,
+  "warmup_count": 1,
+  "synthetic_case_id": 1,
+  "order": "kimchi then binius64 then jolt; no simultaneous Pi benchmark",
+  "build_metadata": {
+    "framework": "binius64",
+    "revision": "4428e759dd27956bd5b9ae5025d67eb8ccc1accf",
+    "build_exit_code": 0,
+    "proof_executed": false,
+    "target": "aarch64-unknown-linux-musl",
+    "portable_blake3": true,
+    "source_sha256": {
+      "binius64/Cargo.lock": "725408651b9ac9d182c1dcc604f0edb7573bc6d57ddab9d857651d344a077bd9",
+      "binius64/Cargo.toml": "d50f17ca7a10cf1808810b669d5b96c4bc215749db634e0af324bb86bf36e36f",
+      "binius64/src/main.rs": "dc469ecd426ebb2eee2718f5c183bdcc4304094b2708e38828f441f5539731c3"
+    },
+    "effective_manifest": "[package]\nname=\"week24-euclidean-binius64-evaluation\"\nversion=\"0.1.0\"\nedition=\"2024\"\npublish=false\n[dependencies]\nanyhow=\"1\"\nrand=\"0.10.1\"\nserde_json=\"1\"\nbinius-core={path=\"<verified-pinned-checkout>/crates/core\"}\nbinius-frontend={path=\"<verified-pinned-checkout>/crates/frontend\"}\nbinius-hash={path=\"<verified-pinned-checkout>/crates/hash\"}\nbinius-prover={path=\"<verified-pinned-checkout>/crates/prover\"}\nbinius-verifier={path=\"<verified-pinned-checkout>/crates/verifier\"}\nblake3={version=\"=1.8.7\",optional=true}\n[features]\nportable-blake3=[\"dep:blake3\",\"blake3/pure\"]\n\n[dependencies.binius-utils]\npath=\"<verified-pinned-checkout>/crates/utils\"\n"
+  }
+}

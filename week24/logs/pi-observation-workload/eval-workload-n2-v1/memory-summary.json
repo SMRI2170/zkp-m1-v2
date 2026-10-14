@@ -1,0 +1,67 @@
+{
+  "samples": 9089,
+  "observed_span_s": 469.91061618599997,
+  "quantile_definition": "sample quantiles: linear interpolation; time-weighted: previous sample held until next",
+  "whole_unit_sampled": {
+    "n": 9089,
+    "min_bytes": 7225344,
+    "max_bytes": 111456256,
+    "mean_bytes": 55033495.47629002,
+    "stddev_bytes": 23865738.192486282,
+    "p50_bytes": 42700800.0,
+    "p95_bytes": 105947136.0,
+    "p99_bytes": 107765760.0
+  },
+  "time_weighted": {
+    "mean_bytes": 57520057.65423305,
+    "p50_bytes": 48443392,
+    "p95_bytes": 107249664,
+    "p99_bytes": 107761664
+  },
+  "cgroup_kernel_peak_bytes": 111460352,
+  "system_available": {
+    "n": 9089,
+    "min_bytes": 3370278912,
+    "max_bytes": 3486363648,
+    "mean_bytes": 3439778259.103532,
+    "stddev_bytes": 23853100.750687025,
+    "p50_bytes": 3451301888.0,
+    "p95_bytes": 3458859008.0,
+    "p99_bytes": 3467606261.76
+  },
+  "system_swap_used_max_bytes": 0,
+  "cgroup_swap_max_bytes": 0,
+  "ols_whole_run_slope_bytes_per_s": 150943.16533374347,
+  "first_to_last_bytes": 70721536,
+  "limitation": "Short startup-inclusive, autocorrelated observations; slope is not evidence of a leak and is not a steady-state estimate",
+  "process_VmRSS": {
+    "n": 9088,
+    "min_bytes": 917504,
+    "max_bytes": 108527616,
+    "mean_bytes": 53775466.366197184,
+    "stddev_bytes": 23039172.648666788,
+    "p50_bytes": 42213376.0,
+    "p95_bytes": 103335731.19999999,
+    "p99_bytes": 104873984.0
+  },
+  "process_VmHWM": {
+    "n": 9088,
+    "min_bytes": 917504,
+    "max_bytes": 108527616,
+    "mean_bytes": 55057279.09859155,
+    "stddev_bytes": 23214372.06531603,
+    "p50_bytes": 42344448.0,
+    "p95_bytes": 105398272.0,
+    "p99_bytes": 105398272.0
+  },
+  "process_Pss": {
+    "n": 9088,
+    "min_bytes": 183296,
+    "max_bytes": 108670976,
+    "mean_bytes": 53880422.197183095,
+    "stddev_bytes": 23056403.063517474,
+    "p50_bytes": 42246144.0,
+    "p95_bytes": 103493632.0,
+    "p99_bytes": 105062400.0
+  }
+}

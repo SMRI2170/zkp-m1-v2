@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "thread_semantics": "configured compute parallelism, not measured OS thread count",
+  "units": {
+    "time": "ms or explicit _s/_ns",
+    "memory_and_size": "bytes",
+    "temperature": "C"
+  },
+  "missing": "JSON null / empty CSV; never zero-fill unavailable",
+  "clock": "phase markers and memory sampling use same-host wall_time_ns; phase-local elapsed is monotonic; sampling bounds are approximate",
+  "statistics": "same-input within-process preliminary repeats; exclude warmup; not independent cold trials; current n=3 has no confidence/p95 claim",
+  "memory_mean_scope": "prove interval mean uses the observed span between in-interval samples; no interpolation across missing boundaries",
+  "privacy": "only sizes and diagnostic distinctness; proof/VK/private assignments remain RAM-only",
+  "queue_model": "model only; queue_observed_1hz holds actual synthetic batch arrival/dequeue events when present",
+  "parse_anomalies": [],
+  "raw_file_sha256": {
+    "eval-binius64-sameinput-v1/benchmark.jsonl": "703bfe35e8210a312b347b8f7e0a81d3b578a173ab004f86ea19402073496508",
+    "eval-binius64-sameinput-v1/stderr.log": "fd386c8503b50d8340ec355fed3f9b3525bc1ced25116a1017bb627f37e80204",
+    "eval-binius64-sameinput-v1/metadata.json": "ef72a32256b7a17e941f433d017be65bf482bf5f246d82ade1a72aa0b02c3077",
+    "eval-binius64-sameinput-v1/filesystem-audit.json": "2db85a6f81bff1d52489f30a82d8ceebe8feb854c80d37de1e09dac4034d6729",
+    "eval-binius64-sameinput-v1/memory.jsonl": "ddbe471ae1e154d86f838e1503b9f02172e72c38834559569fbf08c670f0ff9d",
+    "eval-binius64-sameinput-v1/resource.json": "0cb7b865161f257b5c5677342df9a4c2066b7f67162fa46fd5f193ada52b890a",
+    "eval-binius64-sameinput-v1/memory-summary.json": "575c7ff94b047cf082923c2f8718286aae9bf9f3bae8d1e3874b53982c125027",
+    "eval-jolt-sameinput-v1/benchmark.jsonl": "8554ee818af74479c12af15018e4b6ece8f17150ebc8af537575d9afa994ed90",
+    "eval-jolt-sameinput-v1/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "eval-jolt-sameinput-v1/metadata.json": "95f289a6a0b9cc730dbf500a16298ac2bdf14d635684d0dd83ee35d8e2041431",
+    "eval-jolt-sameinput-v1/filesystem-audit.json": "2db85a6f81bff1d52489f30a82d8ceebe8feb854c80d37de1e09dac4034d6729",
+    "eval-jolt-sameinput-v1/memory.jsonl": "5cb32438e03212e6918dd6e0ed484dc1aa2b83fa22c1633836dfad0517b02645",
+    "eval-jolt-sameinput-v1/resource.json": "0bb8c0e7cd68f8882e6d62e5a4aa9102eb34090bb2e6b4379281c0feb876c7e7",
+    "eval-jolt-sameinput-v1/memory-summary.json": "1df6cbd53788cbf30471dd317d1df84d5c73fbd8135a92a6ee7e6f3eec2acfbd",
+    "eval-kimchi-sameinput-v1/benchmark.jsonl": "bfeb5bf6f6887987e76a91496c5bafb698e4fa129a6d8dbde8a77670ab8a42f3",
+    "eval-kimchi-sameinput-v1/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "eval-kimchi-sameinput-v1/metadata.json": "3485d4cef4642b9c693dc6039f0340b010ea07962c4098fbcfa4e2a0086dd98c",
+    "eval-kimchi-sameinput-v1/filesystem-audit.json": "2db85a6f81bff1d52489f30a82d8ceebe8feb854c80d37de1e09dac4034d6729",
+    "eval-kimchi-sameinput-v1/memory.jsonl": "12ea0aa0916abb1712fec3d0568fc8280eaecc4e1b8444c7f19a9dc8c3a2b9e7",
+    "eval-kimchi-sameinput-v1/resource.json": "addba60d41bbcf5eb07706fd322ed779977152526463e837281ddee51529d996",
+    "eval-kimchi-sameinput-v1/memory-summary.json": "0f41af876c104561155eb6aa935f4d0dc542ae107413ff68f44be26877799c0f"
+  }
+}

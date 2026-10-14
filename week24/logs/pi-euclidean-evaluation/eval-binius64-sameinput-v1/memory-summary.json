@@ -1,0 +1,67 @@
+{
+  "samples": 3625,
+  "observed_span_s": 278.99982130100034,
+  "quantile_definition": "sample quantiles: linear interpolation; time-weighted: previous sample held until next",
+  "whole_unit_sampled": {
+    "n": 3625,
+    "min_bytes": 7299072,
+    "max_bytes": 367058944,
+    "mean_bytes": 255634828.88827586,
+    "stddev_bytes": 49205217.85139474,
+    "p50_bytes": 267059200.0,
+    "p95_bytes": 313909248.0,
+    "p99_bytes": 327866122.2399999
+  },
+  "time_weighted": {
+    "mean_bytes": 259286726.38659784,
+    "p50_bytes": 267141120,
+    "p95_bytes": 314175488,
+    "p99_bytes": 335527936
+  },
+  "cgroup_kernel_peak_bytes": 367812608,
+  "system_available": {
+    "n": 3625,
+    "min_bytes": 3131371520,
+    "max_bytes": 3491549184,
+    "mean_bytes": 3243041418.840276,
+    "stddev_bytes": 49026220.98326531,
+    "p50_bytes": 3231760384.0,
+    "p95_bytes": 3331058073.6,
+    "p99_bytes": 3453130014.72
+  },
+  "system_swap_used_max_bytes": 0,
+  "cgroup_swap_max_bytes": 0,
+  "ols_whole_run_slope_bytes_per_s": 314680.5034183856,
+  "first_to_last_bytes": 12959744,
+  "limitation": "Short startup-inclusive, autocorrelated observations; slope is not evidence of a leak and is not a steady-state estimate",
+  "process_VmRSS": {
+    "n": 3625,
+    "min_bytes": 917504,
+    "max_bytes": 360144896,
+    "mean_bytes": 249770458.5710345,
+    "stddev_bytes": 48992986.40472099,
+    "p50_bytes": 261451776.0,
+    "p95_bytes": 307924992.0,
+    "p99_bytes": 321132953.59999985
+  },
+  "process_VmHWM": {
+    "n": 3625,
+    "min_bytes": 917504,
+    "max_bytes": 361136128,
+    "mean_bytes": 325772537.4322759,
+    "stddev_bytes": 68343521.29272646,
+    "p50_bytes": 361127936.0,
+    "p95_bytes": 361136128.0,
+    "p99_bytes": 361136128.0
+  },
+  "process_Pss": {
+    "n": 3625,
+    "min_bytes": 183296,
+    "max_bytes": 360161280,
+    "mean_bytes": 249761048.22289655,
+    "stddev_bytes": 48978685.95648354,
+    "p50_bytes": 261427200.0,
+    "p95_bytes": 307871744.0,
+    "p99_bytes": 321316782.0799999
+  }
+}

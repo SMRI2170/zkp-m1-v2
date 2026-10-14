@@ -1,0 +1,67 @@
+{
+  "samples": 1578,
+  "observed_span_s": 62.77414582900019,
+  "quantile_definition": "sample quantiles: linear interpolation; time-weighted: previous sample held until next",
+  "whole_unit_sampled": {
+    "n": 1578,
+    "min_bytes": 7528448,
+    "max_bytes": 18477056,
+    "mean_bytes": 13229098.828897338,
+    "stddev_bytes": 2265217.94850286,
+    "p50_bytes": 13307904.0,
+    "p95_bytes": 16803635.2,
+    "p99_bytes": 17819484.16
+  },
+  "time_weighted": {
+    "mean_bytes": 13252670.586729461,
+    "p50_bytes": 13291520,
+    "p95_bytes": 16769024,
+    "p99_bytes": 17817600
+  },
+  "cgroup_kernel_peak_bytes": 18620416,
+  "system_available": {
+    "n": 1578,
+    "min_bytes": 3464835072,
+    "max_bytes": 3491971072,
+    "mean_bytes": 3483447511.4423323,
+    "stddev_bytes": 3358315.7896461976,
+    "p50_bytes": 3482505216.0,
+    "p95_bytes": 3491053568.0,
+    "p99_bytes": 3491061760.0
+  },
+  "system_swap_used_max_bytes": 0,
+  "cgroup_swap_max_bytes": 0,
+  "ols_whole_run_slope_bytes_per_s": 67482.37441357975,
+  "first_to_last_bytes": 5521408,
+  "limitation": "Short startup-inclusive, autocorrelated observations; slope is not evidence of a leak and is not a steady-state estimate",
+  "process_VmRSS": {
+    "n": 1578,
+    "min_bytes": 786432,
+    "max_bytes": 12525568,
+    "mean_bytes": 7640844.005069708,
+    "stddev_bytes": 2135899.030142267,
+    "p50_bytes": 7659520.0,
+    "p95_bytes": 11297996.799999999,
+    "p99_bytes": 12193423.360000001
+  },
+  "process_VmHWM": {
+    "n": 1578,
+    "min_bytes": 786432,
+    "max_bytes": 12652544,
+    "mean_bytes": 10825813.657794677,
+    "stddev_bytes": 3345305.8244957956,
+    "p50_bytes": 12648448.0,
+    "p95_bytes": 12652544.0,
+    "p99_bytes": 12652544.0
+  },
+  "process_Pss": {
+    "n": 1578,
+    "min_bytes": 187392,
+    "max_bytes": 12541952,
+    "mean_bytes": 7710877.688212927,
+    "stddev_bytes": 2118005.461546776,
+    "p50_bytes": 7671808.0,
+    "p95_bytes": 11400601.599999994,
+    "p99_bytes": 12207554.560000002
+  }
+}

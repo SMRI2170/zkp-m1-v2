@@ -1,0 +1,35 @@
+{
+  "run_id": "eval-jolt-sameinput-v1",
+  "framework": "jolt",
+  "variant": "PrivateInput + zk prebuilt guest",
+  "host_class": "Pi4B4GB Debian12 ARM64",
+  "cpu_quota_percent": 25,
+  "threads": 1,
+  "binary_sha256": "2f84b9ed5f998715afb7f7d7780d6ff6ce3ae5400983855b0378012bcd0d36f2",
+  "binary_bytes": 23189824,
+  "source_revision": "8b6099f70bb21c8d38abd32dc295d34786c1699a",
+  "repeat_count": 3,
+  "warmup_count": 1,
+  "synthetic_case_id": 1,
+  "order": "kimchi then binius64 then jolt; no simultaneous Pi benchmark",
+  "build_metadata": {
+    "framework": "jolt",
+    "revision": "8b6099f70bb21c8d38abd32dc295d34786c1699a",
+    "build_exit_code": 0,
+    "proof_executed": false,
+    "target": "aarch64-unknown-linux-musl",
+    "portable_blake3": false,
+    "source_sha256": {
+      "jolt/Cargo.lock": "d10c95acbd77939b05bf2bb45ab3a5b4c84bd2a8daf1306ec181466c910d7622",
+      "jolt/Cargo.toml": "9654e8aeffdada1b679e54d6221384728e9dfd7571dd6e4768a4aa5ab6fea798",
+      "jolt/guest/Cargo.toml": "3550bc504e1a06f8cbb186dc0fdc091ad5291040e993387d2c26326a5839a6f7",
+      "jolt/guest/src/lib.rs": "bbbad4e57d2b7dfa4d28164741e585461dfd3279284ad586ac7db77c1d862b44",
+      "jolt/guest/src/main.rs": "1b663569ba086e84bfc7397ea561ad05466028f91fb2b90adf0b9747887fbd45",
+      "jolt/host/Cargo.toml": "ec051d18d0de846636ad1ebd15ef80b1d9fb7e852625df673b8b40948ca16cb8",
+      "jolt/host/src/main.rs": "40e9bfaa3c2acbf3c16345457a507ebc83e5400e92531ad9f478fd5dcf438636"
+    },
+    "effective_manifest": "[package]\nname=\"week24-euclidean-jolt-evaluation\"\nversion=\"0.1.0\"\nedition=\"2021\"\npublish=false\n[dependencies]\njolt-sdk={path=\"<verified-pinned-checkout>/jolt-sdk\",features=[\"host\",\"zk\"]}\nguest={package=\"week24-euclidean-jolt-guest\",path=\"../guest\"}\nserde_json=\"1\"\nanyhow=\"1\"\nbincode=\"1.3\"\n"
+  },
+  "guest_elf_bytes": 14880,
+  "guest_elf_sha256": "069f04f66aae52a58a59f1da4660a89023824645a194fcf68977a7f18d53a1a1"
+}

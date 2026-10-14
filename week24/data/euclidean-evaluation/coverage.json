@@ -1,0 +1,60 @@
+{
+  "scope": "research synthetic single-Prover distance; privacy and performance claims are bounded",
+  "items": [
+    {
+      "item": "correctness",
+      "status": "measured",
+      "notes": "正常・公開入力/proof改変・不正入力。RAW Witness検査はKimchi/Binius64のみ。Joltは不正実行proofで成功claim拒否。"
+    },
+    {
+      "item": "privacy_configuration",
+      "status": "source_review_and_diagnostics",
+      "notes": "既存ZK設定維持、verifierにcoordsを渡さない。proofの非同一性・fresh tmpfs内の書込監査は追加。形式的ZKやside-channel耐性は未証明。"
+    },
+    {
+      "item": "latency",
+      "status": "measured",
+      "notes": "同一CASE1、warmup1除外、process内repeat3。初期化・witness・prove・verify別。Joltのwitnessはprove内包。"
+    },
+    {
+      "item": "memory",
+      "status": "measured",
+      "notes": "whole unit平均/kernel peak＋prove区間sampled平均/peak、時系列。kernelのphase別peakではない。"
+    },
+    {
+      "item": "sizes",
+      "status": "measured",
+      "notes": "proof、public input encoding、serialized verifier object、ARM binary、Jolt guest ELF。protocol/network envelopeやRAM内SRSを全て含む値ではない。"
+    },
+    {
+      "item": "stability",
+      "status": "short_run_only",
+      "notes": "終了code、stop理由、OOM、swap、温度、power bits、SSH/watchdog。長期失敗率の推定は未実施。"
+    },
+    {
+      "item": "1hz_backlog",
+      "status": "model_distance_and_short_measured_gnark_queue",
+      "notes": "距離3方式はモデル。gnarkは観測1/2件の3batchを1秒間隔で実投入しjitter/wait/depthを実測。長期安定性は未評価。"
+    },
+    {
+      "item": "observation_scaling",
+      "status": "measured_gnark_n1_n2_partial_n4",
+      "notes": "署名付き観測1/2件で実proof。4件は初期化完了前にPi再起動、成功proofなし・資源ログ欠損・truncated memoryを保持。"
+    },
+    {
+      "item": "hash_signature_session_workload",
+      "status": "measured_gnark_only",
+      "notes": "MiMC/EdDSA/Session/Policy-ID/claimed RID/indexを含む合成回路を追加。資格失効・DRIP・sensor truth・複数実機observerは未評価。他方式への同等負荷移植は残件。"
+    },
+    {
+      "item": "independent_cold_repetitions",
+      "status": "pending",
+      "notes": "独立process反復・十分な試行数による信頼区間/p95は未実施。"
+    },
+    {
+      "item": "long_term_leak_sidechannel",
+      "status": "pending",
+      "notes": "短いrepeatでleak/side-channel安全性は結論しない。"
+    }
+  ]
+}

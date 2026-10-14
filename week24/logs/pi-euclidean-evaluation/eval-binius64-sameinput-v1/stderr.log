@@ -1,0 +1,4 @@
+
+thread 'main' (367811) panicked at /Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week24/binius64/crates/spartan-prover/src/wrapper/zk_wrapped_prover_channel.rs:218:6:
+outer witness generation should not fail: WitnessError { backtrace: <disabled> }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

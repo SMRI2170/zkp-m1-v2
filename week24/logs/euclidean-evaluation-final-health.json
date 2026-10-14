@@ -1,0 +1,23 @@
+{
+  "uptime_s": 213.46,
+  "mem_available_bytes": 3496587264,
+  "system_swap_used_bytes": 0,
+  "throttled": "0x50000",
+  "slice_active": true,
+  "watchdog_active": true,
+  "ssh_oom_score_adj": -900,
+  "watchdog_root_owned": true,
+  "watchdog_sha256": "f1f72622b08685f2d31ecbcf58cd602de7d338ea1df93b6e2f266db12ea383ce",
+  "parent_limits": {
+    "memory.max": 1610612736,
+    "memory.high": 1258291200,
+    "memory.swap.max": 0
+  },
+  "week24_tmpfs_remnants": [],
+  "current_journal_readable": true,
+  "current_kernel_oom_matches": 0,
+  "current_kernel_undervoltage_matches": 2,
+  "previous_journal_readable": true,
+  "previous_kernel_oom_matches": 0,
+  "previous_kernel_undervoltage_matches": 3
+}

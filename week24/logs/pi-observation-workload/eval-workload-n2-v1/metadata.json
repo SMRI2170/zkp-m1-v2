@@ -1,0 +1,25 @@
+{
+  "run_id": "eval-workload-n2-v1",
+  "framework": "gnark_groth16_workload",
+  "variant": "BN254 MiMC EdDSA signed observations n=2",
+  "host_class": "Pi4B4GB Debian12 ARM64",
+  "cpu_quota_percent": 25,
+  "threads": 1,
+  "binary_sha256": "a238c11d1196ea9bc3197ac5a7756f4d76307595ec9b9656623d49c1f25f1c0b",
+  "binary_bytes": 13615311,
+  "source_revision": "gnark v0.16.3; gnark-crypto v0.21.0",
+  "source_sha256": {
+    "go.mod": "c6f41c51586f7cf41b166d16d28c24c22e423fe3da35b7d5f87d07ca41b79652",
+    "go.sum": "1e44c1a5e3c186a0593d503a9e98dec9892096ccf39bce80725cb254a26da556",
+    "main.go": "7c1522b226b41102bd8c6919e6cd8799b58d5f38db799f039451d66ef7c3a127",
+    "main_test.go": "e9992d17aad57aa6d0eba400589124687eba58fb560698198e0dcf4adb0528c9"
+  },
+  "observation_count": 2,
+  "repeat_count": 3,
+  "warmup_count": 1,
+  "arrival_interval_ms": 1000,
+  "arrival_unit": "synthetic batch",
+  "queue_capacity": 3,
+  "controller_goroutine": 1,
+  "order": "after completion of Kimchi/Binius64/Jolt; n1 then n2 then n4; no simultaneous Pi benchmark"
+}

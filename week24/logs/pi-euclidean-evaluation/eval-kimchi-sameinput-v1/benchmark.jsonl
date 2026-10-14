@@ -1,0 +1,25 @@
+{"arch":"aarch64","framework":"Kimchi Vesta IPA","os":"linux","phase":"start"}
+{"max_poly_size":512,"phase":"keys","public":2,"setup_ms":10300.723865,"srs":"transparent local RAM-only IPA","vk_bytes":1531}
+{"case_id":1,"clock_us":10301487,"mode":"same-input within-process repetition","phase":"collection_protocol","repeat_count":3,"wall_time_ns":1791953934103491470,"warmup_count":1}
+{"clock_us":10301534,"phase":"phase_marker","sample_id":0,"stage":"witness_start","wall_time_ns":1791953934103539062}
+{"clock_us":10304302,"phase":"phase_marker","sample_id":0,"stage":"prove_start","wall_time_ns":1791953934106306893}
+{"clock_us":19610675,"phase":"phase_marker","sample_id":0,"stage":"verify_start","wall_time_ns":1791953943412679795}
+{"clock_us":20406928,"phase":"phase_marker","sample_id":0,"stage":"verify_end","wall_time_ns":1791953944208932596}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"proof_randomness_new":true,"prove_ms":9306.314218000001,"public_input_bytes":64,"repetition":null,"sample_id":0,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":796.150747,"warmup":true,"witness_ms":2.7368129999999997}
+{"clock_us":22802156,"phase":"phase_marker","sample_id":1,"stage":"witness_start","wall_time_ns":1791953946604160822}
+{"clock_us":22804858,"phase":"phase_marker","sample_id":1,"stage":"prove_start","wall_time_ns":1791953946606862913}
+{"clock_us":32104669,"phase":"phase_marker","sample_id":1,"stage":"verify_start","wall_time_ns":1791953955906673639}
+{"clock_us":32901278,"phase":"phase_marker","sample_id":1,"stage":"verify_end","wall_time_ns":1791953956703282850}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"proof_randomness_new":true,"prove_ms":9299.734559999999,"public_input_bytes":64,"repetition":0,"sample_id":1,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":796.510286,"warmup":false,"witness_ms":2.664222}
+{"clock_us":35211551,"phase":"phase_marker","sample_id":2,"stage":"witness_start","wall_time_ns":1791953959013555426}
+{"clock_us":35214526,"phase":"phase_marker","sample_id":2,"stage":"prove_start","wall_time_ns":1791953959016530995}
+{"clock_us":44717702,"phase":"phase_marker","sample_id":2,"stage":"verify_start","wall_time_ns":1791953968519706600}
+{"clock_us":45506871,"phase":"phase_marker","sample_id":2,"stage":"verify_end","wall_time_ns":1791953969308875810}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"proof_randomness_new":true,"prove_ms":9503.087791,"public_input_bytes":64,"repetition":1,"sample_id":2,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":789.07684,"warmup":false,"witness_ms":2.932995}
+{"clock_us":47817056,"phase":"phase_marker","sample_id":3,"stage":"witness_start","wall_time_ns":1791953971619060435}
+{"clock_us":47819290,"phase":"phase_marker","sample_id":3,"stage":"prove_start","wall_time_ns":1791953971621295070}
+{"clock_us":57300022,"phase":"phase_marker","sample_id":3,"stage":"verify_start","wall_time_ns":1791953981102026244}
+{"clock_us":58016823,"phase":"phase_marker","sample_id":3,"stage":"verify_end","wall_time_ns":1791953981818827619}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"proof_randomness_new":true,"prove_ms":9480.664137,"public_input_bytes":64,"repetition":2,"sample_id":3,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":716.697396,"warmup":false,"witness_ms":2.1689510000000003}
+{"accepted":false,"mutation":"private bit assignment +2 after construction","outcome":"prover_error","phase":"raw_witness_test"}
+{"all_verified":true,"invalid_cases_rejected":6,"phase":"summary","proofs_saved":false,"samples":4}

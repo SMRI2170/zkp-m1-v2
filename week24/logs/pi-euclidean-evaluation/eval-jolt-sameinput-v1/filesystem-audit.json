@@ -1,0 +1,5 @@
+{
+  "scope": "only fresh owner-only tmpfs working directory; not whole-system tracing",
+  "created_files": [],
+  "proof_bodies_exported": false
+}

@@ -1,0 +1,14 @@
+{
+  "complete_samples": 767,
+  "invalid_lines_preserved": [
+    768
+  ],
+  "observed_span_s": 40.896429704000184,
+  "sampled_max_cgroup_bytes": 64405504,
+  "sampled_min_system_available_bytes": 3431182336,
+  "sampled_swap_max_bytes": 0,
+  "sampled_temperature_max_C": 52.095,
+  "resource_file_available": false,
+  "inference": "resource/OOM/power outcome unknown; reboot observed; no successful proof claimed",
+  "raw_uncompressed_sha256": "0bc9d9cfff3d091c5b556a3698fe0ee298ef05cfcb77e44dbc1586b78334f61a"
+}

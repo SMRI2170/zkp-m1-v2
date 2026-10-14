@@ -1,0 +1,10 @@
+arrival_ms,evaluation_mode,finish_ms,framework,measured_load_test,repetition,response_ms,run_id,service_ms,trial_completed,wait_ms
+0.0,trace_driven_serial_fifo_model,55904.684441000005,binius64,False,0,55904.684441000005,eval-binius64-sameinput-v1,55904.684441000005,True,0.0
+1000.0,trace_driven_serial_fifo_model,117107.455186,binius64,False,1,116107.455186,eval-binius64-sameinput-v1,61202.77074500001,True,54904.684441000005
+2000.0,trace_driven_serial_fifo_model,176799.630466,binius64,False,2,174799.630466,eval-binius64-sameinput-v1,59692.175279999996,True,115107.455186
+0.0,trace_driven_serial_fifo_model,93391.96517400001,jolt,False,0,93391.96517400001,eval-jolt-sameinput-v1,93391.96517400001,True,0.0
+1000.0,trace_driven_serial_fifo_model,190103.473756,jolt,False,1,189103.473756,eval-jolt-sameinput-v1,96711.508582,True,92391.96517400001
+2000.0,trace_driven_serial_fifo_model,287198.832922,jolt,False,2,285198.832922,eval-jolt-sameinput-v1,97095.35916600001,True,188103.473756
+0.0,trace_driven_serial_fifo_model,10098.909067999999,kimchi,False,0,10098.909067999999,eval-kimchi-sameinput-v1,10098.909067999999,True,0.0
+1000.0,trace_driven_serial_fifo_model,20394.006693999996,kimchi,False,1,19394.006693999996,eval-kimchi-sameinput-v1,10295.097625999999,True,9098.909067999999
+2000.0,trace_driven_serial_fifo_model,30593.537177999995,kimchi,False,2,28593.537177999995,eval-kimchi-sameinput-v1,10199.530483999999,True,18394.006693999996

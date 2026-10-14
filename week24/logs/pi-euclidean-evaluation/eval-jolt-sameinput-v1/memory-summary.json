@@ -1,0 +1,67 @@
+{
+  "samples": 15907,
+  "observed_span_s": 662.4776396800007,
+  "quantile_definition": "sample quantiles: linear interpolation; time-weighted: previous sample held until next",
+  "whole_unit_sampled": {
+    "n": 15907,
+    "min_bytes": 7589888,
+    "max_bytes": 158380032,
+    "mean_bytes": 19114957.46627271,
+    "stddev_bytes": 20219444.12025753,
+    "p50_bytes": 14921728.0,
+    "p95_bytes": 48497049.59999981,
+    "p99_bytes": 132306042.88000013
+  },
+  "time_weighted": {
+    "mean_bytes": 22235324.05442468,
+    "p50_bytes": 15020032,
+    "p95_bytes": 94359552,
+    "p99_bytes": 143056896
+  },
+  "cgroup_kernel_peak_bytes": 159846400,
+  "system_available": {
+    "n": 15907,
+    "min_bytes": 3344617472,
+    "max_bytes": 3491983360,
+    "mean_bytes": 3480431901.4994655,
+    "stddev_bytes": 19712628.743892875,
+    "p50_bytes": 3484647424.0,
+    "p95_bytes": 3487832883.2,
+    "p99_bytes": 3491692544.0
+  },
+  "system_swap_used_max_bytes": 0,
+  "cgroup_swap_max_bytes": 0,
+  "ols_whole_run_slope_bytes_per_s": 11283.02962502136,
+  "first_to_last_bytes": 5484544,
+  "limitation": "Short startup-inclusive, autocorrelated observations; slope is not evidence of a leak and is not a steady-state estimate",
+  "process_VmRSS": {
+    "n": 15905,
+    "min_bytes": 786432,
+    "max_bytes": 157208576,
+    "mean_bytes": 18516990.004149638,
+    "stddev_bytes": 20313537.631201476,
+    "p50_bytes": 14503936.0,
+    "p95_bytes": 48230400.0,
+    "p99_bytes": 132091903.99999973
+  },
+  "process_VmHWM": {
+    "n": 15905,
+    "min_bytes": 786432,
+    "max_bytes": 157376512,
+    "mean_bytes": 136925533.46696007,
+    "stddev_bytes": 50281171.82265954,
+    "p50_bytes": 157007872.0,
+    "p95_bytes": 157376512.0,
+    "p99_bytes": 157376512.0
+  },
+  "process_Pss": {
+    "n": 15905,
+    "min_bytes": 184320,
+    "max_bytes": 157306880,
+    "mean_bytes": 18604632.04275385,
+    "stddev_bytes": 20335712.96360002,
+    "p50_bytes": 14589952.0,
+    "p95_bytes": 48300032.0,
+    "p99_bytes": 132250009.59999996
+  }
+}

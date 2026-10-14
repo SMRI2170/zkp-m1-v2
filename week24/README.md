@@ -11,6 +11,7 @@
 | 追加方式／EVM適合性 | 追加5方式でPi-native生成／検証成功。Plonky2は低電圧等で未完了、RISC Zero／SP1は事前評価。EVM適合性は残る | [05](05_追加フレームワークのPi評価.md) |
 | 未完了方式の追加実行 | Plonky2はPi2件・Mac7件成功、RISC ZeroはMac実proof成功、Halo2 KZGのr改変拒否完了。SP1はswap保護停止。Pi長時間実行は電源条件が残る | [06](06_未完了方式の追加実行.md) |
 | Kimchi／Binius64／Jolt追加 | Mac3方式全7件。Pi Kimchi／Binius64全7件、Jolt正常1件＋不正2件。CPU25%測定・グラフ・保護設定を記録 | [07](07_Kimchi_Binius64_Joltの追加評価.md) |
+| 追加評価データ収集 | 同一入力3反復・phase別memory・拒否段階・サイズをCSV/JSONL保存。gnark署名負荷1/2観測と短い1Hz queue成功、4観測は再起動でpartial | [08](08_追加評価データの収集と反復測定.md) |
 | モバイル／Native FFI比較 | RESEARCH_PLANNED | #46 |
 
 Pi4のSSH接続と機種/OS/RAMを確認し、初回toyの暗号処理・資源測定を実施済み。

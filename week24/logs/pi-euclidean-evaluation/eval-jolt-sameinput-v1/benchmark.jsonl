@@ -1,0 +1,26 @@
+{"arch":"aarch64","framework":"Jolt PrivateInput + zk","os":"linux","phase":"start","zk_feature":true}
+{"phase":"keys","setup_ms":46101.289004,"vk_bytes":112166}
+{"case_id":1,"clock_us":46101880,"mode":"same-input within-process repetition","phase":"collection_protocol","repeat_count":3,"wall_time_ns":1791954382259277223,"warmup_count":1}
+{"clock_us":46101980,"phase":"phase_marker","sample_id":0,"stage":"prove_start","wall_time_ns":1791954382259377795}
+{"clock_us":135206846,"phase":"phase_marker","sample_id":0,"stage":"verify_start","wall_time_ns":1791954471364244123}
+{"clock_us":143514187,"phase":"phase_marker","sample_id":0,"stage":"verify_end","wall_time_ns":1791954479671584800}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proof_randomness_new":true,"proofs_saved":false,"prove_ms":89104.802235,"public_input_bytes":18,"repetition":null,"sample_id":0,"tampered_proof_rejected":true,"verified":true,"verify_ms":8307.2614,"warmup":true}
+{"clock_us":145210768,"phase":"phase_marker","sample_id":1,"stage":"prove_start","wall_time_ns":1791954481368165438}
+{"clock_us":230505618,"phase":"phase_marker","sample_id":1,"stage":"verify_start","wall_time_ns":1791954566663015958}
+{"clock_us":238602944,"phase":"phase_marker","sample_id":1,"stage":"verify_end","wall_time_ns":1791954574760342555}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proof_randomness_new":true,"proofs_saved":false,"prove_ms":85294.79724300001,"public_input_bytes":18,"repetition":0,"sample_id":1,"tampered_proof_rejected":true,"verified":true,"verify_ms":8097.167931,"warmup":false}
+{"clock_us":240305678,"phase":"phase_marker","sample_id":2,"stage":"prove_start","wall_time_ns":1791954576463075982}
+{"clock_us":332208483,"phase":"phase_marker","sample_id":2,"stage":"verify_start","wall_time_ns":1791954668365881306}
+{"clock_us":337017297,"phase":"phase_marker","sample_id":2,"stage":"verify_end","wall_time_ns":1791954673174695377}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proof_randomness_new":true,"proofs_saved":false,"prove_ms":91902.777213,"public_input_bytes":18,"repetition":1,"sample_id":2,"tampered_proof_rejected":true,"verified":true,"verify_ms":4808.731369,"warmup":false}
+{"clock_us":341307221,"phase":"phase_marker","sample_id":3,"stage":"prove_start","wall_time_ns":1791954677464618474}
+{"clock_us":430015087,"phase":"phase_marker","sample_id":3,"stage":"verify_start","wall_time_ns":1791954766172485802}
+{"clock_us":438402709,"phase":"phase_marker","sample_id":3,"stage":"verify_end","wall_time_ns":1791954774560107119}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proof_randomness_new":true,"proofs_saved":false,"prove_ms":88707.825922,"public_input_bytes":18,"repetition":2,"sample_id":3,"tampered_proof_rejected":true,"verified":true,"verify_ms":8387.533244,"warmup":false}
+PANIC: panicked at guest/src/lib.rs:9:5: assertion failed: r * r <= d2 && d2 < (r + 1) * (r + 1)
+  <no backtrace available>
+note: run `trace_and_analyze` with `JOLT_BACKTRACE=1` environment variable to enable backtraces
+PANIC: panicked at guest/src/lib.rs:9:5: assertion failed: r * r <= d2 && d2 < (r + 1) * (r + 1)
+  <no backtrace available>
+note: run `trace_and_analyze` with `JOLT_BACKTRACE=1` environment variable to enable backtraces
+{"all_verified":true,"invalid_cases_rejected":2,"negative_scope":"actual invalid execution proofs reject a false panic=false claim","phase":"summary","proofs_saved":false,"quick_mode":true,"samples":4}

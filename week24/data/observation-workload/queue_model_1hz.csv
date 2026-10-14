@@ -1,0 +1,7 @@
+arrival_ms,evaluation_mode,finish_ms,framework,measured_load_test,repetition,response_ms,run_id,service_ms,trial_completed,wait_ms
+0.0,trace_driven_serial_fifo_model,20805.385318,gnark_groth16_workload,False,0,20805.385318,eval-workload-n1-v1,20805.385318,True,0.0
+1000.0,trace_driven_serial_fifo_model,39014.796424,gnark_groth16_workload,False,1,38014.796424,eval-workload-n1-v1,18209.411105999996,True,19805.385318
+2000.0,trace_driven_serial_fifo_model,58314.500369,gnark_groth16_workload,False,2,56314.500369,eval-workload-n1-v1,19299.703944999997,True,37014.796424
+0.0,trace_driven_serial_fifo_model,33212.14,gnark_groth16_workload,False,0,33212.14,eval-workload-n2-v1,33212.14,True,0.0
+1000.0,trace_driven_serial_fifo_model,63414.203391,gnark_groth16_workload,False,1,62414.203391,eval-workload-n2-v1,30202.063391,True,32212.14
+2000.0,trace_driven_serial_fifo_model,97314.469641,gnark_groth16_workload,False,2,95314.469641,eval-workload-n2-v1,33900.26625,True,61414.203391
