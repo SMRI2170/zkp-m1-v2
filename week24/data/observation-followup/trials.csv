@@ -1,0 +1,6 @@
+binary_bytes,compile_ms,compute_parallelism,constraints,cpu_quota_percent,elapsed_s,exit_code,host_class,memory_scope,observation_count,run_id,setup_ms,status,stop_reason,vk_bytes,whole_run_sampled_process_tree_rss_peak_bytes
+13992322,17.570875,1,12668,,6.528058875,0,Mac ARM64,Mac sampled process-tree RSS soft guard; not Pi cgroup memory,1,mac-n1-v1,3683.692792,completed,,524,40960000
+13992322,33.669167,1,24230,,10.5025685,0,Mac ARM64,Mac sampled process-tree RSS soft guard; not Pi cgroup memory,2,mac-n2-v1,7109.605417,completed,,524,62816256
+13992322,66.811041,1,47354,,19.825816625,0,Mac ARM64,Mac sampled process-tree RSS soft guard; not Pi cgroup memory,4,mac-n4-v1,14127.487374999999,completed,,524,103481344
+13992322,139.986,1,47354,,30.276358416,-15,Mac ARM64,Mac sampled process-tree RSS soft guard; not Pi cgroup memory,4,mac-n4-v2,23733.388458,failed_or_partial,system_swap_growth_limit,524,98467840
+13992322,123.859333,1,47354,,30.910255541999998,0,Mac ARM64,Mac sampled process-tree RSS soft guard; not Pi cgroup memory,4,mac-n4-v3,23197.638333,completed,,524,99090432

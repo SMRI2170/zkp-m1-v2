@@ -50,3 +50,5 @@ jobs:
         run: python3 -m unittest discover -s experiments/pi4-euclidean-evaluation -p "test_*.py"
       - name: Validate expanded evaluation evidence
         run: python3 experiments/pi4-euclidean-evaluation/check_results.py
+      - name: Validate Mac observation followup and stopped trials
+        run: python3 experiments/pi4-observation-followup/check_results.py

@@ -1,0 +1,22 @@
+{
+  "run_id": "mac-n1-v1",
+  "host_class": "Mac ARM64",
+  "os": "Darwin",
+  "machine": "arm64",
+  "cpu_quota_percent": null,
+  "compute_parallelism": 1,
+  "warmup_count": 1,
+  "repeat_count": 3,
+  "observation_count": 1,
+  "binary_sha256": "ca636f92ae9c37fd923585c75d44dfc11dc7606df881901ef053822b4f6725d4",
+  "binary_bytes": 13992322,
+  "source_sha256": {
+    "go.mod": "c6f41c51586f7cf41b166d16d28c24c22e423fe3da35b7d5f87d07ca41b79652",
+    "go.sum": "1e44c1a5e3c186a0593d503a9e98dec9892096ccf39bce80725cb254a26da556",
+    "main.go": "7c1522b226b41102bd8c6919e6cd8799b58d5f38db799f039451d66ef7c3a127",
+    "main_test.go": "e9992d17aad57aa6d0eba400589124687eba58fb560698198e0dcf4adb0528c9"
+  },
+  "basis_commit": "f7597fa9920ec23caa442e314fbb0b263d8a80ab",
+  "setup_scope": "disposable local-only RAM, no fixture export or deploy",
+  "memory_scope": "Mac sampled process-tree RSS soft guard; not Pi cgroup memory"
+}

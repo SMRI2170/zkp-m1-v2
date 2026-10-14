@@ -1,0 +1,33 @@
+{
+  "time_units": "ms/s/ns in names",
+  "size_units": "bytes",
+  "memory": "whole-run sampled process-tree RSS, soft monitor; no phase-specific or Pi cgroup claims",
+  "missing": "JSON null/CSV empty, not zero",
+  "raw_file_sha256": {
+    "mac-n1-v1/benchmark.jsonl": "f261611a67c6ec7c6827cf09bd86aa4eb003ce0961de474a987bee71d2a6d8fd",
+    "mac-n1-v1/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mac-n1-v1/metadata.json": "0ce419305d2d8600b0b28b74fbb34a8f4799c3de972e61d6f9a6a634e441d133",
+    "mac-n1-v1/memory.jsonl": "a297a1d9409b4d4361b8526e996931eb8299f5842ddb6c03ebb8c43c70296b50",
+    "mac-n1-v1/resource.json": "84f8e081ce7c32d5b927bb6f976781f2dae2080f018972bcfde7938ee9ee0b9b",
+    "mac-n2-v1/benchmark.jsonl": "51f5a4719548f160b00940207da8c44df890d73b94706208b0bd0a9af1d05d7e",
+    "mac-n2-v1/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mac-n2-v1/metadata.json": "69b245121631e8c28e197fc97b4b1b97400901e0904bd502a4dde84407b2b006",
+    "mac-n2-v1/memory.jsonl": "0361588f8738fae5353f6b8ceb560924a53bb9c2430cb1410093d31282aff780",
+    "mac-n2-v1/resource.json": "a6bb2e3a6016667cca20d95ef546b8666c94cb103ff88a02f8099f2b9b6aca80",
+    "mac-n4-v1/benchmark.jsonl": "1f0c06f28596a08e0026194c02612e103fa9671aee70dbb5c20e9cff69844a20",
+    "mac-n4-v1/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mac-n4-v1/metadata.json": "7c32727b5cb46520798d5b24d55d926a75f8f3e3349484cfe4698ba78e943802",
+    "mac-n4-v1/memory.jsonl": "9fbd8e905b1ca43fe1f0f3ea2016459771c806d06c68c2a275de7f0d1490e4e4",
+    "mac-n4-v1/resource.json": "dd4815feaa8f0e83e790adc91150043217dce1d7d6e0c507cf647c4526145b5f",
+    "mac-n4-v2/benchmark.jsonl": "2678c19ab4457f47b9c78b71bf99c7c276d75c90d374c9a95c7af280fbf562d0",
+    "mac-n4-v2/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mac-n4-v2/metadata.json": "d0e62d89352fc256c669c229ce9331733bb2b9961bcdbe09825f7f99561c28c7",
+    "mac-n4-v2/memory.jsonl": "368d34716f61479d702f053e342a8a92836193f1a3d7f5ed1ddbfc1799c214b6",
+    "mac-n4-v2/resource.json": "ba913bd1b2124c3cc5447c0d22358e6f2cc40fa67588eeb538b0cb9cc448735b",
+    "mac-n4-v3/benchmark.jsonl": "0762305e0c94d20499de9854b3174cafb6b8a47974886c05b2e7817a64020f78",
+    "mac-n4-v3/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mac-n4-v3/metadata.json": "66a491d927d58296e42bd43bfd35101eb15754a9c5602d3a7e869754f0f54587",
+    "mac-n4-v3/memory.jsonl": "548bc40cd63c0cc2dea1de3152de4c681031d86fc577b7420720809f069e8e43",
+    "mac-n4-v3/resource.json": "a50b1c154f624f071e35a9162d4b4b4723d12293d4814aa305b8181da2fa43cf"
+  }
+}
