@@ -1,0 +1,10 @@
+{"arch":"aarch64","framework":"Binius64 ZK SHA256","os":"macos","phase":"start"}
+{"log_inv_rate":1,"phase":"keys","setup_ms":163.115,"zk":true}
+{"case_id":0,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":497808,"prove_ms":722.452125,"tampered_proof_rejected":true,"verified":true,"verify_ms":88.110333,"witness_ms":0.0022500000000000003}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":497808,"prove_ms":580.122916,"tampered_proof_rejected":true,"verified":true,"verify_ms":127.6245,"witness_ms":0.002334}
+{"case_id":2,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":497808,"prove_ms":502.14862500000004,"tampered_proof_rejected":true,"verified":true,"verify_ms":79.26424999999999,"witness_ms":0.00275}
+{"case_id":3,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":497808,"prove_ms":419.568708,"tampered_proof_rejected":true,"verified":true,"verify_ms":85.93754200000001,"witness_ms":0.0027080000000000003}
+{"case_id":4,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":497808,"prove_ms":515.949083,"tampered_proof_rejected":true,"verified":true,"verify_ms":89.998916,"witness_ms":0.002417}
+{"case_id":5,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":497808,"prove_ms":646.007875,"tampered_proof_rejected":true,"verified":true,"verify_ms":98.422917,"witness_ms":0.002542}
+{"case_id":6,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":497808,"prove_ms":597.288417,"tampered_proof_rejected":true,"verified":true,"verify_ms":219.387917,"witness_ms":0.002542}
+{"all_verified":true,"invalid_cases_rejected":6,"phase":"summary","proofs_saved":false,"samples":7}

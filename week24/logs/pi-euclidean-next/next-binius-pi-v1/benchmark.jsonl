@@ -1,0 +1,10 @@
+{"arch":"aarch64","framework":"Binius64 ZK SHA256","os":"linux","phase":"start"}
+{"log_inv_rate":1,"phase":"keys","setup_ms":5007.973529,"zk":true}
+{"case_id":0,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":497808,"prove_ms":49994.604018,"tampered_proof_rejected":true,"verified":true,"verify_ms":9500.222792,"witness_ms":0.011406999999999999}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":497808,"prove_ms":46596.13343,"tampered_proof_rejected":true,"verified":true,"verify_ms":6995.315874,"witness_ms":0.015371}
+{"case_id":2,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":497808,"prove_ms":52307.651634,"tampered_proof_rejected":true,"verified":true,"verify_ms":8896.668052,"witness_ms":0.015148}
+{"case_id":3,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":497808,"prove_ms":52296.265120000004,"tampered_proof_rejected":true,"verified":true,"verify_ms":7894.555661,"witness_ms":0.011204}
+{"case_id":4,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":497808,"prove_ms":51102.161346,"tampered_proof_rejected":true,"verified":true,"verify_ms":9891.203226,"witness_ms":0.015629}
+{"case_id":5,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":497808,"prove_ms":52000.501468,"tampered_proof_rejected":true,"verified":true,"verify_ms":5797.643899,"witness_ms":0.010889000000000001}
+{"case_id":6,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":497808,"prove_ms":52491.626537000004,"tampered_proof_rejected":true,"verified":true,"verify_ms":7800.450512,"witness_ms":0.014593}
+{"all_verified":true,"invalid_cases_rejected":6,"phase":"summary","proofs_saved":false,"samples":7}

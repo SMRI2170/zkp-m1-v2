@@ -1,0 +1,11 @@
+[package]
+name="week24-euclidean-jolt"
+version="0.1.0"
+edition="2021"
+publish=false
+[dependencies]
+jolt-sdk={git="https://github.com/a16z/jolt",rev="8b6099f70bb21c8d38abd32dc295d34786c1699a",features=["host","zk"]}
+guest={package="week24-euclidean-jolt-guest",path="../guest"}
+serde_json="1"
+anyhow="1"
+bincode="1.3"

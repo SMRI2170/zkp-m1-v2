@@ -1,0 +1,4 @@
+
+thread 'main' (21255) panicked at /Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week24/jolt/crates/jolt-host/src/program.rs:260:18:
+failed to run jolt - make sure it's installed (cargo install --path .): Os { code: 2, kind: NotFound, message: "No such file or directory" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

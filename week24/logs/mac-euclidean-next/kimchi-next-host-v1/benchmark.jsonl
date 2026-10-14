@@ -1,0 +1,10 @@
+{"arch":"aarch64","framework":"Kimchi Vesta IPA","os":"macos","phase":"start"}
+{"phase":"keys","public":2,"setup_ms":359.288792}
+{"case_id":0,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":5306,"prove_ms":5052.549375,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":857.1018750000001,"witness_ms":0.196959}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":5306,"prove_ms":5621.037792,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":488.907458,"witness_ms":0.915666}
+{"case_id":2,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":5306,"prove_ms":2149.726875,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":481.86558299999996,"witness_ms":0.11349999999999999}
+{"case_id":3,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":5306,"prove_ms":2151.431083,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":442.524417,"witness_ms":0.077542}
+{"case_id":4,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":5306,"prove_ms":2206.982709,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":547.2937919999999,"witness_ms":0.0855}
+{"case_id":5,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":5306,"prove_ms":5584.817540999999,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":917.612125,"witness_ms":0.345625}
+{"case_id":6,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":5306,"prove_ms":3995.0494590000003,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":714.529583,"witness_ms":0.075958}
+{"all_verified":true,"invalid_cases_rejected":6,"phase":"summary","proofs_saved":false,"samples":7}

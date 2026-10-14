@@ -1,0 +1,17 @@
+[package]
+name="week24-euclidean-binius64"
+version="0.1.0"
+edition="2024"
+publish=false
+[dependencies]
+anyhow="1"
+rand="0.10.1"
+serde_json="1"
+binius-core={git="https://github.com/binius-zk/binius64",rev="4428e759dd27956bd5b9ae5025d67eb8ccc1accf"}
+binius-frontend={git="https://github.com/binius-zk/binius64",rev="4428e759dd27956bd5b9ae5025d67eb8ccc1accf"}
+binius-hash={git="https://github.com/binius-zk/binius64",rev="4428e759dd27956bd5b9ae5025d67eb8ccc1accf"}
+binius-prover={git="https://github.com/binius-zk/binius64",rev="4428e759dd27956bd5b9ae5025d67eb8ccc1accf"}
+binius-verifier={git="https://github.com/binius-zk/binius64",rev="4428e759dd27956bd5b9ae5025d67eb8ccc1accf"}
+blake3={version="=1.8.7",optional=true}
+[features]
+portable-blake3=["dep:blake3","blake3/pure"]

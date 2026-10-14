@@ -1,0 +1,42 @@
+{
+  "cpu_quota_percent": 25,
+  "scope": "Pi4 ARM64; setup excluded from flow; memory includes setup and negative tests; varied synthetic cases, not IID repeats; Jolt quick n=1 has no SD",
+  "results": [
+    {
+      "label": "Kimchi",
+      "run": "next-kimchi-pi-v2",
+      "n": 7,
+      "flow_mean_ms": 10527.108004,
+      "flow_sd_ms": 611.2651176134432,
+      "memory_time_weighted_mean_bytes": 16404371.568146328,
+      "memory_kernel_peak_bytes": 21405696,
+      "proof_mean_bytes": 4807,
+      "proof_min_bytes": 4807,
+      "proof_max_bytes": 4807
+    },
+    {
+      "label": "Binius64\nportable BLAKE3",
+      "run": "next-binius-pi-v1",
+      "n": 7,
+      "flow_mean_ms": 59080.72825857143,
+      "flow_sd_ms": 2671.3344530276313,
+      "memory_time_weighted_mean_bytes": 266859832.18025365,
+      "memory_kernel_peak_bytes": 367906816,
+      "proof_mean_bytes": 497808,
+      "proof_min_bytes": 497808,
+      "proof_max_bytes": 497808
+    },
+    {
+      "label": "Jolt ZK\nquick, n=1",
+      "run": "next-jolt-pi-v2",
+      "n": 1,
+      "flow_mean_ms": 97895.21836900001,
+      "flow_sd_ms": null,
+      "memory_time_weighted_mean_bytes": 19113986.62058895,
+      "memory_kernel_peak_bytes": 156536832,
+      "proof_mean_bytes": 74258,
+      "proof_min_bytes": 74258,
+      "proof_max_bytes": 74258
+    }
+  ]
+}

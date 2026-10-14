@@ -1,0 +1,10 @@
+{"arch":"aarch64","framework":"Jolt PrivateInput + zk","os":"macos","phase":"start","zk_feature":true}
+{"phase":"keys","setup_ms":1013.5685000000001}
+{"case_id":0,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proofs_saved":false,"prove_ms":1685.607125,"tampered_proof_rejected":true,"verified":true,"verify_ms":142.066542}
+PANIC: panicked at guest/src/lib.rs:9:5: assertion failed: r * r <= d2 && d2 < (r + 1) * (r + 1)
+  <no backtrace available>
+note: run `trace_and_analyze` with `JOLT_BACKTRACE=1` environment variable to enable backtraces
+PANIC: panicked at guest/src/lib.rs:9:5: assertion failed: r * r <= d2 && d2 < (r + 1) * (r + 1)
+  <no backtrace available>
+note: run `trace_and_analyze` with `JOLT_BACKTRACE=1` environment variable to enable backtraces
+{"all_verified":true,"invalid_cases_rejected":2,"negative_scope":"actual invalid execution proofs reject a false panic=false claim","phase":"summary","proofs_saved":false,"quick_mode":true,"samples":1}

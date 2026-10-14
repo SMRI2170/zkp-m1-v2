@@ -1,0 +1,10 @@
+{"arch":"aarch64","framework":"Kimchi Vesta IPA","os":"linux","phase":"start"}
+{"max_poly_size":512,"phase":"keys","public":2,"setup_ms":9368.206088,"srs":"transparent local RAM-only IPA"}
+{"case_id":0,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"prove_ms":8910.314204,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":796.805698,"witness_ms":2.593866}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"prove_ms":9197.95798,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":801.704581,"witness_ms":2.832121}
+{"case_id":2,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"prove_ms":9195.808982999999,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":801.68105,"witness_ms":2.4018889999999997}
+{"case_id":3,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"prove_ms":10204.97892,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":803.636991,"witness_ms":1.5576260000000002}
+{"case_id":4,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"prove_ms":9878.222875000001,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":802.5047360000001,"witness_ms":1.167733}
+{"case_id":5,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"prove_ms":10398.696793,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":793.384587,"witness_ms":1.271772}
+{"case_id":6,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"prove_ms":10785.086678000001,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":305.921799,"witness_ms":1.225146}
+{"all_verified":true,"invalid_cases_rejected":6,"phase":"summary","proofs_saved":false,"samples":7}

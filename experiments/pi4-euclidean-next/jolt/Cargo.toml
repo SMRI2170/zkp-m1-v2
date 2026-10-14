@@ -1,0 +1,11 @@
+[workspace]
+members=["host","guest"]
+resolver="2"
+[patch.crates-io]
+ark-bn254={git="https://github.com/a16z/arkworks-algebra",branch="dev/twist-shout"}
+ark-ff={git="https://github.com/a16z/arkworks-algebra",branch="dev/twist-shout"}
+ark-ec={git="https://github.com/a16z/arkworks-algebra",branch="dev/twist-shout"}
+ark-serialize={git="https://github.com/a16z/arkworks-algebra",branch="dev/twist-shout"}
+[patch."https://github.com/a16z/jolt"]
+jolt-field={git="https://github.com/a16z/jolt",rev="8b6099f70bb21c8d38abd32dc295d34786c1699a"}
+jolt-poly={git="https://github.com/a16z/jolt",rev="8b6099f70bb21c8d38abd32dc295d34786c1699a"}

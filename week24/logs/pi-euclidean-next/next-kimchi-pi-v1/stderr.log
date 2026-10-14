@@ -1,0 +1,4 @@
+
+thread 'main' (52057) panicked at /Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week24/kimchi/poly-commitment/src/precomputed_srs.rs:82:29:
+missing SRS file: /Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/.cache/week24/kimchi/poly-commitment/../srs/test_vesta.srs
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

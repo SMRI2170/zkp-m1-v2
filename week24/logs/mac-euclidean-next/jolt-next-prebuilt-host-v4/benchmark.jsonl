@@ -1,0 +1,30 @@
+{"arch":"aarch64","framework":"Jolt PrivateInput + zk","os":"macos","phase":"start","zk_feature":true}
+{"phase":"keys","setup_ms":1069.5738749999998}
+{"case_id":0,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proofs_saved":false,"prove_ms":1789.698625,"tampered_proof_rejected":true,"verified":true,"verify_ms":151.199375}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proofs_saved":false,"prove_ms":1709.6685830000001,"tampered_proof_rejected":true,"verified":true,"verify_ms":146.00566600000002}
+{"case_id":2,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proofs_saved":false,"prove_ms":1891.257875,"tampered_proof_rejected":true,"verified":true,"verify_ms":187.759208}
+{"case_id":3,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proofs_saved":false,"prove_ms":1761.204292,"tampered_proof_rejected":true,"verified":true,"verify_ms":146.026709}
+{"case_id":4,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proofs_saved":false,"prove_ms":1943.655041,"tampered_proof_rejected":true,"verified":true,"verify_ms":158.85691699999998}
+{"case_id":5,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proofs_saved":false,"prove_ms":1931.819167,"tampered_proof_rejected":true,"verified":true,"verify_ms":147.464167}
+{"case_id":6,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proofs_saved":false,"prove_ms":1907.541042,"tampered_proof_rejected":true,"verified":true,"verify_ms":147.84349999999998}
+PANIC: panicked at guest/src/lib.rs:9:5: assertion failed: r * r <= d2 && d2 < (r + 1) * (r + 1)
+  <no backtrace available>
+note: run `trace_and_analyze` with `JOLT_BACKTRACE=1` environment variable to enable backtraces
+PANIC: panicked at guest/src/lib.rs:9:5: assertion failed: r * r <= d2 && d2 < (r + 1) * (r + 1)
+  <no backtrace available>
+note: run `trace_and_analyze` with `JOLT_BACKTRACE=1` environment variable to enable backtraces
+PANIC: panicked at guest/src/lib.rs:8:5: assertion `left == right` failed
+  left: 26
+ right: 25
+  <no backtrace available>
+note: run `trace_and_analyze` with `JOLT_BACKTRACE=1` environment variable to enable backtraces
+PANIC: panicked at guest/src/lib.rs:5:5: assertion failed: a.iter().all(|v| *v < (1 << 16))
+  <no backtrace available>
+note: run `trace_and_analyze` with `JOLT_BACKTRACE=1` environment variable to enable backtraces
+PANIC: panicked at guest/src/lib.rs:6:5: assertion failed: d2 < (1 << 33) && r < (1 << 17)
+  <no backtrace available>
+note: run `trace_and_analyze` with `JOLT_BACKTRACE=1` environment variable to enable backtraces
+PANIC: panicked at guest/src/lib.rs:5:5: assertion failed: a.iter().all(|v| *v < (1 << 16))
+  <no backtrace available>
+note: run `trace_and_analyze` with `JOLT_BACKTRACE=1` environment variable to enable backtraces
+{"all_verified":true,"invalid_cases_rejected":6,"negative_scope":"actual invalid execution proofs reject a false panic=false claim","phase":"summary","proofs_saved":false,"quick_mode":false,"samples":7}

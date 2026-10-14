@@ -1,0 +1,219 @@
+{
+  "scope": "research synthetic Euclidean circuit; Mac full7, Pi Kimchi/Binius64 full7, Jolt quick1 + invalid2; no proof bodies or private assignments published",
+  "cpu_quota_percent": 25,
+  "pinned_sources": {
+    "kimchi": "9227444890bc56d63d95ce14b9cbe34e2cf58996",
+    "binius64": "4428e759dd27956bd5b9ae5025d67eb8ccc1accf",
+    "jolt": "8b6099f70bb21c8d38abd32dc295d34786c1699a",
+    "jolt_arkworks": "76bb3a4518928f1ff7f15875f940d614bb9845e6"
+  },
+  "artifact_sha256": {
+    "kimchi_host": "80d4c9f0c829fecab970cdcc3f8a45e759debd755ce9c7ca5e98f30c0850900f",
+    "kimchi_pi": "67dbf4f9dc9222fe11071e27935b0fba62ba1bc3fec825052a61ec3d6ce66de0",
+    "binius64_host": "0a19eb9d0852351139ee7cc10b8299de891802220602a2a455027b4fc24904ab",
+    "binius64_pi": "128022784d492f8eb55c13fba6ab39cc87840657fb62ec50cba7bdd6e8fcb472",
+    "jolt_host": "b304cd41be6b3ca97fa98f18d031ad24a8422c8f94396ed3509e8556ae6357d4",
+    "jolt_pi": "41a7b5cb5e19d81d16c48b688f2ae91fd1ab62d24cd3d438b1db7560403cd449",
+    "jolt_failed_cli_pi_v1": "ef8f24fc5b12108207c74e2bbcca7cb5aadcfcb642469a047fd3cff3e23efb4b",
+    "kimchi_failed_srs_pi_v1": "21fe68418eab14a45226820250102362e899e03f7ff2b8dd192bc6fe3e797f08",
+    "jolt_guest_elf": "069f04f66aae52a58a59f1da4660a89023824645a194fcf68977a7f18d53a1a1",
+    "jolt_cli_mac": "13304f68160a827eb31e910a94f7d7106a454a31af6c5d39f16ff18724e1e415"
+  },
+  "build_metadata": {
+    "kimchi_host": {
+      "framework": "kimchi",
+      "revision": "9227444890bc56d63d95ce14b9cbe34e2cf58996",
+      "build_exit_code": 0,
+      "proof_executed": false,
+      "target": "host native",
+      "portable_blake3": false,
+      "source_sha256": {
+        "kimchi/Cargo.lock": "4a61992767379f2c91d971bc32553387bc68697510ae7059a215201025c1fc87",
+        "kimchi/Cargo.toml": "8d31bcb749b96319b12918979f4c393eede4e5b90046001655a8d08e68540c13",
+        "kimchi/src/main.rs": "747fc298dc0a2bd466554c5d8b77dc58ea668dc0a63a158e80652d79723c5237"
+      },
+      "effective_manifest": "[package]\nname=\"week24-euclidean-kimchi\"\nversion=\"0.1.0\"\nedition=\"2021\"\npublish=false\n[dependencies]\nark-ff=\"0.5\"\nrand=\"0.8\"\nserde_json=\"1\"\nrmp-serde=\"1\"\nanyhow=\"1\"\nkimchi={path=\"<verified-pinned-checkout>/kimchi\",features=[\"prover\"]}\nmina-curves={path=\"<verified-pinned-checkout>/curves\"}\nmina-poseidon={path=\"<verified-pinned-checkout>/poseidon\"}\ngroupmap={path=\"<verified-pinned-checkout>/groupmap\"}\npoly-commitment={path=\"<verified-pinned-checkout>/poly-commitment\"}\n"
+    },
+    "kimchi_pi": {
+      "framework": "kimchi",
+      "revision": "9227444890bc56d63d95ce14b9cbe34e2cf58996",
+      "build_exit_code": 0,
+      "proof_executed": false,
+      "target": "aarch64-unknown-linux-musl",
+      "portable_blake3": false,
+      "source_sha256": {
+        "kimchi/Cargo.lock": "4a61992767379f2c91d971bc32553387bc68697510ae7059a215201025c1fc87",
+        "kimchi/Cargo.toml": "8d31bcb749b96319b12918979f4c393eede4e5b90046001655a8d08e68540c13",
+        "kimchi/src/main.rs": "747fc298dc0a2bd466554c5d8b77dc58ea668dc0a63a158e80652d79723c5237"
+      },
+      "effective_manifest": "[package]\nname=\"week24-euclidean-kimchi\"\nversion=\"0.1.0\"\nedition=\"2021\"\npublish=false\n[dependencies]\nark-ff=\"0.5\"\nrand=\"0.8\"\nserde_json=\"1\"\nrmp-serde=\"1\"\nanyhow=\"1\"\nkimchi={path=\"<verified-pinned-checkout>/kimchi\",features=[\"prover\"]}\nmina-curves={path=\"<verified-pinned-checkout>/curves\"}\nmina-poseidon={path=\"<verified-pinned-checkout>/poseidon\"}\ngroupmap={path=\"<verified-pinned-checkout>/groupmap\"}\npoly-commitment={path=\"<verified-pinned-checkout>/poly-commitment\"}\n"
+    },
+    "binius64_host": {
+      "framework": "binius64",
+      "revision": "4428e759dd27956bd5b9ae5025d67eb8ccc1accf",
+      "build_exit_code": 0,
+      "proof_executed": false,
+      "target": "host native",
+      "source_sha256": {
+        "binius64/Cargo.lock": "245b46207dc81c8dc9022e0aa9d26fb41d2355fc8c74163908f5fc355e418091",
+        "binius64/Cargo.toml": "de83aa6292aeebf46a11057a271f11566335c2e3df91ee1dd4cda423b2568d2c",
+        "binius64/src/main.rs": "6fba7e396a026173c751c02c9b222cb70d1a32b4ff819515fffefcb8c8c172c6"
+      },
+      "effective_manifest": "[package]\nname=\"week24-euclidean-binius64\"\nversion=\"0.1.0\"\nedition=\"2024\"\npublish=false\n[dependencies]\nanyhow=\"1\"\nrand=\"0.10.1\"\nserde_json=\"1\"\nbinius-core={path=\"<verified-pinned-checkout>/crates/core\"}\nbinius-frontend={path=\"<verified-pinned-checkout>/crates/frontend\"}\nbinius-hash={path=\"<verified-pinned-checkout>/crates/hash\"}\nbinius-prover={path=\"<verified-pinned-checkout>/crates/prover\"}\nbinius-verifier={path=\"<verified-pinned-checkout>/crates/verifier\"}\n"
+    },
+    "binius64_pi": {
+      "framework": "binius64",
+      "revision": "4428e759dd27956bd5b9ae5025d67eb8ccc1accf",
+      "build_exit_code": 0,
+      "proof_executed": false,
+      "target": "aarch64-unknown-linux-musl",
+      "portable_blake3": true,
+      "source_sha256": {
+        "binius64/Cargo.lock": "96b2df68b4c41a597838fa31392edee1a815c6e7fba66c4beac020a912312c3d",
+        "binius64/Cargo.toml": "b2d8622ed798d00406668ec46438688a8a2a4ddddabe823e6e715211dbea887b",
+        "binius64/src/main.rs": "6fba7e396a026173c751c02c9b222cb70d1a32b4ff819515fffefcb8c8c172c6"
+      },
+      "effective_manifest": "[package]\nname=\"week24-euclidean-binius64\"\nversion=\"0.1.0\"\nedition=\"2024\"\npublish=false\n[dependencies]\nanyhow=\"1\"\nrand=\"0.10.1\"\nserde_json=\"1\"\nbinius-core={path=\"<verified-pinned-checkout>/crates/core\"}\nbinius-frontend={path=\"<verified-pinned-checkout>/crates/frontend\"}\nbinius-hash={path=\"<verified-pinned-checkout>/crates/hash\"}\nbinius-prover={path=\"<verified-pinned-checkout>/crates/prover\"}\nbinius-verifier={path=\"<verified-pinned-checkout>/crates/verifier\"}\nblake3={version=\"=1.8.7\",optional=true}\n[features]\nportable-blake3=[\"dep:blake3\",\"blake3/pure\"]\n"
+    },
+    "jolt_host": {
+      "framework": "jolt",
+      "revision": "8b6099f70bb21c8d38abd32dc295d34786c1699a",
+      "build_exit_code": 0,
+      "proof_executed": false,
+      "target": "host native",
+      "portable_blake3": false,
+      "source_sha256": {
+        "jolt/Cargo.lock": "cf3269067763024272ad55570b95552f8b4673388273daa20c636e1331ca8174",
+        "jolt/Cargo.toml": "9654e8aeffdada1b679e54d6221384728e9dfd7571dd6e4768a4aa5ab6fea798",
+        "jolt/guest/Cargo.toml": "3550bc504e1a06f8cbb186dc0fdc091ad5291040e993387d2c26326a5839a6f7",
+        "jolt/guest/src/lib.rs": "bbbad4e57d2b7dfa4d28164741e585461dfd3279284ad586ac7db77c1d862b44",
+        "jolt/guest/src/main.rs": "1b663569ba086e84bfc7397ea561ad05466028f91fb2b90adf0b9747887fbd45",
+        "jolt/host/Cargo.toml": "7943871a3113a6c31eefc1b326bf215720e5c47606e1ec139d689bb081e178bb",
+        "jolt/host/src/main.rs": "1032b913598a034aca00245e3be1c2e1724b574a69035839c2b10dc51d7238da"
+      },
+      "effective_manifest": "[package]\nname=\"week24-euclidean-jolt\"\nversion=\"0.1.0\"\nedition=\"2021\"\npublish=false\n[dependencies]\njolt-sdk={path=\"<verified-pinned-checkout>/jolt-sdk\",features=[\"host\",\"zk\"]}\nguest={package=\"week24-euclidean-jolt-guest\",path=\"../guest\"}\nserde_json=\"1\"\nanyhow=\"1\"\nbincode=\"1.3\"\n"
+    },
+    "jolt_pi": {
+      "framework": "jolt",
+      "revision": "8b6099f70bb21c8d38abd32dc295d34786c1699a",
+      "build_exit_code": 0,
+      "proof_executed": false,
+      "target": "aarch64-unknown-linux-musl",
+      "portable_blake3": false,
+      "source_sha256": {
+        "jolt/Cargo.lock": "cf3269067763024272ad55570b95552f8b4673388273daa20c636e1331ca8174",
+        "jolt/Cargo.toml": "9654e8aeffdada1b679e54d6221384728e9dfd7571dd6e4768a4aa5ab6fea798",
+        "jolt/guest/Cargo.toml": "3550bc504e1a06f8cbb186dc0fdc091ad5291040e993387d2c26326a5839a6f7",
+        "jolt/guest/src/lib.rs": "bbbad4e57d2b7dfa4d28164741e585461dfd3279284ad586ac7db77c1d862b44",
+        "jolt/guest/src/main.rs": "1b663569ba086e84bfc7397ea561ad05466028f91fb2b90adf0b9747887fbd45",
+        "jolt/host/Cargo.toml": "7943871a3113a6c31eefc1b326bf215720e5c47606e1ec139d689bb081e178bb",
+        "jolt/host/src/main.rs": "1032b913598a034aca00245e3be1c2e1724b574a69035839c2b10dc51d7238da"
+      },
+      "effective_manifest": "[package]\nname=\"week24-euclidean-jolt\"\nversion=\"0.1.0\"\nedition=\"2021\"\npublish=false\n[dependencies]\njolt-sdk={path=\"<verified-pinned-checkout>/jolt-sdk\",features=[\"host\",\"zk\"]}\nguest={package=\"week24-euclidean-jolt-guest\",path=\"../guest\"}\nserde_json=\"1\"\nanyhow=\"1\"\nbincode=\"1.3\"\n"
+    }
+  },
+  "file_sha256": {
+    "experiments/pi4-euclidean-next/.gitignore": "79bfca3649414cfb225b4a09a3b242b3687bcf7035f40dc09679ee6c1f85d2c8",
+    "experiments/pi4-euclidean-next/README.md": "da6d42b71a6df2f8098f907bd96dd508a0240136fd5904bbb9dc86928bbc2842",
+    "experiments/pi4-euclidean-next/binius64/Cargo.lock": "96b2df68b4c41a597838fa31392edee1a815c6e7fba66c4beac020a912312c3d",
+    "experiments/pi4-euclidean-next/binius64/Cargo.toml": "b2d8622ed798d00406668ec46438688a8a2a4ddddabe823e6e715211dbea887b",
+    "experiments/pi4-euclidean-next/binius64/src/main.rs": "6fba7e396a026173c751c02c9b222cb70d1a32b4ff819515fffefcb8c8c172c6",
+    "experiments/pi4-euclidean-next/build.py": "f7dcd6ba56c2de7609400c2b47a71bcf779d043f76d34067b5dc53eaa427df80",
+    "experiments/pi4-euclidean-next/cases.rs": "0edfdb5342b89b0d58eaf5c7b1c8f86ec3bacdcbc4433b3f7f26980af0c6375e",
+    "experiments/pi4-euclidean-next/check_results.py": "186494b42ef30e09c9eba50f6c5c016cc45bf50041eb1d0dfbbd09591d2ed052",
+    "experiments/pi4-euclidean-next/jolt/Cargo.lock": "cf3269067763024272ad55570b95552f8b4673388273daa20c636e1331ca8174",
+    "experiments/pi4-euclidean-next/jolt/Cargo.toml": "9654e8aeffdada1b679e54d6221384728e9dfd7571dd6e4768a4aa5ab6fea798",
+    "experiments/pi4-euclidean-next/jolt/guest/Cargo.toml": "3550bc504e1a06f8cbb186dc0fdc091ad5291040e993387d2c26326a5839a6f7",
+    "experiments/pi4-euclidean-next/jolt/guest/src/lib.rs": "bbbad4e57d2b7dfa4d28164741e585461dfd3279284ad586ac7db77c1d862b44",
+    "experiments/pi4-euclidean-next/jolt/guest/src/main.rs": "1b663569ba086e84bfc7397ea561ad05466028f91fb2b90adf0b9747887fbd45",
+    "experiments/pi4-euclidean-next/jolt/host/Cargo.toml": "7943871a3113a6c31eefc1b326bf215720e5c47606e1ec139d689bb081e178bb",
+    "experiments/pi4-euclidean-next/jolt/host/src/main.rs": "1032b913598a034aca00245e3be1c2e1724b574a69035839c2b10dc51d7238da",
+    "experiments/pi4-euclidean-next/kimchi/Cargo.lock": "4a61992767379f2c91d971bc32553387bc68697510ae7059a215201025c1fc87",
+    "experiments/pi4-euclidean-next/kimchi/Cargo.toml": "8d31bcb749b96319b12918979f4c393eede4e5b90046001655a8d08e68540c13",
+    "experiments/pi4-euclidean-next/kimchi/src/main.rs": "747fc298dc0a2bd466554c5d8b77dc58ea668dc0a63a158e80652d79723c5237",
+    "experiments/pi4-euclidean-next/plot_results.py": "62b17b8ccd4b1dd378a2762f2b0b646fdfa8f355a14b63bc3e43c3e61743639e",
+    "week24/logs/mac-euclidean-next/binius-next-host-v1/benchmark.jsonl": "d91ec416cd547007cf056b30db72b487005bbcd29ee368d4085e66f2275d68d6",
+    "week24/logs/mac-euclidean-next/binius-next-host-v1/memory.jsonl": "87c167323c7dc47b71cf3bc0b23fdeb85defc4ccd30bbe11c5de5e56269957d0",
+    "week24/logs/mac-euclidean-next/binius-next-host-v1/resource.json": "9bcd1b5ad2ac8c616f1a9680d672ba2656f78fcef0f969dba03d6b4070dd256e",
+    "week24/logs/mac-euclidean-next/binius-next-host-v1/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "week24/logs/mac-euclidean-next/jolt-next-host-v1/benchmark.jsonl": "e2a41ec71d679af1d57aea258d6fbdb3411462e08be7fe77084ee98fee47ea57",
+    "week24/logs/mac-euclidean-next/jolt-next-host-v1/memory.jsonl": "3aeadad630636b15ab769b54a0351276893cb217535d243ae1d57e80bb3716ac",
+    "week24/logs/mac-euclidean-next/jolt-next-host-v1/resource.json": "436b5a04a0dfa065ccff35320d90e75bf165915b21b5991a5720e09f0c0c671b",
+    "week24/logs/mac-euclidean-next/jolt-next-host-v1/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "week24/logs/mac-euclidean-next/jolt-next-host-v2/benchmark.jsonl": "c4cac66b024f3ce1251d4d93b381d7ab467c57267815061d010a5582ebe328fe",
+    "week24/logs/mac-euclidean-next/jolt-next-host-v2/memory.jsonl": "8d3038fbe0664ef4d3d74e3b6763583e5f1162924a013b4b66160b37f20d8dc0",
+    "week24/logs/mac-euclidean-next/jolt-next-host-v2/resource.json": "f1c4929e11f093c79a4640665ab0a89f37950ccc549c1855290e3fd9a69311cb",
+    "week24/logs/mac-euclidean-next/jolt-next-host-v2/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "week24/logs/mac-euclidean-next/jolt-next-prebuilt-host-v3/benchmark.jsonl": "dd8b1ee0734b3b970eea628106a3b39011f1cfeac505f51ca707b2aadcc32a3c",
+    "week24/logs/mac-euclidean-next/jolt-next-prebuilt-host-v3/memory.jsonl": "efd1fab230ab47dff8828a83d04fbbc4ccf19fca1a448c536af97a359de7a4b7",
+    "week24/logs/mac-euclidean-next/jolt-next-prebuilt-host-v3/resource.json": "7792f9fcb58e8e1dd5f6173db964a5e0d9e04091e47ca255a0c12df77f79b261",
+    "week24/logs/mac-euclidean-next/jolt-next-prebuilt-host-v3/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "week24/logs/mac-euclidean-next/jolt-next-prebuilt-host-v4/benchmark.jsonl": "dda84e64dfe9f0ebfd0fc8f605c2c861fa06c19e58e32df1e7136deb5e2d2a26",
+    "week24/logs/mac-euclidean-next/jolt-next-prebuilt-host-v4/memory.jsonl": "b90fbe7baef39ea8091707f58140b4a8b86ec4bb4a71e3457ba3bea8dc2154a6",
+    "week24/logs/mac-euclidean-next/jolt-next-prebuilt-host-v4/resource.json": "872244e8073566e30d98b97394b831d3e28bb819a3acece4d7f101804ac697b1",
+    "week24/logs/mac-euclidean-next/jolt-next-prebuilt-host-v4/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "week24/logs/mac-euclidean-next/kimchi-next-host-v1/benchmark.jsonl": "248107eadf92286b780d3e2483a1571e9e06fedd0f462bc45070754df0958c94",
+    "week24/logs/mac-euclidean-next/kimchi-next-host-v1/memory.jsonl": "98cf7339eea561cce3f19f79991e9deb055e3163750c80408d03cc640ef4d455",
+    "week24/logs/mac-euclidean-next/kimchi-next-host-v1/resource.json": "470b28f80935221b1e1a6abdbdd07722c1dc3cd6d372cdba04cc79451814a6b0",
+    "week24/logs/mac-euclidean-next/kimchi-next-host-v1/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "week24/logs/mac-euclidean-next/kimchi-next-host-v2/benchmark.jsonl": "be531d4cfd159794593f5db1692e9832d5962d2739364c336816346e50faf160",
+    "week24/logs/mac-euclidean-next/kimchi-next-host-v2/memory.jsonl": "e6f33be13c464aff280a0e7511753566af3d2ce68b8532e847f40b5db2267815",
+    "week24/logs/mac-euclidean-next/kimchi-next-host-v2/resource.json": "4fa6aa1b0db7eeaba915b659468bddd7de80fa394441dcb8f803ff3d38ca26d7",
+    "week24/logs/mac-euclidean-next/kimchi-next-host-v2/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "week24/logs/pi-euclidean-next/next-binius-pi-v1/benchmark.jsonl": "03f65bd7531437620664848e3a5c5ed09239c27c1add11c247a0c8d1b19b080e",
+    "week24/logs/pi-euclidean-next/next-binius-pi-v1/memory-summary.json": "a124689102baf04251de7b4b18769075907a9d55e905d4f5db095e7ccb485c06",
+    "week24/logs/pi-euclidean-next/next-binius-pi-v1/memory.jsonl": "0d2d5ff4945ce10df64094f5c430395b3862c1fd87fa3c90324615d2bd1bcedc",
+    "week24/logs/pi-euclidean-next/next-binius-pi-v1/resource.json": "fa6bccb52660293fc74facbcd50d91cf76604df7bbcefcd7b4bd0f511a591094",
+    "week24/logs/pi-euclidean-next/next-binius-pi-v1/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "week24/logs/pi-euclidean-next/next-jolt-pi-v1/benchmark.jsonl": "1a6676bdfe0aa398ee6e22f20f6fc91f04ab3438d584dc0573e89e96da7e7366",
+    "week24/logs/pi-euclidean-next/next-jolt-pi-v1/memory.jsonl": "933fcfe7b91ca7a566dbaf8f682989d77ba9b452e7f0ee1157b036409f0df917",
+    "week24/logs/pi-euclidean-next/next-jolt-pi-v1/resource.json": "6d9e2eac15c06c0bace1572ff4f5ff484630b6f81d5af580433bc3248567cf6b",
+    "week24/logs/pi-euclidean-next/next-jolt-pi-v1/stderr.log": "e160856027e71d4f3e69a84dbd2acd06717e9a2851b4d7b7cc3d480a0108c782",
+    "week24/logs/pi-euclidean-next/next-jolt-pi-v2/benchmark.jsonl": "b50a339a9afd73169298846460e99aca3d2ec63f5317cc3943ebfb318ab95ef3",
+    "week24/logs/pi-euclidean-next/next-jolt-pi-v2/memory-summary.json": "794ffd451d134eeae36ca0dd1167939bd528f5c401c50015690ede4042fd4ac0",
+    "week24/logs/pi-euclidean-next/next-jolt-pi-v2/memory.jsonl": "a7b83052b202ee74615d665928706d7adcfbb530d67edeacdcbba23116bf21a7",
+    "week24/logs/pi-euclidean-next/next-jolt-pi-v2/resource.json": "b7e2daa675e6c9c78eaff5ae209c63c9a255fc9c7272987d820f94db97540391",
+    "week24/logs/pi-euclidean-next/next-jolt-pi-v2/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "week24/logs/pi-euclidean-next/next-kimchi-pi-v1/benchmark.jsonl": "cb797fa245967f6cd0b1eb095bce75ce92eb7827ba36b9ef2725eba5035269aa",
+    "week24/logs/pi-euclidean-next/next-kimchi-pi-v1/memory.jsonl": "c1ea38094d49b2d29e50582ff9d75b1eda60b452728bb5c0fc73f3313f6fe637",
+    "week24/logs/pi-euclidean-next/next-kimchi-pi-v1/resource.json": "fc7a694f8af81ab5863b3dbe6ae44df9be6b46b1245c648ff680abb0df9cdada",
+    "week24/logs/pi-euclidean-next/next-kimchi-pi-v1/stderr.log": "c9afc6a72a076ca05dfc3fa9a532f44b13a1e5ed021ae1f4f792fc2f3b72a62f",
+    "week24/logs/pi-euclidean-next/next-kimchi-pi-v2/benchmark.jsonl": "38cabd56ec24a9304efe6d0ad4bc05b625bc936e4e9fbed8ae50ba798d8a4369",
+    "week24/logs/pi-euclidean-next/next-kimchi-pi-v2/memory-summary.json": "825a01b0125acfb3aedca970d1983ca43e8bf838f813c6c26d805b81845957e7",
+    "week24/logs/pi-euclidean-next/next-kimchi-pi-v2/memory.jsonl": "1481180517040efc655bcad5c80b4fa7efe8fc3bf6d3efbea45f9cf9a79b33cf",
+    "week24/logs/pi-euclidean-next/next-kimchi-pi-v2/resource.json": "bd2e1c427ef21a908f5bf92507626f01afdf922b868135e2da9a422473a6671d",
+    "week24/logs/pi-euclidean-next/next-kimchi-pi-v2/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "week24/logs/euclidean-next-final-health.json": "78e62e0abe209c1b17689e0527b615624e96e3130bef08df24cdf569de455af8",
+    "week24/logs/euclidean-next-guard-restored.json": "8a98fdff7c5e33b8a05f3a021a66444f70273347a87b84508b63a5129575320f",
+    "week24/logs/euclidean-next-summary.json": "4d10959b1e907287e307ac43e4b1148e4373f40ccce30d4ecdc2532e4f820fc0",
+    "week24/plots/euclidean-next.png": "f7ddabb88c5381ecefafb931526898f0c1b3a8568349894ad6a048fc7d258f1d",
+    "week24/plots/euclidean-next.svg": "4f6db9ce7a880a7a525ce8359c2ddb29b75638865607e7e5e81d84d377e8e53e"
+  },
+  "history_scope": "Historical v1/v2 logs retained; Kimchi v1 used precomputed SRS; Jolt CLI-failed Pi v1 contained old entrypoint despite post-build source metadata. Current prebuilt Jolt Mac v3/v4 and Pi v2 use the current entrypoint. Build metadata alone does not establish proof execution.",
+  "run_parameters": {
+    "source": "systemd-run commands issued in this experiment session; CPU quota is not recorded in resource.json",
+    "cpu_quota_percent": 25,
+    "threads": 1,
+    "affinity_cpu": 0,
+    "memory_limits_mib": {
+      "kimchi": {
+        "high": 192,
+        "max": 256
+      },
+      "binius64": {
+        "high": 384,
+        "max": 512
+      },
+      "jolt": {
+        "high": 384,
+        "max": 512
+      }
+    },
+    "jolt_pi_v2_terminal": {
+      "result": "success",
+      "service_runtime_s": 392.908,
+      "cpu_time_s": 98.227
+    },
+    "limitation": "Transient service collected after exit; subsequent systemctl show defaults cannot recover its previous CPU quota."
+  }
+}

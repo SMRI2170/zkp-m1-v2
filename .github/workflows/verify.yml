@@ -41,3 +41,5 @@ jobs:
         run: python3 experiments/pi4-euclidean-followup/check_results.py
       - name: Test host proof memory guard
         run: python3 -m unittest discover -s experiments/pi4-euclidean-followup -p "test_*.py"
+      - name: Validate Kimchi Binius64 and Jolt evaluation evidence
+        run: python3 experiments/pi4-euclidean-next/check_results.py

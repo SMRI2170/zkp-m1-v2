@@ -1,0 +1,5 @@
+{"elapsed_s": 0.0018431839998811483, "cgroup_current_bytes": 7516160, "cgroup_swap_bytes": 0, "system_available_bytes": 3495395328, "system_swap_used_bytes": 0, "process": {"VmHWM": 786432, "VmRSS": 786432, "Pss": 183296}}
+{"elapsed_s": 0.01344292800013136, "cgroup_current_bytes": 8364032, "cgroup_swap_bytes": 0, "system_available_bytes": 3494637568, "system_swap_used_bytes": 0, "process": {"VmHWM": 3260416, "VmRSS": 3260416, "Pss": 3268608}}
+{"elapsed_s": 0.024545343999761826, "cgroup_current_bytes": 8093696, "cgroup_swap_bytes": 0, "system_available_bytes": 3494637568, "system_swap_used_bytes": 0, "process": {"VmHWM": 3260416, "VmRSS": 3260416, "Pss": 3293184}}
+{"elapsed_s": 0.03549055799976486, "cgroup_current_bytes": 8015872, "cgroup_swap_bytes": 0, "system_available_bytes": 3494637568, "system_swap_used_bytes": 0, "process": {"VmHWM": 3260416, "VmRSS": 3260416, "Pss": 3293184}}
+{"elapsed_s": 0.08857170300007056, "cgroup_current_bytes": 7532544, "cgroup_swap_bytes": 0, "system_available_bytes": 3494637568, "system_swap_used_bytes": 0, "process": {"VmHWM": 3522560, "VmRSS": 3391488, "Pss": 2957312}}

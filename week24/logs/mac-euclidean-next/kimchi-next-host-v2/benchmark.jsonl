@@ -1,0 +1,10 @@
+{"arch":"aarch64","framework":"Kimchi Vesta IPA","os":"macos","phase":"start"}
+{"max_poly_size":512,"phase":"keys","public":2,"setup_ms":325.307959,"srs":"transparent local RAM-only IPA"}
+{"case_id":0,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"prove_ms":319.69058299999995,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":12.050583,"witness_ms":0.231666}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"prove_ms":261.711583,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":11.932959,"witness_ms":0.080667}
+{"case_id":2,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"prove_ms":260.736083,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":11.94725,"witness_ms":0.066542}
+{"case_id":3,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"prove_ms":237.80166699999998,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":12.093834,"witness_ms":0.062084}
+{"case_id":4,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"prove_ms":232.982834,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":12.000083,"witness_ms":0.07075}
+{"case_id":5,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"prove_ms":310.010792,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":12.539167,"witness_ms":0.06854199999999999}
+{"case_id":6,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":4807,"prove_ms":351.21891700000003,"size_format":"rmp-serde","tampered_proof_rejected":true,"verified":true,"verify_ms":12.336166,"witness_ms":0.157667}
+{"all_verified":true,"invalid_cases_rejected":6,"phase":"summary","proofs_saved":false,"samples":7}

@@ -1,0 +1,10 @@
+{"arch":"aarch64","framework":"Jolt PrivateInput + zk","os":"macos","phase":"start","zk_feature":true}
+{"phase":"keys","setup_ms":14204.353041999999}
+{"case_id":0,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proofs_saved":false,"prove_ms":2709.671833,"tampered_proof_rejected":true,"verified":true,"verify_ms":199.646666}
+{"case_id":1,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proofs_saved":false,"prove_ms":2939.543458,"tampered_proof_rejected":true,"verified":true,"verify_ms":215.232209}
+{"case_id":2,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proofs_saved":false,"prove_ms":2404.3105,"tampered_proof_rejected":true,"verified":true,"verify_ms":182.82062499999998}
+{"case_id":3,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proofs_saved":false,"prove_ms":3297.189792,"tampered_proof_rejected":true,"verified":true,"verify_ms":212.470708}
+{"case_id":4,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proofs_saved":false,"prove_ms":2456.584125,"tampered_proof_rejected":true,"verified":true,"verify_ms":199.730833}
+{"case_id":5,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proofs_saved":false,"prove_ms":3104.877625,"tampered_proof_rejected":true,"verified":true,"verify_ms":201.88179200000002}
+{"case_id":6,"changed_public_rejected":true,"changed_root_rejected":true,"phase":"sample","proof_bytes":74258,"proofs_saved":false,"prove_ms":3104.304583,"tampered_proof_rejected":true,"verified":true,"verify_ms":176.884458}
+{"all_verified":true,"negative_tests":"not yet implemented; success is normal path only","phase":"summary","proofs_saved":false,"samples":7}
