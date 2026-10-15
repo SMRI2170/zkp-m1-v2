@@ -1,0 +1,290 @@
+{
+  "all_matched": true,
+  "cases": [
+    {
+      "accepted": true,
+      "case": "normal",
+      "expected": true,
+      "observation_count": 1,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "session",
+      "expected": false,
+      "observation_count": 1,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "policy",
+      "expected": false,
+      "observation_count": 1,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "rid",
+      "expected": false,
+      "observation_count": 1,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "root",
+      "expected": false,
+      "observation_count": 1,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "coordinate",
+      "expected": false,
+      "observation_count": 1,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "root_low",
+      "expected": false,
+      "observation_count": 1,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "root_high",
+      "expected": false,
+      "observation_count": 1,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "signature_s",
+      "expected": false,
+      "observation_count": 1,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "wrong_pk",
+      "expected": false,
+      "observation_count": 1,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "other_signature",
+      "expected": false,
+      "observation_count": 1,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "count_truncated",
+      "expected": false,
+      "observation_count": 1,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": true,
+      "case": "normal",
+      "expected": true,
+      "observation_count": 2,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "session",
+      "expected": false,
+      "observation_count": 2,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "policy",
+      "expected": false,
+      "observation_count": 2,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "rid",
+      "expected": false,
+      "observation_count": 2,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "root",
+      "expected": false,
+      "observation_count": 2,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "coordinate",
+      "expected": false,
+      "observation_count": 2,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "root_low",
+      "expected": false,
+      "observation_count": 2,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "root_high",
+      "expected": false,
+      "observation_count": 2,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "signature_s",
+      "expected": false,
+      "observation_count": 2,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "wrong_pk",
+      "expected": false,
+      "observation_count": 2,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "other_signature",
+      "expected": false,
+      "observation_count": 2,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "count_truncated",
+      "expected": false,
+      "observation_count": 2,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "reordered",
+      "expected": false,
+      "observation_count": 2,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "duplicate",
+      "expected": false,
+      "observation_count": 2,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": true,
+      "case": "normal",
+      "expected": true,
+      "observation_count": 4,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "session",
+      "expected": false,
+      "observation_count": 4,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "policy",
+      "expected": false,
+      "observation_count": 4,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "rid",
+      "expected": false,
+      "observation_count": 4,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "root",
+      "expected": false,
+      "observation_count": 4,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "coordinate",
+      "expected": false,
+      "observation_count": 4,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "root_low",
+      "expected": false,
+      "observation_count": 4,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "root_high",
+      "expected": false,
+      "observation_count": 4,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "signature_s",
+      "expected": false,
+      "observation_count": 4,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "wrong_pk",
+      "expected": false,
+      "observation_count": 4,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "other_signature",
+      "expected": false,
+      "observation_count": 4,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "count_truncated",
+      "expected": false,
+      "observation_count": 4,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "reordered",
+      "expected": false,
+      "observation_count": 4,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    },
+    {
+      "accepted": false,
+      "case": "duplicate",
+      "expected": false,
+      "observation_count": 4,
+      "scope": "native reference and Go solver/envelope; no ZKP"
+    }
+  ],
+  "phase": "interop_summary",
+  "private_vectors_saved": false,
+  "proof_generated": false,
+  "elapsed_native_crosscheck_s": 1.0196460829999978,
+  "scope": "Go constraint solver/envelope versus native Rust verifier; not Jolt proof generation or ZK verification"
+}

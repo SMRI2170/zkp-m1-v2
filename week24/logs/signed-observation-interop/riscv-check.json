@@ -1,0 +1,16 @@
+{
+  "command": "cargo +1.97.1 check --manifest-path experiments/signed-observation-interop/core/Cargo.toml --lib --target riscv64imac-unknown-none-elf --locked -j 1",
+  "compiler": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+  "exit_code": 0,
+  "target": "riscv64imac-unknown-none-elf",
+  "scope": "no_std library compile check only; not a Jolt guest ELF, VM execution, trace or proof",
+  "initial_failure": {
+    "exit_code": 101,
+    "reason": "E0463: target not installed in explicitly pinned 1.97.1 toolchain"
+  },
+  "fix": "rustup target add --toolchain 1.97.1 riscv64imac-unknown-none-elf",
+  "log_normalization": "repository absolute path replaced by <repository>",
+  "core_source_sha256": "14de0e9ecac08a9e957f414ca8615d621aa0e4be586933d27b5f03d05b564942",
+  "proof_generated": false,
+  "pi_executed": false
+}
