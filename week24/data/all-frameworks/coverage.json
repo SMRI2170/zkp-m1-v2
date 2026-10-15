@@ -1,0 +1,110 @@
+[
+  {
+    "framework": "gnark Groth16",
+    "pi_distance": "verified",
+    "mac_distance": "not_summarized",
+    "pi_signed": "verified"
+  },
+  {
+    "framework": "gnark PLONK",
+    "pi_distance": "verified",
+    "mac_distance": "not_summarized",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "Circom / RapidSnark",
+    "pi_distance": "verified",
+    "mac_distance": "not_summarized",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "Halo2 IPA / Pasta",
+    "pi_distance": "verified",
+    "mac_distance": "not_summarized",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "Noir / Barretenberg",
+    "pi_distance": "verified",
+    "mac_distance": "not_summarized",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "Nova / CycleFold",
+    "pi_distance": "ivc_only",
+    "mac_distance": "not_summarized",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "HyperNova / CycleFold",
+    "pi_distance": "ivc_only",
+    "mac_distance": "not_summarized",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "arkworks Groth16",
+    "pi_distance": "verified",
+    "mac_distance": "not_summarized",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "Halo2 KZG / BN254",
+    "pi_distance": "verified",
+    "mac_distance": "not_summarized",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "Spartan",
+    "pi_distance": "verified",
+    "mac_distance": "not_summarized",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "Bulletproofs R1CS",
+    "pi_distance": "verified",
+    "mac_distance": "not_summarized",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "Plonky3 HidingFRI",
+    "pi_distance": "verified",
+    "mac_distance": "not_summarized",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "Kimchi",
+    "pi_distance": "verified",
+    "mac_distance": "verified",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "Binius64",
+    "pi_distance": "verified",
+    "mac_distance": "verified",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "Jolt",
+    "pi_distance": "verified",
+    "mac_distance": "verified",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "Plonky2",
+    "pi_distance": "partial",
+    "mac_distance": "verified",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "RISC Zero",
+    "pi_distance": "not_run",
+    "mac_distance": "verified",
+    "pi_signed": "not_run"
+  },
+  {
+    "framework": "SP1",
+    "pi_distance": "not_run",
+    "mac_distance": "stopped",
+    "pi_signed": "not_run"
+  }
+]

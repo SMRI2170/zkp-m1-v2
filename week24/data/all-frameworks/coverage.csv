@@ -1,0 +1,19 @@
+framework,mac_distance,pi_distance,pi_signed
+gnark Groth16,not_summarized,verified,verified
+gnark PLONK,not_summarized,verified,not_run
+Circom / RapidSnark,not_summarized,verified,not_run
+Halo2 IPA / Pasta,not_summarized,verified,not_run
+Noir / Barretenberg,not_summarized,verified,not_run
+Nova / CycleFold,not_summarized,ivc_only,not_run
+HyperNova / CycleFold,not_summarized,ivc_only,not_run
+arkworks Groth16,not_summarized,verified,not_run
+Halo2 KZG / BN254,not_summarized,verified,not_run
+Spartan,not_summarized,verified,not_run
+Bulletproofs R1CS,not_summarized,verified,not_run
+Plonky3 HidingFRI,not_summarized,verified,not_run
+Kimchi,verified,verified,not_run
+Binius64,verified,verified,not_run
+Jolt,verified,verified,not_run
+Plonky2,verified,partial,not_run
+RISC Zero,verified,not_run,not_run
+SP1,stopped,not_run,not_run
