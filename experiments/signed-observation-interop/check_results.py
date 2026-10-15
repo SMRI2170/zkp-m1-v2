@@ -9,7 +9,7 @@ def main():
     manifest=json.loads((ROOT/'week24/manifests/signed-observation-interop.json').read_text())
     for name,digest in manifest['file_sha256'].items():
         assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name
-    run=ROOT/'week24/logs/signed-observation-interop/native-v2'
+    run=ROOT/'week24/logs/signed-observation-interop/native-v3'
     result=json.loads((run/'results.json').read_text())
     assert result['all_matched'] and result['private_vectors_saved'] is False and result['proof_generated'] is False
     cases=result['cases'];assert len(cases)==40

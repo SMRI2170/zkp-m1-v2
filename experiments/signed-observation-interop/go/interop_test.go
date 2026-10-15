@@ -56,6 +56,10 @@ func wire(a *Circuit) BatchWire {
 	return b
 }
 
+func envelopeShapeValid(b BatchWire) bool {
+	return (b.Public.Count == 1 || b.Public.Count == 2 || b.Public.Count == 4) && len(b.Observations) == int(b.Public.Count)
+}
+
 // Test binary stdout is piped directly to the Rust verifier; never write vectors to Git/logs.
 func TestEmitInterop(t *testing.T) {
 	logger.Disable()
@@ -109,16 +113,14 @@ func TestEmitInterop(t *testing.T) {
 			if e != nil {
 				t.Fatal(e)
 			}
-			accepted := cs.IsSolved(w) == nil
-			if kind == "count_truncated" {
-				accepted = false
-			}
-			if accepted != (kind == "normal") {
-				t.Fatalf("unexpected baseline result: n=%d %s accepted=%v", n, kind, accepted)
-			}
+			solverAccepted := cs.IsSolved(w) == nil
 			value := wire(&b)
 			if kind == "count_truncated" {
 				value.Observations = value.Observations[:n-1]
+			}
+			accepted := solverAccepted && envelopeShapeValid(value)
+			if accepted != (kind == "normal") {
+				t.Fatalf("unexpected baseline result: n=%d %s accepted=%v", n, kind, accepted)
 			}
 			result := map[string]interface{}{"case": kind, "batch": value, "expected": accepted, "go_rejection_scope": "constraint solver, except count_truncated is envelope shape"}
 			encoded, e := json.Marshal(result)

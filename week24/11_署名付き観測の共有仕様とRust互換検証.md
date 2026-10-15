@@ -29,8 +29,9 @@ Session、Policy、RID、root、座標、整数root上下、署名S、公開鍵�
 2／4観測では順序入替と重複も検査した。
 Go側はconstraint solverの結果。配列切詰めだけはenvelopeの形状条件。
 Rust側はnative参照器の結果であり、JoltやZKP verifierによる拒否ではない。
+初回native-v2は配列切詰めの期待値を指定していたため、Go側でもcountと配列長を実検査するnative-v3を再実行し、これを最新証拠とした。初回の記録も保持する。
 
-[判定JSON](logs/signed-observation-interop/native-v2/results.json)／[環境・source hash](logs/signed-observation-interop/native-v2/metadata.json)。
+[判定JSON](logs/signed-observation-interop/native-v3/results.json)／[環境・source hash](logs/signed-observation-interop/native-v3/metadata.json)。
 新しい合成observer keyは観測数ごとにRAM生成。private key・assignment・署名・Root/PKの値は公開ログへ保存していない。
 JSON内の経過時間はfixture生成／solver／参照器を合わせた診断値で、prove時間や方式間ベンチマークではない。
 

@@ -1,0 +1,25 @@
+{
+  "baseline_source_sha256": {
+    "experiments/pi4-euclidean-evaluation/workload/main.go": "7c1522b226b41102bd8c6919e6cd8799b58d5f38db799f039451d66ef7c3a127",
+    "experiments/pi4-euclidean-evaluation/workload/go.mod": "c6f41c51586f7cf41b166d16d28c24c22e423fe3da35b7d5f87d07ca41b79652",
+    "experiments/pi4-euclidean-evaluation/workload/go.sum": "1e44c1a5e3c186a0593d503a9e98dec9892096ccf39bce80725cb254a26da556"
+  },
+  "implementation_source_sha256": {
+    "experiments/signed-observation-interop/check_results.py": "3651e066b454f9ce0dc1c38d18905de32ee44b85634719035f12fb7d449efa52",
+    "experiments/signed-observation-interop/core/Cargo.lock": "cbeda3bf733a0bfc18ee153916dc593a71a3af3e2baa5f2e8dc0d4ce27c6ef51",
+    "experiments/signed-observation-interop/core/Cargo.toml": "53434abe5e3d5098340954c70716402c54cede0d3a9e77a20bde0f4a47ed7a86",
+    "experiments/signed-observation-interop/core/examples/check_vectors.rs": "eeee24a89876d8de9af456a1f2fd84098a17ced3d7c3d3d28b8eca9c23139f9a",
+    "experiments/signed-observation-interop/core/src/lib.rs": "14de0e9ecac08a9e957f414ca8615d621aa0e4be586933d27b5f03d05b564942",
+    "experiments/signed-observation-interop/go/interop_test.go": "2020bf31db772707e73bb8a29d0d2eca0a3e514c72173e4ecf4fadda8cb4c2f7",
+    "experiments/signed-observation-interop/manifest.py": "a18d64661723201471cc08c41b2cf216226249efdc9271f069b3a1e618310eb7",
+    "experiments/signed-observation-interop/run.py": "eb5f28fb2151c8d6efe6d421a2084024e8d5732606ab15ff7e024146e26ad627"
+  },
+  "go_version": "go version go1.26.5 darwin/arm64",
+  "rust_version": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+  "private_vectors_transport": "anonymous pipe only; no fixture files / assignments / secret keys exported",
+  "key_origin": "fresh random synthetic observer key per count, generated in Go RAM",
+  "native_reference_key_validation": "canonical coordinates; on-curve, nonidentity prime-subgroup public key; on-curve R; S<order",
+  "baseline_circuit_key_validation": "has S<order and cofactored equation; no separate PK nonidentity/subgroup check; expected registered key must be validated externally",
+  "proof_generated": false,
+  "pi_executed": false
+}
