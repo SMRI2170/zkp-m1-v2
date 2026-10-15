@@ -52,3 +52,9 @@ jobs:
         run: python3 experiments/pi4-euclidean-evaluation/check_results.py
       - name: Validate Mac observation followup and stopped trials
         run: python3 experiments/pi4-observation-followup/check_results.py
+      - name: Test Pi preflight and fail-closed launch
+        run: python3 -m unittest discover -s experiments/pi4-stability -p "test_*.py"
+      - name: Test extra signed workload integer boundaries and signer bindings
+        run: python3 experiments/pi4-binding-tests/run.py
+      - name: Validate Pi n4 completion and stability evidence
+        run: python3 experiments/pi4-stability/check_results.py

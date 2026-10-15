@@ -1,0 +1,40 @@
+=== RUN   TestFreshSignedIntegerBoundaries
+=== RUN   TestFreshSignedIntegerBoundaries/zero_distance
+=== RUN   TestFreshSignedIntegerBoundaries/square
+=== RUN   TestFreshSignedIntegerBoundaries/below_next_square
+=== RUN   TestFreshSignedIntegerBoundaries/maximum_coordinates
+=== RUN   TestFreshSignedIntegerBoundaries/maximum_metadata
+=== RUN   TestFreshSignedIntegerBoundaries/coordinate_overflow
+=== RUN   TestFreshSignedIntegerBoundaries/d2_overflow
+=== RUN   TestFreshSignedIntegerBoundaries/root_too_small
+=== RUN   TestFreshSignedIntegerBoundaries/root_too_large
+=== RUN   TestFreshSignedIntegerBoundaries/session_overflow
+=== RUN   TestFreshSignedIntegerBoundaries/policy_overflow
+--- PASS: TestFreshSignedIntegerBoundaries (0.05s)
+    --- PASS: TestFreshSignedIntegerBoundaries/zero_distance (0.00s)
+    --- PASS: TestFreshSignedIntegerBoundaries/square (0.01s)
+    --- PASS: TestFreshSignedIntegerBoundaries/below_next_square (0.00s)
+    --- PASS: TestFreshSignedIntegerBoundaries/maximum_coordinates (0.01s)
+    --- PASS: TestFreshSignedIntegerBoundaries/maximum_metadata (0.00s)
+    --- PASS: TestFreshSignedIntegerBoundaries/coordinate_overflow (0.00s)
+    --- PASS: TestFreshSignedIntegerBoundaries/d2_overflow (0.00s)
+    --- PASS: TestFreshSignedIntegerBoundaries/root_too_small (0.00s)
+    --- PASS: TestFreshSignedIntegerBoundaries/root_too_large (0.00s)
+    --- PASS: TestFreshSignedIntegerBoundaries/session_overflow (0.00s)
+    --- PASS: TestFreshSignedIntegerBoundaries/policy_overflow (0.00s)
+=== RUN   TestAdditionalBatchBindings
+=== RUN   TestAdditionalBatchBindings/wrong_public_key
+=== RUN   TestAdditionalBatchBindings/other_signer_signature
+=== RUN   TestAdditionalBatchBindings/rid
+=== RUN   TestAdditionalBatchBindings/reordered_observations
+=== RUN   TestAdditionalBatchBindings/root
+--- PASS: TestAdditionalBatchBindings (0.16s)
+    --- PASS: TestAdditionalBatchBindings/wrong_public_key (0.06s)
+    --- PASS: TestAdditionalBatchBindings/other_signer_signature (0.04s)
+    --- PASS: TestAdditionalBatchBindings/rid (0.00s)
+    --- PASS: TestAdditionalBatchBindings/reordered_observations (0.01s)
+    --- PASS: TestAdditionalBatchBindings/root (0.00s)
+=== RUN   TestSignedBatchBindings
+--- PASS: TestSignedBatchBindings (0.07s)
+PASS
+ok  	research/week24-observation-workload	1.303s

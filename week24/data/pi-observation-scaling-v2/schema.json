@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "thread_semantics": "configured compute parallelism, not measured OS thread count",
+  "units": {
+    "time": "ms or explicit _s/_ns",
+    "memory_and_size": "bytes",
+    "temperature": "C"
+  },
+  "missing": "JSON null / empty CSV; never zero-fill unavailable",
+  "clock": "phase markers and memory sampling use same-host wall_time_ns; phase-local elapsed is monotonic; sampling bounds are approximate",
+  "statistics": "same-input within-process preliminary repeats; exclude warmup; not independent cold trials; current n=3 has no confidence/p95 claim",
+  "memory_mean_scope": "prove interval mean uses the observed span between in-interval samples; no interpolation across missing boundaries",
+  "privacy": "only sizes and diagnostic distinctness; proof/VK/private assignments remain RAM-only",
+  "queue_model": "model only; queue_observed_1hz holds actual synthetic batch arrival/dequeue events when present",
+  "parse_anomalies": [
+    {
+      "file": "eval-workload-n4-v1/memory.jsonl.gz",
+      "line": 768,
+      "reason": "invalid_or_truncated_json_preserved_in_raw"
+    }
+  ],
+  "raw_file_sha256": {
+    "eval-workload-n1-v1/benchmark.jsonl": "e39784fb967d862441314865bb7c3d8369ecfa347525e5dadfa0edef5555036f",
+    "eval-workload-n1-v1/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "eval-workload-n1-v1/metadata.json": "913c69abd05f2094f1d1a2af7fc23a623f8973f4b06ae893173b47fabb905b34",
+    "eval-workload-n1-v1/filesystem-audit.json": "2db85a6f81bff1d52489f30a82d8ceebe8feb854c80d37de1e09dac4034d6729",
+    "eval-workload-n1-v1/memory.jsonl": "1db818fa02b9f25652780eddbe7e03bc6b2202cc895f579b367d43cda8773115",
+    "eval-workload-n1-v1/resource.json": "3e60061af3688ca0262bfce290e189050e3e8e075187da4883f6212a8ba58e77",
+    "eval-workload-n1-v1/memory-summary.json": "82b3dc47e22bb15893f0a95a911393d3148befda136c65b0b8571022f3e99553",
+    "eval-workload-n2-v1/benchmark.jsonl": "750ca835884c8d1272834098fbb25940c3d82829239f567e689d8db8b3dd80ad",
+    "eval-workload-n2-v1/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "eval-workload-n2-v1/metadata.json": "f9382e1ecf27ab60b69f4c4de2b06ab09c7475117a44eebffba93caf5ed14a95",
+    "eval-workload-n2-v1/filesystem-audit.json": "2db85a6f81bff1d52489f30a82d8ceebe8feb854c80d37de1e09dac4034d6729",
+    "eval-workload-n2-v1/memory.jsonl": "9ef974ad8d08a5941cfb389385f112e9a2e76a77f5f12b1a2eb148e8bba897ab",
+    "eval-workload-n2-v1/resource.json": "f67ff4ef987cb9c845b474311470da10b4d875478d10b44a30939bcff109d3ee",
+    "eval-workload-n2-v1/memory-summary.json": "1efde00027ffed606e00ec417a23bec7c10c592f20d1dd152838124ef7aba593",
+    "eval-workload-n4-v1/benchmark.jsonl": "83c957b2b16bdf7abe833b32d5f21fb34967c470cd610958682200b2baf95d69",
+    "eval-workload-n4-v1/memory.jsonl.gz": "b8f10de702d2a29a9526402fc8efeaee282abfe68f1a2ecbb0e1440fcdd34d60",
+    "eval-workload-n4-v1/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "eval-workload-n4-v1/partial-memory-summary.json": "eaea7d8da49516863fcd33d22ebf7f236e32ae492e33d4c605ca71fe6ae39362",
+    "eval-workload-n4-v1/metadata.json": "d3a413d34ad4731d69c938fd98a3934a87f27d2cc5ee33b9b557a032a1f460c0",
+    "eval-workload-n4-v2/benchmark.jsonl": "81111bb1980156e40f54345d220d8ce99cf617427bd275a2101f927e1faa2471",
+    "eval-workload-n4-v2/memory.jsonl.gz": "ef8120fce85bda84ac7521a77e93024a9ed583cd5e317475f475a438774b613a",
+    "eval-workload-n4-v2/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "eval-workload-n4-v2/metadata.json": "5b884a41d45654e7c6cf08a8d030de499f68eb35850f663bf5f178405f9c5cf6",
+    "eval-workload-n4-v2/memory-integrity.json": "04d130cfe8a64e76c71c5438491cebf7f6146c6578aba81df218c6dd2e9cb737",
+    "eval-workload-n4-v2/filesystem-audit.json": "2db85a6f81bff1d52489f30a82d8ceebe8feb854c80d37de1e09dac4034d6729",
+    "eval-workload-n4-v2/resource.json": "a302712ad0b89da295b11871f931770fb41638cad56e7c3f3dbf08c057611f03"
+  }
+}
