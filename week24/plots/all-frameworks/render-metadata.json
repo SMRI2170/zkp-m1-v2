@@ -1,0 +1,7 @@
+{
+  "matplotlib": "3.9.4",
+  "font": "Hiragino Sans",
+  "new_measurements": false,
+  "figure_count": 7,
+  "svg_fonts": "embedded paths"
+}

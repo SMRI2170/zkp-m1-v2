@@ -1,0 +1,29 @@
+name: All framework figure evidence
+on:
+  push:
+    paths:
+      - 'experiments/all-framework-plots/**'
+      - 'week24/data/all-frameworks/**'
+      - 'week24/plots/all-frameworks*'
+      - 'week24/plots/all-frameworks/**'
+      - 'week24/manifests/all-framework-plots.json'
+      - 'week24/12_*'
+      - '.github/workflows/all-framework-plots.yml'
+  pull_request:
+    paths:
+      - 'experiments/all-framework-plots/**'
+      - 'week24/data/all-frameworks/**'
+      - 'week24/plots/all-frameworks*'
+      - 'week24/plots/all-frameworks/**'
+      - 'week24/manifests/all-framework-plots.json'
+      - 'week24/12_*'
+      - '.github/workflows/all-framework-plots.yml'
+jobs:
+  validate-public-figures:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test missing metrics and measurement boundaries
+        run: python3 -m unittest discover -s experiments/all-framework-plots -p 'test_*.py'
+      - name: Validate recorded data and figure hashes
+        run: python3 experiments/all-framework-plots/check_results.py
