@@ -64,3 +64,11 @@ Pi側は既存runtime上限で停止する。再実行前に残存unit・private
 CLI方式はsource adapter生成までで、このplanでは実proverへ未接続。IVCの別系列、その他backendの対応は #61/#55 の残件。
 実capture・実座標・private key・使い捨てsetup/VK/proof実体をGitへ追加・公開・deployしない。
 研究PoCでありDRIP trust chain、sensor honesty、observer hardware／航空機認証は保証しない。
+
+## 既存の一時保護設定を復旧して再開する
+
+ユーザーが復旧を指示した場合は、`start`に`--restore-guards`を付け、新しいtag/outで起動する。
+この指定時だけ、Piの既存installer/watchdogの固定hashとruntime配置を調べ、完全に未配置の場合に既存installerを1回実行する。
+部分配置・hash不一致・接続断は`guard-restoration.json`へ保存して停止し、自動再送・上書きはしない。
+SSH再起動や永続OS変更はしない。復旧後もready probeと各launcherの事前検査を必須とする。
+過去のjobやpartial測定は保持する。

@@ -82,7 +82,7 @@ def work(job):
 
 def main():
     p=argparse.ArgumentParser();sub=p.add_subparsers(dest='action',required=True)
-    start=sub.add_parser('start');start.add_argument('--plan',type=Path,default=Path(__file__).with_name('plan.json'));start.add_argument('--out',type=Path,required=True);start.add_argument('--tag',required=True)
+    start=sub.add_parser('start');start.add_argument('--plan',type=Path,default=Path(__file__).with_name('plan.json'));start.add_argument('--out',type=Path,required=True);start.add_argument('--tag',required=True);start.add_argument('--restore-guards',action='store_true')
     worker=sub.add_parser('_work');worker.add_argument('--job',type=Path,required=True)
     status=sub.add_parser('status');status.add_argument('--job',type=Path,required=True)
     a=p.parse_args();os.umask(0o077)
@@ -90,9 +90,15 @@ def main():
     if a.action=='status':
         print((a.job/'status.json').read_text());return
     if not a.tag.isascii() or not a.tag.replace('-','').isalnum() or not a.tag.islower() or len(a.tag)>20:p.error('tag: lowercase letters/digits/hyphens, <=20 chars')
-    plan=json.loads(a.plan.read_text());validate(plan);job=a.out.resolve();job.mkdir(parents=True,mode=0o700)
+    plan=json.loads(a.plan.read_text())
+    if a.restore_guards:
+        probe=next(s for s in plan['steps'] if s['id']=='pi-probe')
+        idx=plan['steps'].index(probe)
+        plan['steps'].insert(idx,dict(id='restore-guards',argv=['{python}','{repo}/experiments/sequential-evaluation/restore.py','--job','{job}'],kind='runtime-setup',needs=['test-runner'],timeout_s=90,exit_status={'3':'blocked'}))
+        probe['needs']=['restore-guards']
+    validate(plan);job=a.out.resolve();job.mkdir(parents=True,mode=0o700)
     (job/'private').mkdir(mode=0o700);(job/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
-    state={'schema_version':1,'tag':a.tag,'status':'queued','started_at':now(),'finished_at':None,'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'plan_sha256':hashlib.sha256(a.plan.read_bytes()).hexdigest(),'steps':[{k:s[k] for k in ['id','framework','kind'] if k in s}|{'status':'pending'} for s in plan['steps']]}
+    state={'schema_version':1,'tag':a.tag,'status':'queued','started_at':now(),'finished_at':None,'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'plan_sha256':hashlib.sha256((job/'plan.json').read_bytes()).hexdigest(),'steps':[{k:s[k] for k in ['id','framework','kind'] if k in s}|{'status':'pending'} for s in plan['steps']]}
     state['source_sha256']={str(f.resolve()):hashlib.sha256(f.read_bytes()).hexdigest() for f in Path(__file__).parent.iterdir() if f.is_file()}
     # Python 3.9+; only public status fields, never credentials or command arguments.
     write_state(job,state)
