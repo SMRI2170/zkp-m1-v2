@@ -1,0 +1,12 @@
+{
+  "archived_source": "experiments/pi4-euclidean/circom/bench.cjs",
+  "archived_source_sha256": "0d11ff77db484cd30cb4de2876368f6b8a25040e57c96bf8aedb592422bcd7f3",
+  "framework": "circom",
+  "protocol": "distance-u16-balanced-v1",
+  "warmups": 7,
+  "measured_samples": 21,
+  "phase_notes": "WASM witness timer excludes WTNS write; prove/verify include native CLI launch; fixture setup on Mac",
+  "rendered_sha256": "ea486f9de0d1bfb002d9c7bd0d1842edd4828cf070be83c0d99ad96ff4412dab",
+  "renderer_sha256": "6017776ea16087c869ddf8c14f58c035d127a80fb6ce588a038845ab9c21fc98",
+  "proof_executed": false
+}

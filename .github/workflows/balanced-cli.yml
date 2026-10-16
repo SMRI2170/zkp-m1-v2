@@ -1,0 +1,26 @@
+name: Balanced CLI driver checks
+on:
+  push:
+    paths:
+      - 'experiments/balanced-cli/**'
+      - 'week24/14_*'
+      - 'week24/manifests/balanced-cli.json'
+      - '.github/workflows/balanced-cli.yml'
+  pull_request:
+    paths:
+      - 'experiments/balanced-cli/**'
+      - 'week24/14_*'
+      - 'week24/manifests/balanced-cli.json'
+      - '.github/workflows/balanced-cli.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test source preservation, syntax and fake CLI dispatch
+        run: python3 -m unittest discover -s experiments/balanced-cli -p 'test_*.py'
+      - name: Validate source snapshots (no proof generation)
+        run: python3 experiments/balanced-cli/check_results.py

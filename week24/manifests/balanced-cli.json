@@ -1,0 +1,16 @@
+{
+  "scope": "source adapter and fake CLI tests only; no real CLI/Pi proofs",
+  "file_sha256": {
+    ".github/workflows/balanced-cli.yml": "d511630c134fb72374ac52cb7d862d70f2bbcb1fd5347fedbcfddcd33a4586f1",
+    "experiments/balanced-cli/README.md": "8e1e1bf4dc609bfa571e635026887fcf298e1b88efb901ec75c8c2f82cd9f002",
+    "experiments/balanced-cli/check_results.py": "578800c52445fade14af0d099894d091c110e474bb91d484e77485cf7718c596",
+    "experiments/balanced-cli/manifest.py": "c9dd675d659a329b772e77f06e84c1ec653b91a57a118fe3fbb2df5ce5cf311c",
+    "experiments/balanced-cli/render.py": "6017776ea16087c869ddf8c14f58c035d127a80fb6ce588a038845ab9c21fc98",
+    "experiments/balanced-cli/rendered/circom/bench.cjs": "ea486f9de0d1bfb002d9c7bd0d1842edd4828cf070be83c0d99ad96ff4412dab",
+    "experiments/balanced-cli/rendered/circom/metadata.json": "a79814fb4e923b92b5f22ff269c1216fb1c2553225a76d6714870b0cf59630cc",
+    "experiments/balanced-cli/rendered/noir/bench.py": "fcc72788bb2c3bdb53a72f2abd2df409d87b75fda0c27c88b5e4ab7847f58ec8",
+    "experiments/balanced-cli/rendered/noir/metadata.json": "c228bd7627e45f057fac21ce3ce1c901132e35c758664dae95175fc130159354",
+    "experiments/balanced-cli/test_render.py": "e2901304e8f0ed6f37196925713c540deb400d9f8cc09eeb8c7ad95237ed2fdf",
+    "week24/14_CLI\u65b9\u5f0f\u306e21\u4ef6\u30c9\u30e9\u30a4\u30d0\u3068Pi\u63a5\u7d9a\u72b6\u6cc1.md": "f79ca52555f7f518518512c170245ca187ca4bab8b7d649d3c63ab2e8cc92650"
+  }
+}

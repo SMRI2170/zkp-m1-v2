@@ -1,0 +1,12 @@
+{
+  "archived_source": "experiments/pi4-euclidean/noir/bench.py",
+  "archived_source_sha256": "f794a2444c5100cced67b7630ccce3e2abaf801e0ac86b48d04d91da318da343",
+  "framework": "noir",
+  "protocol": "distance-u16-balanced-v1",
+  "warmups": 7,
+  "measured_samples": 21,
+  "phase_notes": "execute includes compile/witness; prove includes VK generation; CLI launch included; not a setup-excluded steady prover timer",
+  "rendered_sha256": "fcc72788bb2c3bdb53a72f2abd2df409d87b75fda0c27c88b5e4ab7847f58ec8",
+  "renderer_sha256": "6017776ea16087c869ddf8c14f58c035d127a80fb6ce588a038845ab9c21fc98",
+  "proof_executed": false
+}
