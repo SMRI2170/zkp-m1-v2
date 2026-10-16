@@ -1,0 +1,27 @@
+name: Balanced distance evidence
+on:
+  push:
+    paths:
+      - 'experiments/unified-distance-bench/**'
+      - 'week24/data/unified-distance-plan/**'
+      - 'week24/logs/unified-native-v2/**'
+      - 'week24/manifests/unified-distance.json'
+      - 'week24/13_*'
+      - '.github/workflows/unified-distance.yml'
+  pull_request:
+    paths:
+      - 'experiments/unified-distance-bench/**'
+      - 'week24/data/unified-distance-plan/**'
+      - 'week24/logs/unified-native-v2/**'
+      - 'week24/manifests/unified-distance.json'
+      - 'week24/13_*'
+      - '.github/workflows/unified-distance.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test balancing, partial evidence and fail-closed launch
+        run: python3 -m unittest discover -s experiments/unified-distance-bench -p 'test_*.py'
+      - name: Validate recorded native proof evidence and source hashes
+        run: python3 experiments/unified-distance-bench/check_results.py

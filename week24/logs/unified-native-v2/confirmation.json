@@ -1,0 +1,352 @@
+[
+  {
+    "framework": "gnark-groth16",
+    "host": "Darwin",
+    "protocol": "distance-u16-balanced-v1",
+    "normal_proofs_verified": 28,
+    "warmup_proofs": 7,
+    "measured_proofs": 21,
+    "case_counts": {
+      "0": 3,
+      "1": 3,
+      "2": 3,
+      "3": 3,
+      "4": 3,
+      "5": 3,
+      "6": 3
+    },
+    "negative_tests_retained": true,
+    "pi_executed": false,
+    "performance_comparison": false,
+    "build_metadata": {
+      "framework": "gnark",
+      "target": "host",
+      "source_sha256": {
+        "experiments/pi4-euclidean/gnark/main.go": "5487886ca6112281a5a68a3440f1a5a66c1240d745e12042feea9cd482ac5e3e",
+        "experiments/pi4-euclidean/gnark/main_test.go": "40bcdf2860a9a9cc4f03be574aaae803b33a4b06eff2d809f0f00e62fa337baa",
+        "experiments/pi4-euclidean/gnark/go.mod": "d10b24232b85fde9e07464f19b1074a9a02bd1c1f77ec2f44b6ac0db593192fe",
+        "experiments/pi4-euclidean/gnark/go.sum": "1e44c1a5e3c186a0593d503a9e98dec9892096ccf39bce80725cb254a26da556"
+      },
+      "protocol": "distance-u16-balanced-v1",
+      "pi_executed": false,
+      "fixture_source_digest": "ce9e6c92c61d29479405171e951744648ad3dd043d8d8a145de613dc072d3120",
+      "binary_sha256": "dc1a839eee8bb58b438842cb0148039dc0a4593507ac5b4c3a4fe34becd9e63d",
+      "binary": ".cache/week24/unified-build/host-v2/gnark/unified-gnark",
+      "rendered_sha256": {
+        "go.mod": "d10b24232b85fde9e07464f19b1074a9a02bd1c1f77ec2f44b6ac0db593192fe",
+        "go.sum": "1e44c1a5e3c186a0593d503a9e98dec9892096ccf39bce80725cb254a26da556",
+        "main.go": "dd60722ce9d9ecdc82e16adfc75c75fc835b07715f4eda7ca51c5ea444e1fcdc",
+        "unified-gnark": "dc1a839eee8bb58b438842cb0148039dc0a4593507ac5b4c3a4fe34becd9e63d",
+        "main_test.go": "40bcdf2860a9a9cc4f03be574aaae803b33a4b06eff2d809f0f00e62fa337baa"
+      },
+      "host_build_platform": "Darwin",
+      "build_script_sha256": "b1ba49b5a284ebd3668f85fc90363acb49e1d40c025b453710a2c050444436a6",
+      "toolchain": "go version go1.26.5 darwin/arm64"
+    },
+    "raw_log_sha256": "e0ee7bd0a14d2d9894f306b503d044147c611971e11c592af49b36c748934bcb"
+  },
+  {
+    "framework": "gnark-plonk",
+    "host": "Darwin",
+    "protocol": "distance-u16-balanced-v1",
+    "normal_proofs_verified": 28,
+    "warmup_proofs": 7,
+    "measured_proofs": 21,
+    "case_counts": {
+      "0": 3,
+      "1": 3,
+      "2": 3,
+      "3": 3,
+      "4": 3,
+      "5": 3,
+      "6": 3
+    },
+    "negative_tests_retained": true,
+    "pi_executed": false,
+    "performance_comparison": false,
+    "build_metadata": {
+      "framework": "gnark",
+      "target": "host",
+      "source_sha256": {
+        "experiments/pi4-euclidean/gnark/main.go": "5487886ca6112281a5a68a3440f1a5a66c1240d745e12042feea9cd482ac5e3e",
+        "experiments/pi4-euclidean/gnark/main_test.go": "40bcdf2860a9a9cc4f03be574aaae803b33a4b06eff2d809f0f00e62fa337baa",
+        "experiments/pi4-euclidean/gnark/go.mod": "d10b24232b85fde9e07464f19b1074a9a02bd1c1f77ec2f44b6ac0db593192fe",
+        "experiments/pi4-euclidean/gnark/go.sum": "1e44c1a5e3c186a0593d503a9e98dec9892096ccf39bce80725cb254a26da556"
+      },
+      "protocol": "distance-u16-balanced-v1",
+      "pi_executed": false,
+      "fixture_source_digest": "ce9e6c92c61d29479405171e951744648ad3dd043d8d8a145de613dc072d3120",
+      "binary_sha256": "dc1a839eee8bb58b438842cb0148039dc0a4593507ac5b4c3a4fe34becd9e63d",
+      "binary": ".cache/week24/unified-build/host-v2/gnark/unified-gnark",
+      "rendered_sha256": {
+        "go.mod": "d10b24232b85fde9e07464f19b1074a9a02bd1c1f77ec2f44b6ac0db593192fe",
+        "go.sum": "1e44c1a5e3c186a0593d503a9e98dec9892096ccf39bce80725cb254a26da556",
+        "main.go": "dd60722ce9d9ecdc82e16adfc75c75fc835b07715f4eda7ca51c5ea444e1fcdc",
+        "unified-gnark": "dc1a839eee8bb58b438842cb0148039dc0a4593507ac5b4c3a4fe34becd9e63d",
+        "main_test.go": "40bcdf2860a9a9cc4f03be574aaae803b33a4b06eff2d809f0f00e62fa337baa"
+      },
+      "host_build_platform": "Darwin",
+      "build_script_sha256": "b1ba49b5a284ebd3668f85fc90363acb49e1d40c025b453710a2c050444436a6",
+      "toolchain": "go version go1.26.5 darwin/arm64"
+    },
+    "raw_log_sha256": "5605a9c4049cb03926be90aebea3f3230b76c413e04c648a6de0d27838f6ffb7"
+  },
+  {
+    "framework": "arkworks",
+    "host": "Darwin",
+    "protocol": "distance-u16-balanced-v1",
+    "normal_proofs_verified": 28,
+    "warmup_proofs": 7,
+    "measured_proofs": 21,
+    "case_counts": {
+      "0": 3,
+      "1": 3,
+      "2": 3,
+      "3": 3,
+      "4": 3,
+      "5": 3,
+      "6": 3
+    },
+    "negative_tests_retained": true,
+    "pi_executed": false,
+    "performance_comparison": false,
+    "build_metadata": {
+      "framework": "arkworks",
+      "target": "host",
+      "source_sha256": {
+        "experiments/pi4-euclidean-additional/arkworks/src/main.rs": "ca8e1f8344747d30adf4128176195a19260e4b3f84fff8aa1672770e12d3e27b",
+        "experiments/pi4-euclidean-additional/arkworks/Cargo.toml": "3f3e91f64cc756e904ae9c3c7cbd6d861fd6f424ad0d6385d4f9e703027d1f25",
+        "experiments/pi4-euclidean-additional/arkworks/Cargo.lock": "874e928e0013a71b05eb56ce9bc188dcedca34f36e0e7c6bffbe5ecae2ddbfd3"
+      },
+      "protocol": "distance-u16-balanced-v1",
+      "pi_executed": false,
+      "binary_sha256": "ac6a6bd7dcf4b61b40632e3a1f471c8ec3924ad1d48226437cb2069a3278c8a2",
+      "binary": ".cache/week24/unified-build/host-v2/arkworks/unified-arkworks",
+      "rendered_sha256": {
+        "Cargo.toml": "3f3e91f64cc756e904ae9c3c7cbd6d861fd6f424ad0d6385d4f9e703027d1f25",
+        "Cargo.lock": "874e928e0013a71b05eb56ce9bc188dcedca34f36e0e7c6bffbe5ecae2ddbfd3",
+        "unified-arkworks": "ac6a6bd7dcf4b61b40632e3a1f471c8ec3924ad1d48226437cb2069a3278c8a2",
+        "src/main.rs": "208eaaca6f573051d1d7bce46e03dab09445d5ad332b718a283a9a905cf71213"
+      },
+      "host_build_platform": "Darwin",
+      "build_script_sha256": "b1ba49b5a284ebd3668f85fc90363acb49e1d40c025b453710a2c050444436a6",
+      "toolchain": "rustc 1.97.1 (8bab26f4f 2026-07-14)\nbinary: rustc\ncommit-hash: 8bab26f4f68e0e26f0bb7960be334d5b520ea452\ncommit-date: 2026-07-14\nhost: aarch64-apple-darwin\nrelease: 1.97.1\nLLVM version: 22.1.6"
+    },
+    "raw_log_sha256": "c70dc79c755f1e6a8aa45b4c965b609bfa5fe1ec20d892c39414f69f140a6432"
+  },
+  {
+    "framework": "halo2-ipa",
+    "host": "Darwin",
+    "protocol": "distance-u16-balanced-v1",
+    "normal_proofs_verified": 28,
+    "warmup_proofs": 7,
+    "measured_proofs": 21,
+    "case_counts": {
+      "0": 3,
+      "1": 3,
+      "2": 3,
+      "3": 3,
+      "4": 3,
+      "5": 3,
+      "6": 3
+    },
+    "negative_tests_retained": true,
+    "pi_executed": false,
+    "performance_comparison": false,
+    "build_metadata": {
+      "framework": "halo2-ipa",
+      "target": "host",
+      "source_sha256": {
+        "experiments/pi4-euclidean/halo2/src/main.rs": "73d81cdc366ad172e7695a45b3ae022120af58430ec7c814cb53c0c00d2c241d",
+        "experiments/pi4-euclidean/halo2/Cargo.toml": "e10f508768718c57de0703379bdd85c6c9d30a35875cabd817ebe89bec78295a",
+        "experiments/pi4-euclidean/halo2/Cargo.lock": "4a1769ea0c591d2870b723e27a7d3fbdd4f01a4af30c94534b60d6454cd50441"
+      },
+      "protocol": "distance-u16-balanced-v1",
+      "pi_executed": false,
+      "binary_sha256": "d7d4313e8c03d73d292d21ed3364c67d5c3ac7dab0b28ca93c8694427019cc29",
+      "binary": ".cache/week24/unified-build/host-v2/halo2-ipa/unified-halo2-ipa",
+      "rendered_sha256": {
+        "Cargo.toml": "e10f508768718c57de0703379bdd85c6c9d30a35875cabd817ebe89bec78295a",
+        "Cargo.lock": "4a1769ea0c591d2870b723e27a7d3fbdd4f01a4af30c94534b60d6454cd50441",
+        "unified-halo2-ipa": "d7d4313e8c03d73d292d21ed3364c67d5c3ac7dab0b28ca93c8694427019cc29",
+        "src/main.rs": "aa2315c6199ab8d18085ca559bcf392e83c6845c9f35462d66b792fb34db2f85"
+      },
+      "host_build_platform": "Darwin",
+      "build_script_sha256": "b1ba49b5a284ebd3668f85fc90363acb49e1d40c025b453710a2c050444436a6",
+      "toolchain": "rustc 1.97.1 (8bab26f4f 2026-07-14)\nbinary: rustc\ncommit-hash: 8bab26f4f68e0e26f0bb7960be334d5b520ea452\ncommit-date: 2026-07-14\nhost: aarch64-apple-darwin\nrelease: 1.97.1\nLLVM version: 22.1.6"
+    },
+    "raw_log_sha256": "71a7d4fcc4de7bd82bd2be89d7a55a02688081d85c754a71dde5fa9d220d5ac0"
+  },
+  {
+    "framework": "halo2-kzg",
+    "host": "Darwin",
+    "protocol": "distance-u16-balanced-v1",
+    "normal_proofs_verified": 28,
+    "warmup_proofs": 7,
+    "measured_proofs": 21,
+    "case_counts": {
+      "0": 3,
+      "1": 3,
+      "2": 3,
+      "3": 3,
+      "4": 3,
+      "5": 3,
+      "6": 3
+    },
+    "negative_tests_retained": true,
+    "pi_executed": false,
+    "performance_comparison": false,
+    "build_metadata": {
+      "framework": "halo2-kzg",
+      "target": "host",
+      "source_sha256": {
+        "experiments/pi4-euclidean-additional/halo2-kzg/src/main.rs": "9f4e273a7575e909a74cc9de00686758d774192a36d7b79796a019b1a975fb8e",
+        "experiments/pi4-euclidean-additional/halo2-kzg/Cargo.toml": "5e4f6c505e2d35cd39fd940a63e1d392fb74f401fea05f9bc80334224423bd2d",
+        "experiments/pi4-euclidean-additional/halo2-kzg/Cargo.lock": "2abe159efdc71568a78190456d27b5fc754093b0d2693539bf4c5f1d7a24ccab"
+      },
+      "protocol": "distance-u16-balanced-v1",
+      "pi_executed": false,
+      "binary_sha256": "6c8f9f6c4deb28839f0fbfedbbfc4a6e5ae4056c9f8b37125c32028064b63511",
+      "binary": ".cache/week24/unified-build/host-v2/halo2-kzg/unified-halo2-kzg",
+      "rendered_sha256": {
+        "Cargo.toml": "5e4f6c505e2d35cd39fd940a63e1d392fb74f401fea05f9bc80334224423bd2d",
+        "unified-halo2-kzg": "6c8f9f6c4deb28839f0fbfedbbfc4a6e5ae4056c9f8b37125c32028064b63511",
+        "Cargo.lock": "2abe159efdc71568a78190456d27b5fc754093b0d2693539bf4c5f1d7a24ccab",
+        "src/main.rs": "b1319d45b351ef81faa851be24b74ffdbfb0bad28de50f738fed0a5eddd781e1"
+      },
+      "host_build_platform": "Darwin",
+      "build_script_sha256": "b1ba49b5a284ebd3668f85fc90363acb49e1d40c025b453710a2c050444436a6",
+      "toolchain": "rustc 1.97.1 (8bab26f4f 2026-07-14)\nbinary: rustc\ncommit-hash: 8bab26f4f68e0e26f0bb7960be334d5b520ea452\ncommit-date: 2026-07-14\nhost: aarch64-apple-darwin\nrelease: 1.97.1\nLLVM version: 22.1.6"
+    },
+    "raw_log_sha256": "897b020dd4e98aec2743ea79ca42fece2063686142cb435da4479f6687dcb0e8"
+  },
+  {
+    "framework": "spartan",
+    "host": "Darwin",
+    "protocol": "distance-u16-balanced-v1",
+    "normal_proofs_verified": 28,
+    "warmup_proofs": 7,
+    "measured_proofs": 21,
+    "case_counts": {
+      "0": 3,
+      "1": 3,
+      "2": 3,
+      "3": 3,
+      "4": 3,
+      "5": 3,
+      "6": 3
+    },
+    "negative_tests_retained": true,
+    "pi_executed": false,
+    "performance_comparison": false,
+    "build_metadata": {
+      "framework": "spartan",
+      "target": "host",
+      "source_sha256": {
+        "experiments/pi4-euclidean-additional/spartan/src/main.rs": "9f97535215775e6b734aad4efde7fc1b8d1d40211a5510b623d47532e0d981de",
+        "experiments/pi4-euclidean-additional/spartan/Cargo.toml": "5dcc01eabc530e725acb8e1ada26496acda5620009d91e0ea576cc714bf3ee7c",
+        "experiments/pi4-euclidean-additional/spartan/Cargo.lock": "d2f16a2952a8929378a4fa7baaee101853f23f8f7caab325c11db06884c6f110"
+      },
+      "protocol": "distance-u16-balanced-v1",
+      "pi_executed": false,
+      "binary_sha256": "8021c153691acb656bacaa3e94d85a897c0e55d38eaabe64a5c6db66883db511",
+      "binary": ".cache/week24/unified-build/host-v2/spartan/unified-spartan",
+      "rendered_sha256": {
+        "Cargo.toml": "5dcc01eabc530e725acb8e1ada26496acda5620009d91e0ea576cc714bf3ee7c",
+        "Cargo.lock": "d2f16a2952a8929378a4fa7baaee101853f23f8f7caab325c11db06884c6f110",
+        "unified-spartan": "8021c153691acb656bacaa3e94d85a897c0e55d38eaabe64a5c6db66883db511",
+        "src/main.rs": "0353e0951f0beb956de2f88e8890d0ed6eccf91d489bc0c4fbdf7107bab4def6"
+      },
+      "host_build_platform": "Darwin",
+      "build_script_sha256": "b1ba49b5a284ebd3668f85fc90363acb49e1d40c025b453710a2c050444436a6",
+      "toolchain": "rustc 1.97.1 (8bab26f4f 2026-07-14)\nbinary: rustc\ncommit-hash: 8bab26f4f68e0e26f0bb7960be334d5b520ea452\ncommit-date: 2026-07-14\nhost: aarch64-apple-darwin\nrelease: 1.97.1\nLLVM version: 22.1.6"
+    },
+    "raw_log_sha256": "534a231bbb8a8d98751070a89e7835544b01e985730ec99544155c7b871f5778"
+  },
+  {
+    "framework": "bulletproofs",
+    "host": "Darwin",
+    "protocol": "distance-u16-balanced-v1",
+    "normal_proofs_verified": 28,
+    "warmup_proofs": 7,
+    "measured_proofs": 21,
+    "case_counts": {
+      "0": 3,
+      "1": 3,
+      "2": 3,
+      "3": 3,
+      "4": 3,
+      "5": 3,
+      "6": 3
+    },
+    "negative_tests_retained": true,
+    "pi_executed": false,
+    "performance_comparison": false,
+    "build_metadata": {
+      "framework": "bulletproofs",
+      "target": "host",
+      "source_sha256": {
+        "experiments/pi4-euclidean-additional/bulletproofs/src/main.rs": "19f46c162fc4900a39ea6aef8f632bba3937e77c212d19d2c86a7d1cb5fa250f",
+        "experiments/pi4-euclidean-additional/bulletproofs/Cargo.toml": "5fa19784100425cb41fe7a67c32bb4f89f8bc7550590468d13aecfb48ead4e67",
+        "experiments/pi4-euclidean-additional/bulletproofs/Cargo.lock": "26d595c02c53f203be5696770b3c4f21c2f12df72a4f08ca8cb5992d21bc2410"
+      },
+      "protocol": "distance-u16-balanced-v1",
+      "pi_executed": false,
+      "binary_sha256": "35da4dda9e37d2a62881db70e0baf079b32c50de2b93051eb16571d737ff42dd",
+      "binary": ".cache/week24/unified-build/host-v2/bulletproofs/unified-bulletproofs",
+      "rendered_sha256": {
+        "Cargo.toml": "5fa19784100425cb41fe7a67c32bb4f89f8bc7550590468d13aecfb48ead4e67",
+        "Cargo.lock": "26d595c02c53f203be5696770b3c4f21c2f12df72a4f08ca8cb5992d21bc2410",
+        "unified-bulletproofs": "35da4dda9e37d2a62881db70e0baf079b32c50de2b93051eb16571d737ff42dd",
+        "src/main.rs": "f3f629bc12da38dc33fea38491b5a9abe80feed2f88de4060beacddb7d5069e6"
+      },
+      "host_build_platform": "Darwin",
+      "build_script_sha256": "b1ba49b5a284ebd3668f85fc90363acb49e1d40c025b453710a2c050444436a6",
+      "toolchain": "rustc 1.97.1 (8bab26f4f 2026-07-14)\nbinary: rustc\ncommit-hash: 8bab26f4f68e0e26f0bb7960be334d5b520ea452\ncommit-date: 2026-07-14\nhost: aarch64-apple-darwin\nrelease: 1.97.1\nLLVM version: 22.1.6"
+    },
+    "raw_log_sha256": "5f27c6dc4899bba95b01fab35cfaecd0ce31b2b177859dad5d774ac9e5b99326"
+  },
+  {
+    "framework": "plonky3",
+    "host": "Darwin",
+    "protocol": "distance-u16-balanced-v1",
+    "normal_proofs_verified": 28,
+    "warmup_proofs": 7,
+    "measured_proofs": 21,
+    "case_counts": {
+      "0": 3,
+      "1": 3,
+      "2": 3,
+      "3": 3,
+      "4": 3,
+      "5": 3,
+      "6": 3
+    },
+    "negative_tests_retained": true,
+    "pi_executed": false,
+    "performance_comparison": false,
+    "build_metadata": {
+      "framework": "plonky3",
+      "target": "host",
+      "source_sha256": {
+        "experiments/pi4-euclidean-additional/plonky3/src/main.rs": "25d729764493ff2d80c8a85e99acef5b81a79f000d9b3506abbbab5fe3296e0a",
+        "experiments/pi4-euclidean-additional/plonky3/Cargo.toml": "968c8707405caf5b5edd53d30a9e178f3cecd87a3f915329f5e6c9767e548cb6",
+        "experiments/pi4-euclidean-additional/plonky3/Cargo.lock": "66c6e699029812faa2bed4524e9285f7a2e85d583fb8100000d45caab05df231"
+      },
+      "protocol": "distance-u16-balanced-v1",
+      "pi_executed": false,
+      "binary_sha256": "79b73c77d5eb2681cd273475d03e94291de1269e993a80d3864f84621e9db918",
+      "binary": ".cache/week24/unified-build/host-v2/plonky3/unified-plonky3",
+      "rendered_sha256": {
+        "Cargo.toml": "968c8707405caf5b5edd53d30a9e178f3cecd87a3f915329f5e6c9767e548cb6",
+        "Cargo.lock": "66c6e699029812faa2bed4524e9285f7a2e85d583fb8100000d45caab05df231",
+        "unified-plonky3": "79b73c77d5eb2681cd273475d03e94291de1269e993a80d3864f84621e9db918",
+        "src/main.rs": "939963956499661a721b36ed01fc05155487558b9c4f2be6dfedb65a87dee66a"
+      },
+      "host_build_platform": "Darwin",
+      "build_script_sha256": "b1ba49b5a284ebd3668f85fc90363acb49e1d40c025b453710a2c050444436a6",
+      "toolchain": "rustc 1.97.1 (8bab26f4f 2026-07-14)\nbinary: rustc\ncommit-hash: 8bab26f4f68e0e26f0bb7960be334d5b520ea452\ncommit-date: 2026-07-14\nhost: aarch64-apple-darwin\nrelease: 1.97.1\nLLVM version: 22.1.6"
+    },
+    "raw_log_sha256": "8106863c945e8aa2785b9374b146c05f83e1bc491a7d215c039f20c7339cc95a"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "scope": "balanced driver implementation and recorded host correctness; not Pi balanced measurements",
+  "file_sha256": {
+    ".github/workflows/unified-distance.yml": "b5e0eb27054bf1ca41c4abf236a65f0eaaa045f50c749520d36591f223d7fc81",
+    "experiments/unified-distance-bench/README.md": "058bdfaff89168c0c308a3865c72d1d5c6cfca7d69dc3545b62b7333439ef641",
+    "experiments/unified-distance-bench/build.py": "b1ba49b5a284ebd3668f85fc90363acb49e1d40c025b453710a2c050444436a6",
+    "experiments/unified-distance-bench/check_results.py": "be2fe6d837a70daece262a382ab8c31dad26ce412ef71e65d7460e5840226e16",
+    "experiments/unified-distance-bench/collect.py": "956106cae08c6322e64c4d50895c8f02410c5ac5bcd96bfe8d7e73ae03cc6301",
+    "experiments/unified-distance-bench/launch.py": "389672118e42b5ccdf26f5f1a39480741432de9be4572f283a4da96d5f76c239",
+    "experiments/unified-distance-bench/manifest.py": "6d976d72b3d7ef7eb67d7892f7c72065c43ff4138a57ce6b6d09dd98074ddf8c",
+    "experiments/unified-distance-bench/plot.py": "341e1a56d05309de81e54801967fb1f7eb2fff4bb5a1e899f3d7d3e08295b4e1",
+    "experiments/unified-distance-bench/protocol.py": "d6105a53e2ade9e7d45ba567aa01ed3c5377cab1890c3727ebd81342bd148615",
+    "experiments/unified-distance-bench/test_protocol.py": "972624ded1ae7c2f977d45db32f2a161e65ecea96f0d7bff23c5f54a36bc91ed",
+    "experiments/unified-distance-bench/verify_native.py": "f0cd294c1d868895b89d759309ce6c997d7920fd9e03bb42bafed4a0c7dfba3d",
+    "week24/13_\u6bd4\u8f03\u6761\u4ef6\u306e\u7d71\u4e00\u306821\u4ef6\u30d9\u30f3\u30c1\u5b9f\u88c5.md": "76f584f97745d2d1fe55215402e2df9cfcb57ba9a4bc13557ccef14e11293d40",
+    "week24/data/unified-distance-plan/protocol.json": "bef7858764e42fe4654bae985d9518181e901f7772b346a7b2d43a2ec823ebf1",
+    "week24/logs/unified-native-v2/arkworks.jsonl": "c70dc79c755f1e6a8aa45b4c965b609bfa5fe1ec20d892c39414f69f140a6432",
+    "week24/logs/unified-native-v2/arm64-builds.json": "331c585759c248779413b6e1446b015db122f440a7e9bc2f8ca9e016b27ed3bd",
+    "week24/logs/unified-native-v2/bulletproofs.jsonl": "5f27c6dc4899bba95b01fab35cfaecd0ce31b2b177859dad5d774ac9e5b99326",
+    "week24/logs/unified-native-v2/confirmation.json": "72f1d4aea3d7df2fcb04b63ea66bc59abe7e1ed84174162914095940c94ff4f8",
+    "week24/logs/unified-native-v2/gnark-groth16.jsonl": "e0ee7bd0a14d2d9894f306b503d044147c611971e11c592af49b36c748934bcb",
+    "week24/logs/unified-native-v2/gnark-plonk.jsonl": "5605a9c4049cb03926be90aebea3f3230b76c413e04c648a6de0d27838f6ffb7",
+    "week24/logs/unified-native-v2/halo2-ipa.jsonl": "71a7d4fcc4de7bd82bd2be89d7a55a02688081d85c754a71dde5fa9d220d5ac0",
+    "week24/logs/unified-native-v2/halo2-kzg.jsonl": "897b020dd4e98aec2743ea79ca42fece2063686142cb435da4479f6687dcb0e8",
+    "week24/logs/unified-native-v2/plonky3.jsonl": "8106863c945e8aa2785b9374b146c05f83e1bc491a7d215c039f20c7339cc95a",
+    "week24/logs/unified-native-v2/spartan.jsonl": "534a231bbb8a8d98751070a89e7835544b01e985730ec99544155c7b871f5778"
+  }
+}
