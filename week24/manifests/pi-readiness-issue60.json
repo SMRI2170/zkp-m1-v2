@@ -1,0 +1,14 @@
+{
+  "scope": "read-only readiness; no new proofs",
+  "file_sha256": {
+    ".github/workflows/pi-readiness.yml": "7ddd941e884a6de7abd01424f4f63a97d4574483f751740066434fd3e303f6a0",
+    "experiments/pi-balanced-readiness/README.md": "52f2bd3288f719edf3eb6b383c20398860b76b60c37615275cb9a0c8f2edabc7",
+    "experiments/pi-balanced-readiness/check_results.py": "b4ccd1b8274d2c938511f20cf3cff9a2b86d1ce246739eef4e75cf1ffd56a76e",
+    "experiments/pi-balanced-readiness/manifest.py": "52c7f25917fa49005827d4859e1304b2924d2294107453561059a72be2ed2796",
+    "experiments/pi-balanced-readiness/observe.py": "fd6fea3deee4d4a456efb08639273b5c6d738d7affe7375ff32906bc3a58067b",
+    "experiments/pi-balanced-readiness/test_observe.py": "40b360a7fc14067ce709053447a339e3e1f7f07f39a0de1dc61c304f8338dae9",
+    "week24/15_Pi\u7121\u8ca0\u8377\u306e\u4e8b\u524d\u89b3\u6e2c\u3068\u6e2c\u5b9a\u5f85\u3061\u6761\u4ef6.md": "7d70b5674899bb7489e744d76b1f98814ba48ab8d101a136f6712b3377c7181e",
+    "week24/logs/pi-readiness-issue60-v1/health.jsonl": "387a7167521ea1acc3120349141880da2bd09e815afb4d4bf6665b76de065f96",
+    "week24/logs/pi-readiness-issue60-v1/summary.json": "e9a6a08c0fbc6bd9f3e47a2d541e9643ef1d45bfd8d35bd5f996220217f7b7ce"
+  }
+}

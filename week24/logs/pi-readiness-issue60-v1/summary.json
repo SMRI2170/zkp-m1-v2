@@ -1,0 +1,13 @@
+{
+  "scope": "read-only readiness observations; no proof execution or reboot-cause attribution",
+  "samples": 3,
+  "all_ready": false,
+  "no_observed_uptime_reset": true,
+  "observed_uptime_span_s": 62.130000000000024,
+  "ready_for_next_preflight": false,
+  "reboot_cause": "unknown",
+  "proof_executed": false,
+  "preflight_source_sha256": "8a6ed1ef7f19066d858afa5ecda61a751a157978be5d502e6c3ec0f3d7f9096e",
+  "collection_method": "pinned preflight.snapshot via read-only SSH stdin script, three observations / 30s sleeps; not an E2E run of observe.py",
+  "health_sha256": "387a7167521ea1acc3120349141880da2bd09e815afb4d4bf6665b76de065f96"
+}
