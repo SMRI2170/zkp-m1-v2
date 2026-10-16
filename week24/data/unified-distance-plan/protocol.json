@@ -1,0 +1,300 @@
+{
+  "protocol": "distance-u16-balanced-v1",
+  "workload": "synthetic u16 distance, public d2 and floor sqrt",
+  "warmups": 7,
+  "measured_samples": 21,
+  "input_count": 7,
+  "repeats_per_input": 3,
+  "order": "seven warmups case0..6 then three rounds case0..6",
+  "statistical_unit": "within-process warm samples; not independent cold trials",
+  "cpu_quota_percent": 25,
+  "threads": 1,
+  "affinity_cpus": 1,
+  "unit_high_mib": 192,
+  "unit_max_mib": 256,
+  "unit_swap_max_bytes": 0,
+  "timeout_s": 1200,
+  "parent_high_mib": 1200,
+  "parent_max_mib": 1536,
+  "os_reserve_mib": 1024,
+  "schedule": [
+    {
+      "sample_id": 0,
+      "case_id": 0,
+      "warmup": true,
+      "repetition": null
+    },
+    {
+      "sample_id": 1,
+      "case_id": 1,
+      "warmup": true,
+      "repetition": null
+    },
+    {
+      "sample_id": 2,
+      "case_id": 2,
+      "warmup": true,
+      "repetition": null
+    },
+    {
+      "sample_id": 3,
+      "case_id": 3,
+      "warmup": true,
+      "repetition": null
+    },
+    {
+      "sample_id": 4,
+      "case_id": 4,
+      "warmup": true,
+      "repetition": null
+    },
+    {
+      "sample_id": 5,
+      "case_id": 5,
+      "warmup": true,
+      "repetition": null
+    },
+    {
+      "sample_id": 6,
+      "case_id": 6,
+      "warmup": true,
+      "repetition": null
+    },
+    {
+      "sample_id": 7,
+      "case_id": 0,
+      "warmup": false,
+      "repetition": 0
+    },
+    {
+      "sample_id": 8,
+      "case_id": 1,
+      "warmup": false,
+      "repetition": 0
+    },
+    {
+      "sample_id": 9,
+      "case_id": 2,
+      "warmup": false,
+      "repetition": 0
+    },
+    {
+      "sample_id": 10,
+      "case_id": 3,
+      "warmup": false,
+      "repetition": 0
+    },
+    {
+      "sample_id": 11,
+      "case_id": 4,
+      "warmup": false,
+      "repetition": 0
+    },
+    {
+      "sample_id": 12,
+      "case_id": 5,
+      "warmup": false,
+      "repetition": 0
+    },
+    {
+      "sample_id": 13,
+      "case_id": 6,
+      "warmup": false,
+      "repetition": 0
+    },
+    {
+      "sample_id": 14,
+      "case_id": 0,
+      "warmup": false,
+      "repetition": 1
+    },
+    {
+      "sample_id": 15,
+      "case_id": 1,
+      "warmup": false,
+      "repetition": 1
+    },
+    {
+      "sample_id": 16,
+      "case_id": 2,
+      "warmup": false,
+      "repetition": 1
+    },
+    {
+      "sample_id": 17,
+      "case_id": 3,
+      "warmup": false,
+      "repetition": 1
+    },
+    {
+      "sample_id": 18,
+      "case_id": 4,
+      "warmup": false,
+      "repetition": 1
+    },
+    {
+      "sample_id": 19,
+      "case_id": 5,
+      "warmup": false,
+      "repetition": 1
+    },
+    {
+      "sample_id": 20,
+      "case_id": 6,
+      "warmup": false,
+      "repetition": 1
+    },
+    {
+      "sample_id": 21,
+      "case_id": 0,
+      "warmup": false,
+      "repetition": 2
+    },
+    {
+      "sample_id": 22,
+      "case_id": 1,
+      "warmup": false,
+      "repetition": 2
+    },
+    {
+      "sample_id": 23,
+      "case_id": 2,
+      "warmup": false,
+      "repetition": 2
+    },
+    {
+      "sample_id": 24,
+      "case_id": 3,
+      "warmup": false,
+      "repetition": 2
+    },
+    {
+      "sample_id": 25,
+      "case_id": 4,
+      "warmup": false,
+      "repetition": 2
+    },
+    {
+      "sample_id": 26,
+      "case_id": 5,
+      "warmup": false,
+      "repetition": 2
+    },
+    {
+      "sample_id": 27,
+      "case_id": 6,
+      "warmup": false,
+      "repetition": 2
+    }
+  ],
+  "coverage": [
+    {
+      "framework": "gnark Groth16",
+      "balanced_driver_ready": true,
+      "balanced_pi_run": "not_executed",
+      "reason": "balanced driver and ARM64 build available; Pi balanced run not executed"
+    },
+    {
+      "framework": "gnark PLONK",
+      "balanced_driver_ready": true,
+      "balanced_pi_run": "not_executed",
+      "reason": "balanced driver and ARM64 build available; Pi balanced run not executed"
+    },
+    {
+      "framework": "Circom / RapidSnark",
+      "balanced_driver_ready": false,
+      "balanced_pi_run": "not_executed",
+      "reason": "CLI compile/setup/witness phase boundaries and balanced adapter pending"
+    },
+    {
+      "framework": "Halo2 IPA / Pasta",
+      "balanced_driver_ready": true,
+      "balanced_pi_run": "not_executed",
+      "reason": "balanced driver and ARM64 build available; Pi balanced run not executed"
+    },
+    {
+      "framework": "Noir / Barretenberg",
+      "balanced_driver_ready": false,
+      "balanced_pi_run": "not_executed",
+      "reason": "CLI compile/setup/witness phase boundaries and balanced adapter pending"
+    },
+    {
+      "framework": "Nova / CycleFold",
+      "balanced_driver_ready": false,
+      "balanced_pi_run": "not_executed",
+      "reason": "ordered IVC requires separate fresh-state series protocol; not independent proofs"
+    },
+    {
+      "framework": "HyperNova / CycleFold",
+      "balanced_driver_ready": false,
+      "balanced_pi_run": "not_executed",
+      "reason": "ordered IVC requires separate fresh-state series protocol; not independent proofs"
+    },
+    {
+      "framework": "arkworks Groth16",
+      "balanced_driver_ready": true,
+      "balanced_pi_run": "not_executed",
+      "reason": "balanced driver and ARM64 build available; Pi balanced run not executed"
+    },
+    {
+      "framework": "Halo2 KZG / BN254",
+      "balanced_driver_ready": true,
+      "balanced_pi_run": "not_executed",
+      "reason": "balanced driver and ARM64 build available; Pi balanced run not executed"
+    },
+    {
+      "framework": "Spartan",
+      "balanced_driver_ready": true,
+      "balanced_pi_run": "not_executed",
+      "reason": "balanced driver and ARM64 build available; Pi balanced run not executed"
+    },
+    {
+      "framework": "Bulletproofs R1CS",
+      "balanced_driver_ready": true,
+      "balanced_pi_run": "not_executed",
+      "reason": "balanced driver and ARM64 build available; Pi balanced run not executed"
+    },
+    {
+      "framework": "Plonky3 HidingFRI",
+      "balanced_driver_ready": true,
+      "balanced_pi_run": "not_executed",
+      "reason": "balanced driver and ARM64 build available; Pi balanced run not executed"
+    },
+    {
+      "framework": "Kimchi",
+      "balanced_driver_ready": false,
+      "balanced_pi_run": "not_executed",
+      "reason": "extend pinned same-input instrumentation to balanced seven-input collection; pending"
+    },
+    {
+      "framework": "Binius64",
+      "balanced_driver_ready": false,
+      "balanced_pi_run": "not_executed",
+      "reason": "extend pinned same-input instrumentation to balanced seven-input collection; pending"
+    },
+    {
+      "framework": "Jolt",
+      "balanced_driver_ready": false,
+      "balanced_pi_run": "not_executed",
+      "reason": "extend pinned same-input instrumentation to balanced seven-input collection; pending"
+    },
+    {
+      "framework": "Plonky2",
+      "balanced_driver_ready": false,
+      "balanced_pi_run": "not_executed",
+      "reason": "resolve Pi execution/resource prerequisites in #55 before balanced proof collection"
+    },
+    {
+      "framework": "RISC Zero",
+      "balanced_driver_ready": false,
+      "balanced_pi_run": "not_executed",
+      "reason": "resolve Pi execution/resource prerequisites in #55 before balanced proof collection"
+    },
+    {
+      "framework": "SP1",
+      "balanced_driver_ready": false,
+      "balanced_pi_run": "not_executed",
+      "reason": "resolve Pi execution/resource prerequisites in #55 before balanced proof collection"
+    }
+  ]
+}
