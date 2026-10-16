@@ -1,0 +1,23 @@
+name: Pi read-only readiness evidence
+on:
+  push:
+    paths:
+      - 'experiments/pi-balanced-readiness/**'
+      - 'week24/logs/pi-readiness-issue60-v1/**'
+      - 'week24/15_*'
+      - 'week24/manifests/pi-readiness-issue60.json'
+      - '.github/workflows/pi-readiness.yml'
+  pull_request:
+    paths:
+      - 'experiments/pi-balanced-readiness/**'
+      - 'week24/logs/pi-readiness-issue60-v1/**'
+      - 'week24/15_*'
+      - 'week24/manifests/pi-readiness-issue60.json'
+      - '.github/workflows/pi-readiness.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s experiments/pi-balanced-readiness -p 'test_*.py'
+      - run: python3 experiments/pi-balanced-readiness/check_results.py
