@@ -1,0 +1,643 @@
+{
+  "schema_version": 1,
+  "scope": "8 implemented Pi configurations + 2 CLI source adapters; remaining 8 recorded as pending capability; no automatic AI code generation",
+  "steps": [
+    {
+      "id": "test-runner",
+      "argv": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "experiments/sequential-evaluation",
+        "-p",
+        "test_*.py"
+      ],
+      "kind": "test",
+      "needs": [],
+      "timeout_s": 30
+    },
+    {
+      "id": "pi-probe",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/pi.py",
+        "probe",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "readiness",
+      "needs": [
+        "test-runner"
+      ],
+      "timeout_s": 30,
+      "exit_status": {
+        "3": "blocked"
+      }
+    },
+    {
+      "id": "build-gnark",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "build",
+        "--framework",
+        "gnark",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "build",
+      "needs": [
+        "test-runner"
+      ],
+      "timeout_s": 600,
+      "framework": "gnark"
+    },
+    {
+      "id": "build-arkworks",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "build",
+        "--framework",
+        "arkworks",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "build",
+      "needs": [
+        "test-runner"
+      ],
+      "timeout_s": 600,
+      "framework": "arkworks"
+    },
+    {
+      "id": "build-halo2-ipa",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "build",
+        "--framework",
+        "halo2-ipa",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "build",
+      "needs": [
+        "test-runner"
+      ],
+      "timeout_s": 600,
+      "framework": "halo2-ipa"
+    },
+    {
+      "id": "build-halo2-kzg",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "build",
+        "--framework",
+        "halo2-kzg",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "build",
+      "needs": [
+        "test-runner"
+      ],
+      "timeout_s": 600,
+      "framework": "halo2-kzg"
+    },
+    {
+      "id": "build-spartan",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "build",
+        "--framework",
+        "spartan",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "build",
+      "needs": [
+        "test-runner"
+      ],
+      "timeout_s": 600,
+      "framework": "spartan"
+    },
+    {
+      "id": "build-bulletproofs",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "build",
+        "--framework",
+        "bulletproofs",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "build",
+      "needs": [
+        "test-runner"
+      ],
+      "timeout_s": 600,
+      "framework": "bulletproofs"
+    },
+    {
+      "id": "build-plonky3",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "build",
+        "--framework",
+        "plonky3",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "build",
+      "needs": [
+        "test-runner"
+      ],
+      "timeout_s": 600,
+      "framework": "plonky3"
+    },
+    {
+      "id": "prepare-circom",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "cli",
+        "--framework",
+        "circom",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "prepare",
+      "needs": [
+        "test-runner"
+      ],
+      "timeout_s": 300,
+      "framework": "circom"
+    },
+    {
+      "id": "prepare-noir",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "cli",
+        "--framework",
+        "noir",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "prepare",
+      "needs": [
+        "test-runner"
+      ],
+      "timeout_s": 300,
+      "framework": "noir"
+    },
+    {
+      "id": "pi-deploy",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/pi.py",
+        "deploy",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "deployment",
+      "needs": [
+        "pi-probe",
+        "build-gnark",
+        "build-arkworks",
+        "build-halo2-ipa",
+        "build-halo2-kzg",
+        "build-spartan",
+        "build-bulletproofs",
+        "build-plonky3"
+      ],
+      "timeout_s": 600,
+      "exit_status": {
+        "3": "blocked"
+      }
+    },
+    {
+      "id": "pi-gnark-groth16",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/pi.py",
+        "trial",
+        "--framework",
+        "gnark-groth16",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "measurement",
+      "needs": [
+        "pi-deploy"
+      ],
+      "timeout_s": 1340,
+      "framework": "gnark-groth16"
+    },
+    {
+      "id": "pi-gnark-plonk",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/pi.py",
+        "trial",
+        "--framework",
+        "gnark-plonk",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "measurement",
+      "needs": [
+        "pi-gnark-groth16"
+      ],
+      "timeout_s": 1340,
+      "framework": "gnark-plonk"
+    },
+    {
+      "id": "pi-arkworks",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/pi.py",
+        "trial",
+        "--framework",
+        "arkworks",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "measurement",
+      "needs": [
+        "pi-gnark-plonk"
+      ],
+      "timeout_s": 1340,
+      "framework": "arkworks"
+    },
+    {
+      "id": "pi-halo2-ipa",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/pi.py",
+        "trial",
+        "--framework",
+        "halo2-ipa",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "measurement",
+      "needs": [
+        "pi-arkworks"
+      ],
+      "timeout_s": 1340,
+      "framework": "halo2-ipa"
+    },
+    {
+      "id": "pi-halo2-kzg",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/pi.py",
+        "trial",
+        "--framework",
+        "halo2-kzg",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "measurement",
+      "needs": [
+        "pi-halo2-ipa"
+      ],
+      "timeout_s": 1340,
+      "framework": "halo2-kzg"
+    },
+    {
+      "id": "pi-spartan",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/pi.py",
+        "trial",
+        "--framework",
+        "spartan",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "measurement",
+      "needs": [
+        "pi-halo2-kzg"
+      ],
+      "timeout_s": 1340,
+      "framework": "spartan"
+    },
+    {
+      "id": "pi-bulletproofs",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/pi.py",
+        "trial",
+        "--framework",
+        "bulletproofs",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "measurement",
+      "needs": [
+        "pi-spartan"
+      ],
+      "timeout_s": 1340,
+      "framework": "bulletproofs"
+    },
+    {
+      "id": "pi-plonky3",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/pi.py",
+        "trial",
+        "--framework",
+        "plonky3",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "measurement",
+      "needs": [
+        "pi-bulletproofs"
+      ],
+      "timeout_s": 1340,
+      "framework": "plonky3"
+    },
+    {
+      "id": "collect",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "collect",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "collection",
+      "needs": [
+        "pi-plonky3"
+      ],
+      "timeout_s": 600,
+      "always": true
+    },
+    {
+      "id": "plot",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "plot",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "plot",
+      "needs": [
+        "collect"
+      ],
+      "timeout_s": 120,
+      "exit_status": {
+        "3": "blocked"
+      }
+    },
+    {
+      "id": "pending-kimchi",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "unsupported",
+        "--framework",
+        "kimchi",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "capability",
+      "needs": [],
+      "timeout_s": 300,
+      "framework": "kimchi",
+      "always": true,
+      "exit_status": {
+        "4": "unsupported"
+      }
+    },
+    {
+      "id": "pending-binius64",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "unsupported",
+        "--framework",
+        "binius64",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "capability",
+      "needs": [],
+      "timeout_s": 300,
+      "framework": "binius64",
+      "always": true,
+      "exit_status": {
+        "4": "unsupported"
+      }
+    },
+    {
+      "id": "pending-jolt",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "unsupported",
+        "--framework",
+        "jolt",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "capability",
+      "needs": [],
+      "timeout_s": 300,
+      "framework": "jolt",
+      "always": true,
+      "exit_status": {
+        "4": "unsupported"
+      }
+    },
+    {
+      "id": "pending-nova",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "unsupported",
+        "--framework",
+        "nova",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "capability",
+      "needs": [],
+      "timeout_s": 300,
+      "framework": "nova",
+      "always": true,
+      "exit_status": {
+        "4": "unsupported"
+      }
+    },
+    {
+      "id": "pending-hypernova",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "unsupported",
+        "--framework",
+        "hypernova",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "capability",
+      "needs": [],
+      "timeout_s": 300,
+      "framework": "hypernova",
+      "always": true,
+      "exit_status": {
+        "4": "unsupported"
+      }
+    },
+    {
+      "id": "pending-plonky2",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "unsupported",
+        "--framework",
+        "plonky2",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "capability",
+      "needs": [],
+      "timeout_s": 300,
+      "framework": "plonky2",
+      "always": true,
+      "exit_status": {
+        "4": "unsupported"
+      }
+    },
+    {
+      "id": "pending-risc0",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "unsupported",
+        "--framework",
+        "risc0",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "capability",
+      "needs": [],
+      "timeout_s": 300,
+      "framework": "risc0",
+      "always": true,
+      "exit_status": {
+        "4": "unsupported"
+      }
+    },
+    {
+      "id": "pending-sp1",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/tasks.py",
+        "unsupported",
+        "--framework",
+        "sp1",
+        "--tag",
+        "{tag}",
+        "--job",
+        "{job}"
+      ],
+      "kind": "capability",
+      "needs": [],
+      "timeout_s": 300,
+      "framework": "sp1",
+      "always": true,
+      "exit_status": {
+        "4": "unsupported"
+      }
+    },
+    {
+      "id": "ci-review",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/ci.py",
+        "--job",
+        "{job}"
+      ],
+      "kind": "validation",
+      "needs": [],
+      "timeout_s": 720,
+      "always": true,
+      "exit_status": {
+        "3": "blocked"
+      }
+    }
+  ],
+  "related_ci_commits": [
+    "d01f676bb6bd08986af8d2a89bb1cc0af29a91a5",
+    "cd504bcf6a51e6812838e2c7a98daa3a7c65307f"
+  ]
+}
