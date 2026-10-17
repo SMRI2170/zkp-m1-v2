@@ -7,8 +7,13 @@ import sys
 ROOT=Path(__file__).resolve().parents[2]
 def call(argv):subprocess.run([str(x) for x in argv],cwd=ROOT,check=True)
 def main():
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['build','cli','collect','plot','unsupported']);p.add_argument('--framework');p.add_argument('--tag',required=True);p.add_argument('--job',type=Path,required=True);a=p.parse_args()
-    if a.action=='build':
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['build','cli','collect','plot','unsupported','reuse-deployment']);p.add_argument('--source-job',type=Path);p.add_argument('--framework');p.add_argument('--tag',required=True);p.add_argument('--job',type=Path,required=True);a=p.parse_args()
+    if a.action=='reuse-deployment':
+        source=json.loads((a.source_job/'status.json').read_text())
+        deployment=json.loads((a.source_job/'deployment.json').read_text())
+        assert source['tag']==a.tag and source.get('finished_at') and deployment['status']=='completed'
+        (a.job/'deployment.json').write_text(json.dumps({'status':'completed','reference_only':True,'source_job':str(a.source_job),'no_deployment_performed':True})+'\n')
+    elif a.action=='build':
         f=a.framework
         if f=='gnark':
             call([sys.executable,'experiments/unified-distance-bench/build.py',f,'--build-id',a.tag+'-host'])

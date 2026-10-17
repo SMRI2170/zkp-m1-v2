@@ -72,3 +72,10 @@ CLI方式はsource adapter生成までで、このplanでは実proverへ未接�
 部分配置・hash不一致・接続断は`guard-restoration.json`へ保存して停止し、自動再送・上書きはしない。
 SSH再起動や永続OS変更はしない。復旧後もready probeと各launcherの事前検査を必須とする。
 過去のjobやpartial測定は保持する。
+
+## 既存試験の回収だけを再実行する
+
+終了済みjobの`deployment.json`とtagを照合して配置済み状態を参照し、collect/plotだけの新planを使う。
+`reuse-deployment`工程は参照確認だけで、新しい配置やproof実行を行わない。
+SSHの終了255等を保存先なしと見なさず、`fetch-status.json`にtransport errorを記録する。
+remote directoryを1つも確認できなければ成功にしない。回収失敗後も、既に取得した完走cohortがあれば図化できる。

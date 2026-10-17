@@ -56,4 +56,26 @@ class SequentialTests(unittest.TestCase):
   plan=json.loads(Path(run.__file__).with_name('plan.json').read_text());run.validate(plan)
   self.assertEqual(sum(s['kind']=='measurement' for s in plan['steps']),8)
   self.assertEqual(sum(s['kind']=='capability' for s in plan['steps']),8)
+
+class CollectionTests(unittest.TestCase):
+ def test_ssh_failure_is_not_an_empty_success(self):
+  import pi
+  from unittest.mock import patch
+  from types import SimpleNamespace
+  with tempfile.TemporaryDirectory() as td:
+   job=Path(td);(job/'status.json').write_text(json.dumps({'steps':[dict(id='pi-deploy',status='completed')]}))
+   with patch.object(pi,'ssh',return_value=SimpleNamespace(returncode=255)) as ssh:
+    self.assertNotEqual(pi.collect_runs(job,'test'),0)
+    self.assertEqual(ssh.call_count,1)
+   result=json.loads((job/'fetch-status.json').read_text())
+   self.assertTrue(result['transport_failed']);self.assertFalse(result['proof_relaunched'])
+ def test_no_remote_directories_is_not_a_success(self):
+  import pi
+  from unittest.mock import patch
+  from types import SimpleNamespace
+  with tempfile.TemporaryDirectory() as td:
+   job=Path(td);(job/'status.json').write_text(json.dumps({'steps':[dict(id='pi-deploy',status='completed')]}))
+   with patch.object(pi,'ssh',return_value=SimpleNamespace(returncode=1)):
+    self.assertEqual(pi.collect_runs(job,'test'),3)
+
 if __name__=='__main__':unittest.main()

@@ -81,17 +81,33 @@ def main():
         print(r.stdout)
         if r.returncode:print('Remote trial failed or connection lost; do not retry automatically.')
         return r.returncode
+    return collect_runs(job,a.tag)
+
+def collect_runs(job,tag):
     state=json.loads((job/'status.json').read_text())
     deployed=any(s['id']=='pi-deploy' and s['status']=='completed' for s in state['steps'])
     if not deployed:return 0
     runs=job/'pi-runs';runs.mkdir(exist_ok=True)
-    failed=False
+    failed=False;transport_failed=False;found=0;records=[]
     for name in TRIALS:
-        run=a.tag+'-'+name;remote_run=REMOTE+'/runs/'+run
-        check=ssh(shlex.join(['test','-d',remote_run]))
-        if check.returncode:continue
-        local=runs/run;local.mkdir(exist_ok=True)
-        for file in ['benchmark.jsonl','memory.jsonl','resource.json','filesystem-audit.json','metadata.json']:
-            if download(remote_run+'/'+file,local/file):failed=True
-    return 1 if failed else 0
+        run=tag+'-'+name;remote_run=REMOTE+'/runs/'+run
+        record={'run_id':run,'files_collected':[]};records.append(record)
+        if transport_failed:
+            record['status']='not_attempted_after_transport_error';continue
+        try:
+            check=ssh(shlex.join(['test','-d',remote_run]))
+            if check.returncode==1:
+                record['status']='not_found_or_inaccessible';continue
+            if check.returncode!=0:
+                record.update(status='transport_error',ssh_exit_code=check.returncode)
+                failed=True;transport_failed=True;continue
+            found+=1;local=runs/run;local.mkdir(exist_ok=True);record['status']='collected'
+            for file in ['benchmark.jsonl','memory.jsonl','resource.json','filesystem-audit.json','metadata.json']:
+                if download(remote_run+'/'+file,local/file):
+                    failed=True;record['status']='partial'
+                else:record['files_collected'].append(file)
+        except (OSError,subprocess.TimeoutExpired):
+            record['status']='transport_timeout_or_error';failed=True;transport_failed=True
+    (job/'fetch-status.json').write_text(json.dumps({'runs':records,'directories_found':found,'transport_failed':transport_failed,'proof_relaunched':False},indent=2)+'\n')
+    return 1 if failed else (0 if found else 3)
 if __name__=='__main__':raise SystemExit(main())
