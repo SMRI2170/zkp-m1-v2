@@ -1,0 +1,16 @@
+name: Sequential evaluation runner
+on:
+  push:
+    paths:
+      - 'experiments/sequential-evaluation/**'
+      - '.github/workflows/sequential-evaluation.yml'
+  pull_request:
+    paths:
+      - 'experiments/sequential-evaluation/**'
+      - '.github/workflows/sequential-evaluation.yml'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s experiments/sequential-evaluation -p 'test_*.py'
