@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "scope": "Circom snarkjs singleThread API vs native RapidSnark prover with shared native verifier; recover/combine with recorded 7-case baseline; no fixture bodies exported",
+  "steps": [
+    {
+      "id": "comparison-tests",
+      "kind": "test",
+      "argv": [
+        "{python}",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "experiments/circom-prover-comparison",
+        "-p",
+        "test_*.py"
+      ],
+      "timeout_s": 30
+    },
+    {
+      "id": "local-proof",
+      "kind": "correctness",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/circom-prover-comparison/task.py",
+        "local-proof",
+        "--job",
+        "{job}",
+        "--tag",
+        "{tag}"
+      ],
+      "needs": [
+        "comparison-tests"
+      ],
+      "timeout_s": 180
+    },
+    {
+      "id": "pi-probe",
+      "kind": "readiness",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/pi.py",
+        "probe",
+        "--job",
+        "{job}",
+        "--tag",
+        "{tag}"
+      ],
+      "needs": [
+        "local-proof"
+      ],
+      "timeout_s": 30,
+      "exit_status": {
+        "3": "blocked"
+      }
+    },
+    {
+      "id": "circom-prepare",
+      "kind": "preparation",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/circom-prover-comparison/task.py",
+        "prepare",
+        "--job",
+        "{job}",
+        "--tag",
+        "{tag}"
+      ],
+      "needs": [
+        "pi-probe"
+      ],
+      "timeout_s": 180
+    },
+    {
+      "id": "pi-circom-snarkjs",
+      "framework": "circom-snarkjs",
+      "kind": "measurement",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/circom-prover-comparison/task.py",
+        "trial",
+        "--backend",
+        "snarkjs",
+        "--job",
+        "{job}",
+        "--tag",
+        "{tag}"
+      ],
+      "needs": [
+        "circom-prepare"
+      ],
+      "timeout_s": 1340
+    },
+    {
+      "id": "pi-circom-rapidsnark",
+      "framework": "circom-rapidsnark",
+      "kind": "measurement",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/circom-prover-comparison/task.py",
+        "trial",
+        "--backend",
+        "rapidsnark",
+        "--job",
+        "{job}",
+        "--tag",
+        "{tag}"
+      ],
+      "needs": [
+        "pi-circom-snarkjs"
+      ],
+      "timeout_s": 1340
+    },
+    {
+      "id": "circom-collect",
+      "kind": "collection",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/circom-prover-comparison/task.py",
+        "collect",
+        "--job",
+        "{job}",
+        "--tag",
+        "{tag}"
+      ],
+      "needs": [
+        "pi-circom-rapidsnark"
+      ],
+      "always": true,
+      "timeout_s": 180
+    },
+    {
+      "id": "circom-combine",
+      "kind": "plot",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/circom-prover-comparison/task.py",
+        "combine",
+        "--job",
+        "{job}",
+        "--tag",
+        "{tag}",
+        "--baseline",
+        "{repo}/.cache/week24/sequential-jobs/seq-1016b-bundle/data"
+      ],
+      "needs": [
+        "circom-collect"
+      ],
+      "always": true,
+      "timeout_s": 180
+    },
+    {
+      "id": "ci-review",
+      "kind": "validation",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/sequential-evaluation/ci.py",
+        "--job",
+        "{job}"
+      ],
+      "always": true,
+      "timeout_s": 720,
+      "exit_status": {
+        "3": "blocked"
+      }
+    }
+  ]
+}

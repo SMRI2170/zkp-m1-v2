@@ -54,7 +54,7 @@ class SequentialTests(unittest.TestCase):
   self.assertEqual(decision(dict(installer_sha256='wrong',watchdog_sha256=WATCHDOG,runtime_paths_present=[])),'blocked_source_mismatch')
  def test_real_plan_is_valid(self):
   plan=json.loads(Path(run.__file__).with_name('plan.json').read_text());run.validate(plan)
-  self.assertEqual(sum(s['kind']=='measurement' for s in plan['steps']),8)
+  self.assertEqual(sum(s['kind']=='measurement' for s in plan['steps']),10)
   self.assertEqual(sum(s['kind']=='capability' for s in plan['steps']),8)
 
 class CollectionTests(unittest.TestCase):
