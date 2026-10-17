@@ -78,4 +78,19 @@ class CollectionTests(unittest.TestCase):
    with patch.object(pi,'ssh',return_value=SimpleNamespace(returncode=1)):
     self.assertEqual(pi.collect_runs(job,'test'),3)
 
+class BundleTests(unittest.TestCase):
+ def test_archive_rejects_private_or_escaping_members(self):
+  import bundle_collect,zipfile
+  for name in ['../key','tag-gnark-groth16/vk.bin']:
+   with tempfile.TemporaryDirectory() as td:
+    root=Path(td);archive=root/'data.zip'
+    with zipfile.ZipFile(archive,'w') as z:z.writestr(name,'test only')
+    with self.assertRaises(ValueError):bundle_collect.extract(archive,root/'out','tag')
+ def test_allowlisted_metrics_extract(self):
+  import bundle_collect,zipfile
+  with tempfile.TemporaryDirectory() as td:
+   root=Path(td);archive=root/'data.zip';name='tag-gnark-groth16/resource.json'
+   with zipfile.ZipFile(archive,'w') as z:z.writestr(name,'{}')
+   self.assertEqual(bundle_collect.extract(archive,root/'out','tag'),[name])
+
 if __name__=='__main__':unittest.main()

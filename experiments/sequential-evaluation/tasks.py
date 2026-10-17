@@ -7,7 +7,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[2]
 def call(argv):subprocess.run([str(x) for x in argv],cwd=ROOT,check=True)
 def main():
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['build','cli','collect','plot','unsupported','reuse-deployment']);p.add_argument('--source-job',type=Path);p.add_argument('--framework');p.add_argument('--tag',required=True);p.add_argument('--job',type=Path,required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['build','cli','collect','plot','unsupported','reuse-deployment']);p.add_argument('--bundle',action='store_true');p.add_argument('--source-job',type=Path);p.add_argument('--framework');p.add_argument('--tag',required=True);p.add_argument('--job',type=Path,required=True);a=p.parse_args()
     if a.action=='reuse-deployment':
         source=json.loads((a.source_job/'status.json').read_text())
         deployment=json.loads((a.source_job/'deployment.json').read_text())
@@ -25,7 +25,8 @@ def main():
         call([sys.executable,'experiments/balanced-cli/render.py',a.framework,'--out',ROOT/'.cache/week24/sequential-cli'/a.tag/a.framework])
     elif a.action=='collect':
         # Fetch is best effort; preserve any partial logs. Never relaunch a remote trial.
-        r=subprocess.run([sys.executable,str(Path(__file__).with_name('pi.py')),'collect','--job',str(a.job),'--tag',a.tag],cwd=ROOT)
+        fetch=[sys.executable,str(Path(__file__).with_name('bundle_collect.py'))] if a.bundle else [sys.executable,str(Path(__file__).with_name('pi.py')),'collect']
+        r=subprocess.run(fetch+['--job',str(a.job),'--tag',a.tag],cwd=ROOT)
         runs=a.job/'pi-runs'
         if runs.exists() and any(p.is_dir() and (p/'metadata.json').exists() for p in runs.iterdir()):
             call([sys.executable,'experiments/unified-distance-bench/collect.py','--runs',runs,'--out',a.job/'data'])
