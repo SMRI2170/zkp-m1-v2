@@ -2,9 +2,10 @@
 import argparse,hashlib,json,os,shlex,shutil,subprocess,sys,zipfile
 from pathlib import Path
 import pi
+EXTRA_TRIALS=['circom-snarkjs','circom-rapidsnark']
 FILES=['benchmark.jsonl','memory.jsonl','resource.json','filesystem-audit.json','metadata.json']
-def extract(archive,out,tag):
- allowed={tag+'-'+name+'/'+file for name in pi.TRIALS for file in FILES}
+def extract(archive,out,tag,trials=None):
+ allowed={tag+'-'+name+'/'+file for name in (trials if trials is not None else pi.TRIALS) for file in FILES}
  with zipfile.ZipFile(archive) as z:
   names=z.namelist()
   if len(names)!=len(set(names)) or not set(names)<=allowed:raise ValueError('Unexpected/duplicate archive member')
@@ -15,7 +16,7 @@ def extract(archive,out,tag):
  return names
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--job',type=Path,required=True);p.add_argument('--tag',required=True);a=p.parse_args();os.umask(0o077)
+ p=argparse.ArgumentParser();p.add_argument('--job',type=Path,required=True);p.add_argument('--tag',required=True);p.add_argument('--trial',action='append',choices=pi.TRIALS+EXTRA_TRIALS);a=p.parse_args();os.umask(0o077)
  if not a.tag.isascii() or not a.tag.replace('-','').isalnum():p.error('invalid tag')
  archive=a.job/'private/metrics-bundle.zip.part'
  script='''from pathlib import Path
@@ -31,14 +32,14 @@ with zipfile.ZipFile(sys.stdout.buffer,'w',compression=zipfile.ZIP_DEFLATED) as 
   for file in files:
    p=run/file
    if p.is_file() and not p.is_symlink():z.write(p,arcname=run.name+'/'+file)
-'''.replace('TAG',repr(a.tag)).replace('TRIALS',repr(pi.TRIALS)).replace('FILES',repr(FILES))
+'''.replace('TAG',repr(a.tag)).replace('TRIALS',repr(a.trial or pi.TRIALS)).replace('FILES',repr(FILES))
  opts,env,target=pi.transport();result={'proof_relaunched':False,'transport_connections':1,'status':'failed'}
  try:
   with archive.open('xb') as output,(a.job/'private/bundle-ssh.log').open('xb') as err:
    r=subprocess.run(['ssh',*opts,target,shlex.join(['python3','-c',script])],env=env,stdin=subprocess.DEVNULL,stdout=output,stderr=err,timeout=120)
   result['ssh_exit_code']=r.returncode
   if r.returncode==0:
-   names=extract(archive,a.job/'pi-runs',a.tag)
+   names=extract(archive,a.job/'pi-runs',a.tag,a.trial or pi.TRIALS)
    result.update(status='completed' if names else 'blocked',files_collected=names,archive_sha256=hashlib.sha256(archive.read_bytes()).hexdigest())
  except (OSError,ValueError,zipfile.BadZipFile,subprocess.TimeoutExpired) as e:result['reason']=type(e).__name__
  (a.job/'bundle-status.json').write_text(json.dumps(result,indent=2)+'\n')
