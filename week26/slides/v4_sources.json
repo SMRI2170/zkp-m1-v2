@@ -1,0 +1,17 @@
+{
+  "file": "week26/slides/Week26_3つの結果_条件と追加比較_v4.pptx",
+  "sha256": "a234a092ac959ce4729f8f18170adc1756a325fb19f0b413770928814d901e89",
+  "slides": 24,
+  "native_charts": 4,
+  "data_summary": "week26/results/mac-three-findings-paired-20261102/summary.json",
+  "data_summary_sha256": "aa8ffb194ac4684b5029de6714a32e87b367c8744fdc756468ac82384223a6ec",
+  "source_hashes": {
+    "experiments/week26-rssi-privacy/explain_three_results.py": "6bfcaad38a02798af01a1a0d67e6cda5b5097202889b077d625e32d883dd92c7",
+    "experiments/week26-rssi-privacy/simulate3d_independent.py": "fb7ce6365771df223bc97815de1c67dd790ba136cb40bec3d039f373109835d3",
+    "experiments/week26-rssi-privacy/event_scenarios.py": "65a080e5c458521f704280da13431d7a0eaafbdcaf02038e0bd762ce371c7750",
+    "experiments/week26-rssi-privacy/synthetic3d_config.json": "aaebb701917d9d9f681efe09fd892ffb9975e5229b93eef85d2825bb95f132a3",
+    "experiments/week26-rssi-privacy/sensitivity_config.json": "63301cbb97a2a64824cb0c8e7711f9568ced4c228bc70e8283d573af092b0538",
+    "experiments/week26-rssi-privacy/event_scenarios_config.json": "856c7f0f19955d7d81934aea97d047623dc6d886db704f4c17c3c333f0619ea3"
+  },
+  "powerpoint_app_verified": false
+}

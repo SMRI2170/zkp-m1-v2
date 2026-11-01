@@ -1,0 +1,10 @@
+window,metric,reported_percent,recomputed_percent,matches_reported_two_decimals
+1,normal_fpr,4.29,4.285714285714286,True
+1,shift4_tpr,14.36,14.363095238095239,True
+1,shift8_tpr,28.79,28.791666666666664,True
+5,normal_fpr,4.82,4.821428571428572,True
+5,shift4_tpr,21.16,21.160714285714285,True
+5,shift8_tpr,41.04,41.041666666666664,True
+20,normal_fpr,5.65,5.654761904761905,True
+20,shift4_tpr,33.57,33.57142857142857,True
+20,shift8_tpr,58.81,58.80952380952381,True
