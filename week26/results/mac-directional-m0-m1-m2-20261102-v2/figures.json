@@ -1,0 +1,62 @@
+{
+  "figures": [
+    {
+      "name": "01-antenna-model",
+      "caption": "解析式 6(cos(θ−φ)−1) dB。方位のみ、仰角情報なし。実測アンテナパターンではない。"
+    },
+    {
+      "name": "02-model-comparison",
+      "caption": "全受信・雑音SD2dB、20 seed。棒＝平均、線＝seed単位95% bootstrap区間。M0-freeは全保留。"
+    },
+    {
+      "name": "03-distance-direction",
+      "caption": "Fixed global calibration; per-distance normal FPR shown."
+    },
+    {
+      "name": "04-noise-antennas",
+      "caption": "点線＝各構成の正常誤警報率。方向数増加には同時受信チェーン増加が必要。独立雑音の合成条件。"
+    },
+    {
+      "name": "05-robustness",
+      "caption": "基本SD2dB・4方向。受信/量子化は校正にも適用。その他は校正後の変化。各要因の単独ストレスで、実環境再現ではない。"
+    },
+    {
+      "name": "06-asynchronous-local-check",
+      "caption": "各観測は自身の時刻の申告と比較。別時刻の方向を交差させない。ドリフト0.5dB/√時間は仮定値。"
+    },
+    {
+      "name": "07-indoor-empirical-stress",
+      "caption": "固定屋内BLEの残差を独立に再標本化。実UAV・複数アンテナ間相関・RID検知性能の検証ではない。"
+    },
+    {
+      "name": "08-m2-layout",
+      "caption": "同じ軌跡・申告・共通電力・雑音、全5局受信。配置ごとに正常校正。配置と開口の複合比較。"
+    },
+    {
+      "name": "09-displacement-direction",
+      "caption": "SD2dB・4方向・電力同時補償。内向きで受信局を通り越すと方向が反転する。水平真距離は約17～318m。"
+    }
+  ],
+  "sha256": {
+    "04-noise-antennas.svg": "f03c893298954e2e4b5f2587fac1a9ba10f0573bfea49ba7370a132d1327a34b",
+    "06-asynchronous-local-check.png": "9ec5a2aa090185e353fd638c3db80a8db021f825d560a05bd230c32d23fda9b6",
+    "05-robustness.png": "9d9b41054a9310cfdcafd26a330eed9c7c69dfd19788cf4f7175542b2364d77c",
+    "02-model-comparison.svg": "f2f4f9d733157adb05d978b430294fe8f4a3e6d7494af48f3d87a97ce814675c",
+    "02-model-comparison.png": "079fe2eac0c34eecef119e7dd71b597ab4cf8b91e2d1ce5319e41447e49b5cbb",
+    "05-robustness.svg": "90189a8bcb07df87c942783977874246a2fdc124893c80af0101b91b87d93adf",
+    "06-asynchronous-local-check.svg": "097827fba9e75f810c3423e9188821b97647a02f00609099fadac5bc14fc6959",
+    "04-noise-antennas.png": "64854a7d569b6f488c7292ecb963b1d6a9d8f133dfeab155766804b1d8b75d7a",
+    "09-displacement-direction.svg": "ba45bae78a46d978b9b8d4153dd9ece47b763b6d6cc7d88d2b4c08170f365ff6",
+    "07-indoor-empirical-stress.png": "cfa65996f38b2a59c2ef4c5c18f3164e11f6a8ccbc3877969766872dbc612a53",
+    "03-distance-direction.svg": "40ef09bc65329b52eaceb56af3b8f4f0da6617c4dba3615996ba981a174562c8",
+    "08-m2-layout.png": "f041414333492180460c01100c081e5c42b336936322166a4a07e857600abbf8",
+    "01-antenna-model.png": "5c9546e644d5f1e2ab67617caa6cdf49fe31ce3f015b4983a70a0d417c429cf1",
+    "01-antenna-model.svg": "a851cfda6f2f2f7a87faa2dc0be353980d086e44a635e78119b60481f3dfbffb",
+    "08-m2-layout.svg": "cf5364523842b49334a413effd8a8a00d727c49884db337ffb69201b60c97b60",
+    "03-distance-direction.png": "b15600ca0587827893f0fa7821b38fa8036e02565ff85b6f6b079c07eef713c8",
+    "07-indoor-empirical-stress.svg": "dba4ec22b2a36f82dcbb84cbab82b097daa0bcfa5e0797b90b2948b083929a2b",
+    "09-displacement-direction.png": "8d6a5f5e22b526c1dc325f833224569c9f1b0f84457bbcaa3f77b590eda59e01"
+  },
+  "source_summary_sha256": "3946ad1dee1512e7f0fafecdefda0445762830df8b4c5468b4f866a956437760",
+  "script_sha256": "9fb95b6d85f951510fe9bde9ea1f789abfda80773704b21ba21924eafbbf2b17"
+}

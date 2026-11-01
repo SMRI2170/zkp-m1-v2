@@ -1,0 +1,114 @@
+{
+  "schema": "week26-directional-v1",
+  "scope": "Synthetic observation-design study, not measured Remote ID performance",
+  "seeds": [
+    202611600,
+    202611601,
+    202611602,
+    202611603,
+    202611604,
+    202611605,
+    202611606,
+    202611607,
+    202611608,
+    202611609,
+    202611610,
+    202611611,
+    202611612,
+    202611613,
+    202611614,
+    202611615,
+    202611616,
+    202611617,
+    202611618,
+    202611619
+  ],
+  "calibration_flights": 20,
+  "test_flights": 30,
+  "events_per_flight": 60,
+  "observer_xyz_m": [
+    [
+      -100,
+      -70,
+      2
+    ],
+    [
+      85,
+      -90,
+      8
+    ],
+    [
+      110,
+      80,
+      2
+    ],
+    [
+      -80,
+      110,
+      12
+    ],
+    [
+      10,
+      15,
+      5
+    ]
+  ],
+  "path_loss_exponent": 2.2,
+  "reference_received_dbm": -42,
+  "power_sd_db": 8,
+  "claim_gnss_sd_m": 2,
+  "pattern_amplitude_db": 6,
+  "antenna_counts": [
+    2,
+    4,
+    6
+  ],
+  "noise_sd_db": [
+    1,
+    2,
+    4,
+    6
+  ],
+  "shifts_m": [
+    10,
+    30,
+    50,
+    100
+  ],
+  "directions": [
+    "outward",
+    "inward",
+    "tangential"
+  ],
+  "power_modes": [
+    "constant",
+    "random",
+    "joint_unbounded"
+  ],
+  "minimum_calibration_events": 40,
+  "normal_alarm_target": 0.05,
+  "distance_bins_m": [
+    30,
+    100,
+    300
+  ],
+  "async_max_gaps_s": [
+    0,
+    10,
+    3600,
+    86400
+  ],
+  "gain_drift_db_per_sqrt_hour": 0.5,
+  "assumptions": [
+    "M1 simultaneous co-located receive chains measure the same physical packet; switching separate packets is a separate failure experiment",
+    "Analytic azimuth-only antenna pattern 6*(cos(theta-phi)-1) dB; not a measured antenna or reproduction of Han/Jang",
+    "No elevation information, no range from the directional signature, no hardware or BLE capture",
+    "Common scalar transmitter power, honest observers, known observer positions/orientations and event/claim timestamp association",
+    "M0-stat is a distribution-dependent baseline; M0-free profiles out unrestricted power and always abstains",
+    "Calibration/test flights are disjoint; thresholds use only normal calibration data",
+    "Main full-reception comparison omits sensitivity and packet losses; robustness scenarios add them explicitly",
+    "Independent calibration and test GNSS perturbations; no relay/clone/receiver-specific beamforming",
+    "Time gaps are separate local encounters, not simultaneous bearings or a continuous day-long flight",
+    "All trajectories and coordinates are fictional; no true aircraft or observer data"
+  ]
+}
