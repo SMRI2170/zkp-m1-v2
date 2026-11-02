@@ -1,0 +1,107 @@
+{
+  "scope": "Post-run diagnostic, no GP/MLP refit; normal mixed channel only",
+  "per_seed": [
+    {
+      "seed": 202611010,
+      "received": 1594,
+      "constant_prior_median_m": 69.62225697429895,
+      "constant_prior_abs_error_sum_m": 48810.16438856306,
+      "always_far_wrong_count": 39,
+      "within_20_to_40m_count": 53,
+      "true_distance_below_30_count": 39
+    },
+    {
+      "seed": 202611011,
+      "received": 1545,
+      "constant_prior_median_m": 77.73584765621536,
+      "constant_prior_abs_error_sum_m": 42153.75999944908,
+      "always_far_wrong_count": 46,
+      "within_20_to_40m_count": 119,
+      "true_distance_below_30_count": 46
+    },
+    {
+      "seed": 202611012,
+      "received": 1604,
+      "constant_prior_median_m": 81.75753815654608,
+      "constant_prior_abs_error_sum_m": 41166.46304335911,
+      "always_far_wrong_count": 43,
+      "within_20_to_40m_count": 117,
+      "true_distance_below_30_count": 43
+    },
+    {
+      "seed": 202611013,
+      "received": 1545,
+      "constant_prior_median_m": 79.1822672360562,
+      "constant_prior_abs_error_sum_m": 43257.98410285315,
+      "always_far_wrong_count": 73,
+      "within_20_to_40m_count": 103,
+      "true_distance_below_30_count": 73
+    },
+    {
+      "seed": 202611014,
+      "received": 1610,
+      "constant_prior_median_m": 84.1797667220503,
+      "constant_prior_abs_error_sum_m": 47739.550843818826,
+      "always_far_wrong_count": 38,
+      "within_20_to_40m_count": 138,
+      "true_distance_below_30_count": 38
+    },
+    {
+      "seed": 202611015,
+      "received": 1579,
+      "constant_prior_median_m": 83.57696377387785,
+      "constant_prior_abs_error_sum_m": 38867.17155419139,
+      "always_far_wrong_count": 39,
+      "within_20_to_40m_count": 59,
+      "true_distance_below_30_count": 39
+    },
+    {
+      "seed": 202611016,
+      "received": 1612,
+      "constant_prior_median_m": 93.22897976491929,
+      "constant_prior_abs_error_sum_m": 44981.890192717765,
+      "always_far_wrong_count": 47,
+      "within_20_to_40m_count": 174,
+      "true_distance_below_30_count": 47
+    },
+    {
+      "seed": 202611017,
+      "received": 1611,
+      "constant_prior_median_m": 92.82437131844185,
+      "constant_prior_abs_error_sum_m": 47510.77951254671,
+      "always_far_wrong_count": 79,
+      "within_20_to_40m_count": 72,
+      "true_distance_below_30_count": 79
+    },
+    {
+      "seed": 202611018,
+      "received": 1634,
+      "constant_prior_median_m": 83.83164112250148,
+      "constant_prior_abs_error_sum_m": 46559.001161938606,
+      "always_far_wrong_count": 23,
+      "within_20_to_40m_count": 203,
+      "true_distance_below_30_count": 23
+    },
+    {
+      "seed": 202611019,
+      "received": 1550,
+      "constant_prior_median_m": 73.83575475846555,
+      "constant_prior_abs_error_sum_m": 53951.507689125356,
+      "always_far_wrong_count": 38,
+      "within_20_to_40m_count": 51,
+      "true_distance_below_30_count": 38
+    }
+  ],
+  "pooled": {
+    "received": 15884,
+    "constant_prior_median_mae_m": 28.645068779184275,
+    "always_far_wrong_rate": 0.029274741878619996,
+    "within_20_to_40m_fraction": 0.0685595567867036,
+    "below_30m_fraction": 0.029274741878619996
+  },
+  "checks": {
+    "paired_position_only_predictions_identical": true,
+    "main_event_condition_instances": 180000,
+    "main_normal_emitted": 18000
+  }
+}

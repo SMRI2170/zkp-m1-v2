@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "checks": [
+    "position: unique groups, seed counts and denominators valid",
+    "synchronous: unique groups, seed counts and denominators valid",
+    "asynchronous: unique groups, seed counts and denominators valid",
+    "time: unique groups, seed counts and denominators valid",
+    "personalization: unique groups, seed counts and denominators valid",
+    "single-RX same-range controls exactly match normal alarms",
+    "single RX has zero profiled unknown-power position information",
+    "async position-only claims cannot change RSSI-only GP predictions",
+    "RID cold-start models equal the shared predictor"
+  ],
+  "source_hash_matches": true
+}

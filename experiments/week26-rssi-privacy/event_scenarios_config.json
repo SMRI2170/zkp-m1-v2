@@ -1,0 +1,33 @@
+{
+  "schema": "week26-common-event-v1",
+  "scope": "Synthetic conditions and counterexamples, not measured RID detection performance",
+  "seeds": [202611500, 202611501, 202611502, 202611503, 202611504, 202611505, 202611506, 202611507, 202611508, 202611509],
+  "calibration_flights": 20,
+  "test_flights": 30,
+  "events_per_flight": 240,
+  "event_spacing_s": 0.5,
+  "observer_xyz_m": [[-100, -70, 2], [85, -90, 8], [110, 80, 2], [-80, 110, 12], [10, 15, 5]],
+  "path_loss_exponent": 2.2,
+  "reference_received_dbm": -42,
+  "flight_power_sd_db": 3,
+  "per_event_power_sd_db": 8,
+  "receiver_calibration_residual_sd_db": 0.8,
+  "link_noise_sd_db": [2, 6],
+  "coverage_distance_m": 160,
+  "scan_drop_probability": 0.15,
+  "minimum_calibration_events_per_subset": 40,
+  "normal_alarm_target": 0.05,
+  "claim_displacements_m": [0, 10, 30, 50, 100],
+  "pairing_spread_s": [0, 0.5, 1, 5, 15],
+  "upload_spread_s": [0, 5, 60],
+  "assumptions": [
+    "One physical transmitter; no relay, clone or receiver-specific beamforming",
+    "Correct physical event association is an oracle in full/partial modes",
+    "Observers report honestly; positions and exponent known; receiver residual fixed across calibration/test",
+    "Coverage is geometry plus independent scan deletion, not power-dependent RF sensitivity",
+    "Gaussian independent link noise, no NLOS, no quantization, no empirical RF calibration",
+    "Normal claimed position equals true position; no normal GNSS error",
+    "A statistic rejects inconsistency only; it does not attribute attack cause or authenticate aircraft",
+    "All coordinates, power values and trajectories are fictional"
+  ]
+}

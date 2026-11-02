@@ -1,0 +1,20 @@
+{
+  "scope": "Saved evidence/code verification, not operational RF validation",
+  "passed": 14,
+  "checks": [
+    "saved input/output hashes",
+    "current simulator/config/loader source hashes",
+    "all groups have independent-seed support",
+    "aggregate counts and seed-rate means",
+    "valid counts and bootstrap endpoints",
+    "M0-free is explicitly undefined/all-abstention",
+    "every per-seed rate agrees with integer counts",
+    "common power modes leave full-reception M1/M2 decisions invariant",
+    "timestamp gap alone does not create information/change local decisions",
+    "analytic radial, mirror and arbitrary-power counterexamples",
+    "no threshold fitted on unsupported masks",
+    "indoor public data hash provenance and held-out sectors",
+    "history aggregation threshold ordering",
+    "figure evidence source and image hashes"
+  ]
+}

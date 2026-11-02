@@ -1,0 +1,134 @@
+{
+  "files": [
+    {
+      "path": "experiments/week26-rssi-privacy/audit_public_lora.py",
+      "bytes": 3757,
+      "sha256": "fc4b426a152fbb57a7f5c6e5df90f02a1adea6363a7eab1406cbe520eb1d5765"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/plot_public_lora.py",
+      "bytes": 4990,
+      "sha256": "7cbd2fb5d8f134e2ba9785787b3c6b5a319bcbc815b7c1683cb51055e310bf71"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/recheck_lora.py",
+      "bytes": 17361,
+      "sha256": "9f7166fde65ed6c5268146dd997e28c4694ed1608429f1fb5c95cbd0e9369d86"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/test_recheck_lora.py",
+      "bytes": 2338,
+      "sha256": "2ecba092e40de0db1c082eb67b4ee9d18c26fc2c24ddf9737b609f3c697703b1"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/audit.json",
+      "bytes": 700,
+      "sha256": "b002297273fc775e3834eb6a90a169a81f2ae19d213f0fdbd4067967efa18c85"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/dataset-candidates.json",
+      "bytes": 949,
+      "sha256": "6bcdc946f41ce2995935992962340683f42e75db75aeaa352da3292b52d44041"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/delay-fold-metrics.csv",
+      "bytes": 17614,
+      "sha256": "b19a8a50dd0d92de1acc30d7f357ba6082cbe3e78f01ad477e01bb7c58cceefd"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/delay-summary.csv",
+      "bytes": 386,
+      "sha256": "16f5d39a8a2250d0d90fe5ce6dfe41151b51be1c2751eb6b960ac7ac216732af"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/dropout-fold-seed-metrics.csv",
+      "bytes": 621147,
+      "sha256": "14a1d881a43cace96a1630b0c532a7a6dfa370a8f91efee0f856a0021d3bd263"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/dropout-summary.csv",
+      "bytes": 1182,
+      "sha256": "d411a522a7d9b4a65005a8df76b34863f03d7728186651eddbb2be6d9dd4e1d5"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/inventory.csv",
+      "bytes": 4773,
+      "sha256": "4b016407d5f9d0ca530bf6bbdf3467eb17d01d393c63e2cb15505a6021cdcee2"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/lora-additional-dropout.png",
+      "bytes": 140128,
+      "sha256": "798df68725ce619095bdabd11b72a897873a0d210361124a386fd4198409b792"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/lora-additional-dropout.svg",
+      "bytes": 68251,
+      "sha256": "60ffa5e0899089268ab5842a4c15ac7af9aa4e0461fd499206e7c2c54e20a631"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/lora-pairing-delay.png",
+      "bytes": 102174,
+      "sha256": "6c0b1d7b0f8d12b3bae0e44f707f06fc44743650fb3d704a9fbc3b95da4e3ea2"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/lora-pairing-delay.svg",
+      "bytes": 58219,
+      "sha256": "11c73452ecada450af455b72b51435b71e8ead6f253638e6fcc55383ced0179e"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/lora-power-counterexample.png",
+      "bytes": 83666,
+      "sha256": "2070956936613862f94f0e09dc94d4c9bac0bc1cde98416d94feb9a647dd616e"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/lora-power-counterexample.svg",
+      "bytes": 55277,
+      "sha256": "9d659bc81b974c39b61705e99d4887dbc08c1c4c2acbca0b10ee723caaf0d54c"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/lora-window-and-baseline.png",
+      "bytes": 104294,
+      "sha256": "50a79bb2fc0fbcad29d5699306e7192e34b91a4c968215d59b5b3d3e4c8d4acf"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/lora-window-and-baseline.svg",
+      "bytes": 66209,
+      "sha256": "c051b00cfdd026f1d6101518f7f9cde1e7ef1682311e2c2e5c22672d8d384585"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/model-fits.csv",
+      "bytes": 3684,
+      "sha256": "b365ae8f3da6cd43d15dc8cf51da9ed8fd3707609218acec082a9e267b9c6342"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/python-packages.txt",
+      "bytes": 303,
+      "sha256": "bfba983c28a31c2f7a31a5897edad13c08c8ffbd286cd9d12887a817e75c2520"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/residual-dependence.csv",
+      "bytes": 1808,
+      "sha256": "2a19a56698fb448e7ad32f8af41fba6e236761e32b3b036985e5e11542c6dac4"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/status.json",
+      "bytes": 36,
+      "sha256": "ba8cfa5e6516a8c9d8e51e28ce884f73e32a486af438337ff8679a0b8728c70f"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/summary.json",
+      "bytes": 26740,
+      "sha256": "1fef460d53bf03d10518b30103edbee11f164224319e1420d75c894e73ca8c22"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/window-fold-metrics.csv",
+      "bytes": 192157,
+      "sha256": "e77c98f455177636c425d2a341f47dccb578a54dd95cf24015684918403b1072"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/window-summary.csv",
+      "bytes": 3449,
+      "sha256": "fac9fc2be2c8eb507981ff34827c2da74076dece5ab0a18d3ab0028a4d856223"
+    }
+  ]
+}

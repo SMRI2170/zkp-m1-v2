@@ -1,0 +1,340 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {createRequire} from 'node:module';
+import {pathToFileURL} from 'node:url';
+const ROOT=process.cwd();
+const CACHE=path.join(ROOT,'.cache/week26-slides');
+const RUNTIME='/Users/shivio/.cache/codex-runtimes/codex-primary-runtime/dependencies';
+const SKILL='/Users/shivio/.codex/plugins/cache/openai-primary-runtime/presentations/26.1022.11436/skills/presentations';
+const req=createRequire(path.join(RUNTIME,'node/node_modules/__runtime__.cjs'));
+const {PresentationFile,FileBlob}=await import(pathToFileURL(req.resolve('@oai/artifact-tool')).href);
+const {makeNativeBulletParagraphs,applyPresentationChartFont}=await import(pathToFileURL(path.join(SKILL,'container_tools/artifact_tool_utils.mjs')).href);
+const D=JSON.parse(await fs.readFile(path.join(CACHE,'slide-data.json'),'utf8'));
+const REF=path.join(ROOT,'week24/slides/references/第24回進捗_HyperNovaとNova_環境構築_実装.pptx');
+const F='Hiragino Kaku Gothic ProN W3', H='Hiragino Kaku Gothic ProN W6';
+const C={black:'#282629',blue:'#2F64A1',head:'#2B5581',light:'#EDF3F7',red:'#E02B2B',gray:'#7B8591',pale:'#BDC5CF',green:'#00867C'};
+const E='mac-event-scenarios-20261101';
+const L='mac-public-lora-20261101';
+const S='mac-sensitivity-20261101-v2';
+const R='mac-robustness-20261101';
+const src=(folder,file,scope='合成10 seed')=>`出典：${folder} / ${file}（${scope}）`;
+let P, template, coverTemplate, log=[];
+const X=JSON.parse(await fs.readFile(path.join(CACHE,'professor-extra-data.json'),'utf8'));
+function shape(sl,g,x,y,w,h,fill='none',stroke='none',sw=0){return sl.shapes.add({geometry:g,position:{left:x,top:y,width:w,height:h},fill,line:{fill:stroke,width:sw,style:'solid'}});}
+function txt(sl,t,x,y,w,h,size=24,color=C.black,bold=false,align='left'){
+ const o=shape(sl,'textbox',x,y,w,h);o.text=t;o.text.style={typeface:bold?H:F,fontSize:size,bold,color,alignment:align,verticalAlignment:'top',autoFit:'none',wrap:'square',insets:0};return o;
+}
+function ln(sl,x1,y1,x2,y2,color=C.blue,width=2){const o=shape(sl,'line',Math.min(x1,x2),Math.min(y1,y2),Math.abs(x2-x1)||.1,Math.abs(y2-y1)||.1,'none',color,width);if((x2-x1)*(y2-y1)<0)o.position={...o.position,left:Math.min(x1,x2),top:Math.min(y1,y2),width:Math.abs(x2-x1)||.1,height:Math.abs(y2-y1)||.1,verticalFlip:true};return o;}
+function para(sl,items,x=44,y=175,w=870,size=24,marker='•',color=C.black){
+ const units=t=>[...t].reduce((a,c)=>a+(c.charCodeAt(0)<128?.55:1),0);
+ const rows=items.reduce((a,t)=>a+Math.max(1,Math.ceil(units(t)/((w-42)/size))),0);
+ const height=rows*(size*1.38)+items.length*10+12;
+ const o=shape(sl,'textbox',x,y,w,height);o.text=makeNativeBulletParagraphs(items,{marginLeftPoints:22.5,hangingPoints:15,spaceAfterPoints:6,bulletCharacter:marker});
+ o.text.style={typeface:F,fontSize:size,color,autoFit:'none',insets:0};return height;
+}
+function section(sl,title,items,y=175,size=24){
+ const a=shape(sl,'textbox',44,y,870,34);a.text=makeNativeBulletParagraphs([title],{marginLeftPoints:20,hangingPoints:20,spaceAfterPoints:0,bulletCharacter:'■'});
+ a.text.style={typeface:H,fontSize:25,bold:true,color:C.blue,autoFit:'none',insets:0};
+ return y+40+para(sl,items,47,y+40,862,size);
+}
+function note(sl,items,y=543){return para(sl,items,45,y,867,22);}
+function footer(sl,t){if(t)txt(sl,t,44,674,840,34,11.8,C.gray);}
+function base(title,lead='',source=''){
+ const sl=template.duplicate();
+ for(const o of sl.shapes.items){
+  if(o.name==='TextBox 2'){o.text=title;o.position={left:42,top:10,width:876,height:52};o.text.style={typeface:H,fontSize:34,bold:true,color:C.black,autoFit:'none',insets:0};}
+  else if(o.name==='TextBox 4'){o.text=lead;o.position={left:60,top:83,width:850,height:60};o.text.style={typeface:H,fontSize:24,bold:true,color:C.blue,autoFit:'none',insets:0};}
+  else if(o.name==='正方形/長方形 6')o.text='';
+ }
+ sl.speakerNotes.text='';footer(sl,source);log.push({slide:sl,key:null,title,source});return sl;
+}
+function page(title,lead,groups,source=''){
+ const sl=base(title,lead,source);let y=165;
+ for(const [head,items] of groups)y=section(sl,head,items,y,24)+18;
+ return sl;
+}
+function table(sl,values,{x=42,y=160,w=876,h,columns}={}){
+ h??=Math.min(380,values.length*53);
+ const t=sl.tables.add({rows:values.length,columns:values[0].length,left:x,top:y,width:w,height:h,values,columnWidths:columns??Array(values[0].length).fill(w/values[0].length)});
+ t.borders.assign({style:'solid',fill:'#B7BEC7',width:.6});
+ for(let r=0;r<values.length;r++)for(let c=0;c<values[0].length;c++){
+  const cell=t.getCell(r,c);cell.fill=r===0?C.head:(r%2===1?'#FFFFFF':C.light);
+  cell.text.style={typeface:r===0?H:F,fontSize:r===0?23:21,color:r===0?'#FFFFFF':C.black,bold:r===0,verticalAlignment:'middle',alignment:'left',insets:{left:10,right:8,top:7,bottom:5},autoFit:'none'};
+ }
+ return t;
+}
+function chart(sl,{title,categories,series,type='bar',max=100,min=0,ytitle='警報率（%）',x=60,y=153,w=840,h=370,stack=false,labels=true}){
+ const lines=type==='line'||type==='scatter';const o=sl.charts.add(type,{
+  position:{left:x,top:y,width:w,height:h},title,titleTextStyle:{fontSize:20,fill:C.black},categories,
+  series:series.map((s,i)=>({...s,values:s.values.map(v=>Number(v.toFixed(6))),smooth:false,fill:s.fill??[C.blue,'#8CA7C3',C.red,C.green][i%4],line:lines?{fill:s.fill??[C.blue,'#8CA7C3',C.red,C.green][i%4],width:2}:undefined,marker:lines?{symbol:'circle',size:6}:undefined,dataLabels:stack?{showValue:true,position:'center',numberFormatCode:'0.00',textStyle:{fontSize:17,fill:i===2?C.black:'#FFFFFF'}}:undefined,dataLabelOverrides:stack?s.values.flatMap((v,j)=>v===0||v<6?[{idx:j,showValue:false}]:[]):undefined})),
+  chartFill:'#FFFFFF',plotAreaFill:'#FFFFFF',hasLegend:series.length>1,
+  legend:{position:'bottom',textStyle:{fontSize:17,fill:C.black}},
+  barOptions:{direction:'column',grouping:stack?'stacked':'clustered',gapWidth:100,overlap:stack?100:0},
+  lineOptions:{smooth:false},
+  scatterOptions:type==='scatter'?{style:'lineWithMarkers'}:undefined,
+  xAxis:{...(type==='scatter'?{min:0,max:100,majorUnit:20,title:{text:'水平位置の改変量（m）',textStyle:{fontSize:18,fill:C.black}}}:{}),tickLabelPosition:'low',textStyle:{fontSize:18,fill:C.gray},line:{fill:'#C9D0D8',width:1},majorGridlines:null},
+  yAxis:{min,max,majorUnit:min<0?1:max<=20?5:max<=50?10:max<=150?20:undefined,crossesAt:min,title:{text:ytitle,textStyle:{fontSize:18,fill:C.black}},numberFormatCode:'0',textStyle:{fontSize:17,fill:C.gray},majorGridlines:{fill:'#E8ECF0',width:.7},line:{fill:'none',width:0}},
+  dataLabels:{showValue:labels&&!lines,position:stack?'center':'outEnd',numberFormatCode:'0.0',textStyle:{fontSize:17,fill:C.black}}
+ });applyPresentationChartFont(o,{fontFamily:F});for(const se of o.series.items)if(se.dataLabels?.textStyle)se.dataLabels.textStyle.typeface=F;return o;
+}
+const pc=x=>100*x,fmt=(x,n=1)=>Number(x).toFixed(n);
+const ev=(mode,name,sd=2)=>D.events.cases.find(r=>r.mode===mode&&r.case===name&&r.noise_sd_db===sd);
+function select(rows,criteria){const r=rows.find(r=>Object.entries(criteria).every(([k,v])=>String(r[k])===String(v)));if(!r)throw Error('Missing source row '+JSON.stringify(criteria));return r;}
+function dot(sl,x,y,label,color=C.blue){shape(sl,'ellipse',x-10,y-10,20,20,color);txt(sl,label,x-68,y+17,140,50,22,color,false,'center');}
+function scene(sl,kind='scenario'){
+ txt(sl,'地上の観測ノード',70,445,800,35,22,C.blue);
+ for(const [i,x] of [160,455,760].entries()){shape(sl,'rect',x-17,405,34,28,C.blue);txt(sl,['A','B','C'][i],x-15,408,30,30,22,'#FFFFFF',true,'center');}
+ shape(sl,'ellipse',370,205,20,20,C.blue);shape(sl,'ellipse',670,205,20,20,C.red);
+ txt(sl,'実際の位置',275,167,210,35,22,C.blue,false,'center');txt(sl,'RIDの申告位置',565,167,230,35,22,C.red,false,'center');
+ ln(sl,395,215,660,215,C.red,2);txt(sl,'位置のずれ',475,240,160,35,22,C.red);
+ for(const x of [160,455,760])ln(sl,380,235,x,390,'#8CA7C3',1.7);
+ if(kind==='terms'){txt(sl,'機体から届く情報\n「ここにいる」という位置の申告',480,500,420,85,23);txt(sl,'ノードが測るRSSI\n受信した電波の強さ',50,500,400,85,25,C.blue);}
+ else note(sl,['機体の位置申告と送信電力を信用しない想定','ノードの位置・RSSI報告が適切であることは別の前提'],515);
+}
+function ambiguity(sl){
+ for(const [j,x] of [65,515].entries()){
+  txt(sl,j?'近い場所から弱く送信':'遠い場所から強く送信',x,175,380,40,25,C.blue,true);
+  dot(sl,x+65,j?330:235,'機体',C.blue);shape(sl,'rect',x+260,400,40,30,C.blue);txt(sl,'受信機',x+220,445,135,38,23);
+  ln(sl,x+80,j?340:250,x+275,390,'#8CA7C3',2);
+  txt(sl,'同じ受信強度になる場合',x,505,380,45,24,C.red,true);
+ }
+ note(sl,['RSSIが同じでも、距離と送信電力の組合せは一つに決まらない'],585);
+}
+function overlap(sl,mode='all'){
+ const plans=mode==='all'?Array.from({length:5},()=>[0,1,2,3,4]):mode==='partial'?[[0,1],[1],[1,2,3],[3],[2,4]]:[[0],[1],[2],[3],[4]];
+ for(let i=0;i<5;i++)txt(sl,String.fromCharCode(65+i),80,177+i*57,70,35,23,C.blue,true);
+ for(let e=0;e<5;e++){
+  const x=250+e*135,ns=plans[e],color=ns.length>1?C.blue:C.gray;
+  if(ns.length>1)ln(sl,x,190+ns[0]*57,x,190+ns.at(-1)*57,'#91AFC9',3);
+  for(const n of ns)shape(sl,'ellipse',x-9,181+n*57,18,18,color);
+  txt(sl,'e'+e,x-25,493,70,30,20,C.black);
+  txt(sl,ns.length>1?'検査':'保留',x-40,535,90,30,22,color,true,'center');
+ }
+ txt(sl,'同じ列＝同じ物理送信　／　別の列＝別送信',170,595,700,35,23,C.blue);
+}
+function timing(sl){
+ txt(sl,'同じ送信・提出だけ遅い',44,170,850,34,25,C.blue,true);
+ for(let i=0;i<2;i++){
+  txt(sl,['A','B'][i],70,230+i*65,40,35,24);ln(sl,140,245+i*65,850,245+i*65,'#CBD2DA',1);
+  dot(sl,230,245+i*65,'受信e0');dot(sl,i?740:360,245+i*65,'提出',i?C.red:C.blue);
+ }
+ txt(sl,'別の送信を受信',44,425,850,35,25,C.blue,true);
+ for(let i=0;i<2;i++){
+  txt(sl,['A','B'][i],70,485+i*65,40,35,24);ln(sl,140,500+i*65,850,500+i*65,'#CBD2DA',1);
+  dot(sl,i?650:230,500+i*65,i?'受信e1':'受信e0',i?C.red:C.blue);
+ }
+}
+function geometry(sl,result=false){
+ const cx=result?240:290,cy=340,r=result?125:150;
+ shape(sl,'ellipse',cx-r,cy-r,2*r,2*r,'none','#BEC9D6',2);
+ [[1,0],[0,-1],[-1,0],[0,1]].forEach(([a,b],i)=>{shape(sl,'rect',cx+a*r-11,cy+b*r-11,22,22,C.blue);txt(sl,'ABCD'[i],cx+a*r+16,cy+b*r-13,40,28,22);});
+ txt(sl,'中心上空の2つの候補',70,530,355,32,23,C.blue);txt(sl,'半径100m・地上4台',70,570,355,32,22);
+ if(result){
+  const c=D.events.counterexamples.circle;
+  chart(sl,{title:'全4台のRSSIが一致',categories:['A','B','C','D'],series:[{name:'正常：高度80m',values:c.truthful_rssi_dbm,fill:C.blue},{name:'偽装：高度20m',values:c.attack_rssi_dbm,fill:C.red}],type:'line',x:470,y:170,w:430,h:350,min:-91,max:-86,ytitle:'RSSI（dBm）',labels:false});
+  txt(sl,'偽装側の基準電力：−2.18dB\n位置が違っても同じ観測',485,550,410,85,24,C.red,true);
+ }else{
+  txt(sl,'両方のRID申告：高度80m',535,180,380,40,24,C.blue,true);
+  dot(sl,605,270,'正常：実高度80m',C.blue);dot(sl,605,450,'偽装：実高度20m',C.red);
+  ln(sl,605,290,605,425,'#CBD2DA',2);txt(sl,'電力も変えると\n見分けられるか？',660,340,245,85,25,C.red,true);
+ }
+}
+function dataSetup(sl){
+ const cfg=D.events.config,xyz=D.synthetic_example_xyz;
+ const chartObj=sl.charts.add('scatter',{position:{left:45,top:170,width:505,height:350},title:'共通の架空軌跡と5台配置',titleTextStyle:{fontSize:19,fill:C.black},series:[{name:'観測ノード',xValues:cfg.observer_xyz_m.map(p=>p[0]),values:cfg.observer_xyz_m.map(p=>p[1]),marker:{symbol:'square',size:9,fill:C.blue},line:{fill:'none',width:0}},{name:'機体の軌跡例',xValues:xyz.map(p=>p[0]),values:xyz.map(p=>p[1]),marker:{symbol:'none'},line:{fill:'#8CA7C3',width:2}}],hasLegend:true,legend:{position:'bottom',textStyle:{fontSize:16}},xAxis:{min:-200,max:200,crossesAt:-200,tickLabelPosition:'low',title:{text:'東西（m）',textStyle:{fontSize:16}},textStyle:{fontSize:15}},yAxis:{min:-200,max:200,crossesAt:-200,tickLabelPosition:'low',title:{text:'南北（m）',textStyle:{fontSize:16}},textStyle:{fontSize:15},majorGridlines:{fill:'#E8ECF0',width:.7}},scatterOptions:{style:'lineWithMarkers'}});
+ applyPresentationChartFont(chartObj,{fontFamily:F});
+ table(sl,[['項目','設定'],['機体','共通の3D軌跡'],['観測','0.5秒間隔・5台'],['電力','未知・送信ごとに変動'],['雑音','SD2／6dB'],['反復','10 seed']],{x:575,y:175,w:335,h:330,columns:[95,240]});
+ note(sl,['受信範囲は幾何とスキャン欠測の簡略モデル','正常位置誤差・NLOS・実際の時計誤差は未導入'],550);
+}
+const BANK={};
+const define=(key,fn)=>BANK[key]=fn;
+const cap=(title,subtitle)=>{
+ const sl=coverTemplate.duplicate();for(const o of sl.shapes.items)if(o.text)o.text='';sl.speakerNotes.text='';
+ txt(sl,title,90,215,780,150,36,C.black,false,'center');txt(sl,'進捗報告　第26回',160,390,640,45,27,C.gray,false,'center');txt(sl,subtitle,100,455,760,100,23,C.gray,false,'center');
+ log.push({slide:sl,title,source:''});return sl;
+};
+define('coverA',()=>cap('RSSIによる位置偽装検知の調査・評価','公開実測の再解析と複数ノードの合成評価'));
+define('coverB',()=>cap('RSSIから位置偽装を検知できるか？','送信電力が分からない・変わる状況での検証'));
+define('agendaA',()=>page('目次','研究の前提、公開実測、複数ノード評価、到達点',[['研究の問いと成立条件',['位置と送信電力の曖昧さ、関連研究の前提']],['公開実測と合成評価',['BLE・LoRa再解析、複数ノードの検知率と限界']],['まとめと今後',['検査できる条件と、実RIDで追加確認する事項']]]));
+define('agendaB',()=>page('目次','「RSSIから位置偽装を検知できるか」に答える流れ',[['なぜ難しいか',['位置の変化と、送信電力の変更の曖昧さ']],['どんな条件なら検査できるか',['同じ送信を複数地点で受ける意味']],['実験でどこまで分かったか',['検知できる例、保留する例、区別できない例']]]));
+define('work',()=>{const sl=base('第26回の作業内容','位置偽装検知の前提から、再現可能な評価まで');table(sl,[['区分','作業内容'],['調査','RSSI・未知電力・異時刻観測の成立条件'],['実測解析','公開BLE・UAV受信LoRaの取得と再解析'],['実装','共通軌跡・複数ノード・保留を含む判定'],['評価','位置改変、電力変更、雑音、時刻差、配置'],['資料','CSV・JSON・日本語図と結果の整理']],{columns:[155,721]});note(sl,['新しい実RID計測・ZKP回路の実装は今回の対象外'],560);return sl;});
+define('answer',()=>page('今回の答え','RSSIから位置偽装を検知できる場面はある',[['検査に使える条件',['同じ送信を複数地点で受信し、観測とモデルが適切']],['検知率を下げる要因',['電波の揺らぎ、受信の不足、配置や時刻の誤対応']],['現在の限界',['別送信を単独受信し、電力が毎回自由なら一般に判定不可']]],'今回の複数ノードの検知率は合成評価。実RIDでの実証ではない。'));
+define('scenario',()=>{const sl=base('想定する位置偽装','施設周辺を通過する機体の「ここにいる」という申告を調べる');scene(sl);return sl;});
+define('terms',()=>{const sl=base('Remote IDの位置とRSSI','位置は機体の申告、RSSIは受信側で測る電波の強さ');scene(sl,'terms');return sl;});
+define('factors',()=>page('電波の強さを変える要因','RSSIは、距離だけで決まる値ではない',[['距離と送信電力',['遠いほど弱くなる傾向と、強く送れば強く届く効果']],['電波の通り方',['遮蔽物、反射、アンテナの向きによる変化']],['受信する側の違い',['端末の感度や校正差による変化']]],'簡略モデルの要因整理。各要因を今回のシミュレーションが全て再現しているわけではない。'));
+define('ambiguous',()=>{const sl=base('位置と送信電力の曖昧さ','同じRSSIから、位置と電力の組合せを一つに決められない');ambiguity(sl);return sl;});
+define('disjointIntro',()=>{const sl=base('異時刻・単独受信での限界','各送信の電力が自由なら、ノードや件数を増やすだけでは不足');overlap(sl,'single');return sl;});
+define('timing',()=>{const sl=base('受信した送信の違いと提出時刻','「後から提出」と「別の送信を受信」を区別');timing(sl);return sl;});
+define('common',()=>{const sl=base('追加条件：同じ送信の複数受信','共通電力を除く検査。元の非同時条件から観測を追加');
+ txt(sl,'AのRSSI − BのRSSI',90,175,800,50,34,C.blue,true,'center');
+ txt(sl,'同じ送信なら、共通の送信電力成分を除去',80,250,800,50,27,C.red,true,'center');
+ txt(sl,'Δr = −10n log₁₀(dA / dB) ＋ 誤差',65,345,835,55,32,C.black,false,'center');
+ txt(sl,'dA・dB：申告位置から各ノードまでの距離\nn：距離による減衰を表す係数',105,425,750,75,23);
+ note(sl,['送信ごとに電力が変わっても、同じ送信内では共通','向き・遮蔽・受信機差まで消えるわけではない'],545);
+ footer(sl,'関連：Hu & Leus, IEEE TSP 2017, DOI:10.1109/TSP.2017.2684741');return sl;});
+define('observationConditions',()=>{const sl=base('検査に使う観測の条件','同じRID文字列だけでは、同じ物理送信とは限らない');table(sl,[['条件','必要な確認'],['送信の対応','同じ物理送信を受けた記録か'],['受信の重なり','1送信について複数地点のRSSIがあるか'],['ノードの観測','位置・RSSI・時計の扱いは適切か'],['伝搬と配置','誤差の校正と、区別しにくい配置の確認']],{columns:[200,676]});note(sl,['受信が1台以下、または校正不足の組は判定保留'],550);return sl;});
+define('scenarios',()=>{const sl=base('評価する3つの観測シナリオ','受信の重なりで、検査できる範囲が変わる');table(sl,[['シナリオ','1送信の受信','今回の扱い'],['全重複','常に5台','全イベントを検査'],['一部重複','0〜5台','複数受信と校正がある組を検査'],['完全非重複','最大1台','自由電力の位置判定は保留']],{columns:[180,210,486]});note(sl,['全ノードが同じ一本の機体軌跡を参照','提出時刻と、電波を受信したイベントは別に管理'],520);return sl;});
+define('related',()=>{const sl=base('関連研究と今回の前提','未知電力を扱う研究でも、観測を共有する条件が重要');table(sl,[['関連研究','扱う内容','今回との境界'],['GhostBuster','RSSによるRID位置偽装の検知','複数観測者は実測チャネルから拡張'],['DRSS','受信強度差による未知電力の扱い','共通電力と受信ごとの電力差を区別'],['今回の問い','別時刻・変動電力・受信の重なり','何が不足すると判定できないか']],{columns:[170,310,396],h:310});note(sl,['完全非重複・毎送信の自由電力を無条件に解決した結果とは扱わない'],535);footer(sl,'Keizer et al., CCNC 2024, DOI:10.1109/CCNC51664.2024.10454860\nHu & Leus, IEEE TSP 2017, DOI:10.1109/TSP.2017.2684741');return sl;});
+define('evidence',()=>{const sl=base('今回使用したデータの区分','実測で確認する注意点と、合成で検証する成立条件');table(sl,[['データ','実際に測った内容','今回確認すること'],['屋内BLE実測','固定ビーコン→スマホのRSSI','揺らぎ・出力設定差'],['LoRa実測','固定送信機→移動するUAV','時刻対応・観測集約'],['複数ノード合成','架空の機体軌跡とRSSI','位置改変の検知・保留・反例']],{columns:[200,325,351],h:315});note(sl,['実UAVのBLE／Wi-Fi RIDを複数台で同時取得した実測ではない'],540);return sl;});
+define('ble',()=>{const sl=base('公開BLE実測におけるRSSI変動','出力設定差とRSSI差が、そのまま一致するとは限らない', '出典：manwestc/ble-rssi-indoor-localization-dataset、固定版 b38a9a4（屋内BLE実測）');
+ const a=D.ble.paired_setting_shifts;chart(sl,{title:'出力設定差と、RSSI中央値差',categories:['−8 → −4dBm','−4 → 0dBm','−8 → 0dBm'],series:[{name:'出力設定差',values:a.map(r=>r.nominal_shift_db),fill:C.blue},{name:'RSSI中央値差',values:a.map(r=>r.median_rssi_shift_db),fill:'#8CA7C3'}],max:10,ytitle:'差（dB）'});
+ note(sl,['同じ地点・ビーコンの組を比較。測定セッションの違いも含む','位置・環境を固定した電力だけの因果効果とは断定しない'],550);return sl;});
+define('loraSetup',()=>{const sl=base('公開UAV・LoRaデータの構成','実飛行中のRSSIと位置参照を使った再解析','出典：Mavilia et al., Data in Brief 2025, DOI:10.1016/j.dib.2025.112243\nデータ：Zenodo v2, DOI:10.5281/zenodo.17339095');table(sl,[['項目','内容'],['送信・受信','雪中の固定LoRa送信機 → UAV上の受信機'],['件数','19条件・142,039件（公開論文の件数と一致）'],['分割','3 runがある16条件、学習／校正／評価を分離'],['距離','位置参照・高度から平坦地の斜距離を近似'],['対象の違い','868MHz LoRa。BLE Remote IDではない']],{columns:[170,706],h:360});note(sl,['複数地上ノードで同じRID送信を受けた実測ではない'],560);return sl;});
+define('loraWindow',()=>{const sl=base('LoRa実測の観測集約と距離誤差','観測をまとめても、距離誤差の改善は小さめ',src(L,'window-summary.csv','公開LoRa実測の再解析'));
+ const a=D.lora.window.filter(r=>r.radial_range_shift_m===0);chart(sl,{title:'中央値集約と距離誤差',categories:['1件','5件','20件'],series:[{name:'RSSI距離モデル',values:a.map(r=>r.mae_m)},{name:'RSSIなし・学習距離中央値',values:a.map(r=>r.prior_mae_m),fill:'#8CA7C3'}],max:50,ytitle:'距離近似値に対するMAE（m）'});
+ note(sl,['16条件・48分割を等重み平均。距離は地形を簡略化した近似','連続する観測を、独立した反復試験とは扱わない'],550);return sl;});
+define('loraDelay',()=>{const sl=base('LoRa実測の時刻対応と誤警報','古いRSSIを現在位置と比較すると、正常でも警報が増える',src(L,'delay-summary.csv','実測系列への人工時刻ずれ'));
+ chart(sl,{title:'RSSIの古さと正常誤警報率',categories:D.lora.delay.map(r=>r.requested_delay_s+'秒'),series:[{name:'正常誤警報率',values:D.lora.delay.map(r=>pc(r.normal_fpr))}],type:'line',max:30,ytitle:'正常誤警報率（%）'});
+ note(sl,['15秒ずれでは約23.2%。全遅延で同じ評価時刻を使用','実RIDの複数ノード融合を測定した結果ではない'],550);return sl;});
+define('setup',()=>{const sl=base('複数ノード合成評価の条件','未知・変動電力を持つ一本の飛行を、複数地点で観測',src(E,'config.json'));dataSetup(sl);return sl;});
+define('metrics',()=>{const sl=base('検知・誤警報・判定保留','警報が出た割合だけでなく、判定できた割合も評価');table(sl,[['入力と出力','意味'],['位置を改変した入力 → 警報','合成実験での位置偽装の検知'],['正常な入力 → 警報','正常時の誤警報'],['観測・校正が不足 → 保留','位置が正しいとも、偽装とも判断しない'],['判定可能部分の検知率','判定できたイベントだけを分母にする'],['全送信中の検知割合','保留を含む全送信を分母にする']],{columns:[390,486],h:350});note(sl,['正常校正の95%点を閾値に設定。評価飛行とは分離'],550);return sl;});
+define('power',()=>{const sl=base('共通電力の変更と警報率','電力変更だけで位置偽装と誤認しないか',src(E,'cases-summary.csv'));
+ const names=['normal','power_plus16','power_random16'];chart(sl,{title:'同一送信を5台受信・雑音SD2dB',categories:['正常','電力 +16dB','送信ごとに追加変動'],series:[{name:'正常への警報',values:names.map(n=>pc(ev('full',n).conditional_alarm_fraction))}],max:20,ytitle:'正常時の誤警報率（%）'});
+ note(sl,['3条件とも約5%。共通電力の変更はスコアから除去','電力変更そのものや、申告電力の虚偽を検知した結果ではない'],550);return sl;});
+function curveSlide(sd){const sl=base(sd===2?'位置改変量と受信ノード数':'雑音増加による検知率の低下',sd===2?'位置をどれだけ変えると検知できるか':'同じ配置・同じ改変でも、電波の揺らぎで見逃しが増加',src(E,'curves-summary.csv'));
+ const shifts=D.events.config.claim_displacements_m;chart(sl,{title:'独立リンク雑音 SD'+sd+'dB',categories:shifts.map(x=>x+'m'),series:[2,3,5].map((n,i)=>({name:n+'台',xValues:shifts,values:shifts.map(v=>pc(select(D.events.curves,{noise_sd_db:sd,receivers:n,shift_m:v}).conditional_alarm_fraction)),fill:[C.blue,'#8CA7C3',C.red][i]})),type:'scatter',max:100,ytitle:'警報率（%）'});
+ note(sl,[sd===2?'100m改変でも、5台の検知率は約73.7%':'雑音SD6dBでは、100m改変・5台でも約18.7%', '0mは正常誤警報。台数の変更とともに使う配置も変化',...(sd===2?['位置100m＋共通電力補償でも、同じ73.7%（5台）']:[])],540);return sl;}
+define('curve2',()=>curveSlide(2));define('curve6',()=>curveSlide(6));
+function coverageSlide(onlySingle=false){const sl=base(onlySingle?'毎回1台しか受信しない場合':'一部重複での検知と判定保留',onlySingle?'全件保留は、位置が正しいという判定ではない':'同じ100m改変でも、判定できる時間帯は限られる',src(E,'cases-summary.csv'));
+ const modes=onlySingle?['full','partial','single']:['full','partial'];const a=modes.map(m=>ev(m,'position100'));chart(sl,{title:'雑音SD2dB・全送信を分母にした割合',categories:onlySingle?['常に5台','一部重複','毎回1台']:['常に5台','一部重複'],series:[{name:'不整合の警報',values:a.map(r=>pc(r.all_event_alarm_fraction)),fill:C.red},{name:'警報なし',values:a.map(r=>pc(r.decision_fraction-r.all_event_alarm_fraction)),fill:C.blue},{name:'判定保留',values:a.map(r=>pc(r.abstain_fraction)),fill:C.pale}],stack:true,labels:false,max:100,ytitle:'全送信に対する割合（%）'});
+ note(sl,onlySingle?['各イベントを1台だけ受信する条件では100%保留','自由電力なら、位置が違っても同じRSSIを作れる']:['一部重複：判定可能77.1%、その部分の検知率64.0%','全送信中の警報は49.35%、保留22.89%'],550);return sl;}
+define('coverage',()=>coverageSlide(false));define('singleCoverage',()=>coverageSlide(true));
+define('mispair',()=>{const sl=base('異なる送信の誤対応と誤警報','時刻が近いだけでは、電力が共通とは限らない',src(E,'pairing-summary.csv'));
+ const gaps=D.events.config.pairing_spread_s;chart(sl,{title:'雑音SD2dB・正常データへの警報',categories:gaps.map(x=>x+'秒'),series:[['stable','飛行中の電力一定',C.blue],['per_event_variable','送信ごとに変動 SD8dB',C.red]].map(([mode,name,fill])=>({name,fill,values:gaps.map(t=>pc(select(D.events.pairing,{noise_sd_db:2,power_mode:mode,maximum_pairing_age_s:t}).conditional_alarm_fraction))})),type:'line',max:100,ytitle:'正常誤警報率（%）'});
+ note(sl,['0.5秒でも、電力が別々なら誤警報が増えるモデル例','電力変動SD8dBは仮定。実機の時間上限や測定値ではない'],550);return sl;});
+define('upload',()=>{const sl=base('同一送信の提出遅延','受信したイベントを正しく結べれば、提出が遅くても同じ判定',src(E,'uploads-summary.csv','理想的な同一イベント結合'));
+ const a=D.events.uploads.filter(r=>r.noise_sd_db===2);table(sl,[['最後の提出まで','正常誤警報率','追加の判定待ち'],...a.map(r=>[r.upload_spread_s+'秒',fmt(pc(r.alarms/r.decidable_events),2)+'%',r.decision_wait_s+'秒'])],{columns:[290,290,296],h:255});
+ section(sl,'成立の前提',['同じ物理送信であることを理想的に知っている条件','通信スタック・時計誤差・実際の対応付けは未評価'],465,24);return sl;});
+define('geo1',()=>{const sl=base('複数受信機でも残る配置の曖昧さ','4台受信でも、違う位置を区別できない配置がある','数理反例：雑音なし、単一送信源、既知の伝搬指数2.2。実RFの攻撃実証ではない。');geometry(sl);return sl;});
+define('geo2',()=>{const sl=base('配置と電力補償による同一観測','高度も電力も違うのに、全ノードで同じRSSI',src(E,'summary.json / counterexamples','雑音なしの数理反例'));geometry(sl,true);return sl;});
+define('personal',()=>{const sl=base('RID別学習の効果と限界','学習による誤差改善は、位置や機体の真正性の証明ではない',src(S,'personalization-summary.csv'));
+ const cases=['normal','cloned_rid'];chart(sl,{title:'30ラベル／RID・ID差SD6dB・飛行差SD1dB',categories:['通常の送信機','同じRIDを名乗る別送信機'],series:[['global','共通モデル',C.blue],['rid_shrinkage','RID別補正','#8CA7C3']].map(([model,name,fill])=>({name,fill,values:cases.map(scenario=>+select(D.personal,{profile:'stable_id6',labeled_per_rid:30,scenario,model}).mae_m)})),max:70,ytitle:'距離MAE（m）'});
+ note(sl,['学習ラベルは独立した合成真距離。RID申告値ではない','同じRID文字列でも同じ物理機体とは限らず、補正が悪化'],550);return sl;});
+define('attribution',()=>page('警報から判断できること','示せるのは、位置申告と観測の不整合',[['警報が出た場合',['位置偽装の疑い。ただし遮蔽・向き・受信誤差も候補']],['警報が出なかった場合',['位置が正しい証明ではない。見逃しや識別不能配置が残る']],['電力について',['実際の放射電力や、電力申告の真偽を測った方式ではない']]]));
+define('conditions',()=>{const sl=base('位置偽装を検査できる条件','台数だけでなく、同一送信・観測品質・配置が必要');table(sl,[['状況','今回の到達点','残る条件・限界'],['同じ送信を複数受信','位置改変の不整合を検知','観測・モデル・配置に依存'],['一部だけ重複','重複部を検査、その他は保留','全送信の検知割合は低下'],['別送信を単独受信','自由電力の位置判定は保留','RSSI単独では一般に識別不可'],['等距離比となる配置','同じRSSIを作れる反例','複数台でも全検知は不可'],['警報の原因','不整合まで','位置偽装と原因を確定しない']],{columns:[250,310,316],h:390});note(sl,['実測で確認した注意点と、合成で得た検知率を区別'],580);return sl;});
+define('summaryA',()=>page('まとめ','未知・変動電力の下で、位置申告を検査できる条件を整理',[['同一送信の複数受信',['共通電力を除いた位置申告の検査を合成評価']],['実測から得た注意点',['RSSIの揺らぎと、時刻を誤って対応させた場合の誤警報']],['未解決の条件',['完全非重複・自由電力と識別不能な配置、実RIDでの検証']]]));
+define('summaryB',()=>page('RSSIから位置偽装を検知できるか','条件付きで一部は検知可能。無条件の位置認証ではない',[['検査できる場面',['同じ送信を複数地点で受け、観測・配置・モデルが適切']],['判定できない場面',['別送信を単独受信し電力が自由、または識別不能な配置']],['今回示した範囲',['合成で成立条件と検知率を確認。実RIDでの実証は今後']]]));
+define('future',()=>page('今後','実際のRIDで、成立条件を満たせるかを確認',[['同じ送信の対応付け',['受信時刻・PHY等の取得可能情報と、誤対応率の評価']],['現実の受信条件',['電力による受信可否、時計誤差、NLOSや雑音相関の導入']],['独立真値付きの複数ノード実測',['位置真値・同一送信の重複・実効電力の条件を記録']]]));
+// Shared appendix pages.
+define('singleModels',()=>{const sl=base('補足：単一RSSIの推定モデル','距離精度が改善しても、自由電力の識別不能性は解消しない','出典：mac-independent3d-20261101 / summary.json（独立した合成10 seed）');
+ const a=D.single.filter(r=>r.channel==='mixed'&&r.scenario==='normal'&&['PathLoss','Bayesian','GP','MLP'].includes(r.model));chart(sl,{title:'通常条件での距離推定',categories:a.map(r=>r.model),series:[{name:'距離MAE',values:a.map(r=>r.mae_m)}],max:70,ytitle:'距離MAE（m）'});
+ note(sl,['事前分布・学習済み条件の下での性能','同じ機体を複数ノードが通過観測する評価とは別の実験'],550);return sl;});
+define('empirical',()=>{const sl=base('補足：実測残差による雑音ストレス','小さい独立ガウス雑音の仮定は、楽観的になる場合がある',src(R,'empirical_sync-summary.csv','屋内BLE残差を仮想リンクへ注入'));
+ const kinds=['gaussian2','gaussian_matched_rms','empirical'];const rows=kinds.map(noise_model=>D.empirical.find(r=>r.noise_model===noise_model&&r.receivers==='10'&&r.environment==='matched'&&r.delta_m==='100'));
+ if(rows.some(r=>!r))throw Error('empirical source category mismatch '+JSON.stringify([...new Set(D.empirical.map(r=>r.noise_model))]));
+ chart(sl,{title:'10受信機・100m改変の警報率',categories:['ガウス SD2dB','RMSを合わせたガウス','屋内BLEの実測残差'],series:[{name:'改変時の警報',values:rows.map(r=>pc(+r.alarm_rate))}],max:100,ytitle:'警報率（%）'});
+ note(sl,['実測残差を各仮想リンクに独立に抽出した評価','屋外UAV・複数受信機の同時実測の性能ではない'],550);return sl;});
+define('poison',()=>{const sl=base('補足：個別モデルの学習汚染','誤った距離ラベルへの頑健化にも限界がある',src(R,'poisoning-summary.csv'));
+ const fractions=[0,.1,.3,.5,.7];chart(sl,{title:'距離ラベルを4倍に改変した場合',categories:fractions.map(v=>pc(v)+'%'),series:[['mean','平均補正',C.blue],['median','中央値補正',C.red]].map(([model,name,fill])=>({name,fill,values:fractions.map(corrupt_fraction=>+select(D.poisoning,{flight_sd_db:1,pattern:'random_rows',corrupt_fraction,distance_multiplier:4,scenario:'normal',model}).mae_m)})),type:'line',max:150,ytitle:'距離MAE（m）'});
+ note(sl,['外部の共通学習データは保護されている仮定','誤ラベルが過半数になる場合まで防御できるわけではない'],550);return sl;});
+define('expiry',()=>{const sl=base('補足：過去情報とモデル失効','電力や環境が長く安定すると誤ると、区間を過信する',src(R,'time_mismatch-summary.csv'));
+ const rows=['none','600','86400'].map(assumed_tau_s=>select(D.time,{true_tau_s:600,assumed_tau_s,gap_s:3600,scenario:'normal'}));
+ chart(sl,{title:'真の相関時間10分・1時間後の予測',categories:['履歴なし','相関時間10分の仮定','相関時間1日の仮定'],series:[{name:'公称90%区間の実包含率',values:rows.map(r=>pc(+r.interval_coverage))}],max:100,ytitle:'区間包含率（%）'});
+ note(sl,['1日安定と誤ると、包含率は約60.8%まで低下','この相関時間は仮定であり、実UAVで推定した値ではない'],550);return sl;});
+define('dropout',()=>{const sl=base('補足：追加欠測と観測窓','受信済みの観測を失うと、固定件数の窓は古くなる',src(L,'dropout-summary.csv','実測系列からの人工削除'));
+ const a=D.lora.dropout.filter(r=>r.window_packets===20);chart(sl,{title:'20件集める時間幅の変化',categories:a.map(r=>pc(r.drop_fraction)+'%削除'),series:[{name:'ブロック時間幅の中央値平均',values:a.map(r=>r.span_median_s)}],max:20,ytitle:'時間幅（秒）'});
+ note(sl,['元々のRF損失率は不明。受信済み記録を追加で削除','完全ブロックが作れない例を、誤差ゼロにしていない'],550);return sl;});
+define('sourceMap',()=>{const sl=base('補足：データ・実装・出典の対応','入力の版と集計CSVを残し、実測と合成を分離');table(sl,[['対象','入力・集計の所在'],['公開BLE','固定版 b38a9a4 / mac-recheck-20261101'],['公開LoRa','Zenodo 17339095 v2 / mac-public-lora-20261101'],['共通軌跡の合成','event_scenarios_config.json / mac-event-scenarios-20261101'],['学習等の合成','mac-sensitivity-20261101-v2 / mac-robustness-20261101'],['確認できないもの','認証が必要なICMCIS本体、別チャットの元ZIP']],{columns:[200,676],h:370});note(sl,['取得できないデータを、再現済みの実験として使用しない'],565);return sl;});
+const GHOST='Keizer, Sciancalepore & Oligeri, GhostBuster, IEEE CCNC 2024, pp.324–332\nDOI:10.1109/CCNC51664.2024.10454860（原論文の報告。今回の追試ではない）';
+const DRSS='Hu & Leus, Robust Differential Received Signal Strength-Based Localization, IEEE TSP 65(12), 2017\nDOI:10.1109/TSP.2017.2684741, II・式(1)–(2)';
+const CTUP='Li, Mukhopadhyay, Xu & Alouini, Experimental Validation of Cooperative RSS-based Localization…, IEEE TWC 2024\nDOI:10.1109/TWC.2024.3441643, II・V-C（原論文の結果）';
+const GPREF='Santos, Murillo-Fuentes & Djurić, Recursive Estimation of Dynamic RSS Fields…, arXiv:1806.02530v2, 2018\nVI・VII-D・VIII（原論文の結果）';
+const psrc=f=>src(S,f,'今回の独立した合成10 seed。先行論文の再現ではない');
+define('coverC',()=>{const sl=base('第26回進捗報告','RSSIから位置偽装を検知できるか');txt(sl,'送信電力が未知・変動する場合の\n成立条件と実験結果',70,235,820,130,38,C.black,true);txt(sl,'関連論文の前提と、今回の評価範囲',70,430,820,60,27,C.blue);return sl;});
+define('agendaC',()=>page('目次','位置偽装を検知できる条件と、残る限界',[['教授の問いと関連研究',['元の非同時観測、電力の条件、4件の論文']],['元の条件に対する実験',['位置・電力の改変、台数、観測履歴、RID別学習']],['追加条件を置いた比較',['同じ送信の複数受信、雑音・受信不足・配置の影響']]]));
+define('professor',()=>page('教授の問い','送信電力が未知・変更可能でも、位置申告を調べられるか',[['距離推定への指摘',['送信電力を変えれば、RSSIから推測する距離も変わる']],['確認する内容',['1台と複数台で何が変わり、どこまで検知できるか']],['今回の回答方法',['論文の前提を確認し、条件・結果・限界を実験で対応付け']]],'問いの出典：week25/01_asynchronous_remote_id_rssi_research_notes.md（議論の整理。逐語録ではない）'));
+define('original',()=>{const sl=base('本来の観測シナリオ','Aは10時、Bは11時、Cは翌日。受ける送信も異なる');table(sl,[['観測者','観測時刻の例','受け取るもの'],['A','当日10時','RID、位置申告、送信e1のRSSI'],['B','当日11時','同じRID、別位置申告、送信e2のRSSI'],['C','翌日','同じRID、別位置申告、送信e3のRSSI']],{h:270,columns:[130,230,516]});section(sl,'研究で信用しない情報',['機体の位置申告と送信電力。同じRIDでも同じ機体とは限らない'],470,23);note(sl,['観測者の位置・RSSI報告が適切という条件は別に必要'],585);return sl;});
+define('termsC',()=>{const sl=base('申告と観測の違い','照合する情報の出所を分ける');table(sl,[['情報','出所・意味'],['RID・申告位置','送信側が送る文字列・位置。真実とは限らない'],['RSSI','受信側が測る電波の強さ。RIDの位置情報とは別'],['観測者位置・時刻','観測側の記録。誤差と信頼性の確認が必要'],['真位置・実際の電力','通常は未知。実験では真値・生成値と照合']],{h:350,columns:[240,636]});note(sl,['RSSIが一致しても、送信機の身元やセンサの正しさまでは示さない'],565);return sl;});
+define('powerCases',()=>{const sl=base('区別する送信電力の条件','「電力が未知」に含まれる条件は一つではない');table(sl,[['電力の条件','観測から得られる拘束'],['未知だが共通・安定','複数観測を同じ電力パラメータで説明'],['変化幅・相関・分布を仮定','その制約の下で推定・異常度の評価'],['送信ごとに自由に変更','各RSSIを別の電力で説明できる']],{h:300,columns:[330,546]});section(sl,'論文との照合点',['未知量を何件の観測で共有するか、攻撃電力をどこまで許すか'],510,23);return sl;});
+define('ghostSetup',()=>page('関連研究①：GhostBusterの観測構成','RID位置申告と、電波から推定した位置の照合',[['検知する対象',['RIDの位置申告を真位置からずらす攻撃']],['評価の入力',['実飛行の単一RFセンサ記録から伝搬モデルを推定']],['複数観測者の扱い',['実測モデルを、仮想的に配置した複数受信機へ拡張']]],GHOST));
+define('ghostResults',()=>{const sl=base('関連研究①：GhostBusterの結果','検知できる偽装変位は、伝搬条件によって大きく変化',GHOST);table(sl,[['本文VI-Cの例','95%検知に対応する偽装変位'],['UA1の伝搬モデル','364m'],['UA3の伝搬モデル','1,175m']],{h:210,columns:[360,516]});txt(sl,'条件：仮想12受信機、5パケット。単一センサ実測モデルから拡張',48,405,860,55,23,C.blue);section(sl,'今回への示唆',['受信機数だけでなく、伝搬条件と誤警報の確認が必要','別時刻・任意の電力変更に対する今回の検知率としては使わない'],495,23);return sl;});
+define('drssC',()=>page('関連研究②：受信強度の差と未知電力','DRSS：複数地点の受信強度の差を使う位置推定',[['仕組み',['同じ電力項を持つ観測同士の差で、共通電力を除去']],['論文が扱う誤差',['電力偏差、伝搬係数や観測地点の誤差をモデル化']],['元のシナリオとの違い',['別送信の電力が異なる場合、その差は残る','「時刻が近い」という理由だけでは共通電力を置けない']]],DRSS));
+define('ctupC',()=>{const sl=base('関連研究③：未知電力と位置の共同推定','CTUP：複数リンクを使う協調位置推定',CTUP);table(sl,[['実験条件','論文の設定'],['観測','屋外BLE 50ノード、640×180m'],['位置の基準','RTK-GPS。通常GPSの観測地点誤差も考慮'],['共有する未知量','対象ごとの電力、位置、伝搬係数']],{h:275,columns:[220,656]});section(sl,'結果と今回への適用',['観測地点の増加に伴い、位置推定誤差が低下する傾向','送信ごとの自由電力や、RID位置偽装の検知を実証した結果ではない'],490,23);return sl;});
+define('gpC',()=>page('関連研究④：履歴を使う電波分布の推定','逐次GP：過去の観測を使い、電波分布と不確実性を更新',[['条件',['電力・伝搬係数に確率分布を置き、過去情報の重みを調整']],['論文の結果',['合成評価で逐次更新による推定改善、電力変化への追従を提示','実測は移動スマホで集めたGSM。攻撃ドローンの実験ではない']],['今回確認すべきこと',['電力特性がどれくらい持続するか、古い履歴で誤らないか']]],GPREF));
+define('literatureC',()=>{const sl=base('関連研究から今回の実験へ','文献の成立条件を、一つずつ分けて検証');table(sl,[['論文からの着眼点','今回評価する項目'],['位置申告と電波の照合','正常誤警報と、位置改変への警報'],['未知電力の扱い','位置だけの改変と、電力を連動させた改変'],['複数観測の共有条件','別送信の台数追加と、同じ送信の複数受信'],['履歴と確率モデル','観測間の時間差、RID別補正の効果と失敗']],{h:350,columns:[340,536]});note(sl,['以下は今回の独立した評価。4論文のアルゴリズムの追試ではない'],565);return sl;});
+define('bleSetup',()=>{const sl=base('実測確認：BLEの条件','電力設定を変えたとき、RSSIにどれくらい差が出るか','公開BLE：manwestc/ble-rssi-indoor-localization-dataset, commit b38a9a4a53a01f52136f4e9b29b5045f61655a06');table(sl,[['項目','設定'],['送受信','屋内の固定6ビーコンとスマートフォン'],['入力','3 CSV・合計50,400 RSSI値'],['出力設定','−8／−4／0dBmの別セッション'],['比較','同じ地点・ビーコンでのRSSI中央値差']],{h:335,columns:[210,666]});section(sl,'確認できる範囲',['設定差と観測差の関係。実UAVの電力変更だけの因果実験ではない'],555,23);return sl;});
+define('singleSetup',()=>{const sl=base('実験①：位置改変と電力変更の条件','異なる送信を1台ずつ受信する合成評価',psrc('position-summary.csv'));table(sl,[['項目','設定'],['観測','1飛行40イベント。各送信の受信機は1台'],['データ分離','70学習／26校正／45評価飛行、10 seed'],['攻撃','申告を受信機から外向きに5〜200m改変'],['判定','校正データ全体の正常誤警報5%を目標に閾値設定'],['比較','位置だけ改変／電力も連動させて改変']],{h:360,columns:[185,691]});note(sl,['伝搬・受信選択も含む合成モデル。実機の検知距離ではない'],570);return sl;});
+define('singleAssumptions',()=>{const sl=base('実験①：電力・伝搬モデルの仮定','実UAVから測定したパラメータではなく、事前に置いた合成条件',psrc('async-base-config.json'));table(sl,[['要素','仮定'],['距離と位置','水平半径6〜140m、高度3〜70m、位置誤差SD2m'],['電力','飛行差SD2dB、送信ごとの変動SD3dB・時間相関あり'],['電波の揺らぎ','遮蔽減衰12dB、相関するシャドウイングSD4dB等'],['受信','感度−100dBm、1dB量子化、追加欠測3%']],{h:345,columns:[210,666]});note(sl,['既知の伝搬係数2.2。受信できた記録で警報率を計算','この条件での感度評価。屋外実RIDの性能予測ではない'],555);return sl;});
+define('positionResults',()=>{const sl=base('実験①の結果：位置だけを改変','同じ30mのずれでも、元の距離で警報率が異なる',psrc('position-summary.csv'));const shifts=[0,30,100,200];chart(sl,{title:'受信機から外向きの申告改変',categories:shifts.map(x=>x+'m'),series:['20-40m','80-120m'].map((b,i)=>({name:'真距離 '+b,fill:i?C.red:C.blue,values:shifts.map(delta_m=>pc(+select(X.position,{delta_m,direction:'out',attack:'position_only',range_bin:b}).alarm_rate))})),type:'line',max:100});note(sl,['0mは正常対照。近距離帯では正常誤警報も10.95%','30m改変の警報14.12%だけでは、高い検知性能とは言えない','全方向の3D変位ではなく、受信機からの距離を変えた評価'],540);return sl;});
+define('positionPower',()=>{const sl=base('実験①の結果：電力も変更した場合','位置だけの改変への警報を、電力変更で戻せる条件',psrc('position-summary.csv'));const a=X.position.filter(r=>r.direction==='out'&&r.delta_m==='100'&&r.range_bin==='all');const normal=select(X.position,{delta_m:0,direction:'out',attack:'position_only',range_bin:'all'});const pos=select(a,{attack:'position_only'});const power=a.find(r=>r.attack==='joint_unbounded');if(!power)throw Error('missing unrestricted power case '+JSON.stringify(a));chart(sl,{title:'外向き100m改変・受信記録を分母にした警報率',categories:['正常','位置だけ改変','電力も連動'],series:[{name:'警報率',values:[normal,pos,power].map(r=>pc(+r.alarm_rate))}],max:50});note(sl,['警報：正常5.02%、位置だけ23.88%、電力連動2.42%','受信率も変化：正常86.8%、電力連動68.3%。全送信の不可視化ではない','受信機位置・伝搬モデルを既知とする攻撃。電力上限・実RFは未検証'],540);return sl;});
+define('nodesSetup',()=>{const sl=base('実験②：非同時観測での台数比較','総データ数を固定し、同じ観測を1〜10台へ割り当てる',psrc('asynchronous-summary.csv'));table(sl,[['変えるもの','変えないもの'],['受信機の割当て台数：1／2／3／5／10','学習70・校正26・評価45飛行'],['各受信機の校正差','真距離・真電力・時刻の実現'],['ノードの識別と偏差','各送信は1台だけで受信']],{h:270,columns:[430,446]});section(sl,'比較の範囲',['同じ真位置を別ノードで追加観測する拘束は与えていない','カバー範囲や総受信数を増やす実運用の効果は対象外'],490,23);return sl;});
+define('nodesResults',()=>{const sl=base('実験②の結果：台数の割当てだけでは小差','同じ量の単一RSSIデータでは、警報率はほぼ横ばい',psrc('asynchronous-summary.csv'));const ns=[1,2,3,5,10];chart(sl,{title:'正常と、外向き30mの位置改変',categories:ns.map(n=>n+'台'),series:[['normal','正常誤警報',C.blue],['range_shift30','改変時の警報',C.red]].map(([scenario,name,fill])=>({name,fill,values:ns.map(receivers=>pc(+select(X.nodes,{scenario,receivers}).alarm_rate))})),max:20});note(sl,['正常5.2〜5.5%、改変7.5〜7.9%。距離MAEも25.14〜25.31m','台数追加だけで自由電力の問題が解けるとは言えない','ノード数の一般的な効用を否定する実験ではない'],540);return sl;});
+define('manyRecords',()=>{const sl=base('観測を1000件集めれば解決するか','各送信の電力が自由なら、同じRSSI履歴を別の距離で説明できる','出典：experiments/week26-rssi-privacy/identifiability_minimal.py（数理反例、n=2）');table(sl,[['比較する世界','距離','実効基準電力'],['世界A','任意の距離履歴 d(t)','元の電力履歴 a(t)'],['世界B','全て4倍：4d(t)','全て +12.0412dB']],{h:225,columns:[220,310,346]});txt(sl,'1000件のRSSI最大差：1.42×10⁻¹⁴ dB',75,435,820,55,30,C.red,true);section(sl,'この反例から言えること',['件数だけでは、自由な電力と位置の曖昧さは消えない','実機でこの電力変更が可能かは別検証。件数別学習曲線は未評価'],520,23);return sl;});
+define('historySetup',()=>{const sl=base('実験③：過去の観測を使う条件','直前の独立な真距離付き観測から、電力を推定できる仮定',psrc('time-summary.csv'));table(sl,[['項目','設定'],['過去の基準','RID申告とは独立に真距離が分かる観測'],['電力変動','相関時間10分の確率モデル'],['現在の観測','RSSI 1値。過去との時間差を変更'],['比較','履歴なし／過去値維持／相関に合った予測'],['評価','距離MAE。各条件10 seed・計30,000標本']],{h:355,columns:[220,656]});note(sl,['相関時間は仮定値。実UAVで10分と測定したわけではない'],570);return sl;});
+define('historyResults',()=>{const sl=base('実験③の結果：履歴が古いと効果が低下','1時間前の値を維持すると、履歴なしより悪化する条件',psrc('time-summary.csv'));const gaps=[3,60,300,3600];chart(sl,{title:'電力の相関時間10分・正常時の距離MAE',categories:['3秒','1分','5分','1時間'],series:[['no_history','履歴なし',C.gray],['hold_last','過去値を維持',C.red],['ou_matched','相関に合った予測',C.blue]].map(([model,name,fill])=>({name,fill,values:gaps.map(gap_s=>+select(X.history,{tau_s:600,gap_s,scenario:'normal',model}).mae_m)})),type:'line',max:80,ytitle:'距離MAE（m）'});note(sl,['独立真距離付きの過去観測と、正しい相関時間を仮定','「何時間まで使える」という普遍的な期限は得られない','距離推定誤差の評価。位置偽装の検知率とは別'],540);return sl;});
+define('personalSetup',()=>{const sl=base('実験④：RID別モデルの条件','同じRIDに安定した電波特性がある場合の距離補正',psrc('personalization-summary.csv'));table(sl,[['項目','設定'],['学習','外部30IDの保護された真距離付きデータ'],['個別化','対象20IDへ、各30件の独立な真距離ラベル'],['電波特性','ID固有差SD6dB、飛行差SD1dB'],['評価','別の10飛行／ID、10 seed'],['比較','通常の同じ送信機／同じRIDを名乗る別送信機']],{h:350,columns:[200,676]});note(sl,['RID文字列による分類。物理機体の認証を実装したものではない'],570);return sl;});
+define('originalAnswer',()=>{const sl=base('元の非同時観測から言えたこと','電力をどう制約するかで、推定・検査の成立条件が変わる');table(sl,[['元の条件での問い','今回の結果'],['位置だけ変わる場合','条件付きの警報。ただし正常誤警報との比較が必要'],['位置と電力を連動','RSSIを整合させる反例・攻撃条件が残る'],['台数・件数の追加','別送信・自由電力では、それだけで一意化しない'],['履歴・RID別学習','真値校正と特性の持続性があれば距離推定を改善']],{h:350,columns:[275,601]});note(sl,['元条件を無条件に解決した段階ではない。次は観測条件を追加した比較'],565);return sl;});
+define('eventConditions',()=>{const sl=base('追加実験：判定と反復の条件','同じ送信の複数受信という条件を追加した合成評価',src(E,'config.json / summary.json'));table(sl,[['項目','条件'],['分割','校正20飛行、評価30飛行／seed。10 seed'],['長さ','1飛行240イベント、0.5秒間隔'],['電力・伝搬','送信ごとに共通電力が変動。既知の伝搬係数2.2'],['閾値','受信機の組ごとに正常校正の95%点'],['有利な仮定','同一送信の対応は既知。NLOS・指向性は未導入']],{h:355,columns:[200,676]});note(sl,['図は10 seed平均。連続イベントを独立した反復数とは扱わない'],570);return sl;});
+define('summaryC',()=>page('まとめ','RSSIは、条件付きで位置申告の不整合を調べる手段',[['元の非同時観測',['各送信の電力が自由なら、RSSI履歴だけで一般的な識別は不可']],['履歴や学習を使う場合',['独立真値による校正、電力特性の持続性が成立条件']],['同じ送信を複数受信する場合',['共通電力を除く検査は可能。ただし雑音・受信不足・配置に依存']]],'今回の検知率は合成条件下の結果。実機の位置認証・安全性を保証するものではない。'));
+define('futureC',()=>page('今後','元のシナリオを維持し、必要な追加条件を実測で確認',[['電力と時間変化の把握',['独立位置真値付き観測で、変動幅・持続性・受信選択を確認']],['長期・非同時評価の拡張',['同一軌跡の地域横断、件数・時間幅の掃引、同名送信機の混入']],['追加証拠との組合せ',['方向・画像等の独立観測が制約する未知量とコストの比較']]]));
+define('reading',()=>{const sl=base('実験結果を読むための用語','推定の誤差と、偽装への警報を区別');table(sl,[['用語','この発表での意味'],['MAE：平均絶対誤差','推定距離と基準距離のずれの絶対値を平均'],['SD：標準偏差','電力や雑音などの揺らぎの大きさ'],['seed：乱数条件','合成データの生成条件。今回は10通りで反復'],['校正・閾値','正常データから警報の境界を決定。評価とは分離'],['伝搬係数','距離が増えたときの電波の弱まり方を表す係数']],{h:370,columns:[265,611]});note(sl,['距離MAEが小さいことと、位置偽装を検知できることは別'],575);return sl;});
+// Review revision. All numerical evidence comes from the same saved aggregates.
+BANK.positionCurves=BANK.positionResults;
+BANK.curve2Detail=BANK.curve2;
+BANK.geoOriginal=BANK.geo2;
+const twoLine=(sl,t,y=540)=>txt(sl,t,48,y,860,100,23,C.black);
+define('coverC',()=>{const sl=base('第26回進捗報告','RSSIから位置偽装を検知できるか');txt(sl,'非同期観測・未知送信電力下の\n検出可能性と限界',65,240,835,125,36,C.black,true);txt(sl,'論文の成立条件と、独立した合成評価',65,435,835,60,26,C.blue);return sl;});
+define('agendaC',()=>{const sl=base('目次','本編20枚。論文・実験の詳細は21枚目以降');table(sl,[['ページ','説明する内容'],['3〜7','教授の問い、識別の難しさ、論文と評価条件'],['8〜13','単独受信：改変・電力・台数・履歴の影響'],['14〜18','追加条件：同一送信の複数受信と、残る限界'],['19〜20','まとめと今後'],['21以降','論文、実測解析、全条件、再現手順の補足']],{h:365,columns:[170,706]});return sl;});
+define('work',()=>{const sl=base('第26回の作業内容','実測再解析と合成実験を分離');table(sl,[['区分','実施した内容'],['文献調査','4論文の観測条件・未知量・適用範囲の照合'],['実測データ再解析','屋内BLE、固定LoRa送信機をUAVで受信した公開記録'],['合成シミュレーション','非同時の単独受信、同一送信の複数受信、数理反例'],['集計と資料','正常誤警報・受信率・保留、CSVと設定の対応']],{h:350,columns:[220,656]});note(sl,['今回の実RID実測や、新しいZKP回路の実装ではない'],565);return sl;});
+define('professor',()=>{const sl=base('教授の問いと元の観測条件','別時刻・別送信を観測し、1送信につきRSSIは1値');table(sl,[['観測例','確認したいこと'],['Aは10時、Bは11時、Cは翌日','機体の申告位置と送信電力は不信頼'],['問い①：単独受信','未知電力でも、RSSIから距離を識別できるか'],['問い②：追加の情報','台数・履歴・同じ送信の複数受信で何が変わるか']],{h:290,columns:[390,486]});section(sl,'研究の境界',['観測者の位置・RSSI報告が適切という前提は別に必要','同じRID文字列でも同じ物理機体とは限らない'],510,23);footer(sl,'問いの出典：week25/01_asynchronous_remote_id_rssi_research_notes.md（議論の整理。逐語録ではない）');return sl;});
+define('original',()=>{const sl=base('補足：元の非同時観測','1送信につき1 RSSI。別時刻・別送信');table(sl,[['観測者','時刻の例','対応する観測'],['A','当日10時','送信e1の申告位置と、e1のRSSI'],['B','当日11時','送信e2の申告位置と、e2のRSSI'],['C','翌日','送信e3の申告位置と、e3のRSSI']],{h:295,columns:[150,210,516]});note(sl,['それぞれ正しい時刻の位置とRSSIを対応させる','別時刻の観測と、誤った時刻同士を結ぶ操作は区別'],525);return sl;});
+define('termsC',()=>{const sl=base('補足：現実の未知量と実験の正解','正解を知る実験プログラムと、検出器を分離');table(sl,[['情報','現実の観測者','合成実験'],['RID・申告位置','不信頼な入力','改変する入力'],['RSSI・観測地点','受信側の観測','生成した入力'],['真位置・実際の電力','通常は未知','生成器が保持する正解'],['検出器への真値','通常は渡せない','評価時に参照。予測入力とは分離']],{h:350,columns:[230,320,326]});note(sl,['真距離付き校正を使う実験は、その追加情報を明示'],565);return sl;});
+define('factors',()=>{const sl=base('RSSIだけでは距離を一つに決められない','距離と送信電力は、同じ観測値へ影響');txt(sl,'R = P₀ − 10n log₁₀(d / 1m) + ε',60,170,850,60,32,C.blue,true,'center');table(sl,[['項','意味'],['P₀','基準距離1mでの実効受信電力。実EIRPそのものではない'],['d・n','実際の距離と、距離による弱まり方の係数'],['ε','遮蔽・反射・向き・受信機差などの誤差']],{y:270,h:230,columns:[160,716]});twoLine(sl,'例：n=2なら、10mから100mへの距離増加を\n基準電力+20dBで相殺可能。同じRSSIを作れる理想モデル。',545);return sl;});
+define('ambiguous',()=>{const sl=base('補足：距離と電力が違う同じRSSI','理想モデル：n=2、雑音なし');ambiguity(sl);txt(sl,'100m・基準電力+20dB',62,140,385,38,23,C.blue);txt(sl,'10m・元の基準電力',512,140,385,38,23,C.blue);return sl;});
+define('powerCases',()=>{const sl=base('電力の条件と識別できる範囲','「未知の電力」と「毎送信で自由な電力」を分離');table(sl,[['電力の条件','距離推定・位置照合の条件'],['未知だが共通・安定','複数リンクや校正等の拘束があれば条件付き'],['変動幅・分布・相関を仮定','その仮定の下で統計的に推定・不整合を検査'],['毎送信が自由、1送信1 RSSI','一般には識別不能。別距離と別電力で同じ観測']],{h:320,columns:[320,556]});note(sl,['電力が一定という条件だけで、真位置を認証できるとは限らない','確率変動の通常モデルと、無制約の攻撃者モデルも区別'],535);return sl;});
+define('paperOverview',()=>{const sl=base('論文が扱う条件と今回の評価','論文の着眼点に基づく独立評価。原アルゴリズムの追試ではない');table(sl,[['研究','成立条件・得られるもの'],['GhostBuster（2024）','電波推定とRID申告の照合。実測モデルから複数受信へ拡張'],['Hu・Leus（2017）','共通電力を差で除くDRSS。独立な電力差は残る'],['CTUP（2024）','複数リンクで位置・電力等を共同推定。BLE 50ノード実験'],['Santosほか（2018）','確率モデルと履歴からRSSI場を推定。真位置の証明ではない']],{h:345,columns:[265,611]});note(sl,['元の「別送信・単独受信・毎回自由電力」の一般的解決とは扱わない'],565);footer(sl,'Keizer et al., DOI:10.1109/CCNC51664.2024.10454860 / Hu & Leus, DOI:10.1109/TSP.2017.2684741\nLi et al., DOI:10.1109/TWC.2024.3441643 / Santos et al., arXiv:1806.02530v2。詳細は補足。');return sl;});
+define('evaluationOverview',()=>{const sl=base('今回の評価と分母の読み方','本編の検知率は合成評価。実測再解析は補足');table(sl,[['指標','例：100送信、20保留、40警報'],['判定できた部分の警報率','40 ÷ 80 = 50%'],['全送信中の警報割合','40 ÷ 100 = 40%'],['判定保留','20 ÷ 100 = 20%。正常と認定しない'],['正常誤警報との比較','同じ条件の正常にも、どれだけ警報が出るか']],{h:340,columns:[325,551]});note(sl,['SDは揺らぎの標準偏差、MAEは真距離との平均絶対誤差','seedは乱数条件。未受信・保留は正常と認定しない','集計は実験ごとに異なる。補足の集計規則を参照'],540);return sl;});
+define('reading',()=>{const sl=base('補足：誤差と集計の定義','10 seedの単純平均と、全標本の合算比率を区別');table(sl,[['項目','実際の集計'],['MAE','独立した真距離との絶対誤差の平均'],['非同期・感度・汚染評価','10 seedの誤差和／標本数、警報数／受信数を合算'],['共通軌跡の複数受信','seedごとの率を計算して10 seedの単純平均'],['公開LoRa再解析','16条件×3分割＝48分割を等重み平均'],['SD・seed','SDは揺らぎの標準偏差、seedは乱数生成条件']],{h:370,columns:[280,596]});note(sl,['連続イベント数を独立試行数とみなさない。MAE改善と検知率改善も区別'],575);return sl;});
+define('mainSingleSetup',()=>{const sl=base('実験①：別送信を単独受信する条件','確率変動モデルでの感度評価。無制約攻撃全体の再現ではない',psrc('position-summary.csv / async-base-config.json'));table(sl,[['項目','仮定と変更点'],['観測','40イベント／飛行、各送信1 RSSI、10 seed'],['位置・電波','高度3〜70m。電力変動SD3dB、遮蔽・受信感度を導入'],['申告の改変','真位置を維持し、申告距離だけ外向きに追加30／100m'],['正常の校正','校正26飛行で閾値設定。評価45飛行とは分離'],['攻撃の比較','位置のみ／位置と電力を連動。後者は電力変更上限なし']],{h:355,columns:[195,681]});note(sl,['改変量は申告距離への追加量。30m安全離隔を判定した実験ではない'],570);return sl;});
+define('positionResults',()=>{const sl=base('実験①：30m改変と正常誤警報の差','確率変動モデル、受信できた記録を分母にした比較',psrc('position-summary.csv'));const bins=['20-40m','80-120m'];chart(sl,{title:'真距離帯ごとの警報率',categories:['真距離20〜40m','真距離80〜120m'],series:[{name:'正常',values:bins.map(range_bin=>pc(+select(X.position,{delta_m:0,direction:'out',attack:'position_only',range_bin}).alarm_rate)),fill:C.blue},{name:'外向き30m改変',values:bins.map(range_bin=>pc(+select(X.position,{delta_m:30,direction:'out',attack:'position_only',range_bin}).alarm_rate)),fill:C.red}],max:20});note(sl,['近距離：10.95%から14.12%。増加は3.17ポイント','遠距離：3.29%から5.88%。増加は2.59ポイント','同じ30mでも距離比が異なる。正常との分離は小さい'],540);return sl;});
+define('positionPower',()=>{const sl=base('実験①：電力連動と受信選択の変化','受信機位置・伝搬モデルを攻撃側が既知。電力変更は無制限');const a=[select(X.position,{delta_m:0,direction:'out',attack:'position_only',range_bin:'all'}),select(X.position,{delta_m:100,direction:'out',attack:'position_only',range_bin:'all'}),select(X.position,{delta_m:100,direction:'out',attack:'joint_unbounded',range_bin:'all'})];chart(sl,{title:'全送信を分母にして未受信も表示',categories:['正常','申告+100m','電力も連動'],series:[{name:'警報',values:a.map(r=>100*r.alarms/r.emitted),fill:C.red},{name:'受信・警報なし',values:a.map(r=>100*(r.tested-r.alarms)/r.emitted),fill:C.blue},{name:'未受信',values:a.map(r=>100*(1-r.tested/r.emitted)),fill:C.pale}],stack:true,y:150,h:290,ytitle:'全送信に対する割合（%）'});table(sl,[['条件','警報／受信','警報／全送信','受信率'],...a.map((r,i)=>[['正常','申告+100m','電力も連動'][i],fmt(100*r.alarms/r.tested,2)+'%',fmt(100*r.alarms/r.emitted,2)+'%',fmt(100*r.tested/r.emitted,1)+'%'])],{y:470,h:156,columns:[240,212,212,212]});footer(sl,'未受信は検査対象なし。受信選択の影響も含むため、警報低下の全てを検出器への欺瞞と断定しない。\n出典：'+S+' / position-summary.csv（合成10 seed）');return sl;});
+define('nodesSetup',()=>{const sl=base('補足：通常の受信機増設と異なる対照','新しい独立RSSIを追加せず、既存観測の受信機割当てを変更',psrc('asynchronous-summary.csv'));table(sl,[['固定するもの','変更するもの'],['総データ数、真距離、真電力、時刻','受信機ラベルと校正差：1〜10台へ割当て'],['1イベントにつき1 RSSI','同じ位置への追加拘束は与えない'],['70学習・26校正・45評価飛行','各seedで同じ観測実現を使用']],{h:270,columns:[450,426]});section(sl,'測っていない効果',['受信カバー範囲の拡大、観測数増加、同一送信の追加受信'],510,23);return sl;});
+define('nodesResults',()=>{const sl=base('総観測数固定の割当て比較：効果は小差','新規RSSIなし・1送信1 RSSI・位置拘束追加なしという限定条件',psrc('asynchronous-summary.csv'));const ns=[1,2,3,5,10];chart(sl,{title:'受信機ラベルの割当て台数',categories:ns.map(n=>n+'台'),series:[['normal','正常',C.blue],['range_shift30','申告+30m',C.red]].map(([scenario,name,fill])=>({name,fill,values:ns.map(receivers=>pc(+select(X.nodes,{scenario,receivers}).alarm_rate))})),max:20});note(sl,['正常5.2〜5.5%、改変7.5〜7.9%。各送信から得る情報は増えていない','受信機増設の一般的な限界を示す結果ではない','カバー範囲・総観測数・同一送信の追加受信は別に評価が必要'],540);return sl;});
+define('manyRecords',()=>{const sl=base('自由電力モデルの識別不能性','1000件の統計試験ではなく、同じ観測を作る構成的反例','出典：identifiability_minimal.py。理想的な距離減衰、n=2、雑音なし');txt(sl,'R = a − 20 log₁₀d',80,180,800,45,30,C.blue,true,'center');txt(sl,'a′ = a + 20 log₁₀4、d′ = 4d',80,250,800,45,28,C.black,false,'center');txt(sl,'a′ − 20 log₁₀d′ = a − 20 log₁₀d',80,320,800,45,28,C.red,true,'center');table(sl,[['構成','確認結果'],['1000件の距離履歴を4倍に変更','各基準電力を+12.0412dB'],['2つの世界のRSSI差','最大1.42×10⁻¹⁴dB（数値丸めの範囲）']],{y:415,h:150,columns:[450,426]});note(sl,['観測数だけでは識別不能性は解消しない。実機の電力制約は別検証'],600);return sl;});
+define('historySetup',()=>{const sl=base('補足：過去の真距離という追加情報','通常のRID監視だけでは得られない、独立な真値付き点検を仮定',psrc('time-summary.csv'));table(sl,[['項目','条件'],['過去の点検','独立測位などで真距離が既知。ここでは合成真値'],['電力推定','真距離とRSSIから、過去の実効電力を推定'],['現在','RSSI 1値と、過去の電力特性から距離を推定'],['変化の仮定','電力の相関時間10分。値は実機測定ではない']],{h:320,columns:[220,656]});note(sl,['不信頼なRID申告位置を、正解として電力推定へ使わない'],565);return sl;});
+define('historyResults',()=>{const sl=base('履歴の効果：古い真値付き点検への依存','独立な過去真距離と、正しい電力相関時間10分を仮定',psrc('time-summary.csv'));const gaps=[3,60,300,3600];chart(sl,{title:'正常時の距離MAE。偽装の検知率とは別',categories:['3秒','1分','5分','1時間'],series:[['no_history','履歴なし',C.gray],['hold_last','過去値維持',C.red],['ou_matched','相関に合う予測',C.blue]].map(([model,name,fill])=>({name,fill,values:gaps.map(gap_s=>+select(X.history,{tau_s:600,gap_s,scenario:'normal',model}).mae_m)})),type:'line',max:80,ytitle:'距離MAE（m）'});note(sl,['速い電力変動の相関ρ=exp(−時間差/600秒)、1時間後≈0.0025','過去値の維持は58.67m。履歴なし38.42mより悪化','速い電力変動の相関がほぼ失われ、過去値を維持すると外れる'],540);return sl;});
+define('personalSetup',()=>{const sl=base('補足：RID別モデルの追加情報','独立した研究用真距離ラベルを各RIDへ30件',psrc('personalization-summary.csv'));table(sl,[['項目','仮定'],['正解ラベル','独立測位等が必要。実験では合成真距離'],['学習元','保護された外部30 ID、対象20 IDを個別化'],['電波特性','ID固有差SD6dB、飛行差SD1dB'],['評価','別の10飛行／ID、乱数条件10通り'],['RIDの意味','文字列による分類。機体・無線機の認証ではない']],{h:350,columns:[220,656]});note(sl,['RID申告位置を真距離として学習していない'],570);return sl;});
+define('personal',()=>{const sl=base('補足：別送信機へ誤った個別補正を適用','同じRIDでも、過去と違う送信機の電波特性なら悪化',psrc('personalization-summary.csv'));const cases=['normal','cloned_rid'];chart(sl,{title:'独立真距離30ラベル／RID、ID差SD6dB・飛行差SD1dB',categories:['通常の同じ送信機','同名の別送信機'],series:[['global','共通モデル',C.blue],['rid_shrinkage','RID別補正',C.red]].map(([model,name,fill])=>({name,fill,values:cases.map(scenario=>+select(D.personal,{profile:'stable_id6',labeled_per_rid:30,scenario,model}).mae_m)})),max:70,ytitle:'距離MAE（m）'});note(sl,['通常は41.35→19.17m。同名の別送信機では40.96→54.33m','別送信機へ、以前の送信機の補正を適用してしまうため悪化','個別化による距離誤差改善を、位置偽装の検知性能とは呼ばない'],540);return sl;});
+define('loraSetup',()=>{const sl=base('補足：公開UAV・LoRaデータの使用範囲','固定LoRa送信機から、移動するUAV受信機への公開実測','Mavilia et al., Data in Brief 2025, DOI:10.1016/j.dib.2025.112243\nZenodo v2, https://zenodo.org/records/17339095');table(sl,[['範囲','件数と用途'],['取得した全体','19条件、142,039 RSSI記録'],['比較へ使う部分','19条件のうち3 runを持つ16条件'],['データ分離','各条件で学習／校正／評価runを交代。計48分割'],['距離の基準','位置・高度等から平坦地の斜距離を近似'],['対象の違い','868MHz LoRa。BLE／Wi-Fi Remote IDではない']],{h:350,columns:[220,656]});note(sl,['複数地上ノードによる実RIDの同時受信実測ではない'],570);return sl;});
+define('loraDelay',()=>{const sl=base('RSSIと位置の誤った時刻対応による誤警報','過去R(t−Δt)を現在位置q(t)へ誤対応。正しい別時刻観測とは異なる',src(L,'delay-summary.csv','実測系列への人工時刻ずれ'));chart(sl,{title:'同じ評価時刻で比較した正常誤警報率',categories:D.lora.delay.map(r=>r.requested_delay_s+'秒ずれ'),series:[{name:'正常誤警報',values:D.lora.delay.map(r=>pc(r.normal_fpr))}],type:'line',max:30});note(sl,['正しい組合せR(t−Δt)とq(t−Δt)を使う非同期観測は、この操作とは別','0秒4.87%から15秒23.22%。移動により別地点のRSSIを比較した影響','「観測が1時間離れると必ず誤警報」という結果ではない'],540);return sl;});
+define('originalAnswer',()=>{const sl=base('補足：証拠の種類ごとに分かること','数学・合成・実測再解析を区別');table(sl,[['根拠','確認したこと'],['数理反例','自由電力なら、別の距離で同じRSSI履歴を構成可能'],['非同期の合成評価','正常と位置改変の警報率の差は小さい条件がある'],['履歴・個別化の合成','真距離校正と特性の持続性があれば距離誤差を改善'],['実測BLE・LoRa再解析','RSSIの揺らぎ、誤った時刻対応の影響']],{h:350,columns:[250,626]});note(sl,['公開実測から、実RIDの敵対的偽装検知率を得たわけではない'],565);return sl;});
+define('common',()=>{const sl=base('追加条件：観測差と申告からの予測','同じ物理送信を複数受信。元の非同時条件へ観測を追加',DRSS);txt(sl,'実際：Rᵢ = P₀ − 10n log₁₀dᵢ + εᵢ',60,170,850,45,27,C.black);txt(sl,'dᵢ = ‖p − xᵢ‖：未知の真位置pからの距離',60,225,850,40,24,C.black);txt(sl,'観測差：ΔRobs = R_A − R_B',60,295,850,43,28,C.blue,true);txt(sl,'申告qの予測：ΔRpred(q) = −10n log₁₀(‖q−x_A‖ / ‖q−x_B‖)',60,360,850,80,25,C.blue);txt(sl,'検査する残差：E(q) = ΔRobs − ΔRpred(q)',60,465,850,48,28,C.red,true);note(sl,['同一送信ならP₀は差で消える。真の距離dと、申告qからの距離は別','p・q：真位置・申告位置、x：受信機位置。共通の距離単位を使用'],555);return sl;});
+define('setup',()=>{const sl=base('5台の配置と共通3D軌跡','編集可能な平面図。A〜Eは異なる5座標、高度は右表へ記載',src(E,'config.json'));const sites=D.events.config.observer_xyz_m;const map=([x,y])=>[270+x*1.05,350-y*1.05];ln(sl,72,350,472,350,'#AAB4C0',1);ln(sl,270,155,270,540,'#AAB4C0',1);txt(sl,'東西（m）',355,555,155,33,19,C.gray);txt(sl,'南北（m）',45,150,155,33,19,C.gray);for(const t of [-100,0,100]){const [x]=map([t,0]);txt(sl,String(t),x-22,360,55,27,17,C.gray);const [,y]=map([0,t]);txt(sl,String(t),45,y-12,50,27,17,C.gray);}const xyz=D.synthetic_example_xyz;for(let i=1;i<xyz.length;i++){const a=map(xyz[i-1]),b=map(xyz[i]);ln(sl,...a,...b,'#8CA7C3',2);}for(const [i,p] of sites.entries()){const [x,y]=map(p);shape(sl,'rect',x-9,y-9,18,18,C.blue);txt(sl,'ABCDE'[i],x+13,y-15,45,32,23,C.blue,true);}table(sl,[['ノード','x','y','z'],...sites.map((p,i)=>['ABCDE'[i],...p.map(String)])],{x:520,y:175,w:390,h:285,columns:[100,95,95,100]});txt(sl,'全座標は架空、単位m\n機体高度：基準20〜60mに±3mの変動\n青四角：受信機、薄青線：軌跡の平面図',520,485,395,110,21,C.black);note(sl,['共通の1飛行を5台で観測。受信機を全て同じ場所には置いていない'],615);return sl;});
+define('eventConditions',()=>{const sl=base('追加実験：実装したスコアと閾値','ペア別ではなく、受信ノードの集合Sごとに校正',src(E,'event_scenarios.py / config.json'));txt(sl,'uᵢ(q) = Rᵢ + 10n log₁₀‖q−xᵢ‖',60,165,850,44,28,C.blue,true);txt(sl,'s(q) = RMS［uᵢ(q) − 集合S内の平均u］',60,225,850,44,27,C.blue);table(sl,[['処理','条件'],['正常校正','20飛行×240送信／seed。正常q=pでsを計算'],['閾値の設定','集合Sが同じ正常スコア40件以上で95%点'],['独立評価','30飛行×240送信／seed、乱数条件10通り'],['判定と保留','2台以上かつ閾値ありなら判定。不足なら保留']],{y:310,h:250,columns:[220,656]});note(sl,['共通電力を平均で除く。受信機ごとの誤差は残る','元の非同時条件ではない。対応付けは既知、伝搬係数2.2'],585);return sl;});
+define('combinedCurves',()=>{const sl=base('追加実験：雑音で位置改変の検知率が変化','同じ5台の配置・正常校正・共通送信。変えるのは独立リンク雑音',src(E,'curves-summary.csv'));const shifts=[0,10,30,50,100];chart(sl,{title:'5台・水平位置の申告改変',categories:shifts.map(x=>x+'m'),series:[2,6].map((sd,i)=>({name:'雑音SD'+sd+'dB',fill:i?C.red:C.blue,values:shifts.map(shift_m=>pc(select(D.events.curves,{noise_sd_db:sd,receivers:5,shift_m}).conditional_alarm_fraction))})),type:'line',max:100});note(sl,['正常は約5%。30m改変：SD2dBでも19.52%','100m改変：SD2dBで73.68%、SD6dBで18.73%','共通電力は消えても、受信機ごとの独立雑音ε_A−ε_Bは残る'],540);return sl;});
+define('coverage',()=>{const sl=base('補足：一部重複と判定保留の条件','距離160m以内かつスキャン欠測15%を免れたノードが受信',src(E,'cases-summary.csv / config.json'));const a=['full','partial'].map(m=>ev(m,'position100'));chart(sl,{title:'雑音SD2dB・申告100m改変・全送信を分母',categories:['常に5台','一部重複'],series:[{name:'警報',values:a.map(r=>pc(r.all_event_alarm_fraction)),fill:C.red},{name:'判定・警報なし',values:a.map(r=>pc(r.decision_fraction-r.all_event_alarm_fraction)),fill:C.blue},{name:'保留',values:a.map(r=>pc(r.abstain_fraction)),fill:C.pale}],stack:true,max:100,ytitle:'全送信に対する割合（%）'});note(sl,['判定は2台以上＋その集合の正常校正40件以上。それ以外は保留','判定可能77.1%、その中で検知64.0%、全送信で警報49.35%','電力依存の受信感度ではなく、幾何と独立欠測による簡略条件'],540);return sl;});
+define('geometryMath',()=>{const sl=base('4台でも識別できない対称配置の反例','半径100mの円周上に地上4台。2つの候補は円の中心上空',src(E,'summary.json / counterexamples','雑音なしの構成的反例、n=2.2'));const cx=190,cy=350,r=115;shape(sl,'ellipse',cx-r,cy-r,2*r,2*r,'none','#ADBCCC',2);for(const [i,[a,b]] of [[1,0],[0,-1],[-1,0],[0,1]].entries()){shape(sl,'rect',cx+a*r-8,cy+b*r-8,16,16,C.blue);txt(sl,'ABCD'[i],cx+a*r+12,cy+b*r-14,35,30,22,C.blue);}dot(sl,cx,cy,'中心上空',C.red);txt(sl,'平面図：全台で同じ距離比',45,540,350,60,22,C.blue);txt(sl,'各受信機までの距離',415,170,485,40,25,C.blue,true);txt(sl,'d₈₀ = √(100²+80²) ≈ 128.06m\nd₂₀ = √(100²+20²) ≈ 101.98m',415,225,485,105,26);txt(sl,'全4台で d₂₀ / d₈₀ が等しい',415,365,485,40,25,C.black,true);txt(sl,'P₂₀ − P₈₀ = 22 log₁₀(d₂₀/d₈₀)\n                  ≈ −2.18dB',415,425,485,90,25,C.red,true);note(sl,['距離比が全台共通なので、1つの電力補償で全RSSIが一致','この対称配置では、未知電力と高度20m／80mの違いを識別できない'],600);return sl;});
+define('geo2',()=>{const sl=base('補足：反例の2世界を表で比較','2系列の線が重なるため、全ノードの数値を並記',src(E,'summary.json / counterexamples','雑音なしの数理反例'));const c=D.events.counterexamples.circle;table(sl,[['項目','世界A：正常','世界B：申告偽装'],['実際の高度','80m','20m'],['RIDの申告高度','80m','80m'],['基準電力の差','基準','−2.18dB'],...c.truthful_rssi_dbm.map((v,i)=>['受信機'+'ABCD'[i]+' RSSI',fmt(v,6)+'dBm',fmt(c.attack_rssi_dbm[i],6)+'dBm'])],{h:405,columns:[270,303,303]});note(sl,['円周4台への距離比が共通なので、全台を同時に補償できる'],600);return sl;});
+define('summaryC',()=>{const sl=base('まとめ','検知できる条件と、位置を保証できない条件');table(sl,[['条件・根拠','今回言えること'],['非同時・単独RSSI・自由電力','別距離・別電力で同じ履歴を構成。件数だけで識別不可'],['確率変動モデルの単独受信','真距離20〜40m：改変14.12%、正常10.95%。分離は小さい'],['同一送信の5台受信を追加','100m改変で73.68%／18.73%。雑音SD2／6dBに依存'],['対称配置の4台','全RSSIが同じ反例。台数だけで真位置を保証しない']],{h:345,columns:[310,566]});note(sl,['警報はモデル不整合。真位置・実放射電力・機体の身元は認証しない'],565);return sl;});
+define('futureC',()=>page('今後','元のRSSI監視で成立条件を満たせるかを確認',[['実測で確認するもの',['電力の変動幅・持続時間、受信選択、伝搬の揺らぎ']],['元の非同時シナリオの拡張',['独立真値付き評価、観測件数・時間幅、同名送信機の混入']],['別方式との比較',['方向・画像は追加証拠を導入する別構成。主方式の成立とは分離']]]));
+define('ghostSetup',()=>{const sl=base('補足：GhostBusterの実測と仮想評価','実飛行のRF測定から、仮想的な複数観測者の評価へ',GHOST);const stages=[['実測','単一RFセンサの\n実飛行記録'],['モデル化','機体ごとの\n伝搬特性を推定'],['仮想評価','複数受信機を配置し\n位置推定と照合']];stages.forEach(([h,b],i)=>{const x=48+i*300;txt(sl,h,x,200,270,45,29,C.blue,true);txt(sl,b,x,275,270,100,25);if(i<2)ln(sl,x+245,240,x+295,240,C.gray,2);});section(sl,'実測で取得していないもの',['12台を同時に置いて取得したRID受信記録そのものではない'],470,23);note(sl,['今回の実装はこの原アルゴリズムの追試ではない'],585);return sl;});
+define('ghostResults',()=>{const sl=base('補足：GhostBusterの検知距離の意味','UA1・UA3は、実飛行データ中の別の無人機・伝搬モデル',GHOST);table(sl,[['本文VI-Cの条件','95%の攻撃を検知した偽装変位'],['仮想12受信機、5パケット：UA1','364m'],['同条件：UA3','1,175m']],{h:205,columns:[470,406]});section(sl,'数値を左右する条件',['正常位置推定の誤差分布上端から閾値を選ぶ設計','伝搬条件・位置推定誤差が大きいと、小さい偽装は分離しにくい'],440,23);note(sl,['95%は当該モデルでの攻撃検知率。受信半径ではない','正常評価の誤警報が独立に常に5%という条件とは異なる'],590);return sl;});
+define('drssC',()=>{const sl=base('補足：DRSSで共通電力が消える理由','今回は同じ物理送信を条件にして、共通のP₀を置く',DRSS);txt(sl,'R_A = P₀ − 10n log₁₀d_A + ε_A\nR_B = P₀ − 10n log₁₀d_B + ε_B',65,180,835,125,29,C.black);txt(sl,'R_A−R_B = −10n log₁₀(d_A/d_B) + ε_A−ε_B',65,350,835,65,29,C.blue,true);section(sl,'残る未知量',['dは真の送信位置からの距離。雑音・遮蔽・受信機差は残る','別送信のP_AとP_Bが異なれば、電力差P_A−P_Bも残る'],480,23);return sl;});
+define('ctupC',()=>{const sl=base('補足：CTUPが共同推定するもの','CTUP：Cooperative Localization Techniques with Unknown Parameters',CTUP);table(sl,[['区分','論文の構成'],['観測','位置既知の基準ノードと対象、対象同士のRSSリンク'],['未知量','対象位置、対象ごとの共有電力、伝搬係数等'],['実験','BLE 50ノード。位置既知の基準と未知の対象を分けて評価'],['独立基準','RTK-GPSの位置真値。通常GPSの位置誤差も考慮'],['結果','基準ノードを増やすと位置誤差が減る傾向']],{h:355,columns:[200,676]});note(sl,['複数リンクで同じ未知量を拘束。観測ごとに独立な自由電力とは異なる'],570);return sl;});
+define('gpC',()=>{const sl=base('補足：GPの入力と出力','GP：位置・時刻の近い観測の関係を使う確率的な回帰',GPREF);table(sl,[['区分','SantosほかのRSSI場推定'],['入力','観測者の位置とRSSI、過去の推定分布'],['仮定','電力・伝搬係数の事前分布、空間的な相関'],['出力','未観測地点でのRSSI分布と不確実性'],['論文の結果','合成で逐次更新・電力変化への追従、GSM実測で検証']],{h:350,columns:[200,676]});note(sl,['出力はRSSIの空間分布。RID申告の真位置を証明するものではない','移動スマホのGSM実測を、攻撃ドローンの実験と呼ばない'],550);return sl;});
+define('bleSetup',()=>{const sl=base('補足：BLE実測再解析の条件','固定BLEビーコンからスマートフォンへの受信記録','公開データ：github.com/manwestc/ble-rssi-indoor-localization-dataset\ncommit b38a9a4a53a01f52136f4e9b29b5045f61655a06');table(sl,[['項目','設定と限界'],['送受信','屋内の固定6ビーコンからスマートフォン'],['入力','3 CSV、50,400 RSSI値'],['出力設定','−8／−4／0dBmというビーコンの設定値'],['実際の電力','RF計測器による実EIRPの独立実測ではない'],['比較','同じ地点・ビーコンのRSSI中央値。別セッションを含む']],{h:350,columns:[220,656]});note(sl,['実ドローンのRemote IDを測定したデータではない'],570);return sl;});
+define('ble',()=>{const sl=base('補足：設定差とRSSI差が一致しない例','環境や端末状態も変化。電力設定だけの因果効果を分離できない','公開BLE再解析：mac-recheck-20261101 / summary.json。固定版 b38a9a4');const a=D.ble.paired_setting_shifts;chart(sl,{title:'同じ地点・ビーコンの中央値差',categories:['設定−8→−4dBm','設定−4→0dBm','設定−8→0dBm'],series:[{name:'設定値の差',values:a.map(r=>r.nominal_shift_db)},{name:'RSSI中央値の差',values:a.map(r=>r.median_rssi_shift_db),fill:C.red}],max:10,ytitle:'差（dB）'});note(sl,['設定差8dBに対し、RSSI中央値差は約4.75dB','温度・反射・受信状態等の寄与を、このデータだけで個別に断定しない','設定差をそのまま受信強度差とみなす校正は避ける'],540);return sl;});
+define('singleSetup',()=>{const sl=base('補足：申告距離だけを外向きへ変更','真の機体位置は維持。申告の受信機からの距離にΔを追加',psrc('position-summary.csv'));const y=300;shape(sl,'rect',85,y-15,30,30,C.blue);txt(sl,'受信機',60,350,120,40,23,C.blue);dot(sl,385,y,'元の申告',C.blue);dot(sl,755,y,'改変後の申告',C.red);ln(sl,115,y,375,y,C.blue,2);ln(sl,400,y,740,y,C.red,2);txt(sl,'追加Δ：5〜200m',425,245,315,45,26,C.red,true);txt(sl,'真位置・観測RSSIは位置のみの改変では不変',60,440,850,45,26,C.blue);note(sl,['通常の申告位置誤差もあるため、元の申告と真位置は完全一致とは限らない','Δ=30mは安全離隔の判定とは別。受信機からの距離方向への申告改変'],555);return sl;});
+define('singleAssumptions',()=>{const sl=base('補足：通常の確率変動モデル','電力が相関しながら変動する仮定。毎回自由な攻撃モデルとは別',psrc('async-base-config.json'));table(sl,[['要素','合成条件'],['位置','水平半径6〜140m、高度3〜70m、申告誤差SD2m'],['電力','飛行差SD2dB、送信変動SD3dB、時間相関0.85'],['伝搬','係数2.2、相関する遮蔽変動SD4dB、NLOS減衰12dB等'],['受信','感度−100dBm、量子化1dB、独立追加欠測3%']],{h:350,columns:[170,706]});note(sl,['数値は事前に置いた仮定。実機の電力変動を推定した値ではない','位置と電力の連動攻撃は、ここに別の改変として加える'],550);return sl;});
+define('singleModels',()=>{const sl=base('補足：別条件の単一RSSIモデル比較','既往の本格評価とは別の独立合成実験。距離分布・生成条件も区別','mac-independent3d-20261101 / summary.json、config.json。実測校正ではない');const a=D.single.filter(r=>r.channel==='mixed'&&r.scenario==='normal'&&['PathLoss','Bayesian','GP','MLP'].includes(r.model));chart(sl,{title:'通常条件の距離MAE。各飛行は1受信機に割当て',categories:a.map(r=>r.model),series:[{name:'MAE',values:a.map(r=>r.mae_m)}],max:70,ytitle:'距離MAE（m）'});note(sl,['距離範囲は水平6〜140m・高度3〜70m、電力・NLOS・受信感度を仮定','GPは25.60m。別実験の数値と、モデルの優劣を直接比較しない','GP：確率回帰、MLP：ニューラルネット。真距離付き学習を使用'],540);return sl;});
+define('empirical',()=>{const sl=base('補足：雑音分布ごとの検知と正常誤警報','仮想10受信機、100m改変。雑音条件ごとに正常校正95%点を設定',src(R,'empirical_sync-summary.csv','屋内BLE残差の独立抽出による合成'));const kinds=['gaussian2','gaussian_matched_rms','empirical'];const a=kinds.map(noise_model=>select(D.empirical,{noise_model,receivers:10,environment:'matched',delta_m:100}));chart(sl,{title:'雑音を変えたときの警報率',categories:['ガウスSD2dB','RMS整合ガウス','屋内BLE残差'],series:[{name:'正常',values:a.map(r=>pc(+r.matched_normal_fpr)),fill:C.blue},{name:'100m改変',values:a.map(r=>pc(+r.alarm_rate)),fill:C.red}],max:100});note(sl,['攻撃時85.82／19.61／10.42%、正常時5.01／5.06／5.11%','全リンク受信を仮定（モデル上100%）。RFの受信率を実測していない','正常校正と評価はセクター分離。実UAVの検知率ではない'],540);return sl;});
+define('poison',()=>{const sl=base('補足：誤ラベルと中央値の限界','独立真距離の一部を4倍に改変。外部共通モデルは保護',src(R,'poisoning-summary.csv'));const f=[0,.1,.3,.5,.7];chart(sl,{title:'誤ラベル比率と距離MAE',categories:f.map(v=>pc(v)+'%'),series:[['mean','平均補正',C.blue],['median','中央値補正',C.red]].map(([model,name,fill])=>({name,fill,values:f.map(corrupt_fraction=>+select(D.poisoning,{flight_sd_db:1,pattern:'random_rows',corrupt_fraction,distance_multiplier:4,scenario:'normal',model}).mae_m)})),type:'line',max:150,ytitle:'距離MAE（m）'});note(sl,['例：[0,0,0,0,10]の平均は2、中央値は0。少数外れ値には頑健','例：[0,0,10,10,10]の中央値は10。多数が誤ると正解側へ戻せない','グラフの補正値は電波残差から計算。上の数列は仕組みの説明例'],540);return sl;});
+define('expiry',()=>{const sl=base('補足：履歴の過信で区間が狭すぎる例','真の相関時間10分、1時間後。90%予測区間の実包含率',src(R,'time_mismatch-summary.csv'));const a=['none','600','86400'].map(assumed_tau_s=>select(D.time,{true_tau_s:600,assumed_tau_s,gap_s:3600,scenario:'normal'}));table(sl,[['仮定','実包含率','平均区間幅'],...a.map((r,i)=>[['履歴なし','正しい相関時間10分','誤った相関時間1日'][i],fmt(pc(+r.interval_coverage),2)+'%',fmt(+r.mean_width_m,2)+'m'])],{h:270,columns:[410,230,236]});section(sl,'起きたこと',['古い電力を長く信頼しすぎて、平均区間幅が222.58mから146.06mへ縮小','真距離を含む割合も90.38%から60.82%へ低下。確信を過大評価'],490,23);return sl;});
+define('dropout',()=>{const sl=base('補足：受信済み記録の人工削除','公開LoRaの受信済み記録を削除。元のRFパケット損失率は不明',src(L,'dropout-summary.csv','実測系列への人工欠測'));const a=D.lora.dropout.filter(r=>r.window_packets===20);chart(sl,{title:'20件を集める時間幅',categories:a.map(r=>pc(r.drop_fraction)+'%削除'),series:[{name:'時間幅の中央値平均',values:a.map(r=>r.span_median_s)}],max:20,ytitle:'時間幅（秒）'});note(sl,['確認したこと：固定20件でも、欠測時は古い観測まで混ざる','時間幅の増加を伴う集約を、同一時点の観測として扱わない','完全な20件を作れない場合は除外数を記録し、誤差ゼロにしない'],540);return sl;});
+define('sourceMap',()=>{const sl=base('補足：公開入力のURLと固定版','原データの取得先と、今回の再解析を区別');table(sl,[['入力','取得先・版'],['屋内BLE','github.com/manwestc/ble-rssi-indoor-localization-dataset\ncommit b38a9a4a53a01f52136f4e9b29b5045f61655a06'],['UAV受信LoRa','zenodo.org/records/17339095、v2、CC-BY 4.0'],['GhostBuster元データ','Kaggle icmcis-drone-tracking。認証が必要で今回未取得'],['今回の検知率','独立した合成コードから生成。原論文の追試ではない']],{h:355,columns:[230,646]});note(sl,['取得できない原データを、再現済みの実験として使用しない'],570);return sl;});
+define('reproduce',()=>{const sl=base('補足：設定・seed・実行コマンド','保存済みCSVの可視化と、実験の再実行は別の処理');table(sl,[['実験','設定と実行（リポジトリルートから）'],['非同期の感度評価','experiments/week26-rssi-privacy/sensitivity_suite.py\n設定：sensitivity_config.json、10 seedsを固定'],['共通軌跡の複数受信','experiments/week26-rssi-privacy/event_scenarios.py\n設定：event_scenarios_config.json、10 seedsを固定'],['雑音・失効・汚染','experiments/week26-rssi-privacy/robustness_suite.py\n設定：robustness_config.json、公開BLE入力が必要']],{h:325,columns:[240,636]});txt(sl,'python <上記スクリプト> --config <設定JSON> --out <新規出力先>',48,535,865,60,22,C.blue);note(sl,['原データのハッシュ、完全なコマンド、環境は同梱MDへ記載'],605);return sl;});
+const OLD_ORDER=['coverC','agendaC','work','professor','original','termsC','factors','ambiguous','powerCases','ghostSetup','ghostResults','drssC','ctupC','gpC','literatureC','reading','metrics','evidence','bleSetup','ble','singleSetup','singleAssumptions','positionResults','positionPower','nodesSetup','nodesResults','manyRecords','historySetup','historyResults','personalSetup','personal','loraSetup','loraDelay','originalAnswer','common','setup','eventConditions','curve2','curve6','coverage','geo2','attribution','summaryC','futureC','singleModels','empirical','poison','expiry','dropout','sourceMap'];
+const MAIN=['coverC','agendaC','professor','factors','powerCases','paperOverview','evaluationOverview','mainSingleSetup','positionResults','positionPower','nodesResults','manyRecords','historyResults','common','setup','eventConditions','combinedCurves','geometryMath','summaryC','futureC'];
+const APP=[...OLD_ORDER.filter(k=>!MAIN.includes(k)), 'positionCurves','reproduce'];
+const ORDER=[...MAIN,...APP];
+P=await PresentationFile.importPptx(await FileBlob.load(REF));template=P.slides.items[4];coverTemplate=P.slides.items[0];
+const slides=[];
+for(const key of ORDER){const sl=BANK[key]();slides.push(sl);log.at(-1).key=key;}
+P.slides.keep(slides.map(sl=>P.slides.items.findIndex(s=>s.id===sl.id)));slides.forEach((sl,i)=>sl.moveTo(i));
+const dir=path.join(CACHE,'D');await fs.mkdir(dir,{recursive:true});
+const records=log.map((r,i)=>({slide:i+1,key:r.key,title:r.title,source:r.source,charts:r.slide.charts.items.length,tables:r.slide.tables.items.length,appendix:i>=MAIN.length,old_slide:OLD_ORDER.indexOf(r.key)+1||null}));
+await fs.writeFile(path.join(dir,'slide-map.json'),JSON.stringify(records,null,2));
+for(const slide of slides)for(const ch of slide.charts.items)for(const se of ch.series.items){se.values=se.values.map(v=>v===null?v:Number(v.toFixed(6)));if(se.xValues?.length)se.xValues=se.xValues.map(v=>Number(v.toFixed(6)));}
+await (await PresentationFile.exportPptx(P)).save(path.join(dir,'draft.pptx'));console.log('D exported',slides.length,'slides; main',MAIN.length);
+for(let i=0;i<slides.length;i++){const png=await P.export({slide:slides[i],format:'png',scale:1});await fs.writeFile(path.join(dir,`slide-${i+1}.png`),new Uint8Array(await png.arrayBuffer()));if((i+1)%10===0)console.log('rendered',i+1);}
+await fs.writeFile(path.join(dir,'layout-inspection.ndjson'),(await P.inspect({kind:'textbox,chart,table',maxChars:2000000})).ndjson);

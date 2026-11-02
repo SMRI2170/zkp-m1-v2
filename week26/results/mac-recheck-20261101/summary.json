@@ -1,0 +1,222 @@
+{
+  "scope": "Independent reconstruction from documentation; public indoor BLE, not UAV RF",
+  "source_commit": "b38a9a4a53a01f52136f4e9b29b5045f61655a06",
+  "source_repository": "https://github.com/manwestc/ble-rssi-indoor-localization-dataset",
+  "sources": [
+    {
+      "file": "Tx_8.csv",
+      "sha256": "bb578081c2002dcf49c71167f3f6143a943d85069c6b47d0c9c6b3dc1f7e0a26",
+      "bytes": 74963,
+      "rows": 2800,
+      "url": "https://raw.githubusercontent.com/manwestc/ble-rssi-indoor-localization-dataset/b38a9a4a53a01f52136f4e9b29b5045f61655a06/data/Tx_8.csv"
+    },
+    {
+      "file": "Tx_4.csv",
+      "sha256": "4a4cd6e0ec572646e51d2b2e9bed968f4e047e0d222fd2c62b027bd3f7f27ebd",
+      "bytes": 74917,
+      "rows": 2800,
+      "url": "https://raw.githubusercontent.com/manwestc/ble-rssi-indoor-localization-dataset/b38a9a4a53a01f52136f4e9b29b5045f61655a06/data/Tx_4.csv"
+    },
+    {
+      "file": "Tx0.csv",
+      "sha256": "c964ba63925587081f657a83139562f6f60ad1c56a7ac34e3357bd8bbee2eae2",
+      "bytes": 74924,
+      "rows": 2800,
+      "url": "https://raw.githubusercontent.com/manwestc/ble-rssi-indoor-localization-dataset/b38a9a4a53a01f52136f4e9b29b5045f61655a06/data/Tx0.csv"
+    }
+  ],
+  "rssi_count": 50400,
+  "method": {
+    "normal_baseline_rows": [
+      0,
+      50
+    ],
+    "normal_score_rows": [
+      50,
+      100
+    ],
+    "calibration": "even/odd sectors, swapped; 95th percentile of normal block scores",
+    "threshold": "linear quantile; strictly greater than threshold",
+    "windows": [
+      1,
+      5,
+      20
+    ],
+    "tail": "discard incomplete block",
+    "row_order": "source order; temporal independence is not established",
+    "pooling": "micro-average over both test folds",
+    "bootstrap": "3000 paired sector-cluster resamples, seed 20261101; exploratory"
+  },
+  "group_residuals": {
+    "absolute_median_db": 3.0,
+    "absolute_p90_db": 11.0,
+    "absolute_p95_db": 20.0,
+    "rms_db": 8.21194445585403
+  },
+  "detection_summary": [
+    {
+      "window": 1,
+      "normal_fpr": 0.04285714285714286,
+      "normal_fpr_decisions": 8400,
+      "normal_fpr_fold_min": 0.041666666666666664,
+      "normal_fpr_fold_max": 0.04404761904761905,
+      "shift4_tpr": 0.1436309523809524,
+      "shift4_tpr_decisions": 16800,
+      "shift4_tpr_fold_min": 0.14107142857142857,
+      "shift4_tpr_fold_max": 0.1461904761904762,
+      "shift8_tpr": 0.28791666666666665,
+      "shift8_tpr_decisions": 16800,
+      "shift8_tpr_fold_min": 0.28273809523809523,
+      "shift8_tpr_fold_max": 0.2930952380952381
+    },
+    {
+      "window": 5,
+      "normal_fpr": 0.048214285714285716,
+      "normal_fpr_decisions": 1680,
+      "normal_fpr_fold_min": 0.041666666666666664,
+      "normal_fpr_fold_max": 0.05476190476190476,
+      "shift4_tpr": 0.21160714285714285,
+      "shift4_tpr_decisions": 3360,
+      "shift4_tpr_fold_min": 0.18095238095238095,
+      "shift4_tpr_fold_max": 0.24226190476190476,
+      "shift8_tpr": 0.41041666666666665,
+      "shift8_tpr_decisions": 3360,
+      "shift8_tpr_fold_min": 0.38452380952380955,
+      "shift8_tpr_fold_max": 0.4363095238095238
+    },
+    {
+      "window": 20,
+      "normal_fpr": 0.05654761904761905,
+      "normal_fpr_decisions": 336,
+      "normal_fpr_fold_min": 0.023809523809523808,
+      "normal_fpr_fold_max": 0.08928571428571429,
+      "shift4_tpr": 0.3357142857142857,
+      "shift4_tpr_decisions": 840,
+      "shift4_tpr_fold_min": 0.29523809523809524,
+      "shift4_tpr_fold_max": 0.3761904761904762,
+      "shift8_tpr": 0.5880952380952381,
+      "shift8_tpr_decisions": 840,
+      "shift8_tpr_fold_min": 0.5119047619047619,
+      "shift8_tpr_fold_max": 0.6642857142857143
+    }
+  ],
+  "paired_setting_shifts": [
+    {
+      "low_tx_dbm": -8,
+      "high_tx_dbm": -4,
+      "nominal_shift_db": 4,
+      "groups": 168,
+      "median_rssi_shift_db": 2.0,
+      "negative_shift_groups": 35,
+      "zero_shift_groups": 15,
+      "exploratory_sector_bootstrap_95pct_db": [
+        2.0,
+        3.0
+      ]
+    },
+    {
+      "low_tx_dbm": -4,
+      "high_tx_dbm": 0,
+      "nominal_shift_db": 4,
+      "groups": 168,
+      "median_rssi_shift_db": 2.5,
+      "negative_shift_groups": 26,
+      "zero_shift_groups": 14,
+      "exploratory_sector_bootstrap_95pct_db": [
+        2.0,
+        3.0
+      ]
+    },
+    {
+      "low_tx_dbm": -8,
+      "high_tx_dbm": 0,
+      "nominal_shift_db": 8,
+      "groups": 168,
+      "median_rssi_shift_db": 4.75,
+      "negative_shift_groups": 11,
+      "zero_shift_groups": 4,
+      "exploratory_sector_bootstrap_95pct_db": [
+        4.0,
+        5.5
+      ]
+    }
+  ],
+  "reported_value_checks": [
+    {
+      "window": 1,
+      "metric": "normal_fpr",
+      "reported_percent": 4.29,
+      "recomputed_percent": 4.285714285714286,
+      "matches_reported_two_decimals": true
+    },
+    {
+      "window": 1,
+      "metric": "shift4_tpr",
+      "reported_percent": 14.36,
+      "recomputed_percent": 14.363095238095239,
+      "matches_reported_two_decimals": true
+    },
+    {
+      "window": 1,
+      "metric": "shift8_tpr",
+      "reported_percent": 28.79,
+      "recomputed_percent": 28.791666666666664,
+      "matches_reported_two_decimals": true
+    },
+    {
+      "window": 5,
+      "metric": "normal_fpr",
+      "reported_percent": 4.82,
+      "recomputed_percent": 4.821428571428572,
+      "matches_reported_two_decimals": true
+    },
+    {
+      "window": 5,
+      "metric": "shift4_tpr",
+      "reported_percent": 21.16,
+      "recomputed_percent": 21.160714285714285,
+      "matches_reported_two_decimals": true
+    },
+    {
+      "window": 5,
+      "metric": "shift8_tpr",
+      "reported_percent": 41.04,
+      "recomputed_percent": 41.041666666666664,
+      "matches_reported_two_decimals": true
+    },
+    {
+      "window": 20,
+      "metric": "normal_fpr",
+      "reported_percent": 5.65,
+      "recomputed_percent": 5.654761904761905,
+      "matches_reported_two_decimals": true
+    },
+    {
+      "window": 20,
+      "metric": "shift4_tpr",
+      "reported_percent": 33.57,
+      "recomputed_percent": 33.57142857142857,
+      "matches_reported_two_decimals": true
+    },
+    {
+      "window": 20,
+      "metric": "shift8_tpr",
+      "reported_percent": 58.81,
+      "recomputed_percent": 58.80952380952381,
+      "matches_reported_two_decimals": true
+    }
+  ],
+  "minimal_counterexample_stdout": "1000 distinct asynchronous events: max RSSI difference=1.42e-14 dB\nEach alternative distance is x4, compensated by +12.0412 dB in reference power\nResult: distance cannot be identified from these RSSI observations alone.\n",
+  "runtime": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "python": "3.15.1 (main, Oct 21 2026, 05:55:12) [Clang 21.0.0 (clang-2100.3.34.2)]",
+    "analysis_wall_seconds": 0.6177466670051217
+  },
+  "limitations": [
+    "Fixed known sector/beacon baselines; not unknown-location inference",
+    "TX setting changes are confounded with measurement session",
+    "Frames/rows and beacons are not assumed independent trials",
+    "No outdoor UAV, Pi/Pixel acquisition, EIRP measurement, or ZKP",
+    "Original ZIP/CSV code was unavailable; this is a documented reconstruction"
+  ]
+}

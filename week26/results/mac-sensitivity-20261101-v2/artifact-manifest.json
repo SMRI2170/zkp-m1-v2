@@ -1,0 +1,163 @@
+{
+  "date": "2026-11-01",
+  "revision": "v2, extreme OLS errors preserved",
+  "scope": "Independent synthetic sensitivity study; no real capture, coordinates, private keys or proofs",
+  "files": [
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/summary.json",
+      "sha256": "27eb05b34377816b6ed1cdd17c59273a0993d9afc6aabb04417a93403d4b96a9"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/time-gap.svg",
+      "sha256": "5961607add986883f19fa29e8b2e152d89a5e8a465d588836f287c9827eac4b0"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/audit.json",
+      "sha256": "9d9561a7f4fb477b0f8a9b55e3320c37c3fee68cbbb97dd92025c1c5f4c373d3"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/synchronous-seed-metrics.csv",
+      "sha256": "76fc33995a6943097041707514da569436cd2c0c5053d94477f3dd14624399e9"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/personalization-seed-metrics.csv",
+      "sha256": "feeb605532575c4764ffde511b1520394878b5e9e6761bc3cd31a425bc5ee2fb"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/async-base-config.json",
+      "sha256": "d57beb5a45d819b53eaae1589c377e9c6b5d64278b45ed127ad31bb8644ab2f9"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/personalization-summary.csv",
+      "sha256": "93f8b6fc9c2c7b6df0730dc35ae0b662e58dcb4c876086946e3329bf8c9ecda3"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/progress.jsonl",
+      "sha256": "3775aa9b3bccd42fee60a9134c343fba0185128211413e88dc2d9fa2916b17f9"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/python-packages.txt",
+      "sha256": "bfba983c28a31c2f7a31a5897edad13c08c8ffbd286cd9d12887a817e75c2520"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/config.json",
+      "sha256": "63301cbb97a2a64824cb0c8e7711f9568ced4c228bc70e8283d573af092b0538"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/synchronous-summary.csv",
+      "sha256": "094f017bd10764b8d5000d1ceabbf82df102b825c912a1a22919220c07cb92e3"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/time-gap.png",
+      "sha256": "28ff096216fb59fef52b28ea02bde97d8767151c7c2c1ac62cbdf433e51ebc61"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/rid-improvement.csv",
+      "sha256": "f4a55b85213fb2be15eeedcca2cfe7f205a8d1d9baa90dea6598f3fb1a0b3d6f"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/synchronous-count.svg",
+      "sha256": "ce4ccb19dfa98ef2e570d27df840687c6d25bd51489aa110c9b70387fb8159c7"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/position-summary.csv",
+      "sha256": "935be648761477762fc109b4a9c4165f31f6a1589785fbe7b09076a7bfe674eb"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/rid-learning.svg",
+      "sha256": "4e80639ea33bf7e2d9e03a956acd6c4089d792ba1e3bb5b3d23e6ca7695e6986"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/asynchronous-summary.csv",
+      "sha256": "0f40edaa2e92bffef75152d5fb214d6e643d85f03c935acf7ce2da22bba11799"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/spoof-distance.svg",
+      "sha256": "5ab3d7111d380a5be8d87fce54b6219ac857d1e8b199df8c9e9f3a39cce45868"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/rid-benefit-and-failure.svg",
+      "sha256": "1208c509923d8ef071c2c88467f7bd11cdf936f67daf7f25d5df122d2d81623c"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/asynchronous-count.svg",
+      "sha256": "69a3403f25981e6fe89879dda5f793fbfd03e73994ca67e1867c1d369c9f0eaa"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/time-seed-metrics.csv",
+      "sha256": "896a1822317e7706624c13a221c2ddaa470127323d94315725aa30197ef3893a"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/asynchronous-count.png",
+      "sha256": "c4a25fec54227fb1a811659f4fcea471786844d845aa1019c9710abf5bfad653"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/spoof-distance.png",
+      "sha256": "a3bf114960b2db872d53d872caebbfcd5d234b2b39ec80f880dd93aed65d9475"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/rid-benefit-and-failure.png",
+      "sha256": "619f14efd9ad864da974323e2f7dd4dc5a51696a5fff25681a8b998b302a571b"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/time-summary.csv",
+      "sha256": "d20534909a8164ce95f6f23cb7a7e67ee6e77520a191cd3cb1b3784c582238df"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/rid-learning.png",
+      "sha256": "becd330bdfd2faaf249ecbef7bc9c3babbd953b5223b0432f69e4f98eae6ce7a"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/asynchronous-seed-metrics.csv",
+      "sha256": "d8cda75bbe339de13e8939757b15537765463f1420d56ed0da3871abc03eb953"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/position-seed-metrics.csv",
+      "sha256": "fd35f82fc34a0a6efd0e420bde5901ce923baff55d7ad4c84a4e9f3f59bb6e48"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/status.json",
+      "sha256": "53d96d686a2ab8d779c3596be0671dd1c00c826fb4ff63feb35e2129f11f3773"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/sampled-detection-limits.csv",
+      "sha256": "705ebf5782629c52d2dd82add16c70f8d2909e652172b5976e24e7a239738d1f"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/synchronous-count.png",
+      "sha256": "229e6555c0d67bd255b9f4228387fb710f55270fcd8ea353d1ed67bc2af158fa"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/sensitivity_suite.py",
+      "sha256": "867eed50e436245a583abd05f569c2cc30e3a6bfd817fbaa8ab4150bc2642b6d"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/sensitivity_config.json",
+      "sha256": "63301cbb97a2a64824cb0c8e7711f9568ced4c228bc70e8283d573af092b0538"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/plot_sensitivity.py",
+      "sha256": "dcac28b55ee9a866fb65924c3091d28b8abe25ec3ba246529a91dad62a8e6cd0"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/audit_sensitivity.py",
+      "sha256": "de8478f79e126def74ebccc55d6c43f15b8766d25c01c53c639a02c0d3f5c80a"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/test_sensitivity.py",
+      "sha256": "0711473c3fa1326aac60aee62bee893f2c47c97cc04b630d391f544b1170f422"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/simulate3d_independent.py",
+      "sha256": "fb7ce6365771df223bc97815de1c67dd790ba136cb40bec3d039f373109835d3"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/synthetic3d_config.json",
+      "sha256": "aaebb701917d9d9f681efe09fd892ffb9975e5229b93eef85d2825bb95f132a3"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/requirements-synthetic.txt",
+      "sha256": "2088ffd8334d2ff676292f396aeddf45315565b3cc83b1791eb298eb8ebb9e82"
+    }
+  ]
+}

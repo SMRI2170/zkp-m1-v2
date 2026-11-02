@@ -1,0 +1,124 @@
+{
+  "schema": "week26-robustness-v1",
+  "seeds": [
+    202611300,
+    202611301,
+    202611302,
+    202611303,
+    202611304,
+    202611305,
+    202611306,
+    202611307,
+    202611308,
+    202611309
+  ],
+  "scope": "Independent stress tests; indoor BLE residuals are not an outdoor UAV propagation model",
+  "empirical_sync": {
+    "receivers": [
+      3,
+      5,
+      10
+    ],
+    "calibration_events": 2000,
+    "test_events": 3000,
+    "radius_m": 100,
+    "claim_shifts_m": [
+      0,
+      10,
+      30,
+      50,
+      100,
+      200
+    ],
+    "noise_models": [
+      "gaussian2",
+      "gaussian_matched_rms",
+      "empirical"
+    ],
+    "environments": [
+      "matched",
+      "gain_shift6",
+      "exponent_shift05",
+      "combined_shift"
+    ],
+    "assumed_exponent": 2.2,
+    "target_calibration_fpr": 0.05,
+    "note": "Odd/even sector holdout swapped. Group baseline first50; residuals last50. Independent link draws, no censoring."
+  },
+  "poisoning": {
+    "external_ids": 30,
+    "target_ids": 20,
+    "enrollment_flights": 10,
+    "events_per_flight": 10,
+    "test_flights": 10,
+    "test_events_per_flight": 10,
+    "identity_sd_db": 6,
+    "flight_sd_db": [
+      1,
+      4
+    ],
+    "measurement_sd_db": 4,
+    "corrupt_fractions": [
+      0,
+      0.1,
+      0.3,
+      0.5,
+      0.7
+    ],
+    "false_distance_multipliers": [
+      2,
+      4
+    ],
+    "patterns": [
+      "random_rows",
+      "whole_flights"
+    ],
+    "huber_scale_multiplier": 1.5,
+    "note": "Only target enrollment labels corrupted. Global training clean; nuisance variances estimated from clean external IDs."
+  },
+  "fresh_anchor_gate": {
+    "calibration_units": 1000,
+    "target_ids": 20,
+    "test_flights": 10,
+    "query_events_per_flight": 20,
+    "identity_sd_db": 6,
+    "flight_sd_db": [
+      1,
+      4
+    ],
+    "measurement_sd_db": 4,
+    "enrollment_flights": 3,
+    "enrollment_events_per_flight": 10,
+    "anchor_counts": [
+      1,
+      5,
+      20
+    ],
+    "calibration_false_reject_target": 0.05,
+    "note": "Protected independent true-distance anchor, not RID claimed coordinates. No CRC or hardware-authentication guarantee."
+  },
+  "time_mismatch": {
+    "events_per_seed": 3000,
+    "true_tau_s": [
+      30,
+      600,
+      86400
+    ],
+    "assumed_tau_s": [
+      30,
+      600,
+      86400
+    ],
+    "gaps_s": [
+      3,
+      60,
+      3600,
+      86400
+    ],
+    "power_sd_db": 6,
+    "anchor_noise_sd_db": 2,
+    "query_noise_sd_db": 4,
+    "mean_uncertainty_sd_db": 1
+  },
+  "design": "Fixed before run. All results and failures retained; no UAV measurements, private keys or proofs."
+}

@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "checks": [
+    "19 public condition counts match paper; 142039 rows, 52 archive run groups",
+    "48 held-out folds; three distinct run IDs and one test use per eligible run",
+    "window, delay and thinning row counts match design",
+    "model-compensated and zero-displacement controls equal normal alarms",
+    "window macro summaries independently recomputed from saved fold CSV",
+    "delay cohorts have identical counts in each fold; realized age is not younger than requested",
+    "thinning retains unavailable cases explicitly: 9; no empty-cohort zero-error claims",
+    "saved execution matches current runner source hash",
+    "run completed all 48 folds"
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "source": {
+    "path": "week24/slides/references/第24回進捗_HyperNovaとNova_環境構築_実装.pptx",
+    "sha256": "48f467231efab43c232f93d0dcaacf75576f296a7bbf44f3aa4465915e14e1cc",
+    "slide_count": 23,
+    "review": "OOXML attributes extracted; all slides rendered as overview; slides5,8,13,15,23 inspected individually at full size",
+    "scope": "design and writing style only; research content not verified"
+  },
+  "precedence": [
+    "latest_user_request",
+    "user_modified_reference_deck",
+    "style_guide"
+  ],
+  "current_user_overrides": {
+    "show_slide_numbers": true,
+    "speaker_notes": false,
+    "repeated_bottom_summary_boxes": false,
+    "explain_zk_snark_again_for_current_talk": false,
+    "slide_number_mode": "native_slidenum_field_with_master_and_layout_placeholders",
+    "bullet_markers_mode": "native_paragraph_bullets_including_square_sections"
+  },
+  "canvas": {
+    "ratio": "4:3",
+    "width_emu": 9144000,
+    "height_emu": 6858000,
+    "width_inches": 10,
+    "height_inches": 7.5,
+    "render_width_px": 960,
+    "render_height_px": 720
+  },
+  "fonts": {
+    "heading": "Hiragino Kaku Gothic ProN W6",
+    "body": "Hiragino Kaku Gothic ProN W3",
+    "other_observed": [
+      "游ゴシック",
+      "Yu Gothic"
+    ],
+    "fallback_policy": "verify Japanese glyphs and wrapping; do not silently substitute"
+  },
+  "font_size_pt": {
+    "title": 26,
+    "lead": 18,
+    "section_range": [
+      17,
+      20
+    ],
+    "body_range": [
+      16,
+      18
+    ],
+    "table_range": [
+      15,
+      17
+    ],
+    "formula_guidance_range": [
+      24,
+      28
+    ],
+    "range_note": "representative visual/OOXML guidance, not uniform settings in every source object"
+  },
+  "colors": {
+    "text": "#282629",
+    "structure_blue": "#2F64A1",
+    "table_header": "#2B5581",
+    "title_band": "#F3F4F6",
+    "table_alternate": "#EDF3F7",
+    "background": "#FFFFFF",
+    "focus_red": "#FF0000",
+    "other_observed_red": "#E02B2B"
+  },
+  "layout_cm": {
+    "title": {
+      "x": 1.1,
+      "y": 0.25,
+      "width": 23.2,
+      "height": 1.10067
+    },
+    "lead": {
+      "x": 1.6,
+      "y": 2.25,
+      "width": 22.7,
+      "height": 0.762
+    },
+    "body_example": {
+      "x": 1.11125,
+      "y": 3.43958,
+      "width": 23.01875,
+      "height": 12.96458
+    },
+    "scope": "representative regular content slide; cover and special layouts differ"
+  },
+  "paragraphs": {
+    "native_bullets": true,
+    "section_marker": "■",
+    "section_bullet": true,
+    "body_marker": "•",
+    "primary": {
+      "marL_emu": 285750,
+      "indent_emu": -285750,
+      "margin_left_pt": 22.5,
+      "hanging_indent_pt": -22.5
+    },
+    "support": {
+      "marL_emu": 742950,
+      "indent_emu": -285750,
+      "margin_left_pt": 58.5,
+      "hanging_indent_pt": -22.5
+    },
+    "support_offset_pt": 36,
+    "body_spacing_example_pt": {
+      "before": 3,
+      "after": 1
+    },
+    "section_spacing_example_pt": {
+      "before": 8,
+      "after": 2.5
+    },
+    "coordinate_note": "relative to text body, with text inset applied; convert units for target API",
+    "source_section_marker_was_typed": true
+  },
+  "writing": {
+    "titles": "noun phrases",
+    "summaries": "prefer nominal endings: 調査、確認、比較、整理、未確認",
+    "explanations": "short sentences when nominalization obscures conditions or causality",
+    "preserve_claim_strength": true,
+    "avoid": [
+      "発表者の長い語り",
+      "空疎な名詞の羅列",
+      "未確認と不可能の混同"
+    ]
+  },
+  "layouts": [
+    "text_sections",
+    "equation_with_nearby_symbol_definitions",
+    "comparison_table_with_short_explanation",
+    "large_chart_with_readout",
+    "repeated_agenda_with_current_section_red"
+  ],
+  "staged_explanation": {
+    "reuse_anchor_position": true,
+    "retain_same_formula_or_figure": true,
+    "add_only_new_explanation": true
+  },
+  "do_not_copy": [
+    "source research claims or measurements without verification",
+    "source-specific personal information and dates",
+    "typos",
+    "overlap or clipping"
+  ]
+}

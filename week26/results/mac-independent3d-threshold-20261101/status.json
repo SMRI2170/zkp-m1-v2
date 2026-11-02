@@ -1,0 +1,6 @@
+{
+  "status": "complete",
+  "scope": "Sequential, bounded-size independent 3D RSSI experiment. All geometry synthetic.\n\nThe original simulator ZIP is unavailable. This code defines its own explicit\nmodel, not recovered parameters. No real RF, secrets, Pi or ZKP is involved.\n",
+  "completed_jobs": 100,
+  "wall_seconds": 2.306351999985054
+}

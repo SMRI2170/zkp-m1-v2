@@ -1,0 +1,164 @@
+{
+  "files": [
+    {
+      "path": "experiments/week26-rssi-privacy/audit_event_scenarios.py",
+      "bytes": 5221,
+      "sha256": "48e88e5308830172cf1805a0a8b65b4a0ee95a11ba9861342f5152451e058a1c"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/event_scenarios.py",
+      "bytes": 14862,
+      "sha256": "65a080e5c458521f704280da13431d7a0eaafbdcaf02038e0bd762ce371c7750"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/event_scenarios_config.json",
+      "bytes": 1651,
+      "sha256": "856c7f0f19955d7d81934aea97d047623dc6d886db704f4c17c3c333f0619ea3"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/plot_event_scenarios.py",
+      "bytes": 10628,
+      "sha256": "637fe0a043730ed19d66a5b6026ba4d24b56bc5695774f8a3577b6a4738effe7"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/test_event_scenarios.py",
+      "bytes": 3564,
+      "sha256": "dcfdccd898b8719e15e9c1386c357ccbebf77f8f535dc591bc32b2bdf0bacf47"
+    },
+    {
+      "path": "week26/15_位置偽装検知の成立条件と限界_複数ノード合成評価.md",
+      "bytes": 15874,
+      "sha256": "d83b9b6b681f5b621f9f1d34f0a214e49d92541db6b879ffcaa86e7fd0957e46"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/01_observation_scenarios.png",
+      "bytes": 149399,
+      "sha256": "d299da628d09012ecb5deff51457934c60e2f9fd1ebd948bd5124dada303ba17"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/01_observation_scenarios.svg",
+      "bytes": 154301,
+      "sha256": "251fd48a7703741ea7923446d1b279ddfedd0599de04a4ee9abfca83ffd71636"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/02_alarm_and_abstention.png",
+      "bytes": 175834,
+      "sha256": "f5b62661913b34a07e9b57910d1787d28b320fc9a1a65722916d654c4ca07a90"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/02_alarm_and_abstention.svg",
+      "bytes": 183401,
+      "sha256": "23f2bf464ec4f2731d1ed9c90b0cc8b9ac8e1cc2458b339accf3896a1287dd3e"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/03_displacement_and_noise.png",
+      "bytes": 202375,
+      "sha256": "2493b1d4796b929fb69145113350dfa19b8328500ba8855be30e08ba1b174dec"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/03_displacement_and_noise.svg",
+      "bytes": 145946,
+      "sha256": "d28ec211e6e19d844baecc33cf38d76443e46e8674b323ca1d04571bd35159ad"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/04_pairing_vs_upload_delay.png",
+      "bytes": 227467,
+      "sha256": "47d35c7454f25476459e1671ee8633262f1d4d33c3540ccbbe88d84e6e3a319a"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/04_pairing_vs_upload_delay.svg",
+      "bytes": 208444,
+      "sha256": "c97394129c75a19aa44c76910400f9eea10a8747b43c20cc7f8258f4e407ae56"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/05_geometry_counterexample.png",
+      "bytes": 191416,
+      "sha256": "1513e1c2d1ff40d8ce7cc251ea0a7d8426a4ea4d0cfa75bafb6c003b2ef45450"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/05_geometry_counterexample.svg",
+      "bytes": 191248,
+      "sha256": "927d076a1ba64b2e8f9bb8096bd1eb67a4747d5f62de9146b90d5929e760ebca"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/audit.json",
+      "bytes": 857,
+      "sha256": "1fa237b497f4798a9dddeee9bb9a818c6c403b70abdc5b2fe3a40a81378b96f1"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/calibration-seed-metrics.csv",
+      "bytes": 16978,
+      "sha256": "2f9939462f0c2f69f176768b90ec2b49cd03fd72cdd790a59372b00f78c19891"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/cases-seed-metrics.csv",
+      "bytes": 39559,
+      "sha256": "b5fc79d084246927d527f36ccf05d1835b5bf8942348ee4f5f2c97dc391ce265"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/cases-summary.csv",
+      "bytes": 6999,
+      "sha256": "67a249db97794484228bacdbe93af2608b5736bd6cfb1910056b656f87ac7f6e"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/conditions.csv",
+      "bytes": 964,
+      "sha256": "fa1770d47d454adc21e09dd7dbc0b2ea4375a524de307e7c5ecd55a048839bc3"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/config.json",
+      "bytes": 1915,
+      "sha256": "355c1a84f9331c6023d38ed810b0615636f59ff6e14515377bdc761b48584e95"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/curves-seed-metrics.csv",
+      "bytes": 27442,
+      "sha256": "e8f1da416d8315a6d836241a5f719e1dbab135230ce37b92a09ceb2d918cc7c8"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/curves-summary.csv",
+      "bytes": 5797,
+      "sha256": "c4ee5b46da7c2b40a10e02826bd7763fa2c8261a28cb893ebe2203633b4e3395"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/pairing-seed-metrics.csv",
+      "bytes": 18179,
+      "sha256": "92898ccad936fed92cbd32c643d24182b29f9ed4b0354ffad0bda074b608c7f9"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/pairing-summary.csv",
+      "bytes": 3907,
+      "sha256": "89be63f73882f74bc58815a4d78c69b70405a5cba570c5e467a2600cadadf723"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/progress.jsonl",
+      "bytes": 420,
+      "sha256": "c5078fe2d20e68e26c4c010889cab9110efc7e8295e90834d7ebc8d1ce2812d4"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/python-packages.txt",
+      "bytes": 303,
+      "sha256": "bfba983c28a31c2f7a31a5897edad13c08c8ffbd286cd9d12887a817e75c2520"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/status.json",
+      "bytes": 46,
+      "sha256": "ca455650e0fe64eff8343ca0495c3ecf0e6b0cc34f994b28016ef522f3c0150d"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/summary.json",
+      "bytes": 75824,
+      "sha256": "9b19efc0f70b0114af362f1b35dfc6155c9d685c6a700d588d664cd1685c4bb2"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/uploads-seed-metrics.csv",
+      "bytes": 1938,
+      "sha256": "62e463a179a218fd832b077507cc25481cc442a4fdaa2e94b94b73aea2a74067"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/uploads-summary.csv",
+      "bytes": 277,
+      "sha256": "552da28ee53da65c5273473c475616eadeda4edee26ffacaeb3afe86e63b40f3"
+    }
+  ]
+}

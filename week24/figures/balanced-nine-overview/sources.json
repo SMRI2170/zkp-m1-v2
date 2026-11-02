@@ -1,0 +1,16 @@
+{
+  "input": ".cache/week24/sequential-jobs/circom-1017c/combined-data",
+  "sha256": {
+    "summary.json": "ed965f3578d981bef69f353a5eab4639dd29df493f9264026dcba45cffb5349c",
+    "samples.jsonl": "aee0d348745d5ef441c4bb04d986b218bb068451c03a1abf02bafbf70f7d1a0b",
+    "samples.csv": "51372e5e85ff928c473880fc427e132111b36160ac2fb386aac0519f086349bb"
+  },
+  "common_conditions": [
+    "distance-u16-balanced-v1",
+    "Pi4B4GB ARM64",
+    25,
+    1,
+    21,
+    7
+  ]
+}

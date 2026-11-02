@@ -1,0 +1,260 @@
+{
+  "file": "week26/slides/Week26_教授の問いと論文・実験結果_v2.pptx",
+  "sha256": "d71b4b792355e06f7fe65645cedbf14ded90b9e204ee98aed7ddb44c23ab9654",
+  "slides": 50,
+  "main_slides": 44,
+  "appendix_slides": 6,
+  "native_charts": 17,
+  "sources": [
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/summary.json",
+      "sha256": "9b19efc0f70b0114af362f1b35dfc6155c9d685c6a700d588d664cd1685c4bb2"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/pairing-summary.csv",
+      "sha256": "89be63f73882f74bc58815a4d78c69b70405a5cba570c5e467a2600cadadf723"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/audit.json",
+      "sha256": "1fa237b497f4798a9dddeee9bb9a818c6c403b70abdc5b2fe3a40a81378b96f1"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/uploads-summary.csv",
+      "sha256": "552da28ee53da65c5273473c475616eadeda4edee26ffacaeb3afe86e63b40f3"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/config.json",
+      "sha256": "355c1a84f9331c6023d38ed810b0615636f59ff6e14515377bdc761b48584e95"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/curves-summary.csv",
+      "sha256": "c4ee5b46da7c2b40a10e02826bd7763fa2c8261a28cb893ebe2203633b4e3395"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/conditions.csv",
+      "sha256": "fa1770d47d454adc21e09dd7dbc0b2ea4375a524de307e7c5ecd55a048839bc3"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/artifact-manifest.json",
+      "sha256": "070fdedac456577a007a8fe4df01da3919eee683d7c3e5a9dd4b3caf2bbea721"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/cases-summary.csv",
+      "sha256": "67a249db97794484228bacdbe93af2608b5736bd6cfb1910056b656f87ac7f6e"
+    },
+    {
+      "path": "week26/results/mac-event-scenarios-20261101/status.json",
+      "sha256": "ca455650e0fe64eff8343ca0495c3ecf0e6b0cc34f994b28016ef522f3c0150d"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/summary.json",
+      "sha256": "1fef460d53bf03d10518b30103edbee11f164224319e1420d75c894e73ca8c22"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/audit.json",
+      "sha256": "b002297273fc775e3834eb6a90a169a81f2ae19d213f0fdbd4067967efa18c85"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/dataset-candidates.json",
+      "sha256": "6bcdc946f41ce2995935992962340683f42e75db75aeaa352da3292b52d44041"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/window-summary.csv",
+      "sha256": "fac9fc2be2c8eb507981ff34827c2da74076dece5ab0a18d3ab0028a4d856223"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/dropout-summary.csv",
+      "sha256": "d411a522a7d9b4a65005a8df76b34863f03d7728186651eddbb2be6d9dd4e1d5"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/delay-summary.csv",
+      "sha256": "16f5d39a8a2250d0d90fe5ce6dfe41151b51be1c2751eb6b960ac7ac216732af"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/artifact-manifest.json",
+      "sha256": "77487745a21a86d1e028713d26fe56428a38239695ff364a29aa30ee80951f20"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/delay-fold-metrics.csv",
+      "sha256": "b19a8a50dd0d92de1acc30d7f357ba6082cbe3e78f01ad477e01bb7c58cceefd"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/model-fits.csv",
+      "sha256": "b365ae8f3da6cd43d15dc8cf51da9ed8fd3707609218acec082a9e267b9c6342"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/window-fold-metrics.csv",
+      "sha256": "e77c98f455177636c425d2a341f47dccb578a54dd95cf24015684918403b1072"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/residual-dependence.csv",
+      "sha256": "2a19a56698fb448e7ad32f8af41fba6e236761e32b3b036985e5e11542c6dac4"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/status.json",
+      "sha256": "ba8cfa5e6516a8c9d8e51e28ce884f73e32a486af438337ff8679a0b8728c70f"
+    },
+    {
+      "path": "week26/results/mac-public-lora-20261101/inventory.csv",
+      "sha256": "4b016407d5f9d0ca530bf6bbdf3467eb17d01d393c63e2cb15505a6021cdcee2"
+    },
+    {
+      "path": "week26/results/mac-recheck-20261101/summary.json",
+      "sha256": "bda8f3921371ab74b557465b00ef8c5eb6f02195eedd01765e3125d1d7fb0201"
+    },
+    {
+      "path": "week26/results/mac-recheck-20261101/reported-value-checks.csv",
+      "sha256": "f829c4aa25d0d394f8c26894599778ba2b8f45b7d6d8c6c65252c4f89fb2ddc6"
+    },
+    {
+      "path": "week26/results/mac-recheck-20261101/detection-folds.csv",
+      "sha256": "89c4ffed364045721be367b6f27525aa0f13ea30692e0ab18c29f8569668cfa5"
+    },
+    {
+      "path": "week26/results/mac-recheck-20261101/artifact-manifest.json",
+      "sha256": "10cc8f77ebc598045e15229b20abc7030e8a4f1132e257d43aefb18bc904e47d"
+    },
+    {
+      "path": "week26/results/mac-recheck-20261101/detection-summary.csv",
+      "sha256": "030a9f632c2b04b04a643c976d3933daeec73a901760ee02946b33727027c8ff"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/summary.json",
+      "sha256": "27eb05b34377816b6ed1cdd17c59273a0993d9afc6aabb04417a93403d4b96a9"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/audit.json",
+      "sha256": "9d9561a7f4fb477b0f8a9b55e3320c37c3fee68cbbb97dd92025c1c5f4c373d3"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/async-base-config.json",
+      "sha256": "d57beb5a45d819b53eaae1589c377e9c6b5d64278b45ed127ad31bb8644ab2f9"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/personalization-summary.csv",
+      "sha256": "93f8b6fc9c2c7b6df0730dc35ae0b662e58dcb4c876086946e3329bf8c9ecda3"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/config.json",
+      "sha256": "63301cbb97a2a64824cb0c8e7711f9568ced4c228bc70e8283d573af092b0538"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/synchronous-summary.csv",
+      "sha256": "094f017bd10764b8d5000d1ceabbf82df102b825c912a1a22919220c07cb92e3"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/rid-improvement.csv",
+      "sha256": "f4a55b85213fb2be15eeedcca2cfe7f205a8d1d9baa90dea6598f3fb1a0b3d6f"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/artifact-manifest.json",
+      "sha256": "e13aa227f05922343e2b1db2b5a6ba30c145e2ff569fe3a1045321bfb21867e9"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/position-summary.csv",
+      "sha256": "935be648761477762fc109b4a9c4165f31f6a1589785fbe7b09076a7bfe674eb"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/asynchronous-summary.csv",
+      "sha256": "0f40edaa2e92bffef75152d5fb214d6e643d85f03c935acf7ce2da22bba11799"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/time-summary.csv",
+      "sha256": "d20534909a8164ce95f6f23cb7a7e67ee6e77520a191cd3cb1b3784c582238df"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/status.json",
+      "sha256": "53d96d686a2ab8d779c3596be0671dd1c00c826fb4ff63feb35e2129f11f3773"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/sampled-detection-limits.csv",
+      "sha256": "705ebf5782629c52d2dd82add16c70f8d2909e652172b5976e24e7a239738d1f"
+    },
+    {
+      "path": "week26/results/mac-robustness-20261101/summary.json",
+      "sha256": "1b3ad36dcab7f3ae02ec44910ce3c5a77bcdfcd8e9a0d11fbfa694b42bc35982"
+    },
+    {
+      "path": "week26/results/mac-robustness-20261101/audit.json",
+      "sha256": "69d2284dbecfc23f51bbec782752ae2c14eac5fc1ef762912af3272044a4eaa5"
+    },
+    {
+      "path": "week26/results/mac-robustness-20261101/config.json",
+      "sha256": "ea09f9e108cbee1bdd6b72f42be44e91052f7a5fee9fcdfa0401dc138099fb78"
+    },
+    {
+      "path": "week26/results/mac-robustness-20261101/empirical_sync-summary.csv",
+      "sha256": "b6c7ec30b30be17322280ba74a3240ce3c1779f425f8300e1263dba14daa0839"
+    },
+    {
+      "path": "week26/results/mac-robustness-20261101/artifact-manifest.json",
+      "sha256": "0efd015e789fe1b8209da9ff48c14a82d35d0e3aad4eb0e4f724e7669078152c"
+    },
+    {
+      "path": "week26/results/mac-robustness-20261101/anchor_gate-summary.csv",
+      "sha256": "bf199542b9500b2c8738a5a0d3b27ce56024dcfec8d6a4d284d47235386f27f8"
+    },
+    {
+      "path": "week26/results/mac-robustness-20261101/time_mismatch-summary.csv",
+      "sha256": "4af54afc5db70d84df75d90db0c73ecfd4bb4fbf68a1d0185a30378116e2736a"
+    },
+    {
+      "path": "week26/results/mac-robustness-20261101/poisoning-summary.csv",
+      "sha256": "01b770bc9724e8fdebbbd87e535ccfabdbf026105dbc34d7a509cbcf53c97595"
+    },
+    {
+      "path": "week26/results/mac-robustness-20261101/status.json",
+      "sha256": "c54207d1b19472beab1176361cf3a4b6f0e3ab4b41ac1b39de109e5388b4771c"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/summary.json",
+      "sha256": "67f1efa193f0160922660393e9853df1025e382d83903356b5359d35235658a0"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/summary.csv",
+      "sha256": "041438934e70ebfc1e0433a6f2377107d51defb0b3647f4fe316397110b5e5a4"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/geometry-and-prior-diagnostic.json",
+      "sha256": "0c9131154076a47b377b856d1842f25c1ce75530b0fb95fe2dc6dd73bdb030e6"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/config.json",
+      "sha256": "d57beb5a45d819b53eaae1589c377e9c6b5d64278b45ed127ad31bb8644ab2f9"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/artifact-manifest.json",
+      "sha256": "a1c3c681c0c8f0dc42fc823a2b3962f0e1c2e9eca4177d9af4358d16b1f827ff"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/flight-metrics.csv",
+      "sha256": "c344d7260101b5ea26648c50f469a70bb7cf8c0431774540b6d728bb2f33d61c"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/status.json",
+      "sha256": "c9670a6efd0c8f56e43639c223de55b3d15b1ae20ce19b938270b997f63ca9f7"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/scenario-ranges.csv",
+      "sha256": "4b9a27227b7e2cd4611a5b615bc9ff6371e75dc7a1d8afdda68ac884ed2ee9e3"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/position-summary.csv",
+      "sha256": "935be648761477762fc109b4a9c4165f31f6a1589785fbe7b09076a7bfe674eb"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/asynchronous-summary.csv",
+      "sha256": "0f40edaa2e92bffef75152d5fb214d6e643d85f03c935acf7ce2da22bba11799"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/time-summary.csv",
+      "sha256": "d20534909a8164ce95f6f23cb7a7e67ee6e77520a191cd3cb1b3784c582238df"
+    },
+    {
+      "path": "week26/results/mac-sensitivity-20261101-v2/config.json",
+      "sha256": "63301cbb97a2a64824cb0c8e7711f9568ced4c228bc70e8283d573af092b0538"
+    }
+  ],
+  "reference": "week24/slides/references/第24回進捗_HyperNovaとNova_環境構築_実装.pptx",
+  "reference_sha256": "48f467231efab43c232f93d0dcaacf75576f296a7bbf44f3aa4465915e14e1cc"
+}

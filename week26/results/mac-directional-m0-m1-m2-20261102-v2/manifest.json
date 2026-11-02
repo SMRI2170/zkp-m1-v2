@@ -1,0 +1,23 @@
+{
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "runtime_s": 20.004495749948546,
+  "peak_rss_bytes": 105938944,
+  "source_sha256": {
+    "/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/experiments/week26-rssi-privacy/directional_observations.py": "526a40bcbf910778d2ba50c37beeb6c385c829dc1236cd9b99eb443b1df52bc5",
+    "/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/experiments/week26-rssi-privacy/directional_config.json": "96e03431771ec8cb41431a4fde822e95fba38094bf95b067065b2d11d975b5a4",
+    "/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/experiments/week26-rssi-privacy/recheck_ble.py": "3f93898e173accde5d08d3f88a70c1721a9dd33d7e5f5e7f051162fa81fc02fa"
+  },
+  "output_sha256": {
+    "summary.json": "3946ad1dee1512e7f0fafecdefda0445762830df8b4c5468b4f866a956437760",
+    "summary.csv": "66b4db451e9a237ef4fa90eb8165f28225886915bdc29d24bc3c8e7a351f4bde",
+    "history_per_seed.csv": "7e35ec11a11e4626b43d1324c2898e967aaaaa4865a825ab9f5c07d47633f712",
+    "config.json": "7352ae82bad96aa01ac3881bcc693d4d1631086f2ba1a3500f18179b1260fd62",
+    "thresholds.csv": "0e48f94f6bc152405e3ce00195991bf5e380f76029af7e0fac5fee12d3ad9ad0",
+    "per_seed.csv": "2285442eda5c4c2f7151390cbc013b4eb7f598d69a8c3c9a807bd3eb3fd53f36",
+    "progress.json": "fac2dee7561f2ed81ce7c585d0300db0919917d0412b2b607de210079ae3d290",
+    "history_summary.csv": "170cf70cba48b8e99a8ac71d2f0d4d1cf49c5b5ae24b7e455437b6f87ae47602"
+  },
+  "reproduction": "python3 /Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/experiments/week26-rssi-privacy/directional_observations.py --config /Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/experiments/week26-rssi-privacy/directional_config.json --output NEW_DIRECTORY --empirical-raw captures/week26-public-ble"
+}

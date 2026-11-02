@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "checks": [
+    "All 10 seeds, 2 noise settings and declared scenario combinations saved",
+    "All emitted/decidable/alarm denominators and undefined rates valid",
+    "Common power changes leave normal decisions unchanged; joint and position-only scores give identical alarms",
+    "Single-observer events explicitly abstain rather than claim zero detection or perfect accuracy",
+    "Full-overlap scenario evaluates all emitted events",
+    "Oracle same-event delayed submissions preserve decisions while increasing wait",
+    "Mispairing spreads use the same query event cohort in each seed/condition",
+    "Both constructed truthful/attack worlds produce indistinguishable RSSI vectors",
+    "Aggregate rates independently recomputed from saved seed CSV",
+    "Source/config hashes and completed status match execution"
+  ]
+}

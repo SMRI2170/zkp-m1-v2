@@ -1,0 +1,1367 @@
+{
+  "scope": "Reproduce three findings and isolate reception selection; synthetic data only.\n\nNo raw RF, GPS, keys or per-event private observations are written. Reuses the\npredeclared Week26 generators. Serial execution, new output directories only.\n",
+  "metrics": [
+    {
+      "study": "position30",
+      "case": "normal",
+      "range_bin": "20-40m",
+      "cohort": "",
+      "noise_sd_db": "",
+      "seed_count": 10,
+      "emitted": 1432,
+      "eligible": 1388,
+      "alarms": 152,
+      "conditional_alarm_rate": 0.10951008645533142,
+      "all_event_alarm_rate": 0.10614525139664804
+    },
+    {
+      "study": "position30",
+      "case": "position30",
+      "range_bin": "20-40m",
+      "cohort": "",
+      "noise_sd_db": "",
+      "seed_count": 10,
+      "emitted": 1432,
+      "eligible": 1388,
+      "alarms": 196,
+      "conditional_alarm_rate": 0.14121037463976946,
+      "all_event_alarm_rate": 0.13687150837988826
+    },
+    {
+      "study": "position30",
+      "case": "normal",
+      "range_bin": "80-120m",
+      "cohort": "",
+      "noise_sd_db": "",
+      "seed_count": 10,
+      "emitted": 6048,
+      "eligible": 5047,
+      "alarms": 166,
+      "conditional_alarm_rate": 0.03289082623340599,
+      "all_event_alarm_rate": 0.027447089947089946
+    },
+    {
+      "study": "position30",
+      "case": "position30",
+      "range_bin": "80-120m",
+      "cohort": "",
+      "noise_sd_db": "",
+      "seed_count": 10,
+      "emitted": 6048,
+      "eligible": 5047,
+      "alarms": 297,
+      "conditional_alarm_rate": 0.05884683970675649,
+      "all_event_alarm_rate": 0.049107142857142856
+    },
+    {
+      "study": "power100",
+      "case": "normal",
+      "range_bin": "",
+      "cohort": "all_received_normal",
+      "noise_sd_db": "",
+      "seed_count": 10,
+      "emitted": 18000,
+      "eligible": 15624,
+      "alarms": 784,
+      "conditional_alarm_rate": 0.05017921146953405,
+      "all_event_alarm_rate": 0.043555555555555556
+    },
+    {
+      "study": "power100",
+      "case": "joint100",
+      "range_bin": "",
+      "cohort": "all_received_joint",
+      "noise_sd_db": "",
+      "seed_count": 10,
+      "emitted": 18000,
+      "eligible": 12294,
+      "alarms": 298,
+      "conditional_alarm_rate": 0.024239466406377093,
+      "all_event_alarm_rate": 0.016555555555555556
+    },
+    {
+      "study": "power100",
+      "case": "normal",
+      "range_bin": "",
+      "cohort": "paired",
+      "noise_sd_db": "",
+      "seed_count": 10,
+      "emitted": 18000,
+      "eligible": 12294,
+      "alarms": 297,
+      "conditional_alarm_rate": 0.024158125915080528,
+      "all_event_alarm_rate": 0.0165
+    },
+    {
+      "study": "power100",
+      "case": "position100",
+      "range_bin": "",
+      "cohort": "paired",
+      "noise_sd_db": "",
+      "seed_count": 10,
+      "emitted": 18000,
+      "eligible": 12294,
+      "alarms": 3727,
+      "conditional_alarm_rate": 0.30315601106230683,
+      "all_event_alarm_rate": 0.20705555555555555
+    },
+    {
+      "study": "power100",
+      "case": "joint100",
+      "range_bin": "",
+      "cohort": "paired",
+      "noise_sd_db": "",
+      "seed_count": 10,
+      "emitted": 18000,
+      "eligible": 12294,
+      "alarms": 298,
+      "conditional_alarm_rate": 0.024239466406377093,
+      "all_event_alarm_rate": 0.016555555555555556
+    },
+    {
+      "study": "common5",
+      "case": "position0",
+      "range_bin": "",
+      "cohort": "",
+      "noise_sd_db": 2,
+      "seed_count": 10,
+      "emitted": 72000,
+      "eligible": 72000,
+      "alarms": 3589,
+      "conditional_alarm_rate": 0.04984722222222222,
+      "all_event_alarm_rate": 0.04984722222222222
+    },
+    {
+      "study": "common5",
+      "case": "position30",
+      "range_bin": "",
+      "cohort": "",
+      "noise_sd_db": 2,
+      "seed_count": 10,
+      "emitted": 72000,
+      "eligible": 72000,
+      "alarms": 14056,
+      "conditional_alarm_rate": 0.1952222222222222,
+      "all_event_alarm_rate": 0.1952222222222222
+    },
+    {
+      "study": "common5",
+      "case": "position100",
+      "range_bin": "",
+      "cohort": "",
+      "noise_sd_db": 2,
+      "seed_count": 10,
+      "emitted": 72000,
+      "eligible": 72000,
+      "alarms": 53048,
+      "conditional_alarm_rate": 0.7367777777777778,
+      "all_event_alarm_rate": 0.7367777777777778
+    },
+    {
+      "study": "common5",
+      "case": "position0",
+      "range_bin": "",
+      "cohort": "",
+      "noise_sd_db": 6,
+      "seed_count": 10,
+      "emitted": 72000,
+      "eligible": 72000,
+      "alarms": 3510,
+      "conditional_alarm_rate": 0.04875,
+      "all_event_alarm_rate": 0.04875
+    },
+    {
+      "study": "common5",
+      "case": "position30",
+      "range_bin": "",
+      "cohort": "",
+      "noise_sd_db": 6,
+      "seed_count": 10,
+      "emitted": 72000,
+      "eligible": 72000,
+      "alarms": 4553,
+      "conditional_alarm_rate": 0.06323611111111112,
+      "all_event_alarm_rate": 0.06323611111111112
+    },
+    {
+      "study": "common5",
+      "case": "position100",
+      "range_bin": "",
+      "cohort": "",
+      "noise_sd_db": 6,
+      "seed_count": 10,
+      "emitted": 72000,
+      "eligible": 72000,
+      "alarms": 13485,
+      "conditional_alarm_rate": 0.18729166666666666,
+      "all_event_alarm_rate": 0.18729166666666666
+    }
+  ],
+  "histograms": [
+    {
+      "study": "position30",
+      "case": "normal",
+      "range_bin": "20-40m",
+      "bin": 0,
+      "seed_count": 10,
+      "count": 858,
+      "total": 1388,
+      "fraction": 0.6181556195965417
+    },
+    {
+      "study": "position30",
+      "case": "normal",
+      "range_bin": "20-40m",
+      "bin": 1,
+      "seed_count": 10,
+      "count": 378,
+      "total": 1388,
+      "fraction": 0.2723342939481268
+    },
+    {
+      "study": "position30",
+      "case": "normal",
+      "range_bin": "20-40m",
+      "bin": 2,
+      "seed_count": 10,
+      "count": 138,
+      "total": 1388,
+      "fraction": 0.0994236311239193
+    },
+    {
+      "study": "position30",
+      "case": "normal",
+      "range_bin": "20-40m",
+      "bin": 3,
+      "seed_count": 10,
+      "count": 14,
+      "total": 1388,
+      "fraction": 0.010086455331412104
+    },
+    {
+      "study": "position30",
+      "case": "normal",
+      "range_bin": "20-40m",
+      "bin": 4,
+      "seed_count": 10,
+      "count": 0,
+      "total": 1388,
+      "fraction": 0.0
+    },
+    {
+      "study": "position30",
+      "case": "position30",
+      "range_bin": "20-40m",
+      "bin": 0,
+      "seed_count": 10,
+      "count": 656,
+      "total": 1388,
+      "fraction": 0.47262247838616717
+    },
+    {
+      "study": "position30",
+      "case": "position30",
+      "range_bin": "20-40m",
+      "bin": 1,
+      "seed_count": 10,
+      "count": 536,
+      "total": 1388,
+      "fraction": 0.3861671469740634
+    },
+    {
+      "study": "position30",
+      "case": "position30",
+      "range_bin": "20-40m",
+      "bin": 2,
+      "seed_count": 10,
+      "count": 176,
+      "total": 1388,
+      "fraction": 0.12680115273775217
+    },
+    {
+      "study": "position30",
+      "case": "position30",
+      "range_bin": "20-40m",
+      "bin": 3,
+      "seed_count": 10,
+      "count": 20,
+      "total": 1388,
+      "fraction": 0.01440922190201729
+    },
+    {
+      "study": "position30",
+      "case": "position30",
+      "range_bin": "20-40m",
+      "bin": 4,
+      "seed_count": 10,
+      "count": 0,
+      "total": 1388,
+      "fraction": 0.0
+    },
+    {
+      "study": "position30",
+      "case": "normal",
+      "range_bin": "80-120m",
+      "bin": 0,
+      "seed_count": 10,
+      "count": 3474,
+      "total": 5047,
+      "fraction": 0.6883297008123638
+    },
+    {
+      "study": "position30",
+      "case": "normal",
+      "range_bin": "80-120m",
+      "bin": 1,
+      "seed_count": 10,
+      "count": 1407,
+      "total": 5047,
+      "fraction": 0.2787794729542302
+    },
+    {
+      "study": "position30",
+      "case": "normal",
+      "range_bin": "80-120m",
+      "bin": 2,
+      "seed_count": 10,
+      "count": 156,
+      "total": 5047,
+      "fraction": 0.030909451159104418
+    },
+    {
+      "study": "position30",
+      "case": "normal",
+      "range_bin": "80-120m",
+      "bin": 3,
+      "seed_count": 10,
+      "count": 9,
+      "total": 5047,
+      "fraction": 0.0017832375668714088
+    },
+    {
+      "study": "position30",
+      "case": "normal",
+      "range_bin": "80-120m",
+      "bin": 4,
+      "seed_count": 10,
+      "count": 1,
+      "total": 5047,
+      "fraction": 0.00019813750743015652
+    },
+    {
+      "study": "position30",
+      "case": "position30",
+      "range_bin": "80-120m",
+      "bin": 0,
+      "seed_count": 10,
+      "count": 3306,
+      "total": 5047,
+      "fraction": 0.6550425995640975
+    },
+    {
+      "study": "position30",
+      "case": "position30",
+      "range_bin": "80-120m",
+      "bin": 1,
+      "seed_count": 10,
+      "count": 1444,
+      "total": 5047,
+      "fraction": 0.28611056072914604
+    },
+    {
+      "study": "position30",
+      "case": "position30",
+      "range_bin": "80-120m",
+      "bin": 2,
+      "seed_count": 10,
+      "count": 268,
+      "total": 5047,
+      "fraction": 0.05310085199128195
+    },
+    {
+      "study": "position30",
+      "case": "position30",
+      "range_bin": "80-120m",
+      "bin": 3,
+      "seed_count": 10,
+      "count": 26,
+      "total": 5047,
+      "fraction": 0.00515157519318407
+    },
+    {
+      "study": "position30",
+      "case": "position30",
+      "range_bin": "80-120m",
+      "bin": 4,
+      "seed_count": 10,
+      "count": 3,
+      "total": 5047,
+      "fraction": 0.0005944125222904696
+    },
+    {
+      "study": "power100",
+      "case": "normal",
+      "range_bin": "paired",
+      "bin": 0,
+      "seed_count": 10,
+      "count": 9481,
+      "total": 12294,
+      "fraction": 0.7711891979827559
+    },
+    {
+      "study": "power100",
+      "case": "normal",
+      "range_bin": "paired",
+      "bin": 1,
+      "seed_count": 10,
+      "count": 2516,
+      "total": 12294,
+      "fraction": 0.20465267610216364
+    },
+    {
+      "study": "power100",
+      "case": "normal",
+      "range_bin": "paired",
+      "bin": 2,
+      "seed_count": 10,
+      "count": 277,
+      "total": 12294,
+      "fraction": 0.022531316089149177
+    },
+    {
+      "study": "power100",
+      "case": "normal",
+      "range_bin": "paired",
+      "bin": 3,
+      "seed_count": 10,
+      "count": 18,
+      "total": 12294,
+      "fraction": 0.0014641288433382138
+    },
+    {
+      "study": "power100",
+      "case": "normal",
+      "range_bin": "paired",
+      "bin": 4,
+      "seed_count": 10,
+      "count": 2,
+      "total": 12294,
+      "fraction": 0.00016268098259313488
+    },
+    {
+      "study": "power100",
+      "case": "position100",
+      "range_bin": "paired",
+      "bin": 0,
+      "seed_count": 10,
+      "count": 3298,
+      "total": 12294,
+      "fraction": 0.2682609402960794
+    },
+    {
+      "study": "power100",
+      "case": "position100",
+      "range_bin": "paired",
+      "bin": 1,
+      "seed_count": 10,
+      "count": 5269,
+      "total": 12294,
+      "fraction": 0.4285830486416138
+    },
+    {
+      "study": "power100",
+      "case": "position100",
+      "range_bin": "paired",
+      "bin": 2,
+      "seed_count": 10,
+      "count": 2848,
+      "total": 12294,
+      "fraction": 0.23165771921262404
+    },
+    {
+      "study": "power100",
+      "case": "position100",
+      "range_bin": "paired",
+      "bin": 3,
+      "seed_count": 10,
+      "count": 770,
+      "total": 12294,
+      "fraction": 0.06263217829835692
+    },
+    {
+      "study": "power100",
+      "case": "position100",
+      "range_bin": "paired",
+      "bin": 4,
+      "seed_count": 10,
+      "count": 109,
+      "total": 12294,
+      "fraction": 0.00886611355132585
+    },
+    {
+      "study": "power100",
+      "case": "joint100",
+      "range_bin": "paired",
+      "bin": 0,
+      "seed_count": 10,
+      "count": 9476,
+      "total": 12294,
+      "fraction": 0.770782495526273
+    },
+    {
+      "study": "power100",
+      "case": "joint100",
+      "range_bin": "paired",
+      "bin": 1,
+      "seed_count": 10,
+      "count": 2520,
+      "total": 12294,
+      "fraction": 0.20497803806734993
+    },
+    {
+      "study": "power100",
+      "case": "joint100",
+      "range_bin": "paired",
+      "bin": 2,
+      "seed_count": 10,
+      "count": 277,
+      "total": 12294,
+      "fraction": 0.022531316089149177
+    },
+    {
+      "study": "power100",
+      "case": "joint100",
+      "range_bin": "paired",
+      "bin": 3,
+      "seed_count": 10,
+      "count": 19,
+      "total": 12294,
+      "fraction": 0.001545469334634781
+    },
+    {
+      "study": "power100",
+      "case": "joint100",
+      "range_bin": "paired",
+      "bin": 4,
+      "seed_count": 10,
+      "count": 2,
+      "total": 12294,
+      "fraction": 0.00016268098259313488
+    },
+    {
+      "study": "common5",
+      "case": "position0",
+      "range_bin": "sd2",
+      "bin": 0,
+      "seed_count": 10,
+      "count": 23388,
+      "total": 72000,
+      "fraction": 0.3248333333333333
+    },
+    {
+      "study": "common5",
+      "case": "position0",
+      "range_bin": "sd2",
+      "bin": 1,
+      "seed_count": 10,
+      "count": 45023,
+      "total": 72000,
+      "fraction": 0.6253194444444444
+    },
+    {
+      "study": "common5",
+      "case": "position0",
+      "range_bin": "sd2",
+      "bin": 2,
+      "seed_count": 10,
+      "count": 3573,
+      "total": 72000,
+      "fraction": 0.049625
+    },
+    {
+      "study": "common5",
+      "case": "position0",
+      "range_bin": "sd2",
+      "bin": 3,
+      "seed_count": 10,
+      "count": 16,
+      "total": 72000,
+      "fraction": 0.00022222222222222223
+    },
+    {
+      "study": "common5",
+      "case": "position0",
+      "range_bin": "sd2",
+      "bin": 4,
+      "seed_count": 10,
+      "count": 0,
+      "total": 72000,
+      "fraction": 0.0
+    },
+    {
+      "study": "common5",
+      "case": "position30",
+      "range_bin": "sd2",
+      "bin": 0,
+      "seed_count": 10,
+      "count": 12737,
+      "total": 72000,
+      "fraction": 0.17690277777777777
+    },
+    {
+      "study": "common5",
+      "case": "position30",
+      "range_bin": "sd2",
+      "bin": 1,
+      "seed_count": 10,
+      "count": 45207,
+      "total": 72000,
+      "fraction": 0.627875
+    },
+    {
+      "study": "common5",
+      "case": "position30",
+      "range_bin": "sd2",
+      "bin": 2,
+      "seed_count": 10,
+      "count": 13350,
+      "total": 72000,
+      "fraction": 0.18541666666666667
+    },
+    {
+      "study": "common5",
+      "case": "position30",
+      "range_bin": "sd2",
+      "bin": 3,
+      "seed_count": 10,
+      "count": 691,
+      "total": 72000,
+      "fraction": 0.009597222222222222
+    },
+    {
+      "study": "common5",
+      "case": "position30",
+      "range_bin": "sd2",
+      "bin": 4,
+      "seed_count": 10,
+      "count": 15,
+      "total": 72000,
+      "fraction": 0.00020833333333333335
+    },
+    {
+      "study": "common5",
+      "case": "position100",
+      "range_bin": "sd2",
+      "bin": 0,
+      "seed_count": 10,
+      "count": 2289,
+      "total": 72000,
+      "fraction": 0.03179166666666667
+    },
+    {
+      "study": "common5",
+      "case": "position100",
+      "range_bin": "sd2",
+      "bin": 1,
+      "seed_count": 10,
+      "count": 16663,
+      "total": 72000,
+      "fraction": 0.23143055555555556
+    },
+    {
+      "study": "common5",
+      "case": "position100",
+      "range_bin": "sd2",
+      "bin": 2,
+      "seed_count": 10,
+      "count": 24049,
+      "total": 72000,
+      "fraction": 0.3340138888888889
+    },
+    {
+      "study": "common5",
+      "case": "position100",
+      "range_bin": "sd2",
+      "bin": 3,
+      "seed_count": 10,
+      "count": 19111,
+      "total": 72000,
+      "fraction": 0.26543055555555556
+    },
+    {
+      "study": "common5",
+      "case": "position100",
+      "range_bin": "sd2",
+      "bin": 4,
+      "seed_count": 10,
+      "count": 9888,
+      "total": 72000,
+      "fraction": 0.13733333333333334
+    },
+    {
+      "study": "common5",
+      "case": "position0",
+      "range_bin": "sd6",
+      "bin": 0,
+      "seed_count": 10,
+      "count": 24044,
+      "total": 72000,
+      "fraction": 0.33394444444444443
+    },
+    {
+      "study": "common5",
+      "case": "position0",
+      "range_bin": "sd6",
+      "bin": 1,
+      "seed_count": 10,
+      "count": 44446,
+      "total": 72000,
+      "fraction": 0.6173055555555556
+    },
+    {
+      "study": "common5",
+      "case": "position0",
+      "range_bin": "sd6",
+      "bin": 2,
+      "seed_count": 10,
+      "count": 3492,
+      "total": 72000,
+      "fraction": 0.0485
+    },
+    {
+      "study": "common5",
+      "case": "position0",
+      "range_bin": "sd6",
+      "bin": 3,
+      "seed_count": 10,
+      "count": 18,
+      "total": 72000,
+      "fraction": 0.00025
+    },
+    {
+      "study": "common5",
+      "case": "position0",
+      "range_bin": "sd6",
+      "bin": 4,
+      "seed_count": 10,
+      "count": 0,
+      "total": 72000,
+      "fraction": 0.0
+    },
+    {
+      "study": "common5",
+      "case": "position30",
+      "range_bin": "sd6",
+      "bin": 0,
+      "seed_count": 10,
+      "count": 21965,
+      "total": 72000,
+      "fraction": 0.30506944444444445
+    },
+    {
+      "study": "common5",
+      "case": "position30",
+      "range_bin": "sd6",
+      "bin": 1,
+      "seed_count": 10,
+      "count": 45482,
+      "total": 72000,
+      "fraction": 0.6316944444444444
+    },
+    {
+      "study": "common5",
+      "case": "position30",
+      "range_bin": "sd6",
+      "bin": 2,
+      "seed_count": 10,
+      "count": 4523,
+      "total": 72000,
+      "fraction": 0.06281944444444444
+    },
+    {
+      "study": "common5",
+      "case": "position30",
+      "range_bin": "sd6",
+      "bin": 3,
+      "seed_count": 10,
+      "count": 30,
+      "total": 72000,
+      "fraction": 0.0004166666666666667
+    },
+    {
+      "study": "common5",
+      "case": "position30",
+      "range_bin": "sd6",
+      "bin": 4,
+      "seed_count": 10,
+      "count": 0,
+      "total": 72000,
+      "fraction": 0.0
+    },
+    {
+      "study": "common5",
+      "case": "position100",
+      "range_bin": "sd6",
+      "bin": 0,
+      "seed_count": 10,
+      "count": 13152,
+      "total": 72000,
+      "fraction": 0.18266666666666667
+    },
+    {
+      "study": "common5",
+      "case": "position100",
+      "range_bin": "sd6",
+      "bin": 1,
+      "seed_count": 10,
+      "count": 45363,
+      "total": 72000,
+      "fraction": 0.6300416666666667
+    },
+    {
+      "study": "common5",
+      "case": "position100",
+      "range_bin": "sd6",
+      "bin": 2,
+      "seed_count": 10,
+      "count": 12916,
+      "total": 72000,
+      "fraction": 0.17938888888888888
+    },
+    {
+      "study": "common5",
+      "case": "position100",
+      "range_bin": "sd6",
+      "bin": 3,
+      "seed_count": 10,
+      "count": 562,
+      "total": 72000,
+      "fraction": 0.007805555555555555
+    },
+    {
+      "study": "common5",
+      "case": "position100",
+      "range_bin": "sd6",
+      "bin": 4,
+      "seed_count": 10,
+      "count": 7,
+      "total": 72000,
+      "fraction": 9.722222222222222e-05
+    }
+  ],
+  "paired_diagnostics": [
+    {
+      "seed": 202611100,
+      "threshold_db": 12.657894229010513,
+      "paired_count": 1270,
+      "dropped_only_after_attack": 306,
+      "newly_received_after_attack": 0,
+      "maximum_paired_quantized_score_delta_db": 0.9779987148519353,
+      "maximum_unquantized_residual_delta_db": 2.1316282072803006e-14,
+      "power_change_min_db": -24.017494715711194,
+      "power_change_max_db": -4.643492115153157
+    },
+    {
+      "seed": 202611101,
+      "threshold_db": 12.747729922698348,
+      "paired_count": 1167,
+      "dropped_only_after_attack": 388,
+      "newly_received_after_attack": 0,
+      "maximum_paired_quantized_score_delta_db": 0.9758925825591547,
+      "maximum_unquantized_residual_delta_db": 2.1316282072803006e-14,
+      "power_change_min_db": -23.779794495677766,
+      "power_change_max_db": -4.722307860631876
+    },
+    {
+      "seed": 202611102,
+      "threshold_db": 12.580950626065908,
+      "paired_count": 1351,
+      "dropped_only_after_attack": 251,
+      "newly_received_after_attack": 0,
+      "maximum_paired_quantized_score_delta_db": 0.956865812296698,
+      "maximum_unquantized_residual_delta_db": 1.4210854715202004e-14,
+      "power_change_min_db": -22.910960238170684,
+      "power_change_max_db": -4.875304036348522
+    },
+    {
+      "seed": 202611103,
+      "threshold_db": 13.800828944845843,
+      "paired_count": 1212,
+      "dropped_only_after_attack": 354,
+      "newly_received_after_attack": 0,
+      "maximum_paired_quantized_score_delta_db": 0.9913408413938711,
+      "maximum_unquantized_residual_delta_db": 2.1316282072803006e-14,
+      "power_change_min_db": -16.583466354051595,
+      "power_change_max_db": -4.704392446561832
+    },
+    {
+      "seed": 202611104,
+      "threshold_db": 13.980789065206345,
+      "paired_count": 1238,
+      "dropped_only_after_attack": 332,
+      "newly_received_after_attack": 0,
+      "maximum_paired_quantized_score_delta_db": 0.9956634134677032,
+      "maximum_unquantized_residual_delta_db": 2.842170943040401e-14,
+      "power_change_min_db": -17.280974238196578,
+      "power_change_max_db": -4.6328708306117825
+    },
+    {
+      "seed": 202611105,
+      "threshold_db": 12.478134833236219,
+      "paired_count": 1265,
+      "dropped_only_after_attack": 331,
+      "newly_received_after_attack": 0,
+      "maximum_paired_quantized_score_delta_db": 0.9814638787841758,
+      "maximum_unquantized_residual_delta_db": 2.1316282072803006e-14,
+      "power_change_min_db": -20.03622449597953,
+      "power_change_max_db": -4.728845974659205
+    },
+    {
+      "seed": 202611106,
+      "threshold_db": 11.420496491258385,
+      "paired_count": 1022,
+      "dropped_only_after_attack": 421,
+      "newly_received_after_attack": 0,
+      "maximum_paired_quantized_score_delta_db": 0.9918664127634074,
+      "maximum_unquantized_residual_delta_db": 2.842170943040401e-14,
+      "power_change_min_db": -17.531586571287022,
+      "power_change_max_db": -4.954175086780175
+    },
+    {
+      "seed": 202611107,
+      "threshold_db": 12.431847244572655,
+      "paired_count": 1301,
+      "dropped_only_after_attack": 288,
+      "newly_received_after_attack": 0,
+      "maximum_paired_quantized_score_delta_db": 0.9659716279677326,
+      "maximum_unquantized_residual_delta_db": 2.1316282072803006e-14,
+      "power_change_min_db": -29.913078186839517,
+      "power_change_max_db": -4.954502891038183
+    },
+    {
+      "seed": 202611108,
+      "threshold_db": 13.69674979946772,
+      "paired_count": 1209,
+      "dropped_only_after_attack": 349,
+      "newly_received_after_attack": 0,
+      "maximum_paired_quantized_score_delta_db": 0.9818535590012161,
+      "maximum_unquantized_residual_delta_db": 2.842170943040401e-14,
+      "power_change_min_db": -17.001617925020888,
+      "power_change_max_db": -4.659141695992872
+    },
+    {
+      "seed": 202611109,
+      "threshold_db": 13.955192336080973,
+      "paired_count": 1259,
+      "dropped_only_after_attack": 310,
+      "newly_received_after_attack": 0,
+      "maximum_paired_quantized_score_delta_db": 0.9685251547371365,
+      "maximum_unquantized_residual_delta_db": 1.4210854715202004e-14,
+      "power_change_min_db": -25.800774575795998,
+      "power_change_max_db": -4.794845334050248
+    }
+  ],
+  "counterexample": [
+    {
+      "event": 1,
+      "distance_a_m": 106.77932723018516,
+      "distance_b_m": 427.11730892074064,
+      "rssi_a_dbm": -84.72510971023112,
+      "rssi_b_dbm": -84.72510971023112
+    },
+    {
+      "event": 2,
+      "distance_a_m": 73.19103684946059,
+      "distance_b_m": 292.76414739784235,
+      "rssi_a_dbm": -83.72446639727934,
+      "rssi_b_dbm": -83.72446639727934
+    },
+    {
+      "event": 3,
+      "distance_a_m": 98.59602541974824,
+      "distance_b_m": 394.384101678993,
+      "rssi_a_dbm": -84.14302740528342,
+      "rssi_b_dbm": -84.14302740528342
+    },
+    {
+      "event": 4,
+      "distance_a_m": 54.62883042339925,
+      "distance_b_m": 218.515321693597,
+      "rssi_a_dbm": -80.2428292666619,
+      "rssi_b_dbm": -80.24282926666189
+    },
+    {
+      "event": 5,
+      "distance_a_m": 61.50498049759608,
+      "distance_b_m": 246.01992199038432,
+      "rssi_a_dbm": -78.53736120323195,
+      "rssi_b_dbm": -78.53736120323195
+    },
+    {
+      "event": 6,
+      "distance_a_m": 89.97269904009123,
+      "distance_b_m": 359.8907961603649,
+      "rssi_a_dbm": -85.2818981810917,
+      "rssi_b_dbm": -85.2818981810917
+    },
+    {
+      "event": 7,
+      "distance_a_m": 80.27563350008191,
+      "distance_b_m": 321.10253400032764,
+      "rssi_a_dbm": -81.86652793788494,
+      "rssi_b_dbm": -81.86652793788492
+    },
+    {
+      "event": 8,
+      "distance_a_m": 47.9948917402229,
+      "distance_b_m": 191.9795669608916,
+      "rssi_a_dbm": -73.48216313248255,
+      "rssi_b_dbm": -73.48216313248255
+    },
+    {
+      "event": 9,
+      "distance_a_m": 99.00558993189127,
+      "distance_b_m": 396.02235972756506,
+      "rssi_a_dbm": -78.39055860601968,
+      "rssi_b_dbm": -78.39055860601968
+    },
+    {
+      "event": 10,
+      "distance_a_m": 58.67923343120043,
+      "distance_b_m": 234.71693372480172,
+      "rssi_a_dbm": -73.59139683727258,
+      "rssi_b_dbm": -73.59139683727258
+    }
+  ],
+  "config_single": {
+    "schema": "week26-independent-3d-v1",
+    "scope": "Independent synthetic sensitivity experiment, not reproduction of document 04 ZIP",
+    "seeds": [
+      202611010,
+      202611011,
+      202611012,
+      202611013,
+      202611014,
+      202611015,
+      202611016,
+      202611017,
+      202611018,
+      202611019
+    ],
+    "flights": {
+      "train": 70,
+      "calibration": 26,
+      "test": 45
+    },
+    "events_per_flight": 40,
+    "event_spacing_s": 3,
+    "flight_start_spacing_s": 3600,
+    "receivers": 3,
+    "reference_received_dbm": -42,
+    "path_loss_exponent": 2.2,
+    "horizontal_radius_m": [
+      6,
+      140
+    ],
+    "altitude_m": [
+      3,
+      70
+    ],
+    "flight_power_sd_db": 2,
+    "packet_power_sd_db": 3,
+    "power_ar1": 0.85,
+    "shadow_sd_db": 4,
+    "shadow_ar1": 0.8,
+    "fading_t_df": 4,
+    "fading_t_scale_db": 1.5,
+    "nlos_initial_probability": 0.25,
+    "los_to_nlos_probability": 0.04,
+    "nlos_to_los_probability": 0.12,
+    "nlos_loss_db": 12,
+    "receiver_bias_sd_db": 2,
+    "receiver_calibration_error_sd_db": 0.8,
+    "gps_error_sd_m": 2,
+    "rssi_quantization_db": 1,
+    "sensitivity_dbm": -100,
+    "independent_packet_drop_probability": 0.03,
+    "attack_bound_db": 8,
+    "nominal_interval_coverage": 0.9,
+    "distance_threshold_m": 30,
+    "bayes_log10_distance_support": [
+      0.47712125472,
+      2.47712125472
+    ],
+    "gp_max_train_points": 512,
+    "gp_rbf_length_scale": 1,
+    "gp_white_noise_variance": 0.2,
+    "mlp_hidden_layers": [
+      24,
+      24
+    ],
+    "mlp_max_iter": 500,
+    "channel_variants": [
+      "mixed",
+      "los_only",
+      "ideal"
+    ],
+    "parameters_are": "Predeclared illustrative assumptions; not measured UAV/3GPP calibration"
+  },
+  "sensitivity": {
+    "schema": "week26-sensitivity-v2",
+    "scope": "Independent synthetic studies; no calibrated UAV performance or paper reproduction",
+    "seeds": [
+      202611100,
+      202611101,
+      202611102,
+      202611103,
+      202611104,
+      202611105,
+      202611106,
+      202611107,
+      202611108,
+      202611109
+    ],
+    "fpr_calibration_target": 0.05,
+    "spoof_displacements_m": [
+      0,
+      5,
+      10,
+      20,
+      30,
+      50,
+      100,
+      200
+    ],
+    "receiver_counts": [
+      1,
+      2,
+      3,
+      5,
+      10
+    ],
+    "sync": {
+      "calibration_events": 2000,
+      "test_events": 3000,
+      "aperture_radius_m": [
+        20,
+        100
+      ],
+      "independent_link_noise_sd_db": [
+        2,
+        6
+      ],
+      "common_power_sd_db": 8,
+      "residual_receiver_bias_sd_db": 0.8,
+      "true_xy_bounds_m": [
+        -100,
+        100
+      ],
+      "true_altitude_bounds_m": [
+        5,
+        70
+      ],
+      "path_loss_exponent": 2.2,
+      "note": "Same packet, known geometry/exponent, no censoring/NLOS/quantization. Favorable separate baseline. No 3D localization is solved."
+    },
+    "time": {
+      "events_per_seed": 3000,
+      "gaps_s": [
+        1,
+        3,
+        10,
+        30,
+        60,
+        300,
+        3600,
+        86400
+      ],
+      "power_correlation_time_s": [
+        0,
+        30,
+        600,
+        86400
+      ],
+      "power_stationary_sd_db": 6,
+      "anchor_measurement_sd_db": 2,
+      "current_measurement_sd_db": 4,
+      "historical_mean_uncertainty_sd_db": 1,
+      "path_loss_exponent": 2.2,
+      "normal_coverage": 0.9,
+      "note": "Last anchor has independent true distance. One RSSI at query. Gaussian conditional power model, no censoring."
+    },
+    "personalization": {
+      "external_training_ids": 30,
+      "target_ids": 20,
+      "enrollment_flights": 10,
+      "enrollment_events_per_flight": 10,
+      "test_flights": 10,
+      "test_events_per_flight": 20,
+      "labeled_enrollment_counts": [
+        0,
+        1,
+        3,
+        10,
+        30,
+        100
+      ],
+      "measurement_noise_sd_db": 4,
+      "profiles": [
+        {
+          "name": "no_identity_difference",
+          "identity_sd_db": 0,
+          "flight_sd_db": 1,
+          "exponent_sd": 0
+        },
+        {
+          "name": "stable_id3",
+          "identity_sd_db": 3,
+          "flight_sd_db": 1,
+          "exponent_sd": 0
+        },
+        {
+          "name": "stable_id6",
+          "identity_sd_db": 6,
+          "flight_sd_db": 1,
+          "exponent_sd": 0
+        },
+        {
+          "name": "flight_variation4",
+          "identity_sd_db": 6,
+          "flight_sd_db": 4,
+          "exponent_sd": 0
+        },
+        {
+          "name": "flight_variation8",
+          "identity_sd_db": 6,
+          "flight_sd_db": 8,
+          "exponent_sd": 0
+        },
+        {
+          "name": "identity_and_slope",
+          "identity_sd_db": 6,
+          "flight_sd_db": 1,
+          "exponent_sd": 0.2
+        }
+      ],
+      "note": "All enrollment labels are independent synthetic true distances, never claimed RID coordinates. Test flights held out. Shrinkage assumes matched nuisance variances.",
+      "numeric_log10_prediction_bounds": [
+        -100,
+        100
+      ]
+    },
+    "design": "One-factor studies, not a pooled full-factorial benchmark. No numerical targets were tuned to produce a desired result.",
+    "revision_reason": "Preserve catastrophic OLS errors instead of clipping at1e6m. Earlier run retained and flagged."
+  },
+  "config_common": {
+    "schema": "week26-common-event-v1",
+    "scope": "Synthetic conditions and counterexamples, not measured RID detection performance",
+    "seeds": [
+      202611500,
+      202611501,
+      202611502,
+      202611503,
+      202611504,
+      202611505,
+      202611506,
+      202611507,
+      202611508,
+      202611509
+    ],
+    "calibration_flights": 20,
+    "test_flights": 30,
+    "events_per_flight": 240,
+    "event_spacing_s": 0.5,
+    "observer_xyz_m": [
+      [
+        -100,
+        -70,
+        2
+      ],
+      [
+        85,
+        -90,
+        8
+      ],
+      [
+        110,
+        80,
+        2
+      ],
+      [
+        -80,
+        110,
+        12
+      ],
+      [
+        10,
+        15,
+        5
+      ]
+    ],
+    "path_loss_exponent": 2.2,
+    "reference_received_dbm": -42,
+    "flight_power_sd_db": 3,
+    "per_event_power_sd_db": 8,
+    "receiver_calibration_residual_sd_db": 0.8,
+    "link_noise_sd_db": [
+      2,
+      6
+    ],
+    "coverage_distance_m": 160,
+    "scan_drop_probability": 0.15,
+    "minimum_calibration_events_per_subset": 40,
+    "normal_alarm_target": 0.05,
+    "claim_displacements_m": [
+      0,
+      10,
+      30,
+      50,
+      100
+    ],
+    "pairing_spread_s": [
+      0,
+      0.5,
+      1,
+      5,
+      15
+    ],
+    "upload_spread_s": [
+      0,
+      5,
+      60
+    ],
+    "assumptions": [
+      "One physical transmitter; no relay, clone or receiver-specific beamforming",
+      "Correct physical event association is an oracle in full/partial modes",
+      "Observers report honestly; positions and exponent known; receiver residual fixed across calibration/test",
+      "Coverage is geometry plus independent scan deletion, not power-dependent RF sensitivity",
+      "Gaussian independent link noise, no NLOS, no quantization, no empirical RF calibration",
+      "Normal claimed position equals true position; no normal GNSS error",
+      "A statistic rejects inconsistency only; it does not attribute attack cause or authenticate aircraft",
+      "All coordinates, power values and trajectories are fictional"
+    ]
+  },
+  "source_hashes": {
+    "experiments/week26-rssi-privacy/explain_three_results.py": "6bfcaad38a02798af01a1a0d67e6cda5b5097202889b077d625e32d883dd92c7",
+    "experiments/week26-rssi-privacy/simulate3d_independent.py": "fb7ce6365771df223bc97815de1c67dd790ba136cb40bec3d039f373109835d3",
+    "experiments/week26-rssi-privacy/event_scenarios.py": "65a080e5c458521f704280da13431d7a0eaafbdcaf02038e0bd762ce371c7750",
+    "experiments/week26-rssi-privacy/synthetic3d_config.json": "aaebb701917d9d9f681efe09fd892ffb9975e5229b93eef85d2825bb95f132a3",
+    "experiments/week26-rssi-privacy/sensitivity_config.json": "63301cbb97a2a64824cb0c8e7711f9568ced4c228bc70e8283d573af092b0538",
+    "experiments/week26-rssi-privacy/event_scenarios_config.json": "856c7f0f19955d7d81934aea97d047623dc6d886db704f4c17c3c333f0619ea3"
+  },
+  "wall_seconds": 0.26103308296296746,
+  "peak_rss_bytes": 131907584,
+  "checks": [
+    "saved position counts reproduced exactly",
+    "saved common5 rates reproduced",
+    "unquantized compensation exact",
+    "paired quantization error bounded by 1dB"
+  ],
+  "limitations": [
+    "All inputs synthetic; no UAV RF performance claim",
+    "No GPS truth acquired; generators provide labels",
+    "Common5 assumes known correspondence and propagation; no NLOS",
+    "Power100 attack knows receiver and channel model and has unbounded control",
+    "Histogram pools seeds for display; packets are not independent trials"
+  ]
+}

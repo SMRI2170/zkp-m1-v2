@@ -1,0 +1,35 @@
+name: Android radio probe
+on:
+  push:
+    paths:
+      - 'experiments/android-radio-probe/**'
+      - '.github/workflows/android-radio-probe.yml'
+  pull_request:
+    paths:
+      - 'experiments/android-radio-probe/**'
+      - '.github/workflows/android-radio-probe.yml'
+  workflow_dispatch:
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - name: Install compile SDK
+        run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+      - name: Test math, framing and known failure cases
+        run: sh experiments/android-radio-probe/scripts/test_math.sh
+      - name: Test private-to-public evidence boundary
+        run: python3 -m unittest discover -s experiments/android-radio-probe/tests -p 'test_*.py'
+      - name: Build dedicated app (no hardware accuracy claim)
+        working-directory: experiments/android-radio-probe
+        run: ./gradlew --no-daemon :app:assembleDebug
