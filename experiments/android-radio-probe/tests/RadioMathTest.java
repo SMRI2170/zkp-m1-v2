@@ -39,6 +39,17 @@ public final class RadioMathTest {
         RadioMath.Result attacked=RadioMath.fit(sweep(75,true));
         check(attacked.status().equals("EXPERIMENTAL_PEAK") && Math.abs(RadioMath.error(attacked.peakHeadingDeg(),75))>60,
             "power correlated with rotation can spoof an apparently good fit; quality is not security");
+        RadioMath.Repeatability repeated=RadioMath.repeatability(sweep(75,false));
+        check(repeated.completedTurns()==2 && repeated.usableTurns()==2,"two disjoint full sweeps detected");
+        check(repeated.lastTwoDifferenceDeg()<3,"stable synthetic pattern repeats");
+        check(!Double.isFinite(RadioMath.repeatability(sweep(75,false).subList(0,72)).lastTwoDifferenceDeg()),"one sweep does not fabricate a repeatability error of zero");
+        List<RadioMath.Sample> changed=sweep(75,false),other=sweep(200,false);
+        for(int i=72;i<144;i++)changed.set(i,other.get(i));
+        check(RadioMath.repeatability(changed).lastTwoDifferenceDeg()>70,"independent sweep change is reported");
+        List<RadioMath.Sample> oscillation=new ArrayList<>();
+        for(int i=0;i<200;i++)oscillation.add(new RadioMath.Sample(i*500000000L,45+30*Math.sin(i*.2),-70));
+        check(RadioMath.repeatability(oscillation).completedTurns()==0,"back-and-forth small arc is not a full turn");
+        check(RadioMath.repeatability(sweep(75,true)).lastTwoDifferenceDeg()<5,"repeatable biased result is still not true-direction accuracy");
         System.out.println(passed+" math/framing checks passed (synthetic only)");
     }
 }

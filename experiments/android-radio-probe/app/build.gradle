@@ -6,8 +6,8 @@ android {
         applicationId 'org.smri.ridprobe'
         minSdk 31
         targetSdk 36
-        versionCode 1
-        versionName '0.1-research'
+        versionCode 2
+        versionName '0.2-research'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17

@@ -10,6 +10,7 @@ import android.hardware.*;
 import android.location.LocationManager;
 import android.net.wifi.WifiManager;
 import android.os.*;
+import android.graphics.Color;
 import android.ranging.RangingManager;
 import android.ranging.RangingCapabilities;
 import android.view.*;
@@ -39,10 +40,15 @@ public final class MainActivity extends Activity implements SensorEventListener 
     private TextView status,headingView,resultView;private Spinner selector;private ArrayAdapter<String> targetAdapter;
     private final ArrayList<String> targetKeys=new ArrayList<>();private String selected=null;
     private EditText knownBearing;private int scanIntervalMs=35_000;
+    private LinearLayout measureScreen,historyScreen,settingsScreen,historyList;
+    private Button captureButton;private ProgressBar progress;private TextView progressText,repeatText,detailText;
+    private RadioPlots compassPlot,signalPlot;private int filterMode=0,pendingDuration=-1;
+    private boolean updatingTargets=false,showNames=false,exportRaw=false;private File exportSession;
     private static final ParcelUuid ODID=new ParcelUuid(UUID.fromString("0000fffa-0000-1000-8000-00805f9b34fb"));
     private static final class Target {
         final String key,label,kind;final ArrayList<RadioMath.Sample> samples=new ArrayList<>();
         long lastStamp=0;int rssi;boolean rid;int frequency;
+        String name="";
         Target(String k,String l,String type){key=k;label=l;kind=type;}
     }
     private JSONObject json(Object... pairs) {
@@ -67,46 +73,67 @@ public final class MainActivity extends Activity implements SensorEventListener 
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);
         sessionDir=new File(getFilesDir(),"sessions/run-"+System.currentTimeMillis());sessionDir.mkdirs();
+        if(state!=null){String previous=state.getString("export_session");if(previous!=null && previous.matches("run-[0-9]+")){exportSession=new File(new File(getFilesDir(),"sessions"),previous);exportRaw=state.getBoolean("export_raw");}}
         try{log=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(sessionDir,"observations.jsonl")),java.nio.charset.StandardCharsets.UTF_8));}
         catch(IOException e){throw new IllegalStateException(e);}
         sensors=(SensorManager)getSystemService(SENSOR_SERVICE);wifi=(WifiManager)getApplicationContext().getSystemService(WIFI_SERVICE);
         LinearLayout body=new LinearLayout(this);body.setOrientation(LinearLayout.VERTICAL);body.setPadding(24,24,24,24);
         body.setOnApplyWindowInsetsListener((v,insets)->{android.graphics.Insets safe=insets.getInsets(WindowInsets.Type.systemBars());v.setPadding(24,24+safe.top,24,24+safe.bottom);return insets;});
         ScrollView scroll=new ScrollView(this);scroll.addView(body);setContentView(scroll);
-        text(body,"RID方向検証",24);text(body,"RSSI＋端末姿勢の実験。位相AoA・機体認証ではありません。",14);
-        LinearLayout buttons=row(body);button(buttons,"権限",()->requestRadioPermissions());button(buttons,"受信開始",this::start);button(buttons,"停止",()->stop("user"));
-        LinearLayout second=row(body);button(second,"Wi-Fiスキャン",this::scanWifi);button(second,"機能確認",this::capabilities);
-        status=text(body,"準備中",14);headingView=text(body,"方位待機中",16);
-        text(body,"対象（識別子は画面では一時ハッシュ）",15);
+        getWindow().getInsetsController().setSystemBarsAppearance(WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS);
+        text(body,"電波の方向",24);
+        LinearLayout tabs=row(body);button(tabs,"測定",()->screen(0));button(tabs,"記録",()->screen(1));button(tabs,"設定",()->screen(2));
+        measureScreen=panel(body);historyScreen=panel(body);settingsScreen=panel(body);
+        status=text(measureScreen,"停止中",14);
+        LinearLayout controls=row(measureScreen);captureButton=button(controls,"受信開始",()->{if(running)stop("user");else start();});
+        captureButton.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.rgb(31,79,130)));captureButton.setTextColor(Color.WHITE);
+        Spinner filter=new Spinner(this);filter.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,new String[]{"BLE","Wi-Fi","すべて","RID候補"}));
+        controls.addView(filter,new LinearLayout.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT,1));
+        filter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){public void onNothingSelected(AdapterView<?> p){}public void onItemSelected(AdapterView<?> p,View v,int i,long id){filterMode=i;refreshTargets();showEstimate();}});
         selector=new Spinner(this);targetAdapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,new ArrayList<>()){
-            private View label(View view,int position){if(position<targetKeys.size()){Target t=targets.get(targetKeys.get(position));if(t!=null)((TextView)view).setText(t.kind+" "+t.label+" "+t.rssi+"dBm / "+t.samples.size()+"点"+(t.rid?" RID候補":""));}return view;}
+            private View label(View view,int position){if(position<targetKeys.size()){Target t=targets.get(targetKeys.get(position));if(t!=null)((TextView)view).setText((showNames&&!t.name.isEmpty()?t.name:t.label)+"　"+t.rssi+" dBm"+(t.rid?" RID":""));}return view;}
             @Override public View getView(int position,View old,ViewGroup parent){return label(super.getView(position,old,parent),position);}
             @Override public View getDropDownView(int position,View old,ViewGroup parent){return label(super.getDropDownView(position,old,parent),position);}
-        };selector.setAdapter(targetAdapter);body.addView(selector);
+        };selector.setAdapter(targetAdapter);measureScreen.addView(selector);
         selector.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener(){
             public void onNothingSelected(AdapterView<?> p){}
-            public void onItemSelected(AdapterView<?> p,View v,int i,long id){if(i<targetKeys.size())selected=targetKeys.get(i);showEstimate();}
+            public void onItemSelected(AdapterView<?> p,View v,int i,long id){if(updatingTargets)return;if(i<targetKeys.size())selected=targetKeys.get(i);showEstimate();}
         });
-        text(body,"水平に持ち、同じ場所でゆっくり1周。まずBLEで試してください。Wi-Fiは制限により24点集めるのに約12〜15分かかる場合があります。",15);
-        LinearLayout third=row(body);button(third,"方向推定",this::showEstimate);button(third,"対象データをリセット",()->{Target t=targets.get(selected);if(t!=null)t.samples.clear();showEstimate();});
-        resultView=text(body,"24点・6方位区画・270°以上の回転が必要です。",16);
-        knownBearing=new EditText(this);knownBearing.setHint("既知の送信方向（磁北基準 0〜359°）");knownBearing.setInputType(android.text.InputType.TYPE_CLASS_NUMBER|android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL);body.addView(knownBearing);
-        LinearLayout fourth=row(body);button(fourth,"方向補正を校正",this::calibrate);button(fourth,"別データで誤差を記録",this::validateBearing);
-        text(body,"校正前は「RSSIが最大となる端末方位」です。送信元の方角とは限りません。校正後も任意の電力変更・移動・反射には保証がありません。",14);
+        text(measureScreen,"水平に持ち、その場でゆっくり回転",15);
+        compassPlot=new RadioPlots(this,true);measureScreen.addView(compassPlot,new LinearLayout.LayoutParams(-1,dp(205)));
+        resultView=text(measureScreen,"対象を選んで受信開始",19);
+        progress=new ProgressBar(this,null,android.R.attr.progressBarStyleHorizontal);progress.setMax(100);measureScreen.addView(progress);
+        progressText=text(measureScreen,"",13);repeatText=text(measureScreen,"",13);
+        signalPlot=new RadioPlots(this,false);measureScreen.addView(signalPlot,new LinearLayout.LayoutParams(-1,dp(95)));
+        LinearLayout third=row(measureScreen);button(third,"データをリセット",()->{Target t=targets.get(selected);if(t!=null)t.samples.clear();showEstimate();});button(third,"詳細",this::showDetails);
+        headingView=text(settingsScreen,"端末方位待機中",14);
+        LinearLayout diagnostics=row(settingsScreen);button(diagnostics,"権限",this::requestRadioPermissions);button(diagnostics,"機能確認",()->{capabilities();showDetails();});button(diagnostics,"Wi-Fi更新",this::scanWifi);
+        Switch names=new Switch(this);names.setText("端末内で機器名を表示");names.setOnCheckedChangeListener((b,on)->{showNames=on;refreshTargets();});settingsScreen.addView(names);
+        text(settingsScreen,"方向の補正",19);
+        knownBearing=new EditText(this);knownBearing.setHint("既知の方向（磁北 0〜359°）");knownBearing.setInputType(android.text.InputType.TYPE_CLASS_NUMBER|android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL);settingsScreen.addView(knownBearing);
+        LinearLayout fourth=row(settingsScreen);button(fourth,"校正",this::calibrate);button(fourth,"誤差を測る",this::validateBearing);button(fourth,"解除",()->{Target t=targets.get(selected);if(t!=null){getPreferences(MODE_PRIVATE).edit().remove("offset:"+t.key).apply();event("calibration_cleared",json("key",t.key));showEstimate();Toast.makeText(this,"校正を解除しました",Toast.LENGTH_SHORT).show();}});
+        text(settingsScreen,"校正後は別の回転で誤差を確認します。未校正の矢印は電波が強くなる端末の向きです。",14);
+        text(settingsScreen,"Wi-Fiは受信間隔の制限があり、測定に時間がかかります。方向推定はまずBLEで試してください。",14);
+        detailText=text(settingsScreen,"",13);
+        text(historyScreen,"測定履歴",19);LinearLayout historyControls=row(historyScreen);button(historyControls,"更新",this::refreshHistory);button(historyControls,"現在のCSV",()->requestExport(sessionDir));
+        historyList=panel(historyScreen);screen(0);
         event("session",json("model",Build.MODEL,"android",Build.VERSION.RELEASE,"sdk",Build.VERSION.SDK_INT,"scope","local research only; no authenticated aircraft"));
         capabilities();render();
         if(getIntent().getBooleanExtra("auto_start",false))handler.postDelayed(()->start(getIntent().getIntExtra("duration_s",0)),500);
     }
     private TextView text(LinearLayout parent,String value,int size){TextView t=new TextView(this);t.setText(value);t.setTextSize(size);t.setPadding(0,8,0,8);parent.addView(t);return t;}
+    private int dp(int v){return Math.round(v*getResources().getDisplayMetrics().density);}
+    private LinearLayout panel(LinearLayout parent){LinearLayout p=new LinearLayout(this);p.setOrientation(LinearLayout.VERTICAL);parent.addView(p);return p;}
+    private void screen(int index){if(measureScreen==null)return;measureScreen.setVisibility(index==0?View.VISIBLE:View.GONE);historyScreen.setVisibility(index==1?View.VISIBLE:View.GONE);settingsScreen.setVisibility(index==2?View.VISIBLE:View.GONE);if(index==1)refreshHistory();}
     private LinearLayout row(LinearLayout parent){LinearLayout row=new LinearLayout(this);parent.addView(row);return row;}
-    private void button(LinearLayout parent,String label,Runnable action){Button b=new Button(this);b.setText(label);b.setTextSize(13);parent.addView(b,new LinearLayout.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT,1));b.setOnClickListener(v->action.run());}
+    private Button button(LinearLayout parent,String label,Runnable action){Button b=new Button(this);b.setText(label);b.setTextSize(14);parent.addView(b,new LinearLayout.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT,1));b.setOnClickListener(v->action.run());return b;}
     private void requestRadioPermissions(){
         ArrayList<String> names=new ArrayList<>(Arrays.asList(Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.BLUETOOTH_SCAN,Manifest.permission.BLUETOOTH_CONNECT));
         if(Build.VERSION.SDK_INT>=33)names.add("android.permission.NEARBY_WIFI_DEVICES");
         if(Build.VERSION.SDK_INT>=36)names.add("android.permission.RANGING");
         requestPermissions(names.toArray(new String[0]),7);
     }
-    @Override public void onRequestPermissionsResult(int c,String[] p,int[] g){super.onRequestPermissionsResult(c,p,g);capabilities();render();}
+    @Override public void onRequestPermissionsResult(int c,String[] p,int[] g){super.onRequestPermissionsResult(c,p,g);capabilities();render();if(pendingDuration>=0){int duration=pendingDuration;pendingDuration=-1;if(granted(Manifest.permission.ACCESS_FINE_LOCATION)&&granted(Manifest.permission.BLUETOOTH_SCAN))start(duration);else Toast.makeText(this,"受信するには権限の許可が必要です",Toast.LENGTH_LONG).show();}}
     private void capabilities(){
         JSONObject caps=json("uwb_feature",feature("android.hardware.uwb"),"wifi_rtt_feature",feature("android.hardware.wifi.rtt"),
             "wifi_aware_feature",feature("android.hardware.wifi.aware"),"ble_feature",feature("android.hardware.bluetooth_le"),
@@ -148,7 +175,7 @@ public final class MainActivity extends Activity implements SensorEventListener 
     private void start(){start(0);}
     private void start(int duration){
         if(running)return;
-        if(!granted(Manifest.permission.ACCESS_FINE_LOCATION)||!granted(Manifest.permission.BLUETOOTH_SCAN)){requestRadioPermissions();return;}
+        if(!granted(Manifest.permission.ACCESS_FINE_LOCATION)||!granted(Manifest.permission.BLUETOOTH_SCAN)){pendingDuration=duration;requestRadioPermissions();return;}
         capabilities();running=true;startedNanos=SystemClock.elapsedRealtimeNanos();
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         Sensor sensor=sensors.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
@@ -194,6 +221,7 @@ public final class MainActivity extends Activity implements SensorEventListener 
             if(rid>0 && unique)wifiRid++;
             String sampleStatus="cached_or_scan_not_updated";
             if(unique && updated)sampleStatus=sample(key,"Wi-Fi",stamp,sr.level,rid>0,sr.frequency);
+            Target target=targets.get(key);if(target!=null)target.name=cleanName(sr.SSID);
             event("wifi_observation",json("key",key,"rssi_dbm",sr.level,"frequency_mhz",sr.frequency,"observed_elapsed_nanos",stamp,
                 "read_age_s",(SystemClock.elapsedRealtimeNanos()-stamp)/1e9,"fresh_broadcast",updated,"unique_timestamp",unique,
                 "sample_status",sampleStatus,"rid_syntax_messages",rid,"ies",ies));
@@ -209,6 +237,7 @@ public final class MainActivity extends Activity implements SensorEventListener 
                     if(data!=null && data.length>2 && (data[0]&255)==0x0d)rid=RadioMath.messageCount(Arrays.copyOfRange(data,2,data.length));}
                 if(rid>0)bleRid++;
                 String accepted=sample(key,"BLE",sr.getTimestampNanos(),sr.getRssi(),rid>0,0);
+                Target target=targets.get(key);if(target!=null && record!=null)target.name=cleanName(record.getDeviceName());
                 event("ble_observation",json("key",key,"rssi_dbm",sr.getRssi(),"observed_elapsed_nanos",sr.getTimestampNanos(),
                     "primary_phy",sr.getPrimaryPhy(),"secondary_phy",sr.getSecondaryPhy(),"rid_syntax_messages",rid,"sample_status",accepted,"advertisement_hex",raw));
             }catch(Exception e){failure("ble_result",e);}
@@ -217,8 +246,7 @@ public final class MainActivity extends Activity implements SensorEventListener 
     private String sample(String key,String kind,long stamp,int rssi,boolean rid,int frequency){
         Target target=targets.get(key);
         if(target==null){if(targets.size()>=300){droppedTargets++;return "target_limit";}
-            target=new Target(key,alias(key),kind);targets.put(key,target);targetKeys.add(key);
-            targetAdapter.add(kind+" "+target.label+" "+rssi+"dBm"+(rid?" RID候補":""));if(selected==null)selected=key;}
+            target=new Target(key,alias(key),kind);targets.put(key,target);if(selected==null)selected=key;}
         target.rssi=rssi;target.rid|=rid;target.frequency=frequency;
         if(stamp<=target.lastStamp || stamp-target.lastStamp<250_000_000L)return "duplicate_or_dense";
         target.lastStamp=stamp;
@@ -240,28 +268,90 @@ public final class MainActivity extends Activity implements SensorEventListener 
     @Override public void onAccuracyChanged(Sensor s,int accuracy){sensorAccuracy=accuracy;}
     private JSONObject estimateJson(Target target){
         RadioMath.Result r=RadioMath.fit(target.samples);
+        RadioMath.Repeatability repeated=RadioMath.repeatability(target.samples);
         String pref="offset:"+target.key;boolean calibrated=getPreferences(MODE_PRIVATE).contains(pref);
         double offset=getPreferences(MODE_PRIVATE).getFloat(pref,0);
         return json("status",r.status(),"n",r.count(),"bins",r.bins(),"coverage_deg",r.coverageDeg(),
             "peak_phone_heading_magnetic_deg",r.peakHeadingDeg(),"amplitude_db",r.amplitudeDb(),"directional_r2",r.directionalR2(),
             "residual_sd_db",r.residualSdDb(),"calibrated",calibrated,
+            "completed_turns",repeated.completedTurns(),"usable_turns",repeated.usableTurns(),"repeat_peak_difference_deg",repeated.lastTwoDifferenceDeg(),
             "bearing_magnetic_deg",calibrated && r.status().equals("EXPERIMENTAL_PEAK")?RadioMath.wrap(r.peakHeadingDeg()+offset):null,
             "accuracy_claim","none; held-out physical ground truth required");
     }
     private void showEstimate(){
         if(resultView==null)return;Target target=targets.get(selected);
-        if(target==null){resultView.setText("対象の新しい受信データを待っています。");return;}
+        if(target==null){resultView.setText("受信して対象を選択");progress.setProgress(0);progressText.setText("");repeatText.setText("");compassPlot.update(List.of(),Double.NaN,heading);signalPlot.update(List.of(),Double.NaN,heading);return;}
         RadioMath.Result r=RadioMath.fit(target.samples);
-        String message=target.kind+" "+target.label+" / "+(target.rid?"RID形式候補":"一般電波・RID未検出")+"\n";
-        message+=String.format(Locale.JAPAN,"使用%d点、%d/8区画、回転範囲%.0f°\n",r.count(),r.bins(),r.coverageDeg());
-        if(!r.status().equals("EXPERIMENTAL_PEAK"))message+="推定不可："+(r.status().equals("INSUFFICIENT_ROTATION")?"回転範囲または受信数が不足":r.status().equals("WEAK_DIRECTIONAL_SIGNAL")?"方向による電波の違いが不明瞭":"データが偏り計算できません");
-        else{
-            message+=String.format(Locale.JAPAN,"RSSI最大の端末方位 %.0f°（磁北）\n振幅 %.1fdB / 方向成分R² %.2f\n",r.peakHeadingDeg(),r.amplitudeDb(),r.directionalR2());
-            String pref="offset:"+target.key;
-            if(getPreferences(MODE_PRIVATE).contains(pref))message+=String.format(Locale.JAPAN,"校正後の方向推定 %.0f°（精度未確認）",RadioMath.wrap(r.peakHeadingDeg()+getPreferences(MODE_PRIVATE).getFloat(pref,0)));
-            else message+="送信元の方向は未校正。実際の誤差はまだ測れていません。";
-        }
+        String pref="offset:"+target.key;boolean calibrated=getPreferences(MODE_PRIVATE).contains(pref);
+        double angle=r.status().equals("EXPERIMENTAL_PEAK")?RadioMath.wrap(r.peakHeadingDeg()+(calibrated?getPreferences(MODE_PRIVATE).getFloat(pref,0):0)):Double.NaN;
+        String message=Double.isFinite(angle)?(calibrated?"校正済みの推定方向（参考値）":"電波が強い端末の向き（未校正）"):
+            r.status().equals("INSUFFICIENT_ROTATION")?"データ・回転範囲が不足":r.status().equals("WEAK_DIRECTIONAL_SIGNAL")?"方向の違いが不明瞭":"推定できません";
         resultView.setText(message);
+        progress.setProgress((int)(100*Math.min(1,Math.min(r.count()/24.0,Math.min(r.coverageDeg()/270.0,r.bins()/6.0)))));
+        progressText.setText(String.format(Locale.JAPAN,"データ %d/24点以上　回転 %.0f/270°以上",r.count(),r.coverageDeg()));
+        RadioMath.Repeatability repeated=RadioMath.repeatability(target.samples);
+        repeatText.setText(Double.isFinite(repeated.lastTwoDifferenceDeg())?String.format(Locale.JAPAN,"有効な2周の差 %.0f°（精度ではなく再現性）",repeated.lastTwoDifferenceDeg()):"もう1周で再現性を確認");
+        compassPlot.update(target.samples,angle,heading);signalPlot.update(target.samples,angle,heading);
+    }
+    private String cleanName(String value){if(value==null)return "";String s=value.replaceAll("\\p{Cntrl}","").replace("\"","");return s.substring(0,Math.min(32,s.length()));}
+    private void refreshTargets(){
+        if(targetAdapter==null)return;
+        ArrayList<String> next=new ArrayList<>();
+        for(Target t:targets.values())if(filterMode==2 || filterMode==0&&t.kind.equals("BLE") || filterMode==1&&t.kind.equals("Wi-Fi") || filterMode==3&&t.rid)next.add(t.key);
+        if(!next.equals(targetKeys) || targetAdapter.getCount()==0){
+            updatingTargets=true;targetKeys.clear();targetKeys.addAll(next);targetAdapter.setNotifyOnChange(false);targetAdapter.clear();
+            for(String key:targetKeys)targetAdapter.add(targets.get(key).label);
+            if(targetKeys.isEmpty())targetAdapter.add("対象を選択（受信待ち）");
+            if(!targetKeys.contains(selected))selected=targetKeys.isEmpty()?null:targetKeys.get(0);
+            targetAdapter.notifyDataSetChanged();int position=targetKeys.indexOf(selected);if(position>=0)selector.setSelection(position,false);
+            updatingTargets=false;
+        }else targetAdapter.notifyDataSetChanged();
+    }
+    private void showDetails(){
+        Target target=targets.get(selected);String text="BLE "+blePackets+"件 / Wi-Fi更新 "+wifiFreshBroadcasts+"回\nRID形式候補 BLE "+bleRid+" / Wi-Fi "+wifiRid+"\nエラー "+errors.length()+"\nUWB "+(feature("android.hardware.uwb")?"対応":"非対応");
+        if(target!=null){RadioMath.Result r=RadioMath.fit(target.samples);text+=String.format(Locale.JAPAN,"\n\n対象 %s / %s\n方位区画 %d/8\n振幅 %.1f dB\n方向成分R² %.2f\n残差SD %.1f dB",target.kind,target.label,r.bins(),r.amplitudeDb(),r.directionalR2(),r.residualSdDb());}
+        new android.app.AlertDialog.Builder(this).setTitle("測定の詳細").setMessage(text).setPositiveButton("閉じる",null).show();
+    }
+    private void refreshHistory(){
+        if(historyList==null)return;historyList.removeAllViews();File[] dirs=new File(getFilesDir(),"sessions").listFiles(File::isDirectory);
+        if(dirs==null)return;Arrays.sort(dirs,Comparator.comparing(File::getName).reversed());int count=0;
+        for(File dir:dirs){
+            try{JSONObject s=new JSONObject(readText(new File(dir,"summary.json")));
+                if(s.optLong("ble_packets")==0 && s.optLong("wifi_fresh_broadcasts")==0)continue;
+                if(count++>=20)break;
+                String date=new java.text.SimpleDateFormat("MM/dd HH:mm",Locale.JAPAN).format(new Date(Long.parseLong(dir.getName().substring(4))));
+                LinearLayout line=row(historyList);button(line,date+"　BLE "+s.optLong("ble_packets")+" / Wi-Fi "+s.optLong("wifi_fresh_broadcasts"),()->requestExport(dir));
+            }catch(Exception e){failure("history_read",e);}
+        }
+        if(count==0)text(historyList,"測定記録はまだありません",15);
+    }
+    private String readText(File file)throws IOException{return new String(java.nio.file.Files.readAllBytes(file.toPath()),java.nio.charset.StandardCharsets.UTF_8);}
+    private void requestExport(File dir){
+        new android.app.AlertDialog.Builder(this).setTitle("書き出す形式").setItems(new String[]{"推定結果 CSV（対象名なし）","電波ログ JSONL（識別情報を含む）"},(d,index)->{
+            exportSession=dir;exportRaw=index==1;Intent intent=new Intent(Intent.ACTION_CREATE_DOCUMENT);intent.addCategory(Intent.CATEGORY_OPENABLE);
+            intent.setType(exportRaw?"application/x-ndjson":"text/csv");intent.putExtra(Intent.EXTRA_TITLE,"rid-"+dir.getName()+(exportRaw?".jsonl":".csv"));startActivityForResult(intent,41);
+        }).setNegativeButton("閉じる",null).show();
+    }
+    private String csv(Object value){if(value==null || value==JSONObject.NULL)return "";return "\""+String.valueOf(value).replace("\"","\"\"")+"\"";}
+    @Override protected void onActivityResult(int request,int result,Intent data){
+        super.onActivityResult(request,result,data);if(request!=41 || result!=RESULT_OK || data==null || exportSession==null)return;
+        try(OutputStream out=getContentResolver().openOutputStream(data.getData(),"wt")){
+            if(out==null)throw new IOException("No output stream");
+            if(exportRaw){try(InputStream in=new FileInputStream(new File(exportSession,"observations.jsonl"))){byte[] buffer=new byte[16384];int n;while((n=in.read(buffer))!=-1)out.write(buffer,0,n);}}
+            else{
+                JSONObject s=new JSONObject(readText(new File(exportSession,"summary.json")));JSONArray values=s.getJSONArray("targets");
+                StringBuilder content=new StringBuilder("target_alias,kind,rid_syntax,frequency_mhz,n,status,peak_phone_heading_magnetic_deg,calibrated,bearing_magnetic_deg,completed_turns,usable_turns,repeat_peak_difference_deg\r\n");
+                for(int i=0;i<values.length();i++){JSONObject target=values.getJSONObject(i),estimate=target.getJSONObject("estimate");
+                    ArrayList<Object> fields=new ArrayList<>(Arrays.asList(target.opt("alias"),target.opt("kind"),target.opt("rid_syntax"),target.opt("frequency_mhz")));
+                    for(String key:new String[]{"n","status","peak_phone_heading_magnetic_deg","calibrated","bearing_magnetic_deg","completed_turns","usable_turns","repeat_peak_difference_deg"})fields.add(estimate.opt(key));
+                    for(int j=0;j<fields.size();j++){if(j>0)content.append(',');content.append(csv(fields.get(j)));}content.append("\r\n");
+                }out.write(content.toString().getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            }Toast.makeText(this,"保存しました",Toast.LENGTH_SHORT).show();
+        }catch(Exception e){failure("export",e);Toast.makeText(this,"保存できませんでした",Toast.LENGTH_LONG).show();}
+    }
+    @Override protected void onSaveInstanceState(Bundle state){
+        if(exportSession!=null){state.putString("export_session",exportSession.getName());state.putBoolean("export_raw",exportRaw);}
+        super.onSaveInstanceState(state);
     }
     private double known(){double b=Double.parseDouble(knownBearing.getText().toString());if(!Double.isFinite(b)||b<0||b>=360)throw new IllegalArgumentException();return b;}
     private void calibrate(){
@@ -299,10 +389,11 @@ public final class MainActivity extends Activity implements SensorEventListener 
             File output=new File(sessionDir,"summary.json");if(!tmp.renameTo(output))throw new IOException("summary rename failed");
             try(FileWriter w=new FileWriter(new File(getFilesDir(),"latest-session.txt"))){w.write(sessionDir.getName());}log.flush();}
         catch(Exception e){failure("summary",e);}
-        status.setText((running?"受信中":"停止中")+"\nWi-Fi: 新規時刻 "+wifiUnique+" / IE "+wifiIE+" / Vendor IE "+wifiVendor+" / RID候補 "+wifiRid+
-            "\nBLE: "+blePackets+" / RID候補 "+bleRid+"\nUWB: "+feature("android.hardware.uwb")+" / エラー "+errors.length());
-        headingView.setText(Double.isFinite(heading)?String.format(Locale.JAPAN,"端末方位 %.0f°（磁北）／姿勢センサ精度状態 %d",heading,sensorAccuracy):"方位センサ待機中");
-        targetAdapter.notifyDataSetChanged();showEstimate();
+        status.setText((running?"受信中":"停止中")+"　BLE "+blePackets+" / Wi-Fi更新 "+wifiFreshBroadcasts);
+        captureButton.setText(running?"停止":"受信開始");
+        headingView.setText(Double.isFinite(heading)?String.format(Locale.JAPAN,"端末方位 %.0f°（磁北）",heading):"方位センサ待機中");
+        detailText.setText("観測は端末内に保存。外部送信なし。\n位相AoA・機体認証の機能はありません。");
+        refreshTargets();showEstimate();
     }
     @Override protected void onPause(){stop("activity_paused");super.onPause();}
     @Override protected void onDestroy(){

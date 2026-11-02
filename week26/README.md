@@ -2,6 +2,8 @@
 
 ## 最新の結論と資料
 
+[Androidアプリv0.2：画面整理・グラフ・履歴・CSV24](24_Android方向検証アプリv02_画面整理と測定機能.md)：測定・記録・設定の3画面に整理。UI確認6項目と合成チェックを通過。更新APKを用意し、Pixel実機での方向誤差は未評価。
+
 [専用AndroidアプリとPixel 8実機記録23](23_Pixel8専用アプリの実装とWiFi_BLE実機確認.md)：新規アプリを作成してUSBで起動し、BLE・Wi-Fi情報要素の取得を確認。方向推定の精度、実RID受信、無線ADB経由の再試験は未確認。[アプリと手順](../experiments/android-radio-probe/README.md)。
 
 [AndroidでAoAを行う方法とRIDへの適用条件22](22_AndroidでのAoA実現方法とRemote_IDへの適用条件.md)：スマホ単体、CTE＋専用配列、UWB、外部受信機、回転RSSIを区別。Pixel 8通常モデルとProの差、送信側の協力の要否、公開APIで未確認の点を整理。実機導入は未実施。

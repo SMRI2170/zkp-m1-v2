@@ -10,6 +10,23 @@ public final class RadioMath {
     public record Heading(long nanos, double degrees, boolean usable) {}
     public record Result(String status, int count, int bins, double coverageDeg,
                          double peakHeadingDeg, double amplitudeDb, double directionalR2, double residualSdDb) {}
+    public record Repeatability(int completedTurns, int usableTurns, double lastTwoDifferenceDeg) {}
+
+    /** Separate complete sweeps. Agreement is repeatability, never true angle accuracy. */
+    public static Repeatability repeatability(List<Sample> samples) {
+        if(samples.size()<24)return new Repeatability(0,0,Double.NaN);
+        List<Double> peaks=new ArrayList<>();int start=0,turns=0;double travel=0;
+        for(int i=1;i<samples.size();i++){
+            travel+=error(samples.get(i).heading(),samples.get(i-1).heading());
+            if(Math.abs(travel)>=330){
+                List<Sample> sweep=samples.subList(start,i+1);Result r=fit(sweep);
+                if(r.coverageDeg()>=270){turns++;if(r.status().equals("EXPERIMENTAL_PEAK"))peaks.add(r.peakHeadingDeg());
+                    start=i+1;travel=0;if(start+1<samples.size())i=start;}
+            }
+        }
+        double disagreement=peaks.size()>=2?Math.abs(error(peaks.get(peaks.size()-1),peaks.get(peaks.size()-2))):Double.NaN;
+        return new Repeatability(turns,peaks.size(),disagreement);
+    }
 
     public static Heading nearest(List<Heading> history, long stamp, long toleranceNanos) {
         Heading best=null;long delta=Long.MAX_VALUE;
