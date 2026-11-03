@@ -1,0 +1,27 @@
+[
+  {
+    "dataset": "AERPAW AADM",
+    "metadata": "available",
+    "web_download_http": 403,
+    "api_download_http": 401,
+    "body_acquired": false
+  },
+  {
+    "dataset": "UCSB Outdoor 2.4GHz 802.15.4",
+    "metadata": "available",
+    "web_download_http": 403,
+    "api_download_http": 401,
+    "body_acquired": false
+  },
+  {
+    "dataset": "Mendeley UAV CIR v2",
+    "web_description": "available in web research tool",
+    "public_api_http": 403,
+    "body_acquired": false
+  },
+  {
+    "dataset": "KU Leuven UAV CSI Zenodo 15655702",
+    "body_acquired": "10 full telemetry CSVs plus sparse binary ranges",
+    "full_binary_checksum_verified": false
+  }
+]
