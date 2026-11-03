@@ -1,0 +1,267 @@
+{
+  "source_url": "https://zenodo.org/records/20341802",
+  "version": "v2",
+  "inputs": {
+    "dataset.csv": {
+      "size": 28253049,
+      "md5": "0a225350d1c3b01ff9168bdcd3915b05",
+      "sha256": "f261a911a96c6e79b23272a21091b97e51719ef1c1033116d900862afde65fd3"
+    },
+    "rrh_locations.md": {
+      "size": 390,
+      "md5": "f913bef452fc604247223e8003bce73d",
+      "sha256": "62531352197223e47c4a1a5ed0e9b44eac74a01e472512febae97ab4bfd9621e"
+    },
+    "load_and_plot_samples.py": {
+      "size": 2831,
+      "md5": "71ebf5d337e6a8434597b218c93cdd53",
+      "sha256": "7c97d9b07e67402738e28be4ac83653787a20f954962e50faba7c893b3f6fe88"
+    }
+  },
+  "columns": [
+    "transmission_idx",
+    "rrh_idx",
+    "rx_sample_rate",
+    "bandwidth",
+    "sf",
+    "cr",
+    "fc",
+    "payload_base64",
+    "cfo",
+    "snr",
+    "rx_timestamp_full",
+    "rx_timestamp_frac",
+    "area",
+    "area_type",
+    "name",
+    "latitude",
+    "longitude",
+    "target_velocity",
+    "velocity",
+    "sigmf_file",
+    "sigmf_file_start_time_full",
+    "sigmf_file_start_time_frac",
+    "sigmf_file_offset",
+    "sigmf_file_n_samples"
+  ],
+  "total_rows": 114147,
+  "uav_rows": 53875,
+  "excluded_non_uav_rows": 60272,
+  "uav_area_types": {
+    "drone_los": 47057,
+    "drone_nlos": 6818
+  },
+  "uav_session_rows": {
+    "drone_campus_east": 8116,
+    "drone_campus_south": 29653,
+    "drone_epfl_west_long": 3969,
+    "drone_epfl_west_long_2": 5319,
+    "drone_field_bailly": 4116,
+    "drone_field_perrettes": 2702
+  },
+  "uav_session_count": 6,
+  "transmission_indices_reused_across_sessions": 0,
+  "all_frames": {
+    "transmissions": 30119,
+    "receiver_count_histogram": {
+      "1": 296,
+      "2": 1148,
+      "3": 4207,
+      "4": 24468
+    },
+    "duplicate_receiver_groups": 997,
+    "inconsistent_identity_or_position_groups": 2006,
+    "multi_receiver_groups": 29823,
+    "field_conflict_groups": {
+      "payload_base64": 1976,
+      "latitude": 1768,
+      "longitude": 1770
+    },
+    "complete_consistent_position_groups": 22687,
+    "complete_consistent_multi_receiver_groups": 22396,
+    "receive_timestamp_spread_median_s": 3.814697265625e-06,
+    "receive_timestamp_spread_max_s": 0.01638650894165039
+  },
+  "uav_frames": {
+    "transmissions": 13803,
+    "receiver_count_histogram": {
+      "3": 1337,
+      "4": 12466
+    },
+    "duplicate_receiver_groups": 0,
+    "inconsistent_identity_or_position_groups": 2006,
+    "multi_receiver_groups": 13803,
+    "field_conflict_groups": {
+      "payload_base64": 1976,
+      "latitude": 1768,
+      "longitude": 1770
+    },
+    "complete_consistent_position_groups": 7368,
+    "complete_consistent_multi_receiver_groups": 7368,
+    "receive_timestamp_spread_median_s": 0.00048041343688964844,
+    "receive_timestamp_spread_max_s": 0.0066165924072265625
+  },
+  "uav_rows_missing_position": 20718,
+  "position_available_uav_rows": 33157,
+  "position_available_uav_frames": {
+    "transmissions": 9138,
+    "receiver_count_histogram": {
+      "1": 144,
+      "2": 697,
+      "3": 1569,
+      "4": 6728
+    },
+    "duplicate_receiver_groups": 0,
+    "inconsistent_identity_or_position_groups": 0,
+    "multi_receiver_groups": 8994,
+    "field_conflict_groups": {},
+    "complete_consistent_position_groups": 9138,
+    "complete_consistent_multi_receiver_groups": 8994,
+    "receive_timestamp_spread_median_s": 0.0004241466522216797,
+    "receive_timestamp_spread_max_s": 0.0065495967864990234
+  },
+  "missing_position_by_session": {
+    "drone_campus_south": 18709,
+    "drone_campus_east": 296,
+    "drone_field_bailly": 897,
+    "drone_epfl_west_long_2": 144,
+    "drone_field_perrettes": 639,
+    "drone_epfl_west_long": 33
+  },
+  "per_uav_session": {
+    "drone_campus_east": {
+      "transmissions": 2044,
+      "receiver_count_histogram": {
+        "3": 60,
+        "4": 1984
+      },
+      "duplicate_receiver_groups": 0,
+      "inconsistent_identity_or_position_groups": 278,
+      "multi_receiver_groups": 2044,
+      "field_conflict_groups": {
+        "latitude": 278,
+        "longitude": 278,
+        "payload_base64": 271
+      },
+      "complete_consistent_position_groups": 1766,
+      "complete_consistent_multi_receiver_groups": 1766,
+      "receive_timestamp_spread_median_s": 0.0004286766052246094,
+      "receive_timestamp_spread_max_s": 0.006390571594238281
+    },
+    "drone_campus_south": {
+      "transmissions": 7436,
+      "receiver_count_histogram": {
+        "3": 91,
+        "4": 7345
+      },
+      "duplicate_receiver_groups": 0,
+      "inconsistent_identity_or_position_groups": 373,
+      "multi_receiver_groups": 7436,
+      "field_conflict_groups": {
+        "payload_base64": 368,
+        "latitude": 150,
+        "longitude": 150
+      },
+      "complete_consistent_position_groups": 2634,
+      "complete_consistent_multi_receiver_groups": 2634,
+      "receive_timestamp_spread_median_s": 0.0005261898040771484,
+      "receive_timestamp_spread_max_s": 0.0066165924072265625
+    },
+    "drone_epfl_west_long": {
+      "transmissions": 993,
+      "receiver_count_histogram": {
+        "3": 3,
+        "4": 990
+      },
+      "duplicate_receiver_groups": 0,
+      "inconsistent_identity_or_position_groups": 33,
+      "multi_receiver_groups": 993,
+      "field_conflict_groups": {
+        "latitude": 33,
+        "longitude": 33,
+        "payload_base64": 33
+      },
+      "complete_consistent_position_groups": 960,
+      "complete_consistent_multi_receiver_groups": 960,
+      "receive_timestamp_spread_median_s": 0.0007052421569824219,
+      "receive_timestamp_spread_max_s": 0.0060977935791015625
+    },
+    "drone_epfl_west_long_2": {
+      "transmissions": 1333,
+      "receiver_count_histogram": {
+        "3": 13,
+        "4": 1320
+      },
+      "duplicate_receiver_groups": 0,
+      "inconsistent_identity_or_position_groups": 142,
+      "multi_receiver_groups": 1333,
+      "field_conflict_groups": {
+        "latitude": 142,
+        "longitude": 142,
+        "payload_base64": 140
+      },
+      "complete_consistent_position_groups": 1191,
+      "complete_consistent_multi_receiver_groups": 1191,
+      "receive_timestamp_spread_median_s": 0.0006647109985351562,
+      "receive_timestamp_spread_max_s": 0.0065495967864990234
+    },
+    "drone_field_bailly": {
+      "transmissions": 1174,
+      "receiver_count_histogram": {
+        "3": 580,
+        "4": 594
+      },
+      "duplicate_receiver_groups": 0,
+      "inconsistent_identity_or_position_groups": 675,
+      "multi_receiver_groups": 1174,
+      "field_conflict_groups": {
+        "latitude": 665,
+        "longitude": 665,
+        "payload_base64": 667
+      },
+      "complete_consistent_position_groups": 499,
+      "complete_consistent_multi_receiver_groups": 499,
+      "receive_timestamp_spread_median_s": 0.00019216537475585938,
+      "receive_timestamp_spread_max_s": 0.004186153411865234
+    },
+    "drone_field_perrettes": {
+      "transmissions": 823,
+      "receiver_count_histogram": {
+        "3": 590,
+        "4": 233
+      },
+      "duplicate_receiver_groups": 0,
+      "inconsistent_identity_or_position_groups": 505,
+      "multi_receiver_groups": 823,
+      "field_conflict_groups": {
+        "latitude": 500,
+        "longitude": 502,
+        "payload_base64": 497
+      },
+      "complete_consistent_position_groups": 318,
+      "complete_consistent_multi_receiver_groups": 318,
+      "receive_timestamp_spread_median_s": 0.00043511390686035156,
+      "receive_timestamp_spread_max_s": 0.0012900829315185547
+    }
+  },
+  "gates": {
+    "uav_to_ground": "DOCUMENTED_BY_SOURCE",
+    "packet_grouping": "CSV_METADATA_AUDITED_NOT_INDEPENDENT_RF_VALIDATION",
+    "rssi_dbm": "ABSENT_FROM_CSV",
+    "uav_altitude": "ABSENT_FROM_CSV",
+    "iq": "NOT_DOWNLOADED",
+    "attack_detection": "NOT_RUN",
+    "direction_estimation": "NOT_RUN"
+  },
+  "limitations": [
+    "SNR is not RSSI; receiver noise floors/calibration not established",
+    "Timestamp spread is not a verified clock accuracy or propagation time",
+    "Missing receiver rows are unavailable observations, not established RF packet losses",
+    "UAV session names are not proof of independent flights/days",
+    "CSV transmitter positions are annotations, not an independently authenticated truth ledger",
+    "Position-available subset removes missing rows, not an imputation; whole-group strict counts are separate",
+    "No absolute power, true 3D range or antenna phase calibration established",
+    "LoRa at 862.5MHz is not Wi-Fi/BLE Remote ID"
+  ],
+  "code_sha256": "063d535783b35ca10951f930689b0aee9363e5b86b3366755e3c2880eb8ae76a"
+}

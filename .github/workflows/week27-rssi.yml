@@ -29,3 +29,5 @@ jobs:
         run: python experiments/week27-data-audit/audit_paired_results.py week27/results/paired-attacks-20261103-v2
       - name: Verify model-error, power-cap and temporal sensitivity evidence
         run: python experiments/week27-data-audit/audit_sensitivity_results.py week27/results/compensation-sensitivity-20261103
+      - name: Verify condition-block uncertainty and external data audit accounting
+        run: python experiments/week27-data-audit/audit_external_validity.py

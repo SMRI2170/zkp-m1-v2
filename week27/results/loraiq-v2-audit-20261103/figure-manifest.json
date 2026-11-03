@@ -1,0 +1,8 @@
+{
+  "plot_code_sha256": "5697c7015824e925d6c7f6803867efa51bc87f0a7d1c53102c4cbb8b726ed0d4",
+  "helper_code_sha256": "6f83cb3e2c9088ac6e768c0e413e3f4231a4fe10fef52a430af0236d34f95dfe",
+  "outputs": {
+    "data-gates.png": "86f0ba8fee88bc007013de3a89fa245ceeaf7602379eed02936060277119f8af",
+    "data-gates.svg": "2af9de83bd2f08ffa51cbc078730f017d6d3d7c1b3d9a2cbd076f99654d92cf4"
+  }
+}

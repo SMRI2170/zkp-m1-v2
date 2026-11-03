@@ -1,0 +1,8 @@
+{
+  "plot_code_sha256": "5697c7015824e925d6c7f6803867efa51bc87f0a7d1c53102c4cbb8b726ed0d4",
+  "helper_code_sha256": "6f83cb3e2c9088ac6e768c0e413e3f4231a4fe10fef52a430af0236d34f95dfe",
+  "outputs": {
+    "condition-block-spread.png": "650fa20436cd155fac17f6d4d409087728bbde3fdf23ed311cab952d185335d1",
+    "condition-block-spread.svg": "18b6e01cc1f148c69b5c7ecd009c0e3fdd65f87cf25d296b412e6c5e69b3aa73"
+  }
+}
