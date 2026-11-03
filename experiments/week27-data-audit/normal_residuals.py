@@ -89,6 +89,8 @@ def plot(report, out):
     for a in ax:a.grid(alpha=.2);a.legend(fontsize=7)
     fig.suptitle('Real UAV-received LoRa: normal data audit; not RID spoofing detection',fontsize=12)
     fig.savefig(out/'normal-residual-audit.png',dpi=160);fig.savefig(out/'normal-residual-audit.svg');plt.close(fig)
+    svg=out/'normal-residual-audit.svg'
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
 
 
 if __name__=='__main__':
@@ -97,6 +99,6 @@ if __name__=='__main__':
     result=analyze(a.archive);a.out.mkdir(parents=True)
     (a.out/'summary.json').write_text(json.dumps(result,indent=2)+'\n')
     with (a.out/'fold-metrics.csv').open('w') as stream:
-        writer=csv.DictWriter(stream,fieldnames=list(result['metrics'][0]));writer.writeheader();writer.writerows(result['metrics'])
+        writer=csv.DictWriter(stream,fieldnames=list(result['metrics'][0]),lineterminator='\n');writer.writeheader();writer.writerows(result['metrics'])
     plot(result,a.out)
     print(json.dumps({k:result[k] for k in ('raw_observations','comparison_conditions','folds_per_model','means')},indent=2))
