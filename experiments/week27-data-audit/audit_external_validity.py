@@ -27,3 +27,14 @@ for dirname in ['cluster-uncertainty-20261103','loraiq-v2-audit-20261103']:
     assert manifest['helper_code_sha256']==hashlib.sha256(Path(__file__).with_name('plot_paired_attacks.py').read_bytes()).hexdigest()
     for name,sha in manifest['outputs'].items():assert hashlib.sha256((out/name).read_bytes()).hexdigest()==sha
 print('Both figure manifests verified')
+
+metadata=json.loads((p/'loraiq-iq-metadata-20261103/summary.json').read_text())
+assert metadata['code_sha256']==hashlib.sha256(Path(__file__).with_name('loraiq_iq_metadata.py').read_bytes()).hexdigest()
+assert metadata['selected_metadata_files']==24 and metadata['sessions']==6
+assert len({(r['session'],r['receiver']) for r in metadata['records']})==24
+assert metadata['metadata_bytes']==sum(r['size_bytes'] for r in metadata['records'])
+assert all(r['datatype']=='cf32_le' and r['sample_rate']==500000 and r['num_channels']==1 for r in metadata['records'])
+assert metadata['iq_binary_samples_downloaded']==0 and metadata['full_archive_hash_verified'] is False
+assert metadata['gates']['dbm_calibration']=='NOT_ESTABLISHED'
+assert metadata['gates']['multi_site_attack_evaluation']=='NOT_RUN'
+print('IQ metadata audit accounting and code hash verified; source fragments remain private and are not re-fetched in CI')
