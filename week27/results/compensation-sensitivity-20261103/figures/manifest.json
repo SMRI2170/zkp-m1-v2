@@ -1,0 +1,21 @@
+{
+  "font": "Hiragino Sans",
+  "plot_code_hashes": {
+    "plot_sensitivity.py": "64d606da6fa3c1da49a9fd2b6e839ae290d58436faf23d0031a3053adde58c64",
+    "plot_paired_attacks.py": "6f83cb3e2c9088ac6e768c0e413e3f4231a4fe10fef52a430af0236d34f95dfe"
+  },
+  "outputs": {
+    "01_absolute_exponent.png": "e16e4a386b3ce688ff33c959289e511de2e4f7754666031d8c6b5194c22d9874",
+    "01_absolute_exponent.svg": "5e57bfe2e2b6a78fb0aa5e9f8e268cd5c7d158f1edf1b505cb16aef69e215269",
+    "02_relative_model_error.png": "87f3fd394300d5128ed3169c9c94f8a4a235f66dd97252cc4e86c064e70c58e9",
+    "02_relative_model_error.svg": "834eea8169d99d750ce10e2bd541be7bf8af54222f1f968e972b24ea67bf9043",
+    "03_power_cap.png": "2a5027598ad7546fe1ab0f4cf37bc2ec685e584c4bac1fedb95b22bc49a8fb20",
+    "03_power_cap.svg": "6700c2ebd442d87fb353488f962e19a0a7fda5b23f134800db7ea35c4893ff7a",
+    "04_joint_sensitivity.png": "3a28d856cbd5e5e023762eeeedc8738386ff4f55d5aa3580d525e10d614553fc",
+    "04_joint_sensitivity.svg": "4f6687630b852d1488ebd0a693799356aa913089b0ef40f00e5059bd91efc5a7",
+    "05_n2_explanation.png": "8c7c55a6712e7592fa3cc588ec1a56a61b42640b727d74ec3f215bd0f86b39bf",
+    "05_n2_explanation.svg": "ea1555d97e84a526311327b4565ead6f1f8e7c0f7ed71f0b3d214e2bf8d38676",
+    "06_temporal_units.png": "56d61c28cf34f11541b8bbf16d3fa8f19778aff4d525a655c86a45b779477a2f",
+    "06_temporal_units.svg": "0053d37874b5dcbeb9d4e70d2926b6a37b4031f5723ae72b684396cd56b7487c"
+  }
+}

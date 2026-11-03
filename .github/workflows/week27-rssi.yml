@@ -27,3 +27,5 @@ jobs:
         run: python -m unittest discover -s experiments/week27-data-audit -p 'test_*.py'
       - name: Verify aggregate evidence without downloading raw data
         run: python experiments/week27-data-audit/audit_paired_results.py week27/results/paired-attacks-20261103-v2
+      - name: Verify model-error, power-cap and temporal sensitivity evidence
+        run: python experiments/week27-data-audit/audit_sensitivity_results.py week27/results/compensation-sensitivity-20261103
