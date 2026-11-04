@@ -1,0 +1,16 @@
+{
+  "font": "Hiragino Sans",
+  "input_summary_sha256": "ca4547faa41891864abb963f85559484e2aa34acfec2ede2ae2d89aea54d465f",
+  "code_hashes": {
+    "plot_snr_normal_model.py": "4162bb040f6d40759d74d700202505965b7d3bc2ca35922cafef988011f2c0c6",
+    "plot_paired_attacks.py": "6f83cb3e2c9088ac6e768c0e413e3f4231a4fe10fef52a430af0236d34f95dfe"
+  },
+  "outputs": {
+    "01_los_prediction_and_normal_alarms.svg": "4dab71c8482b4ea0da3ada7b881fb70a4a0c1138d7233a8a4a4bee6f1508344f",
+    "02_calibration_transfer.svg": "e28f68c35361b15dbd1b4559f8db279ae6f520683a7a9dd727411fc0edeefa55",
+    "02_calibration_transfer.png": "44cce91e39acb705809c55573d41282f879659e30bd3b73d9aa08f6c1bcb04d6",
+    "01_los_prediction_and_normal_alarms.png": "2904bd276d08733b4caf1d8cb53dc0b0ec38d7d2471d5d24f863ee5b13683899",
+    "03_nlos_transfer_scope.svg": "7ce1f2abb7ecdd63b2aa17390ea7f9ef4d791780b41fb8af0ccbf2ba5f107920",
+    "03_nlos_transfer_scope.png": "9fd0bf503707ef32a2f89788c157160ebf58f5d545169c89a8b347f342731abb"
+  }
+}

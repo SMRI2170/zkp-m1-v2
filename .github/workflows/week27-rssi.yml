@@ -33,3 +33,5 @@ jobs:
         run: python experiments/week27-data-audit/audit_external_validity.py
       - name: Verify same-frame four-station SNR aggregate evidence
         run: python experiments/week27-data-audit/audit_snr_four_station.py
+      - name: Verify normal SNR model splits and calibration evidence
+        run: python experiments/week27-data-audit/audit_snr_normal_model.py
