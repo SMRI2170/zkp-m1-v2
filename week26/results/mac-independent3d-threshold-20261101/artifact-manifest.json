@@ -1,0 +1,109 @@
+{
+  "scope": "Independent synthetic evaluation, no real RF or original simulator ZIP",
+  "artifacts": [
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/summary.json",
+      "sha256": "4de99560ca0a8ccc5a1514ef6ca9b0b648d5b38bab0c5b9707e068cbc082a666"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/summary.csv",
+      "sha256": "d9b75673b95a2c9fa24a7ecb69216ab48f0585d7d7c6f290996c221ba9d31641"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/channel-ablation.svg",
+      "sha256": "dae9b81efa7183d22f01ddea1b32eb1fffdb97ad539bcf7c935d2fd9e23eaded"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/geometry-and-prior-diagnostic.json",
+      "sha256": "5bdfe97de007f5eaaba6ac1f52a5ce3f6b953cb9e3ceeb4755faeee37de10b6e"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/progress.jsonl",
+      "sha256": "5f70f5671f9a8cfb967cadb7452af652e380b65a661c6b099e2a56b47dd9fd34"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/python-packages.txt",
+      "sha256": "bfba983c28a31c2f7a31a5897edad13c08c8ffbd286cd9d12887a817e75c2520"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/config.json",
+      "sha256": "09291774d882414db2fab13ae334cfeda85cdcee65dc97312529ea70f1116ad0"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/channel-ablation.png",
+      "sha256": "0c3bf486663d200105f717ebaf7b05bb630bd08a203d2bd47f79e1298d53186e"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/flight-metrics.csv",
+      "sha256": "5b54afec2aa389e1fc5e91f015436f7adf46946dfa9fe19a7750b7c5e7cbd36f"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/coverage-and-hold.svg",
+      "sha256": "a3368be1771124aa14fa5a350f272dfabab1b343bd52a9b51adada5dbfb445ee"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/distance-mae.png",
+      "sha256": "8cfe62a1605a547995f3f0b93397afacf93beee9bef0a8ec47dab72cc065bd6f"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/alarm-and-reception.png",
+      "sha256": "9b863ff2b475d8bb2799111157ed7b074fffde82050d744eec80bb9028fcf458"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/alarm-and-reception.svg",
+      "sha256": "26152c50a5456ae6c667985efdfea19b58e3436e78a971df634a8cff9a1a53c9"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/distance-mae.svg",
+      "sha256": "e1130ea2ea6f9434e5ea4c69d7ce1cd2fe0542642c9e9b1069354f1201b98673"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/coverage-and-hold.png",
+      "sha256": "10a2c4e95de1b0d9fd079930ac6bd1149de287380a49a28ec526d9d39673fd1b"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/status.json",
+      "sha256": "4b0a3330e20ec34571de10151ee15c349b93f7098dedde35af61ce4b8eee15e9"
+    },
+    {
+      "path": "week26/results/mac-independent3d-threshold-20261101/scenario-ranges.csv",
+      "sha256": "510041320c8029c4809e48b8d5838468c33e4898587f79f65525462afff64390"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/simulate3d_independent.py",
+      "sha256": "fb7ce6365771df223bc97815de1c67dd790ba136cb40bec3d039f373109835d3"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/test_synthetic3d.py",
+      "sha256": "ed2c1d06690f4aacca489e408810d2737c5afb19071e3361df5c67d4b90cf023"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/audit_synthetic3d.py",
+      "sha256": "9f518fd793ad5a232ffe108c3f59fda2f7d542d2e6ccf045b02906f4ae1b07a2"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/plot_synthetic3d.py",
+      "sha256": "cb6509eca930ac8a60c2caa5a98fc8ef22fd896d3eac77c53118ea804f40d0f9"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/identifiability_minimal.py",
+      "sha256": "1f24e430de92304e3bd2f36cefefbcc1d41b8e8dfea6180a8c57f11d93fedbc4"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/recheck_ble.py",
+      "sha256": "3f93898e173accde5d08d3f88a70c1721a9dd33d7e5f5e7f051162fa81fc02fa"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/test_recheck_ble.py",
+      "sha256": "c012ef19ff189ea0b1be9a8b497bc3ef0017b04f40644b5a58d898c2e656a20c"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/synthetic3d_config.json",
+      "sha256": "aaebb701917d9d9f681efe09fd892ffb9975e5229b93eef85d2825bb95f132a3"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/synthetic3d_threshold_config.json",
+      "sha256": "09291774d882414db2fab13ae334cfeda85cdcee65dc97312529ea70f1116ad0"
+    }
+  ]
+}

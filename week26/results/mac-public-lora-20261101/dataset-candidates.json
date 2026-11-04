@@ -1,0 +1,31 @@
+{
+  "checked_date": "2026-11-01",
+  "candidates": [
+    {
+      "dataset": "LoRa UAV receiver",
+      "url": "https://zenodo.org/records/17339095",
+      "status": "downloaded_verified_reanalysed",
+      "archive_sha256": "29c9715ca39d297ac7f00142958dc959fa154c34d684d32adeebe5f97681cc84"
+    },
+    {
+      "dataset": "ICMCIS used by GhostBuster",
+      "url": "https://www.kaggle.com/api/v1/competitions/data/list/icmcis-drone-tracking",
+      "status": "http_401_authentication_required",
+      "used": false
+    },
+    {
+      "dataset": "21 BLE gateways",
+      "url": "https://github.com/XPengZhao/Wireless-Localization-Dataset",
+      "download_status": "linked_sharepoint_http_404",
+      "used": false
+    },
+    {
+      "dataset": "AERPAW TDoA",
+      "doi": "10.5061/dryad.vq83bk44h",
+      "metadata": "retrieved_public_api",
+      "web_download": "http_403",
+      "advertised_api_download": "http_401",
+      "used": false
+    }
+  ]
+}

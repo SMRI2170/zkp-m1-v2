@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "scope": "8 implemented Pi configurations + 2 CLI source adapters; remaining 8 recorded as pending capability; no automatic AI code generation",
+  "scope": "10 Pi measurement configurations (8 native frameworks + 2 Circom prover variants); separate cohorts for differing flow scopes; remaining 8 capabilities pending",
   "steps": [
     {
       "id": "test-runner",
@@ -406,6 +406,99 @@
       "framework": "plonky3"
     },
     {
+      "id": "circom-local-proof",
+      "kind": "correctness",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/circom-prover-comparison/task.py",
+        "local-proof",
+        "--job",
+        "{job}/circom",
+        "--tag",
+        "{tag}"
+      ],
+      "needs": [
+        "test-runner"
+      ],
+      "timeout_s": 180
+    },
+    {
+      "id": "circom-prepare",
+      "kind": "preparation",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/circom-prover-comparison/task.py",
+        "prepare",
+        "--job",
+        "{job}/circom",
+        "--tag",
+        "{tag}"
+      ],
+      "needs": [
+        "pi-probe",
+        "circom-local-proof"
+      ],
+      "timeout_s": 180
+    },
+    {
+      "id": "pi-circom-snarkjs",
+      "framework": "circom-snarkjs",
+      "kind": "measurement",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/circom-prover-comparison/task.py",
+        "trial",
+        "--backend",
+        "snarkjs",
+        "--job",
+        "{job}/circom",
+        "--tag",
+        "{tag}"
+      ],
+      "needs": [
+        "circom-prepare"
+      ],
+      "timeout_s": 1340
+    },
+    {
+      "id": "pi-circom-rapidsnark",
+      "framework": "circom-rapidsnark",
+      "kind": "measurement",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/circom-prover-comparison/task.py",
+        "trial",
+        "--backend",
+        "rapidsnark",
+        "--job",
+        "{job}/circom",
+        "--tag",
+        "{tag}"
+      ],
+      "needs": [
+        "pi-circom-snarkjs"
+      ],
+      "timeout_s": 1340
+    },
+    {
+      "id": "circom-collect",
+      "kind": "collection",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/circom-prover-comparison/task.py",
+        "collect",
+        "--job",
+        "{job}/circom",
+        "--tag",
+        "{tag}"
+      ],
+      "needs": [
+        "pi-circom-rapidsnark"
+      ],
+      "always": true,
+      "timeout_s": 180
+    },
+    {
       "id": "collect",
       "argv": [
         "{python}",
@@ -442,6 +535,27 @@
       "exit_status": {
         "3": "blocked"
       }
+    },
+    {
+      "id": "circom-combine",
+      "kind": "plot",
+      "argv": [
+        "{python}",
+        "{repo}/experiments/circom-prover-comparison/task.py",
+        "combine",
+        "--job",
+        "{job}/circom",
+        "--tag",
+        "{tag}",
+        "--baseline",
+        "{job}/data"
+      ],
+      "needs": [
+        "collect",
+        "circom-collect"
+      ],
+      "always": true,
+      "timeout_s": 180
     },
     {
       "id": "pending-kimchi",

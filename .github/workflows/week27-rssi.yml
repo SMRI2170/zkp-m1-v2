@@ -1,0 +1,37 @@
+name: Week27 RSSI audit
+on:
+  push:
+    paths:
+      - 'experiments/week27-data-audit/**'
+      - 'week27/**'
+      - '.github/workflows/week27-rssi.yml'
+  pull_request:
+    paths:
+      - 'experiments/week27-data-audit/**'
+      - 'week27/**'
+      - '.github/workflows/week27-rssi.yml'
+  workflow_dispatch:
+jobs:
+  offline-checks:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install numerical test dependency
+        run: python -m pip install numpy==2.5.4
+      - name: Test geometry, calibration boundaries and cancellation counterexample
+        run: python -m unittest discover -s experiments/week27-data-audit -p 'test_*.py'
+      - name: Verify aggregate evidence without downloading raw data
+        run: python experiments/week27-data-audit/audit_paired_results.py week27/results/paired-attacks-20261103-v2
+      - name: Verify model-error, power-cap and temporal sensitivity evidence
+        run: python experiments/week27-data-audit/audit_sensitivity_results.py week27/results/compensation-sensitivity-20261103
+      - name: Verify condition-block uncertainty and external data audit accounting
+        run: python experiments/week27-data-audit/audit_external_validity.py
+      - name: Verify same-frame four-station SNR aggregate evidence
+        run: python experiments/week27-data-audit/audit_snr_four_station.py
+      - name: Verify normal SNR model splits and calibration evidence
+        run: python experiments/week27-data-audit/audit_snr_normal_model.py

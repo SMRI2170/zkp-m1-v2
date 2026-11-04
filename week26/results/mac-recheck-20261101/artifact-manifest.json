@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-01",
+  "scope": "Mac independent public-BLE reanalysis",
+  "artifacts": [
+    {
+      "path": "week26/results/mac-recheck-20261101/summary.json",
+      "sha256": "bda8f3921371ab74b557465b00ef8c5eb6f02195eedd01765e3125d1d7fb0201"
+    },
+    {
+      "path": "week26/results/mac-recheck-20261101/reported-value-checks.csv",
+      "sha256": "f829c4aa25d0d394f8c26894599778ba2b8f45b7d6d8c6c65252c4f89fb2ddc6"
+    },
+    {
+      "path": "week26/results/mac-recheck-20261101/python-packages.txt",
+      "sha256": "7cf33135f9fe395e86aa02a6d116185b7f1f1497f08b0436ee6c631b94bf355b"
+    },
+    {
+      "path": "week26/results/mac-recheck-20261101/detection-folds.csv",
+      "sha256": "89c4ffed364045721be367b6f27525aa0f13ea30692e0ab18c29f8569668cfa5"
+    },
+    {
+      "path": "week26/results/mac-recheck-20261101/detection.png",
+      "sha256": "3535cb4bdbfa339ee5646fa1fa0d2e489a1ef922287cbc77955823d877b39810"
+    },
+    {
+      "path": "week26/results/mac-recheck-20261101/setting-shifts.svg",
+      "sha256": "933e399f3809ae1e3bad931ec876fd1c05691d6b0d5747a228ef235ee4e6e602"
+    },
+    {
+      "path": "week26/results/mac-recheck-20261101/setting-shifts.png",
+      "sha256": "60f68bad2e1a5d2b771e1817c92f61f6ac4e4be474f0896657f36be6106abc28"
+    },
+    {
+      "path": "week26/results/mac-recheck-20261101/detection.svg",
+      "sha256": "5b1aa955b47af09c76da0b6f5c9ab7ad7fe4a262cbe7869d0948b1fb376b3156"
+    },
+    {
+      "path": "week26/results/mac-recheck-20261101/detection-summary.csv",
+      "sha256": "030a9f632c2b04b04a643c976d3933daeec73a901760ee02946b33727027c8ff"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/recheck_ble.py",
+      "sha256": "3f93898e173accde5d08d3f88a70c1721a9dd33d7e5f5e7f051162fa81fc02fa"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/test_recheck_ble.py",
+      "sha256": "c012ef19ff189ea0b1be9a8b497bc3ef0017b04f40644b5a58d898c2e656a20c"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/identifiability_minimal.py",
+      "sha256": "1f24e430de92304e3bd2f36cefefbcc1d41b8e8dfea6180a8c57f11d93fedbc4"
+    }
+  ]
+}

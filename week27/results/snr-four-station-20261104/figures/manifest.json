@@ -1,0 +1,18 @@
+{
+  "font": "Hiragino Sans",
+  "input_summary_sha256": "5e58e3375899f0fa97bedfa22bf090a659f617ef1b59915fbda6ffedc24c9e0e",
+  "code_hashes": {
+    "plot_snr_four_station.py": "938267d28d1ca0022223025837dc7c942fae7178d6293c918855286d9256f5ca",
+    "plot_paired_attacks.py": "6f83cb3e2c9088ac6e768c0e413e3f4231a4fe10fef52a430af0236d34f95dfe"
+  },
+  "outputs": {
+    "03_station_time_variation.png": "332ef5432f92d4026215ab0d10372e97f511aa2a46ec0afdc6a80edd5ba16cc6",
+    "02_station_offsets_and_drift.svg": "d211cfc43a6e927d9503b8680ec14cdf4a32cb2b68135a5f9b336f244ebdea83",
+    "02_station_offsets_and_drift.png": "329aa4aed995a2a9440601c7efc18b6f410d831d660ae1709b39b86df49eb13b",
+    "03_station_time_variation.svg": "ce5ac6c4697f4bddb2999a92c19986e40a120987317442dece5f925d683513c0",
+    "04_pair12_time_variation.png": "a2bfc8e8dc5a0744d3bb94a852a08523f8e03f092c6b265c061038d327d1d817",
+    "01_pair_distributions.svg": "c040965aa8c6c2437aacbe371906f47980911c2ce85a9a212f1feabe8dae70af",
+    "01_pair_distributions.png": "e593d465845da1238f15a4c096f6d3df56fc7196d47345e87705442b2118d39d",
+    "04_pair12_time_variation.svg": "b5699bd75fc86c003533f2c6ff78a316040bcbdc8da3e43b54b195cd35d830e5"
+  }
+}

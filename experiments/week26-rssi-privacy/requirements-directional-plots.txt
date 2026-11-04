@@ -1,0 +1,3 @@
+# Plotting environment; reads saved CSV/JSON and does not re-run the simulation.
+numpy==2.5.4
+matplotlib==3.11.2

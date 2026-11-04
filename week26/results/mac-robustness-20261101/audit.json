@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "checks": [
+    "empirical_sync: groups, seed counts and denominators valid",
+    "poisoning: groups, seed counts and denominators valid",
+    "anchor_gate: groups, seed counts and denominators valid",
+    "time_mismatch: groups, seed counts and denominators valid",
+    "empirical pools: sectors disjoint; baseline/scoring row counts match",
+    "zero displacement equals corresponding normal control after shift",
+    "protected shared training is invariant to target-label corruption",
+    "attack after anchor retains normal gate acceptance: negative control",
+    "runner source hash matches saved execution"
+  ]
+}

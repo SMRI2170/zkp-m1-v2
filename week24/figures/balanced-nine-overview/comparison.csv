@@ -1,0 +1,10 @@
+framework,n,flow_mean_ms,flow_sd_ms,flow_median_ms,memory_mean_MiB,memory_peak_MiB,proof_mean_bytes,flow_scope,proof_encoding
+arkworks,21,186.70043114285713,24.884890503866092,195.046198,7.721095058987326,8.296875,128,logged witness if separate + prove + verify; setup/load/negative tests excluded,framework-native serialized proof only
+gnark-groth16,21,245.2877142857143,121.57861861163863,198.50400000000002,11.820136954684628,13.8046875,164,logged witness if separate + prove + verify; setup/load/negative tests excluded,framework-native serialized proof only
+circom-rapidsnark,21,427.58217576190475,165.30990395391638,309.34174199999995,25.251686983472414,28.203125,707.6190476190476,WASM witness + prover process + common native verifier; CLI startup included; setup excluded,JSON
+bulletproofs,21,2501.5687577619046,995.2787904597209,1688.791652,8.261181707019233,9.3671875,929,logged witness if separate + prove + verify; setup/load/negative tests excluded,framework-native serialized proof only
+gnark-plonk,21,2947.228095238095,1153.1985901438618,2084.8289999999997,13.975009803375455,14.86328125,520,logged witness if separate + prove + verify; setup/load/negative tests excluded,framework-native serialized proof only
+spartan,21,4100.948627428572,1444.8370023308591,3785.477521,9.093774510402039,10.65234375,29952,logged witness if separate + prove + verify; setup/load/negative tests excluded,framework-native serialized proof only
+halo2-kzg,21,4289.628258047619,1439.775394640213,3779.706882,9.018923546861517,10.36328125,1312,logged witness if separate + prove + verify; setup/load/negative tests excluded,framework-native serialized proof only
+halo2-ipa,21,11293.276714809524,854.9220860470874,11401.278546,10.646499213354895,13.58203125,2080,logged witness if separate + prove + verify; setup/load/negative tests excluded,framework-native serialized proof only
+circom-snarkjs,21,16608.54883309524,1365.8502437845461,16597.850905999996,85.70620040203418,106.40625,805.2380952380952,WASM witness + prover process + common native verifier; CLI startup included; setup excluded,JSON

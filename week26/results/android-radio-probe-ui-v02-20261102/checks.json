@@ -1,0 +1,18 @@
+{
+  "scope": "Emulated UI, not Pixel hardware/RF or angle accuracy validation",
+  "passed": 6,
+  "checks": [
+    "main screen separates calibration/diagnostics",
+    "start/stop UI works on emulator (no RF accuracy inference)",
+    "history navigation",
+    "Storage Access Framework writes a readable CSV with repeatability fields",
+    "settings navigation",
+    "details dialog"
+  ],
+  "version_name": "0.2-research",
+  "version_code": 2,
+  "apk_sha256": "cafd5e714012c71922f70ddb6508be0d8720fa4f5ce0cb3ae1a65b598e227413",
+  "host_math_checks": 22,
+  "privacy_tests": 3,
+  "physical_pixel_angle_accuracy": "not measured for v0.2"
+}

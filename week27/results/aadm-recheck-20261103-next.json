@@ -1,0 +1,51 @@
+{
+  "checked_at_utc": "2026-11-03T14:35:08.651844+00:00",
+  "doi": "doi:10.5061/dryad.7d7wm3898",
+  "license": "https://spdx.org/licenses/CC0-1.0.html",
+  "version_path": "/api/v2/versions/430761",
+  "version_number": 4,
+  "version_status": "submitted",
+  "curation_status": "Published",
+  "metadata_access": "available",
+  "files": [
+    {
+      "name": "AADM2025Dryad.zip",
+      "size_bytes": 7697117367,
+      "published_digest_type": "sha-256",
+      "published_digest": "61fcb8d3e576318123e77894a1b3b15afbb006edbbc8c1d1deea562c737b13e9",
+      "api_download": {
+        "status": 401,
+        "verified": false,
+        "reason": "http_error",
+        "bytes_read": 0
+      },
+      "web_download": {
+        "status": 403,
+        "verified": false,
+        "reason": "http_error",
+        "bytes_read": 0
+      }
+    },
+    {
+      "name": "README.md",
+      "size_bytes": 13693,
+      "published_digest_type": "sha-256",
+      "published_digest": "e2d1d27bec693b7c70eda32408f41dfcd5ab695da79aaf1a9c99f0de781c2d56",
+      "api_download": {
+        "status": 401,
+        "verified": false,
+        "reason": "http_error",
+        "bytes_read": 0
+      },
+      "web_download": {
+        "status": 403,
+        "verified": false,
+        "reason": "http_error",
+        "bytes_read": 0
+      }
+    }
+  ],
+  "data_gate": "BLOCKED_ACCESS",
+  "residual_analysis": "NOT_RUN",
+  "reason": "Metadata and at most a 1KiB ZIP prefix do not establish measured-data quality."
+}

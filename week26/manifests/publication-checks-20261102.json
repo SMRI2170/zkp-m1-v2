@@ -1,0 +1,55 @@
+{
+  "scope": "publication of Week26 research documents, synthetic experiments, aggregates and editable slides",
+  "date": "2026-11-02",
+  "local_checks": [
+    {
+      "command": ".cache/week26-mac-venv/bin/python -m unittest discover -s experiments/week26-rssi-privacy -p test_*.py",
+      "status": "passed",
+      "tests": 43
+    },
+    {
+      "command": "python3 -m unittest discover -s uav -p test_*.py",
+      "status": "passed",
+      "tests": 61
+    },
+    {
+      "command": "cd aggregator && go test ./...",
+      "status": "passed"
+    },
+    {
+      "command": "cd contracts && npm test",
+      "status": "passed",
+      "tests": 48
+    },
+    {
+      "check": "saved event/sensitivity/robustness/LoRa audits",
+      "status": "passed",
+      "checks": [
+        10,
+        9,
+        9,
+        9
+      ]
+    },
+    {
+      "check": "new paired run reproduces saved position counts and common-event rates",
+      "status": "passed"
+    }
+  ],
+  "limits": [
+    "New empirical UAV RF capture was not performed",
+    "Native Microsoft PowerPoint display validation remains incomplete",
+    "GitHub Actions results must be reviewed after push"
+  ],
+  "presentation": {
+    "slides": 24,
+    "package": "pass",
+    "layout_findings": 0,
+    "native_chart_count": 4,
+    "final_body_renders_match": true
+  },
+  "formatting": {
+    "edited_code_and_current_report_diff_check": "passed",
+    "preserved_source_formatting": "Original Markdown hard breaks and generated SVG trailing spaces retained; CSV CRLF retained to preserve artifact hashes. See source manifests."
+  }
+}

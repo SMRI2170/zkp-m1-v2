@@ -1,0 +1,44 @@
+[
+  {
+    "hiding": true,
+    "stage": 1,
+    "tamper_tests": 22,
+    "tamper_rejected": 22,
+    "own_canaries_detected": 7
+  },
+  {
+    "hiding": true,
+    "stage": 2,
+    "tamper_tests": 22,
+    "tamper_rejected": 22,
+    "own_canaries_detected": 7
+  },
+  {
+    "hiding": true,
+    "stage": 3,
+    "tamper_tests": 22,
+    "tamper_rejected": 22,
+    "own_canaries_detected": 7
+  },
+  {
+    "hiding": false,
+    "stage": 1,
+    "tamper_tests": 22,
+    "tamper_rejected": 22,
+    "own_canaries_detected": 7
+  },
+  {
+    "hiding": false,
+    "stage": 2,
+    "tamper_tests": 22,
+    "tamper_rejected": 22,
+    "own_canaries_detected": 7
+  },
+  {
+    "hiding": false,
+    "stage": 3,
+    "tamper_tests": 22,
+    "tamper_rejected": 22,
+    "own_canaries_detected": 7
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "source": "https://github.com/SMRI2170/zkp-m1-v2",
+  "ref": "origin/main",
+  "commit": "1a4a97b552027aa284a46b379a93c2df64336c22",
+  "retrieved_date": "2026-11-01",
+  "scope": "Only week26 documentation and its minimal counterexample; no merge or branch switch",
+  "files": [
+    {
+      "path": "experiments/week26-rssi-privacy/identifiability_minimal.py",
+      "sha256": "1f24e430de92304e3bd2f36cefefbcc1d41b8e8dfea6180a8c57f11d93fedbc4"
+    },
+    {
+      "path": "week26/00_関連技術サーベイと適用条件.md",
+      "sha256": "03e9de5ad34e90d5baf41729194a1ab4fe6df63994afebdee0c0c743ad47ffb4"
+    },
+    {
+      "path": "week26/01_研究前提と確認済み事実_識別可能性.md",
+      "sha256": "658b057df7835ce86c45141b9babf1ddd66674cb74479217b83b6b977cc2c3e4"
+    },
+    {
+      "path": "week26/02_技術深掘り_モデル比較と検証計画.md",
+      "sha256": "134e82b305fa62f3588756d05e12653948f054ac0cf13317a7add3f5fbe783e9"
+    },
+    {
+      "path": "week26/03_未知送信電力_RSSI距離推定_合成実験結果.md",
+      "sha256": "11275c3a2f73ffd576cce107ecc97662baf45166b169abee24679d9ffd17f50c"
+    },
+    {
+      "path": "week26/04_3D非同期RSSI_本格合成シミュレーション結果.md",
+      "sha256": "7aecf1789369ab8557ace98b60752aafa1457456bd8a59ce994be1d20c0f0e91"
+    },
+    {
+      "path": "week26/05_公開実測BLEデータによるRSSI校正とストレス試験.md",
+      "sha256": "6aa70529ef003c0d95a00d4e27181deaa03df44ce88349a64f3615836a5a58d6"
+    },
+    {
+      "path": "week26/06_実測BLEから送信電力変更検出の限界を評価.md",
+      "sha256": "37dc6fdb100c54b22650c390d97f58f6577be9ae94282387fc248302c137a682"
+    }
+  ]
+}

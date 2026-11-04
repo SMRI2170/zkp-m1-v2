@@ -1,0 +1,19 @@
+name: Circom prover comparison checks
+on:
+  push:
+    paths:
+      - 'experiments/circom-prover-comparison/**'
+      - '.github/workflows/circom-prover-comparison.yml'
+  pull_request:
+    paths:
+      - 'experiments/circom-prover-comparison/**'
+      - '.github/workflows/circom-prover-comparison.yml'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 -m unittest discover -s experiments/circom-prover-comparison -p 'test_*.py'

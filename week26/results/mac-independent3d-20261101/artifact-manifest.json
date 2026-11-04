@@ -1,0 +1,109 @@
+{
+  "scope": "Independent synthetic evaluation, no real RF or original simulator ZIP",
+  "artifacts": [
+    {
+      "path": "week26/results/mac-independent3d-20261101/summary.json",
+      "sha256": "67f1efa193f0160922660393e9853df1025e382d83903356b5359d35235658a0"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/summary.csv",
+      "sha256": "041438934e70ebfc1e0433a6f2377107d51defb0b3647f4fe316397110b5e5a4"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/channel-ablation.svg",
+      "sha256": "e1a8c27bf52f0eaac8529896cfeac099ee4b1e867efd68a9b0cf54862e03ae76"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/geometry-and-prior-diagnostic.json",
+      "sha256": "0c9131154076a47b377b856d1842f25c1ce75530b0fb95fe2dc6dd73bdb030e6"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/progress.jsonl",
+      "sha256": "da06970a4eb9c1743c7eb38f5fa979a61cbbdac015edaa7d25a6beef61dca164"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/python-packages.txt",
+      "sha256": "bfba983c28a31c2f7a31a5897edad13c08c8ffbd286cd9d12887a817e75c2520"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/config.json",
+      "sha256": "d57beb5a45d819b53eaae1589c377e9c6b5d64278b45ed127ad31bb8644ab2f9"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/channel-ablation.png",
+      "sha256": "7c3e13c8f180754a18b200cf254e9aea5823db570931c4093827c613661bbed6"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/flight-metrics.csv",
+      "sha256": "c344d7260101b5ea26648c50f469a70bb7cf8c0431774540b6d728bb2f33d61c"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/coverage-and-hold.svg",
+      "sha256": "f9f3faabf490b280feaf5149061045be3692136af2b2a45ecbc336e4349b118c"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/distance-mae.png",
+      "sha256": "c70dbec36f87ab012b9198b2551030408f0fa79865a502794025cf4eed91bd99"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/alarm-and-reception.png",
+      "sha256": "747ec604ba5259aac1387f3849c729795cfb3ccbc8b04f6311c3c1711d75d2f3"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/alarm-and-reception.svg",
+      "sha256": "bc7c95fbe22a0f5045f549be69d6e72cdace689dfb37a339216bf7c87baab429"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/distance-mae.svg",
+      "sha256": "4cf6003304c83064eba0e69bd4f1a0d4ea3f02708e2047f85fa827f84f3c38e0"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/coverage-and-hold.png",
+      "sha256": "e1088df5af44be18943b2c052a97652462375c65fc65a9e38ff7868cc7f891f2"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/status.json",
+      "sha256": "c9670a6efd0c8f56e43639c223de55b3d15b1ae20ce19b938270b997f63ca9f7"
+    },
+    {
+      "path": "week26/results/mac-independent3d-20261101/scenario-ranges.csv",
+      "sha256": "4b9a27227b7e2cd4611a5b615bc9ff6371e75dc7a1d8afdda68ac884ed2ee9e3"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/simulate3d_independent.py",
+      "sha256": "fb7ce6365771df223bc97815de1c67dd790ba136cb40bec3d039f373109835d3"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/test_synthetic3d.py",
+      "sha256": "ed2c1d06690f4aacca489e408810d2737c5afb19071e3361df5c67d4b90cf023"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/audit_synthetic3d.py",
+      "sha256": "9f518fd793ad5a232ffe108c3f59fda2f7d542d2e6ccf045b02906f4ae1b07a2"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/plot_synthetic3d.py",
+      "sha256": "cb6509eca930ac8a60c2caa5a98fc8ef22fd896d3eac77c53118ea804f40d0f9"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/identifiability_minimal.py",
+      "sha256": "1f24e430de92304e3bd2f36cefefbcc1d41b8e8dfea6180a8c57f11d93fedbc4"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/recheck_ble.py",
+      "sha256": "3f93898e173accde5d08d3f88a70c1721a9dd33d7e5f5e7f051162fa81fc02fa"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/test_recheck_ble.py",
+      "sha256": "c012ef19ff189ea0b1be9a8b497bc3ef0017b04f40644b5a58d898c2e656a20c"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/synthetic3d_config.json",
+      "sha256": "aaebb701917d9d9f681efe09fd892ffb9975e5229b93eef85d2825bb95f132a3"
+    },
+    {
+      "path": "experiments/week26-rssi-privacy/synthetic3d_threshold_config.json",
+      "sha256": "09291774d882414db2fab13ae334cfeda85cdcee65dc97312529ea70f1116ad0"
+    }
+  ]
+}

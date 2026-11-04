@@ -1,0 +1,233 @@
+{
+  "scope": "100m outward; fixed existing LoRa receiver-position/power proxy",
+  "clusters": 16,
+  "evaluation_runs": 48,
+  "seed": 27,
+  "replicates": 10000,
+  "unit": "condition block containing all three rotating train/cal/evaluation roles",
+  "limitations": [
+    "Conditional resampling spread of saved fitted results, not full-pipeline retraining",
+    "Exchangeability of condition blocks is an assumption, not established by these data",
+    "Shared campaign/site may introduce cross-condition dependence",
+    "Not independent-packet/fold confidence bounds or new-site/RID performance guarantees"
+  ],
+  "input_sha256": "d2f49699328a8bed6e65b54509c997b95fbc335c1f4f0847076bb55253181e42",
+  "code_sha256": "17e02062074e7ec37d3f1402cd2a5d8481dd1a10daf86ac54014b579a899119f",
+  "condition_means": [
+    {
+      "condition": "T10.1",
+      "normal": 0.05080755979134798,
+      "position_only": 0.28171460515191443,
+      "exact_compensation": 0.05080755979134798,
+      "bounded_3db": 0.11848934821779816,
+      "mismatched_n2": 0.055562715126309246
+    },
+    {
+      "condition": "T10.2",
+      "normal": 0.0505806498874716,
+      "position_only": 0.45891869695505233,
+      "exact_compensation": 0.0505806498874716,
+      "bounded_3db": 0.2419733133181111,
+      "mismatched_n2": 0.10862402274882065
+    },
+    {
+      "condition": "T2.1",
+      "normal": 0.050585404647328525,
+      "position_only": 0.9900817521652386,
+      "exact_compensation": 0.050585404647328525,
+      "bounded_3db": 0.9743961204277616,
+      "mismatched_n2": 0.8284902791929382
+    },
+    {
+      "condition": "T2.2",
+      "normal": 0.05051950355670093,
+      "position_only": 0.8954631800527011,
+      "exact_compensation": 0.05051950355670093,
+      "bounded_3db": 0.740647136937313,
+      "mismatched_n2": 0.2039714651696838
+    },
+    {
+      "condition": "T3.1",
+      "normal": 0.049363392651770345,
+      "position_only": 0.881709090040931,
+      "exact_compensation": 0.049363392651770345,
+      "bounded_3db": 0.7187691803505633,
+      "mismatched_n2": 0.16894046474527658
+    },
+    {
+      "condition": "T3.2",
+      "normal": 0.0500709129976711,
+      "position_only": 0.8812253293578068,
+      "exact_compensation": 0.0500709129976711,
+      "bounded_3db": 0.6847553092811337,
+      "mismatched_n2": 0.16656614271145934
+    },
+    {
+      "condition": "T4.1",
+      "normal": 0.05109235091422424,
+      "position_only": 0.8502591023767861,
+      "exact_compensation": 0.05109235091422424,
+      "bounded_3db": 0.6885632119560822,
+      "mismatched_n2": 0.15284445308048505
+    },
+    {
+      "condition": "T4.2",
+      "normal": 0.051620344696226284,
+      "position_only": 0.9508976817964907,
+      "exact_compensation": 0.051620344696226284,
+      "bounded_3db": 0.8503832411885326,
+      "mismatched_n2": 0.26958977195343603
+    },
+    {
+      "condition": "T5.2",
+      "normal": 0.032801098136922745,
+      "position_only": 0.6344098580922175,
+      "exact_compensation": 0.032801098136922745,
+      "bounded_3db": 0.4336689748134696,
+      "mismatched_n2": 0.06570397853076171
+    },
+    {
+      "condition": "T6.1",
+      "normal": 0.05118925632353055,
+      "position_only": 0.1495152556219325,
+      "exact_compensation": 0.05118925632353055,
+      "bounded_3db": 0.07749797726254383,
+      "mismatched_n2": 0.05577817088592887
+    },
+    {
+      "condition": "T7.1",
+      "normal": 0.04915775113560487,
+      "position_only": 0.28472172899178,
+      "exact_compensation": 0.04915775113560487,
+      "bounded_3db": 0.15474420793508437,
+      "mismatched_n2": 0.05654556998381143
+    },
+    {
+      "condition": "T7.2",
+      "normal": 0.04846418662798343,
+      "position_only": 0.30203916523693136,
+      "exact_compensation": 0.04846418662798343,
+      "bounded_3db": 0.16417240326829088,
+      "mismatched_n2": 0.06163144681979363
+    },
+    {
+      "condition": "T8.1",
+      "normal": 0.04791007854912257,
+      "position_only": 0.310348949943762,
+      "exact_compensation": 0.04791007854912257,
+      "bounded_3db": 0.16577860642649375,
+      "mismatched_n2": 0.07723577955788634
+    },
+    {
+      "condition": "T8.2",
+      "normal": 0.05055457001631775,
+      "position_only": 0.41409808842832696,
+      "exact_compensation": 0.05055457001631775,
+      "bounded_3db": 0.17973242208923132,
+      "mismatched_n2": 0.07135720447628173
+    },
+    {
+      "condition": "T9.1",
+      "normal": 0.0512292045800877,
+      "position_only": 0.34411025759716146,
+      "exact_compensation": 0.0512292045800877,
+      "bounded_3db": 0.2041270240504213,
+      "mismatched_n2": 0.09838843797275076
+    },
+    {
+      "condition": "T9.2",
+      "normal": 0.04734508253873524,
+      "position_only": 0.27842109884471106,
+      "exact_compensation": 0.04734508253873524,
+      "bounded_3db": 0.09698876694478513,
+      "mismatched_n2": 0.04054266832909592
+    }
+  ],
+  "estimates": [
+    {
+      "variant": "normal",
+      "mean_alarm_rate": 0.048955709190690366,
+      "cluster_percentile_95": [
+        0.04655559131040175,
+        0.05050255035597312
+      ],
+      "paired_excess_pp": 0.0,
+      "paired_excess_percentile_95_pp": [
+        0.0,
+        0.0
+      ],
+      "leave_one_condition_out_rate_range": [
+        0.04877806682365464,
+        0.05003268326094155
+      ]
+    },
+    {
+      "variant": "position_only",
+      "mean_alarm_rate": 0.556745865040859,
+      "cluster_percentile_95": [
+        0.41945769251297543,
+        0.7014153531159529
+      ],
+      "paired_excess_pp": 50.77901558501686,
+      "paired_excess_percentile_95_pp": [
+        37.052118580876545,
+        65.20955646932315
+      ],
+      "leave_one_condition_out_rate_range": [
+        0.5278568058992337,
+        0.5838945723354543
+      ]
+    },
+    {
+      "variant": "exact_compensation",
+      "mean_alarm_rate": 0.048955709190690366,
+      "cluster_percentile_95": [
+        0.04655559131040175,
+        0.05050255035597312
+      ],
+      "paired_excess_pp": 0.0,
+      "paired_excess_percentile_95_pp": [
+        0.0,
+        0.0
+      ],
+      "leave_one_condition_out_rate_range": [
+        0.04877806682365464,
+        0.05003268326094155
+      ]
+    },
+    {
+      "variant": "bounded_3db",
+      "mean_alarm_rate": 0.40591795277922593,
+      "cluster_percentile_95": [
+        0.2629146110914229,
+        0.5594745308379118
+      ],
+      "paired_excess_pp": 35.69622435885356,
+      "paired_excess_percentile_95_pp": [
+        21.377848189992644,
+        51.07186800469789
+      ],
+      "leave_one_condition_out_rate_range": [
+        0.3680194082693236,
+        0.42781261781367147
+      ]
+    },
+    {
+      "variant": "mismatched_n2",
+      "mean_alarm_rate": 0.15511078570529496,
+      "cluster_percentile_95": [
+        0.08721656835251325,
+        0.2596611314541668
+      ],
+      "paired_excess_pp": 10.615507651460458,
+      "paired_excess_percentile_95_pp": [
+        3.8651923693038137,
+        21.01028419764775
+      ],
+      "leave_one_condition_out_rate_range": [
+        0.11021881947278539,
+        0.1627486601970416
+      ]
+    }
+  ]
+}

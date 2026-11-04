@@ -1,0 +1,53 @@
+{
+  "model": "Pixel 8",
+  "android": "17",
+  "sdk": 37,
+  "running": false,
+  "active_duration_s": null,
+  "wifi_scan_requests": 2,
+  "wifi_scan_accepted": 2,
+  "wifi_fresh_broadcasts": 1,
+  "wifi_rid_observations": 0,
+  "ble_packets": 205,
+  "ble_rid_observations": 0,
+  "heading_count": 186,
+  "rotation_samples": 195,
+  "fitted_targets": 0,
+  "pose_rejected": 7,
+  "target_limit_rejections": 0,
+  "schema": "rid-radio-probe-public-v1",
+  "scope": "Physical RF reception smoke test, not AoA accuracy or aircraft authentication",
+  "rf_reception_observed": true,
+  "fresh_unique_wifi_observations": 14,
+  "fresh_information_elements": 258,
+  "fresh_vendor_information_elements": 65,
+  "wifi_all_rows_including_cache": 44,
+  "total_information_elements_including_cache": 833,
+  "total_vendor_elements_including_cache": 208,
+  "sensor_rotation_available": true,
+  "uwb_feature": false,
+  "ranging_api": null,
+  "errors": [],
+  "active_segments": [
+    {
+      "duration_s": 10.084738896,
+      "reason": "not_recorded"
+    },
+    {
+      "duration_s": 1.069291098,
+      "reason": "not_recorded"
+    }
+  ],
+  "heading_fit_status_counts": {
+    "INSUFFICIENT_ROTATION": 35
+  },
+  "heldout_physical_validations": 0,
+  "accuracy_established": false,
+  "tested_apk": null,
+  "tested_apk_provenance": "not recorded in this early run; do not equate it with current build",
+  "current_build_apk_sha256": "7947036fbd655f64f92219471677b04f852ac9ea568b12f207c8b69bdda3295d",
+  "current_build_apk_size_bytes": 2533419,
+  "parser_scope": "structural ODID framing only, no authentication or full field validation",
+  "wifi_scope": "Android scan result information elements; not raw monitor-mode beacon frames",
+  "no_rid_scope": "No RID-format messages in this run; does not establish receiver incompatibility"
+}

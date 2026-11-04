@@ -1,0 +1,19 @@
+{
+  "font": "Hiragino Sans",
+  "plot_code_sha256": "6f83cb3e2c9088ac6e768c0e413e3f4231a4fe10fef52a430af0236d34f95dfe",
+  "scope": "Aggregate results and synthetic explanatory geometry only; no raw positions",
+  "outputs": {
+    "00_geometry_explanation.png": "87e081fe4d857b2aacce7d2e3538ee48dcf8b18c376480e6a6f4c11454aecbcf",
+    "00_geometry_explanation.svg": "a517efef4a51f0fb280f2fe4f48a056d700913a1e26f83def6f69aed26fa7465",
+    "01_alarm_outward.png": "ff8e8c8589faac35f4455a58a33975da7fc916b4178bb19fa116e292656ba591",
+    "01_alarm_outward.svg": "6b6c1006594bbfed0574da0d98e939a45edee580a7582eced64e3739bbb5736a",
+    "02_alarm_inward.png": "dfe4bd70dd9a1d2e3592c976f5241705a1e7ca091591e30d07dff668ee6e9267",
+    "02_alarm_inward.svg": "ba94059456c6c0cdf45b3babea9a304ac65436dbdd965a2f90cd13f494b87e53",
+    "03_alarm_tangential.png": "adf716e9486b70c8d5b0e8a6523bbf62a9275b68bbf3be23dc81b3544cbd9f1a",
+    "03_alarm_tangential.svg": "c5543d20db6085b6533e983143e99396e046b9819902b4902a892aea832ec40d",
+    "04_score_distribution.png": "c17b4d2b770f2c3eba0a952b45babd5fcf481014bf236559b9627fde39c79c0b",
+    "04_score_distribution.svg": "5cba04080786e890059bf416107f0bcb8783a66c1e12d6dbac93f59fab5d9c3c",
+    "05_required_compensation.png": "e8d45e97b73b8f2e46a63dcdd75f914e5bcc63a50125f00bf6b86362be40f9fc",
+    "05_required_compensation.svg": "9e06c1e90ac4d7b2f8d7ed1e32b29fb94feb0041f99b535364a7a59577bd85fb"
+  }
+}

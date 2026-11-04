@@ -1,0 +1,73 @@
+{
+  "schema": "week26-independent-3d-v1",
+  "scope": "Independent synthetic sensitivity experiment, not reproduction of document 04 ZIP",
+  "seeds": [
+    202611010,
+    202611011,
+    202611012,
+    202611013,
+    202611014,
+    202611015,
+    202611016,
+    202611017,
+    202611018,
+    202611019
+  ],
+  "flights": {
+    "train": 70,
+    "calibration": 26,
+    "test": 45
+  },
+  "events_per_flight": 40,
+  "event_spacing_s": 3,
+  "flight_start_spacing_s": 3600,
+  "receivers": 3,
+  "reference_received_dbm": -42,
+  "path_loss_exponent": 2.2,
+  "horizontal_radius_m": [
+    6,
+    140
+  ],
+  "altitude_m": [
+    3,
+    70
+  ],
+  "flight_power_sd_db": 2,
+  "packet_power_sd_db": 3,
+  "power_ar1": 0.85,
+  "shadow_sd_db": 4,
+  "shadow_ar1": 0.8,
+  "fading_t_df": 4,
+  "fading_t_scale_db": 1.5,
+  "nlos_initial_probability": 0.25,
+  "los_to_nlos_probability": 0.04,
+  "nlos_to_los_probability": 0.12,
+  "nlos_loss_db": 12,
+  "receiver_bias_sd_db": 2,
+  "receiver_calibration_error_sd_db": 0.8,
+  "gps_error_sd_m": 2,
+  "rssi_quantization_db": 1,
+  "sensitivity_dbm": -100,
+  "independent_packet_drop_probability": 0.03,
+  "attack_bound_db": 8,
+  "nominal_interval_coverage": 0.9,
+  "distance_threshold_m": 30,
+  "bayes_log10_distance_support": [
+    0.47712125472,
+    2.47712125472
+  ],
+  "gp_max_train_points": 512,
+  "gp_rbf_length_scale": 1,
+  "gp_white_noise_variance": 0.2,
+  "mlp_hidden_layers": [
+    24,
+    24
+  ],
+  "mlp_max_iter": 500,
+  "channel_variants": [
+    "mixed",
+    "los_only",
+    "ideal"
+  ],
+  "parameters_are": "Predeclared illustrative assumptions; not measured UAV/3GPP calibration"
+}

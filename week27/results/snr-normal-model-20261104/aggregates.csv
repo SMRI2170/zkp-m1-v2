@@ -1,0 +1,5 @@
+method,domain,evaluation_rows,evaluation_sessions,session_equal_mean_normal_alarm_rate,session_equal_mean_rmse_db,row_alarm_rate_min,row_alarm_rate_max,window_evaluable_rows,window_evaluable_sessions,mean_evaluable_window_alarm_rate
+constant,LoS_holdout,12,4,0.07649901157534449,5.916196774279759,0.0,0.2201514269073966,12,4,0.08718882410617362
+constant,NLoS_transfer,24,2,0.004568713450292397,4.599683008654424,0.0,0.041666666666666664,12,1,0.0
+horizontal_geometry,LoS_holdout,12,4,0.10405260983379866,4.6540032831967135,0.009404388714733543,0.40237691001697795,12,4,0.13484557201386702
+horizontal_geometry,NLoS_transfer,24,2,0.03874269005847953,4.334144444859228,0.0,0.2916666666666667,12,1,0.03571428571428571

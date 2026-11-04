@@ -1,9 +1,9 @@
 # 順次評価ジョブ：チャットで待たずに実行・記録する
 
 `run.py start`は別processで順次ジョブを開始して直ちに戻る。
-ビルド、CLI driver生成、Pi準備確認、配置、8構成の21件測定、回収、集計、図、CIログ確認を順番に実行する。
+ビルド、CLI driver生成、Pi準備確認、配置、8構成とCircomの2 prover構成の21件測定、回収、集計、図、CIログ確認を順番に実行する。
 途中失敗してもCSV/JSONを更新し、依存しない工程と収集処理は進める。
-未知の研究実装をAIが自動作成するプログラムではない。実装済み8構成とCLI source adapter2構成を処理し、残る8構成は未実装／前提不足の理由を記録する。
+未知の研究実装をAIが自動作成するプログラムではない。実装済み8構成とCircomの2 prover構成を測定対象とし、Noirはsource adapterを生成する。残る8構成は未実装／前提不足の理由を記録する。
 
 ## 起動
 
@@ -61,7 +61,7 @@ Piのprobeがready=falseなら配置・測定へ進まない。guard復旧・SSH
 Pi側は既存runtime上限で停止する。再実行前に残存unit・private tmpfs・partialを確認する。
 
 1process/key内で7入力warmup＋7入力×3回を測る。独立cold21runではない。
-CLI方式はsource adapter生成までで、このplanでは実proverへ未接続。IVCの別系列、その他backendの対応は #61/#55 の残件。
+Noirはsource adapter生成まで。CircomはsnarkjsとRapidSnarkの2構成をcircom/へ保存し、共通native verifierで測定する。IVCの別系列、その他backendの対応は #61/#55 の残件。
 実capture・実座標・private key・使い捨てsetup/VK/proof実体をGitへ追加・公開・deployしない。
 研究PoCでありDRIP trust chain、sensor honesty、observer hardware／航空機認証は保証しない。
 

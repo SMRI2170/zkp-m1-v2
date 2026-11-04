@@ -1,0 +1,141 @@
+{
+  "schema": "week26-sensitivity-v1",
+  "scope": "Independent synthetic studies; no calibrated UAV performance or paper reproduction",
+  "seeds": [
+    202611100,
+    202611101,
+    202611102,
+    202611103,
+    202611104,
+    202611105,
+    202611106,
+    202611107,
+    202611108,
+    202611109
+  ],
+  "fpr_calibration_target": 0.05,
+  "spoof_displacements_m": [
+    0,
+    5,
+    10,
+    20,
+    30,
+    50,
+    100,
+    200
+  ],
+  "receiver_counts": [
+    1,
+    2,
+    3,
+    5,
+    10
+  ],
+  "sync": {
+    "calibration_events": 2000,
+    "test_events": 3000,
+    "aperture_radius_m": [
+      20,
+      100
+    ],
+    "independent_link_noise_sd_db": [
+      2,
+      6
+    ],
+    "common_power_sd_db": 8,
+    "residual_receiver_bias_sd_db": 0.8,
+    "true_xy_bounds_m": [
+      -100,
+      100
+    ],
+    "true_altitude_bounds_m": [
+      5,
+      70
+    ],
+    "path_loss_exponent": 2.2,
+    "note": "Same packet, known geometry/exponent, no censoring/NLOS/quantization. Favorable separate baseline. No 3D localization is solved."
+  },
+  "time": {
+    "events_per_seed": 3000,
+    "gaps_s": [
+      1,
+      3,
+      10,
+      30,
+      60,
+      300,
+      3600,
+      86400
+    ],
+    "power_correlation_time_s": [
+      0,
+      30,
+      600,
+      86400
+    ],
+    "power_stationary_sd_db": 6,
+    "anchor_measurement_sd_db": 2,
+    "current_measurement_sd_db": 4,
+    "historical_mean_uncertainty_sd_db": 1,
+    "path_loss_exponent": 2.2,
+    "normal_coverage": 0.9,
+    "note": "Last anchor has independent true distance. One RSSI at query. Gaussian conditional power model, no censoring."
+  },
+  "personalization": {
+    "external_training_ids": 30,
+    "target_ids": 20,
+    "enrollment_flights": 10,
+    "enrollment_events_per_flight": 10,
+    "test_flights": 10,
+    "test_events_per_flight": 20,
+    "labeled_enrollment_counts": [
+      0,
+      1,
+      3,
+      10,
+      30,
+      100
+    ],
+    "measurement_noise_sd_db": 4,
+    "profiles": [
+      {
+        "name": "no_identity_difference",
+        "identity_sd_db": 0,
+        "flight_sd_db": 1,
+        "exponent_sd": 0
+      },
+      {
+        "name": "stable_id3",
+        "identity_sd_db": 3,
+        "flight_sd_db": 1,
+        "exponent_sd": 0
+      },
+      {
+        "name": "stable_id6",
+        "identity_sd_db": 6,
+        "flight_sd_db": 1,
+        "exponent_sd": 0
+      },
+      {
+        "name": "flight_variation4",
+        "identity_sd_db": 6,
+        "flight_sd_db": 4,
+        "exponent_sd": 0
+      },
+      {
+        "name": "flight_variation8",
+        "identity_sd_db": 6,
+        "flight_sd_db": 8,
+        "exponent_sd": 0
+      },
+      {
+        "name": "identity_and_slope",
+        "identity_sd_db": 6,
+        "flight_sd_db": 1,
+        "exponent_sd": 0.2
+      }
+    ],
+    "note": "All enrollment labels are independent synthetic true distances, never claimed RID coordinates. Test flights held out. Shrinkage assumes matched nuisance variances."
+  },
+  "design": "One-factor studies, not a pooled full-factorial benchmark. No numerical targets were tuned to produce a desired result."
+}
