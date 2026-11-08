@@ -1,0 +1,12 @@
+{
+  "sha256": {
+    "aggregate.csv": "90a3f682d84a3201e836ac2f537774360fca785e0e352c784788b6182190a4af",
+    "execution.json": "30fbcafeca33d1df97a9edff532b412ef8c3bacb72b05ed440aa1d6f81b9b820",
+    "execution.log": "ec854dd91927642aed548067e620052771d674a0022b552192bf91a812027eea",
+    "normal-model.json": "960e32725e9f5f1296d206ec9145e904bd3ed69159e9d622c807c3d64869bda3",
+    "per-seed.csv": "c9b7a4e1d46df61291cec1ccb4a6d182ff0cae4090795ec22dc958bee248902e",
+    "solver-audit.json": "f17346b4b3a026c0805374b07d3bd62922b30d74905982f880a3753a72b3cdbc",
+    "source-receipts.json": "b420fdfb4b5586c50cf7f1236dbc6e0b395e7e29974a358f50c88fb74254c0aa",
+    "status.json": "787f22b55498e61e87ac11dd9057229307509469b93a1742b256232546a096d2"
+  }
+}

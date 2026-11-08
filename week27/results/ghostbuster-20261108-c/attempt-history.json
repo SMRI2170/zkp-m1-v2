@@ -1,0 +1,53 @@
+[
+  {
+    "attempt": "a",
+    "status": {
+      "status": "COMPLETED",
+      "new_native_rf_cases": 0,
+      "config_sha256": "cf785e137e9acb096535851532d7758bea9a59c653deab980536a35ec6176095",
+      "completed_cell": "k5-sd6",
+      "completed_seed": 720,
+      "elapsed_s": 108.978,
+      "completed_cells": 6,
+      "evaluation_seeds": 20,
+      "independent_normal_windows_per_cell": 200,
+      "calibration_windows_per_cell": 200
+    },
+    "aggregate_sha256": "e13afafcb7aa658485c88c92958e0d1ad03e11f71257fa8a6c83359d5a8dab7a",
+    "interpretation": "Superseded: projected-gradient-only termination over-counted numerical UND."
+  },
+  {
+    "attempt": "b",
+    "status": {
+      "status": "COMPLETED",
+      "new_native_rf_cases": 0,
+      "config_sha256": "cf785e137e9acb096535851532d7758bea9a59c653deab980536a35ec6176095",
+      "completed_cell": "k5-sd6",
+      "completed_seed": 720,
+      "elapsed_s": 113.906,
+      "completed_cells": 6,
+      "evaluation_seeds": 20,
+      "independent_normal_windows_per_cell": 200,
+      "calibration_windows_per_cell": 200
+    },
+    "aggregate_sha256": "e51f0e2a96cd5bed717181a4222e4cbd89a313fa5fa679fcef464f1bd04aa9b8",
+    "interpretation": "Superseded: added relative-cost termination but unfinished batched fits remained; not an RF limit."
+  },
+  {
+    "attempt": "c",
+    "status": {
+      "status": "COMPLETED",
+      "new_native_rf_cases": 0,
+      "config_sha256": "cf785e137e9acb096535851532d7758bea9a59c653deab980536a35ec6176095",
+      "completed_cell": "k5-sd6",
+      "completed_seed": 720,
+      "elapsed_s": 198.439,
+      "completed_cells": 6,
+      "evaluation_seeds": 20,
+      "independent_normal_windows_per_cell": 200,
+      "calibration_windows_per_cell": 200
+    },
+    "aggregate_sha256": "1e653c17ad50b22c37393d6b5a1eefdf19c551b65d270ba95c3c962ca65032bc",
+    "interpretation": "Final: unchanged distance objective/bounds, independent SciPy fallback, failures still UND."
+  }
+]

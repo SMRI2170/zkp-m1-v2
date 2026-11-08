@@ -1,0 +1,14 @@
+{
+  "fit_role": "train_normal",
+  "training_seed": 501,
+  "receiver_intercepts_db": [
+    -34.77406781461926,
+    -34.77069132390135,
+    -34.77445463211728,
+    -34.77187821649392,
+    -34.82871313079858
+  ],
+  "exponent": 1.3765987884923234,
+  "nominal_power": "Not provided by truth. Normal mean power is absorbed into fitted intercepts.",
+  "adaptation": "Per-receiver intercepts/shared exponent and known -100dBm background subtraction."
+}

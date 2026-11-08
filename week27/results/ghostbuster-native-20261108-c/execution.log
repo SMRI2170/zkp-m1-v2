@@ -1,0 +1,13 @@
+REPLAYED K=4 elapsed=3.5s
+REPLAYED K=5 elapsed=8.2s
+{
+  "status": "COMPLETED",
+  "new_native_rf_cases": 0,
+  "mode": "existing_native_RF_reanalysis",
+  "completed_k": 5,
+  "completed_seed": 720,
+  "elapsed_s": 8.188,
+  "source_cases": 191,
+  "independent_evaluation_flights": 20,
+  "nonoverlapping_windows_per_flight": 4
+}

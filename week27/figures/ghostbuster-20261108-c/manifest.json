@@ -1,0 +1,21 @@
+{
+  "sha256": {
+    "01_receivers.png": "24449a0dcf7739990370fecffa65852073f890f701d8b7d114234bd0f743b0cb",
+    "01_receivers.svg": "6b1255527b33c891905f8ebd1179addac37474c10560314e5247268840823a1a",
+    "02_power_attack.png": "db80a45014575e15fc1d9effa19ab77118ae6558b4085ec32d258f12f4fa4e3d",
+    "02_power_attack.svg": "902e509ee36c256906914f58a74ce5756171c0dc6f646827c41a1911f9953cfd",
+    "03_noise.png": "6258b489ffc8d5f9ba23f1bccd192530696b0bdad5aa5831736b714208f5782f",
+    "03_noise.svg": "2982a364ae0ec1fcf9825744f195ebf79e3454f739ede657bb4881e032b094ed",
+    "04_threshold.png": "23fe612cad139bf4659a02ba5ec7b3ff6fcc0745506e566f8e6f53f3b7fe6b09",
+    "04_threshold.svg": "3f8ed8df4a6d6dca70b9d81efeefa6bac5eef7f8230871fd00d8c70dd80e91bf",
+    "05_native_replay.png": "0c45d5ab7be58f72b7ea5c9e47ab6bc489ffdf86b6647cac3b4fcc32ad95b57f",
+    "05_native_replay.svg": "fdab069d3885980fb87f14fcb9daa0025fd4be90dce3844f600c71662190f011",
+    "06_eligibility.png": "6fad6648c8d9741ee5cfebca344b1c5bf54470e2c3dd122ca848dc02a3abf24e",
+    "06_eligibility.svg": "78893b54159e0d5b7f5bbc3c70059c6d3dd37f7be4f8be2171381b38242ebe60",
+    "07_close_range.png": "b103826073c335ee6aa0e157a6f0d89c27fab203bb74d2dd6e7f5e7f416a019c",
+    "07_close_range.svg": "4d9e09cbc28d38c72f1cbe510e941cc52f00b7a8f69c6161590f1d9dca316b96",
+    "08_layouts.png": "ab64fea7eccc7a3221565e4d70cf8be8f6b5edc39dd204ef41fc82da1cdac33a",
+    "08_layouts.svg": "d9ac24cb59f3c938edea6ff207f07a4c97f71350391b9d39b6938113e5dd7680",
+    "figures.json": "017d742930479b8f64104b687e8bb383d0b4d075dda2fb3fd97fdc4044c96064"
+  }
+}
