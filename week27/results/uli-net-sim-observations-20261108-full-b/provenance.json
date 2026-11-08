@@ -1,0 +1,8 @@
+{
+  "dataset_source": "simulation",
+  "binary_sha256": "09d81955a7e981f0232c9754163e9a2290c444e558b9e4e04fcfef15eee7485d",
+  "upstream_sha": "3cf9474fe960955556de118065591915a7be2bc1",
+  "parent_code_commit": "0ff7c9fe34d84c648692d35496bff489ce368068",
+  "mathematical_files": "Separate constructions, not RF executions",
+  "raw_scope": "Only aggregate metrics and scrubbed logs are public; full vec/coordinates/ledgers stay owner-only in captures/"
+}

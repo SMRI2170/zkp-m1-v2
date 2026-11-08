@@ -1,0 +1,66 @@
+{
+  "status": "RESOURCE_ABORTED",
+  "reason": "Unrelated queue incoming/outgoing rate statistics emitted on long time axis",
+  "runner_termination_exit": 143,
+  "audited_cases": 4,
+  "attempted_cases": [
+    {
+      "case": "fixed-gap10-offset0-n1000-seed2170",
+      "simulation_exit_code": 0,
+      "audited": true,
+      "vector_bytes": 27915315
+    },
+    {
+      "case": "fixed-gap10-offset100-n1000-seed2170",
+      "simulation_exit_code": 0,
+      "audited": true,
+      "vector_bytes": 27915317
+    },
+    {
+      "case": "fixed-gap300-offset0-n1000-seed2170",
+      "simulation_exit_code": 0,
+      "audited": true,
+      "vector_bytes": 724223434
+    },
+    {
+      "case": "fixed-gap300-offset100-n1000-seed2170",
+      "simulation_exit_code": 0,
+      "audited": true,
+      "vector_bytes": 724223442
+    },
+    {
+      "case": "fixed-gap3600-offset0-n1000-seed2170",
+      "simulation_exit_code": 0,
+      "audited": false,
+      "vector_bytes": 9078323297
+    }
+  ],
+  "previous_checkpoint_sha256": "369143a091a3f70cbfd547a70e8190d091b04df8c47651d260403c6f4453db4e",
+  "raw_preserved": true,
+  "bytes_retained": 10599097356,
+  "new_limits": {
+    "per_scene_bytes": 134217728,
+    "min_free_bytes": 8589934592
+  },
+  "not_attempted_cases": [
+    "fixed-gap3600-offset100-n1000-seed2170",
+    "uniform-gap10-offset0-n1000-seed2170",
+    "uniform-gap10-offset100-n1000-seed2170",
+    "uniform-gap300-offset0-n1000-seed2170",
+    "uniform-gap300-offset100-n1000-seed2170",
+    "uniform-gap3600-offset0-n1000-seed2170",
+    "uniform-gap3600-offset100-n1000-seed2170",
+    "slew-gap10-offset0-n1000-seed2170",
+    "slew-gap10-offset100-n1000-seed2170",
+    "slew-gap300-offset0-n1000-seed2170",
+    "slew-gap300-offset100-n1000-seed2170",
+    "slew-gap3600-offset0-n1000-seed2170",
+    "slew-gap3600-offset100-n1000-seed2170",
+    "adaptive-gap10-offset0-n1000-seed2170",
+    "adaptive-gap10-offset100-n1000-seed2170",
+    "adaptive-gap300-offset0-n1000-seed2170",
+    "adaptive-gap300-offset100-n1000-seed2170",
+    "adaptive-gap3600-offset0-n1000-seed2170",
+    "adaptive-gap3600-offset100-n1000-seed2170"
+  ]
+}

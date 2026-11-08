@@ -12,6 +12,9 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import shutil
+import signal
+import time
 
 from normalize import normalize, read_vectors, write_csv
 from setup import ROOT, REPO
@@ -22,17 +25,30 @@ def env_command(workspace, argv):
             'source "$w/inet4.5/setenv" -q; exec "$@"', 'rid-smoke', str(workspace), *map(str, argv)]
 
 
-def run_logged(workspace, argv, cwd, log, timeout):
+def run_logged(workspace, argv, cwd, log, timeout, watch_dir=None, max_bytes=None, min_free_bytes=None):
     started = datetime.datetime.now(datetime.timezone.utc).isoformat()
-    try:
-        with log.open('w') as stream:
-            result = subprocess.run(env_command(workspace, argv), cwd=cwd, stdout=stream,
-                                    stderr=subprocess.STDOUT, timeout=timeout)
-        code = result.returncode
-    except subprocess.TimeoutExpired:
-        code = 124
+    reason=None; clock=time.monotonic()
+    with log.open('w') as stream:
+        process=subprocess.Popen(env_command(workspace,argv),cwd=cwd,stdout=stream,
+                                 stderr=subprocess.STDOUT,start_new_session=True)
+        while process.poll() is None:
+            if time.monotonic()-clock>timeout:reason='timeout'
+            if watch_dir is not None:
+                size=sum(p.stat().st_size for p in Path(watch_dir).glob('*') if p.is_file())
+                if max_bytes is not None and size>max_bytes:reason='output_size_budget'
+                if min_free_bytes is not None and shutil.disk_usage(watch_dir).free<min_free_bytes:reason='disk_headroom_budget'
+            if reason:
+                try:os.killpg(process.pid,signal.SIGTERM)
+                except ProcessLookupError:pass
+                try:process.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    os.killpg(process.pid,signal.SIGKILL);process.wait()
+                break
+            try:process.wait(timeout=.2)
+            except subprocess.TimeoutExpired:pass
+    code=124 if reason=='timeout' else process.returncode
     return dict(started_utc=started, argv=list(map(str, argv)), exit_code=code,
-                log_sha256=hashlib.sha256(log.read_bytes()).hexdigest())
+                stop_reason=reason,log_sha256=hashlib.sha256(log.read_bytes()).hexdigest())
 
 
 def assert_case(case, rows, tx, summary):
