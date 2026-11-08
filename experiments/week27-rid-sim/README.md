@@ -146,3 +146,43 @@ transmission with no successful RX. All detection scores remain null and
 decisions UNDETERMINED. These short controls do not establish FPR/TPR.
 
 Report: [Week27 report 12](../../week27/12_パケット単位送信電力のPHY反映と通信対照実験.md).
+
+## PR3: actual sparse time axis and observation regimes
+
+```sh
+.cache/issue70/python/bin/python experiments/week27-rid-sim/scripts/run_observations.py \
+  --smoke --raw-dir captures/issue70-observation-smoke-NEW \
+  --out week27/results/issue70-observation-smoke-NEW
+.cache/issue70/python/bin/python experiments/week27-rid-sim/scripts/run_observations.py \
+  --raw-dir captures/issue70-observation-full-NEW \
+  --out week27/results/issue70-observation-full-NEW
+```
+
+Full config: `config/observations.json`, 4 power models × 3 spacings × 2 claim
+conditions, 1000 real simulator transmissions each. Prefix counts 10/100/1000
+reuse those runs and are not independent trials. At 3600s spacing, the model
+axis spans 999 hours. This is **sparse evidence in a stationary channel model**,
+not a continuous RID beacon cadence, 41-day drone endurance, or real tracking.
+CircleMobility's analytic position is checked at the actual simulator times;
+no captured packet gets a relabelled timestamp.
+
+The asynchronous view chooses exactly one configured receiver per packet,
+rotating through the five nodes without replacing missed observations. The
+same-packet comparison uses nested subsets 2/3/4/5 from the actual common
+transmission. It is an additional information condition. Packet IDs are always
+namespaced by run; serial/time proximity cannot substitute for packet identity.
+
+`observations.py` exposes a truth-free detector projection. Numeric features
+must still explicitly exclude grouping IDs/metadata. The unrestricted-power
+single-RSSI policy returns UNDETERMINED; it does not invent a confidence score.
+Mathematical RSSI counterexamples are separate from RF executions and do not
+assert identical decoding/interference under finite output limits.
+
+Long-axis runs disable unrelated **statistical recorders**, retaining all
+direct management, GCS and PHY audit vectors. This does not replace radio or
+mobility processing. An explicit before/after control checks communication and
+RSSI. Each scene is guarded at 128MiB output and 8GiB free disk; resource stops
+preserve artifacts. A previous all-statistics attempt grew to ~10GB and was
+stopped, with the partial run retained rather than fabricated as complete.
+
+Report: [Week27 report 13](../../week27/13_非同期1RSSIと同一送信多局の観測条件監査.md).

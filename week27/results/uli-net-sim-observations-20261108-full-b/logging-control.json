@@ -1,0 +1,5 @@
+{
+  "same_selected_opportunities": true,
+  "max_rssi_difference_db": 0.0,
+  "explanation": "Only unrelated statistic recorders disabled; direct TX/RX/GCS/PHY vectors kept. Independent runs; packet ID namespaces are not compared."
+}

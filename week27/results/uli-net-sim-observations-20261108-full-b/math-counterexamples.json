@@ -1,0 +1,54 @@
+[
+  {
+    "count": 10,
+    "distance_ratio": 4,
+    "path_loss_exponent": 2,
+    "power_compensation_db": 12.041199826559248,
+    "max_rssi_difference_db": 7.105427357601002e-15,
+    "scope": "Mathematical log-distance counterexample, not a second RF execution; common claim and residual, unrestricted independent power",
+    "does_not_establish": [
+      "same delivery/interference under physical output limits",
+      "identity authentication",
+      "safety distance"
+    ]
+  },
+  {
+    "count": 100,
+    "distance_ratio": 4,
+    "path_loss_exponent": 2,
+    "power_compensation_db": 12.041199826559248,
+    "max_rssi_difference_db": 7.105427357601002e-15,
+    "scope": "Mathematical log-distance counterexample, not a second RF execution; common claim and residual, unrestricted independent power",
+    "does_not_establish": [
+      "same delivery/interference under physical output limits",
+      "identity authentication",
+      "safety distance"
+    ]
+  },
+  {
+    "count": 1000,
+    "distance_ratio": 4,
+    "path_loss_exponent": 2,
+    "power_compensation_db": 12.041199826559248,
+    "max_rssi_difference_db": 1.4210854715202004e-14,
+    "scope": "Mathematical log-distance counterexample, not a second RF execution; common claim and residual, unrestricted independent power",
+    "does_not_establish": [
+      "same delivery/interference under physical output limits",
+      "identity authentication",
+      "safety distance"
+    ]
+  },
+  {
+    "count": 5000,
+    "distance_ratio": 4,
+    "path_loss_exponent": 2,
+    "power_compensation_db": 12.041199826559248,
+    "max_rssi_difference_db": 1.4210854715202004e-14,
+    "scope": "Mathematical log-distance counterexample, not a second RF execution; common claim and residual, unrestricted independent power",
+    "does_not_establish": [
+      "same delivery/interference under physical output limits",
+      "identity authentication",
+      "safety distance"
+    ]
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "seed": 2170,
+  "count": 1000,
+  "prefix_counts": [10, 100, 1000],
+  "gaps_s": [10, 300, 3600],
+  "models": ["fixed", "uniform", "slew", "adaptive"],
+  "offsets_m": [0, 100],
+  "observer_nodes": [0, 2, 3, 4, 5],
+  "same_packet_subsets": [2, 3, 4, 5],
+  "zero_gap_meaning": "Same physical packet comparison, not distinct packets with relabelled time",
+  "sparse_time_scope": "Only sparse transmissions are simulated. CircleMobility computes the real position analytically at each simulator time; updateInterval=0 removes display updates, not motion. This is not a dense standards-compliant RID cadence or a 41-day flight endurance claim."
+}

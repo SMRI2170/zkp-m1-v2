@@ -1,0 +1,23 @@
+[
+  {
+    "count": 1000,
+    "gap_s": 3600,
+    "trajectory_translation_m": 100,
+    "both_instantaneous_speeds_mps": 3,
+    "common_claim_in_both_worlds": true,
+    "max_rssi_difference_db": 1.4210854715202004e-14,
+    "power_change_min_db": -8.528641983002078,
+    "power_change_max_db": 9.416318023211051,
+    "scope": "Mathematical pair of smooth translated trajectories with per-observation unrestricted power; not a second RF run"
+  },
+  {
+    "receivers": 4,
+    "heights_m": [
+      80,
+      20
+    ],
+    "power_change_db": -2.1759155962380934,
+    "max_rssi_difference_db": 7.105427357601002e-15,
+    "scope": "Mathematical symmetric log-distance counterexample; not the five-node INET scene or an RF execution"
+  }
+]
