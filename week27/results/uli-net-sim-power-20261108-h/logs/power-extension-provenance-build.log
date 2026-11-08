@@ -1,0 +1,5 @@
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+Updating Makefile in ${REPO}/.cache/issue70/project-build...
+
+power_extension/Issue70PowerMgmt.cc
+Creating executable: out/clang-release//rid_smoke

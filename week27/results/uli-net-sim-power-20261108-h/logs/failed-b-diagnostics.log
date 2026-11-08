@@ -1,0 +1,2 @@
+Recorded orchestration error: FixedNormal simulation failed
+<!> Error: (omnetpp::cPar)BasicUav.host[1].wlan[0].radio.transmitter.power: Setting the parameter is not allowed at runtime (it is not marked as mutable) -- in module (Issue70PowerMgmt) BasicUav.host[1].wlan[0].mgmt (id=93), at t=0.1s, event #1

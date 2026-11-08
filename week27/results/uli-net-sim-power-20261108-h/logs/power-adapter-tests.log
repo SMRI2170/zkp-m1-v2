@@ -1,0 +1,35 @@
+test_applied_phy_power_must_match_requested (test_power.PowerAuditTests.test_applied_phy_power_must_match_requested) ... ok
+test_duplicate_physical_id_is_ambiguous (test_power.PowerAuditTests.test_duplicate_physical_id_is_ambiguous) ... ok
+test_missing_packet_tag_is_not_accepted (test_power.PowerAuditTests.test_missing_packet_tag_is_not_accepted) ... ok
+test_no_phy_logging_distinct_from_received_failure (test_power.PowerAuditTests.test_no_phy_logging_distinct_from_received_failure) ... ok
+test_paired_geometry_accepts_only_roundoff (test_power.PowerAuditTests.test_paired_geometry_accepts_only_roundoff) ... ok
+test_position_pair_must_not_change_identity_or_timestamp (test_power.PowerAuditTests.test_position_pair_must_not_change_identity_or_timestamp) ... ok
+test_received_packet_requires_actual_phy (test_power.PowerAuditTests.test_received_packet_requires_actual_phy) ... ok
+test_repeated_gcs_callbacks_require_explicit_framing (test_power.PowerAuditTests.test_repeated_gcs_callbacks_require_explicit_framing) ... ok
+test_repeated_gcs_without_counter_is_rejected (test_power.PowerAuditTests.test_repeated_gcs_without_counter_is_rejected) ... ok
+test_rss_control_includes_background_noise (test_power.PowerAuditTests.test_rss_control_includes_background_noise) ... ok
+test_rssi_pairing_does_not_impute_missing_receivers (test_power.PowerAuditTests.test_rssi_pairing_does_not_impute_missing_receivers) ... ok
+test_target_filter_uses_packet_not_claimed_identity (test_power.PowerAuditTests.test_target_filter_uses_packet_not_claimed_identity) ... ok
+test_actual_zero_rssi_not_treated_as_missing (test_smoke.SmokeTests.test_actual_zero_rssi_not_treated_as_missing) ... ok
+test_blocked_environment_creates_no_observation_data (test_smoke.SmokeTests.test_blocked_environment_creates_no_observation_data) ... ok
+test_callback_logs_only_observed_fields (test_smoke.SmokeTests.test_callback_logs_only_observed_fields) ... ok
+test_different_packets_same_claimed_timestamp_are_not_merged (test_smoke.SmokeTests.test_different_packets_same_claimed_timestamp_are_not_merged) ... ok
+test_duplicate_rx_rejected (test_smoke.SmokeTests.test_duplicate_rx_rejected) ... ok
+test_duplicate_tx_id_rejected (test_smoke.SmokeTests.test_duplicate_tx_id_rejected) ... ok
+test_etv_event_alignment_not_row_index (test_smoke.SmokeTests.test_etv_event_alignment_not_row_index) ... ok
+test_gcs_count_mismatch_rejected (test_smoke.SmokeTests.test_gcs_count_mismatch_rejected) ... ok
+test_gcs_total_cannot_hide_wrong_packet_association (test_smoke.SmokeTests.test_gcs_total_cannot_hide_wrong_packet_association) ... ok
+test_large_packet_id_precision_rejected (test_smoke.SmokeTests.test_large_packet_id_precision_rejected) ... ok
+test_loss_cannot_be_reported_as_detection (test_smoke.SmokeTests.test_loss_cannot_be_reported_as_detection) ... ok
+test_missing_rssi_does_not_shift_other_observations (test_smoke.SmokeTests.test_missing_rssi_does_not_shift_other_observations) ... ok
+test_non_etv_vectors_are_rejected (test_smoke.SmokeTests.test_non_etv_vectors_are_rejected) ... ok
+test_received_claim_mismatch_rejected (test_smoke.SmokeTests.test_received_claim_mismatch_rejected) ... ok
+test_tx_receiver_denominator_includes_unobserved (test_smoke.SmokeTests.test_tx_receiver_denominator_includes_unobserved) ... ok
+test_unknown_rx_packet_rejected (test_smoke.SmokeTests.test_unknown_rx_packet_rejected) ... ok
+test_wrong_attack_label_rejected (test_smoke.SmokeTests.test_wrong_attack_label_rejected) ... ok
+test_zero_tx_is_not_success (test_smoke.SmokeTests.test_zero_tx_is_not_success) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.006s
+
+OK

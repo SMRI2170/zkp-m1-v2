@@ -37,13 +37,32 @@ def read_vectors(path):
                 index, event, time, value = parts
                 module, name = definitions[index]
                 # Unrelated MAC/mobility statistics are not our evidence.
-                if not re.search(r'\.host\[\d+\]\.wlan\[0\]\.mgmt$', module) and not re.search(r'\.gcs\[\d+\]$', module):
+                if not re.search(r'\.host\[\d+\]\.wlan\[0\]\.(mgmt|radio\.transmitter)$', module) and not re.search(r'\.gcs\[\d+\]$', module):
                     continue
                 key = (module, int(event), Decimal(time))
                 fields = events.setdefault(key, {})
                 if name in fields:
-                    raise ValueError('Repeated field in one event; refusing ambiguous alignment')
-                fields[name] = float(value)
+                    if '.gcs[' not in module:
+                        raise ValueError('Repeated field in one event; refusing ambiguous alignment')
+                    old = fields[name]
+                    fields[name] = (old if isinstance(old, list) else [old]) + [float(value)]
+                else:
+                    fields[name] = float(value)
+    # The GCS may process several groups in a single OMNeT++ event. Only our
+    # complete, fixed-shape callback with an explicit sequence can disambiguate
+    # that case. A missing field/counter is an error, never an index shift.
+    for key, fields in list(events.items()):
+        if '.gcs[' not in key[0] or not any(isinstance(v, list) for v in fields.values()):
+            continue
+        counters = fields.get('callback_id')
+        if not isinstance(counters, list) or len(set(counters)) != len(counters):
+            raise ValueError('Repeated GCS event requires unique callback_id values')
+        required = {'packet_id','report_count','claimed_timestamp_ms','claimed_serial','callback_id'}
+        if not required.issubset(fields) or any(not isinstance(v,list) or len(v) != len(counters) for v in fields.values()):
+            raise ValueError('Incomplete GCS callback fields; refusing ordinal alignment')
+        del events[key]
+        for i, callback in enumerate(counters):
+            events[(key[0], (key[1], integer(callback)), key[2])] = {name: values[i] for name,values in fields.items()}
     return events
 
 
@@ -81,7 +100,8 @@ def normalize(events, case, config):
             tx[packet] = dict(tx_event_id=packet, tx_node_id=node, tx_time=float(time),
                               true_tx_xyz=xyz(fields, 'Transmission My '),
                               claimed_xyz=xyz(fields, 'Transmission '),
-                              tx_power_dbm_truth_only=finite(fields.get('Transmission Power')),
+                              tx_power_dbm_truth_only=finite(fields.get('Requested PHY Power', fields.get('Transmission Power'))),
+                              tx_power_source='packet_tag_request' if 'Requested PHY Power' in fields else 'configured_parameter_sample',
                               is_spoofed=integer(fields.get('Transmission Is Spoofed')))
         if 'Packet ID' in fields:
             rx.append(dict(tx_event_id=integer(fields['Packet ID']), rx_event_id=f'{node}:{event}',
@@ -122,7 +142,7 @@ def normalize(events, case, config):
     common = dict(dataset_source='simulation', case=case, seed=config['seed'],
                   observer_regime=config['observer_regime'], phy_model=config['phy_model'],
                   score=None, decision='UNDETERMINED',
-                  decision_reason='PR1 communication audit; no detector executed')
+                  decision_reason=config.get('decision_reason', 'PR1 communication audit; no detector executed'))
     rows = [dict(common, **row) for row in sorted(rows, key=lambda r: (r['tx_time'], r['rx_node_id']))]
     summary = dict(case=case, seed=config['seed'], status='COMMUNICATION_AUDITED',
                    tx_enqueued=len(tx), receiver_opportunities=len(rows),

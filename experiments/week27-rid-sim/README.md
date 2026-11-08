@@ -116,3 +116,33 @@ calibrated detection/figures (PR4) remain separate stages. Do not continue when
 PR1 fails. Do not copy upstream-reported accuracy into our result tables.
 
 Research report: [Week27 report 11](../../week27/11_uli_net_sim導入とRemoteID_RSSI位置偽装実験.md).
+
+## PR2: per-packet physical power (after PR1 success)
+
+The original `native/` extension uses upstream/INET public interfaces without
+patching the local upstream checkout. No runtime mutability flag is relaxed:
+`SignalPowerReq` accompanies each packet into the actual dimensional transmitter.
+The PHY hook records packet IDs, tag presence, start time and computed power.
+The old upstream parameter sample is not mistaken for dynamic actual power.
+
+```sh
+bash experiments/week27-rid-sim/scripts/build_power_extension.sh .cache/issue70
+.cache/issue70/python/bin/python experiments/week27-rid-sim/scripts/run_power.py \
+  --raw-dir captures/issue70-power-NEW \
+  --out week27/results/uli-net-sim-power-NEW
+```
+
+`config/power.json` defines fixed, IID uniform, bounded slew and adaptive power,
+plus physical controls. Position-only comparisons now preserve serial/time via
+the base RID fill method. Adaptive knows the synthetic reference receiver,
+true/claimed position and n=2; its +/-10dB compensation is additionally clamped
+to [-80,23]dBm. It is **not** unbounded mathematical transmit power.
+
+The 6dB control predicts total RSS including the configured background noise;
+it does not require total RSS to increase by exactly 6dB. Receiver roles exclude
+the extra transmitter from the observer set, while full raw vectors are kept.
+Queues with no PHY hook by the horizon are distinct from a logged physical
+transmission with no successful RX. All detection scores remain null and
+decisions UNDETERMINED. These short controls do not establish FPR/TPR.
+
+Report: [Week27 report 12](../../week27/12_パケット単位送信電力のPHY反映と通信対照実験.md).
