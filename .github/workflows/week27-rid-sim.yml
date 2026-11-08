@@ -10,6 +10,7 @@ on:
       - 'week27/15_*'
       - 'week27/results/uli-net-sim-*/**'
       - 'week27/results/observer-attack-*/**'
+      - 'week28/**'
       - '.github/workflows/week27-rid-sim.yml'
   pull_request:
     paths:
@@ -21,6 +22,7 @@ on:
       - 'week27/15_*'
       - 'week27/results/uli-net-sim-*/**'
       - 'week27/results/observer-attack-*/**'
+      - 'week28/**'
       - '.github/workflows/week27-rid-sim.yml'
   workflow_dispatch:
 permissions:
@@ -43,4 +45,6 @@ jobs:
         run: python experiments/week27-rid-sim/scripts/validate_evidence.py week27/results/uli-net-sim-evaluation-20261108-full-b
       - name: Audit recorded PR5 attack, PHY, seed and solver evidence (no RF execution)
         run: python experiments/week27-rid-sim/scripts/validate_observer_attack.py week27/results/observer-attack-full-20261108-a week27/results/observer-attack-mlat-20261108-a
+      - name: Audit recorded PR6a geometry and frozen plan (no RF execution)
+        run: python experiments/week27-rid-sim/scripts/validate_external.py week28/results/issue77-6a-20261108-a week28/results/issue77-plan-20261108/plan.json
       # This job does not install OMNeT++/INET or claim an RF simulation ran.

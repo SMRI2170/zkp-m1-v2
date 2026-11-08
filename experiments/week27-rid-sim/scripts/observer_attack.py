@@ -78,7 +78,7 @@ def audit_attack(events,tx,rows,spec):
         target=spec['defender_schedule'][index%len(spec['defender_schedule'])]
         actual_target=target if spec['attack_case']=='schedule_aware' else 0 if spec['attack_case']=='reference_rx0' else -1
         catalog=spec.get('catalog_override',RX_POSITIONS)
-        requested=attack_delta(spec['attack_case'],t['true_tx_xyz'],t['claimed_xyz'],catalog,target)
+        requested=attack_delta(spec['attack_case'],t['true_tx_xyz'],t['claimed_xyz'],catalog,target)*spec.get('attack_n',2)/2
         expected=apply_limits(spec['nominal_dbm'],requested,spec['attack_bound_db'],spec['phy_min_dbm'],spec['phy_max_dbm'])
         mapping={'requested_delta_db':'Attack Requested Delta','applied_delta_db':'Attack Applied Delta',
                  'effective_phy_tx_dbm':'Requested PHY Power','clamped_by_attack_bound':'Attack Bound Clamped',
@@ -91,7 +91,7 @@ def audit_attack(events,tx,rows,spec):
         if abs(selected['phy_tx_power_dbm_truth_only']-expected['effective_phy_tx_dbm'])>1e-8:raise ValueError('Compensation did not reach actual PHY')
         ledger.append(dict(t,**expected,target_rx_id=actual_target,evaluation_rx_id=target,
                            target_mismatch=actual_target!=target if actual_target>=0 else None,
-                           oracle_requested_delta_db=delta_for(t['true_tx_xyz'],t['claimed_xyz'],catalog[target]),
+                           oracle_requested_delta_db=delta_for(t['true_tx_xyz'],t['claimed_xyz'],catalog[target])*spec.get('attack_n',2)/2,
                            delivered=selected['delivered'],rssi_dbm=selected['rssi_dbm']))
     if len(values)!=len(tx):raise ValueError('Unexpected audit events')
     return ledger

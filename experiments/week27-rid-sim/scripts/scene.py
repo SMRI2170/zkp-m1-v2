@@ -13,7 +13,18 @@ from run_power import physical_audit,target_events
 from run_smoke import run_logged
 from setup import ROOT
 
-RX_POSITIONS={0:(100,100,2),2:(300,100,2),3:(100,300,2),4:(300,300,2),5:(200,100,8)}
+def layout_positions(name='baseline'):
+    layouts=json.loads((ROOT/'config/layouts.json').read_text())
+    if name not in layouts:raise ValueError('Unknown declared receiver layout')
+    positions={int(node):tuple(point) for node,point in layouts[name].items()}
+    if list(positions)!=[0,2,3,4,5] or any(len(p)!=3 or not all(math.isfinite(v) and 0<=v<=500 for v in p) for p in positions.values()):
+        raise ValueError('Invalid receiver layout')
+    if any(math.dist(a,b)<1 for i,a in enumerate(positions.values()) for b in list(positions.values())[i+1:]):
+        raise ValueError('Near-coincident receiver layout')
+    return positions
+
+
+RX_POSITIONS=layout_positions() # Preserve the original public API and values.
 
 
 def ini_for(spec):
@@ -59,7 +70,7 @@ def ini_for(spec):
         f'*.host[1].wlan[0].mgmt.claimOffsetY = {spec.get("offset_y_m",0)}m',
         f'*.host[1].wlan[0].mgmt.claimOffsetZ = {spec.get("offset_z_m",0)}m',
     ]
-    for node,position in RX_POSITIONS.items():
+    for node,position in layout_positions(spec.get('layout','baseline')).items():
         values.append(f'*.host[{node}].mobility.typename = "StationaryMobility"')
         for axis,value in zip('XYZ',position):
             values.append(f'*.host[{node}].mobility.initial{axis} = {value}m')
@@ -94,11 +105,14 @@ def run_scene(spec,workspace,directory,ini_renderer=ini_for):
     if (directory/'run.vec').stat().st_size>128*1024**2:
         raise ValueError('Vector exceeds parser budget; preserved, not parsed')
     events=read_vectors(directory/'run.vec')
-    cfg=dict(seed=spec['seed'],tx_host=1,rx_hosts=list(RX_POSITIONS),
+    positions=layout_positions(spec.get('layout','baseline'))
+    cfg=dict(seed=spec['seed'],tx_host=1,rx_hosts=list(positions),
              observer_regime='same_packet_multisite_comparison_only',
              phy_model='INET 4.5.4 dimensional / FreeSpace / Dipole / -100dBm background',
              decision_reason='No detector; provenance audit')
-    rows,tx,gcs,summary=normalize(target_events(events,receivers=tuple(RX_POSITIONS)),spec['case'],cfg)
+    rows,tx,gcs,summary=normalize(target_events(events,receivers=tuple(positions)),spec['case'],cfg)
+    if any(r['delivered'] and math.dist(r['rx_xyz'],positions[r['rx_node_id']])>1e-6 for r in rows):
+        raise ValueError('Actual receiver position differs from declared layout')
     summary.update(physical_audit(events,tx,rows))
     if len(tx)!=spec['count'] or summary['phy_tx_count']!=spec['count']:
         raise ValueError('Actual TX/PHY count differs from requested schedule')

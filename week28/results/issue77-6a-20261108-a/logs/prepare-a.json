@@ -1,0 +1,14 @@
+{
+  "status": "BUILT",
+  "source_binary_sha256": "6a95f6a8d1684a21a79f729763929ffb032f3f6feed8a9ae77cddcba5987bb30",
+  "memory": {
+    "total_bytes": 17179869184,
+    "free_percentage": 49,
+    "swap_usage": "total = 7168.00M  used = 6204.88M  free = 963.12M  (encrypted)"
+  },
+  "build_requested": true,
+  "exit_code": 0,
+  "build_log_sha256": "856558394d98400a7c44123a66048cabed3887fe282e678fade5487ffd0376dc",
+  "new_binary_sha256": "5052b966058a9116e074c312a15a4a2dc1afb2621c0a4565f16b515c8c5356f7",
+  "source_binary_unchanged": true
+}

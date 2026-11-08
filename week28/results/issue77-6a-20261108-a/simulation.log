@@ -1,0 +1,527 @@
+
+RUN baseline-x-701-position_only-30
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:42-72791
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1e-05s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #681   t=190.15   Elapsed: 0.003417s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 896   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #681
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN baseline-x-701-schedule_aware-30
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:44-72944
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3.8e-05s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #681   t=190.15   Elapsed: 0.002808s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 896   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #681
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN baseline-x-701-position_only-0
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:44-73028
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1e-05s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #681   t=190.15   Elapsed: 0.003969s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 896   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #681
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN biased-x-701-position_only-30
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:45-73129
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 9e-06s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #678   t=190.15   Elapsed: 0.002746s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 893   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #678
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN biased-x-701-schedule_aware-30
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:45-73214
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 8e-06s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #678   t=190.15   Elapsed: 0.002701s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 893   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #678
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN biased-x-701-position_only-0
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:45-73299
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 9e-06s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #678   t=190.15   Elapsed: 0.00272s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 893   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #678
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN irregular-x-701-position_only-30
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:46-73396
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 9e-06s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #681   t=190.15   Elapsed: 0.002675s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 896   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #681
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN irregular-x-701-schedule_aware-30
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:46-73482
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 9e-06s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #681   t=190.15   Elapsed: 0.002717s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 896   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #681
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN irregular-x-701-position_only-0
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:47-73582
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1e-05s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #681   t=190.15   Elapsed: 0.0029s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 896   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #681
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN baseline-x-702-position_only-100
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:47-73664
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1e-05s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #681   t=190.15   Elapsed: 0.002726s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 896   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #681
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN baseline-x-702-schedule_aware-100
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:48-73761
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.2e-05s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #681   t=190.15   Elapsed: 0.003287s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 896   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #681
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN baseline-x-702-position_only-0
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:48-73858
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 9e-06s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #681   t=190.15   Elapsed: 0.002703s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 896   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #681
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN baseline-toward-701-schedule_aware-100
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:48-73939
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 9e-06s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #681   t=190.15   Elapsed: 0.002662s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 896   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #681
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN baseline-away-701-schedule_aware-100
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:49-74036
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 8e-06s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #681   t=190.15   Elapsed: 0.002718s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 896   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #681
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN baseline-tangent-701-schedule_aware-100
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:49-74117
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 9e-06s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #681   t=190.15   Elapsed: 0.002794s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 896   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #681
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN baseline-vertical-701-schedule_aware-100
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:50-74214
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 9e-06s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #681   t=190.15   Elapsed: 0.002712s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 896   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #681
+
+Calling finish() at end of Run #0...
+
+End.
+
+RUN baseline-equidistant-701-schedule_aware-100
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  4
+Loading NED files from <REPO>/.cache/issue77/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue77/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-19:17:50-74295
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 9e-06s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #681   t=190.15   Elapsed: 0.003748s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 896   present: 176   in FES: 1
+
+<!> Simulation time limit reached -- at t=190.15s, event #681
+
+Calling finish() at end of Run #0...
+
+End.
