@@ -102,3 +102,6 @@ nova_poc/nova-android-demo/app/build/
 nova_poc/nova-android-demo/gradle/wrapper/gradle-wrapper.jar
 nova_poc/nova-android-demo/app/src/main/jniLibs/
 nova_poc/nova-android-demo/app/src/main/kotlin/uniffi/
+
+# Dataset-21 local entry point: raw GPS/RSS live in ignored owner-only captures.
+/week27/Sionna_Ray_Tracing_Real_World_Measurements

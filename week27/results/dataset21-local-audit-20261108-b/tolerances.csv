@@ -1,0 +1,10 @@
+max_recorded_span_ms,reference_rows,nearest_time_candidate_rows,same_transmission_verified
+0,3530,0,False
+1,3530,0,False
+5,3530,0,False
+10,3530,0,False
+20,3530,0,False
+50,3530,16,False
+100,3530,256,False
+200,3530,2302,False
+500,3530,3530,False

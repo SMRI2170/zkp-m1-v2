@@ -1,0 +1,25 @@
+{
+  "exit_code": 0,
+  "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "numpy": "2.2.6",
+  "scipy": "1.16.3",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "mode": "Local actual MATLAB dataset audit. No synthetic RSS or detection experiment.",
+  "commands": [
+    "aerpaw21_local.py --source week27/Sionna_Ray_Tracing_Real_World_Measurements --archive captures/dataset21-local-20261108-a/dataset.zip --private-out captures/dataset21-local-20261108-a/audit-b --out week27/results/dataset21-local-audit-20261108-b",
+    "plot_aerpaw21_local.py week27/results/dataset21-local-audit-20261108-b"
+  ],
+  "code_sha256": {
+    "aerpaw21_local.py": "5af086abf17c22a2754db4cc32d25d4c0015310e918f9b5ee5af8e73eba1b578",
+    "plot_aerpaw21_local.py": "42b9f1622b2bcdae2e1b9ff0dede51c71c40837ec14257ec07d771517d692681"
+  },
+  "local_checks": {
+    "all_data_audit_tests": 60,
+    "new_tests": 6,
+    "existing_untracked_acquisition_tests_excluded_from_commit": 5,
+    "uav": 61,
+    "go": "PASS",
+    "contracts": 48,
+    "image_qa": "Both plots visually inspected; labels and captions visible."
+  }
+}

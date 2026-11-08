@@ -35,3 +35,5 @@ jobs:
         run: python experiments/week27-data-audit/audit_snr_four_station.py
       - name: Verify normal SNR model splits and calibration evidence
         run: python experiments/week27-data-audit/audit_snr_normal_model.py
+      - name: Verify Dataset-21 local-file audit evidence (raw GPS/RSS not read)
+        run: python experiments/week27-data-audit/audit_aerpaw21_results.py week27/results/dataset21-local-audit-20261108-b

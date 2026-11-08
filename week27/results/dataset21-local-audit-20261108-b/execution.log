@@ -1,0 +1,51 @@
+{
+  "status": "AUDITED_SAME_TRANSMISSION_NOT_ESTABLISHED",
+  "dataset": "AERPAW Dataset-21",
+  "archive": {
+    "size_bytes": 8736011,
+    "sha256": "ff930df7158d4e9a4d2a038d225fb805b88031adef5628137bd3754ad2bd9ae1",
+    "crc_verified": true,
+    "all_extracted_files_match": true,
+    "file_count": 16
+  },
+  "reference_rows": 3530,
+  "selected_rss_rows": 16618,
+  "all_station_nearest_span_ms": {
+    "min": 20.999908447265625,
+    "median": 174.99995231628418,
+    "p95": 259.99999046325684,
+    "max": 315.000057220459
+  },
+  "global_minimum_all_station_recorded_span_ms": 21.0,
+  "rt": {
+    "trajectory_samples": 3530,
+    "receivers": 5,
+    "tx_power_dbm_for_simulation": 44,
+    "stored_rss_formula_max_error_db": 2.842170943040401e-14
+  },
+  "gates": {
+    "real_measured_rss_present": true,
+    "recorded_time_proximity_comparable": true,
+    "same_packet_id_available": false,
+    "receiver_clock_accuracy_established": false,
+    "same_transmission_comparison_allowed": false,
+    "independent_absolute_power_calibration": false,
+    "position_spoof_detection_run": false
+  },
+  "metadata_conflicts": {
+    "paper_carrier_frequency_hz": 3300000000,
+    "filename_carrier_frequency_hz": 3320000000,
+    "lw1_stored_carrier_freq_hz": 3400000000.0,
+    "paper_usrp": "B205",
+    "readme_usrp": "B210"
+  },
+  "limits": [
+    "Nearest-time rows are not same-packet observations; repeated source samples are not independent.",
+    "20ms capture duration and trustworthy shared clocks would be additional assumptions, not established by a nearest join.",
+    "D3 uses full-trajectory RT-fitted per-channel offsets, with manual LW5 -10dB; not independent hardware dBm calibration.",
+    "No packet sequence, actual per-packet TX power or IQ samples in the exposed numeric fields.",
+    "Five receiver XYZ positions not available as explicit numeric fields; MATLAB MCOS objects were not decoded.",
+    "No MATLAB execution, new RF, real Remote ID or spoof-detection experiment."
+  ],
+  "code_sha256": "5af086abf17c22a2754db4cc32d25d4c0015310e918f9b5ee5af8e73eba1b578"
+}
