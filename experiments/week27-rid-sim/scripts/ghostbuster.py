@@ -15,15 +15,16 @@ def ranges_from_rss(rss, intercept, exponent):
     return 10. ** ((np.asarray(intercept) - rss) / (10. * exponent))
 
 
-def _lm(positions, ranges, start, iterations=70):
+def _lm(positions, ranges, start, iterations=70, bounds=None):
     """Batched constrained range-NLSE; deterministic, claim-independent starts.
 
-    Bounds describe this synthetic surveillance domain, not a claimed position.
+    Bounds describe a declared surveillance domain, not a claimed position.
+    The default retains the original synthetic domain for backwards compatibility.
     Residuals are in metres. No random noise is added a second time in NLSE.
     """
     x = start.copy()
-    low = np.array([-2000., -2000., 2.001])
-    high = np.array([2500., 2500., 2000.])
+    low, high = (np.array([-2000., -2000., 2.001]), np.array([2500., 2500., 2000.])) if bounds is None else tuple(np.asarray(v,float) for v in bounds)
+    if low.shape!=(3,) or high.shape!=(3,) or not np.isfinite([low,high]).all() or (low>=high).any():raise ValueError('Invalid declared solver bounds')
     x = np.clip(x, low, high)
     damping = np.full(len(x), .01)
     cost_converged = np.zeros(len(x), dtype=bool)
@@ -59,7 +60,7 @@ def _lm(positions, ranges, start, iterations=70):
     return x, (residual ** 2).sum(axis=1), stationary
 
 
-def locate_frames(ranges, receivers, subset_size=4, iterations=70):
+def locate_frames(ranges, receivers, subset_size=4, iterations=70, bounds=None, start_heights=(60.,300.)):
     """Eq.3 all size-s combinations, Eq.4 coordinate-wise median.
 
     Returns estimates and solver diagnostics. Nonfinite input is never imputed.
@@ -85,10 +86,11 @@ def locate_frames(ranges, receivers, subset_size=4, iterations=70):
     estimates, costs, stationary = [], [], []
     # Two starts, independent of claims/truth. Retain minimum range residual;
     # no branch is chosen using the claimed position.
-    for height in (60., 300.):
+    if len(start_heights)!=2 or not np.isfinite(start_heights).all():raise ValueError('Two fixed claim-independent starts required')
+    for height in start_heights:
         x = points.mean(axis=1)
         x[:, 2] = height
-        chunks = [_lm(points[i:i+4096], values[i:i+4096], x[i:i+4096], iterations)
+        chunks = [_lm(points[i:i+4096], values[i:i+4096], x[i:i+4096], iterations,bounds)
                   for i in range(0, len(x), 4096)]
         estimates.append(np.concatenate([c[0] for c in chunks]))
         costs.append(np.concatenate([c[1] for c in chunks]))
@@ -107,7 +109,7 @@ def locate_frames(ranges, receivers, subset_size=4, iterations=70):
         for i in unfinished:
             result = least_squares(
                 lambda x: np.linalg.norm(x-points[i], axis=1)-values[i], best[i],
-                bounds=([-2000.,-2000.,2.001],[2500.,2500.,2000.]),
+                bounds=([-2000.,-2000.,2.001],[2500.,2500.,2000.]) if bounds is None else bounds,
                 max_nfev=500,ftol=1.e-10,xtol=1.e-10,gtol=1.e-8)
             if result.success and np.isfinite(result.x).all():
                 best[i] = result.x
@@ -130,7 +132,7 @@ def locate_frames(ranges, receivers, subset_size=4, iterations=70):
         range_residual_rms_m=np.sqrt(best_cost / subset_size))
 
 
-def window_scores(rss, claims, receivers, intercept, exponent, subset_size=4, iterations=70):
+def window_scores(rss, claims, receivers, intercept, exponent, subset_size=4, iterations=70, bounds=None, start_heights=(60.,300.)):
     """RSS [windows,N,K], claims [windows,N,3], normal-only model parameters.
 
     Missing a required RSS in a window produces NaN/UND. Single observer uses
@@ -153,7 +155,7 @@ def window_scores(rss, claims, receivers, intercept, exponent, subset_size=4, it
         reported = np.linalg.norm(claims[good] - receivers[0], axis=-1)
         scores[good] = np.median(np.abs(ranges[..., 0] - reported), axis=1)
     else:
-        estimate, detail = locate_frames(ranges.reshape(-1, len(receivers)), receivers, subset_size, iterations)
+        estimate, detail = locate_frames(ranges.reshape(-1, len(receivers)), receivers, subset_size, iterations,bounds,start_heights)
         n = rss.shape[1]
         # Eq.5: median of per-message Euclidean errors, NOT error of averaged
         # moving positions, and NOT a median of dB RSS before ranging.

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="648pt" height="396pt" viewBox="0 0 648 396" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-08T23:50:14.877763</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.7, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 396
+L 648 396
+L 648 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 52.04 300.04
+L 519.304 300.04
+L 519.304 39.84
+L 52.04 39.84
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g clip-path="url(#p5ff1238e0d)">
+    <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAABJEAAAKLCAYAAABG0xl1AAARSElEQVR4nO3aMUpDQRhG0SQGDFjZSXZgl1W4mfRuzDW4DSuxCmQJCaTQRrjFQN4U51SveMXwl5dvvTscLyuAGTzvl34BwM33x7tLAFN4etwu/QSAX5u/TwAAAAD4n4gEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAAEBEAgAAAGCcJRIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAARCQAAAAAxlkiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAAEBEAgAAAGCcJRIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAARCQAAAAAxlkiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAAEBEAgAAAGCcJRIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAARCQAAAAAxlkiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAApG3/AnAn5x+nBqbw+XVa+gkAN2+vLy4BTMMSCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAAKT17nC89G8AAADc3ebB0YFpWCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAJCIBAAAAkEQkAAAAAJKIBAAAAEASkQAAAABIIhIAAAAASUQCAAAAIIlIAAAAACQRCQAAAIAkIgEAAACQRCQAAAAAkogEAAAAQBKRAAAAAEgiEgAAAABJRAIAAAAgiUgAAAAAJBEJAAAAgCQiAQAAAJBEJAAAAACSiAQAAABAEpEAAAAASCISAAAAAElEAgAAACCJSAAAAAAkEQkAAACAVbkCbk4PmdHzGuIAAAAASUVORK5CYII=" id="imaged92c6cb215" transform="scale(1 -1) translate(0 -260.4)" x="52.04" y="-39.64" width="467.6" height="260.4"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m3752bc8f74" d="M 0 0
+L 0 3.5
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m3752bc8f74" x="110.448" y="300.04" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="110.448" y="315.520313" transform="rotate(-0 110.448 315.520313)">0%</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m3752bc8f74" x="227.264" y="300.04" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="227.264" y="315.520313" transform="rotate(-0 227.264 315.520313)">10%</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m3752bc8f74" x="344.08" y="300.04" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="344.08" y="315.520313" transform="rotate(-0 344.08 315.520313)">30%</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m3752bc8f74" x="460.896" y="300.04" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="460.896" y="315.520313" transform="rotate(-0 460.896 315.520313)">50%</text>
+     </g>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="285.672" y="330.255625" transform="rotate(-0 285.672 330.255625)">合成欠測率</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="m1ad300bac2" d="M 0 0
+L -3.5 0
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m1ad300bac2" x="52.04" y="83.206667" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: end" x="45.04" y="87.446823" transform="rotate(-0 45.04 87.446823)">1局</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m1ad300bac2" x="52.04" y="169.94" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: end" x="45.04" y="174.180156" transform="rotate(-0 45.04 174.180156)">4局</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m1ad300bac2" x="52.04" y="256.673333" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: end" x="45.04" y="260.91349" transform="rotate(-0 45.04 260.91349)">5局</text>
+     </g>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="20.36" y="169.94" transform="rotate(-90 20.36 169.94)">必要な受信局数</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 52.04 300.04
+L 52.04 39.84
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 519.304 300.04
+L 519.304 39.84
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 52.04 300.04
+L 519.304 300.04
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 52.04 39.84
+L 519.304 39.84
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #ffffff" x="110.448" y="87.870417" transform="rotate(-0 110.448 87.870417)">100.0%</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #ffffff" x="227.264" y="87.870417" transform="rotate(-0 227.264 87.870417)">100.0%</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #ffffff" x="344.08" y="87.870417" transform="rotate(-0 344.08 87.870417)">100.0%</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #ffffff" x="460.896" y="87.870417" transform="rotate(-0 460.896 87.870417)">98.9%</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #ffffff" x="110.448" y="174.60375" transform="rotate(-0 110.448 174.60375)">100.0%</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #ffffff" x="227.264" y="174.60375" transform="rotate(-0 227.264 174.60375)">99.6%</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #16365d" x="344.08" y="174.60375" transform="rotate(-0 344.08 174.60375)">31.5%</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #16365d" x="460.896" y="174.60375" transform="rotate(-0 460.896 174.60375)">0.1%</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #ffffff" x="110.448" y="261.337083" transform="rotate(-0 110.448 261.337083)">100.0%</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #ffffff" x="227.264" y="261.337083" transform="rotate(-0 227.264 261.337083)">93.2%</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #16365d" x="344.08" y="261.337083" transform="rotate(-0 344.08 261.337083)">5.4%</text>
+   </g>
+   <g id="text_21">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #16365d" x="460.896" y="261.337083" transform="rotate(-0 460.896 261.337083)">0.0%</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 13.2px; font-family: 'Hiragino Sans'; text-anchor: middle" x="285.672" y="33.84" transform="rotate(-0 285.672 33.84)">何局・どの欠測率なら、入力が揃うか</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_7">
+    <path d="M 548.508 300.04
+L 561.518 300.04
+L 561.518 39.84
+L 548.508 39.84
+z
+" style="fill: #ffffff"/>
+   </g>
+   <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAACEAAAKKCAYAAACzoDJrAAAEqklEQVR4nO2bwY0ERwwDaYL5p+uHgZGBW3UMqgcrAqHEYffM3f7z738zOsYCkHsPYpiwAGR0vw8LgAUggG2IYWKuJxDEhAUgre2ljckKpgBFYQEIQIQQJiwAaWMubcxHg4kyYQGwAFgA0sZc2piPBhNlwgKQXnSXvvzQgjnXM1BMzPUIYpiwAASwDTFMCKDCAmABSBtzaWPSgnmPBSA9ylHrEOAEswBYANKnY2ljPhpMmAm1MUHr0P02xDAx1xMIYsICkB7lSxuTFUwBisICEIAIIUxYANLGXNqYrGAKUBQWAAtAANsQxMRcjyCGCQtA+mlgaWPSgnmPBSBtTNY6dB9NC0AAIoQwYQEIYBuCmJjrEcQwYQFIG3NpY9KCeY8FwAKQ1vbSxmQFU4CisAAEIEIIExaAtDGXNiYrmAIUhQUgABFCmLAApI25tDFZwRSgKCwAFoAAtiGGiQ9QmRYAC0DulyGKibkeQQwTFoD0K/+Sr8H80WDCTMz1CGKYsACkjbm0MR8NJszEXI8ghgkLQLoO1Do+wEcrC0AaTNY61GD+0WCygvk1mD8aTFYw53oCYUzMvQsLgAUg3/UEopiYBhO1Dt1jAbAApE/H0sZ8NJg0EzoHYcICEMA2xDDxAZJpAbAA5H4ZopiYexcWAAtA+i669CiHBXPaE380mI8GE2XCApD+Z+rSnoAFUz3A/mgwYcGc6xGEMTHXMzBMWAAC2IYYJr6aIK1jAMm0AKTBXLoOlonpbZu0ju++MIUwYQEI4PwSw8QHUGEBsACkPbH0EaUFc65ngJiYexFCmLAApH+wX/qIsoI57YkfvdTQgjnXMzBMWADSK/9SE6xgTnviR++YjwaTZkLnIExYANKPJEuDyQrmAIrCAhCACCFMWADSxlz6izhWMAdQFBYAC0D6kWRpMFnBnPuaEMXEXM/AMGEBSBtzaTBZwZzrCUQx8bUxSesYQDItAOlRDluHzkGYsACktb00mKxgDqAoLADpyw9qHdMfo/1oY8KCOW3MP9qYjwaTZkLnIExYANKXn6XBZAVzAEVhAbAABLANUUzM9QwMExaAALYhiom5noFhwgKQrmPpI/poMGkmdA7ChAUgbcylwXw0mDQTOgdhwgKQNiZsHTqHYmKuZ2CYsAAEsA1RTMz1DAwTFoAAtiGKibmegWHCApCuY+kj+mgwaSZ0DsKEBSAf4J90LQAWgPTpWHqUPxpMmom5noFhwgIQwDZEMTHXMzBMWADSdSwB/O6IkQkLQBrMpSYeDeajJlAmLADpAYZax/Si+6MmHg0my4R65SetY9qYP2ri0WA+agJlwgKQHmBLG5MVzOlR/qPrYJlQr/ykdUx74kdNPBrMR02gTFgA0gNsaWOygjk9yn/UxKPBZJlQX35I65g25o+ug2VCDSZrHd/1DBgTcz0Dw4QFIA3m0mA+GsxHTaBMWADSA2zp2fFoMGkmvusZGCYsAGljwtbxXc+AMTHXMzBMWADSYC4N5qPBhJn42pikdUyP8j9qghbMuZ4BY+K7noFhwgKQBhO2ju96BoyJuZ6BYcICkAZzaTAfDSbNxFzPwDBhAUgbc2kwHw3mA2Hif4jgHdB6lPdVAAAAAElFTkSuQmCC" id="image3ce07b34bd" transform="scale(1 -1) translate(0 -260)" x="548.4" y="-40" width="13.2" height="260"/>
+   <g id="matplotlib.axis_3"/>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_4">
+     <g id="line2d_8">
+      <defs>
+       <path id="m53496a7aab" d="M 0 0
+L 3.5 0
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m53496a7aab" x="561.518" y="300.04" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: start" x="568.518" y="304.280156" transform="rotate(-0 568.518 304.280156)">0</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m53496a7aab" x="561.518" y="248" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_24">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: start" x="568.518" y="252.240156" transform="rotate(-0 568.518 252.240156)">20</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m53496a7aab" x="561.518" y="195.96" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_25">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: start" x="568.518" y="200.200156" transform="rotate(-0 568.518 200.200156)">40</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m53496a7aab" x="561.518" y="143.92" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_26">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: start" x="568.518" y="148.160156" transform="rotate(-0 568.518 148.160156)">60</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m53496a7aab" x="561.518" y="91.88" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_27">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: start" x="568.518" y="96.120156" transform="rotate(-0 568.518 96.120156)">80</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m53496a7aab" x="561.518" y="39.84" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_28">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: start" x="568.518" y="44.080156" transform="rotate(-0 568.518 44.080156)">100</text>
+     </g>
+    </g>
+    <g id="text_29">
+     <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="603.690969" y="169.94" transform="rotate(-90 603.690969 169.94)">5秒窓に5候補が揃う割合 [%]</text>
+    </g>
+   </g>
+   <g id="LineCollection_1"/>
+   <g id="patch_8">
+    <path d="M 548.508 300.04
+L 555.013 300.04
+L 561.518 300.04
+L 561.518 39.84
+L 555.013 39.84
+L 548.508 39.84
+L 548.508 300.04
+z
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+  </g>
+  <g id="text_30">
+   <text style="font-size: 9px; font-family: 'Hiragino Sans'; text-anchor: start; fill: #444444" x="38.88" y="390.06" transform="rotate(-0 38.88 390.06)">実測時刻＋合成欠測。時刻幅200ms、評価54窓。欠測ありは20マスク平均。検出率ではなく入力成立率。</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p5ff1238e0d">
+   <rect x="52.04" y="39.84" width="467.264" height="260.2"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,6 @@
+k,decision_windows,observations_per_window,rss_columns,claim_components,shape_compatible,receiver_geometry_available,actual_ghostbuster_scoring_executed
+1,54,5,1,3,True,False,False
+2,54,5,2,3,True,False,False
+3,54,5,3,3,True,False,False
+4,54,5,4,3,True,False,False
+5,54,5,5,3,True,False,False

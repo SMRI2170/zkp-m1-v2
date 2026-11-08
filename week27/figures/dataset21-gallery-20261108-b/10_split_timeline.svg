@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="252pt" viewBox="0 0 864 252" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-08T23:50:15.493920</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.7, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 252
+L 864 252
+L 864 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 15.57 174.625
+L 852.12 174.625
+L 852.12 35.52
+L 15.57 35.52
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="PolyCollection_1">
+    <defs>
+     <path id="m17679bf197" d="M 15.57 -105.196
+L 15.57 -188.659
+L 350.19 -188.659
+L 350.19 -105.196
+z
+" style="stroke: #ffffff"/>
+    </defs>
+    <g clip-path="url(#p506bd179a0)">
+     <use xlink:href="#m17679bf197" x="0" y="252" style="fill: #16365d; stroke: #ffffff"/>
+    </g>
+   </g>
+   <g id="PolyCollection_2">
+    <defs>
+     <path id="m21973fe11e" d="M 350.19 -105.196
+L 350.19 -188.659
+L 392.0175 -188.659
+L 392.0175 -105.196
+z
+" style="stroke: #ffffff"/>
+    </defs>
+    <g clip-path="url(#p506bd179a0)">
+     <use xlink:href="#m21973fe11e" x="0" y="252" style="fill: #dedfe3; stroke: #ffffff"/>
+    </g>
+   </g>
+   <g id="PolyCollection_3">
+    <defs>
+     <path id="m0c7d7bface" d="M 392.0175 -105.196
+L 392.0175 -188.659
+L 559.3275 -188.659
+L 559.3275 -105.196
+z
+" style="stroke: #ffffff"/>
+    </defs>
+    <g clip-path="url(#p506bd179a0)">
+     <use xlink:href="#m0c7d7bface" x="0" y="252" style="fill: #288879; stroke: #ffffff"/>
+    </g>
+   </g>
+   <g id="PolyCollection_4">
+    <defs>
+     <path id="m0920ac8c75" d="M 559.3275 -105.196
+L 559.3275 -188.659
+L 601.155 -188.659
+L 601.155 -105.196
+z
+" style="stroke: #ffffff"/>
+    </defs>
+    <g clip-path="url(#p506bd179a0)">
+     <use xlink:href="#m0920ac8c75" x="0" y="252" style="fill: #dedfe3; stroke: #ffffff"/>
+    </g>
+   </g>
+   <g id="PolyCollection_5">
+    <defs>
+     <path id="mea1905f909" d="M 601.155 -105.196
+L 601.155 -188.659
+L 852.12 -188.659
+L 852.12 -105.196
+z
+" style="stroke: #ffffff"/>
+    </defs>
+    <g clip-path="url(#p506bd179a0)">
+     <use xlink:href="#mea1905f909" x="0" y="252" style="fill: #db7e36; stroke: #ffffff"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m313ac28926" d="M 0 0
+L 0 3.5
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m313ac28926" x="15.57" y="174.625" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="15.57" y="190.105312" transform="rotate(-0 15.57 190.105312)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m313ac28926" x="197.626187" y="174.625" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="197.626187" y="190.105312" transform="rotate(-0 197.626187 190.105312)">200</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m313ac28926" x="379.682374" y="174.625" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="379.682374" y="190.105312" transform="rotate(-0 379.682374 190.105312)">400</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m313ac28926" x="561.738561" y="174.625" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="561.738561" y="190.105312" transform="rotate(-0 561.738561 190.105312)">600</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m313ac28926" x="743.794748" y="174.625" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="743.794748" y="190.105312" transform="rotate(-0 743.794748 190.105312)">800</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="433.845" y="205.050313" transform="rotate(-0 433.845 205.050313)">LW1先頭RSSからの経過時間 [s]</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="patch_3">
+    <path d="M 15.57 174.625
+L 852.12 174.625
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Hiragino Sans'; fill: #ffffff" transform="translate(172.88 102.189844)">学習</text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Hiragino Sans'; fill: #ffffff" transform="translate(170.655781 113.784844)">40%</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Hiragino Sans'; fill: #333333" transform="translate(361.10375 102.189844)">隔離</text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Hiragino Sans'; fill: #333333" transform="translate(362.584219 113.784844)">5%</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Hiragino Sans'; fill: #ffffff" transform="translate(465.6725 102.189844)">校正</text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Hiragino Sans'; fill: #ffffff" transform="translate(463.448281 113.784844)">20%</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Hiragino Sans'; fill: #333333" transform="translate(570.24125 102.189844)">隔離</text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Hiragino Sans'; fill: #333333" transform="translate(571.721719 113.784844)">5%</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Hiragino Sans'; fill: #ffffff" transform="translate(716.6375 102.189844)">評価</text>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Hiragino Sans'; fill: #ffffff" transform="translate(714.413281 113.784844)">30%</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 13.2px; font-family: 'Hiragino Sans'; text-anchor: middle" x="433.845" y="29.52" transform="rotate(-0 433.845 29.52)">時間順の分割：同じ観測を学習と評価へ混ぜない</text>
+   </g>
+  </g>
+  <g id="text_13">
+   <text style="font-size: 9px; font-family: 'Hiragino Sans'; fill: #444444" transform="translate(51.84 238.048875)">同じ1飛行の時系列分割。各隔離区間は約46秒。隔離はRF欠測ではなく評価手順で、別飛行への一般化を確認したものではな</text>
+   <text style="font-size: 9px; font-family: 'Hiragino Sans'; fill: #444444" transform="translate(51.84 248.22)">い。</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p506bd179a0">
+   <rect x="15.57" y="35.52" width="836.55" height="139.105"/>
+  </clipPath>
+ </defs>
+</svg>
