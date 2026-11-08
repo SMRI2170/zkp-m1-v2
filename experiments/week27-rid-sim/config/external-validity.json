@@ -1,0 +1,280 @@
+{
+  "dataset_source": "simulation",
+  "base_commit": "48bd62428751ea22a714d1d2b1c23008b727b126",
+  "cells": [
+    {
+      "id": "reference",
+      "layout": "baseline",
+      "direction": "x",
+      "profile": "free",
+      "schedule": "round_robin",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "layout-biased",
+      "layout": "biased",
+      "direction": "x",
+      "profile": "free",
+      "schedule": "round_robin",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "layout-irregular",
+      "layout": "irregular",
+      "direction": "x",
+      "profile": "free",
+      "schedule": "round_robin",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "direction-toward",
+      "layout": "baseline",
+      "direction": "toward",
+      "profile": "free",
+      "schedule": "round_robin",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "direction-away",
+      "layout": "baseline",
+      "direction": "away",
+      "profile": "free",
+      "schedule": "round_robin",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "direction-tangent",
+      "layout": "baseline",
+      "direction": "tangent",
+      "profile": "free",
+      "schedule": "round_robin",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "direction-vertical",
+      "layout": "baseline",
+      "direction": "vertical",
+      "profile": "free",
+      "schedule": "round_robin",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "direction-equidistant",
+      "layout": "baseline",
+      "direction": "equidistant",
+      "profile": "free",
+      "schedule": "round_robin",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "private-schedule",
+      "layout": "baseline",
+      "direction": "x",
+      "profile": "free",
+      "schedule": "private_random",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "profile-alpha",
+      "layout": "baseline",
+      "direction": "x",
+      "profile": "alpha",
+      "schedule": "round_robin",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "profile-tilt",
+      "layout": "baseline",
+      "direction": "x",
+      "profile": "tilt",
+      "schedule": "round_robin",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "profile-bias",
+      "layout": "baseline",
+      "direction": "x",
+      "profile": "bias",
+      "schedule": "round_robin",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "profile-shadow",
+      "layout": "baseline",
+      "direction": "x",
+      "profile": "shadow",
+      "schedule": "round_robin",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "profile-two_ray",
+      "layout": "baseline",
+      "direction": "x",
+      "profile": "two_ray",
+      "schedule": "round_robin",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "bound-3",
+      "layout": "baseline",
+      "direction": "x",
+      "profile": "free",
+      "schedule": "round_robin",
+      "bound_db": 3,
+      "attack_n": 2
+    },
+    {
+      "id": "bound-20",
+      "layout": "baseline",
+      "direction": "x",
+      "profile": "free",
+      "schedule": "round_robin",
+      "bound_db": 20,
+      "attack_n": 2
+    },
+    {
+      "id": "interaction-shadow",
+      "layout": "irregular",
+      "direction": "equidistant",
+      "profile": "shadow",
+      "schedule": "private_random",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "interaction-biased-alpha",
+      "layout": "biased",
+      "direction": "toward",
+      "profile": "alpha",
+      "schedule": "round_robin",
+      "bound_db": 3,
+      "attack_n": 2
+    },
+    {
+      "id": "interaction-irregular-ray",
+      "layout": "irregular",
+      "direction": "vertical",
+      "profile": "two_ray",
+      "schedule": "round_robin",
+      "bound_db": 20,
+      "attack_n": 2
+    },
+    {
+      "id": "interaction-tilt-private",
+      "layout": "irregular",
+      "direction": "tangent",
+      "profile": "tilt",
+      "schedule": "private_random",
+      "bound_db": 10,
+      "attack_n": 2
+    },
+    {
+      "id": "alpha-known-exponent",
+      "layout": "baseline",
+      "direction": "x",
+      "profile": "alpha",
+      "schedule": "round_robin",
+      "bound_db": 10,
+      "attack_n": 2.4
+    }
+  ],
+  "baseline_evaluation_seeds": [
+    701,
+    702,
+    703,
+    704,
+    705,
+    706,
+    707,
+    708,
+    709,
+    710,
+    711,
+    712,
+    713,
+    714,
+    715,
+    716,
+    717,
+    718,
+    719,
+    720
+  ],
+  "factor_evaluation_seeds": [
+    701,
+    702,
+    703,
+    704,
+    705
+  ],
+  "baseline_calibration_seeds": [
+    601,
+    602,
+    603,
+    604,
+    605,
+    606,
+    607,
+    608,
+    609,
+    610
+  ],
+  "factor_calibration_seeds": [
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "training_seed": 501,
+  "packets": 20,
+  "reference_training_packets": 1000,
+  "factor_training_packets": 200,
+  "offsets_m": [
+    30,
+    100
+  ],
+  "nominal_band_dbm": [
+    10,
+    20
+  ],
+  "phy_limits_dbm": [
+    -80,
+    23
+  ],
+  "gap_s": 10,
+  "budget": {
+    "raw_total_max_mib": 560,
+    "public_max_mib": 64,
+    "reserve_free_gib": 8,
+    "max_build_jobs": 2,
+    "max_native_parallel": 1,
+    "per_scene_seconds": 120,
+    "per_scene_max_mib": 128
+  },
+  "seed_units": {
+    "flight": "Public start-angle/nominal seed, paired across all factors",
+    "schedule": "Private retained 256-bit experiment key; HMAC per flight seed, never passed to blind attack",
+    "environment": "Separate field seed domains: training7501, calibration7600+flightseed, evaluation7700+flightseed; not city/day measurements"
+  },
+  "limits": [
+    "One-factor comparisons plus five declared interactions, not full Cartesian sweep",
+    "Five flight/environment blocks per non-reference cell: wide uncertainty, no independent-city claim",
+    "No UI or ZKP",
+    "NLOS obstacles and field multipath remain outside claims unless independently verified"
+  ]
+}

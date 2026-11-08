@@ -1,0 +1,10 @@
+{
+  "status": "PR6A_GEOMETRY_SMOKE_PASSED",
+  "dataset_source": "simulation",
+  "stage": "PR6a",
+  "planned_cases": 17,
+  "completed_cases": 17,
+  "total_new_phy_tx": 340,
+  "total_rx": 1697,
+  "private_schedule_key_commitment": "4c9f12b6d9d03395c3d131a18d780be73893b99a6eb9c8d3e9f27ebff26d5fba"
+}
