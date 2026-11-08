@@ -1,0 +1,91 @@
+{
+  "status": "INPUT_EXPERIMENT_COMPLETE_GEOMETRIC_EVALUATION_NOT_RUN",
+  "raw_source": "D1_real_measured_RSS",
+  "new_rf_runs": 0,
+  "d3_used": false,
+  "geometric_detection_executed": false,
+  "source": {
+    "source": "D1_measured_RSS_GPS",
+    "duration_s": 919.0019998550415,
+    "coordinate_errors": [
+      {
+        "station": "LW1",
+        "interpolation_max_error": {
+          "mX": 1.4210854715202004e-14,
+          "mY": 7.105427357601002e-15,
+          "mZ": 7.105427357601002e-15
+        }
+      },
+      {
+        "station": "LW2",
+        "interpolation_max_error": {
+          "mX": 1.4210854715202004e-14,
+          "mY": 7.105427357601002e-15,
+          "mZ": 7.105427357601002e-15
+        }
+      },
+      {
+        "station": "LW3",
+        "interpolation_max_error": {
+          "mX": 1.4210854715202004e-14,
+          "mY": 7.105427357601002e-15,
+          "mZ": 7.105427357601002e-15
+        }
+      },
+      {
+        "station": "LW4",
+        "interpolation_max_error": {
+          "mX": 1.4210854715202004e-14,
+          "mY": 7.105427357601002e-15,
+          "mZ": 7.105427357601002e-15
+        }
+      },
+      {
+        "station": "LW5",
+        "interpolation_max_error": {
+          "mX": 1.4210854715202004e-14,
+          "mY": 7.105427357601002e-15,
+          "mZ": 7.105427357601002e-15
+        }
+      }
+    ],
+    "independent_flights": 1,
+    "split_fractions": {
+      "train": [
+        0,
+        0.4
+      ],
+      "calibrate": [
+        0.45,
+        0.65
+      ],
+      "evaluate": [
+        0.7,
+        1
+      ]
+    },
+    "embargo_fraction": 0.05,
+    "raw_rows": 16618
+  },
+  "geometry_gate": {
+    "status": "MISSING_RECEIVER_METADATA",
+    "reason": "Five verified receiver positions and shared vertical reference are required"
+  },
+  "availability_cells": 210,
+  "status_rows": 80,
+  "executed_detection_cells": 0,
+  "normal_models": [],
+  "synthetic_position_input_cases": 20,
+  "targeted_power_compensation_generated": false,
+  "config_sha256": "07a8190dcec2f30a2846cda601cf524013b352989be607f2fbbd964722dd5d0e",
+  "code_sha256": {
+    "run_dataset21_eval.py": "63e0134b56b96f525ffc0c059c6915822a29316fab0d3c5e032110a34d1c47d2",
+    "dataset21_adapter.py": "11c4992671578bfc71bc3c70294d82b16e36c8f95649eb3f71eee6eb354e8b99"
+  },
+  "limitations": [
+    "One real flight; stochastic missing-mask seeds do not create independent flights",
+    "Candidate availability is not detector eligibility, TPR or FPR",
+    "Normal synthetic RID claims copy measured GPS; this is not received RID payload data",
+    "Power perturbations/missingness/extra observation lag are synthetic; native RSS is measured"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "source": "Dataset-21 D1 real measured RSS; D3 is never an evaluation input",
+  "claim_source": "Synthetic normal RID claims constructed from interpolated measured UAV GPS; not captured RID payloads",
+  "offsets_m": [20,50,100,200],
+  "receiver_counts": [1,2,3,4,5],
+  "power_conditions": ["unchanged","constant_plus6db","sinusoid_6db_period2s","reference0_compensation_clip10db_n2"],
+  "missing_rates": [0,0.1,0.3,0.5],
+  "observation_lags_s": [0,0.05,0.2,1,10,3600],
+  "time_span_limits_s": [0.02,0.1,0.2,0.5],
+  "missing_seeds": [801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820],
+  "packets_per_window": 5,
+  "decision_window_s": 5,
+  "minimum_normal_calibration_windows": 20,
+  "threshold_policy": "q95_normal",
+  "solver_bounds_m": [[-5000,-5000,-500],[5000,5000,500]],
+  "solver_start_heights_m": [60,300],
+  "nominal_reference": {"k":5,"max_span_s":0.2,"lag_s":0,"missing_rate":0},
+  "sparse_availability_design": ["K1..5 x span0.02/0.1/0.2/0.5, lag0 and no missing","K1/4/5 x missing0.1/0.3/0.5, span0.2 and lag0","K4/5 x lag0.05/0.2/1/10/3600, span0.2 and no missing"],
+  "split_fractions": {"train":[0,0.4],"calibrate":[0.45,0.65],"evaluate":[0.7,1]},
+  "geometric_evaluation_gate": "Verified receiver positions and shared vertical reference required; otherwise FPR/TPR are null, NOT_RUN, not zero",
+  "multi_receiver_regime": "Nearest-time static-position approximation; NOT same-transmission multi-receiver RSS",
+  "limitations": ["One actual flight; synthetic missing-mask seeds are not independent flights","K2/K3 unsupported by existing GhostBuster 3D implementation","Receiver latitude/longitude or height must not be guessed from a plot","No real transmitter power modification; dB perturbations are synthetic only"]
+}

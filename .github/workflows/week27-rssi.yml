@@ -37,3 +37,17 @@ jobs:
         run: python experiments/week27-data-audit/audit_snr_normal_model.py
       - name: Verify Dataset-21 local-file audit evidence (raw GPS/RSS not read)
         run: python experiments/week27-data-audit/audit_aerpaw21_results.py week27/results/dataset21-local-audit-20261108-b
+      - name: Verify Dataset-21 input experiment and NOT_RUN detection gates
+        run: python experiments/week27-data-audit/audit_dataset21_eval_results.py week27/results/dataset21-eval-20261108-e
+  dataset21-adapter-numerics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy==2.2.6 scipy==1.16.3
+      - name: Test numerical adapter including synthetic D1 and GhostBuster fixtures
+        run: python -m unittest discover -s experiments/week27-data-audit -p test_dataset21_adapter.py -v
