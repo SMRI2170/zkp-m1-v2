@@ -1,0 +1,51 @@
+{
+  "time_utc": "2026-11-08T05:28:04.547644+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "stage": "build",
+  "disk_free_bytes": 25380511744,
+  "commands": [
+    {
+      "argv": [
+        "${REPO}/.cache/issue70/python/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "${REPO}/experiments/week27-rid-sim/requirements-smoke.txt"
+      ],
+      "exit_code": 0,
+      "log": "python-install.log",
+      "sha256": "23b124ef002c084b96f848607767e5026d6dbc68a2e588261295d0e6abc863ff"
+    },
+    {
+      "argv": [
+        "bash",
+        "${REPO}/experiments/week27-rid-sim/scripts/build_headless.sh",
+        "${REPO}/.cache/issue70",
+        "2"
+      ],
+      "exit_code": 0,
+      "log": "headless-build.log",
+      "sha256": "3270df32f426e7ff4e0c9dcd6885949325f4c1f62fcdd74509bd5a2b240e076d"
+    }
+  ],
+  "status": "BUILD_SUCCEEDED_SMOKE_NOT_RUN",
+  "simulation": "NOT_RUN",
+  "jobs": 2,
+  "tools": {
+    "clang++": "/usr/bin/clang++",
+    "pkg-config": "/opt/homebrew/bin/pkg-config",
+    "bison": "/usr/bin/bison",
+    "flex": "/usr/bin/flex",
+    "make": "/usr/bin/make",
+    "gmake": "/opt/homebrew/bin/gmake",
+    "python3.12": "/opt/homebrew/bin/python3.12"
+  },
+  "memory": {
+    "total_bytes": 17179869184,
+    "free_percentage": 47,
+    "swap_usage": "total = 6144.00M  used = 5797.81M  free = 346.19M  (encrypted)"
+  },
+  "upstream_sha": "3cf9474fe960955556de118065591915a7be2bc1"
+}

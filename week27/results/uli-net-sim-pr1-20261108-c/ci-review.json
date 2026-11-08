@@ -1,0 +1,67 @@
+{
+  "checked_at_utc": "2026-11-08T05:40:06.460341+00:00",
+  "code_commit": "d01cc3e67ee0969b77454d20bd71dea9584650e4",
+  "scope": "CI adapter/legacy checks, not simulator execution",
+  "runs": [
+    {
+      "run_id": 42451416173,
+      "job_id": 128641238138,
+      "event": "pull_request",
+      "workflow": "Week27 RSSI audit",
+      "conclusion": "success",
+      "logs_reviewed": true,
+      "log_sha256": "55c5b1c0c922e0efa88957628fa168a580336c0b47c7cf43c56f034e62f6667b",
+      "url": "https://github.com/SMRI2170/zkp-m1-v2/actions/runs/42451416173"
+    },
+    {
+      "run_id": 42451416287,
+      "job_id": 128641238394,
+      "event": "pull_request",
+      "workflow": "Week27 RID simulator adapter",
+      "conclusion": "success",
+      "logs_reviewed": true,
+      "log_sha256": "d2194b50dad0d1fa2bb1601bd280c372183198ce25bb51d4df95e3d6e873e99a",
+      "url": "https://github.com/SMRI2170/zkp-m1-v2/actions/runs/42451416287"
+    },
+    {
+      "run_id": 42451416188,
+      "job_id": 128641238137,
+      "event": "pull_request",
+      "workflow": "Verify",
+      "conclusion": "success",
+      "logs_reviewed": true,
+      "log_sha256": "082c436e306a2750e3ef8b0a5a6c0f5a06abd7aeff6bd696c7aeba6504b70728",
+      "url": "https://github.com/SMRI2170/zkp-m1-v2/actions/runs/42451416188"
+    },
+    {
+      "run_id": 42451394665,
+      "job_id": 128641175246,
+      "event": "push",
+      "workflow": "Week27 RID simulator adapter",
+      "conclusion": "success",
+      "logs_reviewed": true,
+      "log_sha256": "a54736d777de4d807df24a3b13fef7dcaf4e5e8eeefeab7da65987ccaff049e9",
+      "url": "https://github.com/SMRI2170/zkp-m1-v2/actions/runs/42451394665"
+    },
+    {
+      "run_id": 42451394590,
+      "job_id": 128641175134,
+      "event": "push",
+      "workflow": "Verify",
+      "conclusion": "success",
+      "logs_reviewed": true,
+      "log_sha256": "3b4cf35bbe2f1c5bd554ce94b4a349cbb7c6d4af059923a23f458cd6c1deaf20",
+      "url": "https://github.com/SMRI2170/zkp-m1-v2/actions/runs/42451394590"
+    },
+    {
+      "run_id": 42451394547,
+      "job_id": 128641175280,
+      "event": "push",
+      "workflow": "Week27 RSSI audit",
+      "conclusion": "success",
+      "logs_reviewed": true,
+      "log_sha256": "c576046067d5790ecd52be635f4ae83c9ada0798f3234f6756d54359e97ca581",
+      "url": "https://github.com/SMRI2170/zkp-m1-v2/actions/runs/42451394547"
+    }
+  ]
+}

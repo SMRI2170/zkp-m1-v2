@@ -1,0 +1,10 @@
+# Python 3.12. Full upstream ML/UI dependencies are intentionally not required
+# by this no-detector smoke. This is not upstream's full uv environment.
+numpy==2.2.6
+scipy==1.15.3
+pandas==2.3.3
+pyarrow==23.0.1
+pybind11==3.0.1
+python-dateutil==4.0.0
+pytz==2026.6
+tzdata==2026.6

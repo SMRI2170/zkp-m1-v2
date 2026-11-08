@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PR1 simulated Beacon observation / TX-receiver opportunity",
+  "type": "object",
+  "required": ["dataset_source", "case", "seed", "observer_regime", "phy_model", "score", "decision", "decision_reason", "tx_event_id", "tx_node_id", "tx_time", "true_tx_xyz", "claimed_xyz", "tx_power_dbm_truth_only", "is_spoofed", "rx_event_id", "rx_time", "rx_node_id", "rx_signal_start_time", "rx_xyz", "rx_claimed_xyz", "serial", "claimed_timestamp", "rssi_dbm", "delivery", "delivered"],
+  "additionalProperties": false,
+  "$defs": {
+    "xyz": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
+    "nullable_xyz": {"anyOf": [{"$ref": "#/$defs/xyz"}, {"type": "null"}]}
+  },
+  "properties": {
+    "dataset_source": {"const": "simulation"},
+    "case": {"enum": ["Normal", "StaticSpoof"]},
+    "seed": {"type": "integer"},
+    "observer_regime": {"const": "same_packet_multisite_comparison_only"},
+    "phy_model": {"type": "string"},
+    "score": {"type": "null"},
+    "decision": {"const": "UNDETERMINED"},
+    "decision_reason": {"type": "string"},
+    "tx_event_id": {"type": "integer"},
+    "tx_node_id": {"type": "integer"},
+    "tx_time": {"type": "number", "description": "Simulator seconds at management enqueue"},
+    "true_tx_xyz": {"$ref": "#/$defs/xyz"},
+    "claimed_xyz": {"$ref": "#/$defs/xyz"},
+    "tx_power_dbm_truth_only": {"type": "number"},
+    "is_spoofed": {"enum": [0, 1]},
+    "rx_event_id": {"type": ["string", "null"]},
+    "rx_time": {"type": ["number", "null"]},
+    "rx_node_id": {"type": "integer"},
+    "rx_signal_start_time": {"type": ["number", "null"]},
+    "rx_xyz": {"$ref": "#/$defs/nullable_xyz"},
+    "rx_claimed_xyz": {"$ref": "#/$defs/nullable_xyz"},
+    "serial": {"type": ["integer", "null"]},
+    "claimed_timestamp": {"type": ["number", "null"], "description": "Payload milliseconds; not a physical TX clock"},
+    "rssi_dbm": {"type": ["number", "null"]},
+    "delivery": {"enum": ["RECEIVED", "NOT_OBSERVED"]},
+    "delivered": {"type": "boolean"}
+  },
+  "allOf": [{
+    "if": {"properties": {"delivered": {"const": false}}},
+    "then": {"properties": {"rssi_dbm": {"type": "null"}, "delivery": {"const": "NOT_OBSERVED"}, "rx_time": {"type": "null"}}},
+    "else": {"properties": {"delivery": {"const": "RECEIVED"}, "rx_time": {"type": "number"}, "rx_event_id": {"type": "string"}}}
+  }]
+}

@@ -1,0 +1,13 @@
+{
+  "dataset_source": "simulation",
+  "seed": 2170,
+  "duration_s": 4,
+  "cases": ["Normal", "StaticSpoof"],
+  "tx_host": 1,
+  "rx_hosts": [0, 2],
+  "observer_regime": "same_packet_multisite_comparison_only",
+  "phy_model": "INET Ieee80211DimensionalRadioMedium; DipoleAntenna; background noise -100dBm; fixed conducted TX power 13dBm",
+  "decision": "UNDETERMINED",
+  "detector": null,
+  "purpose": "Verify communication, existing spoofer and event provenance, not FPR/TPR"
+}
