@@ -1,0 +1,25 @@
+{
+  "sha256": {
+    "availability.csv": "b4cceffbaa89fb2aa3621a7f10e5689e5a8df64475d738eb2f3a459bfc0ebc01",
+    "config.json": "d732243f7c749a7701b0a1f214d97008693bae05b8fdbc816b0561e012801951",
+    "detection-distance.csv": "40f0592b22734d4e38dcc3b0603f62cec408f1f59caaf4eb927fabbf8c97b8cf",
+    "execution.json": "2cb91da61862dcc835900f4cf903589171b7d84857ca383a7f6f311f7123e737",
+    "execution.log": "123b5019e33e9620072678b6d11caac68300eb7b8661067003b5af05c12388ad",
+    "figures/01_measured_rss.png": "96c1d8f5768f0cab8c12f8732ec2ce6abd58b10dea2f2817623cc466c6063f6f",
+    "figures/01_measured_rss.svg": "7448d631433f201c95b140c446ab65850ccb66ebbdefa30dd832387c74208ea9",
+    "figures/02_receiver_availability.png": "24575af8c4ce1788544e0833f199c669654f2642af55e884875d6d10093de95e",
+    "figures/02_receiver_availability.svg": "03b556f75452c45fefdd8d492fd843dd3996381c3777d6d9053454e08901cb4f",
+    "figures/03_missingness.png": "8180bdc77958cec70df30df92139e942e5e4e93c468ec639fd68d235b9c7585a",
+    "figures/03_missingness.svg": "70f9c435a0e5870211478852541bb91a50fd0de8f064559080db3f440a0bbcbc",
+    "figures/04_observation_lag.png": "bad853b7eeb6e968b678af5af48b81bbffceb82f0e5b8b71267acfa2f506446b",
+    "figures/04_observation_lag.svg": "c1d74e197de845e69c86a76d3f2514bf6d85aaf3cdef9d4c299ae9bbc5f9391e",
+    "figures/position_detection_graph_NOT_GENERATED.md": "3b29a8175d04c434bf68a14c00a2ae4ffc2a311b4c4141cb9b4e59a1c941b3b9",
+    "geometry-investigation.json": "afdd05006c177c38c93c0e418bdf716c57887e5ab6283d3abb01a3ef6a9dd4ac",
+    "input-shapes.csv": "2e472646e39b235556fe7066aff4aa9a0946b05bf17eb40846f711500a24aaaf",
+    "metrics.csv": "20084a21d66bef72262bedaae2974abf405c1b55afd0f332c8a4132d59de8329",
+    "rss-time-blocks.csv": "4aca6296ea9c2ac16def721b5c8863a74c3773054cae500cee585a8f22954eac",
+    "split-counts.csv": "55eeb8446b82d2c07cc7dd8e8f5414ff83f9defe50fbd9b6f36d02a2cfc12755",
+    "summary.json": "123b5019e33e9620072678b6d11caac68300eb7b8661067003b5af05c12388ad",
+    "synthetic-input-checks.csv": "feae4be88e3383a67ebbeaebbae0df4666b4792c45196957de8222661f8e84d8"
+  }
+}

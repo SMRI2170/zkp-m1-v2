@@ -1,0 +1,36 @@
+{
+  "upstream": "https://github.com/mathworks/data-explorer-core",
+  "commit": "dd49527c70d2aef0e0947ee4b8e9ed2b347a5ba0",
+  "license": "BSD-3-Clause",
+  "decoder": "MCOS read-only API; MATLAB not executed",
+  "d1_lw1_classes": [
+    "arrayConfig",
+    "rxsite",
+    "siteviewer"
+  ],
+  "d1_lw2_to_lw5": "NO_MCOS_HEAP",
+  "candidate_rxsite_name": "Site 5",
+  "candidate_lat_lon_matches_interpolated_uav_position": true,
+  "candidate_receiver_identity_verified": false,
+  "receiver_geometry_accepted": false,
+  "d2_opaque_classes": [],
+  "d3_opaque_classes": [
+    "string",
+    "string",
+    "string"
+  ],
+  "dataset12_location_filename": "LW1-5_locations.txt",
+  "range_requests": [
+    {
+      "url": "https://datadryad.org/api/v2/files/3965303/download",
+      "error": "HTTPError: HTTP Error 401: Unauthorized"
+    },
+    {
+      "url": "https://datadryad.org/downloads/file_stream/3965303",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    }
+  ],
+  "official_map_result": "HTTP404",
+  "thesis_result": "Response was HTML, not PDF; not used as a coordinate source",
+  "raw_coordinates_published": false
+}

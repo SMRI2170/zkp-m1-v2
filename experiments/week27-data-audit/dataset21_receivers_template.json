@@ -1,0 +1,14 @@
+{
+  "horizontal_crs": "EPSG:4326",
+  "vertical_reference": "shared_local_m",
+  "receiver_positions_verified": false,
+  "uav_z_same_reference_verified": false,
+  "provenance": "Fill with the actual campaign receiver-coordinate source and documented transform to Dataset-21 mZ. A figure or guessed height is insufficient.",
+  "receivers": {
+    "LW1": {"longitude":null,"latitude":null,"z_same_reference_m":null},
+    "LW2": {"longitude":null,"latitude":null,"z_same_reference_m":null},
+    "LW3": {"longitude":null,"latitude":null,"z_same_reference_m":null},
+    "LW4": {"longitude":null,"latitude":null,"z_same_reference_m":null},
+    "LW5": {"longitude":null,"latitude":null,"z_same_reference_m":null}
+  }
+}
