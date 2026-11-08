@@ -141,10 +141,10 @@ NLSEは申告位置や真位置を初期値にせず、局の重心と高さ60/3
 ## 再現と成果物
 
 ```sh
-.cache/issue77/python/bin/python experiments/week27-rid-sim/scripts/run_ghostbuster.py --raw-dir captures/ghostbuster-NEW --out week28/results/ghostbuster-NEW
-.cache/issue77/python/bin/python experiments/week27-rid-sim/scripts/replay_ghostbuster.py --source captures/issue75-full-20261108-a --out week28/results/ghostbuster-native-NEW
-.cache/issue77/python/bin/python experiments/week27-rid-sim/scripts/ghostbuster_counterfactual.py --study week28/results/ghostbuster-NEW --out week28/results/ghostbuster-counterfactual-NEW
-.cache/issue77/python/bin/python experiments/week27-rid-sim/scripts/plot_ghostbuster.py --synthetic week28/results/ghostbuster-NEW --native week28/results/ghostbuster-native-NEW --counterfactual week28/results/ghostbuster-counterfactual-NEW --out week28/figures/ghostbuster-NEW
+.cache/issue77/python/bin/python experiments/week27-rid-sim/scripts/run_ghostbuster.py --raw-dir captures/ghostbuster-NEW --out week27/results/ghostbuster-NEW
+.cache/issue77/python/bin/python experiments/week27-rid-sim/scripts/replay_ghostbuster.py --source captures/issue75-full-20261108-a --out week27/results/ghostbuster-native-NEW
+.cache/issue77/python/bin/python experiments/week27-rid-sim/scripts/ghostbuster_counterfactual.py --study week27/results/ghostbuster-NEW --out week27/results/ghostbuster-counterfactual-NEW
+.cache/issue77/python/bin/python experiments/week27-rid-sim/scripts/plot_ghostbuster.py --synthetic week27/results/ghostbuster-NEW --native week27/results/ghostbuster-native-NEW --counterfactual week27/results/ghostbuster-counterfactual-NEW --out week27/figures/ghostbuster-NEW
 .cache/issue77/python/bin/python -m unittest discover -s experiments/week27-rid-sim/tests -v
 ```
 
