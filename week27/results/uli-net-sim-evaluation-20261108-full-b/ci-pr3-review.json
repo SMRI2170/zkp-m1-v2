@@ -1,0 +1,21 @@
+{
+  "head": "e1700af36d3b0a22a2e62a414e30e9ca35a8eada",
+  "runs": [
+    42456585957,
+    42456585952,
+    42456586035,
+    42456566425,
+    42456566429,
+    42456566427
+  ],
+  "jobs": [
+    128656800540,
+    128656740988,
+    128656741099,
+    128656741254,
+    128656800835,
+    128656800505
+  ],
+  "conclusion": "six successful runs; all six decoded job logs reviewed",
+  "scope": "Offline CI, not RF execution"
+}

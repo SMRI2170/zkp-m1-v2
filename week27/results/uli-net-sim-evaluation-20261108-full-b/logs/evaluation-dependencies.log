@@ -1,0 +1,19 @@
+Requirement already satisfied: numpy==2.2.6 in ./.cache/issue70/python/lib/python3.12/site-packages (from -r experiments/week27-rid-sim/requirements-evaluation.txt (line 3)) (2.2.6)
+Collecting scipy==1.16.3 (from -r experiments/week27-rid-sim/requirements-evaluation.txt (line 4))
+  Downloading scipy-1.16.3-cp312-cp312-macosx_14_0_arm64.whl.metadata (62 kB)
+Requirement already satisfied: pandas==2.3.3 in ./.cache/issue70/python/lib/python3.12/site-packages (from -r experiments/week27-rid-sim/requirements-evaluation.txt (line 5)) (2.3.3)
+Requirement already satisfied: pyarrow==23.0.1 in ./.cache/issue70/python/lib/python3.12/site-packages (from -r experiments/week27-rid-sim/requirements-evaluation.txt (line 6)) (23.0.1)
+Requirement already satisfied: python-dateutil>=2.8.2 in ./.cache/issue70/python/lib/python3.12/site-packages (from pandas==2.3.3->-r experiments/week27-rid-sim/requirements-evaluation.txt (line 5)) (4.0.0)
+Requirement already satisfied: pytz>=2020.1 in ./.cache/issue70/python/lib/python3.12/site-packages (from pandas==2.3.3->-r experiments/week27-rid-sim/requirements-evaluation.txt (line 5)) (2026.6)
+Requirement already satisfied: tzdata>=2022.7 in ./.cache/issue70/python/lib/python3.12/site-packages (from pandas==2.3.3->-r experiments/week27-rid-sim/requirements-evaluation.txt (line 5)) (2026.6)
+Downloading scipy-1.16.3-cp312-cp312-macosx_14_0_arm64.whl (20.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.9/20.9 MB 17.0 MB/s  0:00:01
+Installing collected packages: scipy
+  Attempting uninstall: scipy
+    Found existing installation: scipy 1.15.3
+    Uninstalling scipy-1.15.3:
+      Successfully uninstalled scipy-1.15.3
+Successfully installed scipy-1.16.3
+
+[notice] A new release of pip is available: 26.1.2 -> 26.3
+[notice] To update, run: <REPO>/.cache/issue70/python/bin/python -m pip install --upgrade pip

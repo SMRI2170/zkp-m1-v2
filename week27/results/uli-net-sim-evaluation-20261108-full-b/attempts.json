@@ -1,0 +1,40 @@
+[
+  {
+    "attempt": "smoke-a",
+    "status": "ENV_BLOCKED",
+    "rf_runs": 0,
+    "error": "SciPy1.15.3 arm64 _spropack: section __DATA/__thread_bss zero-fill offset invalid under dyld on macOS27",
+    "evidence": "Original tool stderr; not saved as a complete standalone file. Dependency replacement log retained."
+  },
+  {
+    "attempt": "smoke-b",
+    "status": "ENV_BLOCKED",
+    "rf_runs": 0,
+    "error": "Upstream evaluations.__init__ imports matplotlib; missing package",
+    "log": "logs/evaluation-smoke-b.log"
+  },
+  {
+    "attempt": "smoke-c",
+    "status": "PASSED",
+    "rf_scenes": 30,
+    "actual_tx": 390,
+    "received": 1250
+  },
+  {
+    "attempt": "full-a",
+    "status": "PASSED",
+    "rf_scenes": 663,
+    "actual_tx": 15210,
+    "received": 48384,
+    "note": "Strong/weak pilot; retained. Near-total weak loss motivated predeclared edge link stratum; no threshold tuning."
+  },
+  {
+    "attempt": "full-b",
+    "status": "PASSED",
+    "unique_scenes": 943,
+    "reused_rf_scenes": 663,
+    "new_rf_scenes": 280,
+    "actual_tx_unique": 20810,
+    "received_unique": 61141
+  }
+]

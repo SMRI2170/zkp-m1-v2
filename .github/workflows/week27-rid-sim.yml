@@ -4,11 +4,19 @@ on:
     paths:
       - 'experiments/week27-rid-sim/**'
       - 'week27/11_*'
+      - 'week27/12_*'
+      - 'week27/13_*'
+      - 'week27/14_*'
+      - 'week27/results/uli-net-sim-*/**'
       - '.github/workflows/week27-rid-sim.yml'
   pull_request:
     paths:
       - 'experiments/week27-rid-sim/**'
       - 'week27/11_*'
+      - 'week27/12_*'
+      - 'week27/13_*'
+      - 'week27/14_*'
+      - 'week27/results/uli-net-sim-*/**'
       - '.github/workflows/week27-rid-sim.yml'
   workflow_dispatch:
 permissions:
@@ -27,4 +35,6 @@ jobs:
         run: |
           bash -n experiments/week27-rid-sim/scripts/build_headless.sh
           python -m compileall -q experiments/week27-rid-sim/scripts
+      - name: Audit recorded PR4 aggregate counts and seed splits (no RF execution)
+        run: python experiments/week27-rid-sim/scripts/validate_evidence.py week27/results/uli-net-sim-evaluation-20261108-full-b
       # This job does not install OMNeT++/INET or claim an RF simulation ran.

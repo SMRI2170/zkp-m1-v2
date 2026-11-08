@@ -42,3 +42,22 @@ count and counters are unique do we split that event by callback occurrence.
 Repeated GCS fields without counters, incomplete callback sets, and repeated
 management/PHY fields still fail closed. This is a logged callback boundary,
 not matching arbitrary packets by nearby timestamps.
+# PR4 inference and Issue69 mode E
+
+`detector_projection` is the only boundary into the conditional detectors.
+True position, actual TX power, labels, scenario names and seeds are excluded;
+an unreceived payload is null. Frame IDs group records and are not numeric
+features. KF startup and missing receptions are UND, never zero-score normal.
+
+SingleResidual and DRSS subtract the known **synthetic -100dBm background**
+before scoring. This is an extra calibrated-noise assumption; no arbitrary
+interference cancellation is implied. KF and upstream MLAT use recorded raw
+total RSS. Geometry and empirical thresholds are learned on disjoint normal
+splits only. All performance has conditional denominators and all-TX counts.
+
+`visualization_adapter.py` maps the observation-regime names to #69's
+`async_single_packet_per_observation` and `same_physical_packet_multirx`.
+It reads already-computed scores and never implements another detector.
+Its optional mode-E coordinate export is restricted to ignored `captures/`;
+the public results contain only aggregate metrics. `BELOW_THRESHOLD` means
+below a model threshold, not verified true position or safety.

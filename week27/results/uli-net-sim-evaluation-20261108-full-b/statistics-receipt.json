@@ -1,0 +1,11 @@
+{
+  "status": "PASSED",
+  "per_seed_source_sha256": "e22dfa9b29c898a34dcd5915a1321960fda65000ba455f3d7bc501b00203c751",
+  "per_seed_rows": 7200,
+  "scope": "No RF rerun, no threshold changes; reaggregate saved independent-seed metrics. One scored seed has a mean but no uncertainty interval.",
+  "source_sha256": {
+    "evaluation.py": "60c06e3f93e82e5cbd64fa83921872b3abce833d5ca54f5c6a91a9f3fa611c12",
+    "run_evaluation.py": "c064c5df440ae334d9bd93ac0aa15b4eab7faef8d7a8e449a81440f8247a988b",
+    "summarize_evaluation.py": "07dab30dbd68fc52477de10d1e1632381f95b07e85bdc98784219d2e557082ac"
+  }
+}

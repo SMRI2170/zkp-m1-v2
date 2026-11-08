@@ -1,0 +1,156 @@
+{
+  "main:strong:fixed": {
+    "FreePowerUND": null,
+    "SingleResidual": 1.0667090995553359,
+    "KF_NIS": 1.931190254421824,
+    "DRSS2": 0.7148334786428734,
+    "DRSS3": 0.7297847515866422,
+    "DRSS4": 0.7456835989429393,
+    "MLAT4": 24.5226035783315,
+    "DRSS5": 3.2278615395490178,
+    "MLAT5": 251.70958547879815
+  },
+  "main:strong:uniform": {
+    "FreePowerUND": null,
+    "SingleResidual": 3.7279967746879024,
+    "KF_NIS": 3.372980715934116,
+    "DRSS2": 0.7148334786429942,
+    "DRSS3": 0.7297847515873244,
+    "DRSS4": 0.7456835989430388,
+    "MLAT4": 24.518537356923915,
+    "DRSS5": 3.227861539549714,
+    "MLAT5": 251.70907974299016
+  },
+  "main:strong:slew": {
+    "FreePowerUND": null,
+    "SingleResidual": 3.715234081361796,
+    "KF_NIS": 4.6132807534913,
+    "DRSS2": 0.7148334786426886,
+    "DRSS3": 0.7297847515870686,
+    "DRSS4": 0.7456835989429038,
+    "MLAT4": 24.50176595919553,
+    "DRSS5": 3.2278615395498704,
+    "MLAT5": 251.70889599880775
+  },
+  "main:strong:adaptive": {
+    "FreePowerUND": null,
+    "SingleResidual": 1.0667090995553359,
+    "KF_NIS": 1.931190254421824,
+    "DRSS2": 0.7148334786428734,
+    "DRSS3": 0.7297847515866422,
+    "DRSS4": 0.7456835989429393,
+    "MLAT4": 24.5226035783315,
+    "DRSS5": 3.2278615395490178,
+    "MLAT5": 251.70958547879815
+  },
+  "main:edge:fixed": {
+    "FreePowerUND": null,
+    "SingleResidual": 1.3590247475600918,
+    "KF_NIS": 2.850733149947518,
+    "DRSS2": 0.6831974555340281,
+    "DRSS3": 0.6954588954154417,
+    "DRSS4": 0.7306666044182819,
+    "MLAT4": null,
+    "DRSS5": 3.4203061709377707,
+    "MLAT5": 45.40263198183042
+  },
+  "main:edge:uniform": {
+    "FreePowerUND": null,
+    "SingleResidual": 3.516043342249617,
+    "KF_NIS": 3.8051856459371574,
+    "DRSS2": 0.7253589902137136,
+    "DRSS3": 0.7282942391571368,
+    "DRSS4": 0.7448431187027253,
+    "MLAT4": 24.877876520964293,
+    "DRSS5": 3.426837550308754,
+    "MLAT5": 97.38068358377127
+  },
+  "main:edge:slew": {
+    "FreePowerUND": null,
+    "SingleResidual": 4.1864082345192095,
+    "KF_NIS": 5.072662330753674,
+    "DRSS2": 0.7329707915531287,
+    "DRSS3": 0.7329707915531287,
+    "DRSS4": 0.7448431187023701,
+    "MLAT4": 24.57805464085646,
+    "DRSS5": 3.227861539549572,
+    "MLAT5": 71.86860104935018
+  },
+  "main:edge:adaptive": {
+    "FreePowerUND": null,
+    "SingleResidual": 1.3590247475600918,
+    "KF_NIS": 2.850733149947518,
+    "DRSS2": 0.6831974555340281,
+    "DRSS3": 0.6954588954154417,
+    "DRSS4": 0.7306666044182819,
+    "MLAT4": null,
+    "DRSS5": 3.4203061709377707,
+    "MLAT5": 45.40263198183042
+  },
+  "main:weak:fixed": {
+    "FreePowerUND": null,
+    "SingleResidual": null,
+    "KF_NIS": null,
+    "DRSS2": null,
+    "DRSS3": null,
+    "DRSS4": null,
+    "MLAT4": null,
+    "DRSS5": null,
+    "MLAT5": null
+  },
+  "main:weak:uniform": {
+    "FreePowerUND": null,
+    "SingleResidual": 0.0,
+    "KF_NIS": null,
+    "DRSS2": null,
+    "DRSS3": null,
+    "DRSS4": null,
+    "MLAT4": null,
+    "DRSS5": null,
+    "MLAT5": null
+  },
+  "main:weak:slew": {
+    "FreePowerUND": null,
+    "SingleResidual": 4.185898361496367,
+    "KF_NIS": 9.17062284716737,
+    "DRSS2": 0.714833478642305,
+    "DRSS3": 0.714833478642305,
+    "DRSS4": 0.7469432481052962,
+    "MLAT4": null,
+    "DRSS5": 2.2636913346381036,
+    "MLAT5": 42.30359249080664
+  },
+  "main:weak:adaptive": {
+    "FreePowerUND": null,
+    "SingleResidual": null,
+    "KF_NIS": null,
+    "DRSS2": null,
+    "DRSS3": null,
+    "DRSS4": null,
+    "MLAT4": null,
+    "DRSS5": null,
+    "MLAT5": null
+  },
+  "risk:strong:fixed": {
+    "FreePowerUND": null,
+    "SingleResidual": 0.004886746976570322,
+    "KF_NIS": 0.0006497135624762648,
+    "DRSS2": 0.005888674092048518,
+    "DRSS3": 0.0059580787051487505,
+    "DRSS4": 0.006009105047290575,
+    "MLAT4": 0.9509527861925028,
+    "DRSS5": 0.007157796238175251,
+    "MLAT5": 6.318881733588115
+  },
+  "risk:strong:adaptive": {
+    "FreePowerUND": null,
+    "SingleResidual": 0.004886746976570322,
+    "KF_NIS": 0.0006497135624762648,
+    "DRSS2": 0.005888674092048518,
+    "DRSS3": 0.0059580787051487505,
+    "DRSS4": 0.006009105047290575,
+    "MLAT4": 0.9509527861925028,
+    "DRSS5": 0.007157796238175251,
+    "MLAT5": 6.318881733588115
+  }
+}

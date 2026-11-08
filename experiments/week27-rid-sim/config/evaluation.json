@@ -1,0 +1,17 @@
+{
+  "dataset_source": "simulation",
+  "train_seeds": [501],
+  "calibration_seeds": [601,602,603,604,605,606,607,608,609,610],
+  "evaluation_seeds": [701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720],
+  "models": ["fixed","uniform","slew","adaptive"],
+  "links": ["strong","edge","weak"],
+  "offsets_m": [0,30,100],
+  "packets_per_flight": 20,
+  "training_packets": 1000,
+  "gap_s": 10,
+  "alpha": 0.05,
+  "bootstrap_repeats": 1000,
+  "include_risk": true,
+  "attacker": "Bounded +/-10dB adaptive compensation knows true/claimed positions and n=2 at RX0 only; physical clamp [-80,23]dBm. Not unrestricted D.",
+  "scope": "FreeSpace/Dipole/constant -100dBm background; no extra multipath, shadowing or GPS errors. Seeds change start angle, nominal TX power and power RNG; one receiver layout/environment, not independent buildings."
+}

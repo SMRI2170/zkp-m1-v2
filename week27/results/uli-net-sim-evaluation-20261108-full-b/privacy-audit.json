@@ -1,0 +1,14 @@
+[
+  {
+    "root": "issue70-evaluation-20261108-full-a",
+    "checked_entries": 12908,
+    "group_or_other_access": 0,
+    "ignored": true
+  },
+  {
+    "root": "issue70-view-20261108-b",
+    "checked_entries": 2,
+    "group_or_other_access": 0,
+    "ignored": true
+  }
+]

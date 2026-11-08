@@ -1,0 +1,20 @@
+{
+  "source_sha256": "84b543652d5c03a608497b0cf07a0b4c53109af5d7e1582085711b21e7585190",
+  "matplotlib": "3.10.7",
+  "figures": [
+    "coverage-edge.png",
+    "coverage-edge.svg",
+    "coverage-weak.png",
+    "coverage-weak.svg",
+    "detection-edge.png",
+    "detection-edge.svg",
+    "detection-strong.png",
+    "detection-strong.svg",
+    "detection-weak.png",
+    "detection-weak.svg",
+    "provenance.json",
+    "risk30.png",
+    "risk30.svg"
+  ],
+  "scope": "Static aggregate plots. No real UAV measurements or inferred truth. Zero eligible scores are absent from conditional-performance curves, not plotted as 0% FPR/TPR."
+}
