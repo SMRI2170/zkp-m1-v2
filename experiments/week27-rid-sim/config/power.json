@@ -1,0 +1,25 @@
+{
+  "seed": 2170,
+  "tx_host": 1,
+  "rx_hosts": [0, 2],
+  "observer_regime": "same_packet_multisite_comparison_only",
+  "phy_model": "INET 4.5.4 dimensional Wi-Fi channel 6 / FreeSpacePathLoss / DipoleAntenna / -100dBm background",
+  "decision_reason": "PR2 physical power audit, no position detector",
+  "cases": [
+    {"name": "FixedNormal", "model": "fixed", "offset_m": 0, "nominal_dbm": 13},
+    {"name": "PositionOnly", "model": "fixed", "offset_m": 100, "nominal_dbm": 13},
+    {"name": "UniformNormal", "model": "uniform", "range_db": 3, "offset_m": 0},
+    {"name": "UniformSpoof", "model": "uniform", "range_db": 3, "offset_m": 100},
+    {"name": "SlewNormal", "model": "slew", "range_db": 10, "step_db": 2, "offset_m": 0},
+    {"name": "SlewSpoof", "model": "slew", "range_db": 10, "step_db": 2, "offset_m": 100},
+    {"name": "AdaptiveSpoof", "model": "adaptive", "range_db": 10, "offset_m": 100},
+    {"name": "HighControl", "model": "fixed", "offset_m": 0, "nominal_dbm": 19},
+    {"name": "AllLow", "model": "fixed", "offset_m": 0, "nominal_dbm": -80},
+    {"name": "AlternatingNormal", "model": "alternating", "offset_m": 0},
+    {"name": "InterferenceLow", "model": "fixed", "offset_m": 0, "jammer_dbm": -80},
+    {"name": "InterferenceHigh", "model": "fixed", "offset_m": 0, "jammer_dbm": 23},
+    {"name": "HiddenInterferenceLow", "model": "fixed", "offset_m": 0, "nominal_dbm": -5, "jammer_dbm": -80, "jammer_xyz": [50, 100, 2], "jammer_offset_s": 0.09995},
+    {"name": "HiddenInterferenceHigh", "model": "fixed", "offset_m": 0, "nominal_dbm": -5, "jammer_dbm": -7, "jammer_xyz": [50, 100, 2], "jammer_offset_s": 0.09995}
+  ],
+  "attacker_knowledge": "Adaptive knows this synthetic reference RX coordinate, true/claimed positions and n=2; no live RX feedback. Physical output clamped [-80,23]dBm plus adaptive +/-10dB cap. Not mathematically unbounded D."
+}

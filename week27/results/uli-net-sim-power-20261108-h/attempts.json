@@ -1,0 +1,532 @@
+[
+  {
+    "attempt": "a",
+    "status": "PR2_FAILED",
+    "error": "FixedNormal simulation failed",
+    "summary_sha256": "e9c75735357b05f31256901c7439b573c7bf0a18a8a0769446212fdedb51d9d0",
+    "cases": [
+      {
+        "case": "FixedNormal",
+        "status": "SIMULATION_FAILED",
+        "execution_exit_code": 1
+      },
+      {
+        "case": "PositionOnly",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "UniformNormal",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "UniformSpoof",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "SlewNormal",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "SlewSpoof",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "AdaptiveSpoof",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "HighControl",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "AllLow",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "AlternatingNormal",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "InterferenceLow",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "InterferenceHigh",
+        "status": "NOT_RUN"
+      }
+    ]
+  },
+  {
+    "attempt": "b",
+    "status": "PR2_FAILED",
+    "error": "FixedNormal simulation failed",
+    "summary_sha256": "e9c75735357b05f31256901c7439b573c7bf0a18a8a0769446212fdedb51d9d0",
+    "cases": [
+      {
+        "case": "FixedNormal",
+        "status": "SIMULATION_FAILED",
+        "execution_exit_code": 1
+      },
+      {
+        "case": "PositionOnly",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "UniformNormal",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "UniformSpoof",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "SlewNormal",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "SlewSpoof",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "AdaptiveSpoof",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "HighControl",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "AllLow",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "AlternatingNormal",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "InterferenceLow",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "InterferenceHigh",
+        "status": "NOT_RUN"
+      }
+    ]
+  },
+  {
+    "attempt": "c",
+    "status": "PR2_FAILED",
+    "error": "RX without PHY transmission",
+    "summary_sha256": "33e4b0db4acfc378228d2198bf8f1f96a17560fd33e0b1f91cc44be2fe8608fd",
+    "cases": [
+      {
+        "case": "FixedNormal",
+        "status": "SIMULATION_FAILED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "PositionOnly",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "UniformNormal",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "UniformSpoof",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "SlewNormal",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "SlewSpoof",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "AdaptiveSpoof",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "HighControl",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "AllLow",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "AlternatingNormal",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "InterferenceLow",
+        "status": "NOT_RUN"
+      },
+      {
+        "case": "InterferenceHigh",
+        "status": "NOT_RUN"
+      }
+    ]
+  },
+  {
+    "attempt": "d",
+    "status": "PR2_FAILED",
+    "error": "Unexpected receiver",
+    "summary_sha256": "0fc8d9acaa4fcfe211e9bc5c2d64994c45be84a4a40789a933746632aeb07776",
+    "cases": [
+      {
+        "case": "FixedNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "PositionOnly",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "UniformNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "UniformSpoof",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "SlewNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "SlewSpoof",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "AdaptiveSpoof",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "HighControl",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "AllLow",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "AlternatingNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "InterferenceLow",
+        "status": "SIMULATION_COMPLETED_AUDIT_PENDING",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "InterferenceHigh",
+        "status": "NOT_RUN"
+      }
+    ]
+  },
+  {
+    "attempt": "e",
+    "status": "PR2_FAILED",
+    "error": "Repeated field in one event; refusing ambiguous alignment",
+    "summary_sha256": "3e3a6eb3162bccc671c961d10760672c9c5983409b89545bd1cc924a5501363b",
+    "cases": [
+      {
+        "case": "FixedNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "PositionOnly",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "UniformNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "UniformSpoof",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "SlewNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "SlewSpoof",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "AdaptiveSpoof",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "HighControl",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "AllLow",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "AlternatingNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "InterferenceLow",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "InterferenceHigh",
+        "status": "SIMULATION_COMPLETED_AUDIT_PENDING",
+        "execution_exit_code": 0
+      }
+    ]
+  },
+  {
+    "attempt": "f",
+    "status": "PR2_FAILED",
+    "error": "Target true trajectories/schedules differ",
+    "summary_sha256": "6690f6d8e7882cc3a29278b553c5c8df3d17ee3cea905364c34af73c71ca823c",
+    "cases": [
+      {
+        "case": "FixedNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "PositionOnly",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "UniformNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "UniformSpoof",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "SlewNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "SlewSpoof",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "AdaptiveSpoof",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "HighControl",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "AllLow",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "AlternatingNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "InterferenceLow",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "InterferenceHigh",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      }
+    ]
+  },
+  {
+    "attempt": "g",
+    "status": "PR2_FAILED",
+    "error": "Physical 6dB control did not produce matching RSSI shift",
+    "summary_sha256": "8d8b346deb3636c50e3f60e7d1f1cc9427a783037e049fdb916ab7bb4adc6d99",
+    "cases": [
+      {
+        "case": "FixedNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "PositionOnly",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "UniformNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "UniformSpoof",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "SlewNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "SlewSpoof",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "AdaptiveSpoof",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "HighControl",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "AllLow",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "AlternatingNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "InterferenceLow",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "InterferenceHigh",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "HiddenInterferenceLow",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "HiddenInterferenceHigh",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      }
+    ]
+  },
+  {
+    "attempt": "h",
+    "status": "PR2_PHYSICAL_POWER_PASSED",
+    "error": null,
+    "summary_sha256": "49bf2574c1e8383f02c6d2c066d92ea1803cce23fce63218aeab0ab48dc9cd27",
+    "cases": [
+      {
+        "case": "FixedNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "PositionOnly",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "UniformNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "UniformSpoof",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "SlewNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "SlewSpoof",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "AdaptiveSpoof",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "HighControl",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "AllLow",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "AlternatingNormal",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "InterferenceLow",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "InterferenceHigh",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "HiddenInterferenceLow",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      },
+      {
+        "case": "HiddenInterferenceHigh",
+        "status": "POWER_AUDITED",
+        "execution_exit_code": 0
+      }
+    ]
+  }
+]

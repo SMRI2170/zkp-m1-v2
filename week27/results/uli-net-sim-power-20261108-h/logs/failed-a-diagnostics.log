@@ -1,0 +1,2 @@
+Recorded orchestration error: FixedNormal simulation failed
+<!> Error: A simple-module cannot extend a compound-module (inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211DimensionalTransmitter), at ${REPO}/experiments/week27-rid-sim/native/Issue70PowerMgmt.ned:33
