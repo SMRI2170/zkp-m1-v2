@@ -1,0 +1,10 @@
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ${REPO}/.cache/issue70/uli-net-sim/src: <!> Error: Cannot load NED files from '${REPO}/.cache/issue70/uli-net-sim/src': Simulation kernel was compiled without support for dynamic loading of NED files (WITH_NETBUILDER=no)
+
+End.

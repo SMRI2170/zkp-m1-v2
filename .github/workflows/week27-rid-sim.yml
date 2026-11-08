@@ -1,0 +1,30 @@
+name: Week27 RID simulator adapter
+on:
+  push:
+    paths:
+      - 'experiments/week27-rid-sim/**'
+      - 'week27/11_*'
+      - '.github/workflows/week27-rid-sim.yml'
+  pull_request:
+    paths:
+      - 'experiments/week27-rid-sim/**'
+      - 'week27/11_*'
+      - '.github/workflows/week27-rid-sim.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  adapter-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test event alignment, missing RSSI and denominators (synthetic unit fixtures)
+        run: python -m unittest discover -s experiments/week27-rid-sim/tests -v
+      - name: Check script syntax
+        run: |
+          bash -n experiments/week27-rid-sim/scripts/build_headless.sh
+          python -m compileall -q experiments/week27-rid-sim/scripts
+      # This job does not install OMNeT++/INET or claim an RF simulation ran.

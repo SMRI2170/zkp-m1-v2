@@ -1,0 +1,134 @@
+[
+  {
+    "file": "omnet-configure.log",
+    "original_sha256": "36bdd956c9bdab05eac64585c965fc7a7c687a2d37cbdcba4c425ba114efac2d",
+    "diagnostic_lines": [
+      "configure: error: pkg-config program not found -- it is required to build OMNeT++/OMNEST, and also for model development."
+    ]
+  },
+  {
+    "file": "omnet-build.log",
+    "original_sha256": "1d3cfdf67ffb96a3d398c55f27188771c85005011cfa2fd3aa4b9d5eeed8418a",
+    "diagnostic_lines": [
+      "make[1]: *** No rule to make target `${REPO}/.cache/issue70/omnetpp-6.2.0/out/clang-release/src/common/lcgrandom.o', needed by `${REPO}/.cache/issue70/omnetpp-6.2.0/out/clang-release/src/common/liboppcommon.dylib'.  Stop.",
+      "make: *** [common] Error 2"
+    ]
+  },
+  {
+    "file": "project-build.log",
+    "original_sha256": "ee8223eb582a58660a5f5f749ba00554c200d52a9a381bd9db1a063cbbebc760",
+    "diagnostic_lines": [
+      "src/mobility/MultirotorMobility.cc:244:56: error: no type named 'Group' in namespace 'osg'",
+      "src/mobility/MultirotorMobility.cc:250:18: error: member access into incomplete type 'osg::Node'",
+      "src/mobility/MultirotorMobility.cc:258:34: error: no type named 'Group' in namespace 'osg'",
+      "src/mobility/MultirotorMobility.cc:260:29: error: no type named 'Vec4' in namespace 'osg'",
+      "src/mobility/MultirotorMobility.cc:270:37: error: no type named 'Geometry' in namespace 'osg'",
+      "src/mobility/MultirotorMobility.cc:271:30: error: no type named 'Vec3Array' in namespace 'osg'; did you mean 'cArray'?",
+      "src/mobility/MultirotorMobility.cc:273:40: error: no member named 'Vec3d' in namespace 'osg'",
+      "src/mobility/MultirotorMobility.cc:276:24: error: no type named 'DrawArrays' in namespace 'osg'",
+      "src/mobility/MultirotorMobility.cc:278:34: error: no type named 'Geode' in namespace 'osg'",
+      "src/mobility/MultirotorMobility.cc:282:37: error: no type named 'Material' in namespace 'osg'",
+      "src/mobility/MultirotorMobility.cc:283:37: error: no member named 'Material' in namespace 'osg'",
+      "src/mobility/MultirotorMobility.cc:284:37: error: no member named 'Material' in namespace 'osg'",
+      "src/mobility/MultirotorMobility.cc:285:38: error: no member named 'Material' in namespace 'osg'",
+      "src/mobility/MultirotorMobility.cc:286:57: error: no member named 'StateAttribute' in namespace 'osg'",
+      "src/mobility/MultirotorMobility.cc:288:24: error: no type named 'LineWidth' in namespace 'osg'",
+      "src/mobility/MultirotorMobility.cc:289:27: error: use of undeclared identifier 'GL_LIGHTING'",
+      "src/mobility/MultirotorMobility.cc:289:47: error: no member named 'StateAttribute' in namespace 'osg'",
+      "src/mobility/MultirotorMobility.cc:295:39: error: no type named 'ShapeDrawable' in namespace 'osg'",
+      "src/mobility/MultirotorMobility.cc:298:39: error: no type named 'Geode' in namespace 'osg'",
+      "fatal error: too many errors emitted, stopping now [-ferror-limit=]",
+      "gmake: *** [Makefile:122: out/clang-release//src/mobility/MultirotorMobility.o] Error 1"
+    ]
+  },
+  {
+    "attempt": "build-osg-cli",
+    "status": "BUILD_SUCCEEDED_SMOKE_NOT_RUN",
+    "commands": [
+      {
+        "argv": [
+          "${REPO}/.cache/issue70/python/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "-r",
+          "${REPO}/experiments/week27-rid-sim/requirements-smoke.txt"
+        ],
+        "exit_code": 0,
+        "log": "python-install.log",
+        "sha256": "23b124ef002c084b96f848607767e5026d6dbc68a2e588261295d0e6abc863ff"
+      },
+      {
+        "argv": [
+          "bash",
+          "${REPO}/experiments/week27-rid-sim/scripts/build_headless.sh",
+          "${REPO}/.cache/issue70",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "headless-build.log",
+        "sha256": "84ffa40b4b4b98774da23498795efe53542b9cf4da6dc8b8690a1a3b6a154771"
+      }
+    ]
+  },
+  {
+    "attempt": "build-netbuilder-cli",
+    "status": "ENV_BLOCKED",
+    "commands": [
+      {
+        "argv": [
+          "${REPO}/.cache/issue70/python/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "-r",
+          "${REPO}/experiments/week27-rid-sim/requirements-smoke.txt"
+        ],
+        "exit_code": 0,
+        "log": "python-install.log",
+        "sha256": "23b124ef002c084b96f848607767e5026d6dbc68a2e588261295d0e6abc863ff"
+      },
+      {
+        "argv": [
+          "bash",
+          "${REPO}/experiments/week27-rid-sim/scripts/build_headless.sh",
+          "${REPO}/.cache/issue70",
+          "2"
+        ],
+        "exit_code": 127,
+        "log": "headless-build.log",
+        "sha256": "b4986651142e24159b192a9f869731bbf795af263f5ab98e3cb250f0e87350db"
+      }
+    ]
+  },
+  {
+    "attempt": "build-final-cli",
+    "status": "BUILD_SUCCEEDED_SMOKE_NOT_RUN",
+    "commands": [
+      {
+        "argv": [
+          "${REPO}/.cache/issue70/python/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "-r",
+          "${REPO}/experiments/week27-rid-sim/requirements-smoke.txt"
+        ],
+        "exit_code": 0,
+        "log": "python-install.log",
+        "sha256": "23b124ef002c084b96f848607767e5026d6dbc68a2e588261295d0e6abc863ff"
+      },
+      {
+        "argv": [
+          "bash",
+          "${REPO}/experiments/week27-rid-sim/scripts/build_headless.sh",
+          "${REPO}/.cache/issue70",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "headless-build.log",
+        "sha256": "3270df32f426e7ff4e0c9dcd6885949325f4c1f62fcdd74509bd5a2b240e076d"
+      }
+    ]
+  }
+]

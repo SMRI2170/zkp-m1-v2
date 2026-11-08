@@ -1,0 +1,29 @@
+{
+  "dataset_source": "simulation",
+  "scope": "PR1 communication/spoofer smoke, no detector",
+  "seed": 2170,
+  "upstream_sha": "3cf9474fe960955556de118065591915a7be2bc1",
+  "observer_regime": "same_packet_multisite_comparison_only",
+  "status": "PR1_FAILED",
+  "cases": [
+    {
+      "case": "Normal",
+      "status": "SIMULATION_FAILED",
+      "execution_exit_code": 1,
+      "simulation_log_sha256": "2c1d51084d4e9ae69e20184bd2f0a3d80870f92118c6c466734b62edc8766152"
+    },
+    {
+      "case": "StaticSpoof",
+      "status": "NOT_RUN"
+    }
+  ],
+  "limitations": [
+    "No FPR/TPR estimation or real Remote ID RF measurements.",
+    "Management enqueue is not confirmed PHY TX.",
+    "GCS exposes first packet ID, not all per-report packet IDs.",
+    "Multiple-site smoke is a comparison condition, not the asynchronous research solution."
+  ],
+  "binary_sha256": "78c8ecc8f4a094f4806f3c4246a7c568639ee52428223ee18beedeb071a0afc1",
+  "python_version": "3.12.13",
+  "error": "Normal simulation failed; inspect private simulation.log"
+}

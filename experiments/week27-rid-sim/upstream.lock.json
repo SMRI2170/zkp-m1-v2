@@ -1,0 +1,30 @@
+{
+  "uli_net_sim": {
+    "url": "https://github.com/brycethebjorkman/uli-net-sim.git",
+    "sha": "3cf9474fe960955556de118065591915a7be2bc1",
+    "scitech26_sha": "c2ffa9d5d66594297b5875a9382572e56c94d12f",
+    "license": "No repository-wide LICENSE at this SHA; individual SPDX headers are not a blanket redistribution grant. Local dependency only."
+  },
+  "archives": [
+    {
+      "directory": "omnetpp-6.2.0",
+      "file": "omnetpp-6.2.0-core.tgz",
+      "url": "https://github.com/omnetpp/omnetpp/releases/download/omnetpp-6.2.0/omnetpp-6.2.0-core.tgz",
+      "sha256": "2945d225d964e7cfea9c19ba21411b708d7f5c4eb1c4c8e065e3c2695b0814a7"
+    },
+    {
+      "directory": "inet4.5",
+      "file": "inet-4.5.4-src.tgz",
+      "url": "https://github.com/inet-framework/inet/releases/download/v4.5.4/inet-4.5.4-src.tgz",
+      "sha256": "1613c215fa5cbb8d97ec336c6b7bac67bd47e96cc29ef0abbb2676d5e2ff8ba7"
+    },
+    {
+      "directory": "eigen-5.0.0",
+      "file": "eigen-5.0.0.tar.gz",
+      "url": "https://gitlab.com/libeigen/eigen/-/archive/5.0.0/eigen-5.0.0.tar.gz",
+      "sha256": "315c881e19e17542a7d428c5aa37d113c89b9500d350c433797b730cd449c056"
+    }
+  ],
+  "build": {"mode": "release", "max_jobs": 2, "qtenv": false, "osg": true, "osg_version": "3.6.5"},
+  "scope": "PR1 smoke only; not the SciTech paper's full reproduction or a real Remote ID measurement"
+}

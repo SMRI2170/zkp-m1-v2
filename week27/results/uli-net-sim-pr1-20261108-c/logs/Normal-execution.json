@@ -1,0 +1,24 @@
+{
+  "started_utc": "2026-11-08T05:31:06.107589+00:00",
+  "argv": [
+    "${REPO}/.cache/issue70/project-build/out/clang-release/rid_smoke",
+    "-u",
+    "Cmdenv",
+    "-n",
+    "${REPO}/.cache/issue70/uli-net-sim/src:${REPO}/.cache/issue70/inet4.5/src",
+    "-x",
+    "inet.applications.voipstream;inet.common.selfdoc;inet.emulation;inet.examples.emulation;inet.examples.voipstream;inet.linklayer.configurator.gatescheduling.z3;inet.showcases.emulation;inet.showcases.visualizer.osg;inet.transportlayer.tcp_lwip;inet.visualizer.osg",
+    "-f",
+    "${REPO}/captures/issue70-smoke-20261108-c/smoke.ini",
+    "-c",
+    "Normal",
+    "-r",
+    "0",
+    "--seed-set=2170",
+    "--simtime-resolution=ps",
+    "--output-vector-file=${REPO}/captures/issue70-smoke-20261108-c/Normal/run.vec",
+    "--output-scalar-file=${REPO}/captures/issue70-smoke-20261108-c/Normal/run.sca"
+  ],
+  "exit_code": 0,
+  "log_sha256": "95612bf43032aefd91b4a4d13a7d11ecf07bcc39cf521c361d4a0d103f68b1b7"
+}

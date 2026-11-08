@@ -1,0 +1,24 @@
+{
+  "Normal": {
+    "claim_displacement_min_m": 0.0,
+    "claim_displacement_max_m": 0.0,
+    "rssi_min_dbm": -63.599168034381,
+    "rssi_max_dbm": -63.582835263573,
+    "received_serial_values": [
+      1
+    ],
+    "claimed_timestamp_distinct": 8
+  },
+  "StaticSpoof": {
+    "claim_displacement_min_m": 100.0004499989875,
+    "claim_displacement_max_m": 100.58150923504778,
+    "rssi_min_dbm": -63.599168034381,
+    "rssi_max_dbm": -63.582835263573,
+    "received_serial_values": [
+      0
+    ],
+    "claimed_timestamp_distinct": 1
+  },
+  "paired_received_opportunities": 16,
+  "paired_rssi_max_abs_diff_db": 0.0
+}
