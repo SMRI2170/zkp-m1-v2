@@ -284,6 +284,8 @@ python3 experiments/week27-rid-sim/scripts/prepare_observer_workspace.py \
   --raw-dir captures/issue75-negative-NEW --out week27/results/observer-attack-full-NEW/negative-controls.json
 .cache/issue75/python/bin/python experiments/week27-rid-sim/scripts/summarize_observer_attack.py \
   --raw-dir captures/issue75-full-NEW --results week27/results/observer-attack-full-NEW
+.cache/issue75/python/bin/python experiments/week27-rid-sim/scripts/summarize_attack_strata.py \
+  week27/results/observer-attack-full-NEW
 .cache/issue75/python/bin/python experiments/week27-rid-sim/scripts/audit_attack_model.py \
   --raw-dir captures/issue75-full-NEW --results week27/results/observer-attack-full-NEW
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .cache/issue75/python/bin/python \

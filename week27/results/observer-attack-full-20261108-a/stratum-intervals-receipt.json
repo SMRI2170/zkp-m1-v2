@@ -1,0 +1,24 @@
+{
+  "status": "PASSED",
+  "outputs": [
+    {
+      "source": "per-observer-metrics.csv",
+      "source_sha256": "ff1a112985c1c1b65adc773a063000ab0f0ac4bb04ad01f10a226a171d6bb3e2",
+      "output": "observer-stratified-aggregate.csv",
+      "groups": 1620
+    },
+    {
+      "source": "power-stratified-metrics.csv",
+      "source_sha256": "ca555ffc112d1b1e8f2981a27186ac615dbbfab8314c1eb6d84de855125c06e0",
+      "output": "power-stratified-extended.csv",
+      "groups": 2007
+    },
+    {
+      "source": "clipping-stratified-metrics.csv",
+      "source_sha256": "616844b9276f0e9e2f1c7813b6c6167cb4176bb1a6d0bb1ad3dbfcdfbe4092e8",
+      "output": "clipping-stratified-extended.csv",
+      "groups": 244
+    }
+  ],
+  "scope": "No RF or threshold changes. Per-seed rates; no interval for <2 defined seeds. Power/clamp strata use evaluation truth only."
+}

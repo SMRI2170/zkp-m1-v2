@@ -99,6 +99,20 @@ def validate(root,mlat):
     if preservation['status']!='PASSED' or preservation['old_rf_vectors_and_logs_unchanged']!=943 or not preservation['source_upstream_clean']:
         raise ValueError('Prior results preservation was not established')
     if any(r['group_or_other_access'] or not r['ignored'] for r in preservation['privacy']):raise ValueError('Raw privacy audit failed')
+    intervals=json.loads((root/'stratum-intervals-receipt.json').read_text())
+    if intervals['status']!='PASSED':raise ValueError('Stratum interval generation incomplete')
+    for output in intervals['outputs']:
+        import hashlib
+        if hashlib.sha256((root/output['source']).read_bytes()).hexdigest()!=output['source_sha256']:raise ValueError('Stratum source changed')
+        aggregate_rows=read(root/output['output'])
+        if len(aggregate_rows)!=output['groups']:raise ValueError('Stratum groups incomplete')
+        for r in aggregate_rows:
+            if int(r['flag_count'])+int(r['below_count'])+int(r['und_count'])!=int(r['tx_count']):raise ValueError('Stratum count mismatch')
+            for metric in ['alarm_scored','alarm_received','alarm_all_tx','below_scored','und_rate','received_rate','eligible_rate']:
+                n=int(r[f'{metric}_independent_seeds'])
+                if n<2:
+                    if r[f'{metric}_low'] or r[f'{metric}_high']:raise ValueError('Unsupported stratum interval')
+                elif not 0<=float(r[f'{metric}_low'])<=float(r[f'{metric}_high'])<=1:raise ValueError('Invalid stratum rate interval')
     return dict(status='PASSED',rf_cases=expected,evaluation_cases=eval_cases,metric_rows=len(rows),seed_groups=len(groups),
                 independent_evaluation_seeds=20,mlat_reused_scenes=diagnostic['reused_rf_scenes'],
                 scope='Offline aggregate and protocol audit; CI does not run RF simulations or read private captures')
