@@ -1,0 +1,10 @@
+{
+  "status": "PASSED",
+  "rf_cases": 2288,
+  "evaluation_cases": 2160,
+  "metric_rows": 19440,
+  "seed_groups": 972,
+  "independent_evaluation_seeds": 20,
+  "mlat_reused_scenes": 50,
+  "scope": "Offline aggregate and protocol audit; CI does not run RF simulations or read private captures"
+}

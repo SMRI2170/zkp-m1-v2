@@ -1,0 +1,12 @@
+{
+  "status": "PASSED",
+  "source_sha256": "d46daff828fcc8cbc0f24a2c1941ff143c90e18cda289b197462f17e875f7819",
+  "verified_private_ledgers": 2160,
+  "private_ledger_catalog_sha256": "2679cb553f0fe9491fb51df30315ce553580f97292f5d2a8677bb56703d05f2c",
+  "paired_comparisons": 216,
+  "power_strata_rows": 30339,
+  "decomposition_rows": 1920,
+  "raw_rf_rerun": false,
+  "thresholds_changed": false,
+  "scope": "Power strata and model/clipping decomposition use private truth AFTER scoring only. CI resamples independent seeds, not packets."
+}

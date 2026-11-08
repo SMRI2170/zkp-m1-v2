@@ -1,0 +1,134 @@
+{
+  "default:strong": {
+    "FreePowerUND": null,
+    "SingleResidual": 1.0667090995553359,
+    "KF_NIS": 1.931190254421824,
+    "DRSS2": 0.7148334786428734,
+    "DRSS3": 0.7297847515866422,
+    "DRSS4": 0.7456835989429393,
+    "MLAT4": 24.5226035783315,
+    "DRSS5": 3.2278615395490178,
+    "MLAT5": 251.70958547879815
+  },
+  "default:edge": {
+    "FreePowerUND": null,
+    "SingleResidual": 1.3590247475600918,
+    "KF_NIS": 2.850733149947518,
+    "DRSS2": 0.6831974555340281,
+    "DRSS3": 0.6954588954154417,
+    "DRSS4": 0.7306666044182819,
+    "MLAT4": null,
+    "DRSS5": 3.4203061709377707,
+    "MLAT5": 45.40263198183042
+  },
+  "default:weak": {
+    "FreePowerUND": null,
+    "SingleResidual": null,
+    "KF_NIS": null,
+    "DRSS2": null,
+    "DRSS3": null,
+    "DRSS4": null,
+    "MLAT4": null,
+    "DRSS5": null,
+    "MLAT5": null
+  },
+  "upper13:strong": {
+    "FreePowerUND": null,
+    "SingleResidual": 1.066709099555382,
+    "KF_NIS": 1.9314848008406615,
+    "DRSS2": 0.7148334786418289,
+    "DRSS3": 0.7297847515869336,
+    "DRSS4": 0.7456835989443249,
+    "MLAT4": 24.501001891096735,
+    "DRSS5": 3.2278615395497923,
+    "MLAT5": 251.7463138605423
+  },
+  "upper13:edge": {
+    "FreePowerUND": null,
+    "SingleResidual": 1.359024747560106,
+    "KF_NIS": 2.850733149947518,
+    "DRSS2": 0.6831974555340352,
+    "DRSS3": 0.6954588954154275,
+    "DRSS4": 0.7306666044182819,
+    "MLAT4": null,
+    "DRSS5": 3.4203061709377636,
+    "MLAT5": 45.40263198183042
+  },
+  "upper13:weak": {
+    "FreePowerUND": null,
+    "SingleResidual": null,
+    "KF_NIS": null,
+    "DRSS2": null,
+    "DRSS3": null,
+    "DRSS4": null,
+    "MLAT4": null,
+    "DRSS5": null,
+    "MLAT5": null
+  },
+  "lower_minus8:strong": {
+    "FreePowerUND": null,
+    "SingleResidual": 1.0667090995553359,
+    "KF_NIS": 1.931190254421824,
+    "DRSS2": 0.7148334786428734,
+    "DRSS3": 0.7297847515866422,
+    "DRSS4": 0.7456835989429393,
+    "MLAT4": 24.5226035783315,
+    "DRSS5": 3.2278615395490178,
+    "MLAT5": 251.70958547879815
+  },
+  "lower_minus8:edge": {
+    "FreePowerUND": null,
+    "SingleResidual": 1.3590247475600918,
+    "KF_NIS": 2.850733149947518,
+    "DRSS2": 0.6831974555340281,
+    "DRSS3": 0.6954588954154417,
+    "DRSS4": 0.7306666044182819,
+    "MLAT4": null,
+    "DRSS5": 3.4203061709377707,
+    "MLAT5": 45.40263198183042
+  },
+  "lower_minus8:weak": {
+    "FreePowerUND": null,
+    "SingleResidual": 1.8878672288853835,
+    "KF_NIS": 6.326235290761953e-05,
+    "DRSS2": null,
+    "DRSS3": null,
+    "DRSS4": null,
+    "MLAT4": null,
+    "DRSS5": 2.265139995498309,
+    "MLAT5": null
+  },
+  "upper40:strong": {
+    "FreePowerUND": null,
+    "SingleResidual": 1.0667090995553359,
+    "KF_NIS": 1.931190254421824,
+    "DRSS2": 0.7148334786428734,
+    "DRSS3": 0.7297847515866422,
+    "DRSS4": 0.7456835989429393,
+    "MLAT4": 24.5226035783315,
+    "DRSS5": 3.2278615395490178,
+    "MLAT5": 251.70958547879815
+  },
+  "upper40:edge": {
+    "FreePowerUND": null,
+    "SingleResidual": 1.3590247475600918,
+    "KF_NIS": 2.850733149947518,
+    "DRSS2": 0.6831974555340281,
+    "DRSS3": 0.6954588954154417,
+    "DRSS4": 0.7306666044182819,
+    "MLAT4": null,
+    "DRSS5": 3.4203061709377707,
+    "MLAT5": 45.40263198183042
+  },
+  "upper40:weak": {
+    "FreePowerUND": null,
+    "SingleResidual": null,
+    "KF_NIS": null,
+    "DRSS2": null,
+    "DRSS3": null,
+    "DRSS4": null,
+    "MLAT4": null,
+    "DRSS5": null,
+    "MLAT5": null
+  }
+}

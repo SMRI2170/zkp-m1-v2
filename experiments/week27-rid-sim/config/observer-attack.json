@@ -1,0 +1,27 @@
+{
+  "dataset_source": "simulation",
+  "simulation_engine": "OMNeT++/INET Remote ID equivalent Beacon simulation",
+  "train_seeds": [501],
+  "calibration_seeds": [601,602,603,604,605,606,607,608,609,610],
+  "evaluation_seeds": [701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720],
+  "links": ["strong","edge","weak"],
+  "offsets_m": [30,100],
+  "attack_bounds_db": [3,6,10,20],
+  "packets": 20,
+  "training_packets": 1000,
+  "bootstrap_repeats": 1000,
+  "defender_schedule": [0,2,3,4,5],
+  "phy_ablation": [
+    {"name":"default","minimum_dbm":-80,"maximum_dbm":23,"cases":["position_only","reference_rx0","schedule_aware","schedule_blind"],"bounds_db":[3,6,10,20]},
+    {"name":"upper13","minimum_dbm":-80,"maximum_dbm":13,"cases":["schedule_aware"],"bounds_db":[10]},
+    {"name":"lower_minus8","minimum_dbm":-8,"maximum_dbm":23,"cases":["schedule_aware"],"bounds_db":[10]},
+    {"name":"upper40","minimum_dbm":-80,"maximum_dbm":40,"cases":["schedule_aware"],"bounds_db":[10]}
+  ],
+  "attack_knowledge": {
+    "reference_rx0":"True/claimed position, receiver0 position, n=2. No live reception feedback.",
+    "schedule_aware":"Synthetic oracle additionally knows selected receiver before each TX. Not naturally available real-world knowledge.",
+    "schedule_blind":"True/claimed position and all receiver coordinates, uniform predeclared receiver prior. No selected receiver/schedule/future reception feedback; mean log-distance compensation."
+  },
+  "normal_calibration":"New normal-only training/calibration with frozen PR4 fixed-power threshold reproduction for default limits; no attack-driven adjustment.",
+  "limitations":["Fixed FreeSpace/Dipole geometry, no extra multipath or GPS errors","M0 and same-physical-packet M2 are separate observation assumptions","Upper40 is a synthetic physical-limit stress setting, not a lawful or deployable transmitter claim","No real UAV/Remote ID/safety validation"]
+}

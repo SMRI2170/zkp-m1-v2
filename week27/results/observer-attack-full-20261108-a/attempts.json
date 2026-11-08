@@ -1,0 +1,51 @@
+[
+  {
+    "stage": "prepare-build-a",
+    "status": "FAILED",
+    "rf_runs": 0,
+    "reason": "project-build absent before ln; original log preserved"
+  },
+  {
+    "stage": "prepare-build-b",
+    "status": "PASSED",
+    "build_jobs": 2,
+    "original_binary_preserved": true
+  },
+  {
+    "stage": "smoke-a",
+    "status": "ATTACK_AUDIT_FAILED",
+    "rf_process_exit": 0,
+    "rf_invocations": 1,
+    "physical_tx": 20,
+    "validated_cases": 0,
+    "reason": "Existing Host type fixed mgmt.typename; dedicated Issue75PowerHost required"
+  },
+  {
+    "stage": "smoke-b",
+    "status": "PASSED",
+    "new_rf_cases": 27,
+    "phy_tx": 620,
+    "rx": 2406
+  },
+  {
+    "stage": "full-a",
+    "status": "PASSED",
+    "new_rf_cases": 2288,
+    "reused_rf_cases": 0,
+    "phy_tx": 49680,
+    "rx": 129043
+  },
+  {
+    "stage": "native-negative",
+    "status": "EXPECTED_FAILURE",
+    "exit_code": 1,
+    "note": "Outside accepted matrix; two independent rejection invocations preserved"
+  },
+  {
+    "stage": "MLAT",
+    "status": "PASSED",
+    "new_rf_runs": 0,
+    "reused_pr4_scenes": 50,
+    "optimizer_runs": 14000
+  }
+]

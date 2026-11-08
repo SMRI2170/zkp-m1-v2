@@ -1,0 +1,9 @@
+{
+  "status": "MATHEMATICAL_COUNTEREXAMPLE",
+  "receivers": 4,
+  "distance_squared_scale": 1.2,
+  "power_change_db": 0.7918124604762482,
+  "max_rssi_difference_db": 7.105427357601002e-15,
+  "both_heights_positive": true,
+  "scope": "Ideal isotropic n=2 model, not a second INET RF run. Four co-circular receivers and unknown power leave a scale/height ambiguity even away from the center."
+}

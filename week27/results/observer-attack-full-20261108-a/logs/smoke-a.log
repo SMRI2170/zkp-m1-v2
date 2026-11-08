@@ -1,0 +1,10 @@
+{
+  "status": "PR5_FAILED",
+  "dataset_source": "simulation",
+  "stage": "PR5",
+  "completed_scenes": 0,
+  "new_rf_scenes": 0,
+  "reused_rf_scenes": 0,
+  "smoke": true,
+  "error": "ValueError: Missing/incorrect physical packet index"
+}

@@ -1,0 +1,18 @@
+{
+  "status": "PASSED",
+  "new_rf_runs": 0,
+  "reused_selected_receptions": 4000,
+  "per_seed_rows": 200,
+  "actual_carrier_hz": 2442000000.0,
+  "configured_channel_index": 6,
+  "fspl_constant_db": 40.202696414060654,
+  "max_signal_reconstruction_error_db": 3.254285729781259e-12,
+  "max_signed_residual_identity_error_db": 2.708944180085382e-14,
+  "source_sha256": {
+    "common/antenna/DipoleAntenna.cc": "d7eeffa5966b3b084fe6e3f2ade10a19be68ea1e7941262ce1b4952bb030ea0a",
+    "ieee80211/mode/Ieee80211Band.cc": "3aa4c813a69b4f5d4db13cdcf30cdb846e2e4918273f3ca959577e6b2d69afac",
+    "common/pathloss/FreeSpacePathLoss.cc": "8e4a54882bde51637cd8e080c0e564a6f5e2f64d8a1f9579cff99a3f579a9c9e"
+  },
+  "formula": "observed residual = surrogate normal-model residual at claim + G(true)-G(claim) + power-clipping error + reconstruction error",
+  "scope": "Posthoc truth-only diagnosis for declared vertical dipoles and FreeSpace. No added detector inputs, no threshold tuning, no gain-aware attack RF run, no field multipath attribution."
+}

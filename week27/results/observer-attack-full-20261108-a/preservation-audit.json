@@ -1,0 +1,34 @@
+{
+  "status": "PASSED",
+  "old_public_files_unchanged": 989,
+  "old_rf_vectors_and_logs_unchanged": 943,
+  "old_binary_sha256": "09d81955a7e981f0232c9754163e9a2290c444e558b9e4e04fcfef15eee7485d",
+  "old_public_hash_catalog_sha256": "e835777f1f55b06151458f52f860bd6549fe4f13edcfd70ced839f081b05202f",
+  "privacy": [
+    {
+      "root": "issue75-full-20261108-a",
+      "checked_entries": 40149,
+      "group_or_other_access": 0,
+      "ignored": true
+    },
+    {
+      "root": "issue75-mlat-20261108-a",
+      "checked_entries": 2,
+      "group_or_other_access": 0,
+      "ignored": true
+    },
+    {
+      "root": "issue75-negative-20261108-b",
+      "checked_entries": 8,
+      "group_or_other_access": 0,
+      "ignored": true
+    },
+    {
+      "root": "issue75-smoke-20261108-b",
+      "checked_entries": 473,
+      "group_or_other_access": 0,
+      "ignored": true
+    }
+  ],
+  "source_upstream_clean": true
+}

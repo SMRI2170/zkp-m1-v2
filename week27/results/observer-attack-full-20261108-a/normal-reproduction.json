@@ -1,0 +1,17 @@
+[
+  {
+    "phy": "default",
+    "link": "strong",
+    "normal_threshold_max_difference": 0.0
+  },
+  {
+    "phy": "default",
+    "link": "edge",
+    "normal_threshold_max_difference": 0.0
+  },
+  {
+    "phy": "default",
+    "link": "weak",
+    "normal_threshold_max_difference": null
+  }
+]

@@ -38,8 +38,8 @@ def create_spec(seed,model,offset,link,count,gap,risk=False):
                 height_m=20 if risk else 40,radius_m=20 if risk else 80)
 
 
-def score_methods(rows,run_id,geometry,solver):
-    view=asynchronous_view(rows,list(RX_POSITIONS),len(rows)//len(RX_POSITIONS))
+def score_methods(rows,run_id,geometry,solver,defender_schedule=None):
+    view=asynchronous_view(rows,list(RX_POSITIONS) if defender_schedule is None else defender_schedule,len(rows)//len(RX_POSITIONS))
     projection=detector_projection(view,run_id)
     rx=[r['delivered'] for r in projection]
     output={'FreePowerUND':([None]*len(view),rx),'SingleResidual':(single_residual(projection,geometry),rx),

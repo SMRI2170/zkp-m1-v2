@@ -1,0 +1,8 @@
+{
+  "status": "PASSED",
+  "scene_count": 943,
+  "metric_rows": 7200,
+  "independent_seeds": 20,
+  "groups": 360,
+  "scope": "Public aggregate integrity only; CI does not install or run OMNeT++/INET"
+}

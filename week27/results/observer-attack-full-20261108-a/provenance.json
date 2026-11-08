@@ -1,0 +1,42 @@
+{
+  "native_manifest": {
+    "binary_sha256": "6a95f6a8d1684a21a79f729763929ffb032f3f6feed8a9ae77cddcba5987bb30",
+    "native_sha256": {
+      "Issue70PowerMgmt.ned": "36f11ab19dd6bd2b751a70fd19c1782d3e63ba1c11a8dbcb4157c7dbf222e3bd",
+      "Issue70PowerMgmt.cc": "8f604429ab3a3144433fdec295c9ef8397e8b8e5d96468564c2d97b6495fd1be",
+      "Issue75PowerMgmt.ned": "17ac49b3a4e0f1f82b2f64ccff55d91e0c266b8419649787d357240e3629ab52",
+      "Issue75PowerMgmt.cc": "b12db82379b07a1ff86ba32d02d0b8a6dd240d5cdc10963f509845f0febdf98a",
+      "Issue75AttackMath.h": "f739a08759a9796843444e4e7bdf09874347cfd84f6483d4eddb28140c243650",
+      "package.ned": "717bb810ea3ddac7748168e91acad1cd2be66daa23d3f44d6bbe0ea82c77d331"
+    }
+  },
+  "python": "3.12.13",
+  "base_commit": "55db328520594f94b5e19bf126a62934d337dea7",
+  "upstream_sha": "3cf9474fe960955556de118065591915a7be2bc1",
+  "config_sha256": "0a1eab65beebd1979dec992c8023b401744e1a8e054d18c9d90994e547572ef2",
+  "script_sha256": {
+    "run_evaluation.py": "e44481568b81bc1af79fa540ea584af3783839f5853e2f9b59ace5a561be82af",
+    "plot_evaluation.py": "9760c822295e7c9416d953973b6bb43b4e4689c7f8953c69d34969a469731357",
+    "run_power.py": "6a93a2454b1919053c90f1ba37de74ff7490f21fe45098ba524d24ac47d22e8a",
+    "run_smoke.py": "7e8cfe25e91c82fcf89236a5aa22d93fa02a37ce11b4d127028ad6f91f99d9ff",
+    "summarize_evaluation.py": "07dab30dbd68fc52477de10d1e1632381f95b07e85bdc98784219d2e557082ac",
+    "observations.py": "dd4c3cb2eb1123e1fefc812093e301d9e6de4faee5318830c410f2f98f8f0a06",
+    "validate_evidence.py": "55d7779310f24be7fce881cda862ab538d60e4232c39d685ce9d38df26633114",
+    "normalize.py": "b009e7fd6ae35868f4757ee3472c2b59061055f51e684ee9d6aca6536b167e4a",
+    "evaluation.py": "60c06e3f93e82e5cbd64fa83921872b3abce833d5ca54f5c6a91a9f3fa611c12",
+    "mlat_geometry.py": "3c98a846fbf11ec53c26a683a13e4f37f7359d9779ec2a08852246a05255667f",
+    "visualization_adapter.py": "933fbbfe5dbf0ab061889f2a85afb1414c10c7feb21d7de5070475d791f56d09",
+    "smoke_callback.py": "cedb787569aa74dd92944cf7ab2c2eb03b29cd54df239ed6092695cac5fc4e66",
+    "run_observer_attack.py": "b5a5092984289e82e01a45b179ea886c01c39d076875f73d50eaac550fd94eeb",
+    "run_observations.py": "2623d948a3a6e87fd410f72f6670818a5dfdffaf119c97b2c8f9e8362b8bc771",
+    "scene.py": "ccfe345a109b7252f12a3079b7ecae03523692d0d77c22dea4c61cca71d8364c",
+    "setup.py": "a36e9ff356f463c0af1681d26fd4fdccd386d82a8a11c4b50da1caacf1523039",
+    "audit_evaluation.py": "08a361d43e07d656b368e01513047416c3fc63cb13f49c0991a8b7a8ac1076ef",
+    "validate_observer_attack.py": "29f54456495aa47a0fc78e8dfb3c6e8edc618e17b548585b95ac92eaf2638cff",
+    "summarize_observer_attack.py": "f72d308eae803b787777bd7f0354ee2737a45fed71baf409209e095f0c97ad5f",
+    "observer_attack.py": "769d10a6dee5df01245dbfee5c6da6b5d23391b8f9838ac8023941195be447fc",
+    "prepare_observer_workspace.py": "3248f8288fa14d1fb8ceeb6e7f32dfdd3c6a6d1ee1da66e032e665a770f9504d",
+    "diagnose_mlat.py": "76c3a4ce0c5226cff003fac5d16503cccf002053431ad66f8b674ab7d5af547d",
+    "plot_observer_attack.py": "4e707bf020b5c6e4df8c1eeb860a744f40c29d7806845d786a2784dbaeb58fb8"
+  }
+}

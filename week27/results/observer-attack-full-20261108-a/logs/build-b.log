@@ -1,0 +1,18 @@
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+Creating Makefile in <REPO>/.cache/issue75/project-build...
+
+power_extension/Issue75PowerMgmt.cc
+power_extension/Issue70PowerMgmt.cc
+src/gcs/GcsModule.cc
+src/detectors/kalman_filter/KalmanFilterDetectMgmt.cc
+src/mobility/MultirotorMobility.cc
+src/propagation/ImageMethodObstacleLoss.cc
+src/pybridge/PyBridge.cc
+src/rid_beacon/RidBeaconMgmt.cc
+src/spoofers/dynamic_trajectory/DynamicTrajectorySpooferMgmt.cc
+src/spoofers/py_tx_hook/PyTxHookSpooferMgmt.cc
+src/spoofers/static_location/StaticLocationSpooferMgmt.cc
+src/gcs/GcsCommand_m.cc
+src/gcs/GcsReport_m.cc
+src/rid_beacon/RidBeaconFrame_m.cc
+Creating executable: out/clang-release//rid_smoke

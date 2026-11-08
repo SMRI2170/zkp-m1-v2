@@ -1,0 +1,26 @@
+HOMEBREW detected, activating dependencies (qt@6, bison, flex, pkg-config, make).
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from <REPO>/experiments/week27-rid-sim/native:  3
+Loading NED files from <REPO>/.cache/issue75/uli-net-sim/src:  18
+Loading NED files from <REPO>/.cache/issue75/inet4.5/src:  1139
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-17:22:27-63215
+Setting up network "uav_rid.rid_network.BasicUav"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1e-05s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 2
+** Event #1   t=0.1   Elapsed: 0.001485s (0m 00s)  66% completed  (66% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 176   present: 176   in FES: 1
+<!> Error: Nonfinite or near-zero compensation distance -- in module (Issue75PowerMgmt) BasicUav.host[1].wlan[0].mgmt (id=96), at t=0.1s, event #1
+
+End.

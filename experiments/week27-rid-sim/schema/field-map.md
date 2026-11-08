@@ -61,3 +61,17 @@ It reads already-computed scores and never implements another detector.
 Its optional mode-E coordinate export is restricted to ignored `captures/`;
 the public results contain only aggregate metrics. `BELOW_THRESHOLD` means
 below a model threshold, not verified true position or safety.
+# PR5 private attack audit
+
+`attack-truth.schema.json` describes the private per-physical-TX ledger.
+`requested_delta_db` is the unconstrained n=2 compensation. `applied_delta_db`
+is the final actual PHY power minus nominal, after separate attack and PHY
+clamps. `compensation_error_db = applied_delta_db - requested_delta_db`.
+`target_rx_id=-1` is a mixture/no-reference marker, not a missing receiver
+measurement. `evaluation_rx_id` is audit-only, including in blind runs.
+
+The blind native path never reads `observerSchedule`; its mathematical helper
+cannot receive a schedule or RX feedback. Private truth fields are excluded by
+the existing whitelist projection. Audit/model/power/clipping strata may use
+truth only AFTER detector scores have been saved. They do not improve the
+detector's runtime information or turn derived model checks into new RF runs.

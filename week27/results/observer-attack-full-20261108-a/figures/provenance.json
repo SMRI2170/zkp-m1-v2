@@ -1,0 +1,34 @@
+{
+  "status": "GENERATED",
+  "matplotlib": "3.10.7",
+  "source_sha256": {
+    "aggregate-metrics.csv": "c2d4f86218f2bfda81057da85caebf1961780ae8c6306b4813d9cf2f69d2676d",
+    "factor-aggregate.csv": "ca31440d215f5c9b3f30444e536187b9d09e474861f9ed594c0603419d3bd6de",
+    "B-to-C-paired-difference.csv": "9ce46b199ac3b6f896454253e049f55bbebecaa4c8123632257489af2a128f0b"
+  },
+  "scope": "Public aggregate figures only; no raw trajectories. CI uses scored seeds only for conditional rates; <2 scored seeds has no CI. Empty points are undefined, not zero.",
+  "figures": [
+    "B-to-C-all-tx-difference.png",
+    "B-to-C-all-tx-difference.svg",
+    "bound-sensitivity-DRSS5.png",
+    "bound-sensitivity-DRSS5.svg",
+    "bound-sensitivity-KF_NIS.png",
+    "bound-sensitivity-KF_NIS.svg",
+    "bound-sensitivity-SingleResidual.png",
+    "bound-sensitivity-SingleResidual.svg",
+    "clipping-mechanisms.png",
+    "clipping-mechanisms.svg",
+    "mlat-baseline-and-multistart.png",
+    "mlat-baseline-and-multistart.svg",
+    "mlat-initialization-and-rank.png",
+    "mlat-initialization-and-rank.svg",
+    "mlat-solver-diagnostics.png",
+    "mlat-solver-diagnostics.svg",
+    "oracle-residual-components.png",
+    "oracle-residual-components.svg",
+    "physical-limits.png",
+    "physical-limits.svg",
+    "received-and-all-tx.png",
+    "received-and-all-tx.svg"
+  ]
+}

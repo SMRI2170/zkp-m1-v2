@@ -1,4 +1,4 @@
-# Issue #70 — uli-net-sim integration (PR1–PR4)
+# Issues #70/#75 — uli-net-sim integration (PR1–PR5)
 
 Research PoC for **OMNeT++/INET simulation of Remote ID-like custom Wi-Fi
 Beacons**. Not real UAV Remote ID measurements, ASTM/Japanese byte-level
@@ -264,3 +264,77 @@ Optional #69 mode-E private export (no UI or second detector):
   --results week27/results/issue70-evaluation-full-NEW --index 5 \
   --out captures/issue70-view-NEW/event.json
 ```
+# PR5 / Issue75: receiver knowledge and physical power constraints
+
+Start from PR74 head `55db328520594f94b5e19bf126a62934d337dea7`.
+The original PR4 executable, raw captures and public results are preserved.
+PR74's remote diff exceeds GitHub's 300-file API limit; audit its exact local
+commit diff instead. All four earlier PRs remain open/unmerged.
+
+```sh
+# PR1/PR4 dependencies and private PR4 captures are prerequisites. The latter
+# cannot be downloaded from Git: raw coordinates deliberately remain private.
+python3 experiments/week27-rid-sim/scripts/prepare_observer_workspace.py \
+  --out .cache/issue75/prepare-NEW.json --build
+.cache/issue75/python/bin/python experiments/week27-rid-sim/scripts/run_observer_attack.py \
+  --smoke --raw-dir captures/issue75-smoke-NEW --out week27/results/observer-attack-smoke-NEW
+.cache/issue75/python/bin/python experiments/week27-rid-sim/scripts/run_observer_attack.py \
+  --raw-dir captures/issue75-full-NEW --out week27/results/observer-attack-full-NEW
+.cache/issue75/python/bin/python experiments/week27-rid-sim/scripts/check_attack_rejection.py \
+  --raw-dir captures/issue75-negative-NEW --out week27/results/observer-attack-full-NEW/negative-controls.json
+.cache/issue75/python/bin/python experiments/week27-rid-sim/scripts/summarize_observer_attack.py \
+  --raw-dir captures/issue75-full-NEW --results week27/results/observer-attack-full-NEW
+.cache/issue75/python/bin/python experiments/week27-rid-sim/scripts/audit_attack_model.py \
+  --raw-dir captures/issue75-full-NEW --results week27/results/observer-attack-full-NEW
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .cache/issue75/python/bin/python \
+  experiments/week27-rid-sim/scripts/diagnose_mlat.py \
+  --private-out captures/issue75-mlat-NEW --out week27/results/observer-attack-mlat-NEW
+.cache/issue75/python/bin/python experiments/week27-rid-sim/scripts/plot_observer_attack.py \
+  week27/results/observer-attack-full-NEW week27/results/observer-attack-mlat-NEW
+python3 experiments/week27-rid-sim/scripts/validate_observer_attack.py \
+  week27/results/observer-attack-full-NEW week27/results/observer-attack-mlat-NEW
+```
+
+The prepare CLI shares already-built dependencies by explicit symlink while
+building a **separate project binary**. It checks memory/disk headroom and
+preservation of the original binary. Max build jobs=2, simulations sequential,
+120s/128MiB per-scene guards, minimum8GiB disk headroom, per-scene native logs
+and immediate progress/CSV checkpoints. No chat reply is needed to continue.
+
+The full matrix is in `config/observer-attack.json`: normal-only training501,
+calibration601–610, evaluation701–720, 20 packets at actual10-second spacing,
+30/100m global-X claim offsets and strong/edge/weak nominal power bands.
+Default bounds3/6/10/20dB compare position-only, fixed receiver0, schedule-aware
+oracle and blind uniform-prior mean compensation. Independent PHY sweeps use
+[-80,13], [-8,23], [-80,40] versus default[-80,23]dBm with C at bound10;
+each physical setting has new normal-only calibration. Upper40 is synthetic
+stress, not a real equipment/regulatory assertion. D is one declared blind
+strategy, not an optimized or exhaustive blind-adversary class.
+
+C knows the observation schedule before TX, but its declared propagation
+knowledge is **n=2 free-space distance only**, not an oracle of fitted detector
+models or antenna gain. The private native ledger records request/application,
+both clamps, target, actual PHY power and reception. Every packet's request is
+checked against the real transmitter tag. No RSS is changed in postprocessing.
+
+Normal thresholds reproduce PR4 fixed-power thresholds; 300 fresh normal/A/B
+RF cases also reproduce original hash-verified PR4 data. Old private captures
+are required for that reproduction gate; missing evidence must not be called
+a passed legacy comparison. The offline validator requires all300 comparisons.
+`--reuse-raw` explicitly re-parses hash/spec-verified PR5 raw records, requires
+matching native source/binary, and writes a NEW public analysis directory.
+
+The MLAT audit reuses50 old RF scenes (zero new RF), instruments the original
+objective without changing upstream, and compares a separately calibrated
+seven-start method selected by cost, never true-position error. Full private
+solver estimates remain in captures/. Mathematical circular-layout examples
+are separate tests, not RF executions.
+
+`audit_attack_model.py` reconstructs received signal under the declared
+vertical-dipole/FreeSpace model and decomposes residuals posthoc. INET4.5.4
+uses zero-based channel index6 = **2.442GHz**. The upstream KF/MLAT model still
+uses2400MHz/40.04dB; its mismatch is retained. This diagnostic never changes
+detector inputs/calibration or runs a gain-aware attack. No extra RSSI noise,
+field multipath, real Remote ID or safety validation is claimed.
+
+Research report: `week27/15_観測局適応電力補償攻撃と検出限界.md`.
