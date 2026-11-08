@@ -1,0 +1,7 @@
+# Analysis needs scipy.optimize. The 1.15.3 arm64 wheel in the smoke
+# environment failed dyld validation on macOS 27; preserve that failure log.
+numpy==2.2.6
+scipy==1.16.3
+pandas==2.3.3
+pyarrow==23.0.1
+matplotlib==3.10.7

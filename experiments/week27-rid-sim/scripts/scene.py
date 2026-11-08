@@ -53,6 +53,7 @@ def ini_for(spec):
         '*.host[1].wlan[0].mgmt.beaconOffset = 100ms',
         '*.host[1].wlan[0].mgmt.startupJitter = 0s',
         f'*.host[1].wlan[0].mgmt.powerModel = "{spec["model"]}"',
+        f'*.host[1].wlan[0].mgmt.nominalDbm = {spec.get("nominal_dbm",13)}',
         f'*.host[1].wlan[0].mgmt.rangeDb = {3 if spec["model"]=="uniform" else 10}',
         f'*.host[1].wlan[0].mgmt.claimOffsetX = {spec.get("offset_x_m",0)}m',
         f'*.host[1].wlan[0].mgmt.claimOffsetY = {spec.get("offset_y_m",0)}m',

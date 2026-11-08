@@ -1,4 +1,4 @@
-# Issue #70 — uli-net-sim integration (PR1)
+# Issue #70 — uli-net-sim integration (PR1–PR4)
 
 Research PoC for **OMNeT++/INET simulation of Remote ID-like custom Wi-Fi
 Beacons**. Not real UAV Remote ID measurements, ASTM/Japanese byte-level
@@ -186,3 +186,81 @@ preserve artifacts. A previous all-statistics attempt grew to ~10GB and was
 stopped, with the partial run retained rather than fabricated as complete.
 
 Report: [Week27 report 13](../../week27/13_非同期1RSSIと同一送信多局の観測条件監査.md).
+# PR4: normal-only calibration and conditional detection
+
+```sh
+.cache/issue70/python/bin/python -m pip install -r experiments/week27-rid-sim/requirements-evaluation.txt
+.cache/issue70/python/bin/python experiments/week27-rid-sim/scripts/run_evaluation.py \
+  --smoke --raw-dir captures/issue70-evaluation-smoke-NEW \
+  --out week27/results/issue70-evaluation-smoke-NEW
+.cache/issue70/python/bin/python experiments/week27-rid-sim/scripts/run_evaluation.py \
+  --raw-dir captures/issue70-evaluation-full-NEW \
+  --out week27/results/issue70-evaluation-full-NEW
+.cache/issue70/python/bin/python experiments/week27-rid-sim/scripts/audit_evaluation.py \
+  --raw-dir captures/issue70-evaluation-full-NEW --results week27/results/issue70-evaluation-full-NEW
+.cache/issue70/python/bin/python experiments/week27-rid-sim/scripts/summarize_evaluation.py week27/results/issue70-evaluation-full-NEW
+.cache/issue70/python/bin/python experiments/week27-rid-sim/scripts/plot_evaluation.py \
+  week27/results/issue70-evaluation-full-NEW
+python3 experiments/week27-rid-sim/scripts/validate_evidence.py week27/results/issue70-evaluation-full-NEW
+```
+
+Generation is sequential, with per-scene logs, watchdog/output/disk guards,
+checkpoint JSON and CSV. It exits on failure; it never waits for a chat turn.
+`--reuse-existing` explicitly re-analyzes existing, matching-spec/hash-verified
+private scenes without rerunning RF; use it deliberately, not to overwrite a
+failure or silently reuse a changed vector. Use new paths for a new execution.
+
+`config/evaluation.json` defines separate train/calibration/test seeds. Geometry
+training is normal-only. Thresholds use separate normal calibration flights
+within each declared power/link/scenario stratum. The evaluator is told that
+stratum; this is conditional evaluation, not automatic recognition of unknown
+power regimes. Start angle, nominal power and power RNG vary across test seeds,
+but receiver layout and propagation environment remain fixed. No independent
+building/environment generalization is established.
+
+Main comparison: 20 packets, 10-second actual spacing, 30/100m global-X claim
+offset, strong/edge/weak links, four physical power models, 20 evaluation seeds.
+Nominal powers are sampled independently per seed: strong [10,20]dBm,
+edge [-6,-2]dBm, weak [-14,-10]dBm, before per-packet changes and clamping.
+The edge stratum was added after the first run exposed near-total reception
+in the strong stratum and near-total loss in the weak stratum; original
+results are retained. It is not selected by test-set detection performance.
+
+The 300/3600-second and 10/100/1000-count **provenance** sweep is PR3, not a
+20-seed calibrated detector evaluation at those intervals. Fixed-path/radial/
+tangential/range-preserving attacks, antenna/layout sweeps, realistic multipath,
+shadowing, GPS errors and real UAV Remote ID validation remain NOT_RUN here.
+
+Methods and assumptions:
+
+| Method | Observations | Score / extra assumptions |
+|---|---|---|
+| FreePowerUND | One RSSI per distinct packet | Always UND under unrestricted independent unknown powers |
+| SingleResidual | Same M0 selected observations | Normal-trained log-distance model; one unknown flight-wide offset removed by batch median; assumes fixed/statistically constrained power |
+| KF_NIS | Same M0 selected observations | Per observer/claimed RID upstream scalar KF equations, Q=.01/R=4/P0=10; missing and initialization UND; no access to unselected observations |
+| DRSS2/3/4/5 | Same physical packet at selected ground nodes | Normal-trained receiver geometry model and fixed known -100dBm noise subtraction; pairwise residual span; NOT arbitrary multipath/interference cancellation |
+| MLAT4/5 | Same physical packet, >=4 receptions | Calls pinned upstream `multilaterate_with_tx_power`; score is unsmoothed estimated-to-claimed distance, not the entire upstream smoothed MultilatDetector; free-space/isotropic model mismatch is retained |
+| MLP | N/A | Upstream supervised binary training requires attack labels; incompatible with normal-only training in this experiment |
+
+Upstream MLAT accepts optimizer success **or cost<100**, bounds estimated power
+to [-50,50]dBm and initializes at the received claimed position. Its returned
+position need not be physically plausible or unique. Nonfinite/failed outputs
+are UND; finite large normal errors are not discarded. Four receivers do not
+guarantee robust 3D localization. Five receivers also change the chosen layout,
+so these comparisons cannot isolate a pure node-count effect.
+
+Every method has per-seed all-TX/RX/scored/FLAG/BELOW/UND counts, conditional
+FPR/TPR/FNR, received-conditional and all-TX alarm fractions. The latter is not
+called TPR when UND samples are included. Confidence intervals bootstrap seeds,
+not packets. Paired shared-scored and changed received cohorts are separate.
+The 30m pedestrian trajectory and its true/claimed distances are **evaluation
+truth only**, never model inputs or a validated safety guarantee.
+
+Optional #69 mode-E private export (no UI or second detector):
+
+```sh
+.cache/issue70/python/bin/python experiments/week27-rid-sim/scripts/visualization_adapter.py \
+  --scene-dir captures/issue70-evaluation-full-NEW/main-eval-strong-adaptive-701-offset100 \
+  --results week27/results/issue70-evaluation-full-NEW --index 5 \
+  --out captures/issue70-view-NEW/event.json
+```

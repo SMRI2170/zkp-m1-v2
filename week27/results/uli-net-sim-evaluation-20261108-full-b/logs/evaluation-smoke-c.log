@@ -1,0 +1,27 @@
+{
+  "dataset_source": "simulation",
+  "status": "PR4_EVALUATION_PASSED",
+  "completed_scenes": 30,
+  "planned_evaluation_seeds": 2,
+  "source": "Actual OMNeT++/INET Beacon runs; no synthetic RSSI additions in analysis",
+  "limitations": [
+    "FreeSpace/Dipole/constant -100dBm background; no extra multipath, shadowing or GPS errors. Seeds change start angle, nominal TX power and power RNG; one receiver layout/environment, not independent buildings.",
+    "Bounded +/-10dB adaptive compensation knows true/claimed positions and n=2 at RX0 only; physical clamp [-80,23]dBm. Not unrestricted D.",
+    "Normal-only empirical thresholds, not guaranteed 5% FPR",
+    "Same-frame methods are additional observations, not the original asynchronous solution",
+    "MLP N/A: supervised attack labels conflict with normal-only training policy; native upstream offline KF missing-to-zero convention not used"
+  ],
+  "native_kf_parity": {
+    "status": "PASSED",
+    "native_nis_count": 45,
+    "compared": 45,
+    "max_nis_difference": 1.3518075547835906e-12,
+    "note": "All observations in this control only. M0 replay uses selected observations only; native precomputed state is never reused for M0."
+  },
+  "metric_rows": 216,
+  "risk_rows": 0,
+  "calibration_uses_attacks": false,
+  "disjoint_seed_splits": true,
+  "total_actual_tx": 390,
+  "total_received": 1250
+}

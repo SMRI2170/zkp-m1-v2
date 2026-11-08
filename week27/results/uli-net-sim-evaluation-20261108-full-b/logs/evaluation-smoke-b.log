@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<REPO>/experiments/week27-rid-sim/scripts/run_evaluation.py", line 210, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ^^^^^^
+  File "<REPO>/experiments/week27-rid-sim/scripts/run_evaluation.py", line 112, in main
+    from evaluations.detectors import multilaterate_with_tx_power
+  File "<REPO>/.cache/issue70/uli-net-sim/evaluations/__init__.py", line 47, in <module>
+    from .analysis import analyze_scores
+  File "<REPO>/.cache/issue70/uli-net-sim/evaluations/analysis.py", line 13, in <module>
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'
