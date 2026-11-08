@@ -97,3 +97,8 @@ nova_poc/nova-android-demo/app/build/
 nova_poc/nova-android-demo/gradle/wrapper/gradle-wrapper.jar
 nova_poc/nova-android-demo/app/src/main/jniLibs/
 nova_poc/nova-android-demo/app/src/main/kotlin/uniffi/
+
+# Private research data and local Dataset-21 source
+captures/
+uav/captures/
+/week27/Sionna_Ray_Tracing_Real_World_Measurements

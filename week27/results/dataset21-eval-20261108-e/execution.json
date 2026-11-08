@@ -1,0 +1,33 @@
+{
+  "exit_code": 2,
+  "exit_meaning": "Input experiment complete; geometric detection NOT_RUN, not full success",
+  "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "numpy": "2.2.6",
+  "scipy": "1.16.3",
+  "independent_flights": 1,
+  "rf_runs": 0,
+  "geometric_detection_cells": 0,
+  "new_adapter_tests": 12,
+  "local_data_audit_tests": 72,
+  "local_data_audit_untracked_acquisition_tests": 5,
+  "expected_committed_data_audit_tests": 67,
+  "local_rid_tests": 82,
+  "uav_tests": 61,
+  "contracts_tests": 48,
+  "go": "PASS",
+  "checked_at_utc": "2026-11-08T14:11:04.061718+00:00",
+  "image_qa": "4 figures inspected; shared RSS y-scales, Japanese labels, wrapped captions",
+  "code_sha256": {
+    "run_dataset21_eval.py": "63e0134b56b96f525ffc0c059c6915822a29316fab0d3c5e032110a34d1c47d2",
+    "dataset21_adapter.py": "11c4992671578bfc71bc3c70294d82b16e36c8f95649eb3f71eee6eb354e8b99",
+    "plot_dataset21_eval.py": "33c99c1097a8ed1643b7c7ddd5826efe6e70da99bdf015d2d51d2da8a4e0a9cd",
+    "read_dataset21_mcos.mjs": "81253e97a89ce416f54a2d13b23d7ffaf04ab436556d9dd4782e0c62c03bea33"
+  },
+  "log_sha256": {
+    "tests-all.log": "a0169c21ddbde5cefc392c132628bdec56f748afb4837f1e3cf2945f58c5ead1",
+    "tests-rid.log": "c9f6e58f1ed62a943f6612953c534e5555dcbd7f5ac9b7bc3a58c33cc1a379ac",
+    "tests-uav.log": "f3503851bb9c662b6dceb76a020078bf95f541570c6d48d4d8adba74286a44bb",
+    "tests-go.log": "b60f593f2a0016aba6a5020896aa33cb9c499b5790b6deee4a55804192a275ea",
+    "tests-contracts.log": "5c12f1118ad495eab029d868e28acd261b525e514a0334bbd0bacd740d40c26a"
+  }
+}
