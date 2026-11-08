@@ -128,4 +128,6 @@ python3 -m unittest discover -s experiments/week27-rid-sim/tests -v
 
 [公開ログ](results/uli-net-sim-pr1-20261108-c/logs/)には、実シミュレーション・変換ログ、テスト出力、ビルド試行の診断とハッシュ、コマンドの記録を保存した。絶対ワークスペースパスを`${REPO}`へ置換し、公開ログの末尾空白を整形している。元の全ビルドログは`.cache/issue70/logs/`および`.cache/issue70/build-final-cli/`、生データは`captures/issue70-smoke-20261108-c/`に保持。
 
-[初回失敗の集計](results/uli-net-sim-pr1-20261108-a/summary.json)も保存し、最終成功で上書きしていない。再実行bとcは独立seed試行ではなく、コード変更後の再確認である。GitHub Actionsの結果は公開後に確認し、別途記録する。
+[初回失敗の集計](results/uli-net-sim-pr1-20261108-a/summary.json)も保存し、最終成功で上書きしていない。再実行bとcは独立seed試行ではなく、コード変更後の再確認である。
+
+コードコミット`d01cc3e67ee0969b77454d20bd71dea9584650e4`をpushし、[Draft PR #71](https://github.com/SMRI2170/zkp-m1-v2/pull/71)を作成した。GitHub Actionsのpush／pull_request合計6 run（各1 job）はすべて成功。全6 jobのログを取得・確認した。[CI確認記録](results/uli-net-sim-pr1-20261108-c/ci-review.json)にrun/job ID・URL・ログハッシュを保存。新規アダプタ18件、既存Week27の49件、既存Verifyのテスト・証拠監査が成功している。これはCI上でシミュレータをビルド・実行した意味ではない。
