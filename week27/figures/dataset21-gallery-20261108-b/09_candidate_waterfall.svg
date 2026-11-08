@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="417.6pt" viewBox="0 0 720 417.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-08T23:50:15.422668</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.7, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 417.6
+L 720 417.6
+L 720 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 63.56 333.632
+L 708.12 333.632
+L 708.12 40.85925
+L 63.56 40.85925
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 92.858182 333.632
+L 193.216595 333.632
+L 193.216595 83.39888
+L 92.858182 83.39888
+z
+" clip-path="url(#p67d2062364)" style="fill: #16365d"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 578.463405 333.632
+L 678.821818 333.632
+L 678.821818 181.989363
+L 578.463405 181.989363
+z
+" clip-path="url(#p67d2062364)" style="fill: #16365d"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 254.72659 165.595565
+L 355.085003 165.595565
+L 355.085003 83.39888
+L 254.72659 83.39888
+z
+" clip-path="url(#p67d2062364)" style="fill: #db7e36"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 416.594997 181.989363
+L 516.95341 181.989363
+L 516.95341 165.595565
+L 416.594997 165.595565
+z
+" clip-path="url(#p67d2062364)" style="fill: #b5b7c1"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m961adba0d7" d="M 0 0
+L 0 3.5
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m961adba0d7" x="143.037388" y="333.632" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="143.037388" y="349.112312" transform="rotate(-0 143.037388 349.112312)">参照観測</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m961adba0d7" x="304.905796" y="333.632" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="304.905796" y="349.112312" transform="rotate(-0 304.905796 349.112312)">時刻・分割条件で除外</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m961adba0d7" x="466.774204" y="333.632" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="466.774204" y="349.112312" transform="rotate(-0 466.774204 349.112312)">元観測の再利用を除外</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m961adba0d7" x="628.642612" y="333.632" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="628.642612" y="349.112312" transform="rotate(-0 628.642612 349.112312)">残る近接候補</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <path d="M 63.56 333.632
+L 708.12 333.632
+" clip-path="url(#p67d2062364)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.15; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <defs>
+       <path id="m43cef33506" d="M 0 0
+L -3.5 0
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m43cef33506" x="63.56" y="333.632" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: end" x="56.56" y="337.872156" transform="rotate(-0 56.56 337.872156)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_7">
+      <path d="M 63.56 288.093671
+L 708.12 288.093671
+" clip-path="url(#p67d2062364)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.15; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m43cef33506" x="63.56" y="288.093671" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: end" x="56.56" y="292.333827" transform="rotate(-0 56.56 292.333827)">200</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_9">
+      <path d="M 63.56 242.555341
+L 708.12 242.555341
+" clip-path="url(#p67d2062364)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.15; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m43cef33506" x="63.56" y="242.555341" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: end" x="56.56" y="246.795498" transform="rotate(-0 56.56 246.795498)">400</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_11">
+      <path d="M 63.56 197.017012
+L 708.12 197.017012
+" clip-path="url(#p67d2062364)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.15; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m43cef33506" x="63.56" y="197.017012" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: end" x="56.56" y="201.257168" transform="rotate(-0 56.56 201.257168)">600</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_13">
+      <path d="M 63.56 151.478683
+L 708.12 151.478683
+" clip-path="url(#p67d2062364)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.15; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m43cef33506" x="63.56" y="151.478683" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: end" x="56.56" y="155.718839" transform="rotate(-0 56.56 155.718839)">800</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_15">
+      <path d="M 63.56 105.940353
+L 708.12 105.940353
+" clip-path="url(#p67d2062364)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.15; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m43cef33506" x="63.56" y="105.940353" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: end" x="56.56" y="110.18051" transform="rotate(-0 56.56 110.18051)">1000</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_17">
+      <path d="M 63.56 60.402024
+L 708.12 60.402024
+" clip-path="url(#p67d2062364)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.15; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m43cef33506" x="63.56" y="60.402024" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: end" x="56.56" y="64.64218" transform="rotate(-0 56.56 64.64218)">1200</text>
+     </g>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 11px; font-family: 'Hiragino Sans'; text-anchor: middle" x="20.694375" y="187.245625" transform="rotate(-90 20.694375 187.245625)">観測候補数 [件]</text>
+    </g>
+   </g>
+   <g id="line2d_19">
+    <path d="M 193.216595 83.39888
+L 254.72659 83.39888
+" clip-path="url(#p67d2062364)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #888888"/>
+   </g>
+   <g id="line2d_20">
+    <path d="M 355.085003 165.595565
+L 416.594997 165.595565
+" clip-path="url(#p67d2062364)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #888888"/>
+   </g>
+   <g id="line2d_21">
+    <path d="M 516.95341 181.989363
+L 578.463405 181.989363
+" clip-path="url(#p67d2062364)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #888888"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 63.56 333.632
+L 63.56 40.85925
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 708.12 333.632
+L 708.12 40.85925
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 63.56 333.632
+L 708.12 333.632
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 63.56 40.85925
+L 708.12 40.85925
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #16365d" x="143.037388" y="77.056631" transform="rotate(-0 143.037388 77.056631)">1099</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #222222" x="304.905796" y="128.578004" transform="rotate(-0 304.905796 128.578004)">−361</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #222222" x="466.774204" y="177.873245" transform="rotate(-0 466.774204 177.873245)">−72</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Hiragino Sans'; text-anchor: middle; fill: #16365d" x="628.642612" y="175.647114" transform="rotate(-0 628.642612 175.647114)">666</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 13.2px; font-family: 'Hiragino Sans'; text-anchor: middle" x="385.84" y="34.85925" transform="rotate(-0 385.84 34.85925)">1,099件から666件へ：何が除かれたか</text>
+   </g>
+  </g>
+  <g id="text_18">
+   <text style="font-size: 9px; font-family: 'Hiragino Sans'; fill: #444444" transform="translate(43.2 401.164875)">5局・時刻幅200ms・追加遅れ／人工欠測なし。単位は全て観測候補数。残る666件も同一送信と確認されたものではない</text>
+   <text style="font-size: 9px; font-family: 'Hiragino Sans'; fill: #444444" transform="translate(43.2 411.336)">。</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p67d2062364">
+   <rect x="63.56" y="40.85925" width="644.56" height="292.77275"/>
+  </clipPath>
+ </defs>
+</svg>

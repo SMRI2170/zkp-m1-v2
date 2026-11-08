@@ -1,0 +1,16 @@
+{
+  "sha256": {
+    "calibration.csv": "05d6d59e36d3544005f2e4ac98fa53d49300bb4846cbd79489aa45575d2042ee",
+    "execution.json": "861747e63dbf5a6f0d0dcc4fd1207ddd80299eb3848db2208ebbb825b790d21e",
+    "execution.log": "ab23b362d4079897add308f2e215021eba2de4942f44bc5a6e793fad4c965454",
+    "figures/01_time_coverage.png": "295fcd85f14b6e690dea2eec136a45fe947aa4f7dde25722e05adb08e817a0da",
+    "figures/01_time_coverage.svg": "bff35ad5ea5d1b2ee505337b1e0fd30985ea963806ab230c33ac007c59424e11",
+    "figures/02_rt_offsets.png": "09a9d8d9903577ab094454438efac1aaa844acddd883224f6fbd066cbad901eb",
+    "figures/02_rt_offsets.svg": "59536b58da12a8f366796b40725f11b59e6f05691ae515717cd721ecfaf2d732",
+    "official-file-metadata.json": "b2cef923822f658005cbb9a934a04fa4ee7f2fc1869ded39559a8878296f3999",
+    "pairing.csv": "d3bd02a789144989b13b437ec15111608ed86e3e51d3b02418264f07f134ab2e",
+    "stations.csv": "6c3ce419da75a4e167ef82c266b2a13de15b0033fe3c7db16f950ed189797546",
+    "summary.json": "d79d5b64ff498bd8172f64a48a9aa24affab5c43ebad5308b8ac5b6e71a28688",
+    "tolerances.csv": "d34a2c2ac15b2d9b510e932ebfaf550989167c10418ac74b5eede78e2a91eedc"
+  }
+}

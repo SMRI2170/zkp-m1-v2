@@ -1,0 +1,881 @@
+{
+  "status": "AUDITED_SAME_TRANSMISSION_NOT_ESTABLISHED",
+  "dataset": "AERPAW Dataset-21",
+  "archive": {
+    "size_bytes": 8736011,
+    "sha256": "ff930df7158d4e9a4d2a038d225fb805b88031adef5628137bd3754ad2bd9ae1",
+    "crc_verified": true,
+    "all_extracted_files_match": true,
+    "file_count": 16
+  },
+  "inventory": [
+    {
+      "file": "C1_trajectory_altitude.m",
+      "bytes": 6191,
+      "sha256": "1d99f1adf78b7c7d8c4831dbef3963c8d20b403e54f226dbd57446d39054fddb"
+    },
+    {
+      "file": "C2_RSS_postprocessing.m",
+      "bytes": 5197,
+      "sha256": "7cb0d117428d6796baf6669b08f92532b70e8f329074ebc66ad9bb02a4afc513"
+    },
+    {
+      "file": "C3_RSS_comparison.m",
+      "bytes": 3743,
+      "sha256": "4e5067a1b6ceb3ec75cb6cc23ed2fe426edf8b13ed4b373c2d0c89410c291d6e"
+    },
+    {
+      "file": "D1_RSS_Measurements/LW1/Converted_GPS_RSS_data_40m_fs20MHz_LW1.mat",
+      "bytes": 85040,
+      "sha256": "ac21f68743f5ebb2e885d8abf872991bc65ad0eb2b7e076db794b4560333b089"
+    },
+    {
+      "file": "D1_RSS_Measurements/LW1/GPS_RSS_data_40m_fs20MHz_LW1.mat",
+      "bytes": 1565095,
+      "sha256": "3ef106576e4fed6fe86064dc674912ed9fd8ac95ea82ec6cbf69f2ea497a9130"
+    },
+    {
+      "file": "D1_RSS_Measurements/LW2/Converted_GPS_RSS_data_40m_fs20MHz_LW2.mat",
+      "bytes": 85664,
+      "sha256": "8605942de5fa49dcb2784d4c5ca3cd8b0ea57498f60cdfc99bf87501c12bd3be"
+    },
+    {
+      "file": "D1_RSS_Measurements/LW2/GPS_RSS_data_40m_fs20MHz_LW2.mat",
+      "bytes": 1467716,
+      "sha256": "9db16b9b940d5c65430d72e24e0ccb1f162525d5f5d868148612ce06604dfefe"
+    },
+    {
+      "file": "D1_RSS_Measurements/LW3/Converted_GPS_RSS_data_40m_fs20MHz_LW3.mat",
+      "bytes": 81176,
+      "sha256": "bc8975a02a456e7b38dd736caae09271eba023f500d342bd3243e184ef8e0fca"
+    },
+    {
+      "file": "D1_RSS_Measurements/LW3/GPS_RSS_data_40m_fs20MHz_LW3.mat",
+      "bytes": 1380607,
+      "sha256": "784b6c7a5bbc67028faf9f8af688f5b93df0ae805c2b73ad6309636fa6255022"
+    },
+    {
+      "file": "D1_RSS_Measurements/LW4/Converted_GPS_RSS_data_40m_fs20MHz_LW4.mat",
+      "bytes": 75200,
+      "sha256": "0e0000cdca2474f3c41a96134ed93570fa087bf8a2eeadccbbdc0f72cdc19974"
+    },
+    {
+      "file": "D1_RSS_Measurements/LW4/GPS_RSS_data_40m_fs20MHz_LW4.mat",
+      "bytes": 1273681,
+      "sha256": "80334f874f7a3c1de42b950430c8f2551f4c0bc5a8db20f0a44b9746cdecf8c5"
+    },
+    {
+      "file": "D1_RSS_Measurements/LW5/Converted_GPS_RSS_data_40m_fs20MHz_LW5.mat",
+      "bytes": 73352,
+      "sha256": "35701420064b6cd9d83bbd5035a0372b40bc47906154b8bf2ccf03a57609c936"
+    },
+    {
+      "file": "D1_RSS_Measurements/LW5/GPS_RSS_data_40m_fs20MHz_LW5.mat",
+      "bytes": 1229115,
+      "sha256": "e45f6a914db648feedebeb4ae83fee9bd2b315df123357d56034f6680f5407b7"
+    },
+    {
+      "file": "D2_RT_RSS_results_data.mat",
+      "bytes": 1776864,
+      "sha256": "fd684751cbc89259dc53708f8437fd20bca36ef2cf9d22752b942254cdcd201e"
+    },
+    {
+      "file": "D3_RT_Measurement_RSS_postprocessed_data.mat",
+      "bytes": 1212302,
+      "sha256": "a69cab388a54d75bec66722c148d8ece07949dd15f08c5d283d33c59d4b08ab4"
+    },
+    {
+      "file": "Readme.md",
+      "bytes": 3131,
+      "sha256": "f12d285ff6b03343a3f4888d5865a4adc00c832b3586535e9713c45bfbd88474"
+    }
+  ],
+  "schemas": [
+    {
+      "station": "LW1",
+      "fields": {
+        "GPSx": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "GPSy": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "GPSz": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "RSS": {
+          "shape": [
+            3916,
+            2
+          ],
+          "dtype": "float64"
+        },
+        "RSS1": {
+          "shape": [
+            3530
+          ],
+          "dtype": "float64"
+        },
+        "RSS2": {
+          "shape": [
+            3530
+          ],
+          "dtype": "float64"
+        },
+        "Time_s": {
+          "shape": [
+            2,
+            195800
+          ],
+          "dtype": "float64"
+        },
+        "carrier_freq": {
+          "shape": [],
+          "dtype": "float64"
+        },
+        "fname": {
+          "shape": [
+            3916
+          ],
+          "dtype": "object"
+        },
+        "time_stamp_gps_for_csv": {
+          "shape": [
+            917
+          ],
+          "dtype": "<U23"
+        },
+        "timestamp_for_csv": {
+          "shape": [
+            3530
+          ],
+          "dtype": "<U23"
+        },
+        "timestamp_gps": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "timestamp_meas": {
+          "shape": [
+            3530
+          ],
+          "dtype": "float64"
+        },
+        "validindex": {
+          "shape": [
+            3530
+          ],
+          "dtype": "uint16"
+        }
+      }
+    },
+    {
+      "station": "LW2",
+      "fields": {
+        "GPSx": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "GPSy": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "GPSz": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "RSS": {
+          "shape": [
+            3831,
+            2
+          ],
+          "dtype": "float64"
+        },
+        "RSS1": {
+          "shape": [
+            3556
+          ],
+          "dtype": "float64"
+        },
+        "RSS2": {
+          "shape": [
+            3556
+          ],
+          "dtype": "float64"
+        },
+        "Time_s": {
+          "shape": [
+            2,
+            191550
+          ],
+          "dtype": "float64"
+        },
+        "fname": {
+          "shape": [
+            3831
+          ],
+          "dtype": "object"
+        },
+        "time_stamp_gps_for_csv": {
+          "shape": [
+            917
+          ],
+          "dtype": "<U23"
+        },
+        "timestamp_for_csv": {
+          "shape": [
+            3556
+          ],
+          "dtype": "<U23"
+        },
+        "timestamp_gps": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "timestamp_meas": {
+          "shape": [
+            3556
+          ],
+          "dtype": "float64"
+        },
+        "validindex": {
+          "shape": [
+            3556
+          ],
+          "dtype": "uint16"
+        }
+      }
+    },
+    {
+      "station": "LW3",
+      "fields": {
+        "GPSx": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "GPSy": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "GPSz": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "RSS": {
+          "shape": [
+            3604,
+            2
+          ],
+          "dtype": "float64"
+        },
+        "RSS1": {
+          "shape": [
+            3369
+          ],
+          "dtype": "float64"
+        },
+        "RSS2": {
+          "shape": [
+            3369
+          ],
+          "dtype": "float64"
+        },
+        "Time_s": {
+          "shape": [
+            2,
+            180200
+          ],
+          "dtype": "float64"
+        },
+        "fname": {
+          "shape": [
+            3604
+          ],
+          "dtype": "object"
+        },
+        "time_stamp_gps_for_csv": {
+          "shape": [
+            917
+          ],
+          "dtype": "<U23"
+        },
+        "timestamp_for_csv": {
+          "shape": [
+            3369
+          ],
+          "dtype": "<U23"
+        },
+        "timestamp_gps": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "timestamp_meas": {
+          "shape": [
+            3369
+          ],
+          "dtype": "float64"
+        },
+        "validindex": {
+          "shape": [
+            3369
+          ],
+          "dtype": "uint16"
+        }
+      }
+    },
+    {
+      "station": "LW4",
+      "fields": {
+        "GPSx": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "GPSy": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "GPSz": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "RSS": {
+          "shape": [
+            3328,
+            2
+          ],
+          "dtype": "float64"
+        },
+        "RSS1": {
+          "shape": [
+            3120
+          ],
+          "dtype": "float64"
+        },
+        "RSS2": {
+          "shape": [
+            3120
+          ],
+          "dtype": "float64"
+        },
+        "Time_s": {
+          "shape": [
+            2,
+            166400
+          ],
+          "dtype": "float64"
+        },
+        "fname": {
+          "shape": [
+            3328
+          ],
+          "dtype": "object"
+        },
+        "time_stamp_gps_for_csv": {
+          "shape": [
+            917
+          ],
+          "dtype": "<U23"
+        },
+        "timestamp_for_csv": {
+          "shape": [
+            3120
+          ],
+          "dtype": "<U23"
+        },
+        "timestamp_gps": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "timestamp_meas": {
+          "shape": [
+            3120
+          ],
+          "dtype": "float64"
+        },
+        "validindex": {
+          "shape": [
+            3120
+          ],
+          "dtype": "uint16"
+        }
+      }
+    },
+    {
+      "station": "LW5",
+      "fields": {
+        "GPSx": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "GPSy": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "GPSz": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "RSS": {
+          "shape": [
+            3218,
+            2
+          ],
+          "dtype": "float64"
+        },
+        "RSS1": {
+          "shape": [
+            3043
+          ],
+          "dtype": "float64"
+        },
+        "RSS2": {
+          "shape": [
+            3043
+          ],
+          "dtype": "float64"
+        },
+        "Time_s": {
+          "shape": [
+            2,
+            160900
+          ],
+          "dtype": "float64"
+        },
+        "fname": {
+          "shape": [
+            3218
+          ],
+          "dtype": "object"
+        },
+        "time_stamp_gps_for_csv": {
+          "shape": [
+            917
+          ],
+          "dtype": "<U23"
+        },
+        "timestamp_for_csv": {
+          "shape": [
+            3043
+          ],
+          "dtype": "<U23"
+        },
+        "timestamp_gps": {
+          "shape": [
+            917
+          ],
+          "dtype": "float64"
+        },
+        "timestamp_meas": {
+          "shape": [
+            3043
+          ],
+          "dtype": "float64"
+        },
+        "validindex": {
+          "shape": [
+            3043
+          ],
+          "dtype": "uint16"
+        }
+      }
+    }
+  ],
+  "stations": [
+    {
+      "station": "LW1",
+      "raw_capture_rows": 3916,
+      "selected_rss_rows": 3530,
+      "channels": 2,
+      "gps_rows": 917,
+      "finite_rss1": 3530,
+      "finite_rss2": 3530,
+      "selected_raw_mapping_exact": true,
+      "time_step_median_ms": 261.99984550476074,
+      "time_step_min_ms": 223.00004959106445,
+      "time_step_p95_ms": 302.99997329711914,
+      "time_step_max_ms": 358.0000400543213,
+      "capture_span_median_ms": 19.992000000002008,
+      "common_gps_reference": true,
+      "filename_frequency_hz": 3320000000,
+      "stored_carrier_freq_hz": 3400000000.0
+    },
+    {
+      "station": "LW2",
+      "raw_capture_rows": 3831,
+      "selected_rss_rows": 3556,
+      "channels": 2,
+      "gps_rows": 917,
+      "finite_rss1": 3556,
+      "finite_rss2": 3556,
+      "selected_raw_mapping_exact": true,
+      "time_step_median_ms": 250.99992752075195,
+      "time_step_min_ms": 221.00019454956055,
+      "time_step_p95_ms": 299.9999523162842,
+      "time_step_max_ms": 387.00008392333984,
+      "capture_span_median_ms": 19.992000000002008,
+      "common_gps_reference": true,
+      "filename_frequency_hz": 3320000000,
+      "stored_carrier_freq_hz": null
+    },
+    {
+      "station": "LW3",
+      "raw_capture_rows": 3604,
+      "selected_rss_rows": 3369,
+      "channels": 2,
+      "gps_rows": 917,
+      "finite_rss1": 3369,
+      "finite_rss2": 3369,
+      "selected_raw_mapping_exact": true,
+      "time_step_median_ms": 279.9999713897705,
+      "time_step_min_ms": 220.99995613098145,
+      "time_step_p95_ms": 302.0000457763672,
+      "time_step_max_ms": 306.99992179870605,
+      "capture_span_median_ms": 19.992000000002008,
+      "common_gps_reference": true,
+      "filename_frequency_hz": 3320000000,
+      "stored_carrier_freq_hz": null
+    },
+    {
+      "station": "LW4",
+      "raw_capture_rows": 3328,
+      "selected_rss_rows": 3120,
+      "channels": 2,
+      "gps_rows": 917,
+      "finite_rss1": 3120,
+      "finite_rss2": 3120,
+      "selected_raw_mapping_exact": true,
+      "time_step_median_ms": 296.9999313354492,
+      "time_step_min_ms": 253.9999485015869,
+      "time_step_p95_ms": 301.00011825561523,
+      "time_step_max_ms": 395.9999084472656,
+      "capture_span_median_ms": 19.992000000002008,
+      "common_gps_reference": true,
+      "filename_frequency_hz": 3320000000,
+      "stored_carrier_freq_hz": null
+    },
+    {
+      "station": "LW5",
+      "raw_capture_rows": 3218,
+      "selected_rss_rows": 3043,
+      "channels": 2,
+      "gps_rows": 917,
+      "finite_rss1": 3043,
+      "finite_rss2": 3043,
+      "selected_raw_mapping_exact": true,
+      "time_step_median_ms": 301.9998073577881,
+      "time_step_min_ms": 296.9999313354492,
+      "time_step_p95_ms": 305.9999942779541,
+      "time_step_max_ms": 404.00004386901855,
+      "capture_span_median_ms": 19.992000000002008,
+      "common_gps_reference": true,
+      "filename_frequency_hz": 3320000000,
+      "stored_carrier_freq_hz": null
+    }
+  ],
+  "pairing": [
+    {
+      "station": "LW1",
+      "reference_rows": 3530,
+      "distinct_source_rows": 3530,
+      "reused_reference_rows": 0,
+      "exact_recorded_time_matches": 3530,
+      "nearest_abs_delta_min_ms": 0.0,
+      "nearest_abs_delta_median_ms": 0.0,
+      "nearest_abs_delta_p95_ms": 0.0,
+      "nearest_abs_delta_max_ms": 0.0
+    },
+    {
+      "station": "LW2",
+      "reference_rows": 3530,
+      "distinct_source_rows": 3315,
+      "reused_reference_rows": 215,
+      "exact_recorded_time_matches": 14,
+      "nearest_abs_delta_min_ms": 0.0,
+      "nearest_abs_delta_median_ms": 63.99989128112793,
+      "nearest_abs_delta_p95_ms": 128.00002098083496,
+      "nearest_abs_delta_max_ms": 151.0000228881836
+    },
+    {
+      "station": "LW3",
+      "reference_rows": 3530,
+      "distinct_source_rows": 3257,
+      "reused_reference_rows": 273,
+      "exact_recorded_time_matches": 12,
+      "nearest_abs_delta_min_ms": 0.0,
+      "nearest_abs_delta_median_ms": 70.00017166137695,
+      "nearest_abs_delta_p95_ms": 135.55005788803072,
+      "nearest_abs_delta_max_ms": 196.0000991821289
+    },
+    {
+      "station": "LW4",
+      "reference_rows": 3530,
+      "distinct_source_rows": 3101,
+      "reused_reference_rows": 429,
+      "exact_recorded_time_matches": 11,
+      "nearest_abs_delta_min_ms": 0.0,
+      "nearest_abs_delta_median_ms": 75.99997520446777,
+      "nearest_abs_delta_p95_ms": 139.9998664855957,
+      "nearest_abs_delta_max_ms": 167.00005531311035
+    },
+    {
+      "station": "LW5",
+      "reference_rows": 3530,
+      "distinct_source_rows": 3040,
+      "reused_reference_rows": 490,
+      "exact_recorded_time_matches": 14,
+      "nearest_abs_delta_min_ms": 0.0,
+      "nearest_abs_delta_median_ms": 77.99983024597168,
+      "nearest_abs_delta_p95_ms": 144.00005340576172,
+      "nearest_abs_delta_max_ms": 200.99997520446777
+    }
+  ],
+  "calibration": [
+    {
+      "station": "LW1",
+      "channel": 1,
+      "d3_offset_db": -3.299999999999997,
+      "constant_offset_max_error_db": 3.552713678800501e-15,
+      "rt_fitted_optimum_db": -3.3,
+      "rt_fitted_rmse_db": 7.0456786868689365,
+      "rt_target_count": 3530,
+      "manual_override": false,
+      "physical_absolute_calibration_established": false
+    },
+    {
+      "station": "LW1",
+      "channel": 2,
+      "d3_offset_db": -2.299999999999997,
+      "constant_offset_max_error_db": 3.552713678800501e-15,
+      "rt_fitted_optimum_db": -2.3,
+      "rt_fitted_rmse_db": 6.481055071496982,
+      "rt_target_count": 3530,
+      "manual_override": false,
+      "physical_absolute_calibration_established": false
+    },
+    {
+      "station": "LW2",
+      "channel": 1,
+      "d3_offset_db": -0.8999999999999986,
+      "constant_offset_max_error_db": 3.552713678800501e-15,
+      "rt_fitted_optimum_db": -0.9,
+      "rt_fitted_rmse_db": 6.318159297742541,
+      "rt_target_count": 3530,
+      "manual_override": false,
+      "physical_absolute_calibration_established": false
+    },
+    {
+      "station": "LW2",
+      "channel": 2,
+      "d3_offset_db": -6.5,
+      "constant_offset_max_error_db": 7.105427357601002e-15,
+      "rt_fitted_optimum_db": -6.5,
+      "rt_fitted_rmse_db": 6.434552906534642,
+      "rt_target_count": 3530,
+      "manual_override": false,
+      "physical_absolute_calibration_established": false
+    },
+    {
+      "station": "LW3",
+      "channel": 1,
+      "d3_offset_db": -8.5,
+      "constant_offset_max_error_db": 7.105427357601002e-15,
+      "rt_fitted_optimum_db": -8.5,
+      "rt_fitted_rmse_db": 5.1181243075338125,
+      "rt_target_count": 3314,
+      "manual_override": false,
+      "physical_absolute_calibration_established": false
+    },
+    {
+      "station": "LW3",
+      "channel": 2,
+      "d3_offset_db": -4.399999999999999,
+      "constant_offset_max_error_db": 3.552713678800501e-15,
+      "rt_fitted_optimum_db": -4.4,
+      "rt_fitted_rmse_db": 6.005475199808575,
+      "rt_target_count": 3314,
+      "manual_override": false,
+      "physical_absolute_calibration_established": false
+    },
+    {
+      "station": "LW4",
+      "channel": 1,
+      "d3_offset_db": 2.5,
+      "constant_offset_max_error_db": 0.0,
+      "rt_fitted_optimum_db": 2.5,
+      "rt_fitted_rmse_db": 7.756078625220953,
+      "rt_target_count": 2783,
+      "manual_override": false,
+      "physical_absolute_calibration_established": false
+    },
+    {
+      "station": "LW4",
+      "channel": 2,
+      "d3_offset_db": -6.599999999999994,
+      "constant_offset_max_error_db": 0.0,
+      "rt_fitted_optimum_db": -6.6,
+      "rt_fitted_rmse_db": 7.474170661815816,
+      "rt_target_count": 2783,
+      "manual_override": false,
+      "physical_absolute_calibration_established": false
+    },
+    {
+      "station": "LW5",
+      "channel": 1,
+      "d3_offset_db": -10.0,
+      "constant_offset_max_error_db": 7.105427357601002e-15,
+      "rt_fitted_optimum_db": -7.8,
+      "rt_fitted_rmse_db": 1.1553044693791248,
+      "rt_target_count": 2501,
+      "manual_override": true,
+      "physical_absolute_calibration_established": false
+    },
+    {
+      "station": "LW5",
+      "channel": 2,
+      "d3_offset_db": -10.0,
+      "constant_offset_max_error_db": 7.105427357601002e-15,
+      "rt_fitted_optimum_db": -9.7,
+      "rt_fitted_rmse_db": 1.3641331136772459,
+      "rt_target_count": 2501,
+      "manual_override": true,
+      "physical_absolute_calibration_established": false
+    }
+  ],
+  "tolerances": [
+    {
+      "max_recorded_span_ms": 0,
+      "reference_rows": 3530,
+      "nearest_time_candidate_rows": 0,
+      "same_transmission_verified": false
+    },
+    {
+      "max_recorded_span_ms": 1,
+      "reference_rows": 3530,
+      "nearest_time_candidate_rows": 0,
+      "same_transmission_verified": false
+    },
+    {
+      "max_recorded_span_ms": 5,
+      "reference_rows": 3530,
+      "nearest_time_candidate_rows": 0,
+      "same_transmission_verified": false
+    },
+    {
+      "max_recorded_span_ms": 10,
+      "reference_rows": 3530,
+      "nearest_time_candidate_rows": 0,
+      "same_transmission_verified": false
+    },
+    {
+      "max_recorded_span_ms": 20,
+      "reference_rows": 3530,
+      "nearest_time_candidate_rows": 0,
+      "same_transmission_verified": false
+    },
+    {
+      "max_recorded_span_ms": 50,
+      "reference_rows": 3530,
+      "nearest_time_candidate_rows": 16,
+      "same_transmission_verified": false
+    },
+    {
+      "max_recorded_span_ms": 100,
+      "reference_rows": 3530,
+      "nearest_time_candidate_rows": 256,
+      "same_transmission_verified": false
+    },
+    {
+      "max_recorded_span_ms": 200,
+      "reference_rows": 3530,
+      "nearest_time_candidate_rows": 2302,
+      "same_transmission_verified": false
+    },
+    {
+      "max_recorded_span_ms": 500,
+      "reference_rows": 3530,
+      "nearest_time_candidate_rows": 3530,
+      "same_transmission_verified": false
+    }
+  ],
+  "reference_rows": 3530,
+  "selected_rss_rows": 16618,
+  "all_station_nearest_span_ms": {
+    "min": 20.999908447265625,
+    "median": 174.99995231628418,
+    "p95": 259.99999046325684,
+    "max": 315.000057220459
+  },
+  "global_minimum_all_station_recorded_span_ms": 21.0,
+  "rt": {
+    "trajectory_samples": 3530,
+    "receivers": 5,
+    "tx_power_dbm_for_simulation": 44,
+    "stored_rss_formula_max_error_db": 2.842170943040401e-14
+  },
+  "gates": {
+    "real_measured_rss_present": true,
+    "recorded_time_proximity_comparable": true,
+    "same_packet_id_available": false,
+    "receiver_clock_accuracy_established": false,
+    "same_transmission_comparison_allowed": false,
+    "independent_absolute_power_calibration": false,
+    "position_spoof_detection_run": false
+  },
+  "metadata_conflicts": {
+    "paper_carrier_frequency_hz": 3300000000,
+    "filename_carrier_frequency_hz": 3320000000,
+    "lw1_stored_carrier_freq_hz": 3400000000.0,
+    "paper_usrp": "B205",
+    "readme_usrp": "B210"
+  },
+  "limits": [
+    "Nearest-time rows are not same-packet observations; repeated source samples are not independent.",
+    "20ms capture duration and trustworthy shared clocks would be additional assumptions, not established by a nearest join.",
+    "D3 uses full-trajectory RT-fitted per-channel offsets, with manual LW5 -10dB; not independent hardware dBm calibration.",
+    "No packet sequence, actual per-packet TX power or IQ samples in the exposed numeric fields.",
+    "Five receiver XYZ positions not available as explicit numeric fields; MATLAB MCOS objects were not decoded.",
+    "No MATLAB execution, new RF, real Remote ID or spoof-detection experiment."
+  ],
+  "code_sha256": "5af086abf17c22a2754db4cc32d25d4c0015310e918f9b5ee5af8e73eba1b578"
+}

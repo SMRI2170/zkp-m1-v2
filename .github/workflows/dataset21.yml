@@ -1,0 +1,54 @@
+name: Dataset-21 main integration
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  dataset21:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy==2.2.6 scipy==1.16.3
+      - run: python -m unittest discover -s experiments/week27-data-audit -p 'test_*.py' -v
+      - run: python -m unittest discover -s experiments/week27-rid-sim/tests -p test_ghostbuster.py -v
+      - run: python experiments/week27-data-audit/audit_aerpaw21_results.py week27/results/dataset21-local-audit-20261108-b
+      - run: python experiments/week27-data-audit/audit_dataset21_eval_results.py week27/results/dataset21-eval-20261108-e
+      - name: Verify gallery output and source hashes
+        run: |
+          python - <<'PYTHON'
+          import hashlib, json
+          from pathlib import Path
+          folder = Path('week27/figures/dataset21-gallery-20261108-b')
+          manifest = json.loads((folder/'manifest.json').read_text())
+          digest = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+          for name, expected in manifest['outputs'].items():
+              assert digest(folder/name) == expected, name
+          source = Path('week27/results/dataset21-eval-20261108-e')
+          for name, expected in manifest['source_files'].items():
+              assert digest(source/name) == expected, name
+          assert digest(Path('experiments/week27-data-audit/plot_dataset21_gallery.py')) == manifest['code_sha256']
+          assert manifest['new_experiments'] == 0 and not manifest['geometric_detection_executed']
+          print('Gallery hashes and research boundaries verified')
+          PYTHON
+  existing-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: aggregator/go.mod
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 -m unittest discover -s uav -p 'test_*.py'
+      - run: go test ./...
+        working-directory: aggregator
+      - run: npm ci
+        working-directory: contracts
+      - run: npm test
+        working-directory: contracts
