@@ -28,3 +28,5 @@ python3 experiments/week27-data-audit/audit_dataset21_eval_results.py week27/res
 - mainのGoテスト、コントラクト21件：成功。
 - mainの `python3 -m unittest discover -s uav -p 'test_*.py'`：終了コード0、対象テスト0件。作業ブランチ側の61件を実行したという意味ではない。
 - 既存の画像をそのまま反映し、描画し直し・新規RF実験・新規検出性能評価は実施していない。
+
+CI初回はPython 3.12のunittest探索が対象0件で終了コード5となった。テスト失敗を無視せず、対象が存在する場合は通常実行・失敗伝播し、存在しない場合はNOT RUNをCIのnoticeとSummaryへ明記する方式に変更。ローカルPython 3.15の0件終了コード0との違いであり、UAVテストの成功を追加主張しない。

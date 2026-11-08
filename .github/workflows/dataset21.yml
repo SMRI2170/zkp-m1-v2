@@ -45,7 +45,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: python3 -m unittest discover -s uav -p 'test_*.py'
+      - name: Discover and run available UAV tests (report absence explicitly)
+        run: |
+          python3 - <<'PYTHON'
+          import os, sys, unittest
+          suite = unittest.defaultTestLoader.discover('uav', pattern='test_*.py')
+          if suite.countTestCases() == 0:
+              message = 'UAV tests: NOT RUN — main contains no test_*.py cases; this is not a passing UAV test suite.'
+              print('::notice::' + message)
+              with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as report:
+                  report.write(message + '\n')
+          else:
+              result = unittest.TextTestRunner(verbosity=2).run(suite)
+              sys.exit(not result.wasSuccessful())
+          PYTHON
       - run: go test ./...
         working-directory: aggregator
       - run: npm ci
