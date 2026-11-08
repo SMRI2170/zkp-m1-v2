@@ -1,0 +1,302 @@
+[
+  {
+    "run_id": "main-cal-strong-fixed-601",
+    "vector_sha256": "0fe2537862fb5d015217c65a2f1c7d88be6351d11f0149212d854ef61014f7cd",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-cal-strong-fixed-602",
+    "vector_sha256": "604b9f8132a60019ef31c15a02329796f76bdef995010863ff64336676a5600b",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-cal-strong-fixed-603",
+    "vector_sha256": "f1d8b700069359cb35027bd49fe2dff3062970ef0118d4965629a4959438f0bf",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-cal-strong-fixed-604",
+    "vector_sha256": "fe44a7e6feac2021c536138b511414f04d3508d1bcdc89540f440943c793c3b5",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-cal-strong-fixed-605",
+    "vector_sha256": "5a6797c644c50d65bccb9462a6a636567a0ef53874d55650d8d2fd7c6745a851",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-cal-strong-fixed-606",
+    "vector_sha256": "87760f9b1bd8dad3e10e1d7729595c625b5c7b1a3287489f4d91a6e6409b68e8",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-cal-strong-fixed-607",
+    "vector_sha256": "6fc4b1e0cf01cb145e055de75690a20aa78d5b217f48130a30212622874cc575",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-cal-strong-fixed-608",
+    "vector_sha256": "c6639e94d35e01a39fea4ee0bf7ae01a1e1f7cfa5bd29d7c55bf8e953af40254",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-cal-strong-fixed-609",
+    "vector_sha256": "10eefe1772312d4f62b3d2d447b04e95ddaf7bc44fda9a9d3055b1276292f849",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-cal-strong-fixed-610",
+    "vector_sha256": "0f0fe3cf0ce5ffb899941725f775e87f5ff76c9e9b824d24e845fea3e2c51727",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-701-offset0",
+    "vector_sha256": "3204ba023b82528b41b28430d928f42b6cf5e3febf8fb223aa75742bdc8334ad",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-701-offset100",
+    "vector_sha256": "52faa0b16d7f8aa94c7517d177aa1042bac48c2e08aa5b9031749c702174900c",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-702-offset0",
+    "vector_sha256": "da73c468cca9829c7ce0e31cc8b4ac689c5be2b45805d84504d29fa8d562c46e",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-702-offset100",
+    "vector_sha256": "8b9c05bfcfa0ea4cce8878f5bfd4bcebc83b62fe8abc80cced2f2e3c024e8f10",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-703-offset0",
+    "vector_sha256": "4e3a2d89104d441d2245c54139f2e46088321b69a1bdbe80548c091450f88bab",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-703-offset100",
+    "vector_sha256": "ecc808ba3f07072e3022b60826128926806aaacbc9e3c7ba32e9b533a288fea4",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-704-offset0",
+    "vector_sha256": "07ee125189fd69c25711a9fcac23f0b6634731d5d0321d8cd9be9d8157b79af6",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-704-offset100",
+    "vector_sha256": "da85bff32a091334d6063740d9e089a9d5518ee5d5dbc0f7d4088203a51e9cad",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-705-offset0",
+    "vector_sha256": "ed5a68ae78d3489430123c2382fcce307f6ad24c011290a99f121355ea33ca5b",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-705-offset100",
+    "vector_sha256": "be3897f5472a14b75cce66e1bfc462b10820c990a984ad7186dc68297cccd96c",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-706-offset0",
+    "vector_sha256": "47ab1171b2431b0bdb0db9e007c65aa13aff674ca43f04e4809dedaf26974648",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-706-offset100",
+    "vector_sha256": "4dd7f6830bcd7ab341d1d04e47aed1050d93ceead905128b81d1f3fce7dca837",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-707-offset0",
+    "vector_sha256": "5e6288dd0f731fbeceec8a1e0cc0faeca6a21a6a5d15a4085731129c889f1aa4",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-707-offset100",
+    "vector_sha256": "87c48ec71a4064ba45b3c24bcb1fdfc1ed5577a3d9fbb58d34561a1e06baef92",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-708-offset0",
+    "vector_sha256": "076e0d40ac1bac675338d0827a3a90cbcd4fc83b3250729315f9912a70dd4015",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-708-offset100",
+    "vector_sha256": "c317567cec67bc7b92dfdeaf0c1c42386aa9bedfc52d3447d921caed22ffe67f",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-709-offset0",
+    "vector_sha256": "df5bb5ed4030517fc5a639393de84242758fb541fc483ed528f993728dfc9ecd",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-709-offset100",
+    "vector_sha256": "b7843c3b1801d0bfe9647c8531d94e124d2f0359bad7812a5e2c5196740ba910",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-710-offset0",
+    "vector_sha256": "03c3ba17323dbe8bb8b83a2c33f73f6b74d169228f4a0dd44b5ce51252f3cd28",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-710-offset100",
+    "vector_sha256": "adf65eab3b588f749196f623a1c71fcfec999c7d3335a5d0ee9a0dd49799088d",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-711-offset0",
+    "vector_sha256": "de9a77bd0a91e320f3ccee4b2e02eef4cefad6473e45f109c1a8c89002efc082",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-711-offset100",
+    "vector_sha256": "09e8cf6c974fd98a5addfa1a95f157f62eac5d84442fb2cf03a322c73e0e5a89",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-712-offset0",
+    "vector_sha256": "1779b4ab32100d612687639efe9eaade6681110c47ffa29f479213b9f35f6c81",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-712-offset100",
+    "vector_sha256": "52e0f732da7f7ead1103a7821fd2fbb08d4e5941614c0e77232f374fec054d8d",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-713-offset0",
+    "vector_sha256": "4ae48a49ac959b8d840605376ac7ad75f42a870d614667c4d147e56c325f8204",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-713-offset100",
+    "vector_sha256": "3dadce69b904c538d0d97408294b1c3ac1b1d61238522b7a4a3804b6d6aaaf4b",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-714-offset0",
+    "vector_sha256": "e00df2c632f34a88bb751521caaa33f9b00f9a451c53ad2c7e99910c476b21c9",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-714-offset100",
+    "vector_sha256": "cb1460a984c93a39e9aa12fc74263db8f848d3e6dae9c679a06c19c1da30a299",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-715-offset0",
+    "vector_sha256": "bf4b98d3c3a57a520a59beafcfec2c739e98b72735c120ddefe9cb54ce372202",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-715-offset100",
+    "vector_sha256": "307040149c3d6688a8706c71b79672ccf4c53743624d1f38822f8c7b8d91fe3d",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-716-offset0",
+    "vector_sha256": "e56b8a6e2e6dd06d6c05b0be68df6556679deb004765313ab1fcce2ad5c5c011",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-716-offset100",
+    "vector_sha256": "4390ffd95acebc1da619aa549e0143995c47bb8bc737d38b0e280b0d2c960159",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-717-offset0",
+    "vector_sha256": "ce16bc0c244c82ee936b1edd836c814be0c69bad0463a3a6bb53b4866786982c",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-717-offset100",
+    "vector_sha256": "b9379774dc962d2c784218b1db7f02b2f04f84a91e0a4d80fa9b9dfa01234494",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-718-offset0",
+    "vector_sha256": "bce23379c1b8f4fba9cfc21b8f7823beb8f0e5a9faa69f2126746d0359d6c015",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-718-offset100",
+    "vector_sha256": "9dc80991142700b4a1dcb6a41812438c44fe71f669690d54755f368d9ddbfe6d",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-719-offset0",
+    "vector_sha256": "c9946b018a31f85a162ca6c9a16d19265254378f1280bf42fb9db966c748a55a",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-719-offset100",
+    "vector_sha256": "7751f191cef1770dc02e8551864cdf26297311c4a3294a075f8f2ad9ff00956c",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-720-offset0",
+    "vector_sha256": "00281f17382cebcfe203943f4ddb81057ad645f4d7d01ece20956871fe11cbd1",
+    "tx_count": 20,
+    "new_rf_run": false
+  },
+  {
+    "run_id": "main-eval-strong-fixed-720-offset100",
+    "vector_sha256": "88305602cc98374c1ecc6d7b06b4a68f04bc09b1d2b3d34c8af75c7879de8491",
+    "tx_count": 20,
+    "new_rf_run": false
+  }
+]

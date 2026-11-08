@@ -1,0 +1,6 @@
+{
+  "status": "EXPECTED_REJECTION_PASSED",
+  "exit_code": 1,
+  "reason": "Near-zero claimed attack-catalog distance rejected in actual native code before TX",
+  "log_sha256": "cd4d630c7c417779b85cd293273b927099e14b8f147540900eaff277bd99284a"
+}

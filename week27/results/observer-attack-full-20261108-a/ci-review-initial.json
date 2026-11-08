@@ -1,0 +1,22 @@
+{
+  "commit": "c8c61b89faff2eaf918c4dbe2a78bf773da02924",
+  "runs": [
+    42463926071,
+    42463925772,
+    42463925931,
+    42463883743,
+    42463883787,
+    42463883764
+  ],
+  "jobs": [
+    128678970299,
+    128678969151,
+    128678969854,
+    128678842359,
+    128678842458,
+    128678842703
+  ],
+  "all_runs_success": true,
+  "all_job_logs_reviewed": true,
+  "scope": "Offline CI; native RF ran locally, not in Actions"
+}

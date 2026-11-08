@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"PR5 private synthetic attack audit record",
+  "description":"Instances belong in ignored owner-only captures/. Never a detector input or public trajectory artifact.",
+  "type":"object",
+  "required":["tx_event_id","requested_delta_db","applied_delta_db","clamped_by_attack_bound","clamped_by_phy_limit","compensation_error_db","target_rx_id","effective_phy_tx_dbm","delivered"],
+  "properties":{
+    "tx_event_id":{"type":"integer"},
+    "requested_delta_db":{"type":"number"},
+    "applied_delta_db":{"type":"number"},
+    "clamped_by_attack_bound":{"type":"boolean"},
+    "clamped_by_phy_limit":{"type":"boolean"},
+    "compensation_error_db":{"type":"number","description":"effective PHY power minus nominal minus unconstrained requested delta"},
+    "target_rx_id":{"enum":[-1,0,2,3,4,5],"description":"-1 means no single reference (position-only or blind mixture)"},
+    "effective_phy_tx_dbm":{"type":"number"},
+    "delivered":{"type":"boolean"},
+    "rssi_dbm":{"type":["number","null"]}
+  }
+}

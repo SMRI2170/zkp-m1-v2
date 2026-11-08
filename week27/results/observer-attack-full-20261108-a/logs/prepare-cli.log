@@ -1,0 +1,11 @@
+{
+  "status": "PREPARED",
+  "source_binary_sha256": "09d81955a7e981f0232c9754163e9a2290c444e558b9e4e04fcfef15eee7485d",
+  "memory": {
+    "total_bytes": 17179869184,
+    "free_percentage": 50,
+    "swap_usage": "total = 7168.00M  used = 5977.94M  free = 1190.06M  (encrypted)"
+  },
+  "build_requested": false,
+  "source_binary_unchanged": true
+}

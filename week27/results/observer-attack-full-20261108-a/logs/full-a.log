@@ -1,0 +1,13 @@
+{
+  "status": "PR5_EVALUATION_PASSED",
+  "dataset_source": "simulation",
+  "stage": "PR5",
+  "completed_scenes": 2288,
+  "new_rf_scenes": 2288,
+  "reused_rf_scenes": 0,
+  "smoke": false,
+  "metric_rows": 19440,
+  "factor_rows": 1920,
+  "total_phy_tx": 49680,
+  "total_rx": 129043
+}

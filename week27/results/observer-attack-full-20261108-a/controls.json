@@ -1,0 +1,7 @@
+{
+  "status": "PASSED",
+  "fixed_zero_max_power_difference_db": 0.0,
+  "blind_permuted_max_power_difference_db": 0.0,
+  "blind_ini_identical": true,
+  "scope": "Actual independent native RF runs; defender assignment changes only in observation filtering"
+}

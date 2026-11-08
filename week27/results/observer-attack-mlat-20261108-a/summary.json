@@ -1,0 +1,11 @@
+{
+  "status": "MLAT_DIAGNOSTICS_PASSED",
+  "dataset_source": "simulation",
+  "new_rf_runs": 0,
+  "reused_rf_scenes": 50,
+  "instrumented_solver_runs": 14000,
+  "upstream_position_max_difference_m": 0.0,
+  "normal_only_calibration": true,
+  "evaluation_seeds": 20,
+  "note": "Original upstream unchanged. Multi-start lowest accepted cost is a separately labelled method; no truth-based initialization or selection."
+}

@@ -1,0 +1,1 @@
+{"status": "EXPECTED_REJECTION_PASSED", "exit_code": 1, "reason": "Invalid synthetic attack-catalog distance rejected in native code before TX", "log_sha256": "b0335f9349b1d69322bcdc038463819ca7e0d1b51ca73206da0eb81bd97c7d7d"}

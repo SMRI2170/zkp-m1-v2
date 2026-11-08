@@ -68,14 +68,14 @@ def ini_for(spec):
     return '\n'.join(values)+'\n'
 
 
-def run_scene(spec,workspace,directory):
+def run_scene(spec,workspace,directory,ini_renderer=ini_for):
     if directory.exists():
         raise ValueError('Scene output already exists; preserving evidence')
     if shutil.disk_usage(directory.parent).free<8*1024**3:
         raise ValueError('Need 8 GiB disk headroom; no prior evidence deleted')
     directory.mkdir(parents=True,mode=0o700)
     (directory/'spec.json').write_text(json.dumps(spec,indent=2)+'\n')
-    ini=directory/'scene.ini';ini.write_text(ini_for(spec))
+    ini=directory/'scene.ini';ini.write_text(ini_renderer(spec))
     upstream=workspace/'uli-net-sim';binary=workspace/'project-build/out/clang-release/rid_smoke'
     lock=json.loads((ROOT/'upstream.lock.json').read_text())
     if subprocess.check_output(['git','-C',str(upstream),'rev-parse','HEAD'],text=True).strip()!=lock['uli_net_sim']['sha']:
