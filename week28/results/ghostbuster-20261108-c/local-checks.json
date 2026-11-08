@@ -1,0 +1,20 @@
+{
+  "adapter_tests": 82,
+  "ghostbuster_numerical_tests": 8,
+  "uav_tests": 61,
+  "contracts_tests": 48,
+  "go": "PASS",
+  "commands": {
+    "adapter": ".cache/issue77/python/bin/python -m unittest discover -s experiments/week27-rid-sim/tests -v",
+    "uav": "python3 -m unittest discover -s uav -p 'test_*.py'",
+    "go": "cd aggregator && go test ./...",
+    "contracts": "cd contracts && npm test"
+  },
+  "logs_sha256": {
+    "ghost-final-tests.log": "c7e491c25e420d11bb3c22f318a2e2ed9109ae9bd42e0c1447aa2b2fd6a6c3ab",
+    "ghost-uav-check.log": "d902012cfcb0a6fd2e4a2612d492fa121476c273dcfe87dcdb085f374dbdf587",
+    "ghost-go-check.log": "b60f593f2a0016aba6a5020896aa33cb9c499b5790b6deee4a55804192a275ea",
+    "ghost-contracts-check.log": "77783858011025d0f54381e2d67e44fb3f0bbfa21f8edf4df188dc2b94fd4190"
+  },
+  "figure_visual_qa": "All 8 PNG inspected, Japanese labels and captions visible; no clipping observed."
+}

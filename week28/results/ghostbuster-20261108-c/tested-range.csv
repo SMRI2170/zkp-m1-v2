@@ -1,0 +1,9 @@
+k,threshold_policy,normal_fpr,eligible,first_tested_mean_ge95_m,first_tested_ci_lower_ge95_m
+1,max_normal,0.025,1.0,1000,1000
+1,q95_normal,0.07,1.0,1000,1000
+4,max_normal,0.015000000000000003,1.0,750,750
+4,q95_normal,0.06000000000000001,1.0,500,750
+5,max_normal,0.005,1.0,750,750
+5,q95_normal,0.07,1.0,500,500
+12,max_normal,0.0,1.0,300,300
+12,q95_normal,0.035,1.0,200,200

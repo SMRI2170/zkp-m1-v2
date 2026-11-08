@@ -1,0 +1,3802 @@
+[
+  {
+    "run": "default-cal-strong-601",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-cal-strong-602",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-cal-strong-603",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-cal-strong-604",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-cal-strong-605",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-cal-strong-606",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-cal-strong-607",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-cal-strong-608",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-cal-strong-609",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-cal-strong-610",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-701-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-701-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-701-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-701-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-701-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-701-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-701-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-701-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-701-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-702-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-702-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-702-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-702-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-702-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-702-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-702-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-702-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-702-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-703-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-703-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-703-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-703-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-703-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-703-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-703-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-703-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-703-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-704-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-704-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-704-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-704-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-704-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-704-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-704-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-704-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-704-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-705-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-705-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-705-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 4
+  },
+  {
+    "run": "default-eval-strong-705-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-705-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 5
+  },
+  {
+    "run": "default-eval-strong-705-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-705-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-705-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-705-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-706-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-706-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-706-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-706-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-706-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-706-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-706-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-706-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-706-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-707-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-707-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-707-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-707-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-707-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-707-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-707-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-707-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-707-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-708-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-708-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-708-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-708-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-708-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-708-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-708-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-708-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-708-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-709-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-709-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-709-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-709-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-709-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-709-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-709-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-709-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-709-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-710-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-710-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-710-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-710-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-710-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-710-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-710-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-710-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-710-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-711-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-711-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-711-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-711-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-711-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-711-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-711-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-711-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-711-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-713-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-713-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-713-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-713-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-713-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-713-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-713-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-713-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-713-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-714-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-714-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-714-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-714-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-714-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-714-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-714-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-714-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-714-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-715-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-715-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-715-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-715-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-715-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-715-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-715-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-715-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-715-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-716-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-716-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-716-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-716-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-716-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-716-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-716-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-716-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-716-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-717-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-717-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-717-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-717-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-717-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-717-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-717-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-717-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-717-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-718-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-718-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-718-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-718-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-718-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-718-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-718-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-718-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-718-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-719-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-719-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-719-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-719-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-719-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-719-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-719-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-719-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-719-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-720-normal",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-720-position_only-offset30-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-720-reference_rx0-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-720-schedule_aware-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-720-schedule_blind-offset30-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-720-position_only-offset100-bound0",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-720-reference_rx0-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-720-schedule_aware-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-720-schedule_blind-offset100-bound10",
+    "k": 4,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 20,
+    "nonstationary_fits": 0,
+    "subset_count": 1,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-cal-strong-601",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-cal-strong-602",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-cal-strong-603",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-cal-strong-604",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-cal-strong-605",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-cal-strong-606",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-cal-strong-607",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-cal-strong-608",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-cal-strong-609",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 5
+  },
+  {
+    "run": "default-cal-strong-610",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 4
+  },
+  {
+    "run": "default-eval-strong-701-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-701-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-701-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 6
+  },
+  {
+    "run": "default-eval-strong-701-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 7
+  },
+  {
+    "run": "default-eval-strong-701-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-701-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-701-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-701-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-701-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 5
+  },
+  {
+    "run": "default-eval-strong-702-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 9
+  },
+  {
+    "run": "default-eval-strong-702-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 9
+  },
+  {
+    "run": "default-eval-strong-702-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-702-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-702-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 8
+  },
+  {
+    "run": "default-eval-strong-702-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 9
+  },
+  {
+    "run": "default-eval-strong-702-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-702-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-702-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-703-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-703-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-703-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-703-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-703-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-703-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-703-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-703-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-703-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-704-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-704-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-704-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-704-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-704-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-704-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-704-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-704-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-704-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-705-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-705-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-705-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 4
+  },
+  {
+    "run": "default-eval-strong-705-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-705-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 5
+  },
+  {
+    "run": "default-eval-strong-705-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-705-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-705-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-705-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-706-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-706-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-706-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 4
+  },
+  {
+    "run": "default-eval-strong-706-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 4
+  },
+  {
+    "run": "default-eval-strong-706-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-706-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-706-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-706-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-706-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-707-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-707-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-707-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-707-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-707-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-707-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-707-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-707-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-707-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-708-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-708-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-708-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-708-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-708-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-708-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-708-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-708-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-708-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-709-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-709-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-709-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-709-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-709-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-709-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-709-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-709-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-709-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-710-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-710-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-710-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-710-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 4
+  },
+  {
+    "run": "default-eval-strong-710-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-710-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-710-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-710-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-710-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-711-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-711-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-711-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-711-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-711-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-711-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-711-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-711-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-711-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-712-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-712-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-713-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 6
+  },
+  {
+    "run": "default-eval-strong-713-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 6
+  },
+  {
+    "run": "default-eval-strong-713-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-713-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-713-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-713-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 6
+  },
+  {
+    "run": "default-eval-strong-713-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-713-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-713-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-714-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-714-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-714-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-714-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-714-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-714-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-714-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-714-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-714-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-715-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-715-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-715-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-715-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-715-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-715-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-715-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-715-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-715-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-716-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 7
+  },
+  {
+    "run": "default-eval-strong-716-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 7
+  },
+  {
+    "run": "default-eval-strong-716-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-716-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-716-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 5
+  },
+  {
+    "run": "default-eval-strong-716-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 7
+  },
+  {
+    "run": "default-eval-strong-716-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-716-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-716-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-717-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-717-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-717-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-717-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-717-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-717-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-717-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  },
+  {
+    "run": "default-eval-strong-717-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-717-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-718-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-718-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-718-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-718-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-718-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-718-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-718-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-718-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-718-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-719-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 7
+  },
+  {
+    "run": "default-eval-strong-719-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 7
+  },
+  {
+    "run": "default-eval-strong-719-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-719-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 2
+  },
+  {
+    "run": "default-eval-strong-719-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 4
+  },
+  {
+    "run": "default-eval-strong-719-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 7
+  },
+  {
+    "run": "default-eval-strong-719-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-719-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 5
+  },
+  {
+    "run": "default-eval-strong-719-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-720-normal",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-720-position_only-offset30-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-720-reference_rx0-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-720-schedule_aware-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 1
+  },
+  {
+    "run": "default-eval-strong-720-schedule_blind-offset30-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-720-position_only-offset100-bound0",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-720-reference_rx0-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-720-schedule_aware-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 0
+  },
+  {
+    "run": "default-eval-strong-720-schedule_blind-offset100-bound10",
+    "k": 5,
+    "windows": 4,
+    "complete_windows": 4,
+    "fit_count": 100,
+    "nonstationary_fits": 0,
+    "subset_count": 5,
+    "scipy_fallback_fits": 3
+  }
+]

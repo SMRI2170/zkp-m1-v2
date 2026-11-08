@@ -1,0 +1,15 @@
+{
+  "sha256": {
+    "aggregate.csv": "1e653c17ad50b22c37393d6b5a1eefdf19c551b65d270ba95c3c962ca65032bc",
+    "attempt-history.json": "b6135d86c1bb4289ab3846772a5909f3082a1016b059af365e5b1e3ea8bdebe7",
+    "config.json": "371eacb75666abcc9a8bbddbb11e7af477031f42cfb53d3237cb81f9aad2f5a1",
+    "execution.json": "30fbcafeca33d1df97a9edff532b412ef8c3bacb72b05ed440aa1d6f81b9b820",
+    "execution.log": "90bd69193251fad5b2ec9aefe076f655dff26aef364eb79a4c2ff6e08c3bace5",
+    "local-checks.json": "fd182e05e87cf8a1d15b7f9b30398780eea15bb025b2c41dfadef977f4101dcd",
+    "per-seed.csv": "14425037b322f1d8f310f6d54b582b1859a981c61f62c3fa2adc8c36f930e7d6",
+    "preservation.json": "b75338d5ba1d9427ffe1c092fa2f9639f3d9791b1afe9d09f4b5695c8e037bad",
+    "solver-audit.json": "64550790359c0d46d9bffc1e20f90bcd41da98c4f697121faed222621d4db93a",
+    "status.json": "43206a1d226c2c08e203253f3cdedf3c193bd55975f286459b302791ba08db7b",
+    "tested-range.csv": "a91e2c10de52969d6c29144e38efbcf972af1f3fbc5a9541d2ef4734d03fee24"
+  }
+}

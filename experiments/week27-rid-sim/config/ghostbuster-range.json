@@ -1,0 +1,42 @@
+{
+  "study": "GhostBuster equations 2-6 independent implementation; not numerical replication of published figures",
+  "paper_url": "https://ssciancalepore.win.tue.nl/publications_pdf/2024_Keizer_CCNC.pdf",
+  "stage": "Explicit supplementary experiment after PR6a; original external-validity.json is unchanged",
+  "calibration_seeds": [601,602,603,604,605,606,607,608,609,610],
+  "evaluation_seeds": [701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720],
+  "calibration_windows_per_seed": 20,
+  "evaluation_windows_per_seed": 10,
+  "packets_per_window": 5,
+  "subset_size": 4,
+  "receivers": [1,4,5,12],
+  "noise_sd_db": [1.0,3.5,6.0],
+  "offsets_m": [0,10,30,50,100,200,300,500,750,1000],
+  "directions": ["away_rx0","transverse_rx0"],
+  "attacks": ["position_only","power_compensation_rx0"],
+  "nominal_power_dbm": 20.0,
+  "pl_d0_db": 58.07,
+  "path_loss_exponent": 1.35,
+  "attack_exponent": 1.35,
+  "power_change_bound_db": 10.0,
+  "thresholds": ["max_normal","q95_normal"],
+  "solver_max_iterations": 70,
+  "minimum_converged_subset_fraction": 0.8,
+  "sparse_matrix": {
+    "receiver_comparison": "K=1,4,5,12 at SD3.5, position only",
+    "noise_comparison": "K=5 at SD1,3.5,6, position only",
+    "power_comparison": "K=1,5 at SD3.5, position only versus compensation",
+    "all_comparisons": "both declared directions; all distances; both normal-only threshold policies"
+  },
+  "bootstrap_repeats": 2000,
+  "maximum_new_native_rf_cases": 0,
+  "maximum_private_output_mib": 96,
+  "maximum_public_output_mib": 32,
+  "limits": [
+    "Synthetic LDPL, independent Gaussian dB noise, all packets delivered, integer-truncated RSS, same-packet observations.",
+    "Declared receiver placement and solver bounds are our choices; authors' simulation code, exact placement, subset size and RNG are not available here.",
+    "No actual ICMCIS or AERPAW samples are generated or claimed.",
+    "Power compensation is a synthetic dB change, not a new RF/hardware execution.",
+    "Native comparison reanalyzes existing audited PR5 vectors; no new RF run is counted.",
+    "No arbitrary-asynchronous one-RSSI solution, no Remote ID authentication or safety guarantee."
+  ]
+}

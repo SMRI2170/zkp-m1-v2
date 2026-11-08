@@ -1,0 +1,14 @@
+{
+  "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "numpy": "2.2.6",
+  "scipy": "1.16.3",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "exit_code": 0,
+  "new_native_rf_cases": 0,
+  "script_sha256": {
+    "ghostbuster.py": "f09af33e8fe439258cf7b7e963502def4fe3a077eb0519da9c37e1881edadfa5",
+    "run_ghostbuster.py": "8c8e2acaa297ee68a51b72d9127dc9d61a149d7e77c8a07e705b503222d802c9",
+    "replay_ghostbuster.py": "0f780c6368ae07bc2b9154d4e9cb8615f5ed7f10115dc9b0f094b2faf4ab5d51",
+    "ghostbuster_counterfactual.py": "59406dbe45af3fb8ecc42eed37fe5409dc6d00bd401dd645f48a2526c2f379d3"
+  }
+}

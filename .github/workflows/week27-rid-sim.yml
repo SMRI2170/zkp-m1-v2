@@ -48,3 +48,20 @@ jobs:
       - name: Audit recorded PR6a geometry and frozen plan (no RF execution)
         run: python experiments/week27-rid-sim/scripts/validate_external.py week28/results/issue77-6a-20261108-a week28/results/issue77-plan-20261108/plan.json
       # This job does not install OMNeT++/INET or claim an RF simulation ran.
+  ghostbuster-numerics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned numerical reference dependencies
+        run: python -m pip install numpy==2.2.6 scipy==1.16.3
+      - name: Verify GhostBuster equations, numerical solver and failure cases
+        run: python -m unittest discover -s experiments/week27-rid-sim/tests -p test_ghostbuster.py -v
+      - name: Audit stored GhostBuster results (no new RF execution)
+        run: >-
+          python experiments/week27-rid-sim/scripts/validate_ghostbuster.py
+          week28/results/ghostbuster-20261108-c
+          week28/results/ghostbuster-native-20261108-c
+          week28/results/ghostbuster-counterfactual-20261108-c
