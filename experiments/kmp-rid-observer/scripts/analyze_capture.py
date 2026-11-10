@@ -102,7 +102,7 @@ def main():
                  'Phase assignment uses device observation timestamps; cached observations from before phase excluded.']}
     (args.output/'summary.json').write_text(json.dumps(report, indent=2)+'\n')
     with (args.output/'summary.csv').open('w', newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=list(rows[0]) if rows else ['phase'])
+        writer = csv.DictWriter(f, fieldnames=list(rows[0]) if rows else ['phase'], lineterminator='\n')
         writer.writeheader();writer.writerows(rows)
     for field, title, unit in [('fresh_decoded_observations','Fresh decoded scan observations','observations'),
                               ('update_interval_p95_s','Within-transmitter update interval (p95)','seconds'),
