@@ -36,6 +36,7 @@ class MainActivity : Activity() {
     private lateinit var list:LinearLayout
     private lateinit var chart:RssiChart
     private lateinit var nodeText:TextView
+    private lateinit var scanConfig:TextView
     private var selected:String?=null
     private var pendingExport:String?=null
     private var exportBytes:ByteArray?=null
@@ -83,6 +84,8 @@ class MainActivity : Activity() {
         root.addView(actions,params(WRAP,12))
         nodeText=label("ノード：$nodeId  ⚙",12,Color.DKGRAY)
         nodeText.setOnClickListener { editNode() };root.addView(nodeText,params(WRAP,10))
+        scanConfig=label(scanModeLabel(),13,blue)
+        scanConfig.setOnClickListener {editScanMode()};root.addView(scanConfig,params(WRAP,8))
         chart=RssiChart(this);root.addView(chart,params(dp(185),12))
         root.addView(label("RID形式を検査 · 位置は送信者の申告値",12,Color.DKGRAY),params(WRAP,8))
         val scroll=ScrollView(this)
@@ -91,7 +94,23 @@ class MainActivity : Activity() {
         setContentView(root)
     }
 
+    private fun scanModeLabel():String {
+        val ms=getSharedPreferences("receiver",MODE_PRIVATE).getLong("scan_interval_ms",30_000)
+        return "スキャン要求：${ms/1000}秒${if(ms<30_000) "（開発用）" else "（標準）"} · 変更"
+    }
+    private fun editScanMode() {
+        if(scanning) {toast("受信を停止してから変更してください");return}
+        val modes=ScanPolicy.intervalsMs
+        val current=getSharedPreferences("receiver",MODE_PRIVATE).getLong("scan_interval_ms",30_000)
+        AlertDialog.Builder(this).setTitle("要求間隔（取得保証ではありません）")
+            .setSingleChoiceItems(arrayOf("標準30秒","開発用5秒","開発用1秒"),modes.indexOf(current)) {dialog,which ->
+                getSharedPreferences("receiver",MODE_PRIVATE).edit().putLong("scan_interval_ms",modes[which]).apply()
+                scanConfig.text=scanModeLabel();dialog.dismiss()
+            }.setNegativeButton("閉じる",null).show()
+    }
+
     private fun requestStart() {
+        android.util.Log.d("RidObserverKmp","start_button_request")
         if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION),10);return
         }
@@ -100,11 +119,18 @@ class MainActivity : Activity() {
         val location=getSystemService(LOCATION_SERVICE) as LocationManager
         if(!location.isLocationEnabled) { toast("位置情報サービスを有効にしてください");startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));return }
         if(scanning) return
+        val interval=getSharedPreferences("receiver",MODE_PRIVATE).getLong("scan_interval_ms",30_000)
+        android.util.Log.d("RidObserverKmp","start_mode interval=$interval throttle=${wifi.isScanThrottleEnabled}")
+        if(!ScanPolicy.allowed(interval,wifi.isScanThrottleEnabled)) {
+            AlertDialog.Builder(this).setTitle("高速測定は開発用です")
+                .setMessage("Androidの開発者向けオプションでWi-FiスキャンのスロットリングをOFFにした実験専用です。アプリはOS設定を変更しません。通常は30秒を選んでください。要求間隔と実際の取得間隔は異なります。")
+                .setPositiveButton("閉じる",null).show();return
+        }
         if(Build.VERSION.SDK_INT>=33 && !notificationAsked && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED) {
             notificationAsked=true;requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS),11);return
         }
         try {startForegroundService(Intent(this,ReceiverService::class.java).setAction(ReceiverService.ACTION_START))}
-        catch(e:Exception) {toast("受信サービスを開始できません")}
+        catch(e:Exception) {ReceiverState.status="開始できません · 設定・権限を確認";android.util.Log.w("RidObserverKmp","start_failed ${e.javaClass.simpleName}");render();toast("受信サービスを開始できません")}
     }
     override fun onRequestPermissionsResult(code:Int,permissions:Array<out String>,grants:IntArray) {
         super.onRequestPermissionsResult(code,permissions,grants)

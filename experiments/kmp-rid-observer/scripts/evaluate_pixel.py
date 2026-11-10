@@ -106,6 +106,11 @@ def main():
         m=re.search(r'<string name="last_run">([0-9a-f-]{36})</string>',run_text)
         if not m:raise RuntimeError('Capture run was not created')
         run=m.group(1)
+        telemetry=[json.loads(line) for line in device.run('exec-out','run-as',PKG,'cat',f'files/captures/{run}/events.jsonl').splitlines()]
+        verified=next((e for e in reversed(telemetry) if 'scan_throttle_enabled' in e),None)
+        if verified is None or verified.get('scan_throttle_enabled') is not True or verified.get('request_interval_ms')!=30_000:
+            raise RuntimeError('Normal baseline requires API-confirmed scan throttling ON and 30-second requests')
+        plan['api_confirmed_scan_throttle_enabled']=True;plan['request_interval_ms']=30_000;save()
         print('Experiment started: foreground / background / screen_off; private evidence is saved incrementally.',flush=True)
         for name in ['foreground','background','screen_off']:
             if name=='background':device.shell('input','keyevent','KEYCODE_HOME')

@@ -1,0 +1,68 @@
+{
+  "kind": "observational_scan_capture_analysis",
+  "source_type": "real_capture",
+  "physical_packet_match": "unconfirmed",
+  "source_kind": "test_beacon",
+  "debug_scan_throttle_disabled": true,
+  "phases": [
+    {
+      "phase": "request_5s",
+      "phase_complete": true,
+      "duration_s": 30.23,
+      "scan_observations": 6,
+      "fresh_decoded_observations": 6,
+      "stale_observations": 0,
+      "invalid_observations": 0,
+      "update_interval_median_s": 5.088863,
+      "update_interval_p95_s": 5.1806849999999995,
+      "max_edge_inclusive_gap_s": 5.201479,
+      "interval_pairs": 5,
+      "pss_max_kib": 119965,
+      "pss_samples": 12,
+      "duplicates_counter_delta": 0,
+      "requests_rejected_counter_delta": 0,
+      "process_cpu_ms_delta": 796,
+      "cpu_counter_coverage": "between_first_and_last_telemetry_only",
+      "battery_level_first": 39,
+      "battery_level_last": 39,
+      "battery_plugged_values": [
+        2
+      ]
+    },
+    {
+      "phase": "request_1s",
+      "phase_complete": true,
+      "duration_s": 30.21,
+      "scan_observations": 20,
+      "fresh_decoded_observations": 20,
+      "stale_observations": 0,
+      "invalid_observations": 0,
+      "update_interval_median_s": 1.510549,
+      "update_interval_p95_s": 1.5761838,
+      "max_edge_inclusive_gap_s": 1.612974,
+      "interval_pairs": 19,
+      "pss_max_kib": 133690,
+      "pss_samples": 49,
+      "duplicates_counter_delta": 0,
+      "requests_rejected_counter_delta": 0,
+      "process_cpu_ms_delta": 2567,
+      "cpu_counter_coverage": "between_first_and_last_telemetry_only",
+      "battery_level_first": 39,
+      "battery_level_last": 39,
+      "battery_plugged_values": [
+        2
+      ]
+    }
+  ],
+  "session_end_reasons": [
+    "user_record_stop",
+    "user_record_stop"
+  ],
+  "session_complete": true,
+  "notes": [
+    "No known packet count: no RF packet reception rate calculated.",
+    "Intervals pooled within each transmitter; no intervals across transmitters.",
+    "Counter deltas cover first through last telemetry in phase, not all phase boundaries.",
+    "Phase assignment uses device observation timestamps; cached observations from before phase excluded."
+  ]
+}

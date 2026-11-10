@@ -41,7 +41,7 @@ APKはデバッグ署名。配布用署名鍵は作成していない。
 5. 「書き出し」で集計CSVまたは生JSONLを選択する。
 
 権限はACCESS_WIFI_STATE、CHANGE_WIFI_STATE、ACCESS_FINE_LOCATION、ACCESS_COARSE_LOCATION。インターネット権限なし。
-スキャン要求30秒間隔、OSの制限を維持。ScanResultはキャッシュ・Probe Response由来を含み得るため、生パケット数・受信率ではない。
+標準のスキャン要求は30秒間隔で、OSの制限を維持。ScanResultはキャッシュ・Probe Response由来を含み得るため、生パケット数・受信率ではない。
 v0.3は画面で「受信開始」を押すとlocation型Foreground Serviceを開始する。
 画面を離れてもサービス側で受信・記録を継続し、通知または画面から停止できる。
 Android 13以上では通知の許可も要求する。拒否時は画面に「通知非表示」と表示し、画面で停止できる。
@@ -55,7 +55,7 @@ OS・Doze・画面消灯によるスキャン制約は維持する。常時取�
 保存はアプリ専用領域、ディレクトリ0700・ファイル0600、1記録20MiBまで。
 観測JSONL・監査events.jsonl・終了時summary.csvを保存する。停止理由のため32KiBを予約する。
 既存記録が108MiBを超える場合や空き領域64MiB以下では新規記録を開始せず、過去記録は自動削除しない。
-収録状態、要求拒否・重複累計、最終新規観測時刻、PSS、CPU時間、画面・Doze・充電・電池状態を約30秒間隔の要求時とスキャン通知時に記録する。
+収録状態、要求拒否・重複累計、最終新規観測時刻、PSS、CPU時間、画面・Doze・充電・電池状態を各要求時とスキャン通知時に記録する（標準の要求は30秒間隔）。
 Doze等で処理されなかった期間は監査サンプル自体も欠ける。推定のゼロ件を実測サンプルとして埋めない。
 終了イベントがない記録は中断・不明として扱い、自動追記再開しない。
 CSVは「受信全体」と「記録セッション」を分ける。終了時にセッションCSVを確定する。
@@ -112,7 +112,7 @@ python3 experiments/kmp-rid-observer/scripts/analyze_capture.py \
 実行中は端末に触れない。短いSmoke testは `--phase-seconds 30`。実行時間は測った秒数を報告する。
 収録中のログを15秒ごとにホストへ.partialとして回収する。切断時は既存証拠を残し、cleanup未確認なら通知から停止する。ロック等で停止を確認できなければ、スクリプトはエラー終了する。
 自動実行は現在認識されたPixel 8だけを対象にし、他機種や未接続の端末へ操作しない。
-集計はJSON/CSVと4枚のSVG（新規観測数、同一送信元内更新間隔p95、端点込み最大空白時間、最大サンプルPSS）。
+集計はJSON/CSVと5枚のSVG（新規観測数、同一送信元内更新間隔の中央値・p95、端点込み最大空白時間、最大サンプルPSS）。
 送信元間をまたいだ間隔や、異なる充電状態の電池差を性能として扱わない。
 観測数が0なら、更新間隔は欠測、空白時間は観測期間として報告する。
 通知からの停止、権限剥奪、保存上限、force-stop等の試験は別途実施して報告する。
@@ -124,3 +124,16 @@ python3 -m unittest discover -s experiments/kmp-rid-observer/tests -v
 Android実機上のFGS・画面消灯動作は、ホストの単体テストやAPKビルド成功だけでは実証されない。
 
 公式仕様：[FGSの種類](https://developer.android.com/develop/background-work/services/fgs/service-types)、[開始制限](https://developer.android.com/develop/background-work/services/fgs/restrictions-bg-start)、[Wi-Fiスキャン](https://developer.android.com/develop/connectivity/wifi/wifi-scan)。
+
+## v0.4：開発用の高速測定
+
+「スキャン要求」の行から、標準30秒／開発用5秒／開発用1秒を選ぶ。
+変更は受信停止中のみ。**これは要求間隔であり、新しいRIDが得られる間隔ではない。**
+アプリはOS設定を変更しない。高速モードは公式の開発者向け「Wi-Fiスキャン スロットリング」を利用者がOFFにした測定専用。
+WifiManager.isScanThrottleEnabledで実際の状態を確認し、ONのまま高速モードを開始することは拒否する。実行中にONになった場合も停止する。
+モード・OS状態は監査ログへ保存する。標準のevaluate_pixel.pyも記録開始時にAPIのONと30秒要求を確認し、開発用測定が正常条件に混入することを防ぐ。
+測定後はスロットリングONと標準30秒へ戻す。電池消費・端末負荷・全バンドスキャン時間・送信機の送信周期により実効間隔は変わる。
+
+今回のPixel 8＋PiテストBeaconの各約30秒・1回測定では、5秒要求の実効中央値5.09秒、1秒要求の実効中央値1.51秒（最小1.37秒・最大1.61秒）だった。
+開発用設定・表示中・USB充電の結果であり、M350や背景・消灯での同じ性能は未検証。通常設定に一般化しない。
+詳細：`week28/13_Pixel8の高速スキャン要求と実効取得間隔.md`。

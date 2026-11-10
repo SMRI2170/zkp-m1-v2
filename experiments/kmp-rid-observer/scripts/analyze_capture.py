@@ -93,7 +93,8 @@ def main():
     args.output.mkdir(parents=True, exist_ok=False)
     # No IDs/coordinates, absolute times, serials, raw paths or payloads in these artifacts.
     report = {'kind':'observational_scan_capture_analysis', 'source_type':plan['source_type'],
-        'physical_packet_match':'unconfirmed', 'phases':rows,
+        'physical_packet_match':'unconfirmed', 'source_kind':plan.get('source_kind','unknown'),
+        'debug_scan_throttle_disabled':plan.get('debug_scan_throttle_disabled'), 'phases':rows,
         'session_end_reasons':[e.get('reason') for e in ev if e.get('event')=='session_end'],
         'session_complete':any(e.get('event')=='session_end' for e in ev),
         'notes':['No known packet count: no RF packet reception rate calculated.',
@@ -105,10 +106,14 @@ def main():
         writer = csv.DictWriter(f, fieldnames=list(rows[0]) if rows else ['phase'], lineterminator='\n')
         writer.writeheader();writer.writerows(rows)
     for field, title, unit in [('fresh_decoded_observations','Fresh decoded scan observations','observations'),
+                              ('update_interval_median_s','Within-transmitter update interval (median)','seconds'),
                               ('update_interval_p95_s','Within-transmitter update interval (p95)','seconds'),
                               ('max_edge_inclusive_gap_s','Largest per-transmitter gap including phase edges','seconds'),
                               ('pss_max_kib','Maximum sampled process PSS','KiB')]:
-        (args.output/(field+'.svg')).write_text(svg_bars(rows, field, title, unit))
+        plot=svg_bars(rows, field, title, unit)
+        if plan.get('debug_scan_throttle_disabled') is True:
+            plot=plot.replace('</g></svg>', '<text x="30" y="399" font-size="12">Developer test: scan throttling OFF; compare under the recorded source and duration only.</text></g></svg>')
+        (args.output/(field+'.svg')).write_text(plot)
     print('Analysis completed; identifier-free summaries created. No new RF experiment was run.')
 
 if __name__ == '__main__':

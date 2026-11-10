@@ -30,7 +30,7 @@ class EvaluationBoundaryTest(unittest.TestCase):
             with self.assertRaises(FileExistsError):p.private_output(out)
 
 class CleanupOutcomeTest(unittest.TestCase):
-    def evaluate(self, cleanup_ok):
+    def evaluate(self, cleanup_ok, throttle=True):
         class FakeDevice:
             def __init__(self, serial):self.ui_path='fixture-ui'
             def shell(self,*args):
@@ -40,6 +40,7 @@ class CleanupOutcomeTest(unittest.TestCase):
                 if args[:1]==('getprop',):return '36'
                 if args[:1]==('run-as',):return '<map><string name="last_run">00000000-0000-0000-0000-000000000000</string></map>'
                 return ''
+            def run(self,*args):return p.json.dumps(dict(scan_throttle_enabled=throttle,request_interval_ms=30000))+'\n'
             def tap(self,label):
                 if label=='記録停止' and not cleanup_ok:raise RuntimeError('fixture locked')
             def time_us(self):return 1
@@ -49,7 +50,9 @@ class CleanupOutcomeTest(unittest.TestCase):
              patch.object(p,'Device',FakeDevice),patch.object(p.time,'sleep'), \
              patch.object(p.time,'monotonic',side_effect=[0,31,60,91,120,151]), \
              patch.object(p.sys,'argv',['eval','--source-kind','unknown','--phase-seconds','30','--output',str(Path(tmp)/'captures/run')]):
-            if cleanup_ok:p.main()
+            if not throttle:
+                with self.assertRaisesRegex(RuntimeError,'Normal baseline'):p.main()
+            elif cleanup_ok:p.main()
             else:
                 with self.assertRaisesRegex(RuntimeError,'stop is unconfirmed'):p.main()
             return p.json.loads((Path(tmp)/'captures/run/phases.json').read_text())
@@ -61,3 +64,8 @@ class CleanupOutcomeTest(unittest.TestCase):
         plan=self.evaluate(True)
         self.assertEqual(plan['completion'],'phases_completed')
         self.assertEqual(plan['cleanup'],'stopped_by_ui')
+
+    def test_developer_mode_cannot_be_mislabeled_as_normal_baseline(self):
+        plan=self.evaluate(True,throttle=False)
+        self.assertEqual(plan['completion'],'failed_or_interrupted')
+        self.assertEqual(plan['phases'],[])

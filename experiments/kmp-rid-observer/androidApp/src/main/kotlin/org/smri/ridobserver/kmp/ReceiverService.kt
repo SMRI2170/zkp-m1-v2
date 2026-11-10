@@ -37,6 +37,7 @@ class ReceiverService: Service() {
     private lateinit var wifi:WifiManager
     private var registered=false
     private var stopping=false
+    private var intervalMs=30_000L
     private val receiver=object:BroadcastReceiver() {
         override fun onReceive(context:Context?,intent:Intent?) {
             if(intent?.action==WifiManager.SCAN_RESULTS_AVAILABLE_ACTION) {
@@ -57,7 +58,7 @@ class ReceiverService: Service() {
                 updateNotification()
             } catch(e:SecurityException) { finish("permission_or_location_denied");return }
             catch(e:Exception) { finish("scan_or_storage_error");return }
-            handler.postDelayed(this,30_000)
+            handler.postDelayed(this,intervalMs)
         }
     }
     override fun onCreate() {
@@ -68,6 +69,7 @@ class ReceiverService: Service() {
         if(intent?.action==ACTION_STOP) { finish("notification_stop");return START_NOT_STICKY }
         if(intent?.action!=ACTION_START) { stopSelf();return START_NOT_STICKY }
         try {
+            intervalMs=getSharedPreferences("receiver",MODE_PRIVATE).getLong("scan_interval_ms",30_000)
             checkAccess()
             val nm=getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             nm.createNotificationChannel(NotificationChannel(CHANNEL,"Remote ID受信",NotificationManager.IMPORTANCE_LOW))
@@ -85,6 +87,7 @@ class ReceiverService: Service() {
         if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED ||
             !(getSystemService(LOCATION_SERVICE) as LocationManager).isLocationEnabled || !wifi.isWifiEnabled)
             throw SecurityException("Wi-Fi/location access unavailable")
+        if(!ScanPolicy.allowed(intervalMs,wifi.isScanThrottleEnabled)) throw SecurityException("fast mode requires developer scan throttling off")
     }
     private fun readResults(updated:Boolean) {
         if(!ReceiverState.scanning) return
@@ -134,7 +137,7 @@ class ReceiverService: Service() {
         ReceiverState.recording?.event(kind,mapOf(
             "elapsed_us" to SystemClock.elapsedRealtimeNanos()/1000,
             "scan_results" to ReceiverState.scanCount,"callbacks" to ReceiverState.callbacks,
-            "scan_requests" to ReceiverState.scanRequests,"requests_rejected" to ReceiverState.requestsRejected,
+            "scan_requests" to ReceiverState.scanRequests,"request_interval_ms" to intervalMs,"scan_throttle_enabled" to wifi.isScanThrottleEnabled,"requests_rejected" to ReceiverState.requestsRejected,
             "rid_records" to ReceiverState.engine.records,"duplicate_results" to ReceiverState.engine.duplicateResults,
             "invalid_records" to ReceiverState.engine.invalidRecords,"last_new_observation_us" to ReceiverState.lastNewUs,
             "screen_interactive" to pm.isInteractive,"activity_visible" to (ReceiverState.screen=="visible"),
@@ -216,4 +219,4 @@ class CaptureSession(root:File,val nodeId:String,private val maxBytes:Long=20L*1
         closed=true
     }
 }
-private object BuildConfigVersion {const val value="0.3-background"}
+private object BuildConfigVersion {const val value="0.4-scan-modes"}

@@ -1,0 +1,3 @@
+phase,phase_complete,duration_s,scan_observations,fresh_decoded_observations,stale_observations,invalid_observations,update_interval_median_s,update_interval_p95_s,max_edge_inclusive_gap_s,interval_pairs,pss_max_kib,pss_samples,duplicates_counter_delta,requests_rejected_counter_delta,process_cpu_ms_delta,cpu_counter_coverage,battery_level_first,battery_level_last,battery_plugged_values
+request_5s,True,30.23,6,6,0,0,5.088863,5.1806849999999995,5.201479,5,119965,12,0,0,796,between_first_and_last_telemetry_only,39,39,[2]
+request_1s,True,30.21,20,20,0,0,1.510549,1.5761838,1.612974,19,133690,49,0,0,2567,between_first_and_last_telemetry_only,39,39,[2]
