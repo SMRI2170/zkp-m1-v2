@@ -6,8 +6,8 @@ android {
         applicationId = "org.smri.ridobserver.kmp"
         minSdk = 30
         targetSdk = 36
-        versionCode = 4
-        versionName = "0.4-scan-modes"
+        versionCode = 6
+        versionName = "0.6-local-database"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

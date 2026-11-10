@@ -6,7 +6,6 @@ import android.app.AlertDialog
 import android.content.*
 import android.content.pm.PackageManager
 import android.graphics.*
-import android.graphics.drawable.GradientDrawable
 import android.location.LocationManager
 import android.net.wifi.ScanResult
 import android.net.wifi.WifiManager
@@ -33,11 +32,11 @@ class MainActivity : Activity() {
     private lateinit var counts:TextView
     private lateinit var start:Button
     private lateinit var record:Button
-    private lateinit var list:LinearLayout
-    private lateinit var chart:RssiChart
+    private lateinit var dataText:TextView
     private lateinit var nodeText:TextView
     private lateinit var scanConfig:TextView
-    private var selected:String?=null
+    private var database:ObservationDatabase?=null
+    private var databaseOpenFailed=false
     private var pendingExport:String?=null
     private var exportBytes:ByteArray?=null
     private var exportFile:File?=null
@@ -45,12 +44,11 @@ class MainActivity : Activity() {
     private var renderedState:String?=null
     private val refresh=object:Runnable {
         override fun run() {
-            val now=SystemClock.elapsedRealtimeNanos()/1000
             val signature=listOf(ReceiverState.revision,scanning,recording?.count,ReceiverState.status,
-                engine.targets.values.count {it.latest.isStaleAt(now)},selected).joinToString("|")
+                ReceiverState.scanCount,database?.rowCount,database?.pendingWrites,database?.lastError,database?.exporting).joinToString("|")
             // Do not rebuild an unchanged view tree every second: it prevents UI-idle and wastes work.
             if(signature!=renderedState) {renderedState=signature;render()}
-            handler.postDelayed(this,1000)
+            handler.postDelayed(this,5000)
         }
     }
     private val nodeId:String get()=getPreferences(MODE_PRIVATE).getString("node_id",null) ?: run {
@@ -60,6 +58,7 @@ class MainActivity : Activity() {
 
     override fun onCreate(state: Bundle?) {
         super.onCreate(state)
+        try {database=ObservationDatabase.get(this)} catch(e:Exception) {databaseOpenFailed=true}
         val saved=getSharedPreferences("receiver",MODE_PRIVATE).getString("last_run",null)
         if(ReceiverState.lastCapture==null && saved!=null && saved.matches(Regex("[0-9a-f-]{36}"))) {
             val dir=File(filesDir,"captures/$saved")
@@ -86,10 +85,13 @@ class MainActivity : Activity() {
         nodeText.setOnClickListener { editNode() };root.addView(nodeText,params(WRAP,10))
         scanConfig=label(scanModeLabel(),13,blue)
         scanConfig.setOnClickListener {editScanMode()};root.addView(scanConfig,params(WRAP,8))
-        chart=RssiChart(this);root.addView(chart,params(dp(185),12))
+        root.addView(button("データ表示・更新") {showSnapshot()},params(dp(52),12))
+        root.addView(label("受信開始でDB保存 · 記録開始は追加ログ",12,Color.DKGRAY),params(WRAP,8))
         root.addView(label("RID形式を検査 · 位置は送信者の申告値",12,Color.DKGRAY),params(WRAP,8))
         val scroll=ScrollView(this)
-        list=LinearLayout(this).apply { orientation=LinearLayout.VERTICAL };scroll.addView(list)
+        dataText=label("受信後に「データ表示・更新」を押してください",13,navy).apply {
+            typeface=Typeface.MONOSPACE;setTextIsSelectable(true)
+        };scroll.addView(dataText)
         root.addView(scroll,LinearLayout.LayoutParams(-1,0,1f))
         setContentView(root)
     }
@@ -110,6 +112,7 @@ class MainActivity : Activity() {
     }
 
     private fun requestStart() {
+        if(database==null || database?.exporting==true) {toast("DBを開けません。既存データを保持して停止しています");return}
         android.util.Log.d("RidObserverKmp","start_button_request")
         if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION),10);return
@@ -129,7 +132,7 @@ class MainActivity : Activity() {
         if(Build.VERSION.SDK_INT>=33 && !notificationAsked && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED) {
             notificationAsked=true;requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS),11);return
         }
-        try {startForegroundService(Intent(this,ReceiverService::class.java).setAction(ReceiverService.ACTION_START))}
+        try {startForegroundService(Intent(this,ReceiverService::class.java).setAction(ReceiverService.ACTION_START).putExtra("node_id",nodeId))}
         catch(e:Exception) {ReceiverState.status="開始できません · 設定・権限を確認";android.util.Log.w("RidObserverKmp","start_failed ${e.javaClass.simpleName}");render();toast("受信サービスを開始できません")}
     }
     override fun onRequestPermissionsResult(code:Int,permissions:Array<out String>,grants:IntArray) {
@@ -142,41 +145,23 @@ class MainActivity : Activity() {
     private fun startRecording() {ReceiverService.current?.startRecording(nodeId);render()}
     private fun stopRecording() {ReceiverService.current?.stopRecording();render()}
     private fun render() {
+        start.isEnabled=database!=null && database?.exporting!=true
         start.text=if(scanning) "受信停止" else "受信開始"
         record.isEnabled=scanning;record.text=if(recording!=null) "記録停止" else "記録開始"
         record.setTextColor(if(recording!=null) Color.rgb(185,28,28) else blue)
         val mode=if(recording!=null) "記録 ${recording!!.count}件 · " else ""
         val notificationHidden=Build.VERSION.SDK_INT>=33 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED
         status.text=mode+ReceiverState.status+(if(scanning && notificationHidden) " · 通知非表示" else "")
-        counts.text="Wi-Fi ${lastScanCount}件  /  RID ${engine.targets.size}件"
-        list.removeAllViews()
-        for((key,t) in engine.targets) {
-            val o=t.latest
-            val card=LinearLayout(this).apply {
-                orientation=LinearLayout.VERTICAL;setPadding(dp(14),dp(12),dp(14),dp(12))
-                background=GradientDrawable().apply {setColor(Color.WHITE);cornerRadius=dp(12).toFloat();setStroke(dp(1),if(key==selected) blue else Color.LTGRAY)}
-            }
-            val id=o.decoded?.messages?.firstOrNull { it.uasId!=null }?.uasId ?: t.alias
-            card.addView(label(id,18,navy,true))
-            val validity=if(o.decoded==null) "形式エラー" else if(o.isStaleAt(SystemClock.elapsedRealtimeNanos()/1000)) "古い観測／時刻不明" else "受信"
-            card.addView(label("${o.rssiDbm?.let { "$it dBm" } ?: "RSSI不明"} · ${o.frequencyMhz ?: "?"} MHz · $validity",14,Color.DKGRAY))
-            card.addView(label("観測 ${t.records}件 · counter ${o.decoded?.counter ?: "?"}",12,Color.DKGRAY))
-            card.setOnClickListener { selected=key;render();showDetails(t) }
-            list.addView(card,params(WRAP,10))
-        }
-        if(selected !in engine.targets) selected=engine.targets.keys.firstOrNull()
-        chart.samples=engine.targets[selected]?.samples?.toList() ?: emptyList();chart.invalidate()
-        if(engine.targets.isEmpty()) list.addView(label(if(scanning) "RIDの受信待ち" else "受信開始で観測します",16,Color.GRAY),params(WRAP,24))
+        counts.text="DB ${database?.rowCount ?: 0}件 · 保存待ち ${database?.pendingWrites ?: 0}件\nWi-Fi ${lastScanCount}件 / RID ${engine.targets.size}件"
+        if(databaseOpenFailed || database?.lastError!=null) status.text="DB保存エラー · 失敗${database?.failedWrites ?: 0}件 · 確認してください"
+        if(database?.exporting==true) status.text="DBを書き出しています"
     }
-    private fun showDetails(t:TargetState) {
-        val o=t.latest;val claim=o.decoded?.messages?.firstOrNull { it.claim!=null }?.claim
-        val text="状態：${if(o.isStaleAt(SystemClock.elapsedRealtimeNanos()/1000)) "古い観測／時刻不明" else "スキャン観測"}\n${o.error ?: "ODID形式を解析"}\n"+
-            (claim?.let { "申告位置：${it.latitude}, ${it.longitude}\n申告高度：${it.altitudeGeoM ?: "不明"} m\n" } ?: "")+
-            "スキャン値であり、同一物理パケット・機体・位置の真正性は未確認です。"
-        AlertDialog.Builder(this).setTitle(t.alias).setMessage(text).setPositiveButton("閉じる",null).show()
+    private fun snapshotText():String = try {database?.recentText()?.ifEmpty {"DBに観測はまだありません"} ?: "DBを開けません"} catch(e:Exception) {"DBの読出しに失敗しました"}
+    private fun showSnapshot() {
+        dataText.text="DBの最新50件まで（観測時点の値）\n\n"+snapshotText()
     }
     private fun editNode() {
-        if(recording!=null) {toast("記録を停止してから変更してください");return}
+        if(scanning) {toast("受信を停止してから変更してください");return}
         val input=EditText(this).apply {setText(nodeId);isSingleLine=true}
         AlertDialog.Builder(this).setTitle("ノード名").setView(input).setNegativeButton("戻る",null).setPositiveButton("保存") {_,_ ->
             val id=input.text.toString()
@@ -186,16 +171,18 @@ class MainActivity : Activity() {
     }
 
     private fun exportDialog() {
-        if(recording!=null) {toast("記録を停止してから書き出してください");return}
-        AlertDialog.Builder(this).setTitle("書き出し").setItems(arrayOf("受信全体CSV（現在の履歴）","記録セッションCSV","生ログJSONL（ID・位置を含む）")) {_,which ->
-            if(which>0 && lastCapture==null) {toast("先に観測を記録してください");return@setItems}
+        AlertDialog.Builder(this).setTitle("書き出し").setItems(arrayOf("受信全体CSV（現在の履歴）","記録セッションCSV","生ログJSONL（ID・位置を含む）","最新50件テキスト（ID・位置を含む）","DB全件JSONL（ID・位置を含む）")) {_,which ->
+            if(which==4 && (scanning || database?.pendingWrites!=0)) {toast("DB全件の書き出しは受信停止・保存完了後に行ってください");return@setItems}
+            if(which==4 && database==null) {toast("DBを開けません");return@setItems}
+            if(which in 1..2 && recording!=null) {toast("生ログ・セッションCSVの書き出しは記録停止後に行ってください");return@setItems}
+            if(which in 1..2 && lastCapture==null) {toast("先に観測を記録してください");return@setItems}
             if(which==1 && ReceiverState.lastSessionCsv?.let {it.isFile && it.length()>0}!=true) {toast("セッションCSV未確定：中断された記録は生ログを確認してください");return@setItems}
-            pendingExport=if(which<2) "csv" else "jsonl"
-            exportBytes=when(which) {0 -> engine.summaryCsv().toByteArray(Charsets.UTF_8);1 -> ReceiverState.lastSessionCsv!!.readBytes();else -> null}
+            pendingExport=when(which) {0,1 -> "csv";2 -> "jsonl";4 -> "dbjsonl";else -> "txt"}
+            exportBytes=when(which) {0 -> engine.summaryCsv().toByteArray(Charsets.UTF_8);1 -> ReceiverState.lastSessionCsv!!.readBytes();3 -> snapshotText().toByteArray(Charsets.UTF_8);else -> null}
             exportFile=if(which==2) lastCapture else null
             val intent=Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-                addCategory(Intent.CATEGORY_OPENABLE);type=if(which==0) "text/csv" else "application/octet-stream"
-                putExtra(Intent.EXTRA_TITLE,"rid-observer-${System.currentTimeMillis()}.${pendingExport}")
+                addCategory(Intent.CATEGORY_OPENABLE);type=when(which) {0,1 -> "text/csv";2,4 -> "application/x-ndjson";else -> "text/plain"}
+                putExtra(Intent.EXTRA_TITLE,"rid-observer-${System.currentTimeMillis()}.${if(which==4) "jsonl" else pendingExport}")
             }
             startActivityForResult(intent,20)
         }.show()
@@ -205,9 +192,15 @@ class MainActivity : Activity() {
         val uri=data?.data ?: return
         if(code!=20 || result!=RESULT_OK) return
         val kind=pendingExport
+        if(kind=="dbjsonl") {
+            if(scanning) {toast("受信停止後にDBを書き出してください");return}
+            try {database?.exportJsonLines(uri) {ok ->if(!isDestroyed) {render();toast(if(ok) "DBを書き出しました" else "DB書き出し失敗")}}}
+            catch(e:Exception) {toast("DB書き出しを開始できません")}
+            return
+        }
         try {
             contentResolver.openOutputStream(uri)?.use { output ->
-                if(kind=="csv") output.write(checkNotNull(exportBytes))
+                if(kind=="csv" || kind=="txt") output.write(checkNotNull(exportBytes))
                 else checkNotNull(exportFile).inputStream().use { it.copyTo(output) }
             } ?: error("保存先を開けません")
             toast("書き出しました")
@@ -223,29 +216,4 @@ class MainActivity : Activity() {
     private fun params(height:Int,top:Int=0)=LinearLayout.LayoutParams(-1,height).apply {topMargin=dp(top)}
     private fun toast(text:String)=Toast.makeText(this,text,Toast.LENGTH_LONG).show()
     private companion object { const val WRAP=-2 }
-}
-
-private class RssiChart(context:Context):View(context) {
-    var samples:List<Pair<Long,Int>> = emptyList()
-    private val p=Paint(Paint.ANTI_ALIAS_FLAG)
-    override fun onDraw(canvas:Canvas) {
-        super.onDraw(canvas)
-        val d=resources.displayMetrics.density
-        val left=42*d;val right=width-12*d;val top=34*d;val bottom=height-27*d
-        p.color=Color.DKGRAY;p.textSize=12*d;canvas.drawText("RSSI（スキャン値）",8*d,18*d,p)
-        if(samples.isEmpty()) {p.color=Color.GRAY;canvas.drawText("新しいRSSIの受信待ち",left,top+40*d,p);return}
-        val low=(samples.minOf {it.second}-3).toFloat();val high=(samples.maxOf {it.second}+3).toFloat()
-        val start=samples.first().first;val span=(samples.last().first-start).coerceAtLeast(1)
-        p.strokeWidth=d;p.color=Color.LTGRAY;canvas.drawLine(left,top,left,bottom,p);canvas.drawLine(left,bottom,right,bottom,p)
-        p.color=Color.DKGRAY;canvas.drawText(high.toInt().toString(),0f,top+4*d,p);canvas.drawText(low.toInt().toString(),0f,bottom,p)
-        canvas.drawText("0 s",left,bottom+19*d,p);canvas.drawText("${span/1_000_000} s",right-42*d,bottom+19*d,p)
-        val path=Path()
-        for((index,sample) in samples.withIndex()) {
-            val x=left+(right-left)*(sample.first-start).toFloat()/span
-            val y=bottom-(bottom-top)*(sample.second-low)/(high-low)
-            if(index==0) path.moveTo(x,y) else path.lineTo(x,y)
-            p.color=Color.rgb(29,78,216);p.style=Paint.Style.FILL;canvas.drawCircle(x,y,3*d,p)
-        }
-        p.style=Paint.Style.STROKE;p.strokeWidth=2*d;canvas.drawPath(path,p);p.style=Paint.Style.FILL
-    }
 }

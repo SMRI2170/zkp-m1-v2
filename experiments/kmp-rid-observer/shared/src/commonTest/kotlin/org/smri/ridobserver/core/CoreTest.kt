@@ -62,4 +62,39 @@ class CoreTest {
         val e=ObserverEngine();e.ingest(input(observed=1_500_000));e.ingest(input(observed=1_000_000))
         assertEquals(listOf(1_000_000L,1_500_000L),e.targets.values.single().samples.map {it.first})
     }
+    @Test fun readableJsonContainsDecodedClaimsWithUnknownValuesPreserved() {
+        val data=ObserverEngine().ingest(input()).single().toJson("fixture","run")
+        assertTrue(data.contains("\"rid_messages\":["))
+        assertTrue(data.contains("\"uas_id\":\"KMP-TEST\""))
+        assertTrue(data.contains("\"altitude_geo_m\":null"))
+    }
+    @Test fun textLineEscapesNewlinesAndKeepsUnknownRssi() {
+        val o=ObserverEngine().ingest(input(rssi=null).copy(receivedAtUtc="clock\nunknown")).single()
+        val text=o.toTextLine()
+        assertFalse(text.contains('\n'));assertTrue(text.contains("rssi_dbm=null"))
+        assertTrue(text.contains("clock\\nunknown"));assertTrue(text.contains("KMP-TEST"))
+    }
+    @Test fun textPreviewRetainsOnlyRecentLines() {
+        val log=RecentTextLog(3);val e=ObserverEngine()
+        repeat(5) {i ->log.append(e.ingest(input(observed=1_000_000L+i)).single())}
+        assertEquals(3,log.size);val text=log.snapshot()
+        assertFalse(text.contains("observed_us=1000000 "))
+        assertTrue(text.contains("observed_us=1000004 "));assertEquals(3,text.lines().size)
+    }
+    @Test fun malformedPayloadDoesNotInventDecodedText() {
+        val o=ObserverEngine().ingest(input(fromHex("fa0bbc0d07"))).single()
+        assertTrue(o.toTextLine().contains("parse_status=invalid"))
+        assertTrue(o.toTextLine().contains("messages=null"))
+    }
+    @Test fun databaseDeduplicationSurvivesProcessButNotDeviceBoot() {
+        val o=ObserverEngine().ingest(input()).single()
+        assertEquals(o.storageKey("boot1","process1"),o.storageKey("boot1","process2"))
+        assertNotEquals(o.storageKey("boot1","process1"),o.storageKey("boot2","process1"))
+        val newer=ObserverEngine().ingest(input(observed=1_000_001)).single()
+        assertNotEquals(o.storageKey("boot1","p"),newer.storageKey("boot1","p"))
+    }
+    @Test fun databaseDoesNotMergeUnknownTimesAcrossProcessRestarts() {
+        val o=ObserverEngine().ingest(input(observed=null)).single()
+        assertNotEquals(o.storageKey("boot1","p1"),o.storageKey("boot1","p2"))
+    }
 }

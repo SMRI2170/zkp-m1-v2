@@ -16,6 +16,7 @@ import java.util.UUID
 /** Process-local model; never retains an Activity. All access is on the main looper. */
 object ReceiverState {
     val engine=ObserverEngine()
+    val textLog=RecentTextLog(50)
     var scanning=false
     var status="停止中"
     var scanCount=0
@@ -38,6 +39,8 @@ class ReceiverService: Service() {
     private var registered=false
     private var stopping=false
     private var intervalMs=30_000L
+    private var receiverNodeId="unknown"
+    private lateinit var database:ObservationDatabase
     private val receiver=object:BroadcastReceiver() {
         override fun onReceive(context:Context?,intent:Intent?) {
             if(intent?.action==WifiManager.SCAN_RESULTS_AVAILABLE_ACTION) {
@@ -69,6 +72,9 @@ class ReceiverService: Service() {
         if(intent?.action==ACTION_STOP) { finish("notification_stop");return START_NOT_STICKY }
         if(intent?.action!=ACTION_START) { stopSelf();return START_NOT_STICKY }
         try {
+            database=ObservationDatabase.get(this)
+            check(database.lastError==null && database.rowCount<100_000 && !database.exporting) {"Database unavailable or full"}
+            receiverNodeId=intent.getStringExtra("node_id")?.takeIf {it.matches(Regex("[a-zA-Z0-9_-]{1,40}"))} ?: "unknown"
             intervalMs=getSharedPreferences("receiver",MODE_PRIVATE).getLong("scan_interval_ms",30_000)
             checkAccess()
             val nm=getSystemService(NOTIFICATION_SERVICE) as NotificationManager
@@ -105,6 +111,10 @@ class ReceiverService: Service() {
                 val input=ScanInput(r.BSSID.lowercase(),r.level,r.frequency,observed,delivered,utc,bodies)
                 for(o in ReceiverState.engine.ingest(input)) {
                     if(!o.stale && o.decoded!=null) ReceiverState.lastNewUs= maxOf(ReceiverState.lastNewUs ?: 0, observed ?: 0)
+                    database.enqueue(o,receiverNodeId) {
+                        if(current===this) finish("database_write_failed")
+                    }
+                    ReceiverState.textLog.append(o)
                     ReceiverState.recording?.append(o)
                 }
             }
@@ -177,7 +187,7 @@ class ReceiverService: Service() {
 }
 
 class CaptureLimitException:Exception()
-/** Append-only owner-only captures. Final metadata is atomic; an absent end means interrupted/unknown. */
+/** Append-only owner-only captures. A completed session_end marks a clean close; an absent/partial end is interrupted or unknown. */
 class CaptureSession(root:File,val nodeId:String,private val maxBytes:Long=20L*1024*1024) {
     val runId=UUID.randomUUID().toString()
     private val dir=File(root,"captures/$runId")
@@ -219,4 +229,4 @@ class CaptureSession(root:File,val nodeId:String,private val maxBytes:Long=20L*1
         closed=true
     }
 }
-private object BuildConfigVersion {const val value="0.4-scan-modes"}
+private object BuildConfigVersion {const val value="0.6-local-database"}

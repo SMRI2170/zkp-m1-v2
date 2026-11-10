@@ -69,6 +69,20 @@ data class Observation(val sourceKey: String, val sourceType: SourceType, val rs
                        val frequencyMhz: Int?, val observedUs: Long?, val receivedAtUtc: String?,
                        val stale: Boolean, val decoded: DecodedRid?, val body: ByteArray, val error: String?) {
     fun isStaleAt(nowUs:Long):Boolean = stale || observedUs==null || observedUs<=0 || nowUs<observedUs || nowUs-observedUs>30_000_000
+    private fun messageFields() = decoded?.messages?.map { m -> mapOf(
+        "type" to m.type, "uas_id" to m.uasId,
+        "claimed_position" to m.claim?.let { mapOf("latitude" to it.latitude,
+            "longitude" to it.longitude,"altitude_geo_m" to it.altitudeGeoM,
+            "seconds_within_hour" to it.secondsWithinHour) }) }
+    /** A single escaped text line; freshness is the state when the observation was captured. */
+    fun toTextLine():String = "received_at_utc=${json(receivedAtUtc)} observed_us=$observedUs " +
+        "rssi_dbm=$rssiDbm frequency_mhz=$frequencyMhz source_type=${sourceType.wire} " +
+        "parse_status=${if(decoded==null) "invalid" else "decoded"} counter=${decoded?.counter} " +
+        "cache_stale_at_capture=$stale messages=${json(messageFields())}"
+    /** Monotonic observation times must not collide across device boots. Unknown times use process scope. */
+    fun storageKey(bootScope:String,unknownTimeScope:String):String = sha256(json(listOf(
+        bootScope,if(observedUs==null || observedUs<=0) unknownTimeScope else null,
+        sourceType.wire,sourceKey.lowercase(),frequencyMhz,observedUs,digest)).encodeToByteArray())
     val digest: String get() = decoded?.digest ?: sha256(body)
     fun toJson(nodeId: String, runId: String): String = json(mapOf(
         "schema_version" to "wifi_observation_v1", "node_id" to nodeId, "capture_run_id" to runId,
@@ -81,6 +95,7 @@ data class Observation(val sourceKey: String, val sourceType: SourceType, val rs
         "sequence_control" to null, "beacon_tsf_us" to null,
         "vendor_content_digest" to digest, "odid_counter" to decoded?.counter,
         "odid_payload_hex" to if(body.size>=5) body.copyOfRange(5,body.size).hex() else null,
+        "rid_messages" to messageFields(),
         "rid_parse_status" to if(decoded==null) "invalid" else "decoded", "rid_parse_reason" to error,
         "cache_stale" to stale, "physical_packet_match" to "unconfirmed",
         "receiver_position" to null, "absolute_power_calibrated" to false,
@@ -158,4 +173,16 @@ fun json(value: Any?): String = when(value) {
     is Map<*,*> -> value.entries.joinToString(",","{","}") { json(it.key.toString())+":"+json(it.value) }
     is List<*> -> value.joinToString(",","[","]") { json(it) }
     else -> error("unsupported JSON value")
+}
+
+/** Small in-memory text preview, independent of full on-disk JSONL capture. */
+class RecentTextLog(private val maxLines:Int=50) {
+    init {require(maxLines in 1..200)}
+    private val lines=ArrayDeque<String>()
+    fun append(observation:Observation) {
+        lines.addLast(observation.toTextLine())
+        if(lines.size>maxLines) lines.removeFirst()
+    }
+    fun snapshot():String=lines.joinToString("\n")
+    val size:Int get()=lines.size
 }
