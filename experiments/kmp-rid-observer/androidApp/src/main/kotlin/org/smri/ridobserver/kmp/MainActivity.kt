@@ -41,8 +41,16 @@ class MainActivity : Activity() {
     private var exportBytes:ByteArray?=null
     private var exportFile:File?=null
     private var notificationAsked=false
+    private var renderedState:String?=null
     private val refresh=object:Runnable {
-        override fun run() { render();handler.postDelayed(this,1000) }
+        override fun run() {
+            val now=SystemClock.elapsedRealtimeNanos()/1000
+            val signature=listOf(ReceiverState.revision,scanning,recording?.count,ReceiverState.status,
+                engine.targets.values.count {it.latest.isStaleAt(now)},selected).joinToString("|")
+            // Do not rebuild an unchanged view tree every second: it prevents UI-idle and wastes work.
+            if(signature!=renderedState) {renderedState=signature;render()}
+            handler.postDelayed(this,1000)
+        }
     }
     private val nodeId:String get()=getPreferences(MODE_PRIVATE).getString("node_id",null) ?: run {
         val id="phone-"+UUID.randomUUID().toString().take(8)

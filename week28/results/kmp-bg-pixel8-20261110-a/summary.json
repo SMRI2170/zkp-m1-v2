@@ -1,0 +1,89 @@
+{
+  "kind": "observational_scan_capture_analysis",
+  "source_type": "real_capture",
+  "physical_packet_match": "unconfirmed",
+  "phases": [
+    {
+      "phase": "foreground",
+      "phase_complete": true,
+      "duration_s": 30.22,
+      "scan_observations": 1,
+      "fresh_decoded_observations": 1,
+      "stale_observations": 0,
+      "invalid_observations": 0,
+      "update_interval_median_s": null,
+      "update_interval_p95_s": null,
+      "max_edge_inclusive_gap_s": 24.498133,
+      "interval_pairs": 0,
+      "pss_max_kib": 113014,
+      "pss_samples": 2,
+      "duplicates_counter_delta": 0,
+      "requests_rejected_counter_delta": 0,
+      "process_cpu_ms_delta": 76,
+      "cpu_counter_coverage": "between_first_and_last_telemetry_only",
+      "battery_level_first": 35,
+      "battery_level_last": 35,
+      "battery_plugged_values": [
+        2
+      ]
+    },
+    {
+      "phase": "background",
+      "phase_complete": true,
+      "duration_s": 30.24,
+      "scan_observations": 0,
+      "fresh_decoded_observations": 0,
+      "stale_observations": 0,
+      "invalid_observations": 0,
+      "update_interval_median_s": null,
+      "update_interval_p95_s": null,
+      "max_edge_inclusive_gap_s": 30.24,
+      "interval_pairs": 0,
+      "pss_max_kib": 61279,
+      "pss_samples": 2,
+      "duplicates_counter_delta": 0,
+      "requests_rejected_counter_delta": 0,
+      "process_cpu_ms_delta": 53,
+      "cpu_counter_coverage": "between_first_and_last_telemetry_only",
+      "battery_level_first": 35,
+      "battery_level_last": 35,
+      "battery_plugged_values": [
+        2
+      ]
+    },
+    {
+      "phase": "screen_off",
+      "phase_complete": true,
+      "duration_s": 30.22,
+      "scan_observations": 1,
+      "fresh_decoded_observations": 1,
+      "stale_observations": 0,
+      "invalid_observations": 0,
+      "update_interval_median_s": null,
+      "update_interval_p95_s": null,
+      "max_edge_inclusive_gap_s": 22.992336,
+      "interval_pairs": 0,
+      "pss_max_kib": 56613,
+      "pss_samples": 2,
+      "duplicates_counter_delta": 0,
+      "requests_rejected_counter_delta": 0,
+      "process_cpu_ms_delta": 50,
+      "cpu_counter_coverage": "between_first_and_last_telemetry_only",
+      "battery_level_first": 35,
+      "battery_level_last": 35,
+      "battery_plugged_values": [
+        2
+      ]
+    }
+  ],
+  "session_end_reasons": [
+    "notification_stop"
+  ],
+  "session_complete": true,
+  "notes": [
+    "No known packet count: no RF packet reception rate calculated.",
+    "Intervals pooled within each transmitter; no intervals across transmitters.",
+    "Counter deltas cover first through last telemetry in phase, not all phase boundaries.",
+    "Phase assignment uses device observation timestamps; cached observations from before phase excluded."
+  ]
+}

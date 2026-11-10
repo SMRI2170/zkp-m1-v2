@@ -1,0 +1,37 @@
+{
+  "app_version": "0.3-background",
+  "installed_updated_apk_sha256": "12c4631919d7879aed983487b7aa3bc5ec00af4c9a0106dcfb11662b19dd7c39",
+  "kind": "controlled_real_rf_short_smoke",
+  "transmitter": "Pi A controlled test Beacon",
+  "real_drone_test": false,
+  "target_drone_for_future_validation": "DJI Matrice 350 RTK",
+  "new_rf_runs": 1,
+  "source_claim": "synthetic",
+  "all_vendor_digests_match_sender_receipt": true,
+  "recorded_observations": 2,
+  "rssi_dbm": [
+    -48,
+    -47
+  ],
+  "notifications_permission": "granted_via_system_dialog",
+  "notification_stop": "passed_service_absent_and_session_end_notification_stop",
+  "screen_off_new_observation": "passed; receipt-matched decoded observation and screen_interactive=false telemetry",
+  "wifi_scan_throttle_setting": "null",
+  "extra_adb_wifi_scan_requests": false,
+  "automatic_cleanup": "failed while keyguard shown; original plan retained",
+  "recovery": "manual UI notification stop after unlock; final files recovered",
+  "long_duration_30min_each": "not_run",
+  "battery_comparison": "not_valid_USB_charging",
+  "physical_packet_match": "unconfirmed",
+  "tx_stopped_and_temporary_ap_removed": true,
+  "ui_issue": "unconditional one-second view rebuild prevented UI idle; replaced by state-change-only render and verified UI automation could run",
+  "unexpected_external_stop_attempt": "ADB am stopservice returned Error stopping service; service remained; not counted as successful stop",
+  "session_csv_export_after_process_restart": "passed; two session observations retained",
+  "python_tests_after_cleanup_fix": 11,
+  "source_schedule_check": "phase windows fit transmitter receipt UTC window after telemetry mapping; inter-device clock offset not independently measured",
+  "os_release": "17",
+  "sdk": "37",
+  "device_idle_values": [
+    false
+  ]
+}

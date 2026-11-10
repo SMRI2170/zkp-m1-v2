@@ -140,9 +140,12 @@ def main():
                     device.copy(run,name,output/name)
         except Exception:
             plan['cleanup']='unconfirmed_check_device_notification_and_stop_manually'
+            if plan.get('completion')=='phases_completed':plan['completion']='phases_completed_cleanup_unconfirmed'
         save()
         try:device.shell('rm',device.ui_path)
         except Exception:pass
+    if plan.get('cleanup')!='stopped_by_ui':
+        raise RuntimeError('Phase data retained, but stop is unconfirmed. Unlock the phone and stop from the notification.')
     print('Evaluation finished. Run analyze_capture.py on this capture directory.',flush=True)
 
 if __name__=='__main__':
