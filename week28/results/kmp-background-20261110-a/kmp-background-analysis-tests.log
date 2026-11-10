@@ -1,0 +1,14 @@
+test_boundaries_and_telemetry_coverage (test_analyze_capture.AnalysisTest.test_boundaries_and_telemetry_coverage) ... ok
+test_cache_from_previous_phase_and_invalid_rows (test_analyze_capture.AnalysisTest.test_cache_from_previous_phase_and_invalid_rows) ... ok
+test_empty_phase_is_not_perfect_reception (test_analyze_capture.AnalysisTest.test_empty_phase_is_not_perfect_reception) ... ok
+test_intervals_never_cross_transmitters (test_analyze_capture.AnalysisTest.test_intervals_never_cross_transmitters) ... ok
+test_quantile_interpolation (test_analyze_capture.AnalysisTest.test_quantile_interpolation) ... ok
+test_summary_excludes_transmitter (test_analyze_capture.AnalysisTest.test_summary_excludes_transmitter) ... ok
+test_capture_paths_reject_escape_and_symlinks (test_evaluate_pixel.EvaluationBoundaryTest.test_capture_paths_reject_escape_and_symlinks) ... ok
+test_no_device_does_not_create_an_experiment (test_evaluate_pixel.EvaluationBoundaryTest.test_no_device_does_not_create_an_experiment) ... ok
+test_other_android_is_never_selected (test_evaluate_pixel.EvaluationBoundaryTest.test_other_android_is_never_selected) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.002s
+
+OK

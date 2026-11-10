@@ -1,0 +1,27 @@
+{
+  "kind": "pixel8_kmp_controlled_real_rf",
+  "installed": true,
+  "new_rf_runs": 1,
+  "source": "Pi A test Beacon with synthetic RID claim",
+  "recorded_scan_observations": 3,
+  "csv_scan_observations": 4,
+  "csv_vs_jsonl": "CSV is current in-memory total; recording was stopped before CSV export",
+  "rssi_dbm": [
+    -44,
+    -46,
+    -46
+  ],
+  "counter": 221,
+  "frequency_mhz": 2452,
+  "all_vendor_digests_match_sender_receipt": true,
+  "all_records_decoded": true,
+  "screenshot_inspected": "chart and RID card visible; no clipping observed",
+  "record_directory_mode": "0700",
+  "record_file_mode": "0600",
+  "saf_csv_export": "passed",
+  "tx_stopped": true,
+  "temporary_ap_removed": true,
+  "physical_packet_match": "unconfirmed",
+  "real_drone_validation": false,
+  "raw_jsonl_saf_export": "not_run"
+}
