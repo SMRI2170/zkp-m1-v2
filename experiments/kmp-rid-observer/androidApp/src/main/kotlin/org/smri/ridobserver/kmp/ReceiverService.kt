@@ -10,7 +10,6 @@ import android.net.wifi.WifiManager
 import android.os.*
 import org.smri.ridobserver.core.*
 import java.io.File
-import java.time.Instant
 import java.util.UUID
 
 /** Process-local model; never retains an Activity. All access is on the main looper. */
@@ -78,8 +77,9 @@ class ReceiverService: Service() {
             intervalMs=getSharedPreferences("receiver",MODE_PRIVATE).getLong("scan_interval_ms",30_000)
             checkAccess()
             val nm=getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-            nm.createNotificationChannel(NotificationChannel(CHANNEL,"Remote ID受信",NotificationManager.IMPORTANCE_LOW))
-            startForeground(7,notification(),ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION)
+            if(Build.VERSION.SDK_INT>=26) nm.createNotificationChannel(NotificationChannel(CHANNEL,"Remote ID受信",NotificationManager.IMPORTANCE_LOW))
+            if(Build.VERSION.SDK_INT>=29) startForeground(7,notification(),ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION)
+            else startForeground(7,notification())
             if(ReceiverState.scanning) return START_NOT_STICKY
             current=this;stopping=false
             if(Build.VERSION.SDK_INT>=33) registerReceiver(receiver,IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION),Context.RECEIVER_NOT_EXPORTED)
@@ -91,9 +91,9 @@ class ReceiverService: Service() {
     }
     private fun checkAccess() {
         if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED ||
-            !(getSystemService(LOCATION_SERVICE) as LocationManager).isLocationEnabled || !wifi.isWifiEnabled)
+            !PlatformCompat.locationEnabled(this) || !wifi.isWifiEnabled)
             throw SecurityException("Wi-Fi/location access unavailable")
-        if(!ScanPolicy.allowed(intervalMs,wifi.isScanThrottleEnabled)) throw SecurityException("fast mode requires developer scan throttling off")
+        if(!ScanPolicy.allowed(intervalMs,(PlatformCompat.scanThrottleEnabled(wifi) ?: true))) throw SecurityException("fast mode requires developer scan throttling off")
     }
     private fun readResults(updated:Boolean) {
         if(!ReceiverState.scanning) return
@@ -103,11 +103,12 @@ class ReceiverService: Service() {
             ReceiverState.scanCount=results.size;ReceiverState.callbacks++
             val delivered=SystemClock.elapsedRealtimeNanos()/1000;val now=System.currentTimeMillis()
             for(r in results) {
-                val bodies=r.informationElements.filter {it.id==221}.map {ie ->
-                    val b=ie.bytes.duplicate();ByteArray(b.remaining()).also {b.get(it)}
-                }
+                val ies=PlatformCompat.informationElements(r)
+                // Counts and exception types only; never log identifiers or payloads.
+                android.util.Log.d("RidObserverCompat","ie_access=${ies.route} elements=${ies.elementCount} error=${ies.error ?: "none"}")
+                val bodies=ies.bodies
                 val observed=r.timestamp.takeIf {it>0}
-                val utc=if(observed!=null && observed<=delivered) Instant.ofEpochMilli(now-(delivered-observed)/1000).toString() else null
+                val utc=if(observed!=null && observed<=delivered) PlatformCompat.utc(now-(delivered-observed)/1000) else null
                 val input=ScanInput(r.BSSID.lowercase(),r.level,r.frequency,observed,delivered,utc,bodies)
                 for(raw in ReceiverState.engine.ingest(input)) {
                     val o=raw.withSourceRules(SourceRegistry(this).load())
@@ -148,7 +149,7 @@ class ReceiverService: Service() {
         ReceiverState.recording?.event(kind,mapOf(
             "elapsed_us" to SystemClock.elapsedRealtimeNanos()/1000,
             "scan_results" to ReceiverState.scanCount,"callbacks" to ReceiverState.callbacks,
-            "scan_requests" to ReceiverState.scanRequests,"request_interval_ms" to intervalMs,"scan_throttle_enabled" to wifi.isScanThrottleEnabled,"requests_rejected" to ReceiverState.requestsRejected,
+            "scan_requests" to ReceiverState.scanRequests,"request_interval_ms" to intervalMs,"scan_throttle_enabled" to PlatformCompat.scanThrottleEnabled(wifi),"scan_throttle_state_known" to (Build.VERSION.SDK_INT>=30),"requests_rejected" to ReceiverState.requestsRejected,
             "rid_records" to ReceiverState.engine.records,"duplicate_results" to ReceiverState.engine.duplicateResults,
             "invalid_records" to ReceiverState.engine.invalidRecords,"last_new_observation_us" to ReceiverState.lastNewUs,
             "screen_interactive" to pm.isInteractive,"activity_visible" to (ReceiverState.screen=="visible"),
@@ -162,7 +163,8 @@ class ReceiverService: Service() {
     private fun notification():Notification {
         val open=PendingIntent.getActivity(this,0,Intent(this,MainActivity::class.java),PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         val stop=PendingIntent.getService(this,1,Intent(this,ReceiverService::class.java).setAction(ACTION_STOP),PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
-        return Notification.Builder(this,CHANNEL).setSmallIcon(android.R.drawable.ic_menu_mylocation)
+        val builder=if(Build.VERSION.SDK_INT>=26) Notification.Builder(this,CHANNEL) else Notification.Builder(this)
+        return builder.setSmallIcon(android.R.drawable.ic_menu_mylocation)
             .setContentTitle("Remote ID ${if(ReceiverState.recording!=null) "受信・記録中" else "受信中"}")
             .setContentText("RID ${ReceiverState.engine.targets.size}件 · タップで表示")
             .setContentIntent(open).setOngoing(true).setOnlyAlertOnce(true)
@@ -220,14 +222,14 @@ class CaptureSession(root:File,val nodeId:String,private val maxBytes:Long=20L*1
             if(o.stale) null else o.observedUs,o.receivedAtUtc,listOf(o.body),o.sourceType))
     }
     fun event(kind:String,extra:Map<String,Any?>) {
-        check(!closed);write(events,json(mapOf("event" to kind,"utc" to Instant.now().toString())+extra)+"\n")
+        check(!closed);write(events,json(mapOf("event" to kind,"utc" to PlatformCompat.utc())+extra)+"\n")
     }
     fun csv():String=sessionEngine.summaryCsv()
     fun close(reason:String) {
         if(closed) return
         write(summary,csv(),true)
-        write(events,json(mapOf("event" to "session_end","utc" to Instant.now().toString(),"reason" to reason,"recorded_observations" to count))+"\n",true)
+        write(events,json(mapOf("event" to "session_end","utc" to PlatformCompat.utc(),"reason" to reason,"recorded_observations" to count))+"\n",true)
         closed=true
     }
 }
-private object BuildConfigVersion {const val value="0.7-source-labels"}
+private object BuildConfigVersion {const val value="0.8-android7-compat"}

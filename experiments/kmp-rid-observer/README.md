@@ -11,7 +11,7 @@ Wi-Fi BeaconのOpenDroneID Vendor IEを解析・表示・保存する研究用Po
 | モジュール | 内容 | 対象 |
 |---|---|---|
 | shared | ODID v2解析、重複排除、鮮度判定、RSSI履歴、JSONL・集計CSV | Android / JVM |
-| androidApp | Wi-Fi ScanResult入力、SQLite自動保存、手動テキスト表示・SAF書き出し | Android 11以上 |
+| androidApp | Wi-Fi ScanResult入力、SQLite自動保存、手動テキスト表示・SAF書き出し | Android 7以上（旧OSのIE取得は端末依存） |
 | replay | TSVから共通コードで再生（無線受信なし） | JVM / Mac / Linux |
 
 解析・状態管理がKMP共通コード。画面はAndroid固有。
@@ -44,7 +44,7 @@ APKはデバッグ署名。配布用署名鍵は作成していない。
 
 権限はACCESS_WIFI_STATE、CHANGE_WIFI_STATE、ACCESS_FINE_LOCATION、ACCESS_COARSE_LOCATION。インターネット権限なし。
 標準のスキャン要求は30秒間隔で、OSの制限を維持。ScanResultはキャッシュ・Probe Response由来を含み得るため、生パケット数・受信率ではない。
-v0.3は画面で「受信開始」を押すとlocation型Foreground Serviceを開始する。
+画面の「受信開始」で継続通知付きサービスを開始する。Android 10以上ではlocation型、旧OSでは対応する2引数のForeground Serviceを使う。
 画面を離れてもサービス側で受信・記録を継続し、通知または画面から停止できる。
 Android 13以上では通知の許可も要求する。拒否時は画面に「通知非表示」と表示し、画面で停止できる。
 通知拒否で継続通知の通常表示は保証されない。位置情報権限の拒否・剥奪等は開始失敗または停止になる。
@@ -176,3 +176,15 @@ M350実機・長時間・容量上限・DB破損・書込み途中の強制終�
 同じ申告IDでも異なるBSSIDは別の観測として記録する。より具体的な登録を優先し、競合は不明とする。`PI-RID-`は「Piマーカー（申告）」とだけ表示し、その他を自動でドローンと断定しない。JSONの`identity_verified`は常にfalse。ID・BSSIDを両方偽装された場合の機体認証はできない。
 
 APK・共通コードのテストは確認済みだが、v0.7のPixel実機インストールと登録UI操作は端末未接続のため未実行。以前のv0.6実機結果をv0.7の実機結果として扱わない。
+
+## v0.8：Android 7の互換経路
+
+アプリ・共通AndroidライブラリともminSdk24、targetSdk36を維持。API30以上は公開IE API、API24〜29は既存Flutter版と同じフィールド読取りを利用する。取得不可なら診断に経路と例外型を残し、受信成功とは扱わない。root化・hidden API制限変更は行わない。
+
+通知チャネル、Foreground Service開始、location有効判定、画面insetsをOSで分岐。日時文字列はAPI26のjava.timeに依存しない。旧OSでスキャン制限状態が取得できない場合はnullとして記録し、高速モードを許可しない。まず標準30秒で使用する。
+
+ASUS_Z017DA／Android 7.0／API24で、インストール、一般Wi-Fi IE読取り、Piマーカー5件のRSSI付きDB保存、送信元登録、文字列表示、プロセス再起動後の保持を実機確認。Pixel 8のv0.8回帰実機評価やM350受信は未実行。
+
+RID・BSSID入力はIMEの全角変換を避ける入力種別にし、登録ファイルも0700／0600へ制限する。以前のDB・登録情報を消さずに更新する。旧端末向け互換経路は端末依存で、すべてのAndroid 7端末を保証するものではない。
+
+既存の3条件自動評価スクリプトはスキャン制限状態を確認できるOSが前提。API24の今回評価はADBによる段階的な操作であり、非対応の事前検査を無視して成功扱いにしない。詳細はWeek28の20番の報告。

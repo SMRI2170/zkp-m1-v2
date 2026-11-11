@@ -11,11 +11,11 @@ import android.net.wifi.ScanResult
 import android.net.wifi.WifiManager
 import android.os.*
 import android.provider.Settings
+import android.text.InputType
 import android.view.*
 import android.widget.*
 import org.smri.ridobserver.core.*
 import java.io.File
-import java.time.Instant
 import java.util.UUID
 
 /** Android I/O and UI only. Decoding, de-duplication and JSON/CSV are shared KMP. */
@@ -65,10 +65,12 @@ class MainActivity : Activity() {
             ReceiverState.lastCapture=File(dir,"observations.jsonl").takeIf {it.isFile}
             ReceiverState.lastSessionCsv=File(dir,"summary.csv").takeIf {it.isFile && it.length()>0}
         }
-        val root=LinearLayout(this).apply { orientation=LinearLayout.VERTICAL;setBackgroundColor(Color.rgb(245,247,251)) }
+        val root=LinearLayout(this).apply { orientation=LinearLayout.VERTICAL;setBackgroundColor(Color.rgb(245,247,251));setPadding(dp(18),dp(18),dp(18),dp(12)) }
         root.setOnApplyWindowInsetsListener { view,insets ->
-            val bars=insets.getInsets(WindowInsets.Type.systemBars())
-            view.setPadding(dp(18),bars.top+dp(18),dp(18),bars.bottom+dp(12));insets
+            val top:Int;val bottom:Int
+            if(Build.VERSION.SDK_INT>=30) {val bars=insets.getInsets(WindowInsets.Type.systemBars());top=bars.top;bottom=bars.bottom}
+            else {top=insets.systemWindowInsetTop;bottom=insets.systemWindowInsetBottom}
+            view.setPadding(dp(18),top+dp(18),dp(18),bottom+dp(12));insets
         }
         root.addView(label("Remote ID 受信",25,navy,true))
         status=label("停止中",14,Color.DKGRAY);root.addView(status)
@@ -123,19 +125,22 @@ class MainActivity : Activity() {
         val wifi=applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
         if(!wifi.isWifiEnabled) { toast("Wi-Fiを有効にしてください");startActivity(Intent(Settings.ACTION_WIFI_SETTINGS));return }
         val location=getSystemService(LOCATION_SERVICE) as LocationManager
-        if(!location.isLocationEnabled) { toast("位置情報サービスを有効にしてください");startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));return }
+        if(!PlatformCompat.locationEnabled(this)) { toast("位置情報サービスを有効にしてください");startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));return }
         if(scanning) return
         val interval=getSharedPreferences("receiver",MODE_PRIVATE).getLong("scan_interval_ms",30_000)
-        android.util.Log.d("RidObserverKmp","start_mode interval=$interval throttle=${wifi.isScanThrottleEnabled}")
-        if(!ScanPolicy.allowed(interval,wifi.isScanThrottleEnabled)) {
+        android.util.Log.d("RidObserverKmp","start_mode interval=$interval throttle=${PlatformCompat.scanThrottleEnabled(wifi)}")
+        if(!ScanPolicy.allowed(interval,PlatformCompat.scanThrottleEnabled(wifi) ?: true)) {
             AlertDialog.Builder(this).setTitle("高速測定は開発用です")
-                .setMessage("Androidの開発者向けオプションでWi-FiスキャンのスロットリングをOFFにした実験専用です。アプリはOS設定を変更しません。通常は30秒を選んでください。要求間隔と実際の取得間隔は異なります。")
+                .setMessage(if(Build.VERSION.SDK_INT<30) "このOSでは制限状態を確認できません。標準30秒で受信してください。" else "Androidの開発者向けオプションでWi-FiスキャンのスロットリングをOFFにした実験専用です。アプリはOS設定を変更しません。通常は30秒を選んでください。要求間隔と実際の取得間隔は異なります。")
                 .setPositiveButton("閉じる",null).show();return
         }
         if(Build.VERSION.SDK_INT>=33 && !notificationAsked && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED) {
             notificationAsked=true;requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS),11);return
         }
-        try {startForegroundService(Intent(this,ReceiverService::class.java).setAction(ReceiverService.ACTION_START).putExtra("node_id",nodeId))}
+        try {
+            val intent=Intent(this,ReceiverService::class.java).setAction(ReceiverService.ACTION_START).putExtra("node_id",nodeId)
+            if(Build.VERSION.SDK_INT>=26) startForegroundService(intent) else startService(intent)
+        }
         catch(e:Exception) {ReceiverState.status="開始できません · 設定・権限を確認";android.util.Log.w("RidObserverKmp","start_failed ${e.javaClass.simpleName}");render();toast("受信サービスを開始できません")}
     }
     override fun onRequestPermissionsResult(code:Int,permissions:Array<out String>,grants:IntArray) {
@@ -187,8 +192,8 @@ class MainActivity : Activity() {
                     val form=LinearLayout(this).apply {orientation=LinearLayout.VERTICAL;setPadding(dp(18),0,dp(18),0)}
                     val role=Spinner(this).apply {adapter=ArrayAdapter(this@MainActivity,android.R.layout.simple_spinner_dropdown_item,listOf("ドローン（登録）","搭載Pi（登録）","不明"))}
                     val name=EditText(this).apply {hint="表示名";isSingleLine=true}
-                    val id=EditText(this).apply {hint="申告RID（任意）";isSingleLine=true}
-                    val mac=EditText(this).apply {hint="BSSID（任意・xx:xx:xx:xx:xx:xx）";isSingleLine=true}
+                    val id=EditText(this).apply {hint="申告RID（半角・任意）";inputType=InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS;isSingleLine=true}
+                    val mac=EditText(this).apply {hint="BSSID（半角・任意）";inputType=InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS;isSingleLine=true}
                     listOf(role,name,id,mac).forEach {form.addView(it)}
                     AlertDialog.Builder(this).setTitle("IDまたはBSSIDで照合").setView(form)
                         .setPositiveButton("保存") {_,_ ->try {

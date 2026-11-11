@@ -4,10 +4,10 @@ android {
     compileSdk = 36
     defaultConfig {
         applicationId = "org.smri.ridobserver.kmp"
-        minSdk = 30
+        minSdk = 24
         targetSdk = 36
-        versionCode = 7
-        versionName = "0.7-source-labels"
+        versionCode = 8
+        versionName = "0.8-android7-compat"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
