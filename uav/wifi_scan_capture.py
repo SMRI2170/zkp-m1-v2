@@ -160,7 +160,8 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
                   duplicate_cache_entries=0, scan_requests=0, scan_accepted=0, scan_failed=0)
     started = monotonic()
     end = started + args.duration
-    metrics = UpdateMetrics(boottime())
+    started_boottime = boottime()
+    metrics = UpdateMetrics(started_boottime)
     next_poll = next_scan = started
     consecutive_failures = 0
     stopped_reason = 'duration_complete'
@@ -173,7 +174,7 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
                 events.write(json.dumps(dict(event=kind, elapsed_s=monotonic() - started, **fields)) + '\n')
                 events.flush()
 
-        event('start', active_scan=args.active_scan, poll_interval_s=args.interval,
+        event('start', started_boottime_s=started_boottime, active_scan=args.active_scan, poll_interval_s=args.interval,
               scan_interval_s=args.scan_interval if args.active_scan else None,
               frequency_mhz=args.frequency)
         try:
@@ -230,6 +231,7 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
             stopped_reason = 'interrupted'
         event('end', stopped_reason=stopped_reason)
     summary = dict(counts=counts, updates=metrics.summary(), elapsed_s=monotonic()-started,
+                   started_boottime_s=started_boottime,
                    stopped_reason=stopped_reason, source_type='real_capture', observation_kind='linux_scan_cache',
                    active_scan_requested=args.active_scan, poll_interval_s=args.interval,
                    scan_request_interval_s=args.scan_interval if args.active_scan else None,

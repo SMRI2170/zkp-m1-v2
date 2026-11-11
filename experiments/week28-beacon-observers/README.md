@@ -19,7 +19,7 @@ python3 ~/zkp-beacon-observer/releases/<version>/experiments/week28-beacon-obser
 
 ## 短い間隔での更新要求
 
-A/Cに導入済みの簡易起動コマンド（明示的に起動した期間だけ収録）：
+A/B/Cに導入済みの簡易起動コマンド（明示的に起動した期間だけ収録）：
 
 ```sh
 ~/zkp-beacon-observer/fast --duration 60
@@ -27,7 +27,7 @@ A/Cに導入済みの簡易起動コマンド（明示的に起動した期間�
 ~/zkp-beacon-observer/fast --duration 60 --frequency 2452
 ```
 
-0.25秒要求・0.1秒キャッシュ読取り。必要なら`--scan-interval 1`等へ緩められる。一般ユーザーとして実行すると、既存sudo権限を使って期間限定サービスを開始する。必要なノードでは端末でsudoパスワードを入力する。Bには未導入。全チャネルと単一周波数では実効間隔が異なり、0.25秒のRSSI更新を保証しない。
+0.25秒要求・0.1秒キャッシュ読取り。必要なら`--scan-interval 1`等へ緩められる。一般ユーザーとして実行すると、既存sudo権限を使って期間限定サービスを開始する。必要なノードでは端末でsudoパスワードを入力する。Bにも追加導入済み。全チャネルと単一周波数では実効間隔が異なり、0.25秒のRSSI更新を保証しない。
 
 
 ```sh
@@ -75,3 +75,50 @@ python3 ~/zkp-beacon-observer/current/experiments/week28-beacon-observers/benchm
 パケット数、RID位置フィールドの更新頻度、全送信に対する受信率は計算しない。
 
 生データ・位置・送信機識別子・鍵をGitに追加しない。0700のディレクトリ、0600のファイルを維持する。共有時は匿名集計だけを明示的に選ぶ。
+
+## 3ノードの実RF反復実験
+
+`run_rf_matrix.py`は、認証済みSSH control socketでA/Bを交互に送信役にし、残る2台を受信役にするローカル実行用プログラム。接続・送信エンコーダ・受信環境が既に用意されていることが前提で、ネットワーク構築・既存収録の停止は行わない。
+
+1. 全台で他の収録・送信が動いていないことを確認する。
+2. owner-privateな`captures/<session>/`を作り、その中に認証済みSSH control socketと0600の`nodes.json`を用意する。socketの引数は104bytes未満の短い相対パスを使う。
+3. A/Bの`transmitter_script`は監査済み`safe_beacon_tx.py`、`encoder`は以前から使用する`odid_ie`の絶対パスを指定する。Cは今回の送信役にしない。
+4. 次を起動し、既存sudoのパスワードを端末で一度入力する。パスワードは保存せず、sudoの標準入力にだけ渡す。core dumpも無効にする。
+
+設定形の例（実接続情報をGitに追加しない）：
+
+```json
+{
+  "nodes": {
+    "a": {"host": "pi@observer-a.local", "socket": "captures/session/ssh-a", "transmitter_script": "/home/pi/zkp-beacon-observer/safe_beacon_tx.py", "encoder": "/home/pi/odid_ie"},
+    "b": {"host": "pi@observer-b.local", "socket": "captures/session/ssh-b", "transmitter_script": "/home/pi/zkp-beacon-observer/tx-tools/safe_beacon_tx.py", "encoder": "/home/pi/zkp-beacon-observer/tx-tools/odid_ie"},
+    "c": {"host": "pi@observer-c.local", "socket": "captures/session/ssh-c"}
+  }
+}
+```
+
+```sh
+python3 experiments/week28-beacon-observers/run_rf_matrix.py \
+  --config captures/session/nodes.json --output-dir captures/session/matrix \
+  --repetitions 3 --duration 15 --sustain 90
+```
+
+対象周波数は、送信時に確認した既存STAの周波数を利用する。元の送信コードの2.4GHz制限・最大120秒を維持し、申告ID・位置は試験用の合成値。実ドローンの再現とはしない。
+
+- 24比較試験：A/B送信 × 単一周波数／全チャネル × 0.25／1秒要求 × 3反復。反復2では条件と送信役の順を反転する。
+- 続けてA/B送信の90秒収録を各1回。`--mode sustain-only --sustain-scope all`なら全チャネル90秒の2試験だけを追加できる。
+- 各試験で受信側cgroupのMemoryCurrent／MemoryPeak・CPU時間、ホストMemAvailable、SSH照会時間を数秒おきに収集する。PSSやパケット損失率ではない。カーネル／systemdが返さないcgroup値は未取得のまま保持し、0や適用済み上限と読み替えない。受信PythonのRLIMIT_ASとサービスのMemoryMax要求は別の制限。
+- 各試験の詳細JSONと進捗JSONLを逐次保存。自身が作ったunitだけを停止し、送信receiptのAP撤去確認ができない場合は次へ進まない。
+- 正常終了したtransient unitが既にunloadされていても、`ActiveState=inactive`なら停止済みと確認する。不明な状態を成功扱いにしない。
+- SSH切断・controller停止でもremote unitの時間／メモリ上限は残る。ただし、その瞬間のローカル監査情報まで保持できる保証はない。原始受信はPi側のrelease/capturesに残る。
+
+実験後、各Piの対象releaseの`captures/`を、ローカル`captures/session/snapshots/{a,b,c}/captures/`へowner-privateで回収する。その上で匿名集計する：
+
+```sh
+python3 experiments/week28-beacon-observers/analyze_rf_matrix.py \
+  --matrix captures/session/matrix --snapshots captures/session/snapshots \
+  --output-dir week28/results/new-run
+```
+
+matplotlib入り環境なら`--plot`も付ける。出力はrun別・条件別・メモリ統計・資源推移・5秒RSSI中央値のCSVとsummary JSON。生行・座標・送信機識別子・内容ハッシュを出力に含めない。
+送信receiptと内容・counterが一致した観測だけを選び、実行開始BOOTTIME以降のRSSI更新間隔を再計算する。開始時刻メタデータのない旧版は、無理に推定せず解析エラーとして残す。
