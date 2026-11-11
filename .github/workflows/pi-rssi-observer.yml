@@ -1,0 +1,32 @@
+name: Pi RSSI Observer
+on:
+  push:
+    paths:
+      - 'uav/observer_capture.py'
+      - 'uav/wifi*'
+      - 'uav/test_wifi*'
+      - 'uav/test_observer_capture.py'
+      - 'experiments/week28-beacon-observers/**'
+      - '.github/workflows/pi-rssi-observer.yml'
+  pull_request:
+    paths:
+      - 'uav/observer_capture.py'
+      - 'uav/wifi*'
+      - 'uav/test_wifi*'
+      - 'uav/test_observer_capture.py'
+      - 'experiments/week28-beacon-observers/**'
+      - '.github/workflows/pi-rssi-observer.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python3 -m unittest discover -s uav -p 'test_wifi*.py' -v
+      - run: python3 -m unittest discover -s uav -p test_observer_capture.py -v
+      - run: python3 -m unittest discover -s experiments/week28-beacon-observers -p 'test_*.py' -v

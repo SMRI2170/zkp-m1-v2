@@ -1,0 +1,77 @@
+# PiのRSSI付きRemote ID観測
+
+研究用PoC。通常のWi-Fiスキャンキャッシュを読む方式であり、生フレーム受信・機体認証・位置の真正性・多局同一送信の証明ではない。
+受信したODID候補のRSSI（dBm）、周波数、キャッシュ時刻、申告位置、元のVendor内容を、各Piのowner-privateな`captures/`へJSONL保存する。欠測RSSIは`null`と理由を保持する。Pi側はSQLiteではない。
+
+## 通常の起動
+
+各Piへ必要なコードを`~/zkp-beacon-observer/releases/<version>/`に転送し、その一般ユーザーでインストールする。
+
+```sh
+python3 ~/zkp-beacon-observer/releases/<version>/experiments/week28-beacon-observers/install_node.py --node-id observer-a
+~/zkp-beacon-observer/run --check
+~/zkp-beacon-observer/run --self-test
+~/zkp-beacon-observer/run --duration 60
+```
+
+観測IDはA/B/Cで変更する。既存の設定が違う場合は上書きせず停止する。旧releaseと収録は保持する。
+通常の読み出し間隔は1秒。これだけでは能動スキャンを要求しないため、新規RSSIが1秒で更新する保証はない。
+
+## 短い間隔での更新要求
+
+A/Cに導入済みの簡易起動コマンド（明示的に起動した期間だけ収録）：
+
+```sh
+~/zkp-beacon-observer/fast --duration 60
+# 受信で確認済みの周波数だけへ絞る場合
+~/zkp-beacon-observer/fast --duration 60 --frequency 2452
+```
+
+0.25秒要求・0.1秒キャッシュ読取り。必要なら`--scan-interval 1`等へ緩められる。一般ユーザーとして実行すると、既存sudo権限を使って期間限定サービスを開始する。必要なノードでは端末でsudoパスワードを入力する。Bには未導入。全チャネルと単一周波数では実効間隔が異なり、0.25秒のRSSI更新を保証しない。
+
+
+```sh
+# パスワード不要のsudoが既に使えるノードのみ。権限を新規設定するコマンドではない。
+~/zkp-beacon-observer/run --duration 60 --interval 0.1 --active-scan --scan-interval 1
+```
+
+`--frequency`を省略すると、ドライバの対応チャネル全体へスキャン要求する。対象周波数が実測で確認できた場合だけ、例として`--frequency 2452`のように絞る。M350の機種名だけから周波数を固定しない。
+
+Aのようにsudoにパスワードが必要な場合、実験の間だけ一般ユーザーのサービスへCAP_NET_ADMINを付ける。sudoersの変更・root常駐・自動起動は行わない。
+
+```sh
+sudo systemd-run --wait --pipe --collect \
+  --unit="zkp-scan-$(date +%s)" --uid="$(id -un)" \
+  --property=RuntimeMaxSec=90 --property=MemoryMax=128M \
+  --property=AmbientCapabilities=CAP_NET_ADMIN \
+  --property=CapabilityBoundingSet=CAP_NET_ADMIN \
+  "$HOME/zkp-beacon-observer/run" --duration 60 --interval 0.1 \
+  --active-scan --scan-interval 1
+```
+
+スキャン中は一時的にオフチャネルになる場合がある。既存Wi-Fiの切断やmonitor切替え・接続チャネルの固定変更はしないが、通信への影響がないことを保証するものではない。期間とメモリを制限して段階評価する。
+
+- キャッシュ読出し最小0.1秒、要求間隔最小0.25秒。最短値を安定性能の実測と解釈しない。
+- 直前の要求が返った時刻から指定秒数待つ。コマンド時間も加わる。
+- 拒否・busy・タイムアウト時は最大5秒まで待機を増やし、5連続失敗か権限拒否で停止。
+- `events.jsonl`へ要求成否・待機・停止理由を記録。新しい観測行は逐次flushする。電源断直前の永続性を保証しない。
+- 既定60秒・最大3600秒、プロセス128MiB／1ファイル20MiB、重複キー上限10万。終了コード0は新鮮ODIDあり、3はなし、2は失敗。
+- 常時・起動時の自動収録は設定しない。
+
+## 順次比較・CSV/JSON
+
+同じ権限付きの期間限定サービス内で、`run`の代わりに次を実行する。出力先は新しい`captures/`配下にする。上のRuntimeMaxSecは合計期間＋余裕へ変更する。
+
+```sh
+python3 ~/zkp-beacon-observer/current/experiments/week28-beacon-observers/benchmark_scan.py \
+  --config ~/zkp-beacon-observer/config/node.json \
+  --output-dir ~/zkp-beacon-observer/current/captures/benchmark-new-run \
+  --duration 20 --profiles 2,1,0.5,0.25
+```
+
+各条件20秒を順次実行し、`profiles.jsonl`と`profiles.csv`を生成。個別の生観測とイベントも保存する。固定順序・短時間の探索比較なので、最適性や長時間の安定性の証明ではない。
+
+比較するのは、同じBSSID・周波数の**実行開始後のカーネルキャッシュ時刻を持つRSSI更新**の中央値／p95／最大間隔。古いキャッシュ・時刻不明・RSSI欠測を更新間隔へ混ぜない。複数Vendor IEが同一時刻でも複数の時間更新として数えない。
+パケット数、RID位置フィールドの更新頻度、全送信に対する受信率は計算しない。
+
+生データ・位置・送信機識別子・鍵をGitに追加しない。0700のディレクトリ、0600のファイルを維持する。共有時は匿名集計だけを明示的に選ぶ。
