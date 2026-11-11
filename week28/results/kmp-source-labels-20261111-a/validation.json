@@ -1,0 +1,27 @@
+{
+  "version": "0.7-source-labels",
+  "version_code": 7,
+  "apk_sha256": "59a6ce451e3d9d543bfcbdd6eaaff02e3bd8341eafa19307ab26af531ce2cb22",
+  "tests": {
+    "jvmTest": {
+      "tests": 29,
+      "failures": 0,
+      "errors": 0
+    },
+    "testAndroidHostTest": {
+      "tests": 29,
+      "failures": 0,
+      "errors": 0
+    }
+  },
+  "python_tests": 12,
+  "build": "passed",
+  "lint": "passed",
+  "pixel_device_seen": false,
+  "pixel_install": "NOT_RUN",
+  "registration_ui_on_device": "NOT_RUN",
+  "actual_M350": "NOT_RUN",
+  "sqlite_schema": 1,
+  "previous_rows_rewritten": false,
+  "source_labels_are_authentication": false
+}

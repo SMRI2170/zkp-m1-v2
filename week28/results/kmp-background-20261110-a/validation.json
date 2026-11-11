@@ -1,0 +1,32 @@
+{
+  "version": "0.3-background",
+  "kind": "build_and_host_validation_only",
+  "shared_tests": {
+    "testAndroidHostTest": {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0
+    },
+    "jvmTest": {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0
+    }
+  },
+  "python_analysis_and_boundary_tests": 9,
+  "lint_severities": {
+    "Warning": 11
+  },
+  "apk_bytes": 2680477,
+  "apk_sha256": "48a6d9d7b0dc54a495552e6ffa169e8398783c9fd5710e2d33484bc9baa45e80",
+  "uav_tests": 77,
+  "contracts_tests": 48,
+  "go_tests": "passed",
+  "pixel8_adb_preflight": "failed_no_authorized_Pixel8_visible",
+  "hardware_install": "not_run",
+  "foreground_service_device_execution": "not_run",
+  "foreground_background_screen_off_comparison": "not_run",
+  "notification_stop_test": "not_run",
+  "new_rf_runs": 0,
+  "previous_v02_hardware_result": "separate_prior_experiment; not evidence of v03 FGS behavior"
+}

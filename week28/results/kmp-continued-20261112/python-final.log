@@ -1,0 +1,31 @@
+test_boundaries_and_telemetry_coverage (test_analyze_capture.AnalysisTest.test_boundaries_and_telemetry_coverage) ... ok
+test_cache_from_previous_phase_and_invalid_rows (test_analyze_capture.AnalysisTest.test_cache_from_previous_phase_and_invalid_rows) ... ok
+test_empty_phase_is_not_perfect_reception (test_analyze_capture.AnalysisTest.test_empty_phase_is_not_perfect_reception) ... ok
+test_intervals_never_cross_transmitters (test_analyze_capture.AnalysisTest.test_intervals_never_cross_transmitters) ... ok
+test_quantile_interpolation (test_analyze_capture.AnalysisTest.test_quantile_interpolation) ... ok
+test_summary_excludes_transmitter (test_analyze_capture.AnalysisTest.test_summary_excludes_transmitter) ... ok
+test_clean_shutdown_reports_completion (test_evaluate_pixel.CleanupOutcomeTest.test_clean_shutdown_reports_completion) ... Experiment started: foreground / background / screen_off; private evidence is saved incrementally.
+foreground completed
+background completed
+screen_off completed
+Evaluation finished. Run analyze_capture.py on this capture directory.
+ok
+test_developer_mode_cannot_be_mislabeled_as_normal_baseline (test_evaluate_pixel.CleanupOutcomeTest.test_developer_mode_cannot_be_mislabeled_as_normal_baseline) ... ok
+test_locked_cleanup_does_not_report_success (test_evaluate_pixel.CleanupOutcomeTest.test_locked_cleanup_does_not_report_success) ... Experiment started: foreground / background / screen_off; private evidence is saved incrementally.
+foreground completed
+background completed
+screen_off completed
+ok
+test_capture_paths_reject_escape_and_symlinks (test_evaluate_pixel.EvaluationBoundaryTest.test_capture_paths_reject_escape_and_symlinks) ... ok
+test_no_device_does_not_create_an_experiment (test_evaluate_pixel.EvaluationBoundaryTest.test_no_device_does_not_create_an_experiment) ... ok
+test_other_android_is_never_selected (test_evaluate_pixel.EvaluationBoundaryTest.test_other_android_is_never_selected) ... ok
+test_android7_and_new_pss_formats_preserve_unknown (test_smoke_device_persistence.DeviceEvidenceTests.test_android7_and_new_pss_formats_preserve_unknown) ... ok
+test_database_analyzer_detects_old_row_modification (test_smoke_device_persistence.DeviceEvidenceTests.test_database_analyzer_detects_old_row_modification) ... ok
+test_disabled_control_is_not_clicked (test_smoke_device_persistence.DeviceEvidenceTests.test_disabled_control_is_not_clicked) ... ok
+test_phase_separates_stale_and_excludes_boundary_observations (test_smoke_device_persistence.DeviceEvidenceTests.test_phase_separates_stale_and_excludes_boundary_observations) ... ok
+test_secure_lockscreen_is_never_dismissed (test_smoke_device_persistence.DeviceEvidenceTests.test_secure_lockscreen_is_never_dismissed) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.010s
+
+OK

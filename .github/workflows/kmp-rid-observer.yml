@@ -1,0 +1,41 @@
+name: KMP RID Observer
+on:
+  push:
+    paths:
+      - 'experiments/kmp-rid-observer/**'
+      - '.github/workflows/kmp-rid-observer.yml'
+  pull_request:
+    paths:
+      - 'experiments/kmp-rid-observer/**'
+      - '.github/workflows/kmp-rid-observer.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+      - name: Test capture analysis without RF claims
+        run: python3 -m unittest discover -s experiments/kmp-rid-observer/tests -v
+      - name: Build and test Android and JVM
+        working-directory: experiments/kmp-rid-observer
+        run: ./gradlew :shared:jvmTest :shared:testAndroidHostTest :androidApp:assembleDebug :androidApp:lintDebug :replay:installDist --no-daemon --max-workers=1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kmp-rid-build-and-tests
+          path: |
+            experiments/kmp-rid-observer/androidApp/build/outputs/apk/debug/*.apk
+            experiments/kmp-rid-observer/androidApp/build/reports/lint-results-debug.*
+            experiments/kmp-rid-observer/shared/build/test-results/

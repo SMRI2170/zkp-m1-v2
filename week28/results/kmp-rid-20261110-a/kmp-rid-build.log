@@ -1,0 +1,90 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.1.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build
+> Task :shared:kmpPartiallyResolvedDependenciesChecker
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJvm
+> Task :shared:compileJvmMainJava NO-SOURCE
+> Task :shared:jvmProcessResources NO-SOURCE
+> Task :shared:processJvmMainResources SKIPPED
+> Task :shared:jvmMainClasses
+> Task :shared:jvmJar
+> Task :shared:compileTestKotlinJvm
+> Task :shared:compileJvmTestJava NO-SOURCE
+> Task :shared:jvmTestProcessResources NO-SOURCE
+> Task :shared:processJvmTestResources SKIPPED
+> Task :shared:jvmTestClasses
+> Task :shared:jvmTest
+> Task :androidApp:preBuild UP-TO-DATE
+> Task :androidApp:preDebugBuild UP-TO-DATE
+> Task :androidApp:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :androidApp:generateDebugResources
+> Task :androidApp:packageDebugResources
+> Task :shared:androidPreBuild UP-TO-DATE
+> Task :shared:preAndroidMainBuild UP-TO-DATE
+> Task :shared:generateAndroidMainEmptyResourceFiles
+> Task :androidApp:processDebugNavigationResources
+> Task :androidApp:parseDebugLocalResources
+> Task :androidApp:generateDebugRFile
+> Task :shared:compileAndroidMain
+> Task :shared:bundleAndroidMainClassesToCompileJar
+> Task :androidApp:compileDebugKotlin
+> Task :androidApp:javaPreCompileDebug
+> Task :androidApp:compileDebugJavaWithJavac NO-SOURCE
+> Task :androidApp:generateDebugAssets UP-TO-DATE
+> Task :androidApp:mergeDebugAssets
+> Task :androidApp:compressDebugAssets
+> Task :shared:bundleAndroidMainClassesToRuntimeJar
+> Task :androidApp:desugarDebugFileDependencies
+> Task :shared:writeAndroidMainAarMetadata
+> Task :androidApp:checkDebugAarMetadata
+> Task :androidApp:compileDebugNavigationResources
+> Task :androidApp:mapDebugSourceSetPaths
+> Task :androidApp:mergeDebugResources
+> Task :androidApp:createDebugCompatibleScreenManifests
+> Task :androidApp:extractDeepLinksDebug
+> Task :shared:processAndroidMainManifest
+> Task :androidApp:processDebugMainManifest
+> Task :androidApp:processDebugManifest
+> Task :androidApp:processDebugManifestForPackage
+> Task :androidApp:processDebugResources
+> Task :androidApp:dexBuilderDebug
+> Task :androidApp:mergeDebugGlobalSynthetics
+> Task :androidApp:processDebugJavaRes
+> Task :shared:processAndroidMainJavaRes
+> Task :androidApp:mergeDebugJavaResource
+> Task :androidApp:checkDebugDuplicateClasses
+> Task :androidApp:mergeExtDexDebug
+> Task :shared:bundleLibRuntimeToDirAndroidMain
+> Task :androidApp:mergeLibDexDebug
+> Task :androidApp:mergeProjectDexDebug
+> Task :androidApp:mergeDebugJniLibFolders
+> Task :shared:mergeAndroidMainJniLibFolders
+> Task :shared:mergeAndroidMainNativeLibs NO-SOURCE
+> Task :shared:copyAndroidMainJniLibsProjectOnly
+> Task :androidApp:mergeDebugNativeLibs NO-SOURCE
+> Task :androidApp:stripDebugDebugSymbols NO-SOURCE
+> Task :androidApp:validateSigningDebug
+> Task :androidApp:writeDebugAppMetadata
+> Task :androidApp:writeDebugSigningConfigVersions
+> Task :androidApp:packageDebug
+> Task :androidApp:createDebugApkListingFileRedirect
+> Task :androidApp:assembleDebug
+> Task :replay:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :replay:compileKotlin FAILED
+
+[Incubating] Problems report is available at: file://<REPO>/experiments/kmp-rid-observer/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':replay:compileKotlin'.
+> Inconsistent JVM Target Compatibility Between Java and Kotlin Tasks
+    Inconsistent JVM Target Compatibility Between Java and Kotlin Tasks
+      Inconsistent JVM-target compatibility detected for tasks 'compileJava' (21) and 'compileKotlin' (17).
+
+* Try:
+> Consider using JVM Toolchain: https://kotl.in/gradle/jvm/toolchain
+> Run with --scan to generate a Build Scan (Powered by Develocity).
+
+BUILD FAILED in 29s
+50 actionable tasks: 50 executed

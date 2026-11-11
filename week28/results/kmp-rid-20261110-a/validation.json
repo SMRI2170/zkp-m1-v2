@@ -1,0 +1,38 @@
+{
+  "kind": "kmp_build_and_replay_validation",
+  "shared_tests": {
+    "testAndroidHostTest": {
+      "tests": 11,
+      "failures": 0,
+      "errors": 0
+    },
+    "jvmTest": {
+      "tests": 11,
+      "failures": 0,
+      "errors": 0
+    }
+  },
+  "apk_bytes": 2680533,
+  "apk_sha256": "d5b22863988fcff790f36c01a6fcb2009dcc6690fe3fce4e74e67fe6e72fb0d2",
+  "replay": {
+    "input_rows": 7,
+    "records": 6,
+    "duplicates": 1,
+    "invalid": 0,
+    "new_rf_runs": 0,
+    "rssi_and_vendor_digest_match_previous_capture": true,
+    "missing_frequency_preserved": true,
+    "delivery_time": "derived_from_original_observation_time_and_cache_age"
+  },
+  "negative_checks": {
+    "existing_output_unchanged": true,
+    "outside_captures_rejected": true
+  },
+  "existing_checks": {
+    "uav_tests": 77,
+    "contracts_tests": 48,
+    "go_test": "passed"
+  },
+  "pixel8_install_and_rf": "not_run_device_absent",
+  "ios": "not_implemented"
+}

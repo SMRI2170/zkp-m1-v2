@@ -1,0 +1,49 @@
+{
+  "version": "0.6-local-database",
+  "storage": "Android SQLiteOpenHelper; schema version 1",
+  "real_rf_source": "Pi A controlled Beacon with synthetic RID claim",
+  "real_M350_test": false,
+  "db_smoke_transmitter_runs": 1,
+  "committed_observations": 3,
+  "default_db_save_without_optional_recording": true,
+  "optional_jsonl_session_pointer_unchanged": true,
+  "integrity_check": "ok",
+  "apk_update_and_process_restart_preserve_rows": true,
+  "final_installed_apk_database_count": 3,
+  "typed_columns_match_normalized_claims": true,
+  "all_vendor_digests_match_sender_receipt": true,
+  "db_jsonl_export_matches_rows": true,
+  "db_text_export_matches_persisted_text": true,
+  "ui": "manual text snapshot; no realtime graph",
+  "receiver_stopped": true,
+  "tx_stopped_and_ap_removed": true,
+  "directory_mode": "0700",
+  "database_and_journal_mode": "0600",
+  "pending_writes_at_export": 0,
+  "db_size_limit_bytes": 67108864,
+  "row_limit": 100000,
+  "queue_capacity": 256,
+  "python_tests": 12,
+  "shared_tests": {
+    "testAndroidHostTest": {
+      "tests": 24,
+      "failures": 0,
+      "errors": 0
+    },
+    "jvmTest": {
+      "tests": 24,
+      "failures": 0,
+      "errors": 0
+    }
+  },
+  "unexecuted": [
+    "M350 actual reception",
+    "long run/Doze with SQLite",
+    "database full/corruption/migration",
+    "queue overflow/process kill during pending writes"
+  ],
+  "apk_sha256": "cebb95da9701cb91c905d50a2527f24f62d80a4e6736168c7d7c311a5fe1d486",
+  "lint_severities": {
+    "Warning": 18
+  }
+}

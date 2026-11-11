@@ -1,0 +1,75 @@
+{
+  "version": "0.8-android7-compat",
+  "version_code": 8,
+  "model": "ASUS_Z017DA",
+  "android_release": "7.0",
+  "sdk": 24,
+  "min_sdk": 24,
+  "target_sdk": 36,
+  "ie_route": "legacy_field",
+  "ie_access_errors_observed": 0,
+  "install": "SUCCESS",
+  "foreground_service_started": true,
+  "default_scan_request_interval_s": 30,
+  "throttle_state": "UNKNOWN",
+  "fast_mode_on_unknown_throttle": "DENIED_ON_DEVICE",
+  "committed_db_rows": 5,
+  "rssi_dbm": [
+    -48,
+    -48,
+    -46,
+    -46,
+    -46
+  ],
+  "missing_rssi": 0,
+  "decoded_rows": 5,
+  "stale_at_capture": 0,
+  "all_match_sender_receipt": true,
+  "source_registry_ui_saved_and_reloaded": true,
+  "source_basis": "configured_id_and_bssid",
+  "identity_verified": false,
+  "text_contains_source_label_and_raw_hex": true,
+  "process_restart_kept_rows": 5,
+  "sqlite_integrity": "ok",
+  "home_window_s": 35.11,
+  "home_window_fgs_running": true,
+  "exact_new_observations_in_home_window": "NOT_SEPARATELY_COUNTED",
+  "extra_jsonl_record_button_used": false,
+  "source_registry_mode": "0600",
+  "capture_dir_mode": "0700",
+  "database_and_journal_mode": "0600",
+  "receiver_stopped": true,
+  "transmitter_stopped": true,
+  "temporary_ap_removed": true,
+  "flutter_app_preserved": true,
+  "shared_tests": {
+    "jvmTest": {
+      "tests": 29,
+      "failures": 0,
+      "errors": 0
+    },
+    "testAndroidHostTest": {
+      "tests": 29,
+      "failures": 0,
+      "errors": 0
+    }
+  },
+  "python_tests": 12,
+  "existing_checks": {
+    "uav": 88,
+    "go": "passed",
+    "contracts": 48
+  },
+  "apk_sha256": "4145af5255124618a9a359f00df0e7ec5123c47aa28197559817c20aa36317d0",
+  "unexecuted": [
+    "M350 reception",
+    "Pixel8 v0.8 hardware regression",
+    "long duration/Doze/screen off/noncharging",
+    "API25-29 other models",
+    "legacy fast scan benchmark",
+    "new permission denial/revocation cases",
+    "notification stop action on API24"
+  ],
+  "legacy_ie_diagnostics": 50,
+  "final_scan_request_interval_s": 30
+}

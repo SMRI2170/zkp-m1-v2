@@ -1,0 +1,42 @@
+{
+  "version": "0.4-scan-modes",
+  "device": "Pixel 8",
+  "os": "Android 17 / API 37",
+  "experiment": "controlled_real_rf_foreground_developer_scan_throttle_off",
+  "independent_repetitions": 1,
+  "new_radio_transmitter_attempts": 2,
+  "valid_measurement_transmitter_runs": 1,
+  "excluded_attempt": "First transmitter trial had no verified new recording; stale previous session was rejected, not used in rate estimates.",
+  "raw_saved_observations": 27,
+  "all_vendor_content_digests_match_sender_receipt": true,
+  "all_saved_counter224": true,
+  "real_M350_test": false,
+  "os_throttle_restored_on": true,
+  "app_restored_to_standard_30s": true,
+  "restoration_api_log": "start_mode interval=30000 throttle=true",
+  "receiver_stopped": true,
+  "transmitter_stopped_and_ap_removed": true,
+  "fast_mode_rejected_under_throttle_on": true,
+  "baseline_api_throttle_guard_added": true,
+  "global_setting_not_sufficient": "Use WifiManager.isScanThrottleEnabled, not just settings get global.",
+  "wifi_scan_result_not_raw_packet": true,
+  "power_calibrated": false,
+  "clock_offset_calibrated": false,
+  "long_run_or_doze": "not_run",
+  "baseline_comparison": "Previous normal 3-phase smoke had only one saved interval of 60.164203 s; not a controlled matched performance comparison.",
+  "apk_sha256": "fd9205c510606ee8353c57c3c83b4f2a5261d8f8e9c067d54b4c39252a5d90f0",
+  "python_tests": 12,
+  "shared_tests": {
+    "testAndroidHostTest": {
+      "tests": 18,
+      "failures": 0
+    },
+    "jvmTest": {
+      "tests": 18,
+      "failures": 0
+    }
+  },
+  "lint_severities": {
+    "Warning": 11
+  }
+}

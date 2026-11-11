@@ -1,0 +1,19 @@
+{
+  "version": "0.2-receiver",
+  "package": "org.smri.ridobserver.kmp",
+  "zkp_dependencies": false,
+  "apk_sha256": "b08709929fc450ccdcbaa4f14f083ea308f40199f3dab3b43912370960bc60b5",
+  "pixel8_install": "passed",
+  "screen_inspected": true,
+  "wifi_scan_results": 13,
+  "rid_targets_in_this_check": 0,
+  "new_rf_transmitter_run": false,
+  "background_capture": false,
+  "shared_jvm_tests": 11,
+  "shared_android_host_tests": 11,
+  "uav_tests": 77,
+  "contracts_tests": 48,
+  "go_tests": "passed",
+  "lint_errors": 0,
+  "lint_warnings": 8
+}

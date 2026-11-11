@@ -1,0 +1,67 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.1.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build
+> Task :androidApp:preBuild UP-TO-DATE
+> Task :androidApp:preDebugBuild UP-TO-DATE
+> Task :androidApp:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :androidApp:generateDebugResources UP-TO-DATE
+> Task :androidApp:packageDebugResources
+> Task :shared:androidPreBuild UP-TO-DATE
+> Task :shared:preAndroidMainBuild UP-TO-DATE
+> Task :shared:generateAndroidMainEmptyResourceFiles UP-TO-DATE
+> Task :androidApp:processDebugNavigationResources UP-TO-DATE
+> Task :androidApp:parseDebugLocalResources UP-TO-DATE
+> Task :androidApp:generateDebugRFile UP-TO-DATE
+> Task :shared:kmpPartiallyResolvedDependenciesChecker
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileAndroidMain UP-TO-DATE
+> Task :shared:bundleAndroidMainClassesToCompileJar UP-TO-DATE
+
+> Task :androidApp:compileDebugKotlin
+w: file://<repository>/experiments/kmp-rid-observer/androidApp/src/main/kotlin/org/smri/ridobserver/kmp/MainActivity.kt:71:30 'val systemWindowInsetTop: Int' is deprecated. Deprecated in Java.
+w: file://<repository>/experiments/kmp-rid-observer/androidApp/src/main/kotlin/org/smri/ridobserver/kmp/MainActivity.kt:71:65 'val systemWindowInsetBottom: Int' is deprecated. Deprecated in Java.
+w: file://<repository>/experiments/kmp-rid-observer/androidApp/src/main/kotlin/org/smri/ridobserver/kmp/PlatformCompat.kt:39:73 'static field LOCATION_MODE: String' is deprecated. Deprecated in Java.
+w: file://<repository>/experiments/kmp-rid-observer/androidApp/src/main/kotlin/org/smri/ridobserver/kmp/ReceiverService.kt:166:104 'constructor(p0: Context!): Notification.Builder' is deprecated. Deprecated in Java.
+
+> Task :androidApp:javaPreCompileDebug UP-TO-DATE
+> Task :androidApp:compileDebugJavaWithJavac NO-SOURCE
+> Task :androidApp:generateDebugAssets UP-TO-DATE
+> Task :androidApp:mergeDebugAssets UP-TO-DATE
+> Task :androidApp:compressDebugAssets UP-TO-DATE
+> Task :shared:bundleAndroidMainClassesToRuntimeJar UP-TO-DATE
+> Task :androidApp:desugarDebugFileDependencies
+> Task :shared:writeAndroidMainAarMetadata UP-TO-DATE
+> Task :androidApp:checkDebugAarMetadata UP-TO-DATE
+> Task :androidApp:compileDebugNavigationResources UP-TO-DATE
+> Task :androidApp:mapDebugSourceSetPaths UP-TO-DATE
+> Task :androidApp:mergeDebugResources
+> Task :androidApp:createDebugCompatibleScreenManifests
+> Task :androidApp:extractDeepLinksDebug UP-TO-DATE
+> Task :shared:processAndroidMainManifest UP-TO-DATE
+
+> Task :androidApp:processDebugMainManifest FAILED
+<repository>/experiments/kmp-rid-observer/androidApp/src/main/AndroidManifest.xml Error:
+    uses-sdk:minSdkVersion 24 cannot be smaller than version 30 declared in library [:shared] <repository>/experiments/kmp-rid-observer/shared/build/intermediates/merged_manifest/androidMain/processAndroidMainManifest/AndroidManifest.xml as the library might be using APIs not available in 24
+    Suggestion: use a compatible library with a minSdk of at most 24,
+        or increase this project's minSdk version to at least 30,
+        or use tools:overrideLibrary="org.smri.ridobserver.shared" to force usage (may lead to runtime failures)
+
+See https://developer.android.com/r/studio-ui/build/manifest-merger for more information about the manifest merger.
+
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':androidApp:processDebugMainManifest'.
+> Manifest merger failed : uses-sdk:minSdkVersion 24 cannot be smaller than version 30 declared in library [:shared] <repository>/experiments/kmp-rid-observer/shared/build/intermediates/merged_manifest/androidMain/processAndroidMainManifest/AndroidManifest.xml as the library might be using APIs not available in 24
+    Suggestion: use a compatible library with a minSdk of at most 24,
+        or increase this project's minSdk version to at least 30,
+        or use tools:overrideLibrary="org.smri.ridobserver.shared" to force usage (may lead to runtime failures)
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to generate a Build Scan (Powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 14s
+24 actionable tasks: 7 executed, 17 up-to-date
