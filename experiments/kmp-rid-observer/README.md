@@ -201,3 +201,15 @@ RID・BSSID入力はIMEの全角変換を避ける入力種別にし、登録フ
 **端末方位・RSSI最大の端末方位・送信元の到来方向は異なる。** この版では送信元の方向は`transmitter_bearing_deg=null`、`aoa_measured=false`、`accuracy_validated=false`。回転方向と送信電力の変化が相関すると良い回帰でも誤る。移動体・反射・持ち方・アンテナ特性・磁気外乱に対する方向精度、独立した正解による校正は未検証。生の磁気方位・RSSIの保存が第一段階であり、未校正の矢印をドローン方向として表示しない。受信停止／再開始で推定用履歴はリセットする。過去のDB行は書き換えない。
 
 Android公式：[ScanResultのRSSI・時刻](https://developer.android.com/reference/android/net/wifi/ScanResult)、[端末方位センサー](https://developer.android.com/develop/sensors-and-location/sensors/sensors_position)。通常のScanResultにはRF到来角の項目はない。センサーの磁北方位をその代替として扱わない。
+
+
+## 端末での追加スモークテスト
+
+```sh
+cd experiments/kmp-rid-observer
+python3 scripts/smoke_device_persistence.py --phase-seconds 30 --output ../../captures/NEW_DEVICE_SMOKE
+```
+
+リポジトリルートからなら `--output captures/NEW_DEVICE_SMOKE`。既存のDBを削除・初期化せず、通常表示／ホーム／画面消灯を各30秒実行し、受信サービスの存続・プロセスPSS・観測時刻別の新規行・停止後とプロセス再起動後のDBを確認する。既存受信が稼働中なら試験を開始しない。RF送信はこのスクリプトに含まれず、別途時間制限付きの管理された試験送信が必要。電波がない試験で受信成功を主張しない。
+
+APKの再インストール・権限付与・スキャン設定の変更・端末の再起動は行わない。PIN等の認証画面は操作しない。Androidが非セキュアと報告したスワイプ画面のみ解除する。ユーザーが既に始めた受信を止めない。途中失敗や停止を確認できない場合はplan.jsonへ記録して失敗終了するため、端末の受信状態を確認する。生データ・UI XML・DB・時刻境界はowner-only captures内。最大3分＋起動停止処理の短時間試験であり、長期・Doze・方向精度・実ドローン試験の代わりではない。

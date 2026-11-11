@@ -1,0 +1,77 @@
+{
+  "old_rows": 16,
+  "total_rows": 19,
+  "new_rows": 3,
+  "old_rows_unchanged": true,
+  "integrity_check": "ok",
+  "fresh_rows": 3,
+  "raw_text_rows": 19,
+  "phases": [
+    {
+      "name": "foreground",
+      "duration_s": 30.08,
+      "foreground_service_all_samples": true,
+      "samples": 6,
+      "pss_samples": 6,
+      "pss_mean_kib": 33027.333333333336,
+      "pss_max_kib": 33322,
+      "scan_records": 1,
+      "fresh_records": 1,
+      "heading_matched_records": 1
+    },
+    {
+      "name": "home_screen",
+      "duration_s": 30.06,
+      "foreground_service_all_samples": true,
+      "samples": 6,
+      "pss_samples": 6,
+      "pss_mean_kib": 32219.166666666668,
+      "pss_max_kib": 32324,
+      "scan_records": 1,
+      "fresh_records": 1,
+      "heading_matched_records": 1
+    },
+    {
+      "name": "screen_off",
+      "duration_s": 30.09,
+      "foreground_service_all_samples": true,
+      "samples": 6,
+      "pss_samples": 6,
+      "pss_mean_kib": 32205.0,
+      "pss_max_kib": 32311,
+      "scan_records": 1,
+      "fresh_records": 1,
+      "heading_matched_records": 1
+    }
+  ],
+  "all_rows_unchanged_after_restart": true,
+  "device_class": "ASUS Android 7 / API24",
+  "source": "real Android scan observations of Pi ID-only test Beacon",
+  "source_body_matches_receipt": true,
+  "transmitter_status": "STOPPED_AFTER_BOUNDED_TEST",
+  "temporary_ap_removed": true,
+  "physical_packet_match": "unconfirmed",
+  "rf_direction_accuracy": "NOT_TESTED",
+  "m350": "NOT_TESTED",
+  "long_run_doze_noncharging": "NOT_TESTED",
+  "memory_metric": "Android process PSS; 6 samples per phase, not independent trials",
+  "initial_pia_transmitter_audit": {
+    "status": "STOPPED_AFTER_BOUNDED_TEST",
+    "temporary_ap_removed": true,
+    "recovered_after_ssh_timeout": true,
+    "network_failure_cause": "unidentified"
+  },
+  "attempts": {
+    "a": "FAILED: recording start UI race; manually stopped",
+    "b": "PHASES_COMPLETED: automatic stop blocked by swipe lock; manually stopped",
+    "c": "PASS: recording, 3 phases, UI stop, DB integrity and restart",
+    "additional_pia_launch": "NOT_EXECUTED: SSH timeout before marker configuration read"
+  },
+  "checks": {
+    "python_tests": 17,
+    "uav_tests": 88,
+    "go": "PASS (some cached)",
+    "contracts_tests": 48,
+    "kotlin_apk": "unchanged from previously verified v0.9"
+  }
+}

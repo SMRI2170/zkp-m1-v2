@@ -1,0 +1,4 @@
+name,duration_s,fresh_records,heading_matched_records,samples,pss_samples,pss_mean_kib,pss_max_kib,foreground_service_all_samples
+foreground,30.08,1,1,6,6,33027.333333333336,33322,True
+home_screen,30.06,1,1,6,6,32219.166666666668,32324,True
+screen_off,30.09,1,1,6,6,32205.0,32311,True
