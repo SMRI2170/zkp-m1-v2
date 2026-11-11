@@ -26,10 +26,11 @@ class SourceLabelsTest {
         assertTrue(o.toJson("fixture","run").contains("\"identity_verified\":false"))
     }
     @Test fun sameIdOnDifferentAddressesIsNotDeduplicatedTogether() {
-        val raw=fromHex("fa0bbc0d07")
+        val basic=ByteArray(25).apply {this[0]=2;this[1]=0x40;"SAME".encodeToByteArray().copyInto(this,2)}
+        val raw=fromHex("fa0bbc0d07")+basic
         val e=ObserverEngine()
         for(mac in listOf("02:00:00:00:00:50","02:00:00:00:00:51"))
-            assertEquals(1,e.ingest(ScanInput(mac,-45,2452,1000000,2000000,"fixture",listOf(raw))).size)
+            assertEquals("SAME",e.ingest(ScanInput(mac,-45,2452,1000000,2000000,"fixture",listOf(raw))).single().decoded!!.messages.single().uasId)
         assertEquals(2,e.targets.size)
     }
 }
