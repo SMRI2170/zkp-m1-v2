@@ -9,6 +9,7 @@ import json
 import os
 from pathlib import Path
 import shlex
+import secrets
 
 
 def main():
@@ -51,6 +52,16 @@ def main():
         p.error('fast launcher symlink rejected')
     fast.write_text('#!/bin/sh\nset -eu\nexec python3 ' + shlex.quote(str(current / 'experiments/week28-beacon-observers/start_fast.py')) + ' "$@"\n')
     fast.chmod(0o700)
+    marker=config_dir/'marker.json'
+    if not marker.exists():
+        config=dict(uas_id='PI-RID-'+args.node_id[-1].upper()+'-'+secrets.token_hex(4).upper(),
+                    tx_mac='02:'+':'.join(f'{b:02x}' for b in secrets.token_bytes(5)))
+        fd=os.open(marker,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600)
+        with os.fdopen(fd,'w') as f:f.write(json.dumps(config,indent=2)+'\n')
+    transmitter=base/'transmit-marker'
+    if transmitter.is_symlink():p.error('transmitter launcher symlink rejected')
+    transmitter.write_text('#!/bin/sh\nset -eu\nexec python3 '+shlex.quote(str(current/'experiments/week28-beacon-observers/start_marker.py'))+' "$@"\n')
+    transmitter.chmod(0o700)
     print(json.dumps(dict(status='INSTALLED_ON_DEMAND', node_id=args.node_id,
                           automatic_start=False, packages_changed=False)))
 

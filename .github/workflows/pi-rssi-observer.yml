@@ -6,6 +6,8 @@ on:
       - 'uav/wifi*'
       - 'uav/test_wifi*'
       - 'uav/test_observer_capture.py'
+      - 'uav/source_labels.py'
+      - 'uav/test_source_labels.py'
       - 'experiments/week28-beacon-observers/**'
       - '.github/workflows/pi-rssi-observer.yml'
   pull_request:
@@ -14,6 +16,8 @@ on:
       - 'uav/wifi*'
       - 'uav/test_wifi*'
       - 'uav/test_observer_capture.py'
+      - 'uav/source_labels.py'
+      - 'uav/test_source_labels.py'
       - 'experiments/week28-beacon-observers/**'
       - '.github/workflows/pi-rssi-observer.yml'
 permissions:
@@ -29,4 +33,5 @@ jobs:
           python-version: '3.11'
       - run: python3 -m unittest discover -s uav -p 'test_wifi*.py' -v
       - run: python3 -m unittest discover -s uav -p test_observer_capture.py -v
+      - run: python3 -m unittest discover -s uav -p test_source_labels.py -v
       - run: python3 -m unittest discover -s experiments/week28-beacon-observers -p 'test_*.py' -v

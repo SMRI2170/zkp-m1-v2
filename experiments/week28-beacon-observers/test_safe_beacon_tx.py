@@ -35,3 +35,25 @@ class TransmitGuards(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class IdentityTests(unittest.TestCase):
+    def test_two_test_identities_are_distinct_and_session_typed(self):
+        from safe_beacon_tx import test_identity
+        data=bytearray(validate_ie(fixture().hex(),204));data[35]=0x12  # actual Basic ID + Location pack
+        data=bytes(data)
+        a=test_identity(data,'PI-RID-LAB-A','02:00:00:00:00:50')
+        b=test_identity(data,'TEST-DRONE-B','02:00:00:00:00:51')
+        self.assertNotEqual(a,b)
+        self.assertEqual(a[11]>>4,4)
+        self.assertEqual(a[12:32].rstrip(b'\0'),b'PI-RID-LAB-A')
+        self.assertEqual(a[35:],data[35:])
+        self.assertEqual(len(a),len(data))
+
+    def test_invalid_fixture_is_explicit_and_real_serial_or_multicast_rejected(self):
+        from safe_beacon_tx import test_identity
+        data=validate_ie(fixture().hex(),204)
+        for ident,mac in [('REAL-SERIAL','02:00:00:00:00:50'),('PI-RID-LAB','01:00:00:00:00:50')]:
+            with self.assertRaises(ValueError):test_identity(data,ident,mac)
+        bad=test_identity(data,'PI-RID-LAB','02:00:00:00:00:50',True)
+        self.assertEqual(bad[10]&15,3)

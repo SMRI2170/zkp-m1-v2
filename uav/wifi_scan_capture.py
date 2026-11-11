@@ -20,6 +20,7 @@ import subprocess
 import time
 
 from observer_capture import parse_rid_payload, message_fields_for_log
+from source_labels import classify,load_rules,text_line
 from wifi_beacon_capture import private_output, ODID_PREFIX
 
 
@@ -56,15 +57,17 @@ def parse_scan(text):
     return results
 
 
-def observations(bss, node_id, polled_at):
+def observations(bss, node_id, polled_at, rules=()):
     for body in bss['vendor_bodies']:
         try:
             if len(body) <= 5:
                 raise ValueError('ODID IE has no payload')
-            messages = [message_fields_for_log(m) for _, m in parse_rid_payload(body[5:])]
+            parsed=[m for _,m in parse_rid_payload(body[5:])]
+            messages = [message_fields_for_log(m) for m in parsed]
+            uas_ids=[m.uas_id for m in parsed if m.uas_id]
             status, reason = 'decoded', None
         except ValueError as exc:
-            messages, status, reason = [], 'invalid', str(exc)
+            messages, uas_ids, status, reason = [], [], 'invalid', str(exc)
         age = bss['cache_age_ms']
         yield dict(
             schema_version='wifi_observation_v1', node_id=node_id, source_type='real_capture',
@@ -84,7 +87,8 @@ def observations(bss, node_id, polled_at):
             vendor_content_digest=hashlib.sha256(body).hexdigest(),
             odid_counter=body[4] if len(body) > 4 else None,
             odid_payload_hex=body[5:].hex(), rid_parse_status=status, rid_parse_reason=reason,
-            messages=messages, physical_packet_match='unconfirmed',
+            messages=messages, claimed_uas_ids=uas_ids, raw_vendor_ie_hex=body.hex(),
+            source_annotation=classify(bss['bssid'],uas_ids,rules),physical_packet_match='unconfirmed',
             receiver_position=None, receiver_position_missing_reason='NOT_CONFIGURED',
             absolute_power_calibrated=False)
 
@@ -168,6 +172,8 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
     with ExitStack() as stack:
         output = stack.enter_context(private_output(args.output))
         events = stack.enter_context(private_output(args.events)) if args.events else None
+        text_output=stack.enter_context(private_output(args.text_output)) if getattr(args,'text_output',None) else None
+        rules=load_rules(getattr(args,'source_registry',None))
 
         def event(kind, **fields):
             if events:
@@ -208,7 +214,7 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
                     counts['polls'] += 1
                     counts['cache_bss_entries'] += len(entries)
                     for bss in entries:
-                        for row in observations(bss, args.node_id, wall()):
+                        for row in observations(bss, args.node_id, wall(),rules):
                             key = (bss['bssid'], bss['frequency_mhz'], bss['observed_boottime_s'], row['vendor_content_digest'])
                             if key in seen:
                                 counts['duplicate_cache_entries'] += 1
@@ -221,6 +227,7 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
                             row['scan_request_interval_s'] = args.scan_interval if args.active_scan else None
                             output.write(json.dumps(row) + '\n')
                             output.flush()
+                            if text_output:text_output.write(text_line(row)+'\n');text_output.flush()
                             metrics.add(row)
                             counts['odid_records'] += 1
                             counts['fresh_decoded_records'] += row['rid_parse_status'] == 'decoded' and not row['cache_stale']
@@ -249,6 +256,8 @@ def main():
     parser.add_argument('--scan-interval', type=float, default=1, help='request spacing after command returns, not a rate guarantee')
     parser.add_argument('--frequency', type=int, help='optional confirmed target frequency MHz; absent means all supported channels')
     parser.add_argument('--events', help='private request diagnostics, no SSID/MAC/payload')
+    parser.add_argument('--text-output',help='owner-private readable text alongside JSONL')
+    parser.add_argument('--source-registry',help='owner-private JSON list of local source labels')
     parser.add_argument('--node-id', required=True)
     parser.add_argument('--output', required=True)
     args = parser.parse_args()
@@ -257,8 +266,8 @@ def main():
         parser.error('duration 1..3600s, poll interval 0.1..60s, scan interval 0.25..60s required')
     if args.frequency is not None and not 2400 <= args.frequency <= 7125:
         parser.error('frequency must be 2400..7125 MHz; only use a confirmed target frequency')
-    if args.events and os.path.abspath(args.events) == os.path.abspath(args.output):
-        parser.error('events and observations must have separate paths')
+    paths=[os.path.abspath(p) for p in [args.output,args.events,args.text_output] if p]
+    if len(paths)!=len(set(paths)):parser.error('observation, text and event outputs must have separate paths')
     iw = shutil.which('iw') or shutil.which('iw', path='/usr/sbin:/sbin')
     if not iw:
         parser.error('iw is required')

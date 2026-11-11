@@ -33,17 +33,44 @@ def validate_ie(text, counter):
     return data
 
 
+def test_identity(ie, uas_id=None, mac=None, diagnostic_invalid=False):
+    """Only visibly synthetic session IDs; no manufacturer identity cloning."""
+    data=bytearray(ie)
+    if uas_id is not None:
+        if not re.fullmatch(r'(PI-RID-|TEST-DRONE-)[A-Z0-9_-]+',uas_id) or len(uas_id)>20:
+            raise ValueError('use a 1..20-byte PI-RID-* or TEST-DRONE-* test marker')
+        found=False
+        for offset in range(10,len(data),25):  # IE header + OUI/type/counter + pack header
+            if data[offset]>>4==0:
+                data[offset+1]=(4<<4)|(data[offset+1]&15)  # Specific Session ID, not serial number
+                data[offset+2:offset+22]=uas_id.encode('ascii').ljust(20,b'\0')
+                if diagnostic_invalid:data[offset]=(data[offset]&0xf0)|3
+                found=True
+        if not found:raise ValueError('Basic ID fixture missing')
+    elif diagnostic_invalid:
+        raise ValueError('diagnostic invalid fixture requires an explicit test ID')
+    if mac is not None:
+        if not re.fullmatch(r'(?:[0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}',mac):raise ValueError('invalid test BSSID')
+        first=int(mac[:2],16)
+        if first&1 or not first&2:raise ValueError('test BSSID must be locally administered unicast')
+    return bytes(data)
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--encoder', type=Path, required=True)
+    p.add_argument('--encoder', type=Path)
+    p.add_argument('--id-only',action='store_true',help='study ID marker only; no Location or invented coordinates')
     p.add_argument('--station', default='wlan0')
     p.add_argument('--ap', default='ridtx0')
     p.add_argument('--run-id', required=True)
     p.add_argument('--counter', type=int, required=True)
-    p.add_argument('--lat', required=True, type=float)
-    p.add_argument('--lon', required=True, type=float)
-    p.add_argument('--alt', required=True, type=float)
+    p.add_argument('--lat', type=float)
+    p.add_argument('--lon', type=float)
+    p.add_argument('--alt', type=float)
     p.add_argument('--duration', type=int, default=90)
+    p.add_argument('--uas-id', help='synthetic PI-RID-* or TEST-DRONE-* session marker, maximum 20 ASCII bytes')
+    p.add_argument('--tx-mac', help='distinct locally administered unicast BSSID for simultaneous lab sources')
+    p.add_argument('--diagnostic-invalid', action='store_true', help='test-only unsupported message version to exercise raw fallback')
     p.add_argument('--beacon-only-compat', action='store_true',
                    help='legacy radio settings, with an empty accept-list denying all associations')
     args = p.parse_args()
@@ -51,8 +78,10 @@ def main():
         p.error('root and a bounded opaque run ID required')
     if not 1 <= args.duration <= 120 or not 0 <= args.counter <= 255:
         p.error('duration 1..120 and counter 0..255 required')
-    if not -90 <= args.lat <= 90 or not -180 <= args.lon <= 180 or not -1000 <= args.alt <= 30000:
-        p.error('invalid test claim')
+    if args.id_only:
+        if not args.uas_id:p.error('ID-only marker needs an explicit test ID')
+    elif args.encoder is None or args.lat is None or args.lon is None or args.alt is None or not (-90 <= args.lat <= 90 and -180 <= args.lon <= 180 and -1000 <= args.alt <= 30000):
+        p.error('Location fixture requires encoder and explicit bounded test coordinates')
     if args.ap == args.station or not re.fullmatch('[a-zA-Z0-9_-]{1,15}', args.ap):
         p.error('AP must be a separate safe interface name')
     if Path('/sys/class/net', args.ap).exists():
@@ -67,7 +96,13 @@ def main():
     # Explicitly restrict this experiment to the existing 2.4GHz association.
     if not 1 <= channel <= 13 or not 2412 <= frequency <= 2472:
         p.error('this experiment needs an already-associated 2.4GHz station')
-    ie = validate_ie(run([str(args.encoder), str(args.counter), str(args.lat), str(args.lon), str(args.alt)]).stdout, args.counter)
+    if args.id_only:
+        body=bytes.fromhex('fa0bbc0d')+bytes([args.counter,0xf2,25,1,2])+bytes(24)
+        ie=validate_ie((bytes([221,len(body)])+body).hex(),args.counter)
+    else:
+        ie = validate_ie(run([str(args.encoder), str(args.counter), str(args.lat), str(args.lon), str(args.alt)]).stdout, args.counter)
+    try:ie=test_identity(ie,args.uas_id,args.tx_mac,args.diagnostic_invalid)
+    except ValueError as exc:p.error(str(exc))
     os.umask(0o077)
     directory = Path('/run') / ('zkp-beacon-' + args.run_id)
     directory.mkdir(mode=0o700)
@@ -75,6 +110,7 @@ def main():
                   frequency_mhz=frequency, channel=channel, duration_s=args.duration,
                   vendor_content_sha256=hashlib.sha256(ie[2:]).hexdigest(),
                   source_type='controlled_real_rf_test', synthetic_claim=True,
+                  test_uas_id=args.uas_id, diagnostic_invalid=args.diagnostic_invalid,id_only=args.id_only,
                   ap_policy='deny_all_associations' if args.beacon_only_compat else 'random_wpa2_key',
                   physical_packet_match='unconfirmed')
     (directory / 'receipt.json').write_text(json.dumps(status, indent=2))
@@ -97,7 +133,7 @@ def main():
         time.sleep(2)
         run(['/usr/sbin/ip', 'link', 'set', args.ap, 'down'])
         run(['/usr/sbin/iw', 'dev', args.ap, 'set', 'type', '__ap'])
-        mac = bytes.fromhex('021122334455') if args.beacon_only_compat else bytes([2]) + secrets.token_bytes(5)
+        mac = bytes.fromhex(args.tx_mac.replace(':','')) if args.tx_mac else (bytes.fromhex('021122334455') if args.beacon_only_compat else bytes([2]) + secrets.token_bytes(5))
         run(['/usr/sbin/ip', 'link', 'set', args.ap, 'address', ':'.join(f'{b:02x}' for b in mac)])
         run(['/usr/sbin/ip', 'link', 'set', args.ap, 'up'])
         access = ['wpa=2', 'wpa_key_mgmt=WPA-PSK', 'rsn_pairwise=CCMP',

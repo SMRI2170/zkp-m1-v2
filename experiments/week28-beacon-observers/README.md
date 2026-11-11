@@ -122,3 +122,51 @@ python3 experiments/week28-beacon-observers/analyze_rf_matrix.py \
 
 matplotlib入り環境なら`--plot`も付ける。出力はrun別・条件別・メモリ統計・資源推移・5秒RSSI中央値のCSVとsummary JSON。生行・座標・送信機識別子・内容ハッシュを出力に含めない。
 送信receiptと内容・counterが一致した観測だけを選び、実行開始BOOTTIME以降のRSSI更新間隔を再計算する。開始時刻メタデータのない旧版は、無理に推定せず解析エラーとして残す。
+
+## ドローンと搭載Piの別記録・文字列保存
+
+今回の追加版はJSONLと同じ観測を、各収録ディレクトリの`observations.txt`にも1行ずつ保存する。時刻・BSSID・ローカル分類・申告ID・RSSI・周波数・解析状態・Vendor IE全体のHEXを含む。デコードに失敗しても、対象ODID Vendor IEの元データを残す。一般のWi-Fiデータ通信・未知の全Vendor形式・BLE/NANをすべて取得する機能ではない。
+
+搭載Piは公式RIDの代替ではなく、別の研究用送信機として扱う。`safe_beacon_tx.py`へ以下の明示引数を追加した。
+
+- `--uas-id PI-RID-<個体別文字列>`：最大20byteのASCII。試験用Specific Session ID。実機の製造番号をコピーしない。
+- `--tx-mac <個体別LAA>`：個別のlocally administered unicast BSSID。同時送信する試験用Pi間で重複させない。
+- `--diagnostic-invalid`：未対応メッセージ版を意図的に送る負のテスト。通常の送信では使わない。
+
+旧引数の動作と120秒上限は維持。実飛行での長時間送信・GPS連携は今回実装していない。テスト用申告位置を機体真位置や公式RIDと扱わない。
+
+明示的なローカル登録を使う場合、owner-privateなJSONリストを作る。実際のRID・MACをGitに追加しない。
+
+```json
+[
+  {"role":"onboard_pi","label":"搭載Pi（登録）","uas_id":"PI-RID-EXAMPLE","bssid":"02:00:00:00:00:50"},
+  {"role":"drone","label":"ドローン（登録）","uas_id":"EXAMPLE-CLAIMED-ID"}
+]
+```
+
+```sh
+~/zkp-beacon-observer/fast --duration 60 --frequency 2452 \
+  --source-registry /home/pi/zkp-beacon-observer/config/source-labels.json
+# 2452は試験の例。実機で確認できた周波数だけ指定する。
+```
+
+登録は最大32件、ID／BSSIDのどちらか必須、両方ある規則は両方一致が必要。より具体的な規則を優先し、同順位で分類が競合したら不明にする。`PI-RID-`は未検証の申告マーカーとしてだけ表示する。その他の未知送信元を自動でドローンと断定しない。
+
+`source_annotation`の分類は利用者の登録・マーカーによるラベルで、`identity_verified=false`。BSSIDとIDの両方を偽装された場合、この方式だけで物理送信機を識別できない。カウンタやRSSIだけでドローン／Piを分類しない。
+
+### 位置なしの搭載Piマーカー
+
+A/Bの現在の2.4GHz環境で地上テストするための短い起動コマンド：
+
+```sh
+# 搭載するPi側（一般ユーザーで起動、必要ならsudoパスワード）
+~/zkp-beacon-observer/transmit-marker --show-config
+~/zkp-beacon-observer/transmit-marker --duration 60
+# 別の受信Pi側。2452は地上試験で実際に確認した周波数の例。
+~/zkp-beacon-observer/fast --duration 60 --frequency 2452
+```
+
+初回導入時に各Piへ個別の`PI-RID-*`とLAAを生成し、0600の`config/marker.json`へ保持する。再導入でも既存値を変えない。これは秘密鍵・製造番号・機体認証IDではなく、観測を分ける研究用マーカー。
+送信はBasic IDだけでLocationを含まない。GPSなしで送れる代わりに、実位置を送れたとは主張しない。バイナリエンコーダも不要。
+
+最大120秒・手動起動・自動停止を維持。既存STAが2.4GHzに接続している場合に限定し、接続先・チャネルを勝手に変えない。Cの5GHz接続で送信できる保証、飛行中の接続維持、長時間送信、GPS連携は未評価。公式RIDの代替として使わない。
