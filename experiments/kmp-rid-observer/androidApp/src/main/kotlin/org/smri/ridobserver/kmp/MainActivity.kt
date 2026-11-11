@@ -85,7 +85,10 @@ class MainActivity : Activity() {
         nodeText.setOnClickListener { editNode() };root.addView(nodeText,params(WRAP,10))
         scanConfig=label(scanModeLabel(),13,blue)
         scanConfig.setOnClickListener {editScanMode()};root.addView(scanConfig,params(WRAP,8))
-        root.addView(button("データ表示・更新") {showSnapshot()},params(dp(52),12))
+        val dataActions=LinearLayout(this)
+        dataActions.addView(button("データ表示・更新") {showSnapshot()},LinearLayout.LayoutParams(0,dp(52),1f))
+        dataActions.addView(button("送信元登録") {editSources()},LinearLayout.LayoutParams(0,dp(52),1f))
+        root.addView(dataActions,params(WRAP,12))
         root.addView(label("受信開始でDB保存 · 記録開始は追加ログ",12,Color.DKGRAY),params(WRAP,8))
         root.addView(label("RID形式を検査 · 位置は送信者の申告値",12,Color.DKGRAY),params(WRAP,8))
         val scroll=ScrollView(this)
@@ -170,6 +173,34 @@ class MainActivity : Activity() {
         }.show()
     }
 
+    private fun editSources() {
+        if(scanning || database?.pendingWrites!=0) {toast("受信停止・保存完了後に登録してください");return}
+        val registry=SourceRegistry(this)
+        val rules=try {registry.load()} catch(e:Exception) {toast("登録を読めません。既存設定を保持しています");return}
+        AlertDialog.Builder(this).setTitle("送信元の登録（認証ではありません）")
+            .setItems((rules.map {it.label}+listOf("＋ 追加")).toTypedArray()) {_,index ->
+                if(index<rules.size) {
+                    AlertDialog.Builder(this).setTitle(rules[index].label).setMessage("この登録を削除しますか？ 過去の観測は保持します。")
+                        .setPositiveButton("削除") {_,_ ->try {registry.remove(index)} catch(e:Exception) {toast("削除できません")}}
+                        .setNegativeButton("戻る",null).show()
+                } else {
+                    val form=LinearLayout(this).apply {orientation=LinearLayout.VERTICAL;setPadding(dp(18),0,dp(18),0)}
+                    val role=Spinner(this).apply {adapter=ArrayAdapter(this@MainActivity,android.R.layout.simple_spinner_dropdown_item,listOf("ドローン（登録）","搭載Pi（登録）","不明"))}
+                    val name=EditText(this).apply {hint="表示名";isSingleLine=true}
+                    val id=EditText(this).apply {hint="申告RID（任意）";isSingleLine=true}
+                    val mac=EditText(this).apply {hint="BSSID（任意・xx:xx:xx:xx:xx:xx）";isSingleLine=true}
+                    listOf(role,name,id,mac).forEach {form.addView(it)}
+                    AlertDialog.Builder(this).setTitle("IDまたはBSSIDで照合").setView(form)
+                        .setPositiveButton("保存") {_,_ ->try {
+                            val kind=listOf("drone","onboard_pi","unknown")[role.selectedItemPosition]
+                            registry.add(SourceRule(kind,name.text.toString().ifBlank {role.selectedItem.toString()},
+                                id.text.toString().trim().takeIf {it.isNotEmpty()},mac.text.toString().trim().takeIf {it.isNotEmpty()}))
+                            toast("登録しました。次の受信から記録します")
+                        } catch(e:Exception) {toast("登録できません。入力・上限・重複を確認してください")}}
+                        .setNegativeButton("戻る",null).show()
+                }
+            }.setNegativeButton("閉じる",null).show()
+    }
     private fun exportDialog() {
         AlertDialog.Builder(this).setTitle("書き出し").setItems(arrayOf("受信全体CSV（現在の履歴）","記録セッションCSV","生ログJSONL（ID・位置を含む）","最新50件テキスト（ID・位置を含む）","DB全件JSONL（ID・位置を含む）")) {_,which ->
             if(which==4 && (scanning || database?.pendingWrites!=0)) {toast("DB全件の書き出しは受信停止・保存完了後に行ってください");return@setItems}

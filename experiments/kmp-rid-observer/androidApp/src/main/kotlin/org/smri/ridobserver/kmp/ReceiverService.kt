@@ -109,7 +109,8 @@ class ReceiverService: Service() {
                 val observed=r.timestamp.takeIf {it>0}
                 val utc=if(observed!=null && observed<=delivered) Instant.ofEpochMilli(now-(delivered-observed)/1000).toString() else null
                 val input=ScanInput(r.BSSID.lowercase(),r.level,r.frequency,observed,delivered,utc,bodies)
-                for(o in ReceiverState.engine.ingest(input)) {
+                for(raw in ReceiverState.engine.ingest(input)) {
+                    val o=raw.withSourceRules(SourceRegistry(this).load())
                     if(!o.stale && o.decoded!=null) ReceiverState.lastNewUs= maxOf(ReceiverState.lastNewUs ?: 0, observed ?: 0)
                     database.enqueue(o,receiverNodeId) {
                         if(current===this) finish("database_write_failed")
@@ -229,4 +230,4 @@ class CaptureSession(root:File,val nodeId:String,private val maxBytes:Long=20L*1
         closed=true
     }
 }
-private object BuildConfigVersion {const val value="0.6-local-database"}
+private object BuildConfigVersion {const val value="0.7-source-labels"}
