@@ -68,7 +68,8 @@ data class ScanInput(val sourceKey: String, val rssiDbm: Int?, val frequencyMhz:
 data class Observation(val sourceKey: String, val sourceType: SourceType, val rssiDbm: Int?,
                        val frequencyMhz: Int?, val observedUs: Long?, val receivedAtUtc: String?,
                        val stale: Boolean, val decoded: DecodedRid?, val body: ByteArray, val error: String?,
-                       val annotation:SourceAnnotation=SourceAnnotation()) {
+                       val annotation:SourceAnnotation=SourceAnnotation(),
+                       val direction:Map<String,Any?>?=null) {
     fun isStaleAt(nowUs:Long):Boolean = stale || observedUs==null || observedUs<=0 || nowUs<observedUs || nowUs-observedUs>30_000_000
     private fun messageFields() = decoded?.messages?.map { m -> mapOf(
         "type" to m.type, "uas_id" to m.uasId,
@@ -80,7 +81,8 @@ data class Observation(val sourceKey: String, val sourceType: SourceType, val rs
         "rssi_dbm=$rssiDbm frequency_mhz=$frequencyMhz source_type=${sourceType.wire} " +
         "bssid=${json(sourceKey)} source=${json(annotation.fields())} " +
         "parse_status=${if(decoded==null) "invalid" else "decoded"} counter=${decoded?.counter} " +
-        "cache_stale_at_capture=$stale messages=${json(messageFields())} raw_vendor_ie_hex=${body.hex()}"
+        "cache_stale_at_capture=$stale messages=${json(messageFields())} raw_vendor_ie_hex=${body.hex()} " +
+        "direction=${json(direction)}"
     /** Monotonic observation times must not collide across device boots. Unknown times use process scope. */
     fun storageKey(bootScope:String,unknownTimeScope:String):String = sha256(json(listOf(
         bootScope,if(observedUs==null || observedUs<=0) unknownTimeScope else null,
@@ -99,6 +101,7 @@ data class Observation(val sourceKey: String, val sourceType: SourceType, val rs
         "odid_payload_hex" to if(body.size>=5) body.copyOfRange(5,body.size).hex() else null,
         "rid_messages" to messageFields(), "raw_vendor_ie_hex" to body.hex(),
         "source_annotation" to annotation.fields(),
+        "direction" to direction,
         "rid_parse_status" to if(decoded==null) "invalid" else "decoded", "rid_parse_reason" to error,
         "cache_stale" to stale, "physical_packet_match" to "unconfirmed",
         "receiver_position" to null, "absolute_power_calibrated" to false,

@@ -91,6 +91,7 @@ class MainActivity : Activity() {
         dataActions.addView(button("データ表示・更新") {showSnapshot()},LinearLayout.LayoutParams(0,dp(52),1f))
         dataActions.addView(button("送信元登録") {editSources()},LinearLayout.LayoutParams(0,dp(52),1f))
         root.addView(dataActions,params(WRAP,12))
+        root.addView(button("方位・RSSI推定を確認") {showDirection()},params(WRAP,6))
         root.addView(label("受信開始でDB保存 · 記録開始は追加ログ",12,Color.DKGRAY),params(WRAP,8))
         root.addView(label("RID形式を検査 · 位置は送信者の申告値",12,Color.DKGRAY),params(WRAP,8))
         val scroll=ScrollView(this)
@@ -165,6 +166,23 @@ class MainActivity : Activity() {
         if(database?.exporting==true) status.text="DBを書き出しています"
     }
     private fun snapshotText():String = try {database?.recentText()?.ifEmpty {"DBに観測はまだありません"} ?: "DBを開けません"} catch(e:Exception) {"DBの読出しに失敗しました"}
+    private fun showDirection() {
+        val text=buildString {
+            append(ReceiverState.directionStatus+"\n\n")
+            append("端末を水平に持ち、同じ場所でゆっくり回転。24点・270°以上が必要です。30秒間隔なら約12分以上が目安です。\n\n")
+            append("表示する角度はRSSIが最大になる端末上端の向き（磁北基準）です。電波の到来角・ドローンの方向を測定した値ではありません。精度は未検証です。\n\n")
+            for(t in engine.targets.values) {
+                val fields=t.latest.direction
+                val fit=fields?.get("peak_estimate") as? Map<*,*>
+                append("${t.alias} : ${fit?.get("samples") ?: 0}点 / ${fit?.get("occupied_bins") ?: 0}方位区画\n")
+                val peak=fit?.get("peak_phone_heading_deg") as? Double
+                append(if(peak!=null) "RSSI最大の端末方位：${peak.toInt()}°（実験値）\n" else "方位推定：保留（回転・点数・信号差を確認）\n")
+                append("方位対応：${fields?.get("missing_reason") ?: if(fields==null) "旧記録／未測定" else "対応あり"}\n\n")
+            }
+        }
+        dataText.text=text
+    }
+
     private fun showSnapshot() {
         dataText.text="DBの最新50件まで（観測時点の値）\n\n"+snapshotText()
     }

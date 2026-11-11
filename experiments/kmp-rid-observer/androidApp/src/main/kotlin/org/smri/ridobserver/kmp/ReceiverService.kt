@@ -29,6 +29,7 @@ object ReceiverState {
     var lastNewUs:Long?=null
     var revision=0
     var screen="unknown"
+    var directionStatus="端末方位：停止中"
 }
 
 /** Visible-user-started location FGS; no boot restart, sticky restart, wake lock or scan bypass. */
@@ -40,6 +41,7 @@ class ReceiverService: Service() {
     private var intervalMs=30_000L
     private var receiverNodeId="unknown"
     private lateinit var database:ObservationDatabase
+    private lateinit var direction:DirectionCapture
     private val receiver=object:BroadcastReceiver() {
         override fun onReceive(context:Context?,intent:Intent?) {
             if(intent?.action==WifiManager.SCAN_RESULTS_AVAILABLE_ACTION) {
@@ -65,6 +67,7 @@ class ReceiverService: Service() {
     }
     override fun onCreate() {
         super.onCreate();wifi=applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
+        direction=DirectionCapture(this)
     }
     override fun onBind(intent:Intent?) : IBinder? = null
     override fun onStartCommand(intent:Intent?,flags:Int,startId:Int):Int {
@@ -85,6 +88,7 @@ class ReceiverService: Service() {
             if(Build.VERSION.SDK_INT>=33) registerReceiver(receiver,IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION),Context.RECEIVER_NOT_EXPORTED)
             else registerReceiver(receiver,IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION))
             registered=true;ReceiverState.scanning=true;ReceiverState.status="受信中"
+            direction.start()
             readResults(false);handler.post(poll)
         } catch(e:Exception) { finish("start_denied_or_failed") }
         return START_NOT_STICKY
@@ -111,7 +115,8 @@ class ReceiverService: Service() {
                 val utc=if(observed!=null && observed<=delivered) PlatformCompat.utc(now-(delivered-observed)/1000) else null
                 val input=ScanInput(r.BSSID.lowercase(),r.level,r.frequency,observed,delivered,utc,bodies)
                 for(raw in ReceiverState.engine.ingest(input)) {
-                    val o=raw.withSourceRules(SourceRegistry(this).load())
+                    val o=direction.annotate(raw.withSourceRules(SourceRegistry(this).load()))
+                    ReceiverState.engine.targets.values.firstOrNull {it.latest===raw}?.latest=o
                     if(!o.stale && o.decoded!=null) ReceiverState.lastNewUs= maxOf(ReceiverState.lastNewUs ?: 0, observed ?: 0)
                     database.enqueue(o,receiverNodeId) {
                         if(current===this) finish("database_write_failed")
@@ -121,6 +126,7 @@ class ReceiverService: Service() {
                 }
             }
             ReceiverState.revision++
+            ReceiverState.directionStatus=direction.status
             heartbeat("scan_callback",mapOf("results_updated" to updated))
             updateNotification()
         } catch(e:SecurityException) { finish("permission_or_location_denied") }
@@ -176,6 +182,7 @@ class ReceiverService: Service() {
     fun finish(reason:String) {
         if(stopping) return
         stopping=true;handler.removeCallbacksAndMessages(null)
+        direction.stop();ReceiverState.directionStatus="端末方位：停止中"
         if(registered) {unregisterReceiver(receiver);registered=false}
         ReceiverState.scanning=false;stopRecording(reason);ReceiverState.status="停止中 · $reason"
         current=null;stopForeground(STOP_FOREGROUND_REMOVE);stopSelf()
@@ -232,4 +239,4 @@ class CaptureSession(root:File,val nodeId:String,private val maxBytes:Long=20L*1
         closed=true
     }
 }
-private object BuildConfigVersion {const val value="0.8-android7-compat"}
+private object BuildConfigVersion {const val value="0.9-heading-log"}

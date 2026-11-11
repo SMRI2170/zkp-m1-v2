@@ -1,0 +1,64 @@
+{
+  "software_version": "0.9-heading-log",
+  "device_class": "ASUS ZenFone 3 / Android 7 / API24",
+  "source": "Pi ID-only synthetic test Beacon; real Android scan observations",
+  "transmitter_bearing_accuracy": "NOT_TESTED",
+  "rf_aoa": "NOT_AVAILABLE_VIA_SCANRESULT",
+  "m350_field_test": "NOT_RUN",
+  "continuous_rotation_test": "NOT_RUN",
+  "cases": {
+    "a": {
+      "apk_stage": "before_ui_state_fix",
+      "previous_db_rows": 5,
+      "new_rows": 3,
+      "fresh_scan_rows": 3,
+      "heading_matched_rows": 3,
+      "heading_missing_rows": 0,
+      "max_abs_heading_delta_us": 9800,
+      "rssi_range_dbm": [
+        -46,
+        -46
+      ],
+      "payload_matches_transmitter_receipt": true,
+      "transmitter_status": "STOPPED_AFTER_BOUNDED_TEST",
+      "temporary_ap_removed": true,
+      "integrity_check": "ok"
+    },
+    "b": {
+      "apk_stage": "final_apk",
+      "previous_db_rows": 8,
+      "new_rows": 3,
+      "fresh_scan_rows": 1,
+      "heading_matched_rows": 1,
+      "heading_missing_rows": 2,
+      "max_abs_heading_delta_us": 2810,
+      "rssi_range_dbm": [
+        -47,
+        -45
+      ],
+      "payload_matches_transmitter_receipt": true,
+      "transmitter_status": "STOPPED_AFTER_BOUNDED_TEST",
+      "temporary_ap_removed": true,
+      "integrity_check": "ok"
+    }
+  },
+  "existing_five_rows_unchanged": true,
+  "rows_after_restart": 11,
+  "apk_sha256": "1f86e23d105c53f8a1e7ac2b78b76d8c2033ac401390350b81ed60090d93a32f",
+  "checks": {
+    "jvmTest": {
+      "tests": 34,
+      "failures": 0
+    },
+    "testAndroidHostTest": {
+      "tests": 34,
+      "failures": 0
+    },
+    "python_tests": 12,
+    "uav_tests": 88,
+    "contracts_tests": 48,
+    "go": "PASS (some cached)",
+    "apk": "PASS",
+    "lint": "PASS"
+  }
+}
