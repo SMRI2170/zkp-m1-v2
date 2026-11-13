@@ -2,7 +2,8 @@ from pathlib import Path
 import tempfile
 import json
 import unittest
-from boot_observer import capacity,unit_text
+import argparse
+from boot_observer import capacity,unit_text,worker_command,scan_interval
 from run_observer import read_config
 
 
@@ -28,6 +29,20 @@ class BootReceiverTests(unittest.TestCase):
     def test_paths_cannot_inject_systemd_directives(self):
         for path in ['/home/pi/zkp-beacon-observer/releases/bad name','/tmp/release','/home/pi/zkp-beacon-observer/%n']:
             with self.assertRaises(ValueError):unit_text(Path(path),Path('/home/pi/zkp-beacon-observer'),'pi')
+
+    def test_half_second_requests_keep_polling_and_config(self):
+        cfg=Path('/home/pi/zkp-beacon-observer/config/node.json')
+        command=worker_command(cfg,60,0.5)
+        self.assertEqual(command[command.index('--scan-interval')+1],'0.5')
+        self.assertEqual(command[command.index('--interval')+1],'0.25')
+        self.assertEqual(command[command.index('--config')+1],str(cfg))
+        self.assertIn('--active-scan',command)
+        self.assertNotIn('--frequency',command)
+
+    def test_unbounded_or_invalid_scan_intervals_are_rejected(self):
+        for value in ['nan','inf','-1','0','0.1','61']:
+            with self.assertRaises(argparse.ArgumentTypeError):scan_interval(value)
+        self.assertEqual(scan_interval('0.5'),0.5)
 
     def test_six_node_names_supported_without_coordinates(self):
         with tempfile.TemporaryDirectory() as d:

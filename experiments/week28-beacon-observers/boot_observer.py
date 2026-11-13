@@ -3,6 +3,7 @@
 import argparse
 import fcntl
 import json
+import math
 import os
 from pathlib import Path
 import shutil
@@ -82,10 +83,25 @@ WantedBy=multi-user.target
 '''
 
 
+def scan_interval(value):
+    value=float(value)
+    if not math.isfinite(value) or not .25<=value<=60:
+        raise argparse.ArgumentTypeError('scan interval must be finite and 0.25..60 seconds')
+    return value
+
+
+def worker_command(config,duration,interval):
+    interval=scan_interval(interval)
+    return [sys.executable,str(ROOT/'experiments/week28-beacon-observers/run_observer.py'),
+            '--config',str(config),'--duration',str(duration),'--interval','0.25',
+            '--active-scan','--scan-interval',str(interval)]
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--config',type=Path,required=True)
     p.add_argument('--segments',type=int,default=0,help='test-only finite segment count; 0 is continuous boot reception')
     p.add_argument('--segment-seconds',type=int,default=60)
+    p.add_argument('--scan-interval',type=scan_interval,default=0.5,help='delay after scan request; actual RSSI update interval depends on driver')
     a=p.parse_args()
     if not 10<=a.segment_seconds<=300 or a.segments<0:p.error('segment duration 10..300, segments >=0')
     os.umask(0o077);cfg=read_config(a.config)
@@ -116,9 +132,8 @@ def main():
             interface=Path('/sys/class/net')/cfg['interface']/'operstate'
             if not interface.exists() or interface.read_text().strip()!='up':
                 status('WAITING_FOR_NETWORK');stop.wait(15);continue
-            status('RECEIVING',segment_seconds=a.segment_seconds,scan_request_interval_s=1)
-            cmd=[sys.executable,str(ROOT/'experiments/week28-beacon-observers/run_observer.py'),
-                 '--config',str(a.config),'--duration',str(a.segment_seconds),'--interval','0.25','--active-scan','--scan-interval','1']
+            status('RECEIVING',segment_seconds=a.segment_seconds,scan_request_interval_s=a.scan_interval)
+            cmd=worker_command(a.config,a.segment_seconds,a.scan_interval)
             # Existing wrapper retains raw errors/metadata owner-private. Never emit them to journal.
             child=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
             try:stdout,stderr=child.communicate(timeout=a.segment_seconds+25)
