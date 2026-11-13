@@ -246,3 +246,8 @@ sudo systemctl restart zkp-rid-observer.service
 ```
 
 生データは各release/capturesに保持。新releaseへ切り替えても旧収録は移動・削除しない。センサー192MiB・送信128MiB・受信256MiBの収録予算を超える前に停止し、自動削除しない。各サービスのメモリ上限要求と空き容量ガードは報告参照。
+
+
+### busyの切り分け試験
+
+[全チャネル探索・完了待ち・2要求元の実機比較](../../week28/27_Piスキャンbusyの原因切り分けと実機比較.md)を追加。`diagnose_scan_busy.py`は通常受信を停止した時間制限付きサービス内で実行し、終了時に復帰させる。通常受信との重複実行は拒否する。生イベントはprivate captures内、`analyze_scan_busy.py --plot`は匿名CSV/JSONと比較図を生成する。常駐受信のスキャン制御はこの切り分けでは変更していない。
