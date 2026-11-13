@@ -1,0 +1,82 @@
+{
+  "release": "boot-16b00036d09c",
+  "applied": [
+    "A",
+    "B"
+  ],
+  "not_applied": {
+    "C": "connection not confirmed",
+    "D": "connection not confirmed",
+    "E": "not installed"
+  },
+  "configured_scan_delay_s": 0.5,
+  "poll_interval_s": 0.25,
+  "scope": "one latest completed 60s segment per node; all-channel scan; no controlled RID transmitter",
+  "new_rssi_update_interval": "NOT_MEASURED: no RID records",
+  "checks": {
+    "pi_python_tests": 32,
+    "uav_tests": 88,
+    "go": "PASS (some cached)",
+    "contracts_tests": 48
+  },
+  "nodes": {
+    "a": {
+      "summary_files": 3,
+      "configured_interval_s": 0.5,
+      "capture_exit_code": 3,
+      "stop_reason": "duration_complete",
+      "scan_requests": 32,
+      "accepted": 8,
+      "failed": 24,
+      "inter_request_median_s": 1.0062668120008311,
+      "inter_request_max_s": 4.009884109998893,
+      "accepted_interval_median_s": 7.5218061710002075,
+      "accepted_interval_max_s": 7.538776443001552,
+      "failure_reasons": {
+        "busy": 24
+      },
+      "observed_next_delays_s": [
+        0.5,
+        1,
+        2,
+        4
+      ],
+      "rid_records": 0,
+      "permission_violations": 0,
+      "enabled": "enabled",
+      "active_state": "active",
+      "restart_count": 0,
+      "memory_current_bytes": 40005632,
+      "memory_missing_reason": null
+    },
+    "b": {
+      "summary_files": 2,
+      "configured_interval_s": 0.5,
+      "capture_exit_code": 3,
+      "stop_reason": "duration_complete",
+      "scan_requests": 32,
+      "accepted": 8,
+      "failed": 24,
+      "inter_request_median_s": 1.038573396999709,
+      "inter_request_max_s": 4.0103715370005375,
+      "accepted_interval_median_s": 7.520978603999538,
+      "accepted_interval_max_s": 7.556944126001326,
+      "failure_reasons": {
+        "busy": 24
+      },
+      "observed_next_delays_s": [
+        0.5,
+        1,
+        2,
+        4
+      ],
+      "rid_records": 0,
+      "permission_violations": 0,
+      "enabled": "enabled",
+      "active_state": "active",
+      "restart_count": 0,
+      "memory_current_bytes": null,
+      "memory_missing_reason": "SYSTEMD_MEMORY_ACCOUNTING_UNAVAILABLE"
+    }
+  }
+}
