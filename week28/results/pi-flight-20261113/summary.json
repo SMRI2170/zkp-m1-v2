@@ -1,0 +1,40 @@
+{
+  "sensor": {
+    "samples": 300,
+    "gps_valid": 0,
+    "bme_valid": 300,
+    "count": 300,
+    "median_interval_s": 0.20000218499990297,
+    "max_interval_s": 0.20274656299807248
+  },
+  "receivers": {
+    "b": {
+      "records": 167,
+      "count": 166,
+      "median_interval_s": 0.27699999999822467,
+      "max_interval_s": 3.867999999998574,
+      "roles": [
+        "onboard_pi"
+      ],
+      "targeted_requests": 172,
+      "broad_requests": 2,
+      "accepted_requests": 168,
+      "observation_kind": "linux_scan_cache",
+      "physical_packet_match": "unconfirmed"
+    },
+    "c": {
+      "records": 116,
+      "count": 115,
+      "median_interval_s": 0.38799999999901047,
+      "max_interval_s": 3.9680000000007567,
+      "roles": [
+        "onboard_pi"
+      ],
+      "targeted_requests": 121,
+      "broad_requests": 2,
+      "accepted_requests": 117,
+      "observation_kind": "linux_scan_cache",
+      "physical_packet_match": "unconfirmed"
+    }
+  }
+}

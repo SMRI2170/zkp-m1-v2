@@ -46,6 +46,8 @@ def main():
     parser.add_argument('--scan-interval', type=float, default=1)
     parser.add_argument('--frequency', type=int)
     parser.add_argument('--source-registry',type=Path)
+    parser.add_argument('--adaptive-scan',action='store_true')
+    parser.add_argument('--discovery-interval',type=float,default=30)
     args = parser.parse_args()
     if (not 1 <= args.duration <= 3600 or not math.isfinite(args.interval) or not .1 <= args.interval <= 60
             or not math.isfinite(args.scan_interval) or not .25 <= args.scan_interval <= 60):
@@ -75,6 +77,7 @@ def main():
                    '--node-id', cfg['node_id'], '--duration', str(args.duration), '--interval', str(args.interval),
                    '--output', str(folder / 'observations.jsonl'), '--events', str(folder / 'events.jsonl'),
                    '--text-output',str(folder / 'observations.txt')]
+        if args.adaptive_scan:command+=['--adaptive-scan','--discovery-interval',str(args.discovery_interval)]
         if args.source_registry:command+=['--source-registry',str(args.source_registry)]
         if args.active_scan:
             command += ['--active-scan', '--scan-interval', str(args.scan_interval)]

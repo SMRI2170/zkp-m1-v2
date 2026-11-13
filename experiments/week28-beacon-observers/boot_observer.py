@@ -90,21 +90,34 @@ def scan_interval(value):
     return value
 
 
-def worker_command(config,duration,interval):
+def worker_command(config,duration,interval,adaptive=False,source_registry=None):
     interval=scan_interval(interval)
-    return [sys.executable,str(ROOT/'experiments/week28-beacon-observers/run_observer.py'),
+    command=[sys.executable,str(ROOT/'experiments/week28-beacon-observers/run_observer.py'),
             '--config',str(config),'--duration',str(duration),'--interval','0.25',
             '--active-scan','--scan-interval',str(interval)]
+    if adaptive:command+=['--adaptive-scan','--discovery-interval','30']
+    if source_registry is not None:command+=['--source-registry',str(source_registry)]
+    return command
+
+
+def interface_ready(interface_dir):
+    # Scanning needs an enabled radio, not association with the management AP.
+    try:return bool(int((interface_dir/'flags').read_text().strip(),16)&1)
+    except (OSError,ValueError):return False
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--config',type=Path,required=True)
     p.add_argument('--segments',type=int,default=0,help='test-only finite segment count; 0 is continuous boot reception')
     p.add_argument('--segment-seconds',type=int,default=60)
-    p.add_argument('--scan-interval',type=scan_interval,default=0.5,help='delay after scan request; actual RSSI update interval depends on driver')
+    p.add_argument('--scan-interval',type=scan_interval,default=0.25,help='delay after scan request; actual RSSI update interval depends on driver')
+    p.add_argument('--adaptive-scan',action=argparse.BooleanOptionalAction,default=True)
+    p.add_argument('--source-registry',type=Path)
     a=p.parse_args()
     if not 10<=a.segment_seconds<=300 or a.segments<0:p.error('segment duration 10..300, segments >=0')
     os.umask(0o077);cfg=read_config(a.config)
+    registry=a.source_registry or a.config.parent/'receiver_sources.json'
+    registry=registry if registry.exists() else None
     if os.getuid()==0:raise ValueError('receiver must run as ordinary observer user')
     archive=ROOT/'captures';archive.mkdir(mode=0o700,exist_ok=True)
     if archive.is_symlink() or archive.stat().st_uid!=os.getuid() or archive.stat().st_mode&0o077:
@@ -129,11 +142,11 @@ def main():
             size,files=usage(archive)
             reason=capacity(archive,int(mem['MemAvailable'].split()[0]),shutil.disk_usage(archive).free,size,files)
             if reason:status(reason);return 78
-            interface=Path('/sys/class/net')/cfg['interface']/'operstate'
-            if not interface.exists() or interface.read_text().strip()!='up':
-                status('WAITING_FOR_NETWORK');stop.wait(15);continue
-            status('RECEIVING',segment_seconds=a.segment_seconds,scan_request_interval_s=a.scan_interval)
-            cmd=worker_command(a.config,a.segment_seconds,a.scan_interval)
+            interface=Path('/sys/class/net')/cfg['interface']
+            if not interface_ready(interface):
+                status('WAITING_FOR_INTERFACE');stop.wait(15);continue
+            status('RECEIVING',segment_seconds=a.segment_seconds,scan_request_interval_s=a.scan_interval,scan_strategy='adaptive' if a.adaptive_scan else 'all_channels')
+            cmd=worker_command(a.config,a.segment_seconds,a.scan_interval,a.adaptive_scan,registry)
             # Existing wrapper retains raw errors/metadata owner-private. Never emit them to journal.
             child=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
             try:stdout,stderr=child.communicate(timeout=a.segment_seconds+25)

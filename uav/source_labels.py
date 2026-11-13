@@ -53,4 +53,4 @@ def text_line(row):
         ('received_at_utc',row.get('received_at_utc')),('bssid',row.get('bssid')),
         ('source',row.get('source_annotation')),('claimed_uas_ids',row.get('claimed_uas_ids',[])),
         ('rssi_dbm',row.get('rssi_dbm')),('frequency_mhz',row.get('frequency_mhz')),
-        ('parse_status',row.get('rid_parse_status')),('raw_vendor_ie_hex',row.get('raw_vendor_ie_hex'))])
+        ('parse_status',row.get('rid_parse_status')),('messages',row.get('messages',[])),('raw_vendor_ie_hex',row.get('raw_vendor_ie_hex'))])

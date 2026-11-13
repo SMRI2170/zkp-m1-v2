@@ -214,4 +214,35 @@ JSONLは逐次flushするが、突然の電源断直前の行や終了メタデ�
 
 自動受信workerのスキャン要求待機を0.5秒へ変更。0.25秒のキャッシュ読取りと、busy／拒否時のバックオフ・連続失敗時の停止は維持する。要求の処理時間・全チャネル走査時間が加わるため、0.5秒ごとの要求成功や新しいRSSI取得を保証しない。
 
-今回接続できたA/Bに反映。C/Dは接続未確認で未反映、Eは未導入。電源投入時にリポジトリ最新版を自動取得する機能はないので、未反映ノードは接続復旧後に明示更新する。設定と実測の違いは[0.5秒要求の報告](../../week28/25_Pi自動受信の0.5秒要求設定と実測間隔.md)。
+この段階ではA/Bへ反映し、続けてCにも反映した。Dは未反映、Eは未導入。Aはその後、以下の送信役へ変更した。電源投入時にリポジトリ最新版を自動取得する機能はないので、未反映ノードは接続復旧後に明示更新する。設定と実測の違いは[0.5秒要求の報告](../../week28/25_Pi自動受信の0.5秒要求設定と実測間隔.md)。
+
+
+## 現在の役割：Aは搭載送信機、B/Cは高頻度受信
+
+2026-11-13の追加入力に従い、Aの受信サービスを停止・無効化し、GPS/BME280 loggerと研究用Wi-Fi Beaconを自動起動に変更した。B/Cは0.25秒要求・0.25秒キャッシュ読取り、受信した周波数を優先しつつ30秒ごとに全チャネル探索する。要求間隔と新しいRSSI更新間隔は異なる。D/Eへこの版は未導入。
+
+- A：`zkp-flight-sensors.service`、`zkp-flight-marker.service`がenabled/active。センサー記録・送信内容更新は各0.2秒。Beacon間隔100 TUは設定値で、空中の全フレームを測った値ではない。
+- BME280：I²C bus 1 / 0x76。ISA 1013.25hPa基準の気圧高度と、サービス起動後の初回気圧からの相対高度を別項目で保存。後者は離陸点基準ではない。
+- GPS：USBのttyACM/ttyUSBを自動検出。今回USB GPSは見つからず、位置・GPS高度の実機確認は未実施。GPIO UARTにはOSコンソールがあるため変更していない。
+- GPS取得時はGGAのMSL高度、ジオイド差、楕円体高度を別々に保存。鮮度切れ・FixなしではLocationを送らずBasicIDのみ送信し、偽の0座標を作らない。BMEだけの時も気圧値はローカル保存する。
+- Aは専用PI-RIDの申告IDと送信BSSIDでB/Cに登録。その他のIDは別行で残るが、未登録IDをDJI機と自動断定しない。実機のIDを受信後、所有者がdrone役として登録する。これはローカル注釈であり認証ではない。
+- 2.4GHzの管理接続があれば同じチャネルを利用。接続がなければ研究APのch6を選ぶ。5GHz管理接続時は強制変更せず停止。実際の屋外単独コールドブートは未確認。
+
+一般ユーザーの直接iwスキャンは権限不足だったが、サービスのCAP_NET_ADMIN付き要求は成功した。busyは権限拒否とは別に記録する。詳細・実測間隔・残件は[搭載送信機の報告](../../week28/26_A搭載送信機_GPS_BME280と高頻度受信.md)。
+
+```sh
+# A：停止と自動起動の解除
+sudo systemctl disable --now zkp-flight-marker.service zkp-flight-sensors.service
+# A：設定済みサービスを再開
+sudo systemctl enable --now zkp-flight-sensors.service zkp-flight-marker.service
+# センサーのCSV化：新規のowner-only captures内へ出力する
+python3 experiments/week28-beacon-observers/export_flight_sensors.py \
+  --input captures/session/telemetry.jsonl --output captures/session/telemetry.csv
+# 実ドローンの観測ID/BSSIDを確認した後、受信Piのprivate設定へ登録
+python3 experiments/week28-beacon-observers/register_source.py \
+  --config ~/zkp-beacon-observer/config/receiver_sources.json \
+  --role drone --label Lab-drone --uas-id OBSERVED_ID --bssid OBSERVED_BSSID
+sudo systemctl restart zkp-rid-observer.service
+```
+
+生データは各release/capturesに保持。新releaseへ切り替えても旧収録は移動・削除しない。センサー192MiB・送信128MiB・受信256MiBの収録予算を超える前に停止し、自動削除しない。各サービスのメモリ上限要求と空き容量ガードは報告参照。

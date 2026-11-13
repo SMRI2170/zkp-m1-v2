@@ -3,7 +3,7 @@ import tempfile
 import json
 import unittest
 import argparse
-from boot_observer import capacity,unit_text,worker_command,scan_interval
+from boot_observer import capacity,unit_text,worker_command,scan_interval,interface_ready
 from run_observer import read_config
 
 
@@ -43,6 +43,13 @@ class BootReceiverTests(unittest.TestCase):
         for value in ['nan','inf','-1','0','0.1','61']:
             with self.assertRaises(argparse.ArgumentTypeError):scan_interval(value)
         self.assertEqual(scan_interval('0.5'),0.5)
+
+    def test_radio_enabled_does_not_require_management_wifi_association(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);self.assertFalse(interface_ready(root))
+            (root/'flags').write_text('0x1003');self.assertTrue(interface_ready(root))
+            (root/'flags').write_text('0x1002');self.assertFalse(interface_ready(root))
+            (root/'flags').write_text('bad value');self.assertFalse(interface_ready(root))
 
     def test_six_node_names_supported_without_coordinates(self):
         with tempfile.TemporaryDirectory() as d:

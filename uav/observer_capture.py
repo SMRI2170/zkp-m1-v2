@@ -52,6 +52,10 @@ class RidMessage:
     latitude_deg: Optional[float] = None
     longitude_deg: Optional[float] = None
     altitude_geo_m: Optional[float] = None
+    altitude_baro_m: Optional[float] = None
+    altitude_geo_raw: Optional[int] = None
+    altitude_baro_raw: Optional[int] = None
+    altitude_encoding_note: Optional[str] = None
     rid_timestamp_raw: Optional[int] = None
     rid_seconds_within_hour: Optional[float] = None
     auth_type: Optional[int] = None
@@ -117,6 +121,7 @@ def parse_rid_message(raw: bytes) -> RidMessage:
             raise ValueError("Location coordinates are outside valid bounds")
 
         altitude_raw = int.from_bytes(raw[15:17], "little", signed=False)
+        baro_raw = int.from_bytes(raw[13:15], "little", signed=False)
         timestamp_raw = int.from_bytes(raw[21:23], "little", signed=False)
         timestamp_seconds = None
         if timestamp_raw != 0xFFFF:
@@ -130,7 +135,10 @@ def parse_rid_message(raw: bytes) -> RidMessage:
             message_type_id=message_type_id,
             latitude_deg=latitude,
             longitude_deg=longitude,
-            altitude_geo_m=None if altitude_raw == 0xFFFF else altitude_raw * 0.5 - 1000,
+            altitude_geo_m=None if altitude_raw in [0, 0xFFFF] else altitude_raw * 0.5 - 1000,
+            altitude_baro_m=None if baro_raw in [0, 0xFFFF] else baro_raw * 0.5 - 1000,
+            altitude_geo_raw=altitude_raw, altitude_baro_raw=baro_raw,
+            altitude_encoding_note="raw_0_is_standard_unknown;ffff_retains_legacy_unknown_compatibility",
             rid_timestamp_raw=None if timestamp_raw == 0xFFFF else timestamp_raw,
             rid_seconds_within_hour=timestamp_seconds,
         )

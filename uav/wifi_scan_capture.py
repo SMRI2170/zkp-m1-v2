@@ -21,6 +21,7 @@ import time
 
 from observer_capture import parse_rid_payload, message_fields_for_log
 from source_labels import classify,load_rules,text_line
+from adaptive_scan import AdaptiveScanPlan
 from wifi_beacon_capture import private_output, ODID_PREFIX
 
 
@@ -44,8 +45,8 @@ def parse_scan(text):
         value = line.strip()
         if match := re.fullmatch(r'signal: (-?\d+(?:\.\d+)?) dBm', value):
             bss['rssi_dbm'] = float(match[1])
-        elif match := re.fullmatch(r'freq: (\d+)', value):
-            bss['frequency_mhz'] = int(match[1])
+        elif match := re.fullmatch(r'freq: (\d+(?:\.0+)?)', value):
+            bss['frequency_mhz'] = int(float(match[1]))
         elif match := re.fullmatch(r'last seen: (\d+(?:\.\d+)?)s \[boottime\]', value):
             bss['observed_boottime_s'] = float(match[1])
         elif match := re.fullmatch(r'last seen: (\d+) ms ago', value):
@@ -145,7 +146,8 @@ class UpdateMetrics:
 def scan_command(iw, interface, frequency=None):
     command = [iw, 'dev', interface, 'scan', 'trigger']
     if frequency is not None:
-        command += ['freq', str(frequency)]
+        frequencies=frequency if isinstance(frequency,(tuple,list)) else [frequency]
+        command += ['freq', *[str(f) for f in frequencies]]
     # A bounded systemd service may grant CAP_NET_ADMIN to this user only.
     try:
         status = Path('/proc/self/status').read_text()
@@ -166,6 +168,7 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
     end = started + args.duration
     started_boottime = boottime()
     metrics = UpdateMetrics(started_boottime)
+    plan=AdaptiveScanPlan(getattr(args,'discovery_interval',30)) if getattr(args,'adaptive_scan',False) else None
     next_poll = next_scan = started
     consecutive_failures = 0
     stopped_reason = 'duration_complete'
@@ -182,14 +185,16 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
 
         event('start', started_boottime_s=started_boottime, active_scan=args.active_scan, poll_interval_s=args.interval,
               scan_interval_s=args.scan_interval if args.active_scan else None,
-              frequency_mhz=args.frequency)
+              frequency_mhz=args.frequency,scan_strategy='adaptive' if plan else 'fixed_or_all',
+              discovery_interval_s=plan.period if plan else None)
         try:
             while monotonic() < end:
                 now = monotonic()
                 if args.active_scan and now >= next_scan:
                     counts['scan_requests'] += 1
                     try:
-                        result = run(scan_command(iw, args.interface, args.frequency),
+                        frequencies=plan.choose(monotonic()) if plan else args.frequency
+                        result = run(scan_command(iw, args.interface, frequencies),
                                      capture_output=True, text=True, timeout=min(2, max(.05, end-now)))
                         accepted = result.returncode == 0
                         reason = None if accepted else ('busy' if 'busy' in result.stderr.lower() else
@@ -197,11 +202,14 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
                                  ['permitted', 'permission', 'password']) else 'driver_rejected')
                     except subprocess.TimeoutExpired:
                         accepted, reason = False, 'timeout'
+                    if accepted and plan:plan.accepted(frequencies,monotonic())
                     counts['scan_accepted' if accepted else 'scan_failed'] += 1
                     consecutive_failures = 0 if accepted else consecutive_failures + 1
                     delay = args.scan_interval if accepted else max(args.scan_interval, min(5, 2 ** min(consecutive_failures-1, 3)))
                     next_scan = monotonic() + delay
-                    event('scan_request', accepted=accepted, failure_reason=reason, next_delay_s=delay)
+                    event('scan_request', accepted=accepted, failure_reason=reason, next_delay_s=delay,
+                          requested_frequencies_mhz=list(frequencies) if isinstance(frequencies,tuple) else ([frequencies] if frequencies is not None else None),
+                          scan_strategy='adaptive' if plan else 'fixed_or_all')
                     if reason == 'permission' or consecutive_failures >= 5:
                         stopped_reason = 'scan_permission_denied' if reason == 'permission' else 'scan_failure_limit'
                         break
@@ -215,6 +223,7 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
                     counts['cache_bss_entries'] += len(entries)
                     for bss in entries:
                         for row in observations(bss, args.node_id, wall(),rules):
+                            if plan:plan.learn(row,monotonic())
                             key = (bss['bssid'], bss['frequency_mhz'], bss['observed_boottime_s'], row['vendor_content_digest'])
                             if key in seen:
                                 counts['duplicate_cache_entries'] += 1
@@ -222,6 +231,8 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
                             if len(seen) >= 100000:
                                 raise ValueError('deduplication limit reached; start another run')
                             seen.add(key)
+                            row['scan_strategy']='adaptive' if plan else 'fixed_or_all'
+                            row['discovery_interval_s']=plan.period if plan else None
                             row['active_scan_requested'] = args.active_scan
                             row['poll_interval_s'] = args.interval
                             row['scan_request_interval_s'] = args.scan_interval if args.active_scan else None
@@ -242,7 +253,8 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
                    stopped_reason=stopped_reason, source_type='real_capture', observation_kind='linux_scan_cache',
                    active_scan_requested=args.active_scan, poll_interval_s=args.interval,
                    scan_request_interval_s=args.scan_interval if args.active_scan else None,
-                   scan_frequency_mhz=args.frequency, physical_packet_match='unconfirmed')
+                   scan_frequency_mhz=args.frequency,scan_strategy='adaptive' if plan else 'fixed_or_all',
+                   discovery_interval_s=plan.period if plan else None,physical_packet_match='unconfirmed')
     code = 2 if stopped_reason != 'duration_complete' else (0 if counts['fresh_decoded_records'] else 3)
     return code, summary
 
@@ -250,6 +262,8 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--interface', default='wlan0')
+    parser.add_argument('--adaptive-scan',action='store_true')
+    parser.add_argument('--discovery-interval',type=float,default=30)
     parser.add_argument('--duration', type=int, default=60)
     parser.add_argument('--interval', type=float, default=1, help='cache polling seconds; minimum 0.1')
     parser.add_argument('--active-scan', action='store_true', help='opt-in iw trigger using sudo -n; never prompts')
@@ -261,6 +275,9 @@ def main():
     parser.add_argument('--node-id', required=True)
     parser.add_argument('--output', required=True)
     args = parser.parse_args()
+    if not math.isfinite(args.discovery_interval) or not 5<=args.discovery_interval<=300:
+        parser.error('discovery interval must be 5..300 seconds')
+    if args.adaptive_scan and args.frequency is not None:parser.error('adaptive scan and fixed frequency are mutually exclusive')
     if (not 1 <= args.duration <= 3600 or not math.isfinite(args.interval) or not .1 <= args.interval <= 60
             or not math.isfinite(args.scan_interval) or not .25 <= args.scan_interval <= 60):
         parser.error('duration 1..3600s, poll interval 0.1..60s, scan interval 0.25..60s required')
