@@ -14,7 +14,7 @@ import secrets
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--node-id', required=True, choices=['observer-a', 'observer-b', 'observer-c'])
+    p.add_argument('--node-id', required=True, choices=['observer-a', 'observer-b', 'observer-c', 'observer-d', 'observer-e', 'observer-f'])
     args = p.parse_args()
     os.umask(0o077)
     if os.getuid() == 0:

@@ -19,8 +19,8 @@ from wifi_beacon_capture import private_output
 
 def read_config(path):
     cfg = json.loads(path.read_text())
-    if cfg.get('node_id') not in ['observer-a', 'observer-b', 'observer-c']:
-        raise ValueError('node_id must identify observer-a/b/c')
+    if cfg.get('node_id') not in ['observer-a', 'observer-b', 'observer-c', 'observer-d', 'observer-e', 'observer-f']:
+        raise ValueError('node_id must identify observer-a through observer-f')
     if not isinstance(cfg.get('interface'), str) or not cfg['interface'] or len(cfg['interface']) > 32:
         raise ValueError('invalid interface')
     return cfg

@@ -14,7 +14,7 @@ python3 ~/zkp-beacon-observer/releases/<version>/experiments/week28-beacon-obser
 ~/zkp-beacon-observer/run --duration 60
 ```
 
-観測IDはA/B/Cで変更する。既存の設定が違う場合は上書きせず停止する。旧releaseと収録は保持する。
+観測IDはA〜Fで変更する。既存の設定が違う場合は上書きせず停止する。旧releaseと収録は保持する。
 通常の読み出し間隔は1秒。これだけでは能動スキャンを要求しないため、新規RSSIが1秒で更新する保証はない。
 
 ## 短い間隔での更新要求
@@ -56,7 +56,7 @@ sudo systemd-run --wait --pipe --collect \
 - 拒否・busy・タイムアウト時は最大5秒まで待機を増やし、5連続失敗か権限拒否で停止。
 - `events.jsonl`へ要求成否・待機・停止理由を記録。新しい観測行は逐次flushする。電源断直前の永続性を保証しない。
 - 既定60秒・最大3600秒、プロセス128MiB／1ファイル20MiB、重複キー上限10万。終了コード0は新鮮ODIDあり、3はなし、2は失敗。
-- 常時・起動時の自動収録は設定しない。
+- 通常のrun／fastコマンドは手動・期間限定。起動時収録は後述の明示導入サービスだけで有効になる。
 
 ## 順次比較・CSV/JSON
 
@@ -170,3 +170,36 @@ A/Bの現在の2.4GHz環境で地上テストするための短い起動コマ�
 送信はBasic IDだけでLocationを含まない。GPSなしで送れる代わりに、実位置を送れたとは主張しない。バイナリエンコーダも不要。
 
 最大120秒・手動起動・自動停止を維持。既存STAが2.4GHzに接続している場合に限定し、接続先・チャネルを勝手に変えない。Cの5GHz接続で送信できる保証、飛行中の接続維持、長時間送信、GPS連携は未評価。公式RIDの代替として使わない。
+
+
+## 電源投入時の自動受信（明示的に導入する場合）
+
+今回の依頼により、受信専用の `zkp-rid-observer.service` を追加。通常のinstall_nodeだけでは有効にならず、版管理されたreleaseで次を明示実行する。
+
+```sh
+sudo python3 ~/zkp-beacon-observer/current/experiments/week28-beacon-observers/install_boot.py --enable
+systemctl is-enabled zkp-rid-observer.service
+systemctl status zkp-rid-observer.service
+cat ~/zkp-beacon-observer/current/captures/boot-status.json
+```
+
+電源投入→ネットワーク／wlan0のupを待機→60秒単位の受信を繰り返す。1秒間隔で全対応チャネルへスキャン要求、キャッシュ読出し0.25秒。送信機やhostapd・monitor切替え・sudoers変更は含まない。ネットワークがない場合は15秒ごとに待ち直す。実効RSSI更新間隔・同一物理送信の対応は保証しない。
+
+時刻・RSSI・元のVendor内容は `current/captures/observer-X/<run>/observations.jsonl` と `observations.txt`、収録メタデータはevents.jsonl／summary.jsonに保存。release更新後も旧releaseとそのcapturesを削除しない。アーカイブを自動削除しないため、定期的な回収が必要。
+
+- 一般ユーザーpi、CAP_NET_ADMINのみ。書込みは当該releaseのcapturesに限定。ディレクトリ0700・ファイル0600。
+- 受信子プロセスの仮想アドレス空間128MiB、各ファイル20MiB。サービス全体MemoryMax160MiBを要求する。カーネルのmemory controllerが無い機材ではcgroup上限の実効性は別途確認が必要。
+- ホスト空きRAM192MiB未満、ディスク空き512MiB未満、次区間の予約64MiBを含め収録予算256MiB超、ファイル1万個で停止。上限停止は自動再起動しない。状態JSONを確認して回収・空き容量確保後に手動restartする。
+- エラー3区間連続で終了。systemdは30秒待って再起動し、5分に3回まで。無制限の高速再起動をしない。
+- 正常停止は現在の60秒区間終了を待つため最大約95秒かかる場合がある。稼働中にfast/runの能動受信を重複開始しない。
+
+```sh
+# 一時停止（次の電源投入では再び起動）
+sudo systemctl stop zkp-rid-observer.service
+# 自動起動を取り消す
+sudo systemctl disable --now zkp-rid-observer.service
+# 容量・状態を確認した上で再開
+sudo systemctl restart zkp-rid-observer.service
+```
+
+JSONLは逐次flushするが、突然の電源断直前の行や終了メタデータの永続性は保証しない。通常はOSをシャットダウンしてから電源を外す。これは研究用受信PoCであり、実機ドローン受信や機体認証を自動起動設定から主張しない。
