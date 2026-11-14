@@ -40,7 +40,8 @@ class MainActivity : Activity() {
     private var pendingExport:String?=null
     private var exportBytes:ByteArray?=null
     private var exportFile:File?=null
-    private var notificationAsked=false
+    private val permissionFlow=PermissionFlow()
+    private lateinit var permissionStatus:TextView
     private var renderedState:String?=null
     private val refresh=object:Runnable {
         override fun run() {
@@ -83,6 +84,9 @@ class MainActivity : Activity() {
         actions.addView(record,LinearLayout.LayoutParams(0,dp(52),1f))
         actions.addView(button("書き出し") { exportDialog() },LinearLayout.LayoutParams(0,dp(52),1f))
         root.addView(actions,params(WRAP,12))
+        permissionStatus=label("権限を確認",13,blue)
+        permissionStatus.setOnClickListener {showPermissionGuide(false)}
+        root.addView(permissionStatus,params(WRAP,6))
         nodeText=label("ノード：$nodeId  ⚙",12,Color.DKGRAY)
         nodeText.setOnClickListener { editNode() };root.addView(nodeText,params(WRAP,10))
         scanConfig=label(scanModeLabel(),13,blue)
@@ -126,12 +130,64 @@ class MainActivity : Activity() {
             }.setNegativeButton("閉じる",null).show()
     }
 
-    private fun requestStart() {
-        if(database==null || database?.exporting==true) {toast("DBを開けません。既存データを保持して停止しています");return}
-        android.util.Log.d("RidObserverKmp","start_button_request")
-        if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION),10);return
+    private fun fineGranted()=checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED
+    private fun permissionSummary():String {
+        val loc=if(fineGranted()) "位置：正確を許可" else if(checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED) "位置：概算のみ" else "位置：未許可"
+        val notification=if(Build.VERSION.SDK_INT<33) "通知：追加許可不要" else if(checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)==PackageManager.PERMISSION_GRANTED) "通知：許可" else "通知：未許可"
+        return "$loc · $notification"
+    }
+    private fun renderPermissions() {if(::permissionStatus.isInitialized) permissionStatus.text="権限を確認 · "+permissionSummary()}
+    private fun openAppSettings() {
+        permissionFlow.cancel()
+        startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,android.net.Uri.parse("package:$packageName")))
+    }
+    private fun showPermissionGuide(startAfter:Boolean) {
+        permissionFlow.begin(startAfter)
+        val explanation="Wi-Fi受信と自位置の保存には、正確な位置情報の許可が必要です。データは端末内に保存します。"+
+            (if(Build.VERSION.SDK_INT>=33) "\n通知は受信中の表示と停止操作に使います。通知の許可は任意です。" else "\nこのAndroidでは通知の追加許可は不要です。")+
+            (if(startAfter) "\n許可後、受信を開始します。" else "\n許可だけでは受信は開始しません。")
+        AlertDialog.Builder(this).setTitle("受信に必要な権限")
+            .setMessage(permissionSummary()+"\n\n"+explanation)
+            .setPositiveButton("権限を確認") {_,_ ->requestRequiredPermission()}
+            .setNegativeButton("あとで") {_,_ ->permissionFlow.cancel()}
+            .setNeutralButton("アプリ設定") {_,_ ->openAppSettings()}
+            .setOnCancelListener {permissionFlow.cancel()}.show()
+    }
+    private fun requestRequiredPermission() {
+        val prefs=getSharedPreferences("receiver",MODE_PRIVATE)
+        when(PermissionPolicy.location(fineGranted(),prefs.getBoolean("location_permission_requested",false),
+            shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION))) {
+            PermissionPolicy.Action.SETTINGS ->openAppSettings()
+            PermissionPolicy.Action.REQUEST -> {
+                prefs.edit().putBoolean("location_permission_requested",true).apply()
+                requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION),10)
+            }
+            PermissionPolicy.Action.READY ->requestNotificationOrComplete()
         }
+    }
+    private fun requestNotificationOrComplete() {
+        val prefs=getSharedPreferences("receiver",MODE_PRIVATE)
+        if(Build.VERSION.SDK_INT>=33 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED &&
+            !prefs.getBoolean("notification_permission_requested",false)) {
+            prefs.edit().putBoolean("notification_permission_requested",true).apply()
+            requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS),11);return
+        }
+        completePermissions()
+    }
+    private fun completePermissions() {
+        renderPermissions()
+        if(permissionFlow.complete(fineGranted())) startReceiverReady()
+    }
+    private fun requestStart() {
+        val prefs=getSharedPreferences("receiver",MODE_PRIVATE)
+        val notificationPending=Build.VERSION.SDK_INT>=33 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED &&
+            !prefs.getBoolean("notification_permission_requested",false)
+        if(!fineGranted() || notificationPending) showPermissionGuide(true) else startReceiverReady()
+    }
+    private fun startReceiverReady() {
+        if(database==null || database?.exporting==true) {toast("DBを開けません。既存データを保持して停止しています");return}
+        if(!fineGranted()) {renderPermissions();return}
+        android.util.Log.d("RidObserverKmp","start_button_request")
         val wifi=applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
         if(!wifi.isWifiEnabled) { toast("Wi-Fiを有効にしてください");startActivity(Intent(Settings.ACTION_WIFI_SETTINGS));return }
         val location=getSystemService(LOCATION_SERVICE) as LocationManager
@@ -144,9 +200,6 @@ class MainActivity : Activity() {
                 .setMessage(if(Build.VERSION.SDK_INT<30) "このOSでは制限状態を確認できません。標準30秒で受信してください。" else "Androidの開発者向けオプションでWi-FiスキャンのスロットリングをOFFにした実験専用です。アプリはOS設定を変更しません。通常は30秒を選んでください。要求間隔と実際の取得間隔は異なります。")
                 .setPositiveButton("閉じる",null).show();return
         }
-        if(Build.VERSION.SDK_INT>=33 && !notificationAsked && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED) {
-            notificationAsked=true;requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS),11);return
-        }
         try {
             val intent=Intent(this,ReceiverService::class.java).setAction(ReceiverService.ACTION_START).putExtra("node_id",nodeId)
             if(Build.VERSION.SDK_INT>=26) startForegroundService(intent) else startService(intent)
@@ -155,10 +208,27 @@ class MainActivity : Activity() {
     }
     override fun onRequestPermissionsResult(code:Int,permissions:Array<out String>,grants:IntArray) {
         super.onRequestPermissionsResult(code,permissions,grants)
-        if(code==11) {requestStart();return}
-        if(code==10 && checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED) requestStart()
-        else toast("Wi-Fiスキャンには位置情報の許可が必要です")
+        if(code==11) {completePermissions();return}
+        if(code!=10) return
+        renderPermissions()
+        if(fineGranted()) requestNotificationOrComplete()
+        else {
+            permissionFlow.cancel()
+            AlertDialog.Builder(this).setTitle("正確な位置情報が未許可です")
+                .setMessage("受信・自位置記録は開始していません。概算のみの許可では、この受信機能は利用できません。画面の「権限を確認」から再設定できます。")
+                .setPositiveButton("閉じる",null).show()
+        }
     }
+    override fun onPostResume() {
+        super.onPostResume();renderPermissions()
+        val prefs=getSharedPreferences("receiver",MODE_PRIVATE)
+        if(!prefs.getBoolean("permission_intro_v11",false)) {
+            prefs.edit().putBoolean("permission_intro_v11",true).apply()
+            if(!scanning && (!fineGranted() || (Build.VERSION.SDK_INT>=33 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED)))
+                showPermissionGuide(false)
+        }
+    }
+
     private fun stopScan() {ReceiverService.current?.finish("user_stop");render()}
     private fun startRecording() {ReceiverService.current?.startRecording(nodeId);render()}
     private fun stopRecording() {ReceiverService.current?.stopRecording();render()}

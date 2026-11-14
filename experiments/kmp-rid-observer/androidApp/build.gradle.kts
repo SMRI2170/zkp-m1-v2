@@ -6,8 +6,8 @@ android {
         applicationId = "org.smri.ridobserver.kmp"
         minSdk = 24
         targetSdk = 36
-        versionCode = 10
-        versionName = "0.10-field-location"
+        versionCode = 11
+        versionName = "0.11-permission-guide"
         testInstrumentationRunner = "org.smri.ridobserver.kmp.FieldTestInstrumentation"
     }
     compileOptions {

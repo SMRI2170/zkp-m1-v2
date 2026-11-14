@@ -163,7 +163,7 @@ class ReceiverService: Service() {
         val battery=registerReceiver(null,IntentFilter(Intent.ACTION_BATTERY_CHANGED))
         val pm=getSystemService(POWER_SERVICE) as PowerManager
         val fields=mapOf<String,Any?>("node_id" to receiverNodeId,
-            "android_sdk" to Build.VERSION.SDK_INT,"device_model" to Build.MODEL,"app_version" to "0.10-field-location",
+            "android_sdk" to Build.VERSION.SDK_INT,"device_model" to Build.MODEL,"app_version" to "0.11-permission-guide",
             "location_status" to ReceiverState.locationStatus,
             "fine_location_granted" to (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED),
             "location_enabled" to PlatformCompat.locationEnabled(this),
@@ -261,4 +261,4 @@ class CaptureSession(root:File,val nodeId:String,private val maxBytes:Long=20L*1
         closed=true
     }
 }
-private object BuildConfigVersion {const val value="0.10-field-location"}
+private object BuildConfigVersion {const val value="0.11-permission-guide"}
