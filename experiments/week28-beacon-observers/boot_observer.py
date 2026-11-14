@@ -147,6 +147,7 @@ def main():
                 status('WAITING_FOR_INTERFACE');stop.wait(15);continue
             status('RECEIVING',segment_seconds=a.segment_seconds,scan_request_interval_s=a.scan_interval,scan_strategy='adaptive' if a.adaptive_scan else 'all_channels')
             cmd=worker_command(a.config,a.segment_seconds,a.scan_interval,a.adaptive_scan,registry)
+            if cfg.get('include_unknown_wifi',False):cmd+=['--include-unknown-wifi']
             # Existing wrapper retains raw errors/metadata owner-private. Never emit them to journal.
             child=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
             try:stdout,stderr=child.communicate(timeout=a.segment_seconds+25)

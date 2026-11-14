@@ -1,0 +1,18 @@
+{
+  "model": "Pixel 6 Pro",
+  "sdk": 31,
+  "version": "0.11-permission-guide",
+  "app_guide_visible": true,
+  "os_permission_dialog_visible": true,
+  "receiver_not_started": true,
+  "grant_clicked_by_agent": false,
+  "existing_observations_unchanged": true,
+  "common_tests_per_backend": 43,
+  "build": "passed",
+  "lint": "passed",
+  "unverified": [
+    "API33_notification_runtime_dialog_on_v11",
+    "permanent_denial_settings_route_on_device",
+    "approximate_only_rejection_on_device"
+  ]
+}
