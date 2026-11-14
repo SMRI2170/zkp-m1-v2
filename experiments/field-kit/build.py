@@ -19,7 +19,7 @@ def archive(paths,target):
     hashes={}
     with tarfile.open(target,'w:gz') as tar:
         for p in sorted(paths):
-            if p.is_symlink() or not p.is_file():raise ValueError('non-regular source rejected')
+            if p.is_symlink() or not p.is_file():raise ValueError('required source missing or non-regular: '+str(p.relative_to(ROOT)))
             name=str(p.relative_to(ROOT));hashes[name]=digest(p);tar.add(p,arcname=name,recursive=False)
     return hashes
 
