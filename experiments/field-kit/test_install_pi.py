@@ -4,10 +4,17 @@ from pathlib import Path
 import tarfile
 import tempfile
 import unittest
-from install_pi import verified_members
+from install_pi import verified_members,main
+from unittest.mock import patch
+from contextlib import redirect_stderr
 
 
 class BundleTests(unittest.TestCase):
+    def test_dual_role_rejects_non_a_before_accessing_bundle(self):
+        with patch('sys.argv',['install_pi.py','--kit','/unused','--node-id','observer-d','--role','dual']),patch('install_pi.os.getuid',return_value=1000),redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit) as error:main()
+        self.assertEqual(error.exception.code,2)
+
     def archive(self,d,name,data=b'fixture',link=False):
         p=Path(d)/'fixture.tar.gz'
         with tarfile.open(p,'w:gz') as tar:

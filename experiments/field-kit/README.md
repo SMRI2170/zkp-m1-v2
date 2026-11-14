@@ -35,7 +35,14 @@ python3 field-kit-new/install_pi.py --kit field-kit-new --node-id observer-b
 python3 field-kit-new/install_pi.py --kit field-kit-new --node-id observer-b --role receiver --activate
 # Aだけを研究Beacon送信＋GPS/BME280記録にする
 python3 field-kit-new/install_pi.py --kit field-kit-new --node-id observer-a --role transmitter --activate
+# Aをドローン受信＋予備送信＋GPS/BME280記録にする
+python3 field-kit-new/install_pi.py --kit field-kit-new --node-id observer-a --role dual --activate
 ```
+
+`dual` はA専用。既存の送信元登録を保持し、研究用 `PI-RID-*` とドローンの申告IDを別に保存する。
+登録は運用上の分類であり機体認証ではない。内蔵Wi-Fiを共用するため、他チャンネル探索中の
+Beacon中断や受信欠落は残り得る。サービスが同時にactiveでも無線の無欠損動作は保証しない。
+安定した同時送受信が必要なら、対応するUSB受信機などで無線系統を分離して評価する。
 
 毎回別releaseを作り、旧release/capturesとconfigを保持する。収録上限に達した際の自動削除・自動ロールオーバーは行わない。
 有効化は既存サービスを更新しsudoを要求する。activateなしは検証のみで無線を動かさない。

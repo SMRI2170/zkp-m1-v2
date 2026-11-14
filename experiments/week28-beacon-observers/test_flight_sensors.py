@@ -4,7 +4,8 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'uav'))
 from flight_sensors import parse_gga,gps_snapshot,pressure_height
 from flight_payload import build_ie
 from flight_beacon import choose_channel
-from install_flight import units
+from install_flight import units,activate_services
+from unittest.mock import patch
 from observer_capture import parse_rid_payload
 from adaptive_scan import AdaptiveScanPlan
 from wifi_scan_capture import parse_scan
@@ -18,6 +19,21 @@ def sentence(quality='1',msl='100.0',geoid='30.0'):
 
 
 class FlightSensorTests(unittest.TestCase):
+    def test_dual_activation_preserves_receiver_and_enables_capture_after_transmitter(self):
+        root=Path('/home/pi/zkp-beacon-observer/releases/test')
+        names=['zkp-flight-sensors.service','zkp-flight-marker.service']
+        with patch('install_flight.subprocess.run') as run:
+            activate_services(root,names,True)
+        calls=[c.args[0] for c in run.call_args_list]
+        self.assertEqual(calls[0],['systemctl','enable','--now',*names])
+        self.assertEqual(calls[1][-2:],[str(root/'experiments/week28-beacon-observers/install_boot.py'),'--enable'])
+        self.assertEqual(len(calls),2)
+
+    def test_transmitter_only_activation_still_disables_receiver(self):
+        with patch('install_flight.subprocess.run') as run:
+            activate_services(Path('/unused'),['zkp-flight-marker.service'])
+        self.assertEqual(run.call_args_list[0].args[0],['systemctl','disable','--now','zkp-rid-observer.service'])
+
     def test_gps_msl_and_ellipsoid_are_separate(self):
         d=parse_gga(sentence());self.assertEqual(d['altitude_msl_m'],100)
         self.assertEqual(d['geoid_separation_m'],30);self.assertEqual(d['altitude_ellipsoid_m'],130)

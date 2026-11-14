@@ -38,10 +38,10 @@ def verified_members(archive,expected):
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--kit',type=Path,required=True)
     p.add_argument('--node-id',choices=['observer-'+c for c in 'abcdef'],required=True)
-    p.add_argument('--role',choices=['receiver','transmitter'],default='receiver')
+    p.add_argument('--role',choices=['receiver','transmitter','dual'],default='receiver')
     p.add_argument('--activate',action='store_true');a=p.parse_args()
     if os.getuid()==0:p.error('run as pi; only explicit service installation uses sudo')
-    if a.role=='transmitter' and a.node_id!='observer-a':p.error('only A is designated transmitter')
+    if a.role!='receiver' and a.node_id!='observer-a':p.error('only A is designated transmitter')
     kit=a.kit.resolve();manifest=json.loads((kit/'manifest.json').read_text())
     if manifest['format']!='rid_field_kit_v1':raise ValueError('unknown kit')
     archive=kit/'pi-source.tar.gz'
@@ -51,9 +51,9 @@ def main():
     if shutil.disk_usage(Path.home()).free<1024**3:raise ValueError('at least 1GiB free disk required')
     mem=Path('/proc/meminfo').read_text()
     if int(re.search(r'^MemAvailable:\s+(\d+)',mem,re.M)[1])<192*1024:raise ValueError('RAM headroom below 192MiB')
-    required=['iw']+(['hostapd','hostapd_cli','ip'] if a.role=='transmitter' else [])
+    required=['iw']+(['hostapd','hostapd_cli','ip'] if a.role!='receiver' else [])
     missing=[x for x in required if not shutil.which(x,path=os.environ.get('PATH','')+':/usr/sbin:/sbin')]
-    if a.role=='transmitter':missing += [x for x in ['serial','smbus2','bme280'] if importlib.util.find_spec(x) is None]
+    if a.role!='receiver':missing += [x for x in ['serial','smbus2','bme280'] if importlib.util.find_spec(x) is None]
     if missing:raise ValueError('dependencies missing: '+','.join(missing))
     os.umask(0o077);base=Path.home()/'zkp-beacon-observer'
     if any(x.is_symlink() for x in [base,base/'releases']):raise ValueError('base/release symlinks rejected')
@@ -68,7 +68,7 @@ def main():
     if not a.activate:
         print('VERIFIED_STAGED_RELEASE '+str(release));return
     subprocess.run([sys.executable,str(scripts/'install_node.py'),'--node-id',a.node_id],check=True)
-    subprocess.run(['sudo',sys.executable,str(scripts/('install_flight.py' if a.role=='transmitter' else 'install_boot.py')),'--enable'],check=True)
+    subprocess.run(['sudo',sys.executable,str(scripts/('install_flight.py' if a.role!='receiver' else 'install_boot.py')),'--enable']+(['--with-receiver'] if a.role=='dual' else []),check=True)
     print('ACTIVATED_NEW_SESSION_OLD_CAPTURES_RETAINED '+str(release))
 
 
