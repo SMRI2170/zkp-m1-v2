@@ -9,6 +9,7 @@ on:
       - 'uav/source_labels.py'
       - 'uav/test_source_labels.py'
       - 'experiments/week28-beacon-observers/**'
+      - 'experiments/field-kit/**'
       - '.github/workflows/pi-rssi-observer.yml'
   pull_request:
     paths:
@@ -19,6 +20,7 @@ on:
       - 'uav/source_labels.py'
       - 'uav/test_source_labels.py'
       - 'experiments/week28-beacon-observers/**'
+      - 'experiments/field-kit/**'
       - '.github/workflows/pi-rssi-observer.yml'
 permissions:
   contents: read
@@ -35,3 +37,4 @@ jobs:
       - run: python3 -m unittest discover -s uav -p test_observer_capture.py -v
       - run: python3 -m unittest discover -s uav -p test_source_labels.py -v
       - run: python3 -m unittest discover -s experiments/week28-beacon-observers -p 'test_*.py' -v
+      - run: python3 -m unittest discover -s experiments/field-kit -p 'test_*.py' -v

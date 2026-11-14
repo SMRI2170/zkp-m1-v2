@@ -25,7 +25,7 @@ from adaptive_scan import AdaptiveScanPlan
 from wifi_beacon_capture import private_output, ODID_PREFIX
 
 
-def parse_scan(text):
+def parse_scan(text,include_unknown=False):
     """Parse iw 5.19-style output, including unknown Vendor IEs (-u).
 
     SSIDs and unrelated vendor data are never returned. Cache timestamps are
@@ -53,14 +53,16 @@ def parse_scan(text):
             bss['cache_age_ms'] = int(match[1])
         elif match := re.fullmatch(r'Vendor specific: OUI ([0-9a-fA-F:]{8}), data:((?: [0-9a-fA-F]{2})*)', value):
             body = bytes.fromhex(match[1].replace(':', '') + match[2].replace(' ', ''))
-            if body.startswith(ODID_PREFIX):
+            if include_unknown or body.startswith(ODID_PREFIX):
                 bss['vendor_bodies'].append(body)
     return results
 
 
-def observations(bss, node_id, polled_at, rules=()):
-    for body in bss['vendor_bodies']:
+def observations(bss, node_id, polled_at, rules=(),include_unknown=False):
+    for body in (bss['vendor_bodies'] or ([b''] if include_unknown else [])):
         try:
+            if not body.startswith(ODID_PREFIX):
+                raise ValueError('VENDOR_IE_UNAVAILABLE' if not body else 'UNCLASSIFIED_VENDOR_IE')
             if len(body) <= 5:
                 raise ValueError('ODID IE has no payload')
             parsed=[m for _,m in parse_rid_payload(body[5:])]
@@ -73,7 +75,8 @@ def observations(bss, node_id, polled_at, rules=()):
         yield dict(
             schema_version='wifi_observation_v1', node_id=node_id, source_type='real_capture',
             observation_kind='linux_scan_cache', rx_phy='wifi_beacon',
-            frame_type='wifi_beacon_remote_id_candidate',
+            frame_type='wifi_beacon_remote_id_candidate' if body.startswith(ODID_PREFIX) else 'wifi_vendor_candidate',
+            vendor_format='opendroneid_candidate' if body.startswith(ODID_PREFIX) else 'unclassified_wifi_candidate',
             polled_at_utc=datetime.fromtimestamp(polled_at, timezone.utc).isoformat(),
             received_at_utc=None if age is None else datetime.fromtimestamp(polled_at - age / 1000, timezone.utc).isoformat(),
             monotonic_time_us=None if bss['observed_boottime_s'] is None else round(bss['observed_boottime_s'] * 1000000),
@@ -162,7 +165,7 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
     if boottime is None:
         boottime = lambda: time.clock_gettime(getattr(time, 'CLOCK_BOOTTIME', time.CLOCK_MONOTONIC))
     seen = set()
-    counts = dict(polls=0, cache_bss_entries=0, odid_records=0, fresh_decoded_records=0,
+    counts = dict(polls=0, cache_bss_entries=0, wifi_candidate_records=0, odid_records=0, fresh_decoded_records=0,
                   duplicate_cache_entries=0, scan_requests=0, scan_accepted=0, scan_failed=0)
     started = monotonic()
     end = started + args.duration
@@ -218,12 +221,12 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
                 if monotonic() >= next_poll:
                     result = run([iw, 'dev', args.interface, 'scan', 'dump', '-u'],
                                  capture_output=True, text=True, timeout=min(2, max(.05, end-monotonic())), check=True)
-                    entries = parse_scan(result.stdout)
+                    entries = parse_scan(result.stdout,getattr(args,'include_unknown_wifi',False))
                     counts['polls'] += 1
                     counts['cache_bss_entries'] += len(entries)
                     for bss in entries:
-                        for row in observations(bss, args.node_id, wall(),rules):
-                            if plan:plan.learn(row,monotonic())
+                        for row in observations(bss, args.node_id, wall(),rules,getattr(args,'include_unknown_wifi',False)):
+                            if plan and row['vendor_format']=='opendroneid_candidate':plan.learn(row,monotonic())
                             key = (bss['bssid'], bss['frequency_mhz'], bss['observed_boottime_s'], row['vendor_content_digest'])
                             if key in seen:
                                 counts['duplicate_cache_entries'] += 1
@@ -240,7 +243,8 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
                             output.flush()
                             if text_output:text_output.write(text_line(row)+'\n');text_output.flush()
                             metrics.add(row)
-                            counts['odid_records'] += 1
+                            counts['wifi_candidate_records'] += 1
+                            counts['odid_records'] += row['vendor_format']=='opendroneid_candidate'
                             counts['fresh_decoded_records'] += row['rid_parse_status'] == 'decoded' and not row['cache_stale']
                     next_poll = monotonic() + args.interval
                 wake = min(end, next_poll, next_scan if args.active_scan else end)
@@ -262,6 +266,7 @@ def capture(args, iw, run=subprocess.run, monotonic=time.monotonic, sleep=time.s
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--interface', default='wlan0')
+    parser.add_argument('--include-unknown-wifi',action='store_true',help='private diagnostic candidates; not identified Remote ID')
     parser.add_argument('--adaptive-scan',action='store_true')
     parser.add_argument('--discovery-interval',type=float,default=30)
     parser.add_argument('--duration', type=int, default=60)
