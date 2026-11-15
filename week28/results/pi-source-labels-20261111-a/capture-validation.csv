@@ -1,0 +1,6 @@
+phase,receiver,operator_role,matching_records,parse_status,identity_verified
+dual,c,onboard_pi,121,decoded,False
+dual,c,drone_reference_pi,121,decoded,False
+invalid,c,onboard_pi_mac_only,53,invalid,False
+id_only,b,unverified_pi_marker,57,decoded,False
+id_only,c,unverified_pi_marker,54,decoded,False

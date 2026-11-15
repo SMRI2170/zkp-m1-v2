@@ -1,0 +1,4 @@
+receiver,runs,child_peak_rss_mean_mib,child_peak_rss_sd_mib,child_peak_rss_max_mib,cgroup_peak_max_mib,cgroup_current_observed_max_mib,host_mem_available_min_mib,ssh_status_max_s
+a,1,23.4453125,,23.4453125,,27.00390625,3230.6171875,0.47690370911732316
+b,1,25.1640625,,25.1640625,,,3415.1484375,0.5132002499885857
+c,2,23.609375,0.027621358640099514,23.62890625,,,540.29296875,0.5392808341421187

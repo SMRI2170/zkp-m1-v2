@@ -1,0 +1,109 @@
+{
+  "research_poc": true,
+  "physical_position_accuracy_verified": false,
+  "actual_dji_test": false,
+  "test_location_visibility": "not_independently_recorded",
+  "raw_coordinates_included": false,
+  "device_serials_included": false,
+  "gnss_hardware_feature_declared_all_three": true,
+  "devices": [
+    {
+      "label": "device-1",
+      "model": "Pixel 6 Pro",
+      "started_by_test": true,
+      "state": "gps_not_observed_within_budget",
+      "originally_active": false,
+      "before_max_fix": 0,
+      "original_scan_label": "スキャン要求：1秒（開発用） · 変更",
+      "temporary_standard_scan": true,
+      "latest": {
+        "new_fix_rows": 0,
+        "gps_fix_rows": 0,
+        "network_fix_rows": 0,
+        "gps_nonmock_rows": 0,
+        "gps_accuracy_reported_m_min": null,
+        "gps_accuracy_reported_m_max": null,
+        "gps_altitude_rows": 0
+      },
+      "stopped_by_test": true,
+      "old_observations_preserved": true,
+      "old_observation_rows": 0,
+      "observation_rows_after": 7,
+      "measurement_s": 122.6,
+      "original_scan_setting_restored": true,
+      "new_wifi_rows": 7,
+      "new_fresh_wifi_rows": 6,
+      "new_wifi_with_rssi": 7,
+      "new_onboard_pi_rows": 7,
+      "wifi_with_receiver_position": 0,
+      "network_reported_accuracy_m_range": null
+    },
+    {
+      "label": "device-2",
+      "model": "ASUS_Z017DA",
+      "started_by_test": true,
+      "state": "gps_not_observed_within_budget",
+      "originally_active": false,
+      "before_max_fix": 0,
+      "latest": {
+        "new_fix_rows": 7,
+        "gps_fix_rows": 0,
+        "network_fix_rows": 7,
+        "gps_nonmock_rows": 0,
+        "gps_accuracy_reported_m_min": null,
+        "gps_accuracy_reported_m_max": null,
+        "gps_altitude_rows": 0
+      },
+      "stopped_by_test": true,
+      "old_observations_preserved": true,
+      "old_observation_rows": 19,
+      "observation_rows_after": 25,
+      "measurement_s": 128.1,
+      "new_wifi_rows": 6,
+      "new_fresh_wifi_rows": 5,
+      "new_wifi_with_rssi": 6,
+      "new_onboard_pi_rows": 6,
+      "wifi_with_receiver_position": 2,
+      "network_reported_accuracy_m_range": [
+        13.569000244140625,
+        100.0
+      ]
+    },
+    {
+      "label": "device-3",
+      "model": "ASUS_Z017DA",
+      "started_by_test": true,
+      "state": "gps_not_observed_within_budget",
+      "originally_active": false,
+      "before_max_fix": 0,
+      "latest": {
+        "new_fix_rows": 0,
+        "gps_fix_rows": 0,
+        "network_fix_rows": 0,
+        "gps_nonmock_rows": 0,
+        "gps_accuracy_reported_m_min": null,
+        "gps_accuracy_reported_m_max": null,
+        "gps_altitude_rows": 0
+      },
+      "stopped_by_test": true,
+      "old_observations_preserved": true,
+      "old_observation_rows": 0,
+      "observation_rows_after": 6,
+      "measurement_s": 127.1,
+      "new_wifi_rows": 6,
+      "new_fresh_wifi_rows": 5,
+      "new_wifi_with_rssi": 6,
+      "new_onboard_pi_rows": 6,
+      "wifi_with_receiver_position": 0,
+      "network_reported_accuracy_m_range": null
+    }
+  ],
+  "first_pixel_attempt": {
+    "state": "start_not_confirmed",
+    "fix_rows": 0,
+    "cause": "not_conclusively_established",
+    "retry_with_standard_scan": true
+  },
+  "gps_zero_meaning": "no_gps_fix_observed_in_this_trial_not_proof_of_no_gps_capability",
+  "wifi_count_meaning": "scan_cache_updates_not_independent_rf_packets"
+}

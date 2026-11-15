@@ -1,0 +1,30 @@
+{
+  "version": "boot-16b00036d09c",
+  "sha256": {
+    "experiments/week28-beacon-observers/analyze_rf_matrix.py": "975c8539616979d1299aa5b864a3d5f3f04fa7a3fc9d9cd7a02a5007c64b2471",
+    "experiments/week28-beacon-observers/analyze_rf_smoke.py": "6a7c39dc30a36f516adb116a5f15cf53de5a9d7e65f93272f891259faa5c1944",
+    "experiments/week28-beacon-observers/benchmark_scan.py": "9ec65e89263f3e2753de29dd68b1cb727db63c4cfd968592827f4a78e41a5741",
+    "experiments/week28-beacon-observers/boot_observer.py": "e3730c45a1f236f1eec9b8c0f3cfa0dbc0cfd3877f037d1cdcf67705af94f53a",
+    "experiments/week28-beacon-observers/install_boot.py": "c06dcacab990cb6c03cf756c1b4e0dfb2d19e643fcd1acf095bbba15910b4a4f",
+    "experiments/week28-beacon-observers/install_node.py": "890ecc01e17656b135cf298e34620c69c43f623bdb791555a92fac34fd1cf2de",
+    "experiments/week28-beacon-observers/plot_scan_profiles.py": "2285e5320986da8c761f6e66c820f47121efa8c30fb6d11c0a4d44c2b9d04567",
+    "experiments/week28-beacon-observers/run_observer.py": "ba099d6dafd0ec7f1d6d29d0df236240c7415133e35218e79a987a8e1f473fef",
+    "experiments/week28-beacon-observers/run_rf_matrix.py": "fcce1c0ae110b18053bc199654c3aacf02095a2649260cbedf9f58af2f16a86a",
+    "experiments/week28-beacon-observers/safe_beacon_tx.py": "01d7f567003063f9ecc05161f238029437acc8d64d282e58abdb17dd42157bf1",
+    "experiments/week28-beacon-observers/start_fast.py": "000de4f27d6a376ff5b6c5e4b0aec95d5cb7800f3dbd83dac9f5af9d0454ae7b",
+    "experiments/week28-beacon-observers/start_marker.py": "b2cc7dade97ad90dc9a4137383c97f6bba4dc82c0a08675391d14ec8ab38e988",
+    "experiments/week28-beacon-observers/test_analyze_rf_smoke.py": "c633ed75cb700a8d24d78f75278b5f04f2decd06fe6387e9c8efe4d656ff5d8b",
+    "experiments/week28-beacon-observers/test_boot_observer.py": "3eb16e7b87d9316a6c72ec085fb59f4ccdf0282312b45105b0f253ec49dcf827",
+    "experiments/week28-beacon-observers/test_matrix_analysis.py": "b4c5659409c6f7e5c080326eeef1b758e73b058cb19f78870521fbd7d926f23d",
+    "experiments/week28-beacon-observers/test_rf_matrix.py": "d092d93ea22ade195c5905c45932fc432fe414a111a8eadd2a9672a7f01e90d7",
+    "experiments/week28-beacon-observers/test_safe_beacon_tx.py": "28e2b9130ff6feb3e09182b61ebfb83bbc4b98ed538efe4fe8877a59c251d7f3",
+    "experiments/week28-beacon-observers/test_start_fast.py": "d654a840ed8f04216ba2e0681bc5f1616c8388fa5f4898e701ec778163936cd4",
+    "experiments/week28-beacon-observers/test_start_marker.py": "3f6425c18f025ecb7563b8b95fa2f0eed3f997d7fac68fed9d2510b9edfbcfe2",
+    "uav/observer_capture.py": "02090e25056434adcdf4f8eb70c78d3ff705be0227db2ea9349a56d34cdebd62",
+    "uav/source_labels.py": "acd010f57cfb246cfcdaf206b68fe5269e2640a61bb677d8488826899bae15b8",
+    "uav/test_wifi_beacon_capture.py": "ae4208a0633f648bb6137add0d679bc750262872586df5181c15c6c9b0c1e1a3",
+    "uav/test_wifi_scan_capture.py": "a62991f1e807c29538e7b4970e67eea4a4a553677196821205ad872d7afdcf26",
+    "uav/wifi_beacon_capture.py": "1247251893a8614a8d0d6a42dec436acf23a749e469c2654997d2e77242ab4cb",
+    "uav/wifi_scan_capture.py": "4e217a33c68fc678e138ce3676605c17a84baed31e2ea30315f974a10b366d5d"
+  }
+}

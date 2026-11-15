@@ -1,0 +1,124 @@
+{
+  "source": "actual_Pi_RF_with_synthetic_test_IDs_not_M350",
+  "receiver_release": "c77bf72bcec0",
+  "dual_and_invalid": {
+    "dual": {
+      "total_rows": 242,
+      "text_rows": 242,
+      "senders": {
+        "a": {
+          "count": 121,
+          "parse_status": [
+            "decoded"
+          ],
+          "configured_roles": [
+            "onboard_pi"
+          ],
+          "claimed_id_count": 1,
+          "text_verified": true,
+          "identity_verified": false,
+          "rssi_missing": 0
+        },
+        "b": {
+          "count": 121,
+          "parse_status": [
+            "decoded"
+          ],
+          "configured_roles": [
+            "drone"
+          ],
+          "claimed_id_count": 1,
+          "text_verified": true,
+          "identity_verified": false,
+          "rssi_missing": 0
+        }
+      },
+      "other_cached_rows": 0,
+      "receiver_exit_code": 0,
+      "temporary_aps_removed": true
+    },
+    "invalid": {
+      "total_rows": 55,
+      "text_rows": 55,
+      "senders": {
+        "a": {
+          "count": 53,
+          "parse_status": [
+            "invalid"
+          ],
+          "configured_roles": [
+            "onboard_pi"
+          ],
+          "claimed_id_count": 0,
+          "text_verified": true,
+          "identity_verified": false,
+          "rssi_missing": 0
+        }
+      },
+      "other_cached_rows": 2,
+      "receiver_exit_code": 0,
+      "temporary_aps_removed": true
+    }
+  },
+  "id_only": {
+    "b": {
+      "matching_rows": 57,
+      "other_rows": 0,
+      "all_text_verified": true,
+      "rssi_present": true,
+      "location_message_count": 0,
+      "source_basis": "unverified_test_marker",
+      "identity_verified": false
+    },
+    "c": {
+      "matching_rows": 54,
+      "other_rows": 0,
+      "all_text_verified": true,
+      "rssi_present": true,
+      "location_message_count": 0,
+      "source_basis": "unverified_test_marker",
+      "identity_verified": false
+    }
+  },
+  "post_run": {
+    "a": {
+      "code_hashes_match": true,
+      "marker_persists_after_reinstall": true,
+      "ssh_connected": true,
+      "transmitter_stopped": true,
+      "temporary_ap_removed": true
+    },
+    "b": {
+      "code_hashes_match": true,
+      "marker_persists_after_reinstall": true,
+      "ssh_connected": true,
+      "transmitter_stopped": true,
+      "temporary_ap_removed": true
+    },
+    "c": {
+      "code_hashes_match": true,
+      "marker_persists_after_reinstall": true,
+      "ssh_connected": true,
+      "transmitter_stopped": true,
+      "temporary_ap_removed": true
+    }
+  },
+  "all_marker_configs_distinct": true,
+  "matched_observations": 406,
+  "unmatched_prior_cache_observations": 2,
+  "authentication": false,
+  "raw_data_published": false,
+  "unexecuted": [
+    "M350 actual reception",
+    "flight",
+    "more than 120 seconds of marker transmission",
+    "GPS integration",
+    "C transmission on existing 5GHz association"
+  ],
+  "local_tests": {
+    "uav": 88,
+    "pi": 26,
+    "go": "passed",
+    "contracts": 48
+  }
+}

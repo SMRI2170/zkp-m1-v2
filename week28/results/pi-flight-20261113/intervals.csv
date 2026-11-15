@@ -1,0 +1,4 @@
+stream,samples_or_updates,median_interval_s,max_interval_s,measurement_kind
+a_sensors,300,0.20000218499990297,0.20274656299807248,sensor_log
+b,166,0.27699999999822467,3.867999999998574,fresh_rssi_kernel_scan_cache
+c,115,0.38799999999901047,3.9680000000007567,fresh_rssi_kernel_scan_cache

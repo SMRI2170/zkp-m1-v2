@@ -1,0 +1,11 @@
+?   	uav/aggregator	[no test files]
+?   	uav/aggregator/cmd/aggregate	[no test files]
+?   	uav/aggregator/cmd/chainpoc	[no test files]
+?   	uav/aggregator/cmd/deviceroot	[no test files]
+ok  	uav/aggregator/cmd/pcd3	(cached)
+?   	uav/aggregator/cmd/verify1	[no test files]
+ok  	uav/aggregator/completeness	(cached)
+ok  	uav/aggregator/membership	(cached)
+ok  	uav/aggregator/nullifier	(cached)
+ok  	uav/aggregator/pcd	(cached)
+?   	uav/aggregator/snarkimport	[no test files]

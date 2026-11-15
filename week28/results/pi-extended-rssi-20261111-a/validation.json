@@ -1,0 +1,65 @@
+{
+  "receiver_release": "aad322252323",
+  "deployed_code_hashes_match_all": true,
+  "code_and_transmitter_format": "controlled_Pi_Beacon_synthetic_RID_claim",
+  "completed_tx_trials": 28,
+  "completed_receiver_processes": 56,
+  "matching_saved_observations": 2256,
+  "missing_rssi_in_matching_observations": 0,
+  "all_channel_definition": "no_frequency_filter_actual_channel_dwell_not_measured",
+  "resource_limits": {
+    "python_rlimit_as_bytes": 134217728,
+    "file_mib": 20,
+    "systemd_memorymax_requested_mib": 128,
+    "cgroup_effective_memory_limit_B_C": "unconfirmed",
+    "memory_peak_metric": "unavailable_all_nodes",
+    "pss": "not_measured"
+  },
+  "cleanup": {
+    "a": {
+      "release": "aad322252323",
+      "code_hashes_match": true,
+      "ssh_connected": true,
+      "no_experiment_units": true,
+      "no_ap_or_hostapd": true
+    },
+    "b": {
+      "release": "aad322252323",
+      "code_hashes_match": true,
+      "ssh_connected": true,
+      "no_experiment_units": true,
+      "no_ap_or_hostapd": true
+    },
+    "c": {
+      "release": "aad322252323",
+      "code_hashes_match": true,
+      "ssh_connected": true,
+      "no_experiment_units": true,
+      "no_ap_or_hostapd": true
+    }
+  },
+  "local_checks": {
+    "uav": 82,
+    "pi_tests": 23,
+    "go": "passed",
+    "contracts": 48
+  },
+  "excluded_attempts": [
+    {
+      "stage": "initial",
+      "result": "SSH_control_path_too_long_before_RF"
+    },
+    {
+      "stage": "pilot",
+      "result": "RF_success_then_false_cleanup_failure_on_unloaded_units_fixed_and_excluded"
+    }
+  ],
+  "unexecuted": [
+    "M350 actual drone",
+    "longer than 90 seconds per receive process",
+    "distance/antenna/EIRP controls",
+    "RSSI calibration",
+    "raw packet capture",
+    "PSS and power consumption"
+  ]
+}

@@ -1,0 +1,26 @@
+test_absent_signal_is_not_zero (test_wifi_beacon_capture.WifiBeaconTests.test_absent_signal_is_not_zero) ... ok
+test_android_vendor_content_matches_pi (test_wifi_beacon_capture.WifiBeaconTests.test_android_vendor_content_matches_pi) ... ok
+test_bad_fcs_rejected_and_fcs_tail_removed (test_wifi_beacon_capture.WifiBeaconTests.test_bad_fcs_rejected_and_fcs_tail_removed) ... ok
+test_extended_presence_words_and_tsft_alignment (test_wifi_beacon_capture.WifiBeaconTests.test_extended_presence_words_and_tsft_alignment) ... ok
+test_invalid_odid_not_valid_observation (test_wifi_beacon_capture.WifiBeaconTests.test_invalid_odid_not_valid_observation) ... ok
+test_other_vendor_and_data_frame_not_remote_id (test_wifi_beacon_capture.WifiBeaconTests.test_other_vendor_and_data_frame_not_remote_id) ... ok
+test_output_permissions_overwrite_and_symlink_rejection (test_wifi_beacon_capture.WifiBeaconTests.test_output_permissions_overwrite_and_symlink_rejection) ... ok
+test_pcap_byte_order_and_timestamp_resolution (test_wifi_beacon_capture.WifiBeaconTests.test_pcap_byte_order_and_timestamp_resolution) ... ok
+test_truncated_frame_not_decoded (test_wifi_beacon_capture.WifiBeaconTests.test_truncated_frame_not_decoded) ... ok
+test_truncated_ie_rejected (test_wifi_beacon_capture.WifiBeaconTests.test_truncated_ie_rejected) ... ok
+test_unbounded_pcap_record_rejected (test_wifi_beacon_capture.WifiBeaconTests.test_unbounded_pcap_record_rejected) ... ok
+test_unsupported_pcapng_or_linktype_rejected (test_wifi_beacon_capture.WifiBeaconTests.test_unsupported_pcapng_or_linktype_rejected) ... ok
+test_busy_backoff_and_deadline_flush_rssi (test_wifi_scan_capture.AcquisitionTests.test_busy_backoff_and_deadline_flush_rssi) ... ok
+test_metrics_do_not_combine_receivers_or_frequencies (test_wifi_scan_capture.AcquisitionTests.test_metrics_do_not_combine_receivers_or_frequencies) ... ok
+test_metrics_use_new_timestamped_rssi_not_polls_or_unknown_signal (test_wifi_scan_capture.AcquisitionTests.test_metrics_use_new_timestamped_rssi_not_polls_or_unknown_signal) ... ok
+test_missing_timestamps_do_not_become_repeated_fresh_rssi (test_wifi_scan_capture.AcquisitionTests.test_missing_timestamps_do_not_become_repeated_fresh_rssi) ... ok
+test_passive_mode_never_requests_scans (test_wifi_scan_capture.AcquisitionTests.test_passive_mode_never_requests_scans) ... ok
+test_missing_signal_and_age_remain_unknown (test_wifi_scan_capture.ScanTests.test_missing_signal_and_age_remain_unknown) ... ok
+test_old_cache_is_not_new_reception (test_wifi_scan_capture.ScanTests.test_old_cache_is_not_new_reception) ... ok
+test_vendor_decode_matches_raw_path_without_inventing_raw_frames (test_wifi_scan_capture.ScanTests.test_vendor_decode_matches_raw_path_without_inventing_raw_frames) ... ok
+test_wrong_vendor_and_short_payload_not_valid_rid (test_wifi_scan_capture.ScanTests.test_wrong_vendor_and_short_payload_not_valid_rid) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.061s
+
+OK

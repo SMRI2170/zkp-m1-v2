@@ -1,0 +1,28 @@
+test_capture_identity_is_attached_without_changing_identifiers (test_observer_capture.CaptureMetadataTests.test_capture_identity_is_attached_without_changing_identifiers) ... ok
+test_validates_opaque_ids_and_uint32_profiles (test_observer_capture.CaptureMetadataTests.test_validates_opaque_ids_and_uint32_profiles) ... ok
+test_shared_key_matches_observers_only_within_same_run (test_observer_capture.EphemeralTagTests.test_shared_key_matches_observers_only_within_same_run) ... ok
+test_tag_encoding_is_unambiguous (test_observer_capture.EphemeralTagTests.test_tag_encoding_is_unambiguous) ... ok
+test_accepts_canonical_and_16_bit_forms (test_observer_capture.ParseServiceUuidTests.test_accepts_canonical_and_16_bit_forms) ... ok
+test_normalizes_but_does_not_confuse_unrelated_uuid (test_observer_capture.ParseServiceUuidTests.test_normalizes_but_does_not_confuse_unrelated_uuid) ... ok
+test_handles_unknown_altitude_and_timestamp (test_observer_capture.RidMessageTests.test_handles_unknown_altitude_and_timestamp) ... ok
+test_log_fields_never_contain_plaintext_uas_id (test_observer_capture.RidMessageTests.test_log_fields_never_contain_plaintext_uas_id) ... ok
+test_parses_authentication_page_zero_without_claiming_verification (test_observer_capture.RidMessageTests.test_parses_authentication_page_zero_without_claiming_verification) ... ok
+test_parses_basic_id_without_changing_id (test_observer_capture.RidMessageTests.test_parses_basic_id_without_changing_id) ... ok
+test_parses_location_fields_and_units (test_observer_capture.RidMessageTests.test_parses_location_fields_and_units) ... ok
+test_parses_message_pack_and_retains_individual_auth_message_bytes (test_observer_capture.RidMessageTests.test_parses_message_pack_and_retains_individual_auth_message_bytes) ... ok
+test_parses_nonzero_authentication_page_as_raw_fragment (test_observer_capture.RidMessageTests.test_parses_nonzero_authentication_page_as_raw_fragment) ... ok
+test_parses_single_message_through_payload_entrypoint (test_observer_capture.RidMessageTests.test_parses_single_message_through_payload_entrypoint) ... ok
+test_preserves_other_assigned_message_type_without_claiming_authenticity (test_observer_capture.RidMessageTests.test_preserves_other_assigned_message_type_without_claiming_authenticity) ... ok
+test_rejects_authentication_page_zero_with_invalid_page_capacity (test_observer_capture.RidMessageTests.test_rejects_authentication_page_zero_with_invalid_page_capacity) ... ok
+test_rejects_malformed_message_pack_headers_and_children (test_observer_capture.RidMessageTests.test_rejects_malformed_message_pack_headers_and_children) ... ok
+test_rejects_wrong_length_version_type_and_coordinate (test_observer_capture.RidMessageTests.test_rejects_wrong_length_version_type_and_coordinate) ... ok
+test_loads_exact_owner_private_32_byte_key (test_observer_capture.SessionKeyFileTests.test_loads_exact_owner_private_32_byte_key) ... ok
+test_rejects_symlink (test_observer_capture.SessionKeyFileTests.test_rejects_symlink) ... ok
+test_rejects_wrong_length_and_permissions (test_observer_capture.SessionKeyFileTests.test_rejects_wrong_length_and_permissions) ... ok
+test_kdf_vector_matches_v2_prover_and_is_run_scoped (test_observer_capture.SessionSaltTests.test_kdf_vector_matches_v2_prover_and_is_run_scoped) ... ok
+test_rejects_invalid_key_and_run_id (test_observer_capture.SessionSaltTests.test_rejects_invalid_key_and_run_id) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.003s
+
+OK

@@ -1,0 +1,15 @@
+test_counter_match_alone_is_not_content_match (test_analyze_rf_smoke.ReceptionSummaryTests.test_counter_match_alone_is_not_content_match) ... ok
+test_missing_rssi_is_not_zero_dbm (test_analyze_rf_smoke.ReceptionSummaryTests.test_missing_rssi_is_not_zero_dbm) ... ok
+test_other_phase_not_counted_as_current_reception (test_analyze_rf_smoke.ReceptionSummaryTests.test_other_phase_not_counted_as_current_reception) ... ok
+test_reference_envelope_accepts_declared_message_counts (test_safe_beacon_tx.TransmitGuards.test_reference_envelope_accepts_declared_message_counts) ... ok
+test_truncated_or_inconsistent_pack_is_rejected (test_safe_beacon_tx.TransmitGuards.test_truncated_or_inconsistent_pack_is_rejected) ... ok
+test_vendor_prefix_and_length_must_match (test_safe_beacon_tx.TransmitGuards.test_vendor_prefix_and_length_must_match) ... ok
+test_wrong_counter_is_not_the_expected_transmission (test_safe_beacon_tx.TransmitGuards.test_wrong_counter_is_not_the_expected_transmission) ... ok
+test_invalid_limits_rejected_before_sudo (test_start_fast.FastCommandTests.test_invalid_limits_rejected_before_sudo) ... ok
+test_privilege_is_scoped_to_timed_service_and_observer_user (test_start_fast.FastCommandTests.test_privilege_is_scoped_to_timed_service_and_observer_user) ... ok
+test_unknown_frequency_does_not_force_a_channel (test_start_fast.FastCommandTests.test_unknown_frequency_does_not_force_a_channel) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.000s
+
+OK

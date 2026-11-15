@@ -1,0 +1,11 @@
+node,scenario,requests,accepted,busy,busy_fraction,broad_completion_median_s
+b,idle,0,0,0,,
+b,fixed_fast,47,47,0,0.0,
+b,broad_probe,12,3,9,0.75,3.6079620130039984
+b,broad_wait,6,6,0,0.0,3.634404149997863
+b,two_requesters,6,3,3,0.5,
+c,idle,0,0,0,,
+c,fixed_fast,46,46,0,0.0,
+c,broad_probe,12,3,9,0.75,3.571914186999493
+c,broad_wait,6,6,0,0.0,3.608056860997749
+c,two_requesters,6,3,3,0.5,

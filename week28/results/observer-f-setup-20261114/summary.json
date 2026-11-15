@@ -1,0 +1,94 @@
+{
+  "status": "PASSED",
+  "rows": 102,
+  "csv_rows": 102,
+  "json_rows": 102,
+  "rssi_rows": 102,
+  "raw_ie_rows": 102,
+  "timestamp_rows": 102,
+  "onboard_pi_rows": 102,
+  "segment_exit_code": 0,
+  "capture": {
+    "counts": {
+      "polls": 212,
+      "cache_bss_entries": 1704,
+      "wifi_candidate_records": 102,
+      "odid_records": 102,
+      "fresh_decoded_records": 102,
+      "duplicate_cache_entries": 96,
+      "scan_requests": 169,
+      "scan_accepted": 163,
+      "scan_failed": 6
+    },
+    "updates": {
+      "rssi_records": 102,
+      "missing_rssi_records": 0,
+      "current_run_timestamped_rssi_updates": 102,
+      "interval_count": 101,
+      "interval_min_s": 0.2570000000014261,
+      "interval_median_s": 0.2819999999992433,
+      "interval_p95_s": 1.397000000000844,
+      "interval_max_s": 8.118999999998778,
+      "interval_basis": "same_bssid_frequency_kernel_cache_timestamp_not_packets"
+    },
+    "elapsed_s": 60.00070772300023,
+    "started_boottime_s": 20100.525813486,
+    "stopped_reason": "duration_complete",
+    "source_type": "real_capture",
+    "observation_kind": "linux_scan_cache",
+    "active_scan_requested": true,
+    "poll_interval_s": 0.25,
+    "scan_request_interval_s": 0.25,
+    "scan_frequency_mhz": null,
+    "scan_strategy": "adaptive",
+    "discovery_interval_s": 30.0,
+    "physical_packet_match": "unconfirmed"
+  },
+  "child_peak_rss_kib": 25600,
+  "memory_available_kib": 566276,
+  "cgroup_controllers": [
+    "cpuset",
+    "cpu",
+    "io",
+    "pids"
+  ],
+  "private_permissions": true,
+  "raw_field_data_included": false,
+  "actual_dji_test": false,
+  "power_cycle_test": "not_executed",
+  "physical_packet_match": "unconfirmed",
+  "device_tests_passed": 52,
+  "wifi_tests_passed": 21,
+  "receiver_auto_start_enabled": true,
+  "receiver_position_configured": false,
+  "cgroup_memory_controller_available": false,
+  "wrapper_child_rlimit_as_mib": 128,
+  "observations_count_semantics": "kernel_scan_cache_updates_not_unique_rf_packets",
+  "previous_reachability_failure": {
+    "ssh": "failed",
+    "tcp_22_from_observer_a": "timed_out",
+    "ping_from_observer_a": false,
+    "receiver_current_state": "unconfirmed",
+    "cause": "unknown",
+    "installation_and_capture_acceptance": "passed_before_disconnect"
+  },
+  "final_reachability": {
+    "ssh_by_verified_ip": "connected",
+    "mdns_hostname_resolution": "failed_at_recheck",
+    "receiver_current_state": "active",
+    "auto_start": "enabled",
+    "service_restart_count": 0,
+    "latest_observation_age_s": 1.33,
+    "recent_segment_records": [
+      102,
+      101,
+      110
+    ]
+  },
+  "reboot_followup": {
+    "uptime_after_reconnect_s": 209.33,
+    "original_acceptance_boottime_s": 20100.525813486,
+    "receiver_active_after_reboot": true,
+    "physical_power_cycle_initiated_by_agent": false
+  }
+}

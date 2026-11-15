@@ -1,0 +1,298 @@
+{
+  "foreground_service_definition": "started_from_visible_activity_with_persistent_notification",
+  "location_request_interval_ms": 1000,
+  "actual_every_second_fix_verified": false,
+  "wifi_scan_request_interval_ms": 30000,
+  "raw_coordinates_included": false,
+  "serials_included": false,
+  "phase_target_seconds": 30,
+  "devices": [
+    {
+      "label": "device-1",
+      "model": "Pixel 6 Pro",
+      "started_by_test": true,
+      "state": "background_test_complete",
+      "originally_active": false,
+      "before_max_fix": 0,
+      "original_scan_label": "スキャン要求：1秒（開発用） · 変更",
+      "temporary_standard_scan": true,
+      "phases": [
+        {
+          "name": "home_screen",
+          "state": "completed",
+          "samples": [
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            }
+          ]
+        },
+        {
+          "name": "screen_off",
+          "state": "completed",
+          "samples": [
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            }
+          ]
+        }
+      ],
+      "stopped_by_test": true,
+      "latest": {
+        "new_fix_rows": 0,
+        "gps_fix_rows": 0,
+        "network_fix_rows": 0,
+        "gps_nonmock_rows": 0,
+        "gps_accuracy_reported_m_min": null,
+        "gps_accuracy_reported_m_max": null,
+        "gps_altitude_rows": 0
+      },
+      "old_observations_preserved": true,
+      "old_observation_rows": 7,
+      "observation_rows_after": 7,
+      "measurement_s": 79.7,
+      "scan_setting_after_test": "standard_30s"
+    },
+    {
+      "label": "device-2",
+      "model": "ASUS_Z017DA",
+      "started_by_test": true,
+      "state": "background_test_complete",
+      "originally_active": false,
+      "before_max_fix": 7,
+      "original_scan_label": "スキャン要求：30秒（標準） · 変更",
+      "phases": [
+        {
+          "name": "home_screen",
+          "state": "completed",
+          "samples": [
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            }
+          ]
+        },
+        {
+          "name": "screen_off",
+          "state": "completed",
+          "samples": [
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            }
+          ]
+        }
+      ],
+      "stopped_by_test": true,
+      "old_observations_preserved": true,
+      "latest": {
+        "new_fix_rows": 7,
+        "gps_fix_rows": 0,
+        "network_fix_rows": 7
+      },
+      "old_observation_rows": 25,
+      "observation_rows_after": 25,
+      "finalization_retry": "noncredential_swipe_dismissed_normal_ui_stop"
+    },
+    {
+      "label": "device-3",
+      "model": "ASUS_Z017DA",
+      "started_by_test": true,
+      "state": "background_test_complete",
+      "originally_active": false,
+      "before_max_fix": 0,
+      "original_scan_label": "スキャン要求：30秒（標準） · 変更",
+      "phases": [
+        {
+          "name": "home_screen",
+          "state": "completed",
+          "samples": [
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": true
+            }
+          ]
+        },
+        {
+          "name": "screen_off",
+          "state": "completed",
+          "samples": [
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            },
+            {
+              "service_present": true,
+              "foreground": true,
+              "screen_awake": false
+            }
+          ]
+        }
+      ],
+      "stopped_by_test": true,
+      "old_observations_preserved": true,
+      "latest": {
+        "new_fix_rows": 0,
+        "gps_fix_rows": 0,
+        "network_fix_rows": 0
+      },
+      "old_observation_rows": 6,
+      "observation_rows_after": 6,
+      "finalization_retry": "noncredential_swipe_dismissed_normal_ui_stop"
+    }
+  ],
+  "foreground_service_is_not_background_autostart": true,
+  "long_term_doze_test": false
+}
