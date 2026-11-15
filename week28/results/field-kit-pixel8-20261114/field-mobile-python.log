@@ -1,0 +1,14 @@
+......Experiment started: foreground / background / screen_off; private evidence is saved incrementally.
+foreground completed
+background completed
+screen_off completed
+Evaluation finished. Run analyze_capture.py on this capture directory.
+..Experiment started: foreground / background / screen_off; private evidence is saved incrementally.
+foreground completed
+background completed
+screen_off completed
+.........
+----------------------------------------------------------------------
+Ran 17 tests in 0.015s
+
+OK

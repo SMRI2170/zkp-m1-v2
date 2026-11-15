@@ -1,0 +1,118 @@
+{
+  "interrupted-phase-summary": {
+    "completion": "interrupted_by_update_not_clean_stop",
+    "old_rows_unchanged": true,
+    "new_observations": 8,
+    "rssi_present": 8,
+    "matched": 6,
+    "location_fixes": 89,
+    "providers": {
+      "network": 9,
+      "gps": 80
+    },
+    "mock_fixes": 0,
+    "accuracy_min_m": 8.551355361938477,
+    "accuracy_median_m": 10.578032493591309
+  },
+  "final-smoke-summary": {
+    "completion": "clean_UI_stop",
+    "new_observations": 2,
+    "rssi_present": 2,
+    "decoded": 2,
+    "location_fixes": 1,
+    "matched": 1,
+    "new_ie_metadata": 2,
+    "home_service_foreground": true,
+    "home_duration_s": 8.26,
+    "home_fixes": 0,
+    "integrity": "ok"
+  },
+  "candidate-summary": {
+    "new_rows": 466,
+    "unclassified_rows": 461,
+    "unclassified_invalid": 461,
+    "unclassified_hex_available": 461,
+    "metadata_only": 0,
+    "ie_access_diagnostics": 466
+  },
+  "export-check": {
+    "downloads_export": true,
+    "csv_rows": 13,
+    "database_rows": 13,
+    "row_count_match": true,
+    "raw_json_readable": true,
+    "location_columns_present": true
+  },
+  "export-check-full": {
+    "downloads_export": true,
+    "csv_rows": 479,
+    "database_rows": 479,
+    "row_count_match": true,
+    "raw_json_readable": true,
+    "location_columns_present": true
+  },
+  "installed-apk-check": {
+    "artifact_hash_match": true,
+    "installed_apk_sha256": "7a5b244727385a1631f9c0b4657de93621b635c92025fbf02cb8050b6cbbe577"
+  },
+  "primary_device": {
+    "model": "Google Pixel 8",
+    "android_api": 37,
+    "app_version": "0.10-field-location"
+  },
+  "checks": {
+    "kmp_jvm_tests": 39,
+    "kmp_android_host_tests": 39,
+    "pixel_instrumentation_fixture_tests": 1,
+    "pi_tests": 50,
+    "field_kit_tests": 1,
+    "mobile_python_tests": 17,
+    "uav_tests": 88,
+    "contracts_tests": 48,
+    "go": "passed",
+    "android_build": "passed",
+    "android_lint": "passed"
+  },
+  "not_verified": [
+    "real_DJI_reception",
+    "independent_30m_field_distance",
+    "long_duration_Doze",
+    "other_modern_Android_models",
+    "Pi_USB_GPS_fix"
+  ],
+  "pi_exports": {
+    "b": {
+      "rows": 167,
+      "csv_json_roundtrip_equal": true,
+      "source_unchanged": true,
+      "private_outputs": true
+    },
+    "c": {
+      "rows": 115,
+      "csv_json_roundtrip_equal": true,
+      "source_unchanged": true,
+      "private_outputs": true
+    }
+  },
+  "pi_source_matches_delivered_kit": true,
+  "kit": {
+    "source_hash": "50a29210d9c00f24332d07bab124e59e55663a7924783a565b74b244448b11c9",
+    "apk_sha256": "7a5b244727385a1631f9c0b4657de93621b635c92025fbf02cb8050b6cbbe577",
+    "zip_sha256": "b7b161a4da6e0712324fe6e64f1de9390730f3fdd51a6b95ec1dfe5438348f12"
+  },
+  "boot-tag-smoke": {
+    "new_rows": 2,
+    "boot_tagged_rows": 2,
+    "integrity": "ok"
+  },
+  "ready_export": {
+    "downloads_export": true,
+    "csv_rows": 481,
+    "database_rows": 481,
+    "row_count_match": true,
+    "raw_json_readable": true,
+    "location_columns_present": true,
+    "boot_scope_column_present": true,
+    "boot_tagged_rows": 2
+  }
+}

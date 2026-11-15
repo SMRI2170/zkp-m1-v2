@@ -1,0 +1,140 @@
+{
+  "version_code": 12,
+  "version_name": "0.12-gps-wifi-permissions",
+  "installation": [
+    {
+      "label": "device-1",
+      "model": "Pixel 6 Pro",
+      "android": "12",
+      "previous_version": 11,
+      "action": "updated",
+      "version_code": 12,
+      "apk_hash_matches": true,
+      "previous_private_files_preserved": 4,
+      "signature_verified": true
+    },
+    {
+      "label": "device-2",
+      "model": "ASUS_Z017DA",
+      "android": "7.0",
+      "previous_version": 11,
+      "action": "updated",
+      "version_code": 12,
+      "apk_hash_matches": true,
+      "previous_private_files_preserved": 13,
+      "signature_verified": true
+    },
+    {
+      "label": "device-3",
+      "model": "ASUS_Z017DA",
+      "android": "7.0",
+      "previous_version": 11,
+      "action": "updated",
+      "version_code": 12,
+      "apk_hash_matches": true,
+      "previous_private_files_preserved": 4,
+      "signature_verified": true
+    }
+  ],
+  "ui_checks": [
+    {
+      "label": "device-1",
+      "model": "Pixel 6 Pro",
+      "android": "12",
+      "version_code": 12,
+      "first_launch_guide_shown": true,
+      "gps_wifi_purpose_explained": true,
+      "existing_grants_preserved": true,
+      "settings_routes_shown": [
+        "位置情報・GPSの設定",
+        "Wi-Fiの設定",
+        "アプリの権限"
+      ],
+      "receiver_not_started_by_guide": true,
+      "system_runtime_dialog_replayed": false,
+      "runtime_dialog_not_replayed_reason": "permissions_already_granted"
+    },
+    {
+      "label": "device-2",
+      "model": "ASUS_Z017DA",
+      "android": "7.0",
+      "version_code": 12,
+      "first_launch_guide_shown": true,
+      "gps_wifi_purpose_explained": true,
+      "existing_grants_preserved": true,
+      "settings_routes_shown": [
+        "位置情報・GPSの設定",
+        "Wi-Fiの設定",
+        "アプリの権限"
+      ],
+      "receiver_not_started_by_guide": true,
+      "system_runtime_dialog_replayed": false,
+      "runtime_dialog_not_replayed_reason": "permissions_already_granted"
+    },
+    {
+      "label": "device-3",
+      "model": "ASUS_Z017DA",
+      "android": "7.0",
+      "version_code": 12,
+      "first_launch_guide_shown": true,
+      "gps_wifi_purpose_explained": true,
+      "existing_grants_preserved": true,
+      "settings_routes_shown": [
+        "位置情報・GPSの設定",
+        "Wi-Fiの設定",
+        "アプリの権限"
+      ],
+      "receiver_not_started_by_guide": true,
+      "system_runtime_dialog_replayed": false,
+      "runtime_dialog_not_replayed_reason": "permissions_already_granted"
+    }
+  ],
+  "data_preservation": [
+    {
+      "label": "device-1",
+      "model": "Pixel 6 Pro",
+      "counts": {
+        "observations": 7,
+        "receiver_fixes": 0
+      },
+      "previous_database_rows_preserved": true,
+      "receiver_stopped": true,
+      "permission_guide_left_visible": true
+    },
+    {
+      "label": "device-2",
+      "model": "ASUS_Z017DA",
+      "counts": {
+        "observations": 25,
+        "receiver_fixes": 14
+      },
+      "previous_database_rows_preserved": true,
+      "receiver_stopped": true,
+      "permission_guide_left_visible": true
+    },
+    {
+      "label": "device-3",
+      "model": "ASUS_Z017DA",
+      "counts": {
+        "observations": 6,
+        "receiver_fixes": 0
+      },
+      "previous_database_rows_preserved": true,
+      "receiver_stopped": true,
+      "permission_guide_left_visible": true
+    }
+  ],
+  "local_checks": {
+    "jvm": 47,
+    "android_host": 47,
+    "python_mobile": 17,
+    "uav": 88,
+    "contracts": 48,
+    "go": "passed",
+    "apk_test_apk_lint": "passed"
+  },
+  "system_permission_dialog_on_ungranted_device": "not_executed_all_connected_devices_already_granted",
+  "automatic_permission_grant": false,
+  "raw_field_data_included": false,
+  "serials_included": false
+}

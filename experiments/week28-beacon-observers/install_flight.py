@@ -7,6 +7,7 @@ import hashlib
 from pathlib import Path
 import pwd
 import subprocess
+import sys
 from run_observer import read_config
 
 
@@ -65,8 +66,18 @@ WantedBy=multi-user.target
     return {'zkp-flight-sensors.service':sensor,'zkp-flight-marker.service':beacon}
 
 
+def activate_services(root, names, with_receiver=False):
+    """Receiver is an explicit opt-in; never replace the operator's source registry."""
+    if not with_receiver:
+        subprocess.run(['systemctl','disable','--now','zkp-rid-observer.service'],check=True)
+    subprocess.run(['systemctl','enable','--now',*names],check=True)
+    if with_receiver:
+        subprocess.run([sys.executable,str(root/'experiments/week28-beacon-observers/install_boot.py'),'--enable'],check=True)
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--enable',required=True,action='store_true');p.add_argument('--gps-port')
+    p.add_argument('--with-receiver',action='store_true',help='A only: also enable RID capture; one-radio scans can interrupt Beacon airtime')
     a=p.parse_args()
     if os.getuid()!=0:p.error('explicit installation requires sudo')
     root=Path(__file__).resolve().parents[2];base=root.parent.parent
@@ -101,9 +112,8 @@ def main():
         target.write_text(text);target.chmod(0o644)
         subprocess.run(['systemd-analyze','verify',str(target)],check=True)
     subprocess.run(['systemctl','daemon-reload'],check=True)
-    subprocess.run(['systemctl','disable','--now','zkp-rid-observer.service'],check=True)
-    subprocess.run(['systemctl','enable','--now',*contents],check=True)
-    print('A_FLIGHT_SENSOR_AND_STUDY_MARKER_ENABLED')
+    activate_services(root,contents,a.with_receiver)
+    print('A_FLIGHT_SENSOR_AND_STUDY_MARKER_ENABLED'+('_WITH_RECEIVER' if a.with_receiver else ''))
 
 
 if __name__=='__main__':main()

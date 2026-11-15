@@ -46,6 +46,7 @@ def main():
     parser.add_argument('--scan-interval', type=float, default=1)
     parser.add_argument('--frequency', type=int)
     parser.add_argument('--source-registry',type=Path)
+    parser.add_argument('--include-unknown-wifi',action='store_true')
     parser.add_argument('--adaptive-scan',action='store_true')
     parser.add_argument('--discovery-interval',type=float,default=30)
     args = parser.parse_args()
@@ -77,6 +78,7 @@ def main():
                    '--node-id', cfg['node_id'], '--duration', str(args.duration), '--interval', str(args.interval),
                    '--output', str(folder / 'observations.jsonl'), '--events', str(folder / 'events.jsonl'),
                    '--text-output',str(folder / 'observations.txt')]
+        if args.include_unknown_wifi:command+=['--include-unknown-wifi']
         if args.adaptive_scan:command+=['--adaptive-scan','--discovery-interval',str(args.discovery_interval)]
         if args.source_registry:command+=['--source-registry',str(args.source_registry)]
         if args.active_scan:

@@ -1,0 +1,90 @@
+{
+  "research_poc": true,
+  "aircraft_authentication": false,
+  "test_source": "synthetic_pi_id_over_real_rf",
+  "actual_dji_test": false,
+  "single_channel_capture": {
+    "duration_s": 30,
+    "counts": {
+      "polls": 112,
+      "cache_bss_entries": 554,
+      "wifi_candidate_records": 59,
+      "odid_records": 59,
+      "fresh_decoded_records": 59,
+      "duplicate_cache_entries": 52,
+      "scan_requests": 59,
+      "scan_accepted": 59,
+      "scan_failed": 0
+    },
+    "updates": {
+      "rssi_records": 59,
+      "missing_rssi_records": 0,
+      "current_run_timestamped_rssi_updates": 59,
+      "interval_count": 58,
+      "interval_min_s": 0.5040000000008149,
+      "interval_median_s": 0.5089999999981956,
+      "interval_p95_s": 0.5131499999923108,
+      "interval_max_s": 0.5260000000125729,
+      "interval_basis": "same_bssid_frequency_kernel_cache_timestamp_not_packets"
+    },
+    "exit_code": 0,
+    "physical_packet_match": "unconfirmed"
+  },
+  "gps_beacon_rx": {
+    "service": "active",
+    "a_observations": 71,
+    "exact_payload_matches": 70,
+    "location_records": 70,
+    "rssi_present": 70,
+    "gps_altitude_present": 70,
+    "baro_altitude_present": 70,
+    "partial_lines_excluded": 0,
+    "physical_packet_match": "unconfirmed"
+  },
+  "b_c_modified": false,
+  "power_cycle_test": "not_executed",
+  "raw_field_data_included": false,
+  "persistent_adaptive_capture": {
+    "test_source_rows": 90,
+    "with_rssi": 90,
+    "fresh": 90,
+    "test_source_duration_s": 40,
+    "scan_request_interval_s": 0.25,
+    "physical_packet_match": "unconfirmed",
+    "completed_segments_before_source_overlap": [
+      {
+        "polls": 204,
+        "cache_bss_entries": 2717,
+        "wifi_candidate_records": 0,
+        "odid_records": 0,
+        "fresh_decoded_records": 0,
+        "duplicate_cache_entries": 0,
+        "scan_requests": 35,
+        "scan_accepted": 9,
+        "scan_failed": 26
+      },
+      {
+        "polls": 204,
+        "cache_bss_entries": 2618,
+        "wifi_candidate_records": 0,
+        "odid_records": 0,
+        "fresh_decoded_records": 0,
+        "duplicate_cache_entries": 0,
+        "scan_requests": 35,
+        "scan_accepted": 9,
+        "scan_failed": 26
+      },
+      {
+        "polls": 224,
+        "cache_bss_entries": 1095,
+        "wifi_candidate_records": 0,
+        "odid_records": 0,
+        "fresh_decoded_records": 0,
+        "duplicate_cache_entries": 0,
+        "scan_requests": 35,
+        "scan_accepted": 9,
+        "scan_failed": 26
+      }
+    ]
+  }
+}
