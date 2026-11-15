@@ -1,0 +1,312 @@
+{
+  "version": "0.13-fastest-scan",
+  "devices": [
+    {
+      "label": "device-1",
+      "model": "Pixel 6 Pro",
+      "sdk": 31,
+      "started": true,
+      "phases": [
+        {
+          "name": "foreground",
+          "start_us": 68522000000,
+          "samples": [
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            }
+          ],
+          "end_us": 68542179999,
+          "fresh_rows": 10,
+          "median_s": 2.105941
+        },
+        {
+          "name": "home",
+          "start_us": 68542420000,
+          "samples": [
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            }
+          ],
+          "end_us": 68563990000,
+          "fresh_rows": 10,
+          "median_s": 2.122889
+        },
+        {
+          "name": "screen_off",
+          "start_us": 68564220000,
+          "samples": [
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            }
+          ],
+          "end_us": 68585789999,
+          "fresh_rows": 11,
+          "median_s": 2.1155805
+        }
+      ],
+      "before_max_obs": 7,
+      "before_max_event": 23,
+      "mode": "fastest",
+      "receiver_stopped": true,
+      "old_rows_preserved": true,
+      "result": {
+        "fresh_test_source_rows": 35,
+        "interval_samples": 34,
+        "interval_median_s": 2.1144235,
+        "interval_max_s": 2.530624,
+        "request_events": 71,
+        "requests_accepted": 71,
+        "requests_rejected": 0,
+        "effective_request_intervals_ms": [
+          1000
+        ],
+        "throttle_api_states": [
+          false
+        ],
+        "policy_routes": [
+          "public_throttle_api"
+        ]
+      }
+    },
+    {
+      "label": "device-2",
+      "model": "ASUS_Z017DA",
+      "sdk": 24,
+      "started": true,
+      "phases": [
+        {
+          "name": "foreground",
+          "start_us": 325614050000,
+          "samples": [
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            }
+          ],
+          "end_us": 325634250000,
+          "fresh_rows": 11,
+          "median_s": 1.0611645
+        },
+        {
+          "name": "home",
+          "start_us": 325635180000,
+          "samples": [
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            }
+          ],
+          "end_us": 325656040000,
+          "fresh_rows": 11,
+          "median_s": 1.0629355
+        },
+        {
+          "name": "screen_off",
+          "start_us": 325657010000,
+          "samples": [
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            }
+          ],
+          "end_us": 325677850000,
+          "fresh_rows": 11,
+          "median_s": 1.0808605
+        }
+      ],
+      "before_max_obs": 25,
+      "before_max_event": 24,
+      "mode": "fastest",
+      "receiver_stopped": true,
+      "old_rows_preserved": true,
+      "result": {
+        "fresh_test_source_rows": 45,
+        "interval_samples": 44,
+        "interval_median_s": 1.0589680000000001,
+        "interval_max_s": 3.584981,
+        "request_events": 75,
+        "requests_accepted": 75,
+        "requests_rejected": 0,
+        "effective_request_intervals_ms": [
+          1000
+        ],
+        "throttle_api_states": [
+          null
+        ],
+        "policy_routes": [
+          "pre26_best_effort_vendor_limits_unverified"
+        ]
+      }
+    },
+    {
+      "label": "device-3",
+      "model": "ASUS_Z017DA",
+      "sdk": 24,
+      "started": true,
+      "phases": [
+        {
+          "name": "foreground",
+          "start_us": 147483120000,
+          "samples": [
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            }
+          ],
+          "end_us": 147503330000,
+          "fresh_rows": 7,
+          "median_s": 2.585207
+        },
+        {
+          "name": "home",
+          "start_us": 147504910000,
+          "samples": [
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            }
+          ],
+          "end_us": 147525110000,
+          "fresh_rows": 8,
+          "median_s": 2.589605
+        },
+        {
+          "name": "screen_off",
+          "start_us": 147526720000,
+          "samples": [
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            },
+            {
+              "foreground_service": true
+            }
+          ],
+          "end_us": 147546930000,
+          "fresh_rows": 8,
+          "median_s": 2.700481
+        }
+      ],
+      "before_max_obs": 6,
+      "before_max_event": 24,
+      "mode": "fastest",
+      "receiver_stopped": true,
+      "old_rows_preserved": true,
+      "result": {
+        "fresh_test_source_rows": 31,
+        "interval_samples": 30,
+        "interval_median_s": 2.6383285,
+        "interval_max_s": 2.87806,
+        "request_events": 79,
+        "requests_accepted": 79,
+        "requests_rejected": 0,
+        "effective_request_intervals_ms": [
+          1000
+        ],
+        "throttle_api_states": [
+          null
+        ],
+        "policy_routes": [
+          "pre26_best_effort_vendor_limits_unverified"
+        ]
+      }
+    }
+  ],
+  "source": "controlled_synthetic_pi_basic_id_real_rf",
+  "actual_dji_test": false,
+  "source_rf_max_seconds": 120,
+  "source_service_runtime_max_seconds": 145,
+  "source_started_confirmed": true,
+  "source_stop_confirmation": "unavailable_ssh_timeout_after_measurement",
+  "source_receiver_before_test": "failed_capture_budget_reached",
+  "a_continuous_tx_before_test": "failed_tx_capture_budget_reached",
+  "pixel_developer_throttle_off": "confirmed_by_app_public_api",
+  "legacy_throttle_state": "not_available_not_claimed_disabled",
+  "long_term_battery_doze": "not_tested",
+  "usb_powered": true,
+  "distance_orientation": "not_independently_recorded",
+  "raw_field_data_included": false,
+  "physical_packet_match": "unconfirmed",
+  "setup_failures_excluded": 2,
+  "tests": {
+    "jvm": 50,
+    "android_host": 50,
+    "mobile_python": 17,
+    "uav": 88,
+    "contracts": 48,
+    "go": "passed",
+    "apk_test_apk_lint": "passed"
+  }
+}

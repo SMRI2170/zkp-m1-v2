@@ -1,0 +1,74 @@
+{
+  "version_code": 11,
+  "version_name": "0.11-permission-guide",
+  "connected_device_count": 3,
+  "devices": [
+    {
+      "label": "device-1",
+      "model": "Pixel 6 Pro",
+      "android": "12",
+      "previous_version": 11,
+      "action": "already_current",
+      "version_code": 11,
+      "apk_hash_matches": true,
+      "data_unchanged_by_update": true
+    },
+    {
+      "label": "device-2",
+      "model": "ASUS_Z017DA",
+      "android": "7.0",
+      "previous_version": 10,
+      "action": "updated",
+      "version_code": 11,
+      "apk_hash_matches": true,
+      "previous_private_files_preserved": 13,
+      "signature_verified": true
+    },
+    {
+      "label": "device-3",
+      "model": "ASUS_Z017DA",
+      "android": "7.0",
+      "previous_version": null,
+      "action": "installed",
+      "version_code": 11,
+      "apk_hash_matches": true,
+      "previous_private_files_preserved": null,
+      "signature_verified": true
+    }
+  ],
+  "launch_checks": [
+    {
+      "label": "device-2",
+      "model": "ASUS_Z017DA",
+      "launch_success": true,
+      "process_alive": true,
+      "no_target_fatal_exception": true,
+      "app_ui_seen": true,
+      "permission_dialog_seen": false,
+      "automatic_permission_grant": false,
+      "receiver_started_by_agent": false,
+      "unrelated_play_store_crash_dialog_dismissed": true
+    },
+    {
+      "label": "device-3",
+      "model": "ASUS_Z017DA",
+      "launch_success": true,
+      "process_alive": true,
+      "no_target_fatal_exception": true,
+      "app_ui_seen": true,
+      "permission_dialog_seen": false,
+      "automatic_permission_grant": false,
+      "receiver_started_by_agent": false
+    }
+  ],
+  "updated_asus_data_preservation": {
+    "previous_observation_rows": 19,
+    "current_observation_rows": 19,
+    "existing_observations_preserved": true
+  },
+  "raw_field_data_included": false,
+  "serials_included": false,
+  "permissions_granted_by_agent": false,
+  "receiver_started_by_agent": false,
+  "rf_test_this_session": false
+}
