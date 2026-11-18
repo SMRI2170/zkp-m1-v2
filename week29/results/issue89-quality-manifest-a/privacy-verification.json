@@ -1,0 +1,8 @@
+{
+  "public_files_checked": 10,
+  "raw_fields_absent": true,
+  "target_identity_absent": true,
+  "private_permissions_verified": true,
+  "initial_literal_boot_scan": "false_positive_short_numeric_boot_labels_matched_aggregate_numbers",
+  "recheck": "field-aware JSON/CSV schema and actual target identity scan"
+}

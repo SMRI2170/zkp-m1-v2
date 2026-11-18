@@ -1,0 +1,13 @@
+{
+  "fieldkit_tests": 12,
+  "pi_tests": 58,
+  "uav_tests": 88,
+  "go_tests": "PASS",
+  "contracts_tests": 48,
+  "monitor_early_exit_verified": true,
+  "private_permissions_verified": true,
+  "source_hash_matches_run": true,
+  "actual_id_leaks": 0,
+  "ci": "NOT_RUN",
+  "deployment": "NOT_EXECUTED"
+}

@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/opendroneid/opendroneid-core-c",
+  "commit": "849c03adbe0cdd68997a462fafab397edcfe53f3",
+  "files": {
+    "opendroneid.h": "a60b9b38c4fa82d7c85437dc11f57f0dea4ebf8bb4b90b3ff3c21c585ccd55f4",
+    "opendroneid.c": "60b0964f5f2a0dc13833eb6a304f7bd3f64bb9c227fae168c7caba53c82927c2"
+  },
+  "purpose": "offline compatibility analysis only; production parser and proof admission unchanged"
+}

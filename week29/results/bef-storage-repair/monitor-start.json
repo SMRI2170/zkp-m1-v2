@@ -1,0 +1,35 @@
+[
+  {
+    "node": "B",
+    "script_sha256": "17984bbca9b20a9cbcc1fbcf79575f5c1451b87b8f9982de3f5580789e5364b3",
+    "duration_s": 300,
+    "interval_s": 15,
+    "roles": [
+      "receiver"
+    ],
+    "started": true,
+    "completed": false
+  },
+  {
+    "node": "E",
+    "script_sha256": "17984bbca9b20a9cbcc1fbcf79575f5c1451b87b8f9982de3f5580789e5364b3",
+    "duration_s": 300,
+    "interval_s": 15,
+    "roles": [
+      "receiver"
+    ],
+    "started": true,
+    "completed": false
+  },
+  {
+    "node": "F",
+    "script_sha256": "17984bbca9b20a9cbcc1fbcf79575f5c1451b87b8f9982de3f5580789e5364b3",
+    "duration_s": 300,
+    "interval_s": 15,
+    "roles": [
+      "receiver"
+    ],
+    "started": true,
+    "completed": false
+  }
+]

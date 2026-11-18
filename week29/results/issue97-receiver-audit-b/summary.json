@@ -1,0 +1,38 @@
+{
+  "operation": "READ_ONLY_AUDIT_AND_MONITOR",
+  "source_sha256": "57302573167785752f5602f4458cdcfaf18361ee5950d5ac62fa16e15ae2598a",
+  "reason": "ONE_AUDIT_COMPLETE",
+  "requested_duration_s": 0,
+  "wall_elapsed_s": 25.04,
+  "deployments_executed": 0,
+  "services_restarted": 0,
+  "captures_deleted": 0,
+  "four_hour_capture_verified": false,
+  "nodes": {
+    "B": {
+      "samples": 1,
+      "last_state": "CONNECTION_NOT_ESTABLISHED",
+      "deployment": "NOT_EXECUTED"
+    },
+    "C": {
+      "samples": 1,
+      "last_state": "CONNECTION_NOT_ESTABLISHED",
+      "deployment": "NOT_EXECUTED"
+    },
+    "D": {
+      "samples": 1,
+      "last_state": "CONNECTION_NOT_ESTABLISHED",
+      "deployment": "NOT_EXECUTED"
+    },
+    "E": {
+      "samples": 1,
+      "last_state": "CONNECTION_NOT_ESTABLISHED",
+      "deployment": "NOT_EXECUTED"
+    },
+    "F": {
+      "samples": 1,
+      "last_state": "CONNECTION_NOT_ESTABLISHED",
+      "deployment": "NOT_EXECUTED"
+    }
+  }
+}

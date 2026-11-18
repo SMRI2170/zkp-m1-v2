@@ -1,0 +1,278 @@
+{
+  "nodes": {
+    "B": {
+      "valid_time_rows": 531,
+      "unknown_time_rows": 0,
+      "time_hold_reasons": {},
+      "input_unchanged": true,
+      "cache_stale_rows": 0,
+      "freshness_unknown_rows": 0,
+      "clock_groups": [
+        {
+          "clock_group": "G1",
+          "rows": 531,
+          "retained_observation_keys": 507,
+          "repeated_observation_keys": 24,
+          "distinct_pack_contents": 503,
+          "consecutive_same_pack_rows": 4,
+          "content_change_events": 503,
+          "within_group_span_s": 7932.462,
+          "cache_update_intervals_s": {
+            "n": 506,
+            "min": 0.5180000000000291,
+            "median": 1.5929999999998472,
+            "p95": 10.7800000000002,
+            "max": 3617.618
+          },
+          "pack_change_intervals_s": {
+            "n": 502,
+            "min": 0.5180000000000291,
+            "median": 1.5939999999998236,
+            "p95": 10.792000000000098,
+            "max": 3619.1919999999996
+          },
+          "cache_update_intervals_at_most_60s": {
+            "n": 502,
+            "min": 0.5180000000000291,
+            "median": 1.5929999999998472,
+            "p95": 9.752150000000027,
+            "max": 38.8700000000008
+          },
+          "cache_gaps_over_60s": 4
+        }
+      ],
+      "saved_rows": 531,
+      "observation_keys": 507,
+      "repeated_observation_keys": 24,
+      "distinct_pack_contents": 503,
+      "consecutive_same_pack_rows": 4,
+      "content_change_events": 503,
+      "cache_update_intervals_s": {
+        "n": 506,
+        "min": 0.5180000000000291,
+        "median": 1.5929999999998472,
+        "p95": 10.7800000000002,
+        "max": 3617.618
+      },
+      "pack_change_intervals_s": {
+        "n": 502,
+        "min": 0.5180000000000291,
+        "median": 1.5939999999998236,
+        "p95": 10.792000000000098,
+        "max": 3619.1919999999996
+      }
+    },
+    "Pixel": {
+      "valid_time_rows": 132,
+      "unknown_time_rows": 0,
+      "time_hold_reasons": {},
+      "input_unchanged": true,
+      "cache_stale_rows": 0,
+      "freshness_unknown_rows": 0,
+      "clock_groups": [
+        {
+          "clock_group": "G1",
+          "rows": 132,
+          "retained_observation_keys": 132,
+          "repeated_observation_keys": 0,
+          "distinct_pack_contents": 132,
+          "consecutive_same_pack_rows": 0,
+          "content_change_events": 132,
+          "within_group_span_s": 7928.442862000025,
+          "cache_update_intervals_s": {
+            "n": 131,
+            "min": 2.0157579999940936,
+            "median": 8.52249900001334,
+            "p95": 67.67133850000391,
+            "max": 3580.1073040000047
+          },
+          "pack_change_intervals_s": {
+            "n": 131,
+            "min": 2.0157579999940936,
+            "median": 8.52249900001334,
+            "p95": 67.67133850000391,
+            "max": 3580.1073040000047
+          },
+          "cache_update_intervals_at_most_60s": {
+            "n": 124,
+            "min": 2.0157579999940936,
+            "median": 8.50293299999612,
+            "p95": 35.94550600000366,
+            "max": 56.94709000000148
+          },
+          "cache_gaps_over_60s": 7
+        }
+      ],
+      "saved_rows": 132,
+      "observation_keys": 132,
+      "repeated_observation_keys": 0,
+      "distinct_pack_contents": 132,
+      "consecutive_same_pack_rows": 0,
+      "content_change_events": 132,
+      "cache_update_intervals_s": {
+        "n": 131,
+        "min": 2.0157579999940936,
+        "median": 8.52249900001334,
+        "p95": 67.67133850000391,
+        "max": 3580.1073040000047
+      },
+      "pack_change_intervals_s": {
+        "n": 131,
+        "min": 2.0157579999940936,
+        "median": 8.52249900001334,
+        "p95": 67.67133850000391,
+        "max": 3580.1073040000047
+      }
+    },
+    "ASUS-1": {
+      "valid_time_rows": 146,
+      "unknown_time_rows": 0,
+      "time_hold_reasons": {},
+      "input_unchanged": true,
+      "cache_stale_rows": 0,
+      "freshness_unknown_rows": 0,
+      "clock_groups": [
+        {
+          "clock_group": "G1",
+          "rows": 146,
+          "retained_observation_keys": 146,
+          "repeated_observation_keys": 0,
+          "distinct_pack_contents": 40,
+          "consecutive_same_pack_rows": 106,
+          "content_change_events": 40,
+          "within_group_span_s": 3738.024317000003,
+          "cache_update_intervals_s": {
+            "n": 144,
+            "min": 2.6607380000059493,
+            "median": 2.808560999998008,
+            "p95": 46.15090949999282,
+            "max": 1650.789917999995
+          },
+          "pack_change_intervals_s": {
+            "n": 38,
+            "min": 2.724698999983957,
+            "median": 19.69035299999814,
+            "p95": 299.79504759996655,
+            "max": 1659.2179030000116
+          },
+          "cache_update_intervals_at_most_60s": {
+            "n": 141,
+            "min": 2.6607380000059493,
+            "median": 2.8074869999836665,
+            "p95": 35.85228299998562,
+            "max": 59.291987000004156
+          },
+          "cache_gaps_over_60s": 3
+        }
+      ],
+      "saved_rows": 146,
+      "observation_keys": 146,
+      "repeated_observation_keys": 0,
+      "distinct_pack_contents": 40,
+      "consecutive_same_pack_rows": 106,
+      "content_change_events": 40,
+      "cache_update_intervals_s": {
+        "n": 144,
+        "min": 2.6607380000059493,
+        "median": 2.808560999998008,
+        "p95": 46.15090949999282,
+        "max": 1650.789917999995
+      },
+      "pack_change_intervals_s": {
+        "n": 38,
+        "min": 2.724698999983957,
+        "median": 19.69035299999814,
+        "p95": 299.79504759996655,
+        "max": 1659.2179030000116
+      }
+    },
+    "ASUS-2": {
+      "valid_time_rows": 46,
+      "unknown_time_rows": 0,
+      "time_hold_reasons": {},
+      "input_unchanged": true,
+      "cache_stale_rows": 0,
+      "freshness_unknown_rows": 0,
+      "clock_groups": [
+        {
+          "clock_group": "G1",
+          "rows": 46,
+          "retained_observation_keys": 46,
+          "repeated_observation_keys": 0,
+          "distinct_pack_contents": 12,
+          "consecutive_same_pack_rows": 34,
+          "content_change_events": 12,
+          "within_group_span_s": 593.0559290000238,
+          "cache_update_intervals_s": {
+            "n": 45,
+            "min": 2.624000999960117,
+            "median": 2.7153280000202358,
+            "p95": 73.64363540000039,
+            "max": 137.69378400000278
+          },
+          "pack_change_intervals_s": {
+            "n": 11,
+            "min": 5.432065999950282,
+            "median": 32.44361999997636,
+            "p95": 128.87284699999145,
+            "max": 145.9019059999846
+          },
+          "cache_update_intervals_at_most_60s": {
+            "n": 42,
+            "min": 2.624000999960117,
+            "median": 2.71278249999159,
+            "p95": 24.210816749971116,
+            "max": 43.4775929999887
+          },
+          "cache_gaps_over_60s": 3
+        }
+      ],
+      "saved_rows": 46,
+      "observation_keys": 46,
+      "repeated_observation_keys": 0,
+      "distinct_pack_contents": 12,
+      "consecutive_same_pack_rows": 34,
+      "content_change_events": 12,
+      "cache_update_intervals_s": {
+        "n": 45,
+        "min": 2.624000999960117,
+        "median": 2.7153280000202358,
+        "p95": 73.64363540000039,
+        "max": 137.69378400000278
+      },
+      "pack_change_intervals_s": {
+        "n": 11,
+        "min": 5.432065999950282,
+        "median": 32.44361999997636,
+        "p95": 128.87284699999145,
+        "max": 145.9019059999846
+      }
+    },
+    "Pixel8": {
+      "valid_time_rows": 0,
+      "unknown_time_rows": 0,
+      "time_hold_reasons": {},
+      "input_unchanged": true,
+      "cache_stale_rows": 0,
+      "freshness_unknown_rows": 0,
+      "clock_groups": [],
+      "saved_rows": 0,
+      "observation_keys": 0,
+      "repeated_observation_keys": 0,
+      "distinct_pack_contents": 0,
+      "consecutive_same_pack_rows": 0,
+      "content_change_events": 0,
+      "cache_update_intervals_s": {
+        "n": 0
+      },
+      "pack_change_intervals_s": {
+        "n": 0
+      }
+    }
+  },
+  "comparison_scope": "descriptive only; placement, settings and capture windows not controlled",
+  "physical_packet_count_known": false,
+  "transmission_denominator_known": false,
+  "packet_delivery_rate": "NOT_EVALUABLE",
+  "code_sha256": "2060c9870a17ed939d958e0acd96b8cced790a4677599118a05d9d3cb3edc78e"
+}

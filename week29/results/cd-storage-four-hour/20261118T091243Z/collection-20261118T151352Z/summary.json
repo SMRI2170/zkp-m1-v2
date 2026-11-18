@@ -1,0 +1,58 @@
+[
+  {
+    "node": "C",
+    "result_collected": true,
+    "completed_planned_duration": true,
+    "real_drone_reception_verified": false,
+    "summary_present": true,
+    "requested_duration_s": 14400,
+    "elapsed_s": 14400.000337234997,
+    "fault_samples": 0,
+    "samples": 437,
+    "stopped_by_signal": false,
+    "host_memory_available_min_bytes": 553103360,
+    "disk_free_min_bytes": 51855167488,
+    "observed_records_min": 0,
+    "observed_records_max": 0,
+    "observed_session_bytes_max": 5913271,
+    "service_cpu_ns_delta": 3328007500000,
+    "phase_samples": {
+      "WAITING": 437
+    },
+    "current_receiver_active": true,
+    "monitor_unit": {
+      "Result": "success",
+      "ExecMainStatus": "0",
+      "ActiveState": "inactive"
+    },
+    "scope": "recorder health and storage monitoring; WAITING is not actual drone reception"
+  },
+  {
+    "node": "D",
+    "result_collected": true,
+    "completed_planned_duration": true,
+    "real_drone_reception_verified": false,
+    "summary_present": true,
+    "requested_duration_s": 14400,
+    "elapsed_s": 14400.000237255004,
+    "fault_samples": 0,
+    "samples": 452,
+    "stopped_by_signal": false,
+    "host_memory_available_min_bytes": 3527696384,
+    "disk_free_min_bytes": 21330808832,
+    "observed_records_min": 0,
+    "observed_records_max": 0,
+    "observed_session_bytes_max": 6142731,
+    "service_cpu_ns_delta": 1954624078000,
+    "phase_samples": {
+      "WAITING": 452
+    },
+    "current_receiver_active": true,
+    "monitor_unit": {
+      "Result": "success",
+      "ExecMainStatus": "0",
+      "ActiveState": "inactive"
+    },
+    "scope": "recorder health and storage monitoring; WAITING is not actual drone reception"
+  }
+]

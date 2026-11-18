@@ -1,0 +1,28 @@
+{
+  "operation": "READ_ONLY_AUDIT_AND_MONITOR",
+  "source_sha256": "ed6901ae08bb6787ceeb27903aa7d309ab658da1970ad9f157ee05b3686d6952",
+  "reason": "ONE_AUDIT_COMPLETE",
+  "requested_duration_s": 0,
+  "wall_elapsed_s": 2.489,
+  "deployments_executed": 0,
+  "services_restarted": 0,
+  "captures_deleted": 0,
+  "four_hour_capture_verified": false,
+  "nodes": {
+    "B": {
+      "samples": 1,
+      "last_state": "CONNECTION_NOT_ESTABLISHED",
+      "deployment": "NOT_EXECUTED"
+    },
+    "E": {
+      "samples": 1,
+      "last_state": "CONNECTION_NOT_ESTABLISHED",
+      "deployment": "NOT_EXECUTED"
+    },
+    "F": {
+      "samples": 1,
+      "last_state": "CONNECTION_NOT_ESTABLISHED",
+      "deployment": "NOT_EXECUTED"
+    }
+  }
+}

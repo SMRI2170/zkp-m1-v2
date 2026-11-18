@@ -1,0 +1,1007 @@
+{
+  "nodes": {
+    "A": {
+      "snapshot_files": 7181,
+      "snapshot_bytes": 839175724,
+      "baseline_manifest_entries": 7181,
+      "baseline_hashes_verified": true,
+      "additional_files": 0,
+      "scopes": {
+        "R01/rx": {
+          "files": 2,
+          "bytes": 15083,
+          "valid_rows": 7
+        },
+        "R01/metadata": {
+          "files": 2,
+          "bytes": 1383
+        },
+        "R02/event": {
+          "files": 1,
+          "bytes": 1449,
+          "valid_rows": 12
+        },
+        "R02/rx": {
+          "files": 1,
+          "bytes": 0,
+          "identical_file_skipped": 1
+        },
+        "R02/metadata": {
+          "files": 1,
+          "bytes": 1311
+        },
+        "R03/event": {
+          "files": 1,
+          "bytes": 5005,
+          "valid_rows": 41
+        },
+        "R03/rx": {
+          "files": 1,
+          "bytes": 0,
+          "identical_file_skipped": 1
+        },
+        "R03/metadata": {
+          "files": 1,
+          "bytes": 1312
+        },
+        "R04/event": {
+          "files": 14,
+          "bytes": 87534,
+          "valid_rows": 712
+        },
+        "R04/rx": {
+          "files": 14,
+          "bytes": 1329520,
+          "valid_rows": 593
+        },
+        "R04/metadata": {
+          "files": 14,
+          "bytes": 19793
+        },
+        "R05/metadata": {
+          "files": 600,
+          "bytes": 405918
+        },
+        "R05/event": {
+          "files": 299,
+          "bytes": 1251469,
+          "valid_rows": 10166
+        },
+        "R05/rx": {
+          "files": 299,
+          "bytes": 0,
+          "identical_file_skipped": 299
+        },
+        "R06/metadata": {
+          "files": 24,
+          "bytes": 15077
+        },
+        "R06/event": {
+          "files": 11,
+          "bytes": 63528,
+          "valid_rows": 517
+        },
+        "R06/rx": {
+          "files": 11,
+          "bytes": 0,
+          "identical_file_skipped": 11
+        },
+        "R07/metadata": {
+          "files": 278,
+          "bytes": 187419
+        },
+        "R07/event": {
+          "files": 138,
+          "bytes": 799806,
+          "valid_rows": 6486
+        },
+        "R07/rx": {
+          "files": 138,
+          "bytes": 0,
+          "identical_file_skipped": 138
+        },
+        "R08/metadata": {
+          "files": 2,
+          "bytes": 1269
+        },
+        "R08/sensor": {
+          "files": 805,
+          "bytes": 201358363,
+          "valid_rows": 241928
+        },
+        "R08/tx": {
+          "files": 836,
+          "bytes": 134223794,
+          "valid_rows": 251247
+        },
+        "R09/metadata": {
+          "files": 2,
+          "bytes": 1257
+        },
+        "R09/sensor": {
+          "files": 11,
+          "bytes": 2429378,
+          "valid_rows": 3118
+        },
+        "R09/tx": {
+          "files": 11,
+          "bytes": 1486600,
+          "valid_rows": 3122
+        },
+        "R10/metadata": {
+          "files": 2,
+          "bytes": 1334
+        },
+        "R10/sensor": {
+          "files": 7,
+          "bytes": 1681840,
+          "valid_rows": 2020
+        },
+        "R10/tx": {
+          "files": 7,
+          "bytes": 1066476,
+          "valid_rows": 2013
+        },
+        "R11/metadata": {
+          "files": 2,
+          "bytes": 1428
+        },
+        "R11/sensor": {
+          "files": 11,
+          "bytes": 2560771,
+          "valid_rows": 3077
+        },
+        "R11/tx": {
+          "files": 11,
+          "bytes": 1632390,
+          "valid_rows": 3079
+        },
+        "R12/metadata": {
+          "files": 752,
+          "bytes": 627977
+        },
+        "R12/sensor": {
+          "files": 594,
+          "bytes": 201335043,
+          "valid_rows": 178282,
+          "valid_gps_rows": 177754,
+          "nmea_time_only_rows": 177754
+        },
+        "R12/tx": {
+          "files": 796,
+          "bytes": 134227805,
+          "valid_rows": 238641
+        },
+        "R12/event": {
+          "files": 374,
+          "bytes": 2609218,
+          "valid_rows": 14065
+        },
+        "R12/rx": {
+          "files": 374,
+          "bytes": 207387,
+          "identical_file_skipped": 372,
+          "valid_rows": 91
+        },
+        "R13/metadata": {
+          "files": 10,
+          "bytes": 60081
+        },
+        "R13/sensor": {
+          "files": 358,
+          "bytes": 91686463,
+          "valid_rows": 107523,
+          "valid_gps_rows": 6548,
+          "nmea_time_only_rows": 6548
+        },
+        "R13/tx": {
+          "files": 358,
+          "bytes": 57610067,
+          "valid_rows": 107514
+        },
+        "R13/event": {
+          "files": 4,
+          "bytes": 46559,
+          "valid_rows": 244
+        },
+        "R13/rx": {
+          "files": 4,
+          "bytes": 134617,
+          "identical_file_skipped": 3,
+          "valid_rows": 59
+        }
+      },
+      "role": "pi",
+      "field_assignment": "NOT_EVALUABLE_without_additional_clock_anchors",
+      "canonical_observations": 750,
+      "duplicate_observation_occurrences": 0,
+      "canonical_classification": {
+        "other_decoded_rid": 600,
+        "onboard_pi": 150
+      },
+      "recorded_calendar_field_window_rows": 0
+    },
+    "B": {
+      "snapshot_files": 5563,
+      "snapshot_bytes": 407925237,
+      "baseline_manifest_entries": 5563,
+      "baseline_hashes_verified": true,
+      "additional_files": 0,
+      "scopes": {
+        "R01/rx": {
+          "files": 5,
+          "bytes": 12928,
+          "identical_file_skipped": 3,
+          "valid_rows": 6
+        },
+        "R01/metadata": {
+          "files": 5,
+          "bytes": 3459
+        },
+        "R02/event": {
+          "files": 15,
+          "bytes": 94895,
+          "valid_rows": 772
+        },
+        "R02/rx": {
+          "files": 15,
+          "bytes": 1452854,
+          "valid_rows": 648
+        },
+        "R02/metadata": {
+          "files": 15,
+          "bytes": 21238
+        },
+        "R03/metadata": {
+          "files": 600,
+          "bytes": 409034
+        },
+        "R03/event": {
+          "files": 299,
+          "bytes": 1252503,
+          "valid_rows": 10175
+        },
+        "R03/rx": {
+          "files": 299,
+          "bytes": 16526,
+          "identical_file_skipped": 298,
+          "valid_rows": 8
+        },
+        "R04/metadata": {
+          "files": 24,
+          "bytes": 15087
+        },
+        "R04/event": {
+          "files": 11,
+          "bytes": 63460,
+          "valid_rows": 517
+        },
+        "R04/rx": {
+          "files": 11,
+          "bytes": 0,
+          "identical_file_skipped": 11
+        },
+        "R05/metadata": {
+          "files": 278,
+          "bytes": 187402
+        },
+        "R05/event": {
+          "files": 138,
+          "bytes": 799442,
+          "valid_rows": 6486
+        },
+        "R05/rx": {
+          "files": 138,
+          "bytes": 0,
+          "identical_file_skipped": 138
+        },
+        "R06/event": {
+          "files": 1,
+          "bytes": 7503,
+          "valid_rows": 61
+        },
+        "R06/rx": {
+          "files": 1,
+          "bytes": 117713,
+          "valid_rows": 57
+        },
+        "R06/metadata": {
+          "files": 2,
+          "bytes": 23306
+        },
+        "R07/metadata": {
+          "files": 740,
+          "bytes": 54466124
+        },
+        "R07/event": {
+          "files": 369,
+          "bytes": 12124685,
+          "valid_rows": 64493
+        },
+        "R07/rx": {
+          "files": 368,
+          "bytes": 134955454,
+          "valid_rows": 61189
+        },
+        "R08/metadata": {
+          "files": 22,
+          "bytes": 50387
+        },
+        "R08/event": {
+          "files": 10,
+          "bytes": 67448,
+          "valid_rows": 367
+        },
+        "R08/rx": {
+          "files": 10,
+          "bytes": 204663,
+          "valid_rows": 94
+        },
+        "R09/metadata": {
+          "files": 34,
+          "bytes": 2319074
+        },
+        "R09/event": {
+          "files": 16,
+          "bytes": 523027,
+          "valid_rows": 2780
+        },
+        "R09/rx": {
+          "files": 16,
+          "bytes": 5745460,
+          "valid_rows": 2605
+        },
+        "R10/metadata": {
+          "files": 28,
+          "bytes": 2518988
+        },
+        "R10/event": {
+          "files": 12,
+          "bytes": 359873,
+          "valid_rows": 1913
+        },
+        "R10/rx": {
+          "files": 12,
+          "bytes": 4138833,
+          "valid_rows": 1852
+        },
+        "R11/metadata": {
+          "files": 1035,
+          "bytes": 49056894
+        },
+        "R11/event": {
+          "files": 517,
+          "bytes": 13520244,
+          "valid_rows": 71971,
+          "invalid_json": 2
+        },
+        "R11/rx": {
+          "files": 517,
+          "bytes": 123396733,
+          "valid_rows": 54858,
+          "identical_file_skipped": 156,
+          "invalid_json": 1
+        }
+      },
+      "role": "pi",
+      "field_assignment": "NOT_EVALUABLE_without_additional_clock_anchors",
+      "canonical_observations": 121317,
+      "duplicate_observation_occurrences": 0,
+      "canonical_classification": {
+        "unclassified_vendor": 38,
+        "confirmed_drone": 531,
+        "other_decoded_rid": 654,
+        "onboard_pi": 120094
+      },
+      "recorded_calendar_field_window_rows": 0
+    },
+    "C": {
+      "snapshot_files": 4912,
+      "snapshot_bytes": 274193354,
+      "baseline_manifest_entries": 4912,
+      "baseline_hashes_verified": true,
+      "additional_files": 0,
+      "scopes": {
+        "R01/rx": {
+          "files": 6,
+          "bytes": 23702,
+          "identical_file_skipped": 3,
+          "valid_rows": 11
+        },
+        "R01/metadata": {
+          "files": 6,
+          "bytes": 4153
+        },
+        "R02/event": {
+          "files": 2,
+          "bytes": 21861,
+          "valid_rows": 178
+        },
+        "R02/rx": {
+          "files": 2,
+          "bytes": 728408,
+          "valid_rows": 297
+        },
+        "R02/metadata": {
+          "files": 4,
+          "bytes": 130929
+        },
+        "R03/metadata": {
+          "files": 6,
+          "bytes": 7413
+        },
+        "R03/event": {
+          "files": 6,
+          "bytes": 26838,
+          "valid_rows": 165
+        },
+        "R03/rx": {
+          "files": 5,
+          "bytes": 320706,
+          "identical_file_skipped": 1,
+          "valid_rows": 143
+        },
+        "R04/event": {
+          "files": 1,
+          "bytes": 9057,
+          "valid_rows": 74
+        },
+        "R04/rx": {
+          "files": 1,
+          "bytes": 152526,
+          "valid_rows": 68
+        },
+        "R04/metadata": {
+          "files": 1,
+          "bytes": 1377
+        },
+        "R05/event": {
+          "files": 29,
+          "bytes": 169588,
+          "valid_rows": 1379
+        },
+        "R05/rx": {
+          "files": 29,
+          "bytes": 2580613,
+          "valid_rows": 1151
+        },
+        "R05/metadata": {
+          "files": 29,
+          "bytes": 40988
+        },
+        "R06/metadata": {
+          "files": 556,
+          "bytes": 381583
+        },
+        "R06/event": {
+          "files": 277,
+          "bytes": 1653598,
+          "valid_rows": 13477
+        },
+        "R06/rx": {
+          "files": 277,
+          "bytes": 28929,
+          "identical_file_skipped": 276,
+          "valid_rows": 14
+        },
+        "R07/metadata": {
+          "files": 24,
+          "bytes": 15072
+        },
+        "R07/event": {
+          "files": 11,
+          "bytes": 57044,
+          "valid_rows": 464
+        },
+        "R07/rx": {
+          "files": 11,
+          "bytes": 0,
+          "identical_file_skipped": 11
+        },
+        "R08/metadata": {
+          "files": 274,
+          "bytes": 184594
+        },
+        "R08/event": {
+          "files": 136,
+          "bytes": 712684,
+          "valid_rows": 5778
+        },
+        "R08/rx": {
+          "files": 136,
+          "bytes": 0,
+          "identical_file_skipped": 136
+        },
+        "R09/event": {
+          "files": 1,
+          "bytes": 7016,
+          "valid_rows": 57
+        },
+        "R09/rx": {
+          "files": 1,
+          "bytes": 111513,
+          "valid_rows": 54
+        },
+        "R09/metadata": {
+          "files": 2,
+          "bytes": 22159
+        },
+        "R10/metadata": {
+          "files": 1137,
+          "bytes": 54574718
+        },
+        "R10/event": {
+          "files": 568,
+          "bytes": 12527656,
+          "valid_rows": 66626,
+          "invalid_json": 1
+        },
+        "R10/rx": {
+          "files": 567,
+          "bytes": 134472819,
+          "valid_rows": 60978,
+          "identical_file_skipped": 1
+        },
+        "R11/metadata": {
+          "files": 22,
+          "bytes": 446766
+        },
+        "R11/event": {
+          "files": 10,
+          "bytes": 230865,
+          "valid_rows": 1231
+        },
+        "R11/rx": {
+          "files": 10,
+          "bytes": 2451939,
+          "valid_rows": 1126
+        },
+        "R12/metadata": {
+          "files": 32,
+          "bytes": 1530828
+        },
+        "R12/event": {
+          "files": 15,
+          "bytes": 355022,
+          "valid_rows": 1888
+        },
+        "R12/rx": {
+          "files": 15,
+          "bytes": 3775949,
+          "valid_rows": 1712
+        },
+        "R13/metadata": {
+          "files": 26,
+          "bytes": 1690707
+        },
+        "R13/event": {
+          "files": 11,
+          "bytes": 249847,
+          "valid_rows": 1329
+        },
+        "R13/rx": {
+          "files": 11,
+          "bytes": 2704889,
+          "valid_rows": 1204
+        },
+        "R14/metadata": {
+          "files": 329,
+          "bytes": 13895844
+        },
+        "R14/event": {
+          "files": 163,
+          "bytes": 3195996,
+          "valid_rows": 17005,
+          "invalid_json": 2
+        },
+        "R14/rx": {
+          "files": 163,
+          "bytes": 34697158,
+          "valid_rows": 15393,
+          "invalid_json": 2,
+          "identical_file_skipped": 17
+        }
+      },
+      "role": "pi",
+      "field_assignment": "NOT_EVALUABLE_without_additional_clock_anchors",
+      "canonical_observations": 82151,
+      "duplicate_observation_occurrences": 0,
+      "canonical_classification": {
+        "other_decoded_rid": 1495,
+        "onboard_pi": 80656
+      },
+      "recorded_calendar_field_window_rows": 0
+    },
+    "D": {
+      "snapshot_files": 1603,
+      "snapshot_bytes": 202680023,
+      "baseline_manifest_entries": 1603,
+      "baseline_hashes_verified": true,
+      "additional_files": 0,
+      "scopes": {
+        "R01/metadata": {
+          "files": 81,
+          "bytes": 176912
+        },
+        "R01/event": {
+          "files": 40,
+          "bytes": 225418,
+          "valid_rows": 1833
+        },
+        "R01/rx": {
+          "files": 40,
+          "bytes": 747592,
+          "identical_file_skipped": 20,
+          "valid_rows": 286
+        },
+        "R02/metadata": {
+          "files": 722,
+          "bytes": 64003481
+        },
+        "R02/event": {
+          "files": 360,
+          "bytes": 11992816,
+          "valid_rows": 63746
+        },
+        "R02/rx": {
+          "files": 360,
+          "bytes": 125533804,
+          "valid_rows": 41836
+        }
+      },
+      "role": "pi",
+      "field_assignment": "NOT_EVALUABLE_without_additional_clock_anchors",
+      "canonical_observations": 42122,
+      "duplicate_observation_occurrences": 0,
+      "canonical_classification": {
+        "onboard_pi": 42122
+      },
+      "recorded_calendar_field_window_rows": 0
+    },
+    "E": {
+      "snapshot_files": 1275,
+      "snapshot_bytes": 201941273,
+      "baseline_manifest_entries": 1275,
+      "baseline_hashes_verified": true,
+      "additional_files": 0,
+      "scopes": {
+        "R01/metadata": {
+          "files": 639,
+          "bytes": 65362297
+        },
+        "R01/event": {
+          "files": 318,
+          "bytes": 9974988,
+          "valid_rows": 53011,
+          "invalid_json": 1
+        },
+        "R01/rx": {
+          "files": 318,
+          "bytes": 126603988,
+          "valid_rows": 42222,
+          "invalid_json": 1
+        }
+      },
+      "role": "pi",
+      "field_assignment": "NOT_EVALUABLE_without_additional_clock_anchors",
+      "canonical_observations": 42222,
+      "duplicate_observation_occurrences": 0,
+      "canonical_classification": {
+        "onboard_pi": 42222
+      },
+      "recorded_calendar_field_window_rows": 0
+    },
+    "F": {
+      "snapshot_files": 1167,
+      "snapshot_bytes": 201750283,
+      "baseline_manifest_entries": 1167,
+      "baseline_hashes_verified": true,
+      "additional_files": 0,
+      "scopes": {
+        "R01/metadata": {
+          "files": 585,
+          "bytes": 63647444
+        },
+        "R01/event": {
+          "files": 291,
+          "bytes": 9344196,
+          "valid_rows": 49656,
+          "invalid_json": 1
+        },
+        "R01/rx": {
+          "files": 291,
+          "bytes": 128758643,
+          "valid_rows": 45326,
+          "invalid_json": 1
+        }
+      },
+      "role": "pi",
+      "field_assignment": "NOT_EVALUABLE_without_additional_clock_anchors",
+      "canonical_observations": 45326,
+      "duplicate_observation_occurrences": 0,
+      "canonical_classification": {
+        "onboard_pi": 45326
+      },
+      "recorded_calendar_field_window_rows": 0
+    },
+    "Pixel": {
+      "snapshot_files": 17,
+      "snapshot_bytes": 112878112,
+      "baseline_manifest_entries": 17,
+      "baseline_hashes_verified": true,
+      "additional_files": 0,
+      "scopes": {
+        "R01/event": {
+          "files": 5,
+          "bytes": 48445831,
+          "valid_rows": 52757
+        },
+        "R01/rx": {
+          "files": 5,
+          "bytes": 345726,
+          "valid_rows": 132,
+          "identical_file_skipped": 2
+        },
+        "R01/metadata": {
+          "files": 7,
+          "bytes": 64086555
+        }
+      },
+      "role": "android",
+      "field_assignment": "NOT_EVALUABLE_without_additional_clock_anchors",
+      "sqlite_integrity": "ok",
+      "sqlite_tables": {
+        "android_metadata": 1,
+        "observations": 174,
+        "receiver_events": 53218,
+        "receiver_fixes": 19418
+      },
+      "canonical_observations": 174,
+      "duplicate_observation_occurrences": 132,
+      "canonical_classification": {
+        "confirmed_drone": 132,
+        "onboard_pi": 42
+      },
+      "recorded_calendar_field_window_rows": 0
+    },
+    "ASUS-1": {
+      "snapshot_files": 17,
+      "snapshot_bytes": 101442149,
+      "baseline_manifest_entries": 17,
+      "baseline_hashes_verified": true,
+      "additional_files": 0,
+      "scopes": {
+        "R01/event": {
+          "files": 5,
+          "bytes": 33879239,
+          "valid_rows": 36108
+        },
+        "R01/rx": {
+          "files": 5,
+          "bytes": 379123,
+          "valid_rows": 146,
+          "identical_file_skipped": 3
+        },
+        "R01/metadata": {
+          "files": 7,
+          "bytes": 67183787
+        }
+      },
+      "role": "android",
+      "field_assignment": "NOT_EVALUABLE_without_additional_clock_anchors",
+      "sqlite_integrity": "ok",
+      "sqlite_tables": {
+        "android_metadata": 1,
+        "observations": 183,
+        "receiver_events": 51541,
+        "receiver_fixes": 32879
+      },
+      "canonical_observations": 183,
+      "duplicate_observation_occurrences": 146,
+      "canonical_classification": {
+        "confirmed_drone": 146,
+        "onboard_pi": 37
+      },
+      "recorded_calendar_field_window_rows": 0
+    },
+    "ASUS-2": {
+      "snapshot_files": 28,
+      "snapshot_bytes": 90433310,
+      "baseline_manifest_entries": 28,
+      "baseline_hashes_verified": true,
+      "additional_files": 0,
+      "scopes": {
+        "R01/event": {
+          "files": 8,
+          "bytes": 7381039,
+          "valid_rows": 7992
+        },
+        "R01/rx": {
+          "files": 8,
+          "bytes": 16817827,
+          "valid_rows": 7559,
+          "identical_file_skipped": 3
+        },
+        "R01/metadata": {
+          "files": 12,
+          "bytes": 66234444
+        }
+      },
+      "role": "android",
+      "field_assignment": "NOT_EVALUABLE_without_additional_clock_anchors",
+      "sqlite_integrity": "ok",
+      "sqlite_tables": {
+        "android_metadata": 1,
+        "observations": 7740,
+        "receiver_events": 25307,
+        "receiver_fixes": 17762
+      },
+      "canonical_observations": 7740,
+      "duplicate_observation_occurrences": 7559,
+      "canonical_classification": {
+        "unclassified_vendor": 7624,
+        "confirmed_drone": 46,
+        "onboard_pi": 70
+      },
+      "recorded_calendar_field_window_rows": 7670
+    }
+  },
+  "clock_groups": [
+    {
+      "node": "ASUS-1",
+      "clock_group": "ASUS-1-G1",
+      "rows": 146,
+      "recorded_utc_first": "2025-04-17T11:04:45.030Z",
+      "recorded_utc_last": "2025-04-17T12:07:03.054Z",
+      "rid_phase_receive_minus_claim_s": {
+        "n": 146,
+        "min": -1314.2730000019073,
+        "median": -1310.4884999990463,
+        "max": -1304.1879999637604,
+        "mad": 2.7990000247955322
+      },
+      "recorded_calendar_field_rows": 0,
+      "status": "unresolved_calendar_offset",
+      "boot_id_verified": false
+    },
+    {
+      "node": "ASUS-2",
+      "clock_group": "ASUS-2-G1",
+      "rows": 46,
+      "recorded_utc_first": "2026-11-16T07:26:53.488Z",
+      "recorded_utc_last": "2026-11-16T07:36:46.544Z",
+      "rid_phase_receive_minus_claim_s": {
+        "n": 46,
+        "min": 1.9240000247955322,
+        "median": 5.51199996471405,
+        "max": 10.973999977111816,
+        "mad": 2.751499891281128
+      },
+      "recorded_calendar_field_rows": 46,
+      "status": "candidate_calendar_only",
+      "boot_id_verified": false
+    },
+    {
+      "node": "B",
+      "clock_group": "B-G1",
+      "rows": 531,
+      "recorded_utc_first": "2026-11-14T09:06:45.103986+00:00",
+      "recorded_utc_last": "2026-11-14T11:18:57.571493+00:00",
+      "rid_phase_receive_minus_claim_s": {
+        "n": 531,
+        "min": -615.1804649829865,
+        "median": -614.4736020565033,
+        "max": -611.8009400367737,
+        "mad": 0.25647616386413574
+      },
+      "recorded_calendar_field_rows": 0,
+      "status": "unresolved_calendar_offset",
+      "boot_id_verified": false
+    },
+    {
+      "node": "Pixel",
+      "clock_group": "Pixel-G1",
+      "rows": 132,
+      "recorded_utc_first": "2021-09-05T12:45:40.232Z",
+      "recorded_utc_last": "2021-09-05T14:57:48.675Z",
+      "rid_phase_receive_minus_claim_s": {
+        "n": 132,
+        "min": 1725.433000087738,
+        "median": 1725.8955000638962,
+        "max": 1727.3489999771118,
+        "mad": 0.2595001459121704
+      },
+      "recorded_calendar_field_rows": 0,
+      "status": "unresolved_calendar_offset",
+      "boot_id_verified": false
+    }
+  ],
+  "content_matches": [
+    {
+      "group_a": "ASUS-1-G1",
+      "group_b": "B-G1",
+      "shared_contents": 4,
+      "one_to_one_content_candidates": 0,
+      "ambiguous_repeated_contents": 4,
+      "utc_b_minus_a_descriptive_s": {
+        "n": 4,
+        "min": 49763494.42667985,
+        "median": 49763495.07676184,
+        "max": 49763496.26552987,
+        "mad": 0.3991199731826782
+      },
+      "status": "candidate_content_only",
+      "physical_packet_confirmed": false
+    },
+    {
+      "group_a": "ASUS-2-G1",
+      "group_b": "B-G1",
+      "shared_contents": 1,
+      "one_to_one_content_candidates": 0,
+      "ambiguous_repeated_contents": 1,
+      "utc_b_minus_a_descriptive_s": {
+        "n": 1,
+        "min": -162620.09293985367,
+        "median": -162620.09293985367,
+        "max": -162620.09293985367,
+        "mad": 0.0
+      },
+      "status": "candidate_content_only",
+      "physical_packet_confirmed": false
+    },
+    {
+      "group_a": "ASUS-2-G1",
+      "group_b": "Pixel-G1",
+      "shared_contents": 1,
+      "one_to_one_content_candidates": 0,
+      "ambiguous_repeated_contents": 1,
+      "utc_b_minus_a_descriptive_s": {
+        "n": 1,
+        "min": -163963880.33799982,
+        "median": -163963880.33799982,
+        "max": -163963880.33799982,
+        "mad": 0.0
+      },
+      "status": "candidate_content_only",
+      "physical_packet_confirmed": false
+    },
+    {
+      "group_a": "B-G1",
+      "group_b": "Pixel-G1",
+      "shared_contents": 15,
+      "one_to_one_content_candidates": 13,
+      "ambiguous_repeated_contents": 2,
+      "utc_b_minus_a_descriptive_s": {
+        "n": 15,
+        "min": -163801260.24505997,
+        "median": -163801259.55369806,
+        "max": -163801259.2660613,
+        "mad": 0.01710224151611328
+      },
+      "status": "candidate_content_only",
+      "physical_packet_confirmed": false
+    }
+  ],
+  "limitations": [
+    "RID time-within-hour does not identify a date or hour.",
+    "Content matches and fitted clock offsets are candidates, not same-physical-packet proof.",
+    "Recorded calendar windows are not independently verified field-time assignments.",
+    "Declared RID/GPS positions are not independently established truth.",
+    "No transmitter packet denominator is available."
+  ],
+  "audit_code_sha256": "e5c9eb680f919949bdef6163081b0b1c39373a99d667536980d40a5c3fbc6814",
+  "reference_binary_sha256": "f5098dac952a01b5c6625801e9f248832e8c4b09b6ece20f6821de56311c3160",
+  "payload_decode_unique_counts": {
+    "confirmed_drone": 667,
+    "other_decoded_rid": 98137
+  },
+  "target_canonical_rows": 855,
+  "independent_calendar_anchors_verified": 0,
+  "sensor_time_only_phase_s": {
+    "n": 184302,
+    "min": 0.07476115226745605,
+    "median": 0.1752769947052002,
+    "max": 0.36341094970703125,
+    "mad": 0.0020865201950073242
+  }
+}

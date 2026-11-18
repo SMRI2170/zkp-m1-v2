@@ -1,0 +1,14 @@
+[
+  {
+    "node": "B",
+    "state": "SSH_NOT_REACHABLE_AFTER_POWEROFF"
+  },
+  {
+    "node": "E",
+    "state": "SSH_NOT_REACHABLE_AFTER_POWEROFF"
+  },
+  {
+    "node": "F",
+    "state": "SSH_NOT_REACHABLE_AFTER_POWEROFF"
+  }
+]

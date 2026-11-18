@@ -1,0 +1,20 @@
+{
+  "completed": true,
+  "snapshot_files": 21763,
+  "snapshot_bytes": 2432419465,
+  "all_baseline_manifest_hashes_match": true,
+  "target_saved_records": 855,
+  "same_monotonic_content_keys": 831,
+  "week29_tests": 29,
+  "uav_tests": 88,
+  "go_tests": "pass",
+  "contracts_tests": 48,
+  "clock_candidates_figure_reviewed": true,
+  "private_permissions_verified": true,
+  "android_databases_unchanged": true,
+  "audit_code_matches_run_hash": true,
+  "independent_absolute_time_verified": false,
+  "physical_packet_matches_confirmed": 0,
+  "push_ci_review": "not_run_not_pushed",
+  "clock_candidate_code_sha256": "e3c3814ae8d2d96ae49d80fbce52f854ee6b0a70162a03723d269e1c25a0b601"
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "node": "C",
+    "started": true,
+    "completed": false,
+    "duration_s": 14400,
+    "interval_s": 30,
+    "script_sha256": "17984bbca9b20a9cbcc1fbcf79575f5c1451b87b8f9982de3f5580789e5364b3",
+    "started_utc": "2026-11-18T09:12:47.646023+00:00",
+    "real_drone_reception_verified": false,
+    "four_hour_capture_verified": false
+  },
+  {
+    "node": "D",
+    "started": true,
+    "completed": false,
+    "duration_s": 14400,
+    "interval_s": 30,
+    "script_sha256": "17984bbca9b20a9cbcc1fbcf79575f5c1451b87b8f9982de3f5580789e5364b3",
+    "started_utc": "2026-11-18T09:12:50.044769+00:00",
+    "real_drone_reception_verified": false,
+    "four_hour_capture_verified": false
+  }
+]

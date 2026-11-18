@@ -1,0 +1,152 @@
+{
+  "operator_confirmed_aircraft_id": true,
+  "cryptographic_identity_verified": false,
+  "true_position_independently_verified": false,
+  "field_date_alignment_verified": false,
+  "sources": {
+    "B": {
+      "raw_rows": 531,
+      "deduplicated_rows": 507,
+      "distinct_payloads": 503,
+      "exact_duplicate_rows": 24,
+      "rssi_dbm": {
+        "n": 507,
+        "min": -87.0,
+        "median": -55.0,
+        "p95": -47.0,
+        "max": -42.0
+      },
+      "matched_receiver_position_rows": 0,
+      "receiver_accuracy_m": {
+        "n": 0
+      },
+      "receiver_fix_delta_s": {
+        "n": 0
+      },
+      "hour_ambiguous_receive_minus_rid_s": {
+        "n": 507,
+        "min": -615.1804649829865,
+        "median": -614.4714040756226,
+        "p95": -613.9923667430878,
+        "max": -611.8009400367737
+      },
+      "cache_stale_rows": 0
+    },
+    "Pixel": {
+      "raw_rows": 132,
+      "deduplicated_rows": 132,
+      "distinct_payloads": 132,
+      "exact_duplicate_rows": 0,
+      "rssi_dbm": {
+        "n": 132,
+        "min": -86,
+        "median": -55.0,
+        "p95": -44.55000000000001,
+        "max": -40
+      },
+      "matched_receiver_position_rows": 132,
+      "receiver_accuracy_m": {
+        "n": 132,
+        "min": 0.394886314868927,
+        "median": 0.9709149897098541,
+        "p95": 3.3767725467681884,
+        "max": 3.830596923828125
+      },
+      "receiver_fix_delta_s": {
+        "n": 132,
+        "min": 0.106135,
+        "median": 0.500915,
+        "p95": 1.06502205,
+        "max": 1.116587
+      },
+      "hour_ambiguous_receive_minus_rid_s": {
+        "n": 132,
+        "min": 1725.433000087738,
+        "median": 1725.8955000638962,
+        "p95": 1726.4571499824524,
+        "max": 1727.3489999771118
+      },
+      "cache_stale_rows": 0
+    },
+    "ASUS-1": {
+      "raw_rows": 146,
+      "deduplicated_rows": 146,
+      "distinct_payloads": 40,
+      "exact_duplicate_rows": 0,
+      "rssi_dbm": {
+        "n": 146,
+        "min": -85,
+        "median": -52.0,
+        "p95": -45.5,
+        "max": -40
+      },
+      "matched_receiver_position_rows": 146,
+      "receiver_accuracy_m": {
+        "n": 146,
+        "min": 4.550999641418457,
+        "median": 6.067999839782715,
+        "p95": 7.585000038146973,
+        "max": 12.13599967956543
+      },
+      "receiver_fix_delta_s": {
+        "n": 146,
+        "min": 0.00317,
+        "median": 0.4730825,
+        "p95": 0.92048825,
+        "max": 0.977528
+      },
+      "hour_ambiguous_receive_minus_rid_s": {
+        "n": 146,
+        "min": -1314.2730000019073,
+        "median": -1310.4884999990463,
+        "p95": -1305.0257499217987,
+        "max": -1304.1879999637604
+      },
+      "cache_stale_rows": 0
+    },
+    "ASUS-2": {
+      "raw_rows": 46,
+      "deduplicated_rows": 46,
+      "distinct_payloads": 12,
+      "exact_duplicate_rows": 0,
+      "rssi_dbm": {
+        "n": 46,
+        "min": -79,
+        "median": -70.0,
+        "p95": -64.0,
+        "max": -64
+      },
+      "matched_receiver_position_rows": 46,
+      "receiver_accuracy_m": {
+        "n": 46,
+        "min": 4.550999641418457,
+        "median": 13.652999877929688,
+        "p95": 15.170000076293945,
+        "max": 16.687000274658203
+      },
+      "receiver_fix_delta_s": {
+        "n": 46,
+        "min": 0.008049,
+        "median": 0.4886805,
+        "p95": 0.9313915,
+        "max": 0.942515
+      },
+      "hour_ambiguous_receive_minus_rid_s": {
+        "n": 46,
+        "min": 1.9240000247955322,
+        "median": 5.51199996471405,
+        "p95": 10.708750069141388,
+        "max": 10.973999977111816
+      },
+      "cache_stale_rows": 0
+    }
+  },
+  "pairwise_payload_overlap": {
+    "B / Pixel": 15,
+    "B / ASUS-1": 4,
+    "B / ASUS-2": 1,
+    "Pixel / ASUS-1": 0,
+    "Pixel / ASUS-2": 1,
+    "ASUS-1 / ASUS-2": 0
+  }
+}

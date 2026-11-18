@@ -1,0 +1,12 @@
+{
+  "tests_passed": 11,
+  "tests_skipped": 0,
+  "input_decoded_rows": 531,
+  "retained_rows": 507,
+  "segment_rows_sum": 507,
+  "private_output_permissions_verified": true,
+  "figures_visually_reviewed": 2,
+  "receiver_modified": false,
+  "source_snapshot_changed": false,
+  "production_parser_modified": false
+}

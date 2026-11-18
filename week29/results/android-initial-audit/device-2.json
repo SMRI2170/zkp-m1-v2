@@ -1,0 +1,42 @@
+{
+  "label": "device-2",
+  "model": "ASUS_Z017DA",
+  "android": "7.0",
+  "app_version": "0.13-fastest-scan",
+  "files": 17,
+  "bytes": 101442149,
+  "stable_hashes_verified": true,
+  "remote_hash_algorithm": "SHA-1 (legacy Android 7); local manifest SHA-256",
+  "sqlite_integrity": "ok",
+  "tables": {
+    "android_metadata": 1,
+    "observations": 183,
+    "receiver_events": 51541,
+    "receiver_fixes": 32879
+  },
+  "observation_stats": {
+    "source_type": {
+      "real_capture": 183
+    },
+    "parse_status": {
+      "decoded": 37,
+      "invalid": 146
+    },
+    "location_match_status": {
+      "MATCHED": 146,
+      "NO_FIX_WITHIN_2_SECONDS": 36,
+      "STALE_WIFI_OBSERVATION": 1
+    },
+    "rssi_rows": 183,
+    "claimed_coordinate_rows": 6,
+    "receiver_coordinate_rows": 146,
+    "recorded_utc_range": [
+      "2025-04-15T19:46:13.374Z",
+      "2025-04-17T12:07:03.054Z"
+    ]
+  },
+  "settings_modified": false,
+  "app_stopped": false,
+  "data_deleted": false,
+  "field_time_assignment_verified": false
+}

@@ -1,0 +1,42 @@
+{
+  "label": "device-4",
+  "model": "Pixel 8",
+  "android": "17",
+  "app_version": "0.10-field-location",
+  "files": 27,
+  "bytes": 96651821,
+  "stable_hashes_verified": true,
+  "sqlite_integrity": "ok",
+  "tables": {
+    "android_metadata": 1,
+    "observations": 14674,
+    "receiver_events": 3414,
+    "receiver_fixes": 2271
+  },
+  "observation_stats": {
+    "source_type": {
+      "real_capture": 14674
+    },
+    "parse_status": {
+      "decoded": 20,
+      "invalid": 14654
+    },
+    "location_match_status": {
+      "None": 3,
+      "MATCHED": 14005,
+      "NO_FIX_WITHIN_2_SECONDS": 544,
+      "STALE_WIFI_OBSERVATION": 122
+    },
+    "rssi_rows": 14674,
+    "claimed_coordinate_rows": 3,
+    "receiver_coordinate_rows": 14005,
+    "recorded_utc_range": [
+      "2026-11-10T07:11:55.679Z",
+      "2026-11-16T06:11:46.132Z"
+    ]
+  },
+  "settings_modified": false,
+  "app_stopped": false,
+  "data_deleted": false,
+  "field_time_assignment_verified": false
+}

@@ -1,0 +1,9 @@
+{
+  "attempted": 146,
+  "success": 146,
+  "location_rows": 146,
+  "same_claimed_id_as_b_candidate_rows": 146,
+  "identity_verified": false,
+  "same_physical_packet_verified": false,
+  "reference_commit": "849c03adbe0cdd68997a462fafab397edcfe53f3"
+}

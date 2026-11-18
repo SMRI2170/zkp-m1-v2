@@ -1,0 +1,497 @@
+{
+  "anchor_group": "ASUS-2-G1",
+  "anchor_calendar_verified_for_experiment": false,
+  "offset_model": "constant per clock correspondence, content-equality hypotheses",
+  "interval_meaning": "envelope of all observed content-pair offsets across simple paths; not a statistical CI",
+  "candidates": [
+    {
+      "clock_group": "ASUS-1-G1",
+      "node": "ASUS-1",
+      "status": "candidate_constant_offset_calendar_hypothesis",
+      "simple_paths": 2,
+      "offset_to_anchor_low_s": 49926106.2866199,
+      "offset_to_anchor_high_s": 49926125.136259794,
+      "candidate_first_utc": "2026-11-16T07:26:31.316620+00:00",
+      "candidate_last_utc": "2026-11-16T08:29:08.190260+00:00",
+      "possibly_in_field_window": 146,
+      "fully_inside_under_this_model": 146,
+      "field_assignment_verified": false,
+      "interval_is_confidence_interval": false
+    },
+    {
+      "clock_group": "ASUS-2-G1",
+      "node": "ASUS-2",
+      "status": "candidate_constant_offset_calendar_hypothesis",
+      "simple_paths": 1,
+      "offset_to_anchor_low_s": 0,
+      "offset_to_anchor_high_s": 0,
+      "candidate_first_utc": "2026-11-16T07:26:53.488000+00:00",
+      "candidate_last_utc": "2026-11-16T07:36:46.544000+00:00",
+      "possibly_in_field_window": 46,
+      "fully_inside_under_this_model": 46,
+      "field_assignment_verified": false,
+      "interval_is_confidence_interval": false
+    },
+    {
+      "clock_group": "B-G1",
+      "node": "B",
+      "status": "candidate_constant_offset_calendar_hypothesis",
+      "simple_paths": 2,
+      "offset_to_anchor_low_s": 162616.06193995476,
+      "offset_to_anchor_high_s": 162625.78883981705,
+      "candidate_first_utc": "2026-11-16T06:17:01.165926+00:00",
+      "candidate_last_utc": "2026-11-16T08:29:23.360333+00:00",
+      "possibly_in_field_window": 531,
+      "fully_inside_under_this_model": 531,
+      "field_assignment_verified": false,
+      "interval_is_confidence_interval": false
+    },
+    {
+      "clock_group": "Pixel-G1",
+      "node": "Pixel",
+      "status": "candidate_constant_offset_calendar_hypothesis",
+      "simple_paths": 2,
+      "offset_to_anchor_low_s": 163963874.67610002,
+      "offset_to_anchor_high_s": 163963884.40299988,
+      "candidate_first_utc": "2026-11-16T06:16:54.908100+00:00",
+      "candidate_last_utc": "2026-11-16T08:29:13.078000+00:00",
+      "possibly_in_field_window": 132,
+      "fully_inside_under_this_model": 132,
+      "field_assignment_verified": false,
+      "interval_is_confidence_interval": false
+    }
+  ],
+  "target_record_semantics": {
+    "ASUS-1-G1": {
+      "saved_records": 146,
+      "same_monotonic_and_pack_keys": 146,
+      "repeated_monotonic_content_records": 0
+    },
+    "ASUS-2-G1": {
+      "saved_records": 46,
+      "same_monotonic_and_pack_keys": 46,
+      "repeated_monotonic_content_records": 0
+    },
+    "B-G1": {
+      "saved_records": 531,
+      "same_monotonic_and_pack_keys": 507,
+      "repeated_monotonic_content_records": 24
+    },
+    "Pixel-G1": {
+      "saved_records": 132,
+      "same_monotonic_and_pack_keys": 132,
+      "repeated_monotonic_content_records": 0
+    }
+  },
+  "rid_monotonic_checks": {
+    "ASUS-1-G1": {
+      "unwrap_step_minus_monotonic_s": {
+        "n": 145,
+        "min": -2.895618000009563,
+        "median": -2.7635120000049938,
+        "max": 9.463048000005074,
+        "mad": 0.0555249999742955
+      },
+      "calendar_not_inferred": true,
+      "unwrap_is_nearest_elapsed_hypothesis": true
+    },
+    "ASUS-2-G1": {
+      "unwrap_step_minus_monotonic_s": {
+        "n": 45,
+        "min": -2.8050870000151917,
+        "median": -2.6850800000247546,
+        "max": 8.814853999996558,
+        "mad": 0.03509499999927357
+      },
+      "calendar_not_inferred": true,
+      "unwrap_is_nearest_elapsed_hypothesis": true
+    },
+    "B-G1": {
+      "unwrap_step_minus_monotonic_s": {
+        "n": 530,
+        "min": -3.0479999999997744,
+        "median": 0.19899999999984175,
+        "max": 3.268000000000029,
+        "mad": 0.19899999999984175
+      },
+      "calendar_not_inferred": true,
+      "unwrap_is_nearest_elapsed_hypothesis": true
+    },
+    "Pixel-G1": {
+      "unwrap_step_minus_monotonic_s": {
+        "n": 131,
+        "min": -1.71513500000583,
+        "median": -0.065136999997776,
+        "max": 1.7028409999911673,
+        "mad": 0.3389630000165198
+      },
+      "calendar_not_inferred": true,
+      "unwrap_is_nearest_elapsed_hypothesis": true
+    }
+  },
+  "scopes": [
+    {
+      "node": "A",
+      "scope": "R01",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "A",
+      "scope": "R02",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "A",
+      "scope": "R03",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "A",
+      "scope": "R04",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "A",
+      "scope": "R05",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "A",
+      "scope": "R06",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "A",
+      "scope": "R07",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "A",
+      "scope": "R08",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "A",
+      "scope": "R09",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "A",
+      "scope": "R10",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "A",
+      "scope": "R11",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "A",
+      "scope": "R12",
+      "active_at_original_collection": true,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "A",
+      "scope": "R13",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "B",
+      "scope": "R01",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "B",
+      "scope": "R02",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "B",
+      "scope": "R03",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "B",
+      "scope": "R04",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "B",
+      "scope": "R05",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "B",
+      "scope": "R06",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "B",
+      "scope": "R07",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "B",
+      "scope": "R08",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "B",
+      "scope": "R09",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "B",
+      "scope": "R10",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "B",
+      "scope": "R11",
+      "active_at_original_collection": true,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "C",
+      "scope": "R01",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "C",
+      "scope": "R02",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "C",
+      "scope": "R03",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "C",
+      "scope": "R04",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "C",
+      "scope": "R05",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "C",
+      "scope": "R06",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "C",
+      "scope": "R07",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "C",
+      "scope": "R08",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "C",
+      "scope": "R09",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "C",
+      "scope": "R10",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "C",
+      "scope": "R11",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "C",
+      "scope": "R12",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "C",
+      "scope": "R13",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "C",
+      "scope": "R14",
+      "active_at_original_collection": true,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "D",
+      "scope": "R01",
+      "active_at_original_collection": false,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "D",
+      "scope": "R02",
+      "active_at_original_collection": true,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "E",
+      "scope": "R01",
+      "active_at_original_collection": true,
+      "collection_time_not_experiment_time": true
+    },
+    {
+      "node": "F",
+      "scope": "R01",
+      "active_at_original_collection": true,
+      "collection_time_not_experiment_time": true
+    }
+  ],
+  "independent_calendar_anchors_verified": 0,
+  "input_availability": [
+    {
+      "node": "A",
+      "canonical_observations": 750,
+      "rows_with_recorded_boot_scope": 0,
+      "receiver_position_present_rows": 0,
+      "missing_utc_rows": 0,
+      "missing_monotonic_rows": 0,
+      "boot_id_available_at_collection": false,
+      "historical_boot_assignment_verified": false,
+      "independent_truth_available_for_experiment": false,
+      "transmitter_total_known": false
+    },
+    {
+      "node": "B",
+      "canonical_observations": 121317,
+      "rows_with_recorded_boot_scope": 0,
+      "receiver_position_present_rows": 0,
+      "missing_utc_rows": 0,
+      "missing_monotonic_rows": 0,
+      "boot_id_available_at_collection": true,
+      "historical_boot_assignment_verified": false,
+      "independent_truth_available_for_experiment": false,
+      "transmitter_total_known": false
+    },
+    {
+      "node": "C",
+      "canonical_observations": 82151,
+      "rows_with_recorded_boot_scope": 0,
+      "receiver_position_present_rows": 0,
+      "missing_utc_rows": 0,
+      "missing_monotonic_rows": 0,
+      "boot_id_available_at_collection": true,
+      "historical_boot_assignment_verified": false,
+      "independent_truth_available_for_experiment": false,
+      "transmitter_total_known": false
+    },
+    {
+      "node": "D",
+      "canonical_observations": 42122,
+      "rows_with_recorded_boot_scope": 0,
+      "receiver_position_present_rows": 0,
+      "missing_utc_rows": 0,
+      "missing_monotonic_rows": 0,
+      "boot_id_available_at_collection": true,
+      "historical_boot_assignment_verified": false,
+      "independent_truth_available_for_experiment": false,
+      "transmitter_total_known": false
+    },
+    {
+      "node": "E",
+      "canonical_observations": 42222,
+      "rows_with_recorded_boot_scope": 0,
+      "receiver_position_present_rows": 0,
+      "missing_utc_rows": 0,
+      "missing_monotonic_rows": 0,
+      "boot_id_available_at_collection": true,
+      "historical_boot_assignment_verified": false,
+      "independent_truth_available_for_experiment": false,
+      "transmitter_total_known": false
+    },
+    {
+      "node": "F",
+      "canonical_observations": 45326,
+      "rows_with_recorded_boot_scope": 0,
+      "receiver_position_present_rows": 0,
+      "missing_utc_rows": 0,
+      "missing_monotonic_rows": 0,
+      "boot_id_available_at_collection": true,
+      "historical_boot_assignment_verified": false,
+      "independent_truth_available_for_experiment": false,
+      "transmitter_total_known": false
+    },
+    {
+      "node": "Pixel",
+      "canonical_observations": 174,
+      "rows_with_recorded_boot_scope": 174,
+      "receiver_position_present_rows": 132,
+      "missing_utc_rows": 0,
+      "missing_monotonic_rows": 0,
+      "boot_id_available_at_collection": false,
+      "historical_boot_assignment_verified": false,
+      "independent_truth_available_for_experiment": false,
+      "transmitter_total_known": false
+    },
+    {
+      "node": "ASUS-1",
+      "canonical_observations": 183,
+      "rows_with_recorded_boot_scope": 183,
+      "receiver_position_present_rows": 146,
+      "missing_utc_rows": 0,
+      "missing_monotonic_rows": 0,
+      "boot_id_available_at_collection": false,
+      "historical_boot_assignment_verified": false,
+      "independent_truth_available_for_experiment": false,
+      "transmitter_total_known": false
+    },
+    {
+      "node": "ASUS-2",
+      "canonical_observations": 7740,
+      "rows_with_recorded_boot_scope": 7721,
+      "receiver_position_present_rows": 7641,
+      "missing_utc_rows": 0,
+      "missing_monotonic_rows": 0,
+      "boot_id_available_at_collection": false,
+      "historical_boot_assignment_verified": false,
+      "independent_truth_available_for_experiment": false,
+      "transmitter_total_known": false
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "node": "B",
+    "active": "active",
+    "enabled": "enabled",
+    "state": "CAPTURE_ACTIVE",
+    "records": 0,
+    "budget": 1073741824
+  },
+  {
+    "node": "E",
+    "active": "active",
+    "enabled": "enabled",
+    "state": "CAPTURE_ACTIVE",
+    "records": 0,
+    "budget": 1073741824
+  },
+  {
+    "node": "F",
+    "active": "active",
+    "enabled": "enabled",
+    "state": "CAPTURE_ACTIVE",
+    "records": 0,
+    "budget": 1073741824
+  }
+]

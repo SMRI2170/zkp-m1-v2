@@ -1,0 +1,65 @@
+issue,title_before,state_after,state_reason,tracking_target
+10,[RID-P0] 利用主体・ユースケース・公開条件を定義する,closed,not_planned,28
+11,[RID-P0] Remote IDの信頼境界・攻撃モデル・保証レベルを定義する,closed,not_planned,28
+12,[RID-P0][Mode C] 観測・ZKP・P2P検証・共同確定のメッセージ契約を設計,closed,not_planned,28
+13,[RID-P1][Mode C] Pixel 8 Observer：受信・秘密観測・ZKP・相互検証を連携,closed,not_planned,28
+14,[RID-P1][Mode C] Raspberry Pi 4×2 Observer：受信・ローカルZKP・他2台の検証,closed,not_planned,28
+15,[RID-P1] Remote ID認証・鮮度・出所検証を独立モジュール化する,closed,not_planned,28
+16,[RID-P1][Mode C] 3台P2P通信・セッション同期・証拠複製を実装する,closed,not_planned,28
+17,[RID-P1][Mode C] 各ノード共通の誤差考慮型ローカル判定と3観測融合を設計,closed,not_planned,28
+18,[RID-P2][Mode C] Pi4×2・Pixel8の個別ZKP生成と他2台の相互検証を実装,closed,not_planned,28
+19,[RID-P2][Mode C] 3台の提出集合確定・相互投票・共同署名証明書を実装,closed,not_planned,28
+20,[RID-P2] Merkleログ・複数検証者・許可型BCを同条件で比較する,closed,not_planned,28
+21,[RID-P3] 一般利用者向け：周辺UAVと接近リスクの表示を実装する,closed,not_planned,28
+24,[RID-P4][Mode C] 3観測ノードのZKP・相互検証・故障攻撃E2E試験,closed,not_planned,28
+25,[RID-P4][Mode C] 3ノードの精度・ZKP・相互検証コストを実測する,closed,not_planned,28
+26,[RID-C-v1][Protocol] 3観測ノードが観測・ZKP生成・相互検証・共同確定するプロトコルを実装する,closed,not_planned,28
+28,[RID-BC][Epic] Remote ID×ZKP×Solidity×Besu/QBFT：低遅延警告と分散検証の参照実装,open,,28
+29,[RID-BC][P0] 信頼モデル・検証ステートメント・公開ABI／状態機械を確定する,closed,not_planned,28
+30,[RID-BC][P1] Besu QBFT 4 Validator＋RPCの再現可能な開発環境を構築する,closed,not_planned,28
+31,[RID-BC][P1] Circom＋RapidSnark＋SolidityでRemote ID個別証明を相互運用する,closed,not_planned,28
+32,[RID-BC][P2] Pixel 8・Raspberry Piの端末資格／ハードウェアアテステーションを設計する,closed,not_planned,28
+33,[RID-BC][P2] Solidity DeviceRegistry／PolicyRegistryと権限・鍵更新を実装する,closed,not_planned,28
+34,[RID-BC][P2] Solidity Groth16オンチェーン検証・Remote IDセッション集約を実装する,closed,not_planned,28
+35,[RID-BC][P2] 速報Fast Path：ZKP／BC確定を待たずに危険候補を通知する,closed,not_planned,28
+36,[RID-BC][P3] 3実機E2E・攻撃耐性・性能評価とBCなし方式との比較,closed,not_planned,28
+37,[RID-BC][P4] 国内標準化を見据えた公開プロトコル・適合性試験・参照実装を整備する,closed,not_planned,28
+38,[Week23][Epic] Nova系ZK-PCDのWitness秘匿・3ノード証明継続とBC採用判断,closed,not_planned,44
+39,[Week23][P0] Nova・SuperNova・HyperNova・KiloNova／Sonobe実装とZK引継ぎAPIの調査,closed,not_planned,44
+40,[Week23][P0] Sonobe旧IVCProofのWitness露出と状態検証漏れをコードで再現,closed,not_planned,44
+41,[Week23][P1] 秘密Witness非共有のA→B→C ZK-IVC／PCD最小PoCを実装・否定テスト,closed,not_planned,44
+42,[Week23][P2] PCD・3台個別ZKP・Besuの保証／性能比較と技術選定ADR,closed,not_planned,28
+43,[教授フィードバック][研究再設計] HyperNova PR #246の概念実装調査・研究新規性・Pi 4軽量IVC・端末内時系列証明,closed,not_planned,44
+44,[Week24] HyperNova論文・Sonobe PR #246調査とRaspberry Pi 4（4GB・1Hz）複数ZKP実装・比較評価,open,,44
+45,[Week24][調査] モバイル・Raspberry Pi軽量ZKP候補とBesu/EVMオンチェーン検証の適合性比較,closed,not_planned,44
+46,[Week24][Mobile][手順明確化] Rust ZKP共通coreでJNI・UniFFI・Flutter FFI・KMPを段階比較,closed,not_planned,44
+47,[Week24][追加評価Epic] Pi安定稼働・署名付き観測回路・反復／長時間評価の残タスク,closed,not_planned,44
+48,[Week24][P0] Pi再起動の背景と安定稼働・メモリ保護を確認,closed,not_planned,44
+50,[Week24][P0] Kimchi・Binius64・Joltへ同等の署名付き観測workloadを移植,closed,not_planned,44
+51,[Week24][P1] 独立cold反復とwarm反復を増やし統計・メモリ評価を強化,closed,not_planned,44
+52,[Week24][P1] 持続1Hz入力のキュー・欠測・長時間メモリを段階評価,closed,not_planned,44
+53,[Week24][P1] 署名・session・replay・境界値の否定テストを拡充,closed,not_planned,44
+54,[Week24][P2] 合成RSSI・時系列・観測者資格／期限条件へworkloadを拡張,closed,not_planned,44
+55,[Week24][P1] 未完了backendのPiケースとzkVMビルド・実行制約を整理,closed,not_planned,44
+58,[Week24][P1] 距離回路ベンチを同じ7入力×3回に統一し統計・比較図を再生成,closed,not_planned,44
+60,[Week24][P1] Pi接続を復旧し8構成の21件ベンチと比較図を実測する,closed,not_planned,44
+61,[Week24][P1] 残る10構成を均等反復ベンチまたはIVC専用評価へ対応させる,closed,not_planned,44
+66,[Week25][研究] 1時間離れた複数ノード観測・未知送信電力下の検証可能性と限界,closed,not_planned,96
+67,[Week26][技術調査→方式選定→デモ] 非同期・未知送信電力のRSSI測距／異常検出とZKP適用可能性,closed,not_planned,96
+68,[Week27][研究] GhostBuster・方向推定の再調査と実UAV電波データによる位置偽装検出の成立条件評価,closed,not_planned,96
+69,[Week27][P4/可視化] UAV・ユーザ・受信ノードの状態を同一イベントで理解できる説明用ビュー,closed,not_planned,93
+70,[Week27][P0/実装] uli-net-simを用いたRemote ID相当Beacon×RSSI位置偽装・未知送信電力・非同期観測の再現実験,closed,not_planned,96
+75,[Week27][PR5][研究実装] 観測局適応型Tx電力補償攻撃と非同期1RSSI検出限界の追試,closed,not_planned,96
+77,[Week28][PR6][研究実装] Remote ID相当Beacon×RSSI検出の外的妥当性：局配置・偽装方向・伝搬不一致,closed,not_planned,96
+83,[Week28][実機/実測] Wi-Fi Beacon・Remote ID受信ノードの多点展開とRSSI観測基盤構築,closed,not_planned,97
+84,[Week28][KMP/Android] ZKPなしRemote ID受信アプリの整備とバックグラウンド収録・Pixel 8実機評価,open,,84
+88,[Week29][Epic] 実機Remote IDの保全・時刻監査・3D軌跡・RSSI比較と位置偽装評価,open,,88
+89,[Week29][P0] 実験データ監査・時計ずれの照合と解析対象区間の確定,open,,89
+90,[Week29][P0] 記録停止と受信空白の原因分析・保存修正後の確認,closed,not_planned,97
+91,[Week29][P1] Androidの自己位置・測位精度・欠測と観測時刻対応の監査,closed,not_planned,89
+92,[Week29][P1] Raspberry PiとAndroidのRID取得間隔・重複・キャッシュの比較,closed,not_planned,89
+93,[Week29][P1] 3D申告軌跡上のRSSI・観測区間と受信空白の可視化,open,,93
+94,[Week29][P1] 実機RIDの申告距離・高度と実測RSSIの関係・ばらつき分析,closed,not_planned,96
+95,[Week29][P1] 同一送信候補の多端末照合と局間RSSI差の成立条件評価,open,,95
+96,[Week29][P2] 実測RSSIを基準にした合成位置偽装・電力補償の検出評価,open,,96
+97,[Week29][P0] Pi受信ノードB〜Fへ保存容量対策を展開し、既存データ保持・起動復旧・長時間記録を検証,open,,97

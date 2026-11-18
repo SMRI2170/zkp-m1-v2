@@ -1,0 +1,52 @@
+[
+  {
+    "node": "B",
+    "status": "ACTIVE_NEW_RECEIVER_SESSION",
+    "activated": true,
+    "old_data_verified": true,
+    "backup_files": 5810,
+    "backup_source_bytes": 408432473,
+    "backup_archive_bytes": 22151605,
+    "live_backup_verified": true,
+    "stage_verified": true,
+    "records_written": 0,
+    "storage_state": "CAPTURE_ACTIVE",
+    "receiver_only": true,
+    "config_unchanged": true,
+    "four_hour_test_completed": false
+  },
+  {
+    "node": "E",
+    "status": "ACTIVE_NEW_RECEIVER_SESSION",
+    "initial_attempt": "FAILED_TMPFS_TEST_ENVIRONMENT",
+    "activated": true,
+    "stage_verified": true,
+    "old_data_verified": true,
+    "config_unchanged": true,
+    "receiver_only": true,
+    "records_written": 0,
+    "storage_state": "CAPTURE_ACTIVE",
+    "live_backup_verified": true,
+    "backup_files": 1277,
+    "backup_source_bytes": 201941490,
+    "backup_archive_bytes": 11939197,
+    "four_hour_test_completed": false
+  },
+  {
+    "node": "F",
+    "status": "ACTIVE_NEW_RECEIVER_SESSION",
+    "initial_attempt": "FAILED_TMPFS_TEST_ENVIRONMENT",
+    "activated": true,
+    "stage_verified": true,
+    "old_data_verified": true,
+    "config_unchanged": true,
+    "receiver_only": true,
+    "records_written": 0,
+    "storage_state": "CAPTURE_ACTIVE",
+    "live_backup_verified": true,
+    "backup_files": 1169,
+    "backup_source_bytes": 201750500,
+    "backup_archive_bytes": 11511193,
+    "four_hour_test_completed": false
+  }
+]

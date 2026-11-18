@@ -1,0 +1,17 @@
+{
+  "base": "origin/main",
+  "base_commit": "0c38ba1c1ce7f46ea61e576bf9c58c708bb78530",
+  "week29_tests": 73,
+  "week29_reference_tests_skipped": 0,
+  "field_kit_tests": 25,
+  "pi_tests": 58,
+  "android_python_tests": 19,
+  "uav_tests": 50,
+  "contracts_tests": 21,
+  "go_tests_passed": true,
+  "android_build_and_lint_passed": true,
+  "device_instrumentation_executed": false,
+  "real_capture_files_included": false,
+  "ci_status_at_commit": "verify_after_push",
+  "publication_boundary_tests": 4
+}

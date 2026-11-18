@@ -1,0 +1,19 @@
+{
+  "node": "C",
+  "preserved_files": 4912,
+  "preserved_bytes": 274193354,
+  "active_release_rows": 15393,
+  "invalid_json_lines": 2,
+  "source_role_rows": {
+    "onboard_pi": 15393
+  },
+  "protocol_version_rows": {
+    "2": 15393
+  },
+  "parser_reasons": {},
+  "current_ntp_synchronized": true,
+  "historical_field_date_verified": false,
+  "settings_modified": false,
+  "remote_hashes_all_verified": false,
+  "inventory_lengths_all_verified": true
+}

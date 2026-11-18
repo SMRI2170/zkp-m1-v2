@@ -1,0 +1,39 @@
+{
+  "source_sha256": "dfd1e72067e4d31db264a9fbf7c884460edd12f6b194351918114310612b6464",
+  "code_sha256": "680d19f218b500edd950846a19fbd0894c586e9bfd6615ff16050ef4b805f339",
+  "nodes": {
+    "ASUS-1": {
+      "target_rows": 146,
+      "retained_rows": 0,
+      "held_rows": 146,
+      "n": 0
+    },
+    "ASUS-2": {
+      "target_rows": 46,
+      "retained_rows": 0,
+      "held_rows": 46,
+      "n": 0
+    },
+    "Pixel": {
+      "target_rows": 132,
+      "retained_rows": 105,
+      "held_rows": 27,
+      "n": 105,
+      "rssi_median_dbm": -56.0,
+      "rssi_p10_dbm": -75.6,
+      "rssi_p90_dbm": -45.39999999999999,
+      "rssi_min_dbm": -86.0,
+      "rssi_max_dbm": -42.0
+    }
+  },
+  "quality_gate": {
+    "max_os_accuracy_m": 20,
+    "max_accuracy_over_claimed_horizontal_distance": 0.25
+  },
+  "distance": "RID claim and associated phone GPS horizontal distance; not independent true distance",
+  "slant_distance": "NOT_EVALUABLE_vertical_reference_unverified",
+  "fitted_path_loss_model": "NOT_EXECUTED_independent_runs_and_power_controls_not_established",
+  "generalization_accuracy": "NOT_EVALUABLE",
+  "b_distance": "NOT_EVALUABLE_receiver_position_unknown",
+  "input_unchanged": true
+}

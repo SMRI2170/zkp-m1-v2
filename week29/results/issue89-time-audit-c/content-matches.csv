@@ -1,0 +1,5 @@
+group_a,group_b,shared_contents,one_to_one_content_candidates,ambiguous_repeated_contents,utc_b_minus_a_descriptive_s,status,physical_packet_confirmed
+ASUS-1-G1,B-G1,4,0,4,"{""n"": 4, ""min"": 49763494.42667985, ""median"": 49763495.07676184, ""max"": 49763496.26552987, ""mad"": 0.3991199731826782}",candidate_content_only,False
+ASUS-2-G1,B-G1,1,0,1,"{""n"": 1, ""min"": -162620.09293985367, ""median"": -162620.09293985367, ""max"": -162620.09293985367, ""mad"": 0.0}",candidate_content_only,False
+ASUS-2-G1,Pixel-G1,1,0,1,"{""n"": 1, ""min"": -163963880.33799982, ""median"": -163963880.33799982, ""max"": -163963880.33799982, ""mad"": 0.0}",candidate_content_only,False
+B-G1,Pixel-G1,15,13,2,"{""n"": 15, ""min"": -163801260.24505997, ""median"": -163801259.55369806, ""max"": -163801259.2660613, ""mad"": 0.01710224151611328}",candidate_content_only,False

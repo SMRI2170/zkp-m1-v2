@@ -1,0 +1,26 @@
+[
+  {
+    "node": "C",
+    "reboot_confirmed": true,
+    "cold_power_cycle_tested": false,
+    "boot_changed": true,
+    "session_changed": true,
+    "service_enabled": true,
+    "service_state": "active",
+    "config_unchanged": true,
+    "records_written": 0,
+    "memory_available_bytes": 578723840
+  },
+  {
+    "node": "D",
+    "reboot_confirmed": true,
+    "cold_power_cycle_tested": false,
+    "boot_changed": true,
+    "session_changed": true,
+    "service_enabled": true,
+    "service_state": "active",
+    "config_unchanged": true,
+    "records_written": 0,
+    "memory_available_bytes": 3478228992
+  }
+]

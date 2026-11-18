@@ -1,0 +1,9 @@
+scope,kind,recorded_jst_date,rows
+active,rx,2026-11-14,91
+active,sensor,2026-11-14,113009
+active,sensor,2026-11-15,65273
+historical,rx,2026-11-10,7
+historical,rx,2026-11-11,593
+historical,rx,2026-11-14,59
+historical,sensor,2026-11-13,133218
+historical,sensor,2026-11-14,224448

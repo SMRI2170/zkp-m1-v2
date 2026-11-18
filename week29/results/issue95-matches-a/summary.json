@@ -1,0 +1,70 @@
+{
+  "code_sha256": "c470ff76a6e04a772ec495ecdeaaf6882afb06ce14035442dc771a33f07e8dcf",
+  "confirmed_physical_packets": 0,
+  "clock_alignment_verified": false,
+  "pair_results": [
+    {
+      "pair": "B / Pixel",
+      "shared_content_types": 15,
+      "left_only_content_types": 488,
+      "right_only_content_types": 117
+    },
+    {
+      "pair": "B / ASUS-1",
+      "shared_content_types": 4,
+      "left_only_content_types": 499,
+      "right_only_content_types": 36
+    },
+    {
+      "pair": "B / ASUS-2",
+      "shared_content_types": 1,
+      "left_only_content_types": 502,
+      "right_only_content_types": 11
+    },
+    {
+      "pair": "B / Pixel8",
+      "shared_content_types": 0,
+      "left_only_content_types": 503,
+      "right_only_content_types": 0
+    },
+    {
+      "pair": "Pixel / ASUS-1",
+      "shared_content_types": 0,
+      "left_only_content_types": 132,
+      "right_only_content_types": 40
+    },
+    {
+      "pair": "Pixel / ASUS-2",
+      "shared_content_types": 1,
+      "left_only_content_types": 131,
+      "right_only_content_types": 11
+    },
+    {
+      "pair": "Pixel / Pixel8",
+      "shared_content_types": 0,
+      "left_only_content_types": 132,
+      "right_only_content_types": 0
+    },
+    {
+      "pair": "ASUS-1 / ASUS-2",
+      "shared_content_types": 0,
+      "left_only_content_types": 40,
+      "right_only_content_types": 12
+    },
+    {
+      "pair": "ASUS-1 / Pixel8",
+      "shared_content_types": 0,
+      "left_only_content_types": 40,
+      "right_only_content_types": 0
+    },
+    {
+      "pair": "ASUS-2 / Pixel8",
+      "shared_content_types": 0,
+      "left_only_content_types": 12,
+      "right_only_content_types": 0
+    }
+  ],
+  "rssi_difference": "NOT_EVALUABLE_no_confirmed_same_transmission",
+  "cancellation_of_unknown_power": "NOT_EVALUABLE_common_transmission_unverified",
+  "note": "candidate clock intervals are alternative-model ranges, not statistical confidence intervals"
+}

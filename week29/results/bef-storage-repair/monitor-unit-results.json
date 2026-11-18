@@ -1,0 +1,20 @@
+[
+  {
+    "node": "B",
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "ActiveState": "inactive"
+  },
+  {
+    "node": "E",
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "ActiveState": "inactive"
+  },
+  {
+    "node": "F",
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "ActiveState": "inactive"
+  }
+]

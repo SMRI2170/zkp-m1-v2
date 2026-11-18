@@ -1,0 +1,8 @@
+{
+  "source_hash": "23d7674ba81d4e0a5842f28174d75c2800571134a7fa1f7a20c6429137a88680",
+  "pi_source_files": 46,
+  "all_payload_hashes_match": true,
+  "pi_archive_exact_manifest_match": true,
+  "stage_on_pi_executed": false,
+  "apk_built": false
+}

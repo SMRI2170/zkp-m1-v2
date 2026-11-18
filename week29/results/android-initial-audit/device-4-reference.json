@@ -1,0 +1,23 @@
+{
+  "device": "Pixel 8",
+  "saved_observations": 14674,
+  "native_decoded": 20,
+  "native_invalid": 14654,
+  "native_invalid_reason_counts": {
+    "UNCLASSIFIED_VENDOR_IE": 14654
+  },
+  "supported_pack_rows": 20,
+  "reference_decoded_rows": 20,
+  "operator_confirmed_drone_id_rows": 0,
+  "target_location_rows": 0,
+  "target_with_receiver_position_rows": 0,
+  "target_rssi_range_dbm": null,
+  "target_recorded_utc_first": null,
+  "target_recorded_utc_last": null,
+  "recorded_field_window_rows": 11938,
+  "field_time_assignment_verified": false,
+  "cryptographic_identity_verified": false,
+  "reference_commit": "849c03adbe0cdd68997a462fafab397edcfe53f3",
+  "raw_same_bssid_as_confirmed_b_drone_rows": 0,
+  "raw_target_id_string_rows": 0
+}

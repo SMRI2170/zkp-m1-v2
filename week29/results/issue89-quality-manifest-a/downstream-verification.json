@@ -1,0 +1,14 @@
+{
+  "distance_node_statistics_unchanged": true,
+  "attack_statistics_unchanged": {
+    "counts": true,
+    "normal_assumed_alarm_rate": true,
+    "model_intercept_dbm": true,
+    "horizontal_proxy_n": true,
+    "threshold_db": true,
+    "status": true,
+    "detector_adoption": true
+  },
+  "attack_summary_csv_identical": true,
+  "time_block_csv_identical": true
+}

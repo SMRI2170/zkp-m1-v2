@@ -1,0 +1,14 @@
+{
+  "build_successful": true,
+  "tasks": [
+    "shared:jvmTest",
+    "shared:testAndroidHostTest",
+    "androidApp:assembleDebug",
+    "androidApp:assembleDebugAndroidTest",
+    "androidApp:lintDebug",
+    "replay:installDist"
+  ],
+  "jvm_tests": 50,
+  "android_host_tests": 50,
+  "device_instrumentation_executed": false
+}

@@ -1,0 +1,42 @@
+{
+  "nodes": {
+    "ASUS-1": {
+      "points": 146,
+      "rssi_missing": 0,
+      "segments": 4,
+      "clock_groups": 1
+    },
+    "ASUS-2": {
+      "points": 46,
+      "rssi_missing": 0,
+      "segments": 4,
+      "clock_groups": 1
+    },
+    "B": {
+      "points": 531,
+      "rssi_missing": 0,
+      "segments": 5,
+      "clock_groups": 1
+    },
+    "Pixel": {
+      "points": 132,
+      "rssi_missing": 0,
+      "segments": 8,
+      "clock_groups": 1
+    }
+  },
+  "source_sha256": "bd8f492d8fe7ac8c5b0cdbdb10cd8dff3da4aaccc3eefa35a6d730e210940b9a",
+  "code_sha256": "388153b6f2456524a1c6a447dc41e790955b42603e65ecc107558c1000587799",
+  "clock_alignment_verified": false,
+  "independent_position_truth": false,
+  "receiver_sites_known": false,
+  "service_state_alignment": "NOT_EVALUABLE",
+  "packet_delivery_rate": "NOT_EVALUABLE",
+  "gap_s": 60,
+  "note": "Coordinates are RID claims. Relative receiver RSSI values are uncalibrated. No service-state evidence is inferred from gaps.",
+  "shared_color_limits_dbm": [
+    -87.0,
+    -40.0
+  ],
+  "input_unchanged": true
+}
