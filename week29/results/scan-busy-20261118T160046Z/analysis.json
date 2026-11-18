@@ -1,0 +1,210 @@
+{
+  "groups": [
+    {
+      "strategy": "adaptive",
+      "configured_interval_s": 0.25,
+      "windows": 2,
+      "total_requested_seconds": 40,
+      "requests": 90,
+      "busy": 6,
+      "busy_fraction": 0.06666666666666667,
+      "accepted": 84,
+      "new_target_cache_timestamps": 82,
+      "new_target_vendor_contents_by_window": [
+        15,
+        15
+      ],
+      "scan_duration_medians_by_window": [
+        0.04755401611328125,
+        0.04843401908874512
+      ],
+      "peak_worker_child_rss_kib": 23484
+    },
+    {
+      "strategy": "all_channels",
+      "configured_interval_s": 0.5,
+      "windows": 2,
+      "total_requested_seconds": 40,
+      "requests": 26,
+      "busy": 19,
+      "busy_fraction": 0.7307692307692307,
+      "accepted": 7,
+      "new_target_cache_timestamps": 7,
+      "new_target_vendor_contents_by_window": [
+        4,
+        3
+      ],
+      "scan_duration_medians_by_window": [
+        3.525833487510681,
+        3.5876500606536865
+      ],
+      "peak_worker_child_rss_kib": 23612
+    },
+    {
+      "strategy": "all_channels",
+      "configured_interval_s": 1,
+      "windows": 2,
+      "total_requested_seconds": 40,
+      "requests": 30,
+      "busy": 20,
+      "busy_fraction": 0.6666666666666666,
+      "accepted": 10,
+      "new_target_cache_timestamps": 10,
+      "new_target_vendor_contents_by_window": [
+        5,
+        5
+      ],
+      "scan_duration_medians_by_window": [
+        3.5888500213623047,
+        3.5653440952301025
+      ],
+      "peak_worker_child_rss_kib": 23744
+    },
+    {
+      "strategy": "all_channels",
+      "configured_interval_s": 2,
+      "windows": 2,
+      "total_requested_seconds": 40,
+      "requests": 20,
+      "busy": 10,
+      "busy_fraction": 0.5,
+      "accepted": 10,
+      "new_target_cache_timestamps": 9,
+      "new_target_vendor_contents_by_window": [
+        4,
+        5
+      ],
+      "scan_duration_medians_by_window": [
+        3.569305181503296,
+        3.5724079608917236
+      ],
+      "peak_worker_child_rss_kib": 23484
+    },
+    {
+      "strategy": "all_channels",
+      "configured_interval_s": 5,
+      "windows": 2,
+      "total_requested_seconds": 40,
+      "requests": 8,
+      "busy": 0,
+      "busy_fraction": 0.0,
+      "accepted": 8,
+      "new_target_cache_timestamps": 8,
+      "new_target_vendor_contents_by_window": [
+        4,
+        4
+      ],
+      "scan_duration_medians_by_window": [
+        3.6053675413131714,
+        3.564072012901306
+      ],
+      "peak_worker_child_rss_kib": 23484
+    },
+    {
+      "strategy": "fixed_frequency",
+      "configured_interval_s": 0.5,
+      "windows": 2,
+      "total_requested_seconds": 40,
+      "requests": 79,
+      "busy": 0,
+      "busy_fraction": 0.0,
+      "accepted": 79,
+      "new_target_cache_timestamps": 71,
+      "new_target_vendor_contents_by_window": [
+        19,
+        21
+      ],
+      "scan_duration_medians_by_window": [
+        0.04803204536437988,
+        0.047515153884887695
+      ],
+      "peak_worker_child_rss_kib": 23116
+    },
+    {
+      "strategy": "fixed_frequency",
+      "configured_interval_s": 1,
+      "windows": 2,
+      "total_requested_seconds": 40,
+      "requests": 40,
+      "busy": 0,
+      "busy_fraction": 0.0,
+      "accepted": 40,
+      "new_target_cache_timestamps": 39,
+      "new_target_vendor_contents_by_window": [
+        19,
+        20
+      ],
+      "scan_duration_medians_by_window": [
+        0.047914981842041016,
+        0.0483165979385376
+      ],
+      "peak_worker_child_rss_kib": 23700
+    },
+    {
+      "strategy": "fixed_frequency",
+      "configured_interval_s": 2,
+      "windows": 2,
+      "total_requested_seconds": 40,
+      "requests": 20,
+      "busy": 0,
+      "busy_fraction": 0.0,
+      "accepted": 20,
+      "new_target_cache_timestamps": 20,
+      "new_target_vendor_contents_by_window": [
+        10,
+        10
+      ],
+      "scan_duration_medians_by_window": [
+        0.04837667942047119,
+        0.04809248447418213
+      ],
+      "peak_worker_child_rss_kib": 23612
+    },
+    {
+      "strategy": "fixed_frequency",
+      "configured_interval_s": 5,
+      "windows": 2,
+      "total_requested_seconds": 40,
+      "requests": 8,
+      "busy": 0,
+      "busy_fraction": 0.0,
+      "accepted": 8,
+      "new_target_cache_timestamps": 8,
+      "new_target_vendor_contents_by_window": [
+        4,
+        4
+      ],
+      "scan_duration_medians_by_window": [
+        0.04806649684906006,
+        0.04737210273742676
+      ],
+      "peak_worker_child_rss_kib": 23352
+    },
+    {
+      "strategy": "passive",
+      "configured_interval_s": null,
+      "windows": 2,
+      "total_requested_seconds": 40,
+      "requests": 0,
+      "busy": 0,
+      "busy_fraction": null,
+      "accepted": 0,
+      "new_target_cache_timestamps": 0,
+      "new_target_vendor_contents_by_window": [
+        0,
+        0
+      ],
+      "scan_duration_medians_by_window": [
+        null,
+        null
+      ],
+      "peak_worker_child_rss_kib": 23100
+    }
+  ],
+  "scan_event_pairs": 266,
+  "scan_event_holds": {
+    "unclosed_started": 0
+  },
+  "observed_quantities": "Linux scan-cache observations and iw scan notifications; not packet delivery rate",
+  "limit": "one receiver/transmitter placement, two ordered windows per active condition, no independent flights"
+}

@@ -1,0 +1,13 @@
+{
+  "started": true,
+  "completed": false,
+  "transmitter": "D",
+  "receiver": "C",
+  "trials": 20,
+  "seconds_per_trial": 20,
+  "normal_receiver_paused": true,
+  "restore_deadline_s": 900,
+  "configuration_changes": false,
+  "real_drone": false,
+  "content": "synthetic session ID; counter updated every second; no location claims"
+}

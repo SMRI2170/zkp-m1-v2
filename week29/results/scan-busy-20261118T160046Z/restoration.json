@@ -1,0 +1,18 @@
+{
+  "experiment_completed": true,
+  "nodes": [
+    {
+      "node": "C",
+      "receiver_active": null,
+      "restore_unconfirmed": true,
+      "error_type": "RuntimeError"
+    },
+    {
+      "node": "D",
+      "receiver_active": null,
+      "restore_unconfirmed": true,
+      "error_type": "RuntimeError"
+    }
+  ],
+  "real_drone": false
+}

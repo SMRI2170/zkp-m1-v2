@@ -1,0 +1,21 @@
+trial,round,strategy,interval_s,scan_event_pairs_inside_window,scan_event_duration_median_s,scan_event_duration_p95_s,worker_child_peak_rss_kib,trial_capture_files_bytes,window_alignment
+1,0,passive,,0,,,23100,1800,same-host UTC run label; starts near boundary excluded; not hardware time
+2,1,fixed_frequency,0.5,39,0.04803204536437988,0.0498584508895874,23116,110913,same-host UTC run label; starts near boundary excluded; not hardware time
+3,1,fixed_frequency,1,20,0.047914981842041016,0.05128183364868164,22968,69189,same-host UTC run label; starts near boundary excluded; not hardware time
+4,1,all_channels,1,5,3.5888500213623047,3.620330047607422,23488,23768,same-host UTC run label; starts near boundary excluded; not hardware time
+5,1,adaptive,0.25,43,0.04755401611328125,0.051845979690551755,23356,146950,same-host UTC run label; starts near boundary excluded; not hardware time
+6,1,all_channels,2,5,3.569305181503296,3.5930623531341555,23484,19646,same-host UTC run label; starts near boundary excluded; not hardware time
+7,1,all_channels,0.5,4,3.525833487510681,3.5644325494766234,23612,20399,same-host UTC run label; starts near boundary excluded; not hardware time
+8,1,fixed_frequency,2,10,0.04837667942047119,0.05258965492248535,23612,38715,same-host UTC run label; starts near boundary excluded; not hardware time
+9,1,all_channels,5,4,3.6053675413131714,3.619861900806427,23224,18490,same-host UTC run label; starts near boundary excluded; not hardware time
+10,1,fixed_frequency,5,4,0.04806649684906006,0.04830472469329834,23352,18495,same-host UTC run label; starts near boundary excluded; not hardware time
+11,2,fixed_frequency,5,4,0.04737210273742676,0.04880944490432739,22976,15318,same-host UTC run label; starts near boundary excluded; not hardware time
+12,2,all_channels,5,4,3.564072012901306,3.5876954913139345,23484,18484,same-host UTC run label; starts near boundary excluded; not hardware time
+13,2,fixed_frequency,2,10,0.04809248447418213,0.06737390756607052,23228,38699,same-host UTC run label; starts near boundary excluded; not hardware time
+14,2,all_channels,0.5,3,3.5876500606536865,3.6184128522872925,23228,16835,same-host UTC run label; starts near boundary excluded; not hardware time
+15,2,all_channels,2,5,3.5724079608917236,3.6223603248596192,23356,22814,same-host UTC run label; starts near boundary excluded; not hardware time
+16,2,adaptive,0.25,41,0.04843401908874512,0.04999589920043945,23484,140248,same-host UTC run label; starts near boundary excluded; not hardware time
+17,2,all_channels,1,5,3.5653440952301025,3.5980071067810058,23744,23768,same-host UTC run label; starts near boundary excluded; not hardware time
+18,2,fixed_frequency,1,20,0.0483165979385376,0.05071580410003662,23700,69201,same-host UTC run label; starts near boundary excluded; not hardware time
+19,2,fixed_frequency,0.5,40,0.047515153884887695,0.05098406076431274,23020,136543,same-host UTC run label; starts near boundary excluded; not hardware time
+20,3,passive,,0,,,22964,4981,same-host UTC run label; starts near boundary excluded; not hardware time

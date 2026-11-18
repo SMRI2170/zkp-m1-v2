@@ -1,0 +1,20 @@
+{
+  "experiment_windows": 20,
+  "experiment_complete": true,
+  "new_scan_study_tests": 8,
+  "week29_tests": 81,
+  "uav_tests": 50,
+  "go_tests_passed": true,
+  "contract_tests": 21,
+  "all_local_checks_passed": true,
+  "real_drone_used": false,
+  "normal_receivers_restored": [
+    "C",
+    "D"
+  ],
+  "normal_configs_unchanged": true,
+  "initial_cleanup_failed_and_retained": true,
+  "cleanup_fix_verified_on_both_nodes": true,
+  "graph_visually_checked": true,
+  "ci_status_at_commit": "verify_after_push"
+}
