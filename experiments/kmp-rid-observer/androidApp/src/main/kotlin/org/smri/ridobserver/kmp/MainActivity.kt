@@ -84,7 +84,7 @@ class MainActivity : Activity() {
         actions.addView(record,LinearLayout.LayoutParams(0,dp(52),1f))
         actions.addView(button("書き出し") { exportDialog() },LinearLayout.LayoutParams(0,dp(52),1f))
         root.addView(actions,params(WRAP,12))
-        permissionStatus=label("権限を確認",13,blue)
+        permissionStatus=label("GPS・Wi-Fiの権限",13,blue)
         permissionStatus.setOnClickListener {showPermissionGuide(false)}
         root.addView(permissionStatus,params(WRAP,6))
         nodeText=label("ノード：$nodeId  ⚙",12,Color.DKGRAY)
@@ -116,42 +116,82 @@ class MainActivity : Activity() {
     }
 
     private fun scanModeLabel():String {
-        val ms=getSharedPreferences("receiver",MODE_PRIVATE).getLong("scan_interval_ms",30_000)
+        val prefs=getSharedPreferences("receiver",MODE_PRIVATE)
+        if(prefs.getBoolean("scan_fastest",false)) {
+            val wifi=applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
+            val ms=ScanPolicy.fastestOnPlatform(Build.VERSION.SDK_INT,PlatformCompat.scanThrottleEnabled(wifi))
+            return "スキャン要求：最短設定 ${ms/1000}秒 · 変更"
+        }
+        val ms=prefs.getLong("scan_interval_ms",30_000)
         return "スキャン要求：${ms/1000}秒${if(ms<30_000) "（開発用）" else "（標準）"} · 変更"
     }
     private fun editScanMode() {
         if(scanning) {toast("受信を停止してから変更してください");return}
         val modes=ScanPolicy.intervalsMs
-        val current=getSharedPreferences("receiver",MODE_PRIVATE).getLong("scan_interval_ms",30_000)
+        val prefs=getSharedPreferences("receiver",MODE_PRIVATE)
+        val current=prefs.getLong("scan_interval_ms",30_000)
         AlertDialog.Builder(this).setTitle("要求間隔（取得保証ではありません）")
-            .setSingleChoiceItems(arrayOf("標準30秒","開発用5秒","開発用1秒"),modes.indexOf(current)) {dialog,which ->
-                getSharedPreferences("receiver",MODE_PRIVATE).edit().putLong("scan_interval_ms",modes[which]).apply()
+            .setSingleChoiceItems(arrayOf("最短設定（端末に合わせる）","標準30秒","開発用5秒","開発用1秒"),
+                if(prefs.getBoolean("scan_fastest",false)) 0 else modes.indexOf(current)+1) {dialog,which ->
+                prefs.edit().putBoolean("scan_fastest",which==0).apply()
+                if(which>0) prefs.edit().putLong("scan_interval_ms",modes[which-1]).apply()
                 scanConfig.text=scanModeLabel();dialog.dismiss()
-            }.setNegativeButton("閉じる",null).show()
+            }.setNegativeButton("閉じる",null)
+            .setNeutralButton("OSの開発者設定") {_,_ ->
+                try {startActivity(Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS))}
+                catch(e:ActivityNotFoundException) {toast("この端末では設定画面を開けません")}
+            }.show()
     }
 
     private fun fineGranted()=checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED
+    private fun wifiEnabled()=(applicationContext.getSystemService(WIFI_SERVICE) as WifiManager).isWifiEnabled
     private fun permissionSummary():String {
         val loc=if(fineGranted()) "位置：正確を許可" else if(checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED) "位置：概算のみ" else "位置：未許可"
         val notification=if(Build.VERSION.SDK_INT<33) "通知：追加許可不要" else if(checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)==PackageManager.PERMISSION_GRANTED) "通知：許可" else "通知：未許可"
-        return "$loc · $notification"
+        return "GPS・自位置 / $loc\n位置情報：${if(PlatformCompat.locationEnabled(this)) "ON" else "OFF"} · Wi-Fi：${if(wifiEnabled()) "ON" else "OFF"}\n$notification"
     }
-    private fun renderPermissions() {if(::permissionStatus.isInitialized) permissionStatus.text="権限を確認 · "+permissionSummary()}
+    private fun renderPermissions() {if(::permissionStatus.isInitialized) permissionStatus.text=
+        "GPS・Wi-Fiの権限 · ${if(fineGranted()) "位置を許可済み" else "位置の許可が必要"} · 設定"}
     private fun openAppSettings() {
         permissionFlow.cancel()
         startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,android.net.Uri.parse("package:$packageName")))
     }
     private fun showPermissionGuide(startAfter:Boolean) {
         permissionFlow.begin(startAfter)
-        val explanation="Wi-Fi受信と自位置の保存には、正確な位置情報の許可が必要です。データは端末内に保存します。"+
-            (if(Build.VERSION.SDK_INT>=33) "\n通知は受信中の表示と停止操作に使います。通知の許可は任意です。" else "\nこのAndroidでは通知の追加許可は不要です。")+
+        val explanation="GPSの自位置とWi-Fi・RSSIの取得に、Androidの位置情報の許可を使用します。\n"+
+            "未許可の場合は、次の画面で正確な位置情報を許可してください。許可済みの場合、OSの許可画面は再表示されません。\n"+
+            "データは端末内へ保存します。通知は受信中の表示と停止に使用します。"+
             (if(startAfter) "\n許可後、受信を開始します。" else "\n許可だけでは受信は開始しません。")
-        AlertDialog.Builder(this).setTitle("受信に必要な権限")
+        AlertDialog.Builder(this).setTitle("GPS・Wi-Fi受信の許可")
             .setMessage(permissionSummary()+"\n\n"+explanation)
-            .setPositiveButton("権限を確認") {_,_ ->requestRequiredPermission()}
+            .setPositiveButton("許可を確認") {_,_ ->requestRequiredPermission()}
             .setNegativeButton("あとで") {_,_ ->permissionFlow.cancel()}
-            .setNeutralButton("アプリ設定") {_,_ ->openAppSettings()}
+            .setNeutralButton("設定を開く") {_,_ ->showReceiverSettings()}
             .setOnCancelListener {permissionFlow.cancel()}.show()
+    }
+    private fun showReceiverSettings() {
+        permissionFlow.cancel()
+        AlertDialog.Builder(this).setTitle("受信に必要な設定")
+            .setItems(arrayOf("位置情報・GPSの設定","Wi-Fiの設定","アプリの権限")) {_,which ->
+                when(which) {
+                    0 ->startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                    1 ->startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
+                    else ->openAppSettings()
+                }
+            }.setNegativeButton("閉じる",null).show()
+    }
+    private fun continueReceiverSetup() {
+        renderPermissions()
+        val prefs=getSharedPreferences("receiver",MODE_PRIVATE)
+        val notificationPending=Build.VERSION.SDK_INT>=33 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED &&
+            !prefs.getBoolean("notification_permission_requested",false)
+        when(PermissionPolicy.setupStep(fineGranted(),PlatformCompat.locationEnabled(this),wifiEnabled(),notificationPending)) {
+            PermissionPolicy.SetupStep.LOCATION_PERMISSION ->requestRequiredPermission()
+            PermissionPolicy.SetupStep.LOCATION_SETTINGS -> {permissionFlow.cancel();startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))}
+            PermissionPolicy.SetupStep.WIFI_SETTINGS -> {permissionFlow.cancel();startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))}
+            PermissionPolicy.SetupStep.NOTIFICATION ->requestNotificationOrComplete()
+            PermissionPolicy.SetupStep.READY ->completePermissions()
+        }
     }
     private fun requestRequiredPermission() {
         val prefs=getSharedPreferences("receiver",MODE_PRIVATE)
@@ -162,7 +202,7 @@ class MainActivity : Activity() {
                 prefs.edit().putBoolean("location_permission_requested",true).apply()
                 requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION),10)
             }
-            PermissionPolicy.Action.READY ->requestNotificationOrComplete()
+            PermissionPolicy.Action.READY ->continueReceiverSetup()
         }
     }
     private fun requestNotificationOrComplete() {
@@ -177,6 +217,7 @@ class MainActivity : Activity() {
     private fun completePermissions() {
         renderPermissions()
         if(permissionFlow.complete(fineGranted())) startReceiverReady()
+        else if(fineGranted()) toast("GPS・Wi-Fiの許可を確認しました。受信開始で測位・保存します")
     }
     private fun requestStart() {
         val prefs=getSharedPreferences("receiver",MODE_PRIVATE)
@@ -193,9 +234,11 @@ class MainActivity : Activity() {
         val location=getSystemService(LOCATION_SERVICE) as LocationManager
         if(!PlatformCompat.locationEnabled(this)) { toast("位置情報サービスを有効にしてください");startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));return }
         if(scanning) return
-        val interval=getSharedPreferences("receiver",MODE_PRIVATE).getLong("scan_interval_ms",30_000)
+        val prefs=getSharedPreferences("receiver",MODE_PRIVATE)
+        val interval=if(prefs.getBoolean("scan_fastest",false)) ScanPolicy.fastestOnPlatform(Build.VERSION.SDK_INT,PlatformCompat.scanThrottleEnabled(wifi))
+            else prefs.getLong("scan_interval_ms",30_000)
         android.util.Log.d("RidObserverKmp","start_mode interval=$interval throttle=${PlatformCompat.scanThrottleEnabled(wifi)}")
-        if(!ScanPolicy.allowed(interval,PlatformCompat.scanThrottleEnabled(wifi) ?: true)) {
+        if(!ScanPolicy.allowedOnPlatform(interval,Build.VERSION.SDK_INT,PlatformCompat.scanThrottleEnabled(wifi))) {
             AlertDialog.Builder(this).setTitle("高速測定は開発用です")
                 .setMessage(if(Build.VERSION.SDK_INT<30) "このOSでは制限状態を確認できません。標準30秒で受信してください。" else "Androidの開発者向けオプションでWi-FiスキャンのスロットリングをOFFにした実験専用です。アプリはOS設定を変更しません。通常は30秒を選んでください。要求間隔と実際の取得間隔は異なります。")
                 .setPositiveButton("閉じる",null).show();return
@@ -211,7 +254,7 @@ class MainActivity : Activity() {
         if(code==11) {completePermissions();return}
         if(code!=10) return
         renderPermissions()
-        if(fineGranted()) requestNotificationOrComplete()
+        if(fineGranted()) continueReceiverSetup()
         else {
             permissionFlow.cancel()
             AlertDialog.Builder(this).setTitle("正確な位置情報が未許可です")
@@ -241,7 +284,10 @@ class MainActivity : Activity() {
         val notificationHidden=Build.VERSION.SDK_INT>=33 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED
         status.text=mode+ReceiverState.status+(if(scanning && notificationHidden) " · 通知非表示" else "")
         counts.text="DB ${database?.rowCount ?: 0}件 · 保存待ち ${database?.pendingWrites ?: 0}件\nWi-Fi ${lastScanCount}件 / 対象 ${engine.targets.size}件\n${ReceiverState.locationStatus}"
-        if(databaseOpenFailed || database?.lastError!=null) status.text="DB保存エラー · 失敗${database?.failedWrites ?: 0}件 · 確認してください"
+        counts.append("\n"+(database?.storageSummary ?: "保存先を確認してください"))
+        if(ReceiverState.recordingNotice.isNotEmpty()) counts.append("\n"+ReceiverState.recordingNotice)
+        if(databaseOpenFailed) status.text="保存先を開けません。既存データを保持しています"
+        else if(database?.lastError!=null) status.text=database?.storageErrorText()
         if(database?.exporting==true) status.text="DBを書き出しています"
     }
     private fun snapshotText():String = try {database?.recentText()?.ifEmpty {"DBに観測はまだありません"} ?: "DBを開けません"} catch(e:Exception) {"DBの読出しに失敗しました"}
@@ -339,7 +385,15 @@ class MainActivity : Activity() {
             toast("書き出しました")
         } catch(e: Exception) {toast("書き出し失敗：${e.message}")}
     }
-    override fun onStart() {super.onStart();ReceiverState.screen="visible";handler.post(refresh)}
+    override fun onStart() {
+        super.onStart();ReceiverState.screen="visible";handler.post(refresh);renderPermissions()
+        val prefs=getSharedPreferences("receiver",MODE_PRIVATE)
+        if(!scanning && prefs.getInt("gps_wifi_permission_guide_version",0)<12) {
+            prefs.edit().putInt("gps_wifi_permission_guide_version",12).apply()
+            handler.post {if(!isFinishing && !isDestroyed && !scanning) showPermissionGuide(false)}
+        }
+    }
+    override fun onResume() {super.onResume();renderPermissions()}
     override fun onStop() {ReceiverState.screen="hidden";handler.removeCallbacks(refresh);super.onStop()}
     private fun dp(n:Int)=(n*resources.displayMetrics.density).toInt()
     private fun label(value:String,size:Int,color:Int,bold:Boolean=false)=TextView(this).apply {

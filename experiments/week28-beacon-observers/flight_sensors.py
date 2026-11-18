@@ -12,6 +12,8 @@ import threading
 import time
 import uuid
 
+from capture_storage import CaptureSession,StorageLimit
+
 ROOT=Path(__file__).resolve().parents[2]
 
 
@@ -93,6 +95,8 @@ def main():
         if parent.is_symlink():raise ValueError('sensor output symlink rejected')
     os.umask(0o077);a.output.mkdir(mode=0o700,parents=True,exist_ok=True)
     if a.output.is_symlink() or a.output.stat().st_mode&0o077:raise ValueError('private output required')
+    session=CaptureSession(a.output,ROOT/'captures','sensors')
+    session.check()
     stop=threading.Event();lock=threading.Lock();latest=None;gps_port=None;gps_error='GPS_PORT_MISSING'
     def request_stop(*_):stop.set()
     for s in [signal.SIGTERM,signal.SIGINT]:signal.signal(s,request_stop)
@@ -127,13 +131,8 @@ def main():
     try:
         while not stop.is_set() and (a.duration==0 or time.monotonic()-started<a.duration):
             now=time.monotonic()
-            # No auto-deletion. Leave room for SSH/OS and stop before filling the card.
-            import shutil
             if now>=next_budget:
-                files=[x for x in a.output.rglob('*') if x.is_file()]
-                if len(files)>10000 or sum(x.stat().st_size for x in files)>192*1024**2 or shutil.disk_usage(a.output).free<512*1024**2:
-                    raise RuntimeError('sensor capture budget/headroom reached')
-                next_budget=now+10
+                session.check();next_budget=now+10
             with lock:gps=gps_snapshot(latest,now)
             baro=dict(valid=False,reason=bme_error or 'READ_FAILED',pressure_hpa=None,temperature_c=None,humidity_percent=None)
             if bme is not None:
@@ -151,15 +150,24 @@ def main():
                 sensor_honesty_verified=False,physical_position_verified=False)
             if file is None or now-file_started>=60:
                 if file:file.close()
-                name='telemetry-'+uuid.uuid4().hex+'.jsonl';fd=os.open(a.output/name,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
+                name='telemetry-'+uuid.uuid4().hex+'.jsonl';fd=os.open(session.path/name,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
                 file=os.fdopen(fd,'w',buffering=1);file_started=now
             file.write(json.dumps(record,allow_nan=False)+'\n');file.flush()
-            atomic_json(a.output/'latest.json',record);sequence+=1
+            atomic_json(a.output/'latest.json',record);sequence+=1;session.progress(sequence)
             next_tick+=a.interval;stop.wait(max(0,next_tick-time.monotonic()))
+    except StorageLimit:
+        raise
+    except Exception as exc:
+        session.finish('FAILED',error_type=type(exc).__name__);raise
+    else:session.finish()
     finally:
         stop.set()
         if file:file.close()
         if bus:bus.close()
+        session.close()
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    try:main()
+    except StorageLimit as exc:
+        print(json.dumps({'state':str(exc)}),flush=True);raise SystemExit(78)

@@ -1,5 +1,17 @@
 # 現地実験用の移行・ビルドキット
 
+Week29の保存修正を含むキットでは、受信・センサ・送信は各プロセス開始時に別セッションへ保存する。
+旧ログは保持し、各役割の予算とSD全体の空き1GiB以上を別々に確認する。
+Pi B〜Fの読み取り専用の順次監査・有限時間監視は、リポジトリ上の`audit_receivers.py`を使用する。
+接続失敗もCSV／JSONへ残し、自動導入・サービス変更は行わない。
+[Issue97の実行結果・設定と再実行手順](../../week29/22_Issue97_Pi順次監査と有限時間の容量メモリ監視.md)。
+保全アーカイブの検証は`preserve_receiver.py`、実機保全との一致を確認した後の配置・テストは
+`stage_receiver.py`を使用する。オフラインコピーを実機保全の代用にはできず、stageはサービスを有効化しない。
+[保全・stageの条件、ローカル実行結果と未実行範囲](../../week29/23_Issue97_保全検証と非有効化stageの実装.md)。
+`--activate --activity-led`を指定した場合だけ、対応するPiのACTランプに収録状態を表示する。
+例：`python3 field-kit-new/install_pi.py --kit field-kit-new --node-id observer-a --role dual --activate --activity-led`。
+[保存構成・導入確認と未実行項目](../../week29/03_保存セッション分離の修正とA実機確認.md)。
+
 研究用PoC。ZKPなし。機体・位置・観測ハードの認証やDRIPを提供しない。
 既存のPi収録やAndroid DBを削除せず、新しい機材へ導入できるコードとAPKを用意する。
 

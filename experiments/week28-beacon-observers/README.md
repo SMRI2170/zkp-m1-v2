@@ -251,3 +251,38 @@ sudo systemctl restart zkp-rid-observer.service
 ### busyの切り分け試験
 
 [全チャネル探索・完了待ち・2要求元の実機比較](../../week28/27_Piスキャンbusyの原因切り分けと実機比較.md)を追加。`diagnose_scan_busy.py`は通常受信を停止した時間制限付きサービス内で実行し、終了時に復帰させる。通常受信との重複実行は拒否する。生イベントはprivate captures内、`analyze_scan_busy.py --plot`は匿名CSV/JSONと比較図を生成する。常駐受信のスキャン制御はこの切り分けでは変更していない。
+# Week29：起動時のセッション分離と保存保護
+
+容量上限で止まった旧ログを残したまま再開するため、各起動・各プロセス開始で新しいUUIDの保存先を作る。
+記録上限に達した同一プロセス内での自動ロールオーバーや、旧データの自動削除は行わない。
+
+- 受信：`captures/receiver/sessions/<id>/<node>/<区間>/`
+- センサ：`captures/flight-sensors/sessions/<id>/`
+- 予備送信：`captures/flight-tx/sessions/<id>/`
+- 各役割の状態：各親ディレクトリの`storage-status.json`
+
+セッション予算は受信1GiB（次区間用64MiBを予約）、センサ1GiB、予備送信512MiB。
+過去ログはセッション予算へ加算しないが、SD全体の空きは全役割で確認する。最低1GiBを残す。
+ファイル数上限・プロセスのメモリ制限・受信時のRAM余裕確認を維持する。
+容量・空き不足は終了コード78とし、systemdが再試行して予算を迂回しない。
+
+現在の収録状態を表示（A搭載構成）：
+
+```sh
+python3 ~/zkp-beacon-observer/current/experiments/week28-beacon-observers/capture_health.py \
+  --root ~/zkp-beacon-observer/current/captures --roles receiver sensors transmitter
+```
+
+任意のACTランプ表示は、対応するPi上で明示的に導入する。PWRランプは変更しない。
+
+```sh
+sudo python3 ~/zkp-beacon-observer/current/experiments/week28-beacon-observers/install_capture_indicator.py \
+  --enable --roles receiver sensors transmitter
+```
+
+ACTの約0.9秒ON/0.9秒OFFは収録処理稼働、短く光って約1.9秒待つ場合は起動・受信待ち、
+約0.1秒ON/0.1秒OFFは異常・停止・古い状態。RIDの継続到着やGPSの正しさを保証するランプではない。
+状態ファイルのboot ID・経過時刻が古い場合は正常表示しない。LEDサービス停止時は元のtriggerへ戻す。
+
+新しい保存先でもSD全体の余裕が不足していれば停止する。回収後の整理は明示的な別作業として行う。
+[Aへの導入・再起動確認・残件](../../week29/03_保存セッション分離の修正とA実機確認.md)。

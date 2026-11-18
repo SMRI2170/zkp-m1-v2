@@ -1,0 +1,35 @@
+name: Week29 research evidence
+on:
+  push:
+    paths:
+      - 'week29/**'
+      - 'experiments/field-kit/**'
+      - 'experiments/week28-beacon-observers/**'
+      - 'experiments/kmp-rid-observer/**'
+      - '.github/workflows/week29-evidence.yml'
+  pull_request:
+    paths:
+      - 'week29/**'
+      - 'experiments/field-kit/**'
+      - 'experiments/week28-beacon-observers/**'
+      - 'experiments/kmp-rid-observer/**'
+      - '.github/workflows/week29-evidence.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build pinned offline-only reference decoder
+        run: python3 week29/scripts/build_reference_decoder.py
+      - name: Test analysis and guards without field captures
+        env:
+          WEEK29_REQUIRE_REFERENCE: '1'
+        run: python3 -m unittest discover -s week29/tests -v
+      - name: Check public artifact boundary
+        run: python3 week29/scripts/check_publication.py

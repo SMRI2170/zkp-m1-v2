@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Explicit Pi study Beacon transmitter with live sensor snapshots, no invented coordinates."""
 import argparse
+from datetime import datetime,timezone
 import hashlib
 import json
 import os
@@ -14,6 +15,7 @@ import uuid
 from flight_payload import build_ie
 from start_marker import load_marker
 from flight_sensors import atomic_json
+from capture_storage import CaptureSession,StorageLimit
 
 
 def run(command):return subprocess.run(command,check=True,capture_output=True,text=True,timeout=8).stdout
@@ -49,6 +51,8 @@ def main():
     for directory in [a.output,a.runtime]:
         directory.mkdir(mode=0o700,parents=True,exist_ok=True)
         if directory.is_symlink() or directory.stat().st_mode&0o077:raise ValueError('owner-private directories required')
+    root=Path(__file__).resolve().parents[2]
+    session=CaptureSession(a.output,root/'captures','transmitter');session.check()
     if Path('/sys/class/net/ridtx0').exists():raise ValueError('ridtx0 already exists; retained for inspection')
     if subprocess.run(['pgrep','-x','hostapd'],stdout=subprocess.DEVNULL).returncode==0:raise ValueError('existing hostapd retained')
     iw='/usr/sbin/iw';ip='/usr/sbin/ip'
@@ -102,8 +106,7 @@ def main():
                 if m:status.update(channel=int(m[1]),frequency_mhz=int(m[2]))
                 next_radio_check=now+1
             if now>=next_budget:
-                files=[f for f in a.output.rglob('*') if f.is_file()]
-                if sum(f.stat().st_size for f in files)>128*1024**2 or len(files)>10000 or shutil.disk_usage(a.output).free<512*1024**2:raise RuntimeError('TX capture budget/headroom reached')
+                session.check()
                 next_budget=now+10
             sensor=read_snapshot(a.sensor);ie,meta=build_ie(marker['uas_id'],sequence,sensor,now)
             response=run(['/usr/sbin/hostapd_cli','-p',str(a.runtime/'ctrl'),'-i','ridtx0','set','vendor_elements',ie.hex()])
@@ -112,14 +115,16 @@ def main():
             if not response.strip() or response.strip().splitlines()[-1]!='OK':raise RuntimeError('hostapd beacon application rejected')
             if file is None or now-file_started>=60:
                 if file:file.close()
-                fd=os.open(a.output/('sent-'+uuid.uuid4().hex+'.jsonl'),os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
+                fd=os.open(session.path/('sent-'+uuid.uuid4().hex+'.jsonl'),os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
                 file=os.fdopen(fd,'w',buffering=1);file_started=now
-            file.write(json.dumps(dict(sequence=sequence,host_monotonic_s=now,sensor_sequence=sensor.get('sequence') if sensor else None,sensor_session=sensor.get('sensor_session') if sensor else None,
+            file.write(json.dumps(dict(sequence=sequence,host_monotonic_s=now,host_utc=datetime.now(timezone.utc).isoformat(),capture_session=session.id,sensor_sequence=sensor.get('sequence') if sensor else None,sensor_session=sensor.get('sensor_session') if sensor else None,
                 vendor_ie_hex=ie.hex(),vendor_content_digest=hashlib.sha256(ie[2:]).hexdigest(),**meta))+'\n');file.flush()
             status.update(state='TRANSMITTING',updates=sequence+1,**meta);atomic_json(a.output/'status.json',status)
-            sequence+=1;next_tick+=a.interval;time.sleep(max(0,next_tick-time.monotonic()))
+            sequence+=1;session.progress(sequence);next_tick+=a.interval;time.sleep(max(0,next_tick-time.monotonic()))
     except Exception as exc:
-        failed=True;status['error_type']=type(exc).__name__;raise
+        failed=True;status['error_type']=type(exc).__name__
+        if not isinstance(exc,StorageLimit):session.finish('FAILED',error_type=type(exc).__name__)
+        raise
     finally:
         if file:file.close()
         if process:
@@ -130,7 +135,12 @@ def main():
         if created:
             result=subprocess.run([iw,'dev','ridtx0','del'],capture_output=True,text=True,timeout=8)
             status['temporary_ap_removed']=result.returncode==0
+        if not failed:session.finish()
         status['state']='FAILED' if failed else 'STOPPED';status['updates']=sequence;atomic_json(a.output/'status.json',status)
+        session.close()
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    try:main()
+    except StorageLimit as exc:
+        print(json.dumps({'state':str(exc)}),flush=True);raise SystemExit(78)

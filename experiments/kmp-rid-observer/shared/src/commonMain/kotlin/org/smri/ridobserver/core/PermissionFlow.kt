@@ -14,6 +14,14 @@ class PermissionFlow {
 
 object PermissionPolicy {
     enum class Action { READY, REQUEST, SETTINGS }
+    enum class SetupStep { LOCATION_PERMISSION, LOCATION_SETTINGS, WIFI_SETTINGS, NOTIFICATION, READY }
+    fun setupStep(fineGranted:Boolean,locationEnabled:Boolean,wifiEnabled:Boolean,notificationPending:Boolean):SetupStep = when {
+        !fineGranted -> SetupStep.LOCATION_PERMISSION
+        !locationEnabled -> SetupStep.LOCATION_SETTINGS
+        !wifiEnabled -> SetupStep.WIFI_SETTINGS
+        notificationPending -> SetupStep.NOTIFICATION
+        else -> SetupStep.READY
+    }
     fun location(fineGranted:Boolean,askedBefore:Boolean,canShowRationale:Boolean):Action = when {
         fineGranted -> Action.READY
         askedBefore && !canShowRationale -> Action.SETTINGS
