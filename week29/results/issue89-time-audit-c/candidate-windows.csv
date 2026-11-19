@@ -1,0 +1,5 @@
+candidate_first_utc,candidate_last_utc,clock_group,field_assignment_verified,fully_inside_under_this_model,interval_is_confidence_interval,node,offset_to_anchor_high_s,offset_to_anchor_low_s,possibly_in_field_window,simple_paths,status
+2026-11-16T07:26:31.316620+00:00,2026-11-16T08:29:08.190260+00:00,ASUS-1-G1,False,146,False,ASUS-1,49926125.136259794,49926106.2866199,146,2,candidate_constant_offset_calendar_hypothesis
+2026-11-16T07:26:53.488000+00:00,2026-11-16T07:36:46.544000+00:00,ASUS-2-G1,False,46,False,ASUS-2,0,0,46,1,candidate_constant_offset_calendar_hypothesis
+2026-11-16T06:17:01.165926+00:00,2026-11-16T08:29:23.360333+00:00,B-G1,False,531,False,B,162625.78883981705,162616.06193995476,531,2,candidate_constant_offset_calendar_hypothesis
+2026-11-16T06:16:54.908100+00:00,2026-11-16T08:29:13.078000+00:00,Pixel-G1,False,132,False,Pixel,163963884.40299988,163963874.67610002,132,2,candidate_constant_offset_calendar_hypothesis

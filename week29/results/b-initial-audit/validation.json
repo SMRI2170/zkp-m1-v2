@@ -1,0 +1,18 @@
+{
+  "valid_json_rows": 54858,
+  "incomplete_json_tail_lines": 1,
+  "incomplete_tail_is_preexisting_on_b": true,
+  "reference_decoded": 531,
+  "reference_location_messages": 531,
+  "tests_executed": 9,
+  "tests_skipped": 0,
+  "production_parser_changed": false,
+  "b_services_or_settings_changed": false,
+  "final_ntp_synchronized": true,
+  "ntp_change_basis": "OS automatic synchronization observed after network connection; no manual clock commands",
+  "field_time_assignment_verified": false,
+  "c2_registered_pi_rows": 2,
+  "c2_id_only_counter_zero_rows": 2,
+  "c2_expected_startup_payload_matches": 2,
+  "expected_startup_encoder_sha256": "ae198f4c0e0bd4b89da4072ef1d2ce0077a119e1dbcf07b7b18662d338ceecea"
+}

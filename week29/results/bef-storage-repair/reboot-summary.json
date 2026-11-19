@@ -1,0 +1,33 @@
+[
+  {
+    "node": "B",
+    "reboot_confirmed": true,
+    "cold_power_cycle_tested": false,
+    "boot_changed": true,
+    "session_changed": true,
+    "service_enabled": true,
+    "service_state": "active",
+    "config_unchanged": true,
+    "records_written": 0,
+    "memory_available_bytes": 3451940864
+  },
+  {
+    "node": "E",
+    "reboot_confirmed": false,
+    "cold_power_cycle_tested": false,
+    "status": "UNCONFIRMED",
+    "error_type": "AssertionError"
+  },
+  {
+    "node": "F",
+    "reboot_confirmed": true,
+    "cold_power_cycle_tested": false,
+    "boot_changed": true,
+    "session_changed": true,
+    "service_enabled": true,
+    "service_state": "active",
+    "config_unchanged": true,
+    "records_written": 0,
+    "memory_available_bytes": 642396160
+  }
+]

@@ -1,0 +1,5 @@
+node,clock_group,rows,recorded_utc_first,recorded_utc_last,rid_phase_receive_minus_claim_s,recorded_calendar_field_rows,status,boot_id_verified
+ASUS-1,ASUS-1-G1,146,2025-04-17T11:04:45.030Z,2025-04-17T12:07:03.054Z,"{""n"": 146, ""min"": -1314.2730000019073, ""median"": -1310.4884999990463, ""max"": -1304.1879999637604, ""mad"": 2.7990000247955322}",0,unresolved_calendar_offset,False
+ASUS-2,ASUS-2-G1,46,2026-11-16T07:26:53.488Z,2026-11-16T07:36:46.544Z,"{""n"": 46, ""min"": 1.9240000247955322, ""median"": 5.51199996471405, ""max"": 10.973999977111816, ""mad"": 2.751499891281128}",46,candidate_calendar_only,False
+B,B-G1,531,2026-11-14T09:06:45.103986+00:00,2026-11-14T11:18:57.571493+00:00,"{""n"": 531, ""min"": -615.1804649829865, ""median"": -614.4736020565033, ""max"": -611.8009400367737, ""mad"": 0.25647616386413574}",0,unresolved_calendar_offset,False
+Pixel,Pixel-G1,132,2021-09-05T12:45:40.232Z,2021-09-05T14:57:48.675Z,"{""n"": 132, ""min"": 1725.433000087738, ""median"": 1725.8955000638962, ""max"": 1727.3489999771118, ""mad"": 0.2595001459121704}",0,unresolved_calendar_offset,False

@@ -1,0 +1,4 @@
+node,status,activated,backup_files,backup_source_bytes,backup_archive_bytes,old_data_verified,config_unchanged,records_written,four_hour_test_completed
+B,ACTIVE_NEW_RECEIVER_SESSION,True,5810,408432473,22151605,True,True,0,False
+E,ACTIVE_NEW_RECEIVER_SESSION,True,1277,201941490,11939197,True,True,0,False
+F,ACTIVE_NEW_RECEIVER_SESSION,True,1169,201750500,11511193,True,True,0,False

@@ -1,0 +1,206 @@
+{
+  "window_jst": [
+    "2026-11-16T14:00:00+09:00",
+    "2026-11-16T18:00:00+09:00"
+  ],
+  "scope": "All capture directories under A release root; active and historical are separate",
+  "snapshot_files": 7181,
+  "snapshot_bytes": 839175724,
+  "stats": {
+    "historical/rx": {
+      "files": 470,
+      "duplicate_files": 453,
+      "rows": 659,
+      "invalid_json": 0,
+      "timestamped": 659,
+      "without_timestamp": 0,
+      "field_rows": 0,
+      "first": "2026-11-10T01:24:19.713583+09:00",
+      "last": "2026-11-14T17:42:41.108594+09:00",
+      "gps_valid": 0,
+      "bme_valid": 0,
+      "rssi_rows": 659
+    },
+    "historical/event": {
+      "files": 468,
+      "duplicate_files": 0,
+      "rows": 18178,
+      "invalid_json": 0,
+      "timestamped": 0,
+      "without_timestamp": 18178,
+      "field_rows": 0,
+      "first": null,
+      "last": null,
+      "gps_valid": 0,
+      "bme_valid": 0,
+      "rssi_rows": 0
+    },
+    "historical/sensor": {
+      "files": 1192,
+      "duplicate_files": 0,
+      "rows": 357666,
+      "invalid_json": 0,
+      "timestamped": 357666,
+      "without_timestamp": 0,
+      "field_rows": 0,
+      "first": "2026-11-13T16:35:40.004950+09:00",
+      "last": "2026-11-14T17:43:11.006011+09:00",
+      "gps_valid": 6548,
+      "bme_valid": 357665,
+      "rssi_rows": 0
+    },
+    "historical/tx": {
+      "files": 1223,
+      "duplicate_files": 0,
+      "rows": 366975,
+      "invalid_json": 0,
+      "timestamped": 0,
+      "without_timestamp": 366975,
+      "field_rows": 0,
+      "first": null,
+      "last": null,
+      "gps_valid": 0,
+      "bme_valid": 0,
+      "rssi_rows": 0
+    },
+    "active/sensor": {
+      "files": 594,
+      "duplicate_files": 0,
+      "rows": 178282,
+      "invalid_json": 0,
+      "timestamped": 178282,
+      "without_timestamp": 0,
+      "field_rows": 0,
+      "first": "2026-11-14T17:43:18.278258+09:00",
+      "last": "2026-11-15T03:37:34.475865+09:00",
+      "gps_valid": 177754,
+      "bme_valid": 178282,
+      "rssi_rows": 0
+    },
+    "active/tx": {
+      "files": 796,
+      "duplicate_files": 0,
+      "rows": 238641,
+      "invalid_json": 0,
+      "timestamped": 0,
+      "without_timestamp": 238641,
+      "field_rows": 0,
+      "first": null,
+      "last": null,
+      "gps_valid": 0,
+      "bme_valid": 0,
+      "rssi_rows": 0
+    },
+    "active/event": {
+      "files": 374,
+      "duplicate_files": 0,
+      "rows": 14065,
+      "invalid_json": 0,
+      "timestamped": 0,
+      "without_timestamp": 14065,
+      "field_rows": 0,
+      "first": null,
+      "last": null,
+      "gps_valid": 0,
+      "bme_valid": 0,
+      "rssi_rows": 0
+    },
+    "active/rx": {
+      "files": 374,
+      "duplicate_files": 371,
+      "rows": 91,
+      "invalid_json": 0,
+      "timestamped": 91,
+      "without_timestamp": 0,
+      "field_rows": 0,
+      "first": "2026-11-14T17:46:29.652252+09:00",
+      "last": "2026-11-14T17:47:07.772385+09:00",
+      "gps_valid": 0,
+      "bme_valid": 0,
+      "rssi_rows": 91
+    }
+  },
+  "boot_errors": [
+    {
+      "label": "boot 0",
+      "journal_rows": 82,
+      "first_budget_errors": {
+        "sensor": {
+          "since_boot_s": 16.93638,
+          "recorded_utc": "2026-11-16T02:19:17.641727+00:00"
+        },
+        "tx": {
+          "since_boot_s": 22.094462,
+          "recorded_utc": "2026-11-16T02:19:22.799808+00:00"
+        },
+        "rx": {
+          "since_boot_s": 22.417256,
+          "recorded_utc": "2026-11-16T02:19:23.122602+00:00"
+        }
+      }
+    },
+    {
+      "label": "boot -2",
+      "journal_rows": 92,
+      "first_budget_errors": {
+        "sensor": {
+          "since_boot_s": 23.815661,
+          "recorded_utc": "2026-11-15T23:34:58.223003+00:00"
+        },
+        "rx": {
+          "since_boot_s": 27.60694,
+          "recorded_utc": "2026-11-15T23:35:02.014282+00:00"
+        },
+        "tx": {
+          "since_boot_s": 43.774326,
+          "recorded_utc": "2026-11-15T23:35:18.181668+00:00"
+        }
+      }
+    },
+    {
+      "label": "boot -1",
+      "journal_rows": 92,
+      "first_budget_errors": {
+        "sensor": {
+          "since_boot_s": 23.534776,
+          "recorded_utc": "2026-11-16T01:51:07.575447+00:00"
+        },
+        "rx": {
+          "since_boot_s": 26.478799,
+          "recorded_utc": "2026-11-16T01:51:10.519470+00:00"
+        },
+        "tx": {
+          "since_boot_s": 43.172584,
+          "recorded_utc": "2026-11-16T01:51:27.213255+00:00"
+        }
+      }
+    },
+    {
+      "label": "boot -3",
+      "journal_rows": 2062,
+      "first_budget_errors": {
+        "sensor": {
+          "since_boot_s": 76653.755927,
+          "recorded_utc": "2026-11-13T21:19:29.820022+00:00"
+        },
+        "tx": {
+          "since_boot_s": 78520.713329,
+          "recorded_utc": "2026-11-13T21:50:36.777424+00:00"
+        },
+        "rx": {
+          "since_boot_s": 141000.217103,
+          "recorded_utc": "2026-11-14T15:11:56.281197+00:00"
+        }
+      }
+    }
+  ],
+  "limits": [
+    "Host timestamps are not independently field-validated.",
+    "TX JSONL lacks UTC; it is not assigned to the field window.",
+    "No log does not prove power-off or reception failure.",
+    "Historical records are not field measurements of this experiment."
+  ],
+  "field_window_basis": "User specified 2026-11-16 14:00-18:00 JST. Power was cycled; exact off intervals are unknown.",
+  "not_a_reception_rate": true,
+  "power_off_intervals": "unknown"
+}

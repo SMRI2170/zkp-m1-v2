@@ -1,0 +1,31 @@
+{
+  "checks": "5 unit tests, local links, trace/log consistency and aggregate-only JSON checks passed",
+  "field_rf_test": false,
+  "pi_modified": false,
+  "figures": [
+    {
+      "file": "01_cumulative_bytes_and_actual_stops.png",
+      "sha256": "ea9f86e35a32acd27b7d51c27c8c4eed93fc32893100b497a41b0314ccdab992"
+    },
+    {
+      "file": "01_cumulative_bytes_and_actual_stops.svg",
+      "sha256": "e36b5f89066ed61b279bc8316bec5b124594238c41ce25856152d38fc70f6b7e"
+    },
+    {
+      "file": "02_voltage_warnings_and_stops.png",
+      "sha256": "f6d28ee7241e4a2011ab9d4f45582339fe747c188466c76052145522c7f5b1c4"
+    },
+    {
+      "file": "02_voltage_warnings_and_stops.svg",
+      "sha256": "5460e0ff83187f5ea4892794ff1b5ec52c12b37fc2dc126330c3eed489b29520"
+    },
+    {
+      "file": "03_four_hour_storage_estimate.png",
+      "sha256": "77f65fa52f034ad1fd9e7f980a7d85e6922d3210da7b1c68f6a6426456221626"
+    },
+    {
+      "file": "03_four_hour_storage_estimate.svg",
+      "sha256": "a31778625c9fd73800ae394cf5d8a1abb92f829c064e7115292ea8887b61420c"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "start_jst": "2026-11-14T17:43:18.278319+09:00",
+  "end_jst": "2026-11-15T06:59:34.827765+09:00",
+  "clock_anchor_spread_s": 0.00410008430480957,
+  "clock_anchor_basis": "Median sensor host_utc minus host_monotonic_s; not an independent UTC calibration",
+  "stops": {
+    "rx": {
+      "monotonic_s": 141000.217103,
+      "jst": "2026-11-15T00:11:56.281197+09:00",
+      "anchor_jst": "2026-11-15T00:11:56.281157+09:00",
+      "hours_since_start": 6.477223010557221,
+      "sensor_jsonl_mib": 125.49022769927979,
+      "tx_jsonl_mib": 63.303629875183105,
+      "root_jsonl_mib": 188.7938575744629,
+      "root_completed_mib": 192.07721996307373
+    },
+    "sensor": {
+      "monotonic_s": 153338.660114,
+      "jst": "2026-11-15T03:37:34.724208+09:00",
+      "anchor_jst": "2026-11-15T03:37:34.724168+09:00",
+      "hours_since_start": 9.904568291390554,
+      "sensor_jsonl_mib": 192.00805950164795,
+      "tx_jsonl_mib": 96.74933624267578,
+      "root_jsonl_mib": 288.75739574432373,
+      "root_completed_mib": 292.0418338775635,
+      "seconds_from_jsonl_crossing": 1.648709883011179
+    },
+    "tx": {
+      "monotonic_s": 165460.169633,
+      "jst": "2026-11-15T06:59:36.233728+09:00",
+      "anchor_jst": "2026-11-15T06:59:36.233687+09:00",
+      "hours_since_start": 13.271654268890558,
+      "sensor_jsonl_mib": 192.00805950164795,
+      "tx_jsonl_mib": 128.00961017608643,
+      "root_jsonl_mib": 320.0176696777344,
+      "root_completed_mib": 323.3021078109741,
+      "seconds_from_jsonl_crossing": 5.0059380720194895
+    }
+  },
+  "crossings": {
+    "sensor": {
+      "monotonic_s": 153337.011404117,
+      "jst": "2026-11-15T03:37:33.075458+09:00",
+      "hours_since_start": 9.90411031642305,
+      "bytes": 201327124
+    },
+    "tx": {
+      "monotonic_s": 165455.163694928,
+      "jst": "2026-11-15T06:59:31.227749+09:00",
+      "hours_since_start": 13.270263730537218,
+      "bytes": 134218068
+    }
+  },
+  "rates": {
+    "sensor": {
+      "records": 178282,
+      "jsonl_bytes": 201335043,
+      "duration_s": 35656.197545091985,
+      "records_per_s": 5.000000344247029,
+      "bytes_per_record": 1129.3066209712701,
+      "mib_per_hour": 19.38594302804672,
+      "four_hour_jsonl_mib": 77.54377211218689
+    },
+    "tx": {
+      "records": 238641,
+      "jsonl_bytes": 134227805,
+      "duration_s": 47773.94410693701,
+      "records_per_s": 4.995191509954237,
+      "bytes_per_record": 562.4674930125167,
+      "mib_per_hour": 9.646149281758708,
+      "four_hour_jsonl_mib": 38.58459712703483
+    }
+  },
+  "guard_checks": [
+    {
+      "kind": "sensor",
+      "source_sha256": "e8d2c52f774c88d471c339a195d00728a57f4779919beeee7a08075e2d1d0227",
+      "expression": "file_count > 10000 or used_bytes > 192 * 1024 ** 2 or disk_free < 512 * 1024 ** 2",
+      "used_bytes": 201336171,
+      "file_count": 595,
+      "current_disk_free_bytes": 9823948800,
+      "observed_state_guard": true,
+      "empty_new_directory_guard": false
+    },
+    {
+      "kind": "tx",
+      "source_sha256": "0950b82d7be105df4e1409583ef755d06175517395164db64da0b96ce95e14c1",
+      "expression": "used_bytes > 128 * 1024 ** 2 or file_count > 10000 or disk_free < 512 * 1024 ** 2",
+      "used_bytes": 134228242,
+      "file_count": 797,
+      "current_disk_free_bytes": 9823948800,
+      "observed_state_guard": true,
+      "empty_new_directory_guard": false
+    }
+  ],
+  "receiver_probe": {
+    "expression": "deployed capacity(root, mem_kib, disk_free, used_bytes, files)",
+    "source_sha256": "94f8af58cf72ba00ff56d0f49da9406aa12ca804dc4376b885dcad38268061e9",
+    "snapshot_used_bytes": 339007430,
+    "mem_available_kib": 3413952,
+    "disk_free_bytes": 9823948800,
+    "observed_result": "CAPTURE_BUDGET_REACHED",
+    "empty_new_directory_result": null
+  },
+  "kernel_evidence": {
+    "normal_during_history": 2727,
+    "low_during_history": 2726,
+    "oom": 0,
+    "sd_io_error": 0
+  },
+  "scope": "Active A release, same long-running boot; later boot errors separately audited",
+  "limits": [
+    "Completed-file root history is an approximation, not historic disk telemetry.",
+    "No OOM/SD I/O message in collected kernel logs does not exclude all hardware faults.",
+    "Voltage events are warnings, not unique power outages.",
+    "No field reception or precise power-off duration is inferred."
+  ]
+}

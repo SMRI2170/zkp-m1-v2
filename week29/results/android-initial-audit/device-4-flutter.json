@@ -1,0 +1,10 @@
+{
+  "session_files": 7,
+  "valid_rows": 10,
+  "invalid_json_lines": 0,
+  "reference_message_pack_rows": 10,
+  "operator_confirmed_drone_id_rows": 0,
+  "distinct_payloads": 1,
+  "field_time_assignment_verified": false,
+  "raw_files_hash_verified": true
+}

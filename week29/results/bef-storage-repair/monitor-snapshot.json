@@ -1,0 +1,32 @@
+[
+  {
+    "node": "B",
+    "monitor_samples": 11,
+    "monitor_completed": false,
+    "last_phase": "WAITING",
+    "model": "Raspberry Pi 4 Model B Rev 1.5",
+    "tmp_total_bytes": 1990062080,
+    "tmp_mount_type": "tmpfs",
+    "receiver_enabled": true
+  },
+  {
+    "node": "E",
+    "monitor_samples": 9,
+    "monitor_completed": false,
+    "last_phase": "WAITING",
+    "model": "Raspberry Pi 3 Model B Plus Rev 1.3",
+    "tmp_total_bytes": 474505216,
+    "tmp_mount_type": "tmpfs",
+    "receiver_enabled": true
+  },
+  {
+    "node": "F",
+    "monitor_samples": 10,
+    "monitor_completed": false,
+    "last_phase": "WAITING",
+    "model": "Raspberry Pi 3 Model B Plus Rev 1.3",
+    "tmp_total_bytes": 474505216,
+    "tmp_mount_type": "tmpfs",
+    "receiver_enabled": true
+  }
+]

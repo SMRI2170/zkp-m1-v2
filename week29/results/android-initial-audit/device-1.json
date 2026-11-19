@@ -1,0 +1,41 @@
+{
+  "label": "device-1",
+  "model": "Pixel 6 Pro",
+  "android": "12",
+  "app_version": "0.13-fastest-scan",
+  "files": 17,
+  "bytes": 112878112,
+  "stable_hashes_verified": true,
+  "sqlite_integrity": "ok",
+  "tables": {
+    "android_metadata": 1,
+    "observations": 174,
+    "receiver_events": 53218,
+    "receiver_fixes": 19418
+  },
+  "observation_stats": {
+    "source_type": {
+      "real_capture": 174
+    },
+    "parse_status": {
+      "decoded": 42,
+      "invalid": 132
+    },
+    "location_match_status": {
+      "MATCHED": 132,
+      "NO_FIX_WITHIN_2_SECONDS": 41,
+      "STALE_WIFI_OBSERVATION": 1
+    },
+    "rssi_rows": 174,
+    "claimed_coordinate_rows": 7,
+    "receiver_coordinate_rows": 132,
+    "recorded_utc_range": [
+      "2021-09-03T22:39:30.640Z",
+      "2021-09-05T14:57:48.675Z"
+    ]
+  },
+  "settings_modified": false,
+  "app_stopped": false,
+  "data_deleted": false,
+  "field_time_assignment_verified": false
+}

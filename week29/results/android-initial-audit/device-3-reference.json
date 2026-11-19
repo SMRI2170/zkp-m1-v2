@@ -1,0 +1,17 @@
+{
+  "attempted": 7670,
+  "success": 46,
+  "same_claimed_id_as_b_candidate_rows": 46,
+  "protocol_nibble_counts": {
+    "1": 2253,
+    "10": 237,
+    "0": 4011,
+    "2": 20
+  },
+  "recorded_utc_field_window_count": 7670,
+  "recorded_utc_field_window_first": "2026-11-16T06:05:34.231Z",
+  "recorded_utc_field_window_last": "2026-11-16T07:40:14.398Z",
+  "field_time_assignment_verified": false,
+  "identity_verified": false,
+  "reference_commit": "849c03adbe0cdd68997a462fafab397edcfe53f3"
+}

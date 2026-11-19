@@ -22,9 +22,8 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 
 /** Android persistence; no Activity reference, no network or destructive migration. */
-class ObservationDatabase private constructor(private val app:Context,storageName:String="database") {
+class ObservationDatabase private constructor(private val app:Context,storageName:String="database",private val storageLimits:DatabaseStorageLimits=DatabaseStorageLimits()) {
     private val directory=File(app.filesDir,"captures/$storageName")
-    private val file=File(directory,"observations.sqlite")
     private val processScope=UUID.randomUUID().toString()
     private val bootScope=try {
         Settings.Global.getInt(app.contentResolver,Settings.Global.BOOT_COUNT).toString()
@@ -32,7 +31,9 @@ class ObservationDatabase private constructor(private val app:Context,storageNam
     private val worker=ThreadPoolExecutor(1,1,0L,TimeUnit.MILLISECONDS,ArrayBlockingQueue(256))
     private val pending=AtomicInteger()
     private val main=Handler(Looper.getMainLooper())
-    private val helper:SQLiteOpenHelper
+    private val storageLock=Any()
+    private val store:DatabaseSegments
+    val storageSummary:String get()=store.summary
     @Volatile var rowCount=0L;private set
     @Volatile var lastError:String?=null;private set
     private val failed=AtomicInteger()
@@ -43,12 +44,13 @@ class ObservationDatabase private constructor(private val app:Context,storageNam
         check(directory.mkdirs() || directory.isDirectory)
         android.system.Os.chmod(directory.parentFile!!.absolutePath,448)
         android.system.Os.chmod(directory.absolutePath,448)
-        helper=object:SQLiteOpenHelper(app,file.absolutePath,null,2,
+        store=DatabaseSegments(directory,storageLimits,bootScope) {file -> object:SQLiteOpenHelper(app,file.absolutePath,null,2,
             DatabaseErrorHandler {throw SQLiteDatabaseCorruptException("Database retained for recovery")}) {
             override fun onConfigure(db:SQLiteDatabase) {
                 // Keep the journal so its 0600 permissions can be set before any field observations.
                 db.rawQuery("PRAGMA journal_mode=PERSIST",null).use {it.moveToFirst()}
-                db.setMaximumSize(64L*1024*1024)
+                db.setMaximumSize(storageLimits.hardBytes)
+                db.execSQL("PRAGMA cache_size=-2048")
             }
             override fun onCreate(db:SQLiteDatabase) {
                 db.execSQL("""CREATE TABLE observations (
@@ -74,9 +76,8 @@ class ObservationDatabase private constructor(private val app:Context,storageNam
                 check(old==1 && new==2) {"Unsupported migration; database retained"}
                 addPositionSchema(db)
             }
-        }
-        helper.setWriteAheadLoggingEnabled(false)
-        rowCount=DatabaseUtils.queryNumEntries(helper.writableDatabase,"observations")
+        }.also {it.setWriteAheadLoggingEnabled(false)} }
+        rowCount=store.observationCount()
         privateFiles()
     }
     private fun addPositionSchema(db:SQLiteDatabase) {
@@ -89,15 +90,32 @@ class ObservationDatabase private constructor(private val app:Context,storageNam
             fix_key TEXT NOT NULL UNIQUE,node_id TEXT NOT NULL,raw_json TEXT NOT NULL)""")
     }
     private fun privateFiles() {
-        for(f in directory.listFiles().orEmpty()) if(f.isFile) android.system.Os.chmod(f.absolutePath,384)
+        store.privateFiles()
+    }
+    private fun estimate(values:ContentValues):Long = 65536L+values.valueSet().sumOf {entry ->
+        (entry.value?.toString()?.toByteArray(Charsets.UTF_8)?.size ?: 0).toLong()*4
+    }
+    private fun recordFailure(error:Exception,onFailure:()->Unit) {
+        if(lastError==null) {
+            val reason=if(error is StorageCapacityException) error.reason else error.javaClass.simpleName
+            failed.incrementAndGet();lastError=reason
+            synchronized(storageLock) {if(!store.stopped(reason)) lastError=reason+":STATUS_WRITE_FAILED"}
+            main.post(onFailure)
+        }
+    }
+    fun storageErrorText():String = when(lastError?.substringBefore(':')) {
+        "DEVICE_SPACE_LOW" -> "端末の空き容量不足で停止しました。記録は保持しています"
+        "ARCHIVE_LIMIT_REACHED","SEGMENT_LIMIT_REACHED" -> "保存量の上限で停止しました。書き出して保管してください"
+        "RECORD_TOO_LARGE" -> "大きすぎる入力のため停止しました。既存記録は保持しています"
+        else -> "保存処理を停止しました。既存記録を保持しています"
     }
     fun enqueue(o:Observation,nodeId:String,onFailure:()->Unit) {
-        check(lastError==null) {"Database requires recovery"}
+        check(lastError==null && !exporting) {"Database requires recovery"}
         pending.incrementAndGet()
         try {
             worker.execute {
                 try {
-                    check(rowCount<100_000) {"Database row limit reached"}
+                    check(lastError==null) {"Recording already stopped"}
                     val claim=o.decoded?.messages?.firstOrNull {it.claim!=null}?.claim
                     val values=ContentValues().apply {
                         put("dedupe_key",o.storageKey(bootScope,processScope));put("node_id",nodeId)
@@ -117,41 +135,56 @@ class ObservationDatabase private constructor(private val app:Context,storageNam
                         put("claimed_horizontal_distance_m",position?.get("claimed_horizontal_distance_m") as? Double)
                         put("raw_json",JSONObject(o.toJson(nodeId,"database-process-$processScope")).put("boot_scope",bootScope).toString());put("text_line",o.toTextLine())
                     }
-                    val id=helper.writableDatabase.insertWithOnConflict("observations",null,values,SQLiteDatabase.CONFLICT_IGNORE)
-                    if(id!=-1L) rowCount++
-                    privateFiles()
+                    synchronized(storageLock) {
+                        val key=values.getAsString("dedupe_key")
+                        if(!store.observationExists(key)) {
+                            val db=store.writableFor(estimate(values))
+                            val id=db.insertWithOnConflict("observations",null,values,SQLiteDatabase.CONFLICT_IGNORE)
+                            check(id!=-1L) {"Observation insert was not committed"}
+                            rowCount++;store.inserted()
+                        }
+                    }
                 } catch(e:Exception) {
-                    failed.incrementAndGet();lastError=e.javaClass.simpleName;main.post(onFailure)
+                    recordFailure(e,onFailure)
                 } finally {pending.decrementAndGet()}
             }
         } catch(e:Exception) {
-            pending.decrementAndGet();failed.incrementAndGet();lastError=e.javaClass.simpleName;throw e
+            pending.decrementAndGet();recordFailure(e,onFailure);throw e
         }
     }
     fun enqueueFix(fix:ReceiverFix,nodeId:String,onFailure:()->Unit) {
-        check(lastError==null)
+        check(lastError==null && !exporting)
         pending.incrementAndGet()
         try {worker.execute {
             try {
-                check(DatabaseUtils.queryNumEntries(helper.writableDatabase,"receiver_fixes")<100_000) {"Fix row limit reached"}
+                check(lastError==null) {"Recording already stopped"}
                 val values=ContentValues().apply {
                     put("fix_key","$bootScope|${fix.us}|${fix.provider}");put("node_id",nodeId)
                     put("raw_json",json(fix.fields()+mapOf("node_id" to nodeId,"source_type" to "phone_location",
                         "boot_scope" to bootScope,"physical_position_verified" to false)))
                 }
-                helper.writableDatabase.insertWithOnConflict("receiver_fixes",null,values,SQLiteDatabase.CONFLICT_IGNORE);privateFiles()
-            } catch(e:Exception) {failed.incrementAndGet();lastError=e.javaClass.simpleName;main.post(onFailure)}
+                synchronized(storageLock) {
+                    val key=values.getAsString("fix_key")
+                    val exists=store.readers().any {db -> store.hasTable(db,"receiver_fixes") &&
+                        db.rawQuery("SELECT 1 FROM receiver_fixes WHERE fix_key=? LIMIT 1",arrayOf(key)).use {it.moveToFirst()} }
+                    if(!exists) {
+                        val db=store.writableFor(estimate(values))
+                        check(db.insertWithOnConflict("receiver_fixes",null,values,SQLiteDatabase.CONFLICT_IGNORE)!=-1L) {"Location insert was not committed"}
+                        store.inserted()
+                    }
+                }
+            } catch(e:Exception) {recordFailure(e,onFailure)}
             finally {pending.decrementAndGet()}
         }} catch(e:Exception) {pending.decrementAndGet();throw e}
     }
     fun enqueueEvent(kind:String,fields:Map<String,Any?>,onFailure:()->Unit) {
-        check(lastError==null);pending.incrementAndGet()
+        check(lastError==null && !exporting);pending.incrementAndGet()
         try {worker.execute {
             try {
-                check(DatabaseUtils.queryNumEntries(helper.writableDatabase,"receiver_events")<100_000) {"Event limit reached"}
+                check(lastError==null) {"Recording already stopped"}
                 val values=ContentValues();values.put("raw_json",json(mapOf("event" to kind,"utc" to PlatformCompat.utc(),"boot_scope" to bootScope)+fields))
-                helper.writableDatabase.insertOrThrow("receiver_events",null,values);privateFiles()
-            } catch(e:Exception) {failed.incrementAndGet();lastError=e.javaClass.simpleName;main.post(onFailure)}
+                synchronized(storageLock) {store.writableFor(estimate(values)).insertOrThrow("receiver_events",null,values);store.inserted()}
+            } catch(e:Exception) {recordFailure(e,onFailure)}
             finally {pending.decrementAndGet()}
         }} catch(e:Exception) {pending.decrementAndGet();throw e}
     }
@@ -161,7 +194,10 @@ class ObservationDatabase private constructor(private val app:Context,storageNam
         val fields=if(kind=="diagnosticcsv") listOf("utc","boot_scope","event","elapsed_us","scan_requests","requests_rejected","request_interval_ms","scan_throttle_enabled","location_status","reason","raw_json") else if(kind=="fixcsv") listOf("node_id","boot_scope","fix_utc","fix_elapsed_us","latitude","longitude","accuracy_m","provider","mock","altitude_ellipsoid_m") else
             listOf("node_id","boot_scope","source_type","received_at_utc","polled_at_utc","monotonic_time_us","delivered_elapsed_us","bssid","rssi_dbm","frequency_mhz","rid_parse_status","rid_parse_reason","cache_stale","raw_vendor_ie_hex","ie_access","source_annotation","rid_messages","claimed_latitude","claimed_longitude","claimed_altitude_geo_m","rid_seconds_within_hour","receiver_position","receiver_latitude","receiver_longitude","receiver_accuracy_m","receiver_fix_utc","receiver_fix_us","receiver_scan_delta_us","location_match_status","claimed_horizontal_distance_m","distance_30m_reference","raw_json")
         if(kind!="dbjsonl") out.write(fields.joinToString(",") {csvCell(it)}+"\n")
-        helper.readableDatabase.query(if(kind=="diagnosticcsv") "receiver_events" else if(kind=="fixcsv") "receiver_fixes" else "observations",arrayOf("raw_json"),null,null,null,null,"id ASC").use {c ->
+        val table=if(kind=="diagnosticcsv") "receiver_events" else if(kind=="fixcsv") "receiver_fixes" else "observations"
+        synchronized(storageLock) {for(db in store.readers()) {
+          if(!store.hasTable(db,table)) continue
+          db.query(table,arrayOf("raw_json"),null,null,null,null,"id ASC").use {c ->
             while(c.moveToNext()) {
                 val raw=c.getString(0)
                 if(kind=="dbjsonl") {out.write(raw);out.write("\n");continue}
@@ -178,13 +214,20 @@ class ObservationDatabase private constructor(private val app:Context,storageNam
                 }+"\n")
             }
         }
+        } }
     }
-    internal fun closeTest() {worker.shutdown();worker.awaitTermination(5,TimeUnit.SECONDS);helper.close()}
+    internal fun closeTest() {worker.shutdown();worker.awaitTermination(5,TimeUnit.SECONDS);synchronized(storageLock) {store.close()}}
     fun recentText(limit:Int=50):String {
         require(limit in 1..200)
         return buildString {
-            helper.readableDatabase.query("observations",arrayOf("text_line"),null,null,null,null,"id DESC",limit.toString()).use {c ->
-                while(c.moveToNext()) {if(isNotEmpty()) append('\n');append(c.getString(0))}
+            synchronized(storageLock) {
+                var remaining=limit
+                for(db in store.readers().asReversed()) {
+                    if(remaining<=0) break
+                    db.query("observations",arrayOf("text_line"),null,null,null,null,"id DESC",remaining.toString()).use {c ->
+                        while(c.moveToNext()) {if(isNotEmpty()) append('\n');append(c.getString(0));remaining--}
+                    }
+                }
             }
         }
     }
@@ -206,9 +249,9 @@ class ObservationDatabase private constructor(private val app:Context,storageNam
         }} catch(e:Exception) {exporting=false;throw e}
     }
     companion object {
-        internal fun forTest(context:Context,name:String):ObservationDatabase {
+        internal fun forTest(context:Context,name:String,limits:DatabaseStorageLimits=DatabaseStorageLimits()):ObservationDatabase {
             require(name.matches(Regex("test-[a-zA-Z0-9-]+")))
-            return ObservationDatabase(context.applicationContext,name)
+            return ObservationDatabase(context.applicationContext,name,limits)
         }
         @Volatile private var instance:ObservationDatabase?=null
         fun get(context:Context):ObservationDatabase = instance ?: synchronized(this) {

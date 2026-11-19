@@ -1,0 +1,28 @@
+[
+  {
+    "node": "C",
+    "completed_planned_duration": true,
+    "requested_duration_s": 300,
+    "elapsed_s": 300.00029808499994,
+    "samples": 17,
+    "fault_samples": 0,
+    "host_memory_available_min_bytes": 560967680,
+    "service_memory_max_bytes": null,
+    "last_phase": "WAITING",
+    "real_drone_reception_verified": false,
+    "four_hour_capture_verified": false
+  },
+  {
+    "node": "D",
+    "completed_planned_duration": true,
+    "requested_duration_s": 300,
+    "elapsed_s": 300.000283818,
+    "samples": 18,
+    "fault_samples": 0,
+    "host_memory_available_min_bytes": 3560333312,
+    "service_memory_max_bytes": null,
+    "last_phase": "WAITING",
+    "real_drone_reception_verified": false,
+    "four_hour_capture_verified": false
+  }
+]

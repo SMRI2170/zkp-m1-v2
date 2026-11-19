@@ -1,0 +1,22 @@
+{
+  "local_field_kit_tests": {
+    "count": 25,
+    "passed": true
+  },
+  "target_tests": [
+    {
+      "node": "C",
+      "stage_verified": true,
+      "pi_unit_tests": 58,
+      "passed": true
+    },
+    {
+      "node": "D",
+      "stage_verified": true,
+      "pi_unit_tests": 58,
+      "passed": true
+    }
+  ],
+  "git_commit_executed": false,
+  "push_executed": false
+}

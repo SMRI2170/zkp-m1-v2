@@ -1,0 +1,10 @@
+{
+  "tests_passed": 14,
+  "tests_skipped": 0,
+  "raw_target_rows": 855,
+  "exact_deduplicated_rows": 831,
+  "private_permissions_verified": true,
+  "figures_visually_reviewed": 2,
+  "device_data_modified": false,
+  "field_time_alignment_verified": false
+}

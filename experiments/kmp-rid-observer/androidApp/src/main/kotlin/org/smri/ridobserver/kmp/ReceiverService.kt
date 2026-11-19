@@ -31,6 +31,7 @@ object ReceiverState {
     var screen="unknown"
     var directionStatus="端末方位：停止中"
     var locationStatus="自位置：停止中"
+    var recordingNotice=""
 }
 
 /** Visible-user-started location FGS; no boot restart, sticky restart, wake lock or scan bypass. */
@@ -40,6 +41,8 @@ class ReceiverService: Service() {
     private var registered=false
     private var stopping=false
     private var intervalMs=30_000L
+    private val retryDelay=ScanRetryDelay()
+    private var lastRequestMs:Long?=null
     private var receiverNodeId="unknown"
     private lateinit var database:ObservationDatabase
     private lateinit var direction:DirectionCapture
@@ -54,17 +57,23 @@ class ReceiverService: Service() {
     private val poll=object:Runnable {
         override fun run() {
             if(!ReceiverState.scanning) return
+            var nextDelay=intervalMs
             try {
                 checkAccess()
+                val now=SystemClock.elapsedRealtime()
+                val remaining=lastRequestMs?.let {intervalMs-(now-it)} ?: 0
+                if(remaining>0) {handler.postDelayed(this,remaining);return}
                 ReceiverState.scanRequests++
                 @Suppress("DEPRECATION") val accepted=wifi.startScan()
+                lastRequestMs=now
+                nextDelay=retryDelay.next(intervalMs,accepted)
                 if(!accepted) ReceiverState.requestsRejected++
                 ReceiverState.status=if(accepted) "受信中 · 更新を要求" else "受信中 · OSの更新待ち"
-                heartbeat("scan_request",mapOf("accepted" to accepted))
+                heartbeat("scan_request",mapOf("accepted" to accepted,"next_request_delay_ms" to nextDelay))
                 updateNotification()
             } catch(e:SecurityException) { finish("access_denied:"+(e.message ?: "unspecified"));return }
             catch(e:Exception) { finish("scan_or_storage_error");return }
-            handler.postDelayed(this,intervalMs)
+            handler.postDelayed(this,nextDelay)
         }
     }
     override fun onCreate() {
@@ -77,9 +86,9 @@ class ReceiverService: Service() {
         if(intent?.action!=ACTION_START) { stopSelf();return START_NOT_STICKY }
         try {
             database=ObservationDatabase.get(this)
-            check(database.lastError==null && database.rowCount<100_000 && !database.exporting) {"Database unavailable or full"}
+            check(database.lastError==null && !database.exporting) {"Database unavailable"}
             receiverNodeId=intent.getStringExtra("node_id")?.takeIf {it.matches(Regex("[a-zA-Z0-9_-]{1,40}"))} ?: "unknown"
-            intervalMs=getSharedPreferences("receiver",MODE_PRIVATE).getLong("scan_interval_ms",30_000)
+            intervalMs=effectiveInterval()
             checkAccess()
             val nm=getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             if(Build.VERSION.SDK_INT>=26) nm.createNotificationChannel(NotificationChannel(CHANNEL,"Remote ID受信",NotificationManager.IMPORTANCE_LOW))
@@ -106,7 +115,13 @@ class ReceiverService: Service() {
         if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED) throw SecurityException("fine_location_permission_denied")
         if(!PlatformCompat.locationEnabled(this)) throw SecurityException("location_services_disabled")
         if(!wifi.isWifiEnabled) throw SecurityException("wifi_disabled")
-        if(!ScanPolicy.allowed(intervalMs,(PlatformCompat.scanThrottleEnabled(wifi) ?: true))) throw SecurityException("fast mode requires developer scan throttling off")
+        intervalMs=effectiveInterval()
+        if(!ScanPolicy.allowedOnPlatform(intervalMs,Build.VERSION.SDK_INT,PlatformCompat.scanThrottleEnabled(wifi))) throw SecurityException("fast mode requires supported platform and verified throttle state")
+    }
+    private fun effectiveInterval():Long {
+        val prefs=getSharedPreferences("receiver",MODE_PRIVATE)
+        return if(prefs.getBoolean("scan_fastest",false)) ScanPolicy.fastestOnPlatform(Build.VERSION.SDK_INT,PlatformCompat.scanThrottleEnabled(wifi))
+            else prefs.getLong("scan_interval_ms",30_000)
     }
     private fun readResults(updated:Boolean) {
         if(!ReceiverState.scanning) return
@@ -131,7 +146,9 @@ class ReceiverService: Service() {
                         if(current===this) finish("database_write_failed")
                     }
                     ReceiverState.textLog.append(o)
-                    ReceiverState.recording?.append(o)
+                    try {ReceiverState.recording?.append(o)} catch(e:CaptureLimitException) {
+                        rotateRecording();ReceiverState.recording?.append(o)
+                    }
                 }
             }
             ReceiverState.revision++
@@ -148,8 +165,12 @@ class ReceiverService: Service() {
         try {
             val session=CaptureSession(filesDir,nodeId)
             ReceiverState.recording=session;ReceiverState.lastCapture=session.observations
+            ReceiverState.recordingNotice=""
             getSharedPreferences("receiver",MODE_PRIVATE).edit().putString("last_run",session.runId).apply()
             heartbeat("recording_started");updateNotification()
+        } catch(e:RecordingCapacityException) {
+            ReceiverState.recordingNotice="追加ログの保存上限 · DB記録は継続"
+            ReceiverState.revision++
         } catch(e:Exception) { finish("recording_start_failed") }
     }
     fun stopRecording(reason:String="user_record_stop") {
@@ -158,12 +179,30 @@ class ReceiverService: Service() {
         try {session.close(reason)} catch(e:Exception) {ReceiverState.status="記録終了の書込み失敗 · ログを確認"}
         updateNotification()
     }
+    private fun rotateRecording() {
+        val old=ReceiverState.recording ?: return
+        old.close("segment_rotated")
+        ReceiverState.recording=null;ReceiverState.lastCapture=old.observations
+        ReceiverState.lastSession=old;ReceiverState.lastSessionCsv=old.summary
+        try {
+            val next=CaptureSession(filesDir,receiverNodeId)
+            ReceiverState.recording=next;ReceiverState.lastCapture=next.observations
+            getSharedPreferences("receiver",MODE_PRIVATE).edit().putString("last_run",next.runId).apply()
+        } catch(e:RecordingCapacityException) {
+            ReceiverState.recordingNotice="追加ログの保存上限 · DB記録は継続"
+            ReceiverState.status=ReceiverState.recordingNotice
+            database.enqueueEvent("additional_recording_stopped",mapOf("reason" to e.reason)) {
+                if(current===this) finish("database_write_failed")
+            }
+        }
+    }
     private fun heartbeat(kind:String,extra:Map<String,Any?> = emptyMap()) {
         val info=ActivityManager.MemoryInfo();(getSystemService(ACTIVITY_SERVICE) as ActivityManager).getMemoryInfo(info)
         val battery=registerReceiver(null,IntentFilter(Intent.ACTION_BATTERY_CHANGED))
         val pm=getSystemService(POWER_SERVICE) as PowerManager
         val fields=mapOf<String,Any?>("node_id" to receiverNodeId,
-            "android_sdk" to Build.VERSION.SDK_INT,"device_model" to Build.MODEL,"app_version" to "0.11-permission-guide",
+            "android_sdk" to Build.VERSION.SDK_INT,"device_model" to Build.MODEL,"app_version" to BuildConfig.VERSION_NAME,
+            "scan_policy_route" to ScanPolicy.route(Build.VERSION.SDK_INT),"scan_fastest" to getSharedPreferences("receiver",MODE_PRIVATE).getBoolean("scan_fastest",false),
             "location_status" to ReceiverState.locationStatus,
             "fine_location_granted" to (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED),
             "location_enabled" to PlatformCompat.locationEnabled(this),
@@ -181,7 +220,9 @@ class ReceiverService: Service() {
             "battery_plugged" to battery?.getIntExtra(BatteryManager.EXTRA_PLUGGED,-1)
         )+extra
         database.enqueueEvent(kind,fields) {if(current===this) finish("diagnostic_database_write_failed")}
-        ReceiverState.recording?.event(kind,fields)
+        try {ReceiverState.recording?.event(kind,fields)} catch(e:CaptureLimitException) {
+            rotateRecording();ReceiverState.recording?.event(kind,fields)
+        }
     }
     private fun notification():Notification {
         val open=PendingIntent.getActivity(this,0,Intent(this,MainActivity::class.java),PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
@@ -189,7 +230,7 @@ class ReceiverService: Service() {
         val builder=if(Build.VERSION.SDK_INT>=26) Notification.Builder(this,CHANNEL) else Notification.Builder(this)
         return builder.setSmallIcon(android.R.drawable.ic_menu_mylocation)
             .setContentTitle("Remote ID ${if(ReceiverState.recording!=null) "受信・記録中" else "受信中"}")
-            .setContentText("対象 ${ReceiverState.engine.targets.size}件 · タップで表示")
+            .setContentText(ReceiverState.recordingNotice.ifEmpty {"対象 ${ReceiverState.engine.targets.size}件 · タップで表示"})
             .setContentIntent(open).setOngoing(true).setOnlyAlertOnce(true)
             .addAction(Notification.Action.Builder(null,"停止",stop).build()).build()
     }
@@ -207,7 +248,17 @@ class ReceiverService: Service() {
         }
         if(registered) {unregisterReceiver(receiver);registered=false}
         ReceiverState.scanning=false;stopRecording(reason);ReceiverState.status="停止中 · $reason"
+        if(::database.isInitialized && database.lastError!=null) ReceiverState.status=database.storageErrorText()
         current=null;stopForeground(STOP_FOREGROUND_REMOVE);stopSelf()
+        if(::database.isInitialized && database.lastError!=null) {
+            val nm=getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+            val builder=if(Build.VERSION.SDK_INT>=26) Notification.Builder(this,CHANNEL) else Notification.Builder(this)
+            if(Build.VERSION.SDK_INT<33 || checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)==PackageManager.PERMISSION_GRANTED) {
+                try {nm.notify(8,builder.setSmallIcon(android.R.drawable.ic_dialog_alert).setContentTitle("Remote ID 記録停止")
+                    .setContentText(database.storageErrorText()).setAutoCancel(true).build())}
+                catch(e:SecurityException) {ReceiverState.status=database.storageErrorText()+" · 通知はOSにより拒否"}
+            }
+        }
     }
     override fun onDestroy() {finish("service_destroyed");super.onDestroy()}
     companion object {
@@ -219,6 +270,7 @@ class ReceiverService: Service() {
 }
 
 class CaptureLimitException:Exception()
+class RecordingCapacityException(val reason:String):Exception(reason)
 /** Append-only owner-only captures. A completed session_end marks a clean close; an absent/partial end is interrupted or unknown. */
 class CaptureSession(root:File,val nodeId:String,private val maxBytes:Long=20L*1024*1024) {
     val runId=UUID.randomUUID().toString()
@@ -232,12 +284,14 @@ class CaptureSession(root:File,val nodeId:String,private val maxBytes:Long=20L*1
     private val budget=CaptureBudget(maxBytes,32768)
     init {
         val captures=File(root,"captures")
-        check(root.usableSpace>64L*1024*1024) {"insufficient free space"}
-        check((captures.walkTopDown().filter {it.isFile}.sumOf {it.length()}) <= 108L*1024*1024) {"capture archive limit; export and manage existing captures"}
+        if(root.usableSpace<512L*1024*1024+maxBytes) throw RecordingCapacityException("DEVICE_SPACE_LOW")
+        val sessionDirs=captures.listFiles().orEmpty().filter {it.isDirectory && it.name.matches(Regex("[a-f0-9-]{36}"))}
+        val archived=sessionDirs.sumOf {d -> d.walkTopDown().filter {it.isFile}.sumOf {it.length()}}
+        if(archived+maxBytes>512L*1024*1024) throw RecordingCapacityException("ADDITIONAL_ARCHIVE_LIMIT")
         check(dir.mkdirs());android.system.Os.chmod(dir.parentFile!!.absolutePath,448);android.system.Os.chmod(dir.absolutePath,448)
         for(f in listOf(observations,events,summary)) {check(f.createNewFile());android.system.Os.chmod(f.absolutePath,384)}
         event("session_start",mapOf("schema" to "rid_capture_events_v1","node_id" to nodeId,"run_id" to runId,
-            "software_version" to BuildConfigVersion.value,"source_type" to "real_capture","physical_packet_match" to "unconfirmed"))
+            "software_version" to BuildConfig.VERSION_NAME,"source_type" to "real_capture","physical_packet_match" to "unconfirmed"))
     }
     private fun write(file:File,text:String,reserved:Boolean=false) {
         val bytes=text.toByteArray(Charsets.UTF_8)
@@ -261,4 +315,3 @@ class CaptureSession(root:File,val nodeId:String,private val maxBytes:Long=20L*1
         closed=true
     }
 }
-private object BuildConfigVersion {const val value="0.11-permission-guide"}

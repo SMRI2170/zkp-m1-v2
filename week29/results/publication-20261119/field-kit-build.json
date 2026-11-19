@@ -1,0 +1,9 @@
+{
+  "source_only_kit_verified": true,
+  "source_counts": {
+    "pi": 46,
+    "android": 39
+  },
+  "android_apk": "debug_test_only",
+  "private_field_data_included": false
+}

@@ -39,7 +39,9 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--kit',type=Path,required=True)
     p.add_argument('--node-id',choices=['observer-'+c for c in 'abcdef'],required=True)
     p.add_argument('--role',choices=['receiver','transmitter','dual'],default='receiver')
+    p.add_argument('--activity-led',action='store_true',help='explicit ACT LED status service; optional supported Pi only')
     p.add_argument('--activate',action='store_true');a=p.parse_args()
+    if a.activity_led and not a.activate:p.error('--activity-led requires --activate')
     if os.getuid()==0:p.error('run as pi; only explicit service installation uses sudo')
     if a.role!='receiver' and a.node_id!='observer-a':p.error('only A is designated transmitter')
     kit=a.kit.resolve();manifest=json.loads((kit/'manifest.json').read_text())
@@ -57,7 +59,7 @@ def main():
     if missing:raise ValueError('dependencies missing: '+','.join(missing))
     os.umask(0o077);base=Path.home()/'zkp-beacon-observer'
     if any(x.is_symlink() for x in [base,base/'releases']):raise ValueError('base/release symlinks rejected')
-    # New session only by explicit invocation; never auto-roll over an exhausted capture budget.
+    # Every deployment stages a new release; services create per-start sessions. Never delete or silently roll over on exhaustion.
     release=base/'releases'/('kit-'+manifest['source_hash'][:12]+'-'+uuid.uuid4().hex[:8]);release.mkdir(mode=0o700,parents=True)
     for name,data in files.items():
         target=release/name;target.parent.mkdir(mode=0o700,parents=True,exist_ok=True)
@@ -69,6 +71,9 @@ def main():
         print('VERIFIED_STAGED_RELEASE '+str(release));return
     subprocess.run([sys.executable,str(scripts/'install_node.py'),'--node-id',a.node_id],check=True)
     subprocess.run(['sudo',sys.executable,str(scripts/('install_flight.py' if a.role!='receiver' else 'install_boot.py')),'--enable']+(['--with-receiver'] if a.role=='dual' else []),check=True)
+    if a.activity_led:
+        roles=['receiver'] if a.role=='receiver' else ['sensors','transmitter']+(['receiver'] if a.role=='dual' else [])
+        subprocess.run(['sudo',sys.executable,str(scripts/'install_capture_indicator.py'),'--enable','--roles',*roles],check=True)
     print('ACTIVATED_NEW_SESSION_OLD_CAPTURES_RETAINED '+str(release))
 
 

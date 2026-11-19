@@ -1,0 +1,41 @@
+[
+  {
+    "node": "B",
+    "completed_planned_duration": true,
+    "requested_duration_s": 300,
+    "elapsed_s": 300.000429132,
+    "samples": 18,
+    "fault_samples": 0,
+    "host_memory_available_min_bytes": 3556159488,
+    "service_memory_max_bytes": null,
+    "last_phase": "WAITING",
+    "real_drone_reception_verified": false,
+    "four_hour_capture_verified": false
+  },
+  {
+    "node": "E",
+    "completed_planned_duration": true,
+    "requested_duration_s": 300,
+    "elapsed_s": 300.00042978399995,
+    "samples": 15,
+    "fault_samples": 0,
+    "host_memory_available_min_bytes": 571056128,
+    "service_memory_max_bytes": null,
+    "last_phase": "WAITING",
+    "real_drone_reception_verified": false,
+    "four_hour_capture_verified": false
+  },
+  {
+    "node": "F",
+    "completed_planned_duration": true,
+    "requested_duration_s": 300,
+    "elapsed_s": 300.000277065,
+    "samples": 17,
+    "fault_samples": 0,
+    "host_memory_available_min_bytes": 565944320,
+    "service_memory_max_bytes": null,
+    "last_phase": "WAITING",
+    "real_drone_reception_verified": false,
+    "four_hour_capture_verified": false
+  }
+]

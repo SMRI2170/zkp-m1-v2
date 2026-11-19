@@ -1,0 +1,61 @@
+{
+  "research_poc": true,
+  "scope": "A only; storage recovery bench verification, not the field flight",
+  "old_data": {
+    "files_checked": 7181,
+    "changed_files": 0,
+    "all_retained": true
+  },
+  "configuration_unchanged": true,
+  "reboot": {
+    "reboot_recovered": true,
+    "cold_power_cycle_tested": false,
+    "units_active": {
+      "zkp-rid-observer.service": "active",
+      "zkp-flight-sensors.service": "active",
+      "zkp-flight-marker.service": "active",
+      "zkp-capture-indicator.service": "active"
+    },
+    "sessions_changed_all_roles": true,
+    "rows_after_reboot": {
+      "receiver": 0,
+      "sensors": 50,
+      "transmitter": 41
+    },
+    "seconds_until_confirmation": 81.0,
+    "power_flags": "throttled=0x0",
+    "timer_led_active": true
+  },
+  "rf_diagnostic": {
+    "rows": 159,
+    "with_rssi": 159,
+    "with_received_utc": 159,
+    "with_monotonic_time": 159,
+    "candidate_only": 159,
+    "actual_drone_confirmed": false,
+    "duration_s": 15,
+    "diagnostic_unknown_wifi_explicitly_enabled": true
+  },
+  "led_fault_test_passed": true,
+  "soak": {
+    "requested_duration_s": 21600,
+    "unit": "zkp-week29-storage-soak-v2",
+    "service_state_at_check": "active",
+    "samples_at_check": 6,
+    "completed": false,
+    "last_phase": "WAITING",
+    "receiver_observations_at_check": 0
+  },
+  "tests": {
+    "local_pi": 58,
+    "pi_device": 58,
+    "field_kit": 2,
+    "uav": 88,
+    "go": "passed",
+    "contracts": 48,
+    "week29_analysis": 5
+  },
+  "deployment_kit_source_hash": "0f3ab021d4a64c2a6a37d0d683b9242eb9a9f8653363e3aaeaa01c0e79e11a13",
+  "other_nodes_updated": false,
+  "cold_power_cycle_tested": false
+}

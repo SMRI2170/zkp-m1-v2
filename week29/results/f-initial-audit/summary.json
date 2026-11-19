@@ -1,0 +1,22 @@
+{
+  "node": "F",
+  "preserved_files": 1167,
+  "preserved_bytes": 201750283,
+  "active_release_rows": 45326,
+  "invalid_json_lines": 1,
+  "source_role_rows": {
+    "onboard_pi": 45326
+  },
+  "protocol_version_rows": {
+    "2": 45326
+  },
+  "parser_reasons": {},
+  "current_ntp_synchronized": true,
+  "historical_field_date_verified": false,
+  "settings_modified": false,
+  "remote_hashes_all_verified": false,
+  "inventory_lengths_all_verified": true,
+  "receiver_active": false,
+  "stop_marker": "CAPTURE_BUDGET_REACHED",
+  "storage_fix_deployed": false
+}

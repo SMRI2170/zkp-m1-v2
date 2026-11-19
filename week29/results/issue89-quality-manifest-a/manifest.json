@@ -1,0 +1,74 @@
+{
+  "format": "week29_quality_summary_v1",
+  "policy": {
+    "version": 1,
+    "max_os_accuracy_m": 20,
+    "max_accuracy_over_claim_distance": 0.25,
+    "max_fix_delta_s": 2,
+    "distance_scope": "claimed_horizontal_only",
+    "independent_truth_verified": false,
+    "cross_device_time_verified": false,
+    "same_physical_transmission_verified": false,
+    "vertical_reference_verified": false
+  },
+  "nodes": {
+    "Pixel": {
+      "target_rows": 132,
+      "selected_rows": 105,
+      "held_rows": 27,
+      "exclusive_hold_reasons": {
+        "ACCURACY_TO_CLAIM_DISTANCE_TOO_LARGE": 27
+      },
+      "nonexclusive_hold_reasons": {
+        "ACCURACY_TO_CLAIM_DISTANCE_TOO_LARGE": 27
+      },
+      "observation_keys": 132,
+      "distinct_pack_contents": 132
+    },
+    "ASUS-1": {
+      "target_rows": 146,
+      "selected_rows": 0,
+      "held_rows": 146,
+      "exclusive_hold_reasons": {
+        "ACCURACY_TO_CLAIM_DISTANCE_TOO_LARGE": 146
+      },
+      "nonexclusive_hold_reasons": {
+        "ACCURACY_TO_CLAIM_DISTANCE_TOO_LARGE": 146
+      },
+      "observation_keys": 146,
+      "distinct_pack_contents": 40
+    },
+    "ASUS-2": {
+      "target_rows": 46,
+      "selected_rows": 0,
+      "held_rows": 46,
+      "exclusive_hold_reasons": {
+        "ACCURACY_TO_CLAIM_DISTANCE_TOO_LARGE": 46
+      },
+      "nonexclusive_hold_reasons": {
+        "ACCURACY_TO_CLAIM_DISTANCE_TOO_LARGE": 46
+      },
+      "observation_keys": 46,
+      "distinct_pack_contents": 12
+    },
+    "Pixel8": {
+      "target_rows": 0,
+      "selected_rows": 0,
+      "held_rows": 0,
+      "exclusive_hold_reasons": {},
+      "nonexclusive_hold_reasons": {},
+      "observation_keys": 0,
+      "distinct_pack_contents": 0
+    }
+  },
+  "target_rows": 324,
+  "selected_rows": 105,
+  "source_database_hashes_verified": 4,
+  "upstream_calendar_anchors_verified": 0,
+  "cross_device_synchronization": "NOT_EVALUABLE_independent_time_not_verified",
+  "same_transmission_drss": "NOT_EVALUABLE_same_physical_transmission_not_verified",
+  "slant_distance": "NOT_EVALUABLE_vertical_reference_not_verified",
+  "physical_accuracy": "NOT_EVALUABLE_independent_truth_not_available",
+  "code_sha256": "054963419aa404d47447f09284ecb6f9858d9840ee31592314409b83c0203dde",
+  "input_unchanged": true
+}

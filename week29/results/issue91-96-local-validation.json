@@ -1,0 +1,69 @@
+{
+  "verified_at_utc": "2026-11-17T09:47:19.284233+00:00",
+  "execution": "local; not committed/pushed; GitHub Actions not run",
+  "checks": {
+    "week29_unittest": {
+      "passed": 58,
+      "log": ".cache/week29-final-analysis-tests.log"
+    },
+    "uav_unittest": {
+      "passed": 88,
+      "log": ".cache/week29-final-uav-tests.log"
+    },
+    "aggregator_go_test": "passed",
+    "contracts_npm_test": {
+      "passed": 48,
+      "log": ".cache/week29-final-contract-tests.log"
+    }
+  },
+  "privacy": {
+    "checked_public_files": 69,
+    "actual_id_hits": 0,
+    "private_permissions": "0700 directories / 0600 files; no violations in new output directories"
+  },
+  "scripts": {
+    "week29/scripts/audit_android_position.py": "1399a32c12ad2ce511cac52bb2e6c991d3c325c4095f30ee5fff38110281e0ea",
+    "week29/scripts/audit_rid_intervals.py": "2060c9870a17ed939d958e0acd96b8cced790a4677599118a05d9d3cb3edc78e",
+    "week29/scripts/plot_rssi_tracks.py": "863353aaffc7cff286dd6fa343d0360707dc0afe04ccb9bd5bb2301615dfebc5",
+    "week29/scripts/analyze_claim_distance_rssi.py": "79ca71eefe56b375c80fdaac964fad1ddf6c0761a434bede2a4dbc45ee65b0c5",
+    "week29/scripts/audit_packet_candidates.py": "c470ff76a6e04a772ec495ecdeaaf6882afb06ce14035442dc771a33f07e8dcf",
+    "week29/scripts/evaluate_claim_attacks.py": "9c790dd45dbf9db20d56cac0faf102435c0dbb31b93599d943cd6c3d5249814b"
+  },
+  "issues": {
+    "91": {
+      "result_directory": "week29/results/issue91-position-a",
+      "code_hash_matches": true,
+      "complete_on_github": false
+    },
+    "92": {
+      "result_directory": "week29/results/issue92-intervals-a",
+      "code_hash_matches": true,
+      "complete_on_github": false
+    },
+    "93": {
+      "result_directory": "week29/results/issue93-rssi-d",
+      "code_hash_matches": true,
+      "complete_on_github": false
+    },
+    "94": {
+      "result_directory": "week29/results/issue94-distance-a",
+      "code_hash_matches": true,
+      "complete_on_github": false
+    },
+    "95": {
+      "result_directory": "week29/results/issue95-matches-a",
+      "code_hash_matches": true,
+      "complete_on_github": false
+    },
+    "96": {
+      "result_directory": "week29/results/issue96-attacks-a",
+      "code_hash_matches": true,
+      "complete_on_github": false
+    }
+  },
+  "visual_verification": {
+    "pngs": "reviewed; overlap fixes applied",
+    "rssitracks_html": "Geo/Height render; B-only switch; top camera button; final Geo screenshot reviewed",
+    "private_screenshots": "captures/week29/issue93-rssi-d/"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "fieldkit_tests": 25,
+  "week29_tests": 61,
+  "pi_local_tests": 58,
+  "uav_tests": 88,
+  "aggregator_go": "PASS",
+  "contracts_tests": 48,
+  "pi_stage_tests": {
+    "B": 58,
+    "E": 58,
+    "F": 58
+  },
+  "live_backup_files_verified": 8256,
+  "old_data_and_config_unchanged": true,
+  "os_reboot_verified": [
+    "B",
+    "E",
+    "F"
+  ],
+  "five_minute_waiting_monitor_completed": [
+    "B",
+    "E",
+    "F"
+  ],
+  "physical_power_cycle": "NOT_EXECUTED",
+  "four_hour_capture": "NOT_EXECUTED",
+  "real_drone_reception": "NOT_VERIFIED",
+  "private_permissions_verified": true,
+  "actual_id_leaks": 0,
+  "code_sha256": {
+    "experiments/field-kit/audit_receivers.py": "320be12d392bedaafbc854f836d5ba37bb4344322e3fc6a63ecc1c93e85a91d9",
+    "experiments/field-kit/stage_receiver.py": "5fcba5e811758fc392a8a7281961680c759faffdfc009eb570c704a82361de44",
+    "experiments/field-kit/preserve_receiver.py": "23b044283e5c05a1c6eb0ac6afd5681841ce441154aa4b3445481cd8d4a35ec6",
+    "week29/scripts/monitor_a_storage.py": "17984bbca9b20a9cbcc1fbcf79575f5c1451b87b8f9982de3f5580789e5364b3"
+  },
+  "ci": "NOT_RUN_local_code_not_pushed"
+}

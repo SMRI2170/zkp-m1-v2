@@ -35,6 +35,7 @@ CPUQuota=50%
 TasksMax=16
 Restart=on-failure
 RestartSec=10
+RestartPreventExitStatus=78
 TimeoutStopSec=15
 '''
     sensor=f'''[Unit]
@@ -102,7 +103,7 @@ def main():
             match=re.search(r'^ExecStart=/usr/bin/python3 (\S+)/experiments/week28-beacon-observers/flight_',old,re.M)
             port_match=re.search(r' --gps-port (/dev/\S+)\s*$',old,re.M)
             old_port=port_match[1] if port_match else None
-            if not match or old!=units(Path(match[1]),base,old_port).get(name):
+            if not match or old not in [units(Path(match[1]),base,old_port).get(name),units(Path(match[1]),base,old_port).get(name,'').replace('RestartPreventExitStatus=78\n','')]:
                 p.error('unrecognized flight unit retained; inspect before upgrade')
             backup=target.with_name(name+'.backup-'+hashlib.sha256(old.encode()).hexdigest()[:12])
             if backup.exists() and backup.read_text()!=old:p.error('unit backup differs; retained')

@@ -1,0 +1,21 @@
+{
+  "fieldkit_tests": 24,
+  "pi_tests": 58,
+  "uav_tests": 88,
+  "aggregator_go": "PASS",
+  "contracts_tests": 48,
+  "offline_copy_archive_verified": true,
+  "live_backup_verified": false,
+  "offline_stage_correctly_rejected": true,
+  "pi_stage_executed": false,
+  "activation_executed": false,
+  "private_permissions_verified": true,
+  "actual_id_leaks": 0,
+  "code_sha256": {
+    "preserve_receiver.py": "23b044283e5c05a1c6eb0ac6afd5681841ce441154aa4b3445481cd8d4a35ec6",
+    "test_preserve_receiver.py": "09db263ecb8a3ae6023b51198df7a5c952ab747e3cf566214d22844ee871ae81",
+    "stage_receiver.py": "a55df0bb3991a197e886f2048cef790e09164f6fd4a0320b83d04fb657dc7378",
+    "test_stage_receiver.py": "aab12b59cc10fa7386c2d05d8957b20b810748d0d81863761bd6bc9c0337c183"
+  },
+  "ci": "NOT_RUN"
+}

@@ -1,0 +1,10 @@
+{
+  "summary_matches_successful_monitor_exit": true,
+  "public_raw_identity_fields_absent": true,
+  "private_permissions_verified": true,
+  "graph_render_visually_checked": true,
+  "source_csv_sample_counts_verified": true,
+  "real_drone_reception_verified": false,
+  "commit_executed": false,
+  "push_executed": false
+}

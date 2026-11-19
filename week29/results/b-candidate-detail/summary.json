@@ -1,0 +1,84 @@
+{
+  "raw_rows": 531,
+  "exact_duplicate_rows": 24,
+  "retained_rows": 507,
+  "segmentation_gap_s": 60,
+  "segments": [
+    {
+      "segment": "S1",
+      "rows": 319,
+      "duration_s": 591.6309999999999,
+      "rssi_min_dbm": -87.0,
+      "rssi_median_dbm": -60.0,
+      "rssi_max_dbm": -42.0,
+      "interval_median_s": 0.8019999999996799,
+      "interval_p95_s": 5.127149999999983,
+      "distinct_claimed_positions": 313,
+      "distinct_payloads": 317
+    },
+    {
+      "segment": "S2",
+      "rows": 151,
+      "duration_s": 645.906,
+      "rssi_min_dbm": -63.0,
+      "rssi_median_dbm": -51.0,
+      "rssi_max_dbm": -42.0,
+      "interval_median_s": 2.4050000000002,
+      "interval_p95_s": 13.23230000000007,
+      "distinct_claimed_positions": 144,
+      "distinct_payloads": 150
+    },
+    {
+      "segment": "S3",
+      "rows": 10,
+      "duration_s": 26.704000000001543,
+      "rssi_min_dbm": -57.0,
+      "rssi_median_dbm": -50.5,
+      "rssi_max_dbm": -46.0,
+      "interval_median_s": 2.3659999999999854,
+      "interval_p95_s": 5.7860000000004215,
+      "distinct_claimed_positions": 10,
+      "distinct_payloads": 10
+    },
+    {
+      "segment": "S4",
+      "rows": 17,
+      "duration_s": 105.39900000000125,
+      "rssi_min_dbm": -56.0,
+      "rssi_median_dbm": -47.0,
+      "rssi_max_dbm": -43.0,
+      "interval_median_s": 4.6104999999997744,
+      "interval_p95_s": 17.283750000000055,
+      "distinct_claimed_positions": 16,
+      "distinct_payloads": 16
+    },
+    {
+      "segment": "S5",
+      "rows": 10,
+      "duration_s": 139.03900000000067,
+      "rssi_min_dbm": -51.0,
+      "rssi_median_dbm": -49.0,
+      "rssi_max_dbm": -47.0,
+      "interval_median_s": 7.0460000000002765,
+      "interval_p95_s": 37.846800000000435,
+      "distinct_claimed_positions": 10,
+      "distinct_payloads": 10
+    }
+  ],
+  "gaps_over_60_s": [
+    3617.618,
+    1647.5329999999994,
+    644.6989999999987,
+    513.9329999999991
+  ],
+  "claimed_position_count": 493,
+  "distinct_payloads": 503,
+  "height_reference_values": [
+    0
+  ],
+  "receiver_position_present": 0,
+  "identity_verified": false,
+  "field_date_verified": false,
+  "physical_position_verified": false,
+  "packet_delivery_rate_available": false
+}

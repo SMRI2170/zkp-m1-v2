@@ -1,0 +1,34 @@
+[
+  {
+    "node": "C",
+    "status": "ACTIVE_NEW_RECEIVER_SESSION",
+    "activated": true,
+    "old_data_verified": true,
+    "backup_files": 5276,
+    "backup_source_bytes": 274928221,
+    "backup_archive_bytes": 15381071,
+    "live_backup_verified": true,
+    "stage_verified": true,
+    "records_written": 0,
+    "storage_state": "CAPTURE_ACTIVE",
+    "receiver_only": true,
+    "config_unchanged": true,
+    "four_hour_test_completed": false
+  },
+  {
+    "node": "D",
+    "status": "ACTIVE_NEW_RECEIVER_SESSION",
+    "activated": true,
+    "old_data_verified": true,
+    "backup_files": 1605,
+    "backup_source_bytes": 202680240,
+    "backup_archive_bytes": 12276079,
+    "live_backup_verified": true,
+    "stage_verified": true,
+    "records_written": 0,
+    "storage_state": "CAPTURE_ACTIVE",
+    "receiver_only": true,
+    "config_unchanged": true,
+    "four_hour_test_completed": false
+  }
+]

@@ -1,0 +1,320 @@
+{
+  "scope": "all preserved app DB rows, including preparation/test periods; target RID subset reported separately",
+  "accuracy_is_os_report_not_true_error": true,
+  "independent_stationary_truth": "NOT_EVALUABLE_no_ledger",
+  "independent_position_error": "NOT_EVALUABLE_no_truth",
+  "three_dimensional_range": "NOT_EVALUABLE_vertical_consistency_unverified",
+  "calendar_alignment": "candidate_only",
+  "nodes": {
+    "Pixel": {
+      "observation_rows": 174,
+      "association_status_counts": {
+        "STALE_WIFI_OBSERVATION": 1,
+        "NO_FIX_WITHIN_2_SECONDS": 41,
+        "ELIGIBLE_TIME_POSITION": 132
+      },
+      "app_position_status_counts": {
+        "STALE_WIFI_OBSERVATION": 1,
+        "NO_FIX_WITHIN_2_SECONDS": 41,
+        "MATCHED": 132
+      },
+      "target_rows": 132,
+      "target_quality_counts": {
+        "ELIGIBLE_TIME_POSITION": 132
+      },
+      "standalone_fixes": 19418,
+      "valid_fix_rows": 19418,
+      "providers": {
+        "gps": 19418
+      },
+      "mock_flags": {
+        "False": 19418
+      },
+      "all_fix_os_accuracy_m": {
+        "n": 19418,
+        "min": 0.340550035238266,
+        "median": 3.584747314453125,
+        "max": 399.0,
+        "mad": 2.933661997318268
+      },
+      "target_os_accuracy_m": {
+        "n": 132,
+        "min": 0.394886314868927,
+        "median": 0.9709149897098541,
+        "max": 3.830596923828125,
+        "mad": 0.495236873626709
+      },
+      "target_fix_delta_s": {
+        "n": 132,
+        "min": 0.106135,
+        "median": 0.500915,
+        "max": 1.116587,
+        "mad": 0.22083850000000002
+      },
+      "fix_update_interval_s": {
+        "n": 19417,
+        "min": 0.928616,
+        "median": 0.999969,
+        "max": 36470.768915,
+        "mad": 0.005349000000000048
+      },
+      "apparent_step_m": {
+        "n": 19400,
+        "min": 0.0,
+        "median": 0.008277719134153634,
+        "max": 35.692922392248335,
+        "mad": 0.007124783149786057
+      },
+      "apparent_speed_m_s": {
+        "n": 19400,
+        "min": 0.0,
+        "median": 0.008266443913920753,
+        "max": 35.891257481088836,
+        "mad": 0.007115016515856337
+      },
+      "speed_exceedance_counts": {
+        "2": 1073,
+        "5": 704,
+        "10": 330,
+        "20": 159
+      },
+      "speed_exceedance_is_not_gps_error_proof": true,
+      "step_pairs_excluding_gaps_over_10s": 19400,
+      "excluded_long_gap_pairs": 17,
+      "distance_target_scope": "RID claim plus phone GPS, not independent true range",
+      "input_unchanged": true
+    },
+    "ASUS-1": {
+      "observation_rows": 183,
+      "association_status_counts": {
+        "STALE_WIFI_OBSERVATION": 1,
+        "NO_FIX_WITHIN_2_SECONDS": 36,
+        "ELIGIBLE_TIME_POSITION": 146
+      },
+      "app_position_status_counts": {
+        "STALE_WIFI_OBSERVATION": 1,
+        "NO_FIX_WITHIN_2_SECONDS": 36,
+        "MATCHED": 146
+      },
+      "target_rows": 146,
+      "target_quality_counts": {
+        "ELIGIBLE_TIME_POSITION": 146
+      },
+      "standalone_fixes": 32879,
+      "valid_fix_rows": 32879,
+      "providers": {
+        "gps": 32879
+      },
+      "mock_flags": {
+        "False": 32879
+      },
+      "all_fix_os_accuracy_m": {
+        "n": 32879,
+        "min": 4.550999641418457,
+        "median": 16.687000274658203,
+        "max": 377.7330017089844,
+        "mad": 10.618999481201172
+      },
+      "target_os_accuracy_m": {
+        "n": 146,
+        "min": 4.550999641418457,
+        "median": 6.067999839782715,
+        "max": 12.13599967956543,
+        "mad": 1.5170001983642578
+      },
+      "target_fix_delta_s": {
+        "n": 146,
+        "min": 0.00317,
+        "median": 0.4730825,
+        "max": 0.977528,
+        "mad": 0.25202
+      },
+      "fix_update_interval_s": {
+        "n": 32878,
+        "min": 0.950453,
+        "median": 1.000017,
+        "max": 29208.812588,
+        "mad": 0.0009639999999999649
+      },
+      "apparent_step_m": {
+        "n": 32865,
+        "min": 0.0,
+        "median": 0.0018224122278426562,
+        "max": 9.591571952650494,
+        "mad": 0.0009113160788849189
+      },
+      "apparent_speed_m_s": {
+        "n": 32865,
+        "min": 0.0,
+        "median": 0.0018240684858854405,
+        "max": 9.59782013355744,
+        "mad": 0.0009207514954369085
+      },
+      "speed_exceedance_counts": {
+        "2": 22,
+        "5": 7,
+        "10": 0,
+        "20": 0
+      },
+      "speed_exceedance_is_not_gps_error_proof": true,
+      "step_pairs_excluding_gaps_over_10s": 32865,
+      "excluded_long_gap_pairs": 13,
+      "distance_target_scope": "RID claim plus phone GPS, not independent true range",
+      "input_unchanged": true
+    },
+    "ASUS-2": {
+      "observation_rows": 7740,
+      "association_status_counts": {
+        "POSITION_MISSING": 17,
+        "STALE_WIFI_OBSERVATION": 15,
+        "NO_FIX_WITHIN_2_SECONDS": 67,
+        "ELIGIBLE_TIME_POSITION": 7641
+      },
+      "app_position_status_counts": {
+        "POSITION_MISSING": 19,
+        "STALE_WIFI_OBSERVATION": 13,
+        "NO_FIX_WITHIN_2_SECONDS": 67,
+        "MATCHED": 7641
+      },
+      "target_rows": 46,
+      "target_quality_counts": {
+        "ELIGIBLE_TIME_POSITION": 46
+      },
+      "standalone_fixes": 17762,
+      "valid_fix_rows": 17762,
+      "providers": {
+        "network": 153,
+        "gps": 17609
+      },
+      "mock_flags": {
+        "False": 17762
+      },
+      "all_fix_os_accuracy_m": {
+        "n": 17762,
+        "min": 4.550999641418457,
+        "median": 13.652999877929688,
+        "max": 100.0,
+        "mad": 0.0
+      },
+      "target_os_accuracy_m": {
+        "n": 46,
+        "min": 4.550999641418457,
+        "median": 13.652999877929688,
+        "max": 16.687000274658203,
+        "mad": 0.0
+      },
+      "target_fix_delta_s": {
+        "n": 46,
+        "min": 0.008049,
+        "median": 0.4886805,
+        "max": 0.942515,
+        "mad": 0.250464
+      },
+      "fix_update_interval_s": {
+        "n": 17760,
+        "min": 0.960304,
+        "median": 1.0000385,
+        "max": 46691.028779,
+        "mad": 0.0013304999999999567
+      },
+      "apparent_step_m": {
+        "n": 17603,
+        "min": 0.0,
+        "median": 0.002134855536579918,
+        "max": 5.696526627123111,
+        "mad": 0.0012236492463625378
+      },
+      "apparent_speed_m_s": {
+        "n": 17603,
+        "min": 0.0,
+        "median": 0.002134237088843791,
+        "max": 5.678882339693683,
+        "mad": 0.0012222966729105692
+      },
+      "speed_exceedance_counts": {
+        "2": 17,
+        "5": 1,
+        "10": 0,
+        "20": 0
+      },
+      "speed_exceedance_is_not_gps_error_proof": true,
+      "step_pairs_excluding_gaps_over_10s": 17603,
+      "excluded_long_gap_pairs": 157,
+      "distance_target_scope": "RID claim plus phone GPS, not independent true range",
+      "input_unchanged": true
+    },
+    "Pixel8": {
+      "observation_rows": 14674,
+      "association_status_counts": {
+        "POSITION_MISSING": 3,
+        "BOOT_UNKNOWN": 259,
+        "NO_FIX_WITHIN_2_SECONDS": 544,
+        "STALE_WIFI_OBSERVATION": 122,
+        "ELIGIBLE_TIME_POSITION": 13746
+      },
+      "app_position_status_counts": {
+        "POSITION_MISSING": 3,
+        "MATCHED": 14005,
+        "NO_FIX_WITHIN_2_SECONDS": 544,
+        "STALE_WIFI_OBSERVATION": 122
+      },
+      "target_rows": 0,
+      "target_quality_counts": {},
+      "standalone_fixes": 2271,
+      "valid_fix_rows": 2271,
+      "providers": {
+        "network": 190,
+        "gps": 2081
+      },
+      "mock_flags": {
+        "False": 2271
+      },
+      "all_fix_os_accuracy_m": {
+        "n": 2271,
+        "min": 0.40928539633750916,
+        "median": 2.190603256225586,
+        "max": 388.1719970703125,
+        "mad": 0.38115501403808594
+      },
+      "target_os_accuracy_m": {
+        "n": 0
+      },
+      "target_fix_delta_s": {
+        "n": 0
+      },
+      "fix_update_interval_s": {
+        "n": 2269,
+        "min": 0.911649,
+        "median": 1.000023,
+        "max": 136400.454786,
+        "mad": 3.0000000000085514e-05
+      },
+      "apparent_step_m": {
+        "n": 2166,
+        "min": 0.0,
+        "median": 0.05525797505946777,
+        "max": 720.1080042489119,
+        "mad": 0.0472990144020696
+      },
+      "apparent_speed_m_s": {
+        "n": 2166,
+        "min": 0.0,
+        "median": 0.05481765817974473,
+        "max": 448.95237173321095,
+        "mad": 0.04685030519707159
+      },
+      "speed_exceedance_counts": {
+        "2": 79,
+        "5": 32,
+        "10": 31,
+        "20": 30
+      },
+      "speed_exceedance_is_not_gps_error_proof": true,
+      "step_pairs_excluding_gaps_over_10s": 2166,
+      "excluded_long_gap_pairs": 103,
+      "distance_target_scope": "RID claim plus phone GPS, not independent true range",
+      "input_unchanged": true
+    }
+  },
+  "code_sha256": "1399a32c12ad2ce511cac52bb2e6c991d3c325c4095f30ee5fff38110281e0ea"
+}

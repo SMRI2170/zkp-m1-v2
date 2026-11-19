@@ -28,22 +28,22 @@ def phase_counts(rows,start,end):
     # 100ms guard band around coarse /proc/uptime boundaries; never count cached/stale as fresh.
     selected=[r for r in rows if r.get('monotonic_time_us') is not None and
               start+100_000 <= r['monotonic_time_us'] < end-100_000]
-    return dict(scan_records=len(selected),fresh_records=sum(not r['cache_stale'] for r in selected),
+    return dict(scan_records=len(selected),fresh_records=sum(r.get('cache_stale') is False for r in selected),
                 heading_matched_records=sum((r.get('direction') or {}).get('missing_reason') is None
                     and (r.get('direction') or {}).get('phone_heading_magnetic_deg') is not None for r in selected))
 
 
 def analyze_database(before,after,phases):
-    with sqlite3.connect(before) as a,sqlite3.connect(after) as b:
-        old=a.execute('select * from observations order by id').fetchall()
-        old_ids={r[0] for r in old}
-        current=b.execute('select * from observations order by id').fetchall()
-        current_by_id={r[0]:r for r in current}
-        same=all(current_by_id.get(r[0])==r for r in old)
-        rows=[json.loads(raw) for id_,raw in b.execute('select id,raw_json from observations order by id') if id_ not in old_ids]
-        result=dict(old_rows=len(old),total_rows=len(current),new_rows=len(rows),old_rows_unchanged=same,
+    with sqlite3.connect(Path(after).resolve().as_uri()+'?mode=ro',uri=True) as b:
+        b.execute('ATTACH DATABASE ? AS old',(Path(before).resolve().as_uri()+'?mode=ro',))
+        same=b.execute('SELECT COUNT(*) FROM (SELECT * FROM old.observations EXCEPT SELECT * FROM main.observations)').fetchone()[0]==0
+        rows=[]
+        for (raw,) in b.execute('SELECT b.raw_json FROM main.observations b LEFT JOIN old.observations a ON a.id=b.id WHERE a.id IS NULL'):
+            r=json.loads(raw);rows.append({k:r.get(k) for k in ['monotonic_time_us','cache_stale','direction']})
+        result=dict(old_rows=b.execute('SELECT COUNT(*) FROM old.observations').fetchone()[0],
+                    total_rows=b.execute('SELECT COUNT(*) FROM main.observations').fetchone()[0],new_rows=len(rows),old_rows_unchanged=same,
                     integrity_check=b.execute('pragma integrity_check').fetchone()[0],
-                    fresh_rows=sum(not r['cache_stale'] for r in rows),
+                    fresh_rows=sum(r.get('cache_stale') is False for r in rows),
                     raw_text_rows=b.execute("select count(*) from observations where text_line like '%raw_vendor_ie_hex=%'").fetchone()[0],
                     phases=[])
         for phase in phases:
@@ -53,6 +53,21 @@ def analyze_database(before,after,phases):
                 samples=len(phase['samples']),pss_samples=len(samples),pss_mean_kib=sum(samples)/len(samples) if samples else None,
                 pss_max_kib=max(samples) if samples else None,**phase_counts(rows,phase['start_us'],phase['end_us'])))
         return result
+
+
+def merge_database_snapshots(sources,destination):
+    """Private derived comparison DB; retain each source DB and avoid cross-segment ID collisions."""
+    with sqlite3.connect(destination) as out:
+        out.execute('CREATE TABLE observations(id TEXT PRIMARY KEY,raw_json TEXT,text_line TEXT,original_row TEXT)')
+        for label,path in sources:
+            with sqlite3.connect(Path(path).resolve().as_uri()+'?mode=ro',uri=True) as db:
+                if db.execute('PRAGMA integrity_check').fetchone()[0]!='ok':raise RuntimeError('Snapshot integrity failed')
+                columns=[x[1] for x in db.execute('PRAGMA table_info(observations)')]
+                for row in db.execute('SELECT * FROM observations ORDER BY id'):
+                    values=dict(zip(columns,row))
+                    out.execute('INSERT INTO observations VALUES(?,?,?,?)',
+                        (label+'#'+str(values['id']),values['raw_json'],values['text_line'],json.dumps(values,sort_keys=True)))
+    os.chmod(destination,0o600)
 
 
 def tap_enabled(device,label,timeout=20):
@@ -94,6 +109,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--serial');p.add_argument('--phase-seconds',type=int,default=30)
     p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--source-kind',choices=['controlled','ambient'],default='controlled')
     args=p.parse_args()
     if not 20<=args.phase_seconds<=60:p.error('phase-seconds must be 20..60 (three bounded phases)')
     devices=subprocess.check_output(['adb','devices'],text=True)
@@ -104,15 +120,23 @@ def main():
     if 'ServiceRecord{' in d.shell('dumpsys','activity','services',PKG):
         raise RuntimeError('Existing receiver left untouched; stop it before this test')
     original_awake='mWakefulness=Awake' in d.shell('dumpsys','power')
-    plan=dict(source_kind='controlled_test_beacon_expected_not_started_by_script',
+    plan=dict(source_kind='controlled_test_beacon_expected_not_started_by_script' if args.source_kind=='controlled' else 'ambient_wifi_no_controlled_transmitter',
         completion='running',phases=[],rf_angle_accuracy='NOT_TESTED',original_screen_awake=original_awake)
     def save():
         (out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n');(out/'plan.json').chmod(0o600)
     def copy_db(name):
-        data=d.run('exec-out','run-as',PKG,'cat','files/captures/database/observations.sqlite',binary=True)
-        f=out/name
-        fd=os.open(f,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
-        with os.fdopen(fd,'wb') as stream:stream.write(data)
+        paths=d.shell('run-as',PKG,'find','files/captures/database','-type','f').splitlines()
+        paths=[p for p in paths if p=='files/captures/database/observations.sqlite' or
+               re.fullmatch(r'files/captures/database/segments/segment-[0-9]{6}-[a-f0-9-]+\.sqlite',p)]
+        snapshot=out/(name+'-sources');snapshot.mkdir(mode=0o700)
+        sources=[]
+        for i,path in enumerate(sorted(paths)):
+            data=d.run('exec-out','run-as',PKG,'cat',path,binary=True)
+            f=snapshot/(str(i)+'.sqlite')
+            fd=os.open(f,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
+            with os.fdopen(fd,'wb') as stream:stream.write(data)
+            sources.append((path,f))
+        merge_database_snapshots(sources,out/name)
     def store(name,data):
         fd=os.open(out/name,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
         with os.fdopen(fd,'wb') as stream:stream.write(data)

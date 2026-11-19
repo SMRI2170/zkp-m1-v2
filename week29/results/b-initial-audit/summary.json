@@ -1,0 +1,83 @@
+{
+  "snapshot_files": 5563,
+  "snapshot_bytes": 407925237,
+  "active_observation_files": 517,
+  "raw_rows": 54858,
+  "invalid_or_snapshot_tail_lines": 1,
+  "roles": {
+    "onboard_pi": 54327,
+    "unknown": 531
+  },
+  "production_parser_status": {
+    "decoded": 54327,
+    "invalid": 531
+  },
+  "parser_reasons": {
+    "unsupported message pack protocol version": 531
+  },
+  "protocol_versions": {
+    "2": 54327,
+    "0": 531
+  },
+  "exact_duplicate_rows": 64,
+  "exact_duplicate_rows_by_class": {
+    "registered_pi": 40,
+    "unregistered_candidate": 24
+  },
+  "registered_pi_claimed_source_groups": 1,
+  "registered_pi_id_prefix_a": true,
+  "registered_pi_location_rows": 252,
+  "unregistered_bssid_groups": 1,
+  "reference": {
+    "attempted": 531,
+    "decode_success": 531,
+    "location_message": 531,
+    "nonzero_coordinate_claim": 531,
+    "height_claim": 531,
+    "geo_altitude_claim": 531,
+    "timestamp_within_hour": 531,
+    "unique_claimed_ids": 1,
+    "identity_verified": false,
+    "real_drone_model_confirmed": false
+  },
+  "reference_commit": "849c03adbe0cdd68997a462fafab397edcfe53f3",
+  "initial_clock_synchronized": false,
+  "initial_uptime_s": 88.563381524,
+  "clock_groups": [
+    {
+      "label": "C1",
+      "rows": 54325,
+      "min_monotonic_s": 95692.539,
+      "max_monotonic_s": 115914.717,
+      "first_recorded_utc": "2026-11-14T02:45:44.759792+00:00",
+      "last_recorded_utc": "2026-11-14T08:22:46.958791+00:00",
+      "pi_rows": 54325,
+      "candidate_rows": 0
+    },
+    {
+      "label": "C2",
+      "rows": 533,
+      "min_monotonic_s": 2759.531,
+      "max_monotonic_s": 10691.993,
+      "first_recorded_utc": "2026-11-14T09:06:45.103986+00:00",
+      "last_recorded_utc": "2026-11-14T11:18:57.571493+00:00",
+      "pi_rows": 2,
+      "candidate_rows": 531
+    }
+  ],
+  "candidate_rssi": {
+    "n": 507,
+    "min_dbm": -87.0,
+    "median_dbm": -55.0,
+    "max_dbm": -42.0
+  },
+  "candidate_intervals": {
+    "n": 506,
+    "median_s": 1.5929999999998472,
+    "p95_s": 10.7800000000002,
+    "max_s": 3617.618
+  },
+  "field_time_assignment": "unresolved_due_to_historical_clock_offsets_and_missing_prior_boot_journal",
+  "physical_packet_count_known": false,
+  "settings_or_services_modified": false
+}

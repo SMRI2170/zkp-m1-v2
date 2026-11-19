@@ -47,6 +47,7 @@ def main():
     parser.add_argument('--frequency', type=int)
     parser.add_argument('--source-registry',type=Path)
     parser.add_argument('--include-unknown-wifi',action='store_true')
+    parser.add_argument('--capture-root',type=Path,help='explicit private output under this release captures')
     parser.add_argument('--adaptive-scan',action='store_true')
     parser.add_argument('--discovery-interval',type=float,default=30)
     args = parser.parse_args()
@@ -73,7 +74,10 @@ def main():
             return subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', str(ROOT / 'uav'),
                                    '-p', 'test_wifi*.py', '-v'], timeout=60).returncode
         run = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')
-        folder = ROOT / 'captures' / cfg['node_id'] / run
+        capture_root=args.capture_root or ROOT/'captures'
+        from capture_storage import private_directory
+        capture_root=private_directory(capture_root,ROOT/'captures')
+        folder = capture_root / cfg['node_id'] / run
         command = [sys.executable, str(ROOT / 'uav/wifi_scan_capture.py'), '--interface', cfg['interface'],
                    '--node-id', cfg['node_id'], '--duration', str(args.duration), '--interval', str(args.interval),
                    '--output', str(folder / 'observations.jsonl'), '--events', str(folder / 'events.jsonl'),

@@ -1,0 +1,53 @@
+[
+  {
+    "node": "B",
+    "reboot_confirmed": true,
+    "initial_check_confirmed": true,
+    "rechecked_all_conditions": true,
+    "checks": {
+      "identity_matches": true,
+      "boot_changed": true,
+      "release_unchanged": true,
+      "config_unchanged": true,
+      "session_changed": true,
+      "heartbeat_current_boot": true,
+      "service_active": true
+    },
+    "recorder_state": "WAITING_FOR_OBSERVATIONS",
+    "cold_power_cycle_tested": false
+  },
+  {
+    "node": "E",
+    "reboot_confirmed": true,
+    "initial_check_confirmed": false,
+    "rechecked_all_conditions": true,
+    "checks": {
+      "identity_matches": true,
+      "boot_changed": true,
+      "release_unchanged": true,
+      "config_unchanged": true,
+      "session_changed": true,
+      "heartbeat_current_boot": true,
+      "service_active": true
+    },
+    "recorder_state": "WAITING_FOR_OBSERVATIONS",
+    "cold_power_cycle_tested": false
+  },
+  {
+    "node": "F",
+    "reboot_confirmed": true,
+    "initial_check_confirmed": true,
+    "rechecked_all_conditions": true,
+    "checks": {
+      "identity_matches": true,
+      "boot_changed": true,
+      "release_unchanged": true,
+      "config_unchanged": true,
+      "session_changed": true,
+      "heartbeat_current_boot": true,
+      "service_active": true
+    },
+    "recorder_state": "WAITING_FOR_OBSERVATIONS",
+    "cold_power_cycle_tested": false
+  }
+]

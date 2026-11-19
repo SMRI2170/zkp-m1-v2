@@ -1,0 +1,34 @@
+{
+  "node": "Pixel",
+  "source_sha256": "dfd1e72067e4d31db264a9fbf7c884460edd12f6b194351918114310612b6464",
+  "code_sha256": "9c790dd45dbf9db20d56cac0faf102435c0dbb31b93599d943cd6c3d5249814b",
+  "measurement": "real receiver RSSI and RID claim plus phone-GPS horizontal distance",
+  "baseline_assumption": "unmodified RID claims treated as correct, not independent position truth",
+  "result_scope": "conditional synthetic model-consistency proxy, not measured real spoof-detection performance",
+  "power_changes": "post-processing RSSI addition, not RF power-control experiments",
+  "split": "ordered 50/25/25 percent by records, 10-second temporal embargo, no random interleaving",
+  "independent_runs_known": false,
+  "bootstrap_ci": "NOT_EVALUABLE_independent_runs_not_established",
+  "high_altitude_attack": "NOT_EVALUABLE_vertical_consistency_unverified",
+  "multistation_cancellation": "NOT_EVALUABLE_same_transmission_unverified",
+  "held_other_nodes": "position quality or target data insufficient",
+  "counts": {
+    "quality_eligible": 105,
+    "train": 52,
+    "calibration": 26,
+    "evaluation": 27,
+    "purged": 0
+  },
+  "status": "EXECUTED_CONDITIONAL_PROXY",
+  "model_intercept_dbm": -30.175003061704714,
+  "horizontal_proxy_n": 3.110833061353868,
+  "threshold_db": 5.643584983424159,
+  "calibration_quantile": 0.95,
+  "normal_assumed_alarm_rate": 0.48148148148148145,
+  "detector_adoption": "NOT_SUPPORTED_no_independent_runs_and_baseline_false_alarms_uncontrolled",
+  "training_claimed_distance_range_m": [
+    4.358853856845861,
+    38.19546086972607
+  ],
+  "input_unchanged": true
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "node": "B",
+    "segments": 3,
+    "counts": {
+      "polls": 627,
+      "cache_bss_entries": 6982,
+      "wifi_candidate_records": 0,
+      "odid_records": 0,
+      "fresh_decoded_records": 0,
+      "duplicate_cache_entries": 0,
+      "scan_requests": 104,
+      "scan_accepted": 26,
+      "scan_failed": 78
+    },
+    "failure_reasons": {
+      "busy": 78
+    },
+    "exit_codes": {
+      "3": 3
+    }
+  },
+  {
+    "node": "E",
+    "segments": 3,
+    "counts": {
+      "polls": 523,
+      "cache_bss_entries": 5472,
+      "wifi_candidate_records": 0,
+      "odid_records": 0,
+      "fresh_decoded_records": 0,
+      "duplicate_cache_entries": 0,
+      "scan_requests": 102,
+      "scan_accepted": 27,
+      "scan_failed": 75
+    },
+    "failure_reasons": {
+      "busy": 75
+    },
+    "exit_codes": {
+      "3": 3
+    }
+  },
+  {
+    "node": "F",
+    "segments": 3,
+    "counts": {
+      "polls": 610,
+      "cache_bss_entries": 8050,
+      "wifi_candidate_records": 0,
+      "odid_records": 0,
+      "fresh_decoded_records": 0,
+      "duplicate_cache_entries": 0,
+      "scan_requests": 105,
+      "scan_accepted": 27,
+      "scan_failed": 78
+    },
+    "failure_reasons": {
+      "busy": 78
+    },
+    "exit_codes": {
+      "3": 3
+    }
+  }
+]

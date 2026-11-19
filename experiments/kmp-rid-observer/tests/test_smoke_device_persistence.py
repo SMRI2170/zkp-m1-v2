@@ -13,6 +13,25 @@ import smoke_device_persistence as smoke
 
 
 class DeviceEvidenceTests(unittest.TestCase):
+    def test_unknown_freshness_is_not_counted_as_fresh(self):
+        result=smoke.phase_counts([dict(monotonic_time_us=1500000,cache_stale=None)],1000000,2000000)
+        self.assertEqual(result['scan_records'],1);self.assertEqual(result['fresh_records'],0)
+
+    def test_segment_ids_do_not_collide_and_all_snapshots_are_compared(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);files=[]
+            for i in range(2):
+                p=root/(str(i)+'.sqlite')
+                with sqlite3.connect(p) as db:
+                    db.execute('CREATE TABLE observations(id INTEGER,raw_json TEXT,text_line TEXT)')
+                    db.execute('INSERT INTO observations VALUES(1,?,?)',(json.dumps(dict(cache_stale=False,monotonic_time_us=i)),'fixture'))
+                files.append((str(i),p))
+            smoke.merge_database_snapshots(files[:1],root/'before.sqlite')
+            smoke.merge_database_snapshots(files,root/'after.sqlite')
+            result=smoke.analyze_database(root/'before.sqlite',root/'after.sqlite',[])
+            self.assertTrue(result['old_rows_unchanged']);self.assertEqual(result['new_rows'],1)
+            self.assertEqual(result['total_rows'],2)
+
     def test_android7_and_new_pss_formats_preserve_unknown(self):
         self.assertEqual(smoke.pss_kib('  TOTAL 12345 234 999\n'),12345)
         self.assertEqual(smoke.pss_kib(' TOTAL PSS: 45678 TOTAL RSS: 0\n'),45678)

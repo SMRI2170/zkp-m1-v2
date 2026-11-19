@@ -1,0 +1,23 @@
+[
+  {
+    "node": "B",
+    "shutdown_requested": true,
+    "physical_power_off_verified": false,
+    "recorder_stopped_normally": true,
+    "poweroff_command_returncode": 0
+  },
+  {
+    "node": "E",
+    "shutdown_requested": true,
+    "physical_power_off_verified": false,
+    "recorder_stopped_normally": true,
+    "poweroff_command_returncode": 0
+  },
+  {
+    "node": "F",
+    "shutdown_requested": true,
+    "physical_power_off_verified": false,
+    "recorder_stopped_normally": true,
+    "poweroff_command_returncode": 0
+  }
+]

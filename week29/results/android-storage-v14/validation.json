@@ -1,0 +1,55 @@
+{
+  "version": "0.14-segmented-storage",
+  "apk_sha256": "52b221e4554e9c45881cb2b20508ab15716a37913c7f1638ee8c3374ff73e6da",
+  "devices": [
+    {
+      "label": "device-1",
+      "model": "Pixel 6 Pro",
+      "installed_version": "0.14-segmented-storage",
+      "instrumentation_tests_passed": 4,
+      "original_field_files_sha1_unchanged": true,
+      "final_installed_apk_hash_check": "not_run_disconnected_after_successful_update"
+    },
+    {
+      "label": "device-4",
+      "model": "Pixel 8",
+      "installed_version": "0.14-segmented-storage",
+      "instrumentation_tests_passed": 4,
+      "original_field_files_sha1_unchanged": true,
+      "final_installed_apk_hash_check": "matches"
+    },
+    {
+      "label": "device-3",
+      "model": "ASUS_Z017DA",
+      "installed_version": "0.14-segmented-storage",
+      "instrumentation_tests_passed": 4,
+      "original_field_files_sha1_unchanged": true,
+      "final_installed_apk_hash_check": "matches"
+    }
+  ],
+  "shared_jvm_tests": 50,
+  "shared_android_host_tests": 50,
+  "python_tests": 19,
+  "week29_tests": 32,
+  "uav_tests": 88,
+  "go": "pass",
+  "contracts_tests": 48,
+  "apk_and_test_apk_build": "pass",
+  "lint": "pass",
+  "portable_kit_source_includes_new_storage_class": true,
+  "portable_kit_apk_matches_rollout_source": true,
+  "production_ui_smoke": "not_started_locked_pixel8",
+  "four_hour_field_soak": "not_run",
+  "old_data_auto_deleted": false,
+  "push_ci": "not_run_not_pushed",
+  "limits": {
+    "rotation_soft_bytes": 50331648,
+    "segment_hard_bytes": 67108864,
+    "segment_rows": 80000,
+    "archive_bytes": 1073741824,
+    "minimum_free_bytes": 536870912,
+    "max_segments": 64,
+    "additional_session_bytes": 20971520,
+    "additional_archive_bytes": 536870912
+  }
+}

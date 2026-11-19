@@ -1,0 +1,41 @@
+[
+  {
+    "node": "B",
+    "journal_query_returncode": 0,
+    "reason_token_counts": {
+      "CAPTURE_BUDGET_REACHED": 0,
+      "MEMORY_HEADROOM_LOW": 0,
+      "DISK_HEADROOM_LOW": 0,
+      "SESSION_BUDGET_REACHED": 0
+    },
+    "scope": "last 500 previous-boot receiver journal lines; not exhaustive",
+    "journal_entries_available": true,
+    "absence_is_not_cause_exclusion": true
+  },
+  {
+    "node": "E",
+    "journal_query_returncode": 0,
+    "reason_token_counts": {
+      "CAPTURE_BUDGET_REACHED": 0,
+      "MEMORY_HEADROOM_LOW": 0,
+      "DISK_HEADROOM_LOW": 0,
+      "SESSION_BUDGET_REACHED": 0
+    },
+    "scope": "last 500 previous-boot receiver journal lines; not exhaustive",
+    "journal_entries_available": true,
+    "absence_is_not_cause_exclusion": true
+  },
+  {
+    "node": "F",
+    "journal_query_returncode": 0,
+    "reason_token_counts": {
+      "CAPTURE_BUDGET_REACHED": 0,
+      "MEMORY_HEADROOM_LOW": 0,
+      "DISK_HEADROOM_LOW": 0,
+      "SESSION_BUDGET_REACHED": 0
+    },
+    "scope": "last 500 previous-boot receiver journal lines; not exhaustive",
+    "journal_entries_available": true,
+    "absence_is_not_cause_exclusion": true
+  }
+]

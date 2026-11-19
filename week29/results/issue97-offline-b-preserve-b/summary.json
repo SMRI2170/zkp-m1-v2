@@ -1,0 +1,19 @@
+{
+  "scope": "OFFLINE_ALREADY_PRESERVED_B_COPY_not_live_node",
+  "exit_code": 0,
+  "wall_seconds": 3.283,
+  "peak_child_rss_bytes": 43204608,
+  "source_code_sha256": "23b044283e5c05a1c6eb0ac6afd5681841ce441154aa4b3445481cd8d4a35ec6",
+  "deployment_executed": false,
+  "verification": {
+    "mode": "OFFLINE_PRESERVED_COPY",
+    "files": 5563,
+    "source_bytes": 407925237,
+    "archive_bytes": 22113700,
+    "source_unchanged_at_final_check": true,
+    "archive_verified": true,
+    "live_preservation_verified": false,
+    "configuration_present": false,
+    "deployment_executed": false
+  }
+}

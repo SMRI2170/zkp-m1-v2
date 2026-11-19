@@ -1,0 +1,9 @@
+{
+  "fieldkit_tests": 12,
+  "pi_tests": 58,
+  "private_permissions_verified": true,
+  "source_hash_matches_run": true,
+  "ssh_connections_established": 0,
+  "deployments_executed": 0,
+  "ci": "NOT_RUN"
+}

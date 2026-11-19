@@ -1,0 +1,18 @@
+[
+  {
+    "node": "C",
+    "unit_active": "active",
+    "sample_count": 1,
+    "phase": "WAITING",
+    "elapsed_s": 2.7955367139984446,
+    "completed": false
+  },
+  {
+    "node": "D",
+    "unit_active": "active",
+    "sample_count": 1,
+    "phase": "WAITING",
+    "elapsed_s": 1.5954654699999082,
+    "completed": false
+  }
+]
