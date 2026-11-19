@@ -15,6 +15,7 @@ import time
 import xml.etree.ElementTree as ET
 
 from evaluate_pixel import Device, PKG, private_output
+from background_evidence import study_ids, target_counts, doze_verified, in_phase
 
 
 def pss_kib(text):
@@ -33,25 +34,34 @@ def phase_counts(rows,start,end):
                     and (r.get('direction') or {}).get('phone_heading_magnetic_deg') is not None for r in selected))
 
 
-def analyze_database(before,after,phases):
+def analyze_database(before,after,phases,target_id=None):
     with sqlite3.connect(Path(after).resolve().as_uri()+'?mode=ro',uri=True) as b:
         b.execute('ATTACH DATABASE ? AS old',(Path(before).resolve().as_uri()+'?mode=ro',))
         same=b.execute('SELECT COUNT(*) FROM (SELECT * FROM old.observations EXCEPT SELECT * FROM main.observations)').fetchone()[0]==0
         rows=[]
         for (raw,) in b.execute('SELECT b.raw_json FROM main.observations b LEFT JOIN old.observations a ON a.id=b.id WHERE a.id IS NULL'):
-            r=json.loads(raw);rows.append({k:r.get(k) for k in ['monotonic_time_us','cache_stale','direction']})
+            r=json.loads(raw);rows.append({k:r.get(k) for k in ['monotonic_time_us','cache_stale','direction','receiver_position','claimed_uas_ids','rid_messages','rssi_dbm','vendor_content_digest']})
         result=dict(old_rows=b.execute('SELECT COUNT(*) FROM old.observations').fetchone()[0],
                     total_rows=b.execute('SELECT COUNT(*) FROM main.observations').fetchone()[0],new_rows=len(rows),old_rows_unchanged=same,
                     integrity_check=b.execute('pragma integrity_check').fetchone()[0],
                     fresh_rows=sum(r.get('cache_stale') is False for r in rows),
                     raw_text_rows=b.execute("select count(*) from observations where text_line like '%raw_vendor_ie_hex=%'").fetchone()[0],
                     phases=[])
+        fixes=[]
+        available=b.execute("SELECT 1 FROM sqlite_master WHERE name='receiver_fixes'").fetchone() is not None and b.execute("SELECT 1 FROM old.sqlite_master WHERE name='receiver_fixes'").fetchone() is not None
+        if available:
+            fixes=[json.loads(raw) for (raw,) in b.execute('SELECT b.raw_json FROM main.receiver_fixes b LEFT JOIN old.receiver_fixes a ON a.id=b.id WHERE a.id IS NULL')]
+        result['standalone_fix_stream_available']=available
+        result['old_standalone_fixes_unchanged']=b.execute('SELECT COUNT(*) FROM (SELECT * FROM old.receiver_fixes EXCEPT SELECT * FROM main.receiver_fixes)').fetchone()[0]==0 if available else None
         for phase in phases:
             samples=[x['pss_kib'] for x in phase['samples'] if x['pss_kib'] is not None]
             result['phases'].append(dict(name=phase['name'],duration_s=(phase['end_us']-phase['start_us'])/1e6,
                 foreground_service_all_samples=all(x['foreground_service'] for x in phase['samples']),
                 samples=len(phase['samples']),pss_samples=len(samples),pss_mean_kib=sum(samples)/len(samples) if samples else None,
                 pss_max_kib=max(samples) if samples else None,**phase_counts(rows,phase['start_us'],phase['end_us'])))
+            selected=[r for r in rows if r.get('monotonic_time_us') is not None and phase['start_us']+100000<=r['monotonic_time_us']<phase['end_us']-100000]
+            target=[r for r in selected if target_id and target_id in study_ids(r)]
+            result['phases'][-1].update(target_records=len(target) if target_id else None,target_fresh_records=sum(r.get('cache_stale') is False for r in target) if target_id else None,target_distinct_vendor_contents=len({r.get('vendor_content_digest') for r in target if r.get('vendor_content_digest') and r.get('cache_stale') is False}) if target_id else None,attached_position_matched=sum((r.get('receiver_position') or {}).get('match_status')=='MATCHED' for r in selected),standalone_fixes_stored=sum(in_phase(r.get('fix_elapsed_us'),phase['start_us'],phase['end_us']) for r in fixes) if available else None)
         return result
 
 
@@ -59,6 +69,7 @@ def merge_database_snapshots(sources,destination):
     """Private derived comparison DB; retain each source DB and avoid cross-segment ID collisions."""
     with sqlite3.connect(destination) as out:
         out.execute('CREATE TABLE observations(id TEXT PRIMARY KEY,raw_json TEXT,text_line TEXT,original_row TEXT)')
+        out.execute('CREATE TABLE receiver_fixes(id TEXT PRIMARY KEY,raw_json TEXT)')
         for label,path in sources:
             with sqlite3.connect(Path(path).resolve().as_uri()+'?mode=ro',uri=True) as db:
                 if db.execute('PRAGMA integrity_check').fetchone()[0]!='ok':raise RuntimeError('Snapshot integrity failed')
@@ -67,6 +78,9 @@ def merge_database_snapshots(sources,destination):
                     values=dict(zip(columns,row))
                     out.execute('INSERT INTO observations VALUES(?,?,?,?)',
                         (label+'#'+str(values['id']),values['raw_json'],values['text_line'],json.dumps(values,sort_keys=True)))
+                if db.execute("SELECT 1 FROM sqlite_master WHERE name='receiver_fixes'").fetchone():
+                    for row_id,raw in db.execute('SELECT id,raw_json FROM receiver_fixes ORDER BY id'):
+                        out.execute('INSERT INTO receiver_fixes VALUES(?,?)',(label+'#'+str(row_id),raw))
     os.chmod(destination,0o600)
 
 
@@ -110,6 +124,8 @@ def main():
     p.add_argument('--serial');p.add_argument('--phase-seconds',type=int,default=30)
     p.add_argument('--output',type=Path,required=True)
     p.add_argument('--source-kind',choices=['controlled','ambient'],default='controlled')
+    p.add_argument('--include-forced-doze',action='store_true')
+    p.add_argument('--target-id-file',type=Path)
     args=p.parse_args()
     if not 20<=args.phase_seconds<=60:p.error('phase-seconds must be 20..60 (three bounded phases)')
     devices=subprocess.check_output(['adb','devices'],text=True)
@@ -117,6 +133,10 @@ def main():
     serial=args.serial or (available[0] if len(available)==1 else None)
     if serial not in available:raise RuntimeError('Select exactly one authorized ADB device')
     d=Device(serial);out=private_output(args.output)
+    target=json.loads(args.target_id_file.read_text())['uas_id'] if args.target_id_file else None
+    if args.include_forced_doze:
+        battery=d.shell('dumpsys','battery');idle=d.shell('dumpsys','deviceidle')
+        if 'UPDATES STOPPED' in battery or 'mForceIdle=true' in idle:raise RuntimeError('Existing battery/idle simulation left untouched')
     if 'ServiceRecord{' in d.shell('dumpsys','activity','services',PKG):
         raise RuntimeError('Existing receiver left untouched; stop it before this test')
     original_awake='mWakefulness=Awake' in d.shell('dumpsys','power')
@@ -140,7 +160,7 @@ def main():
     def store(name,data):
         fd=os.open(out/name,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
         with os.fdopen(fd,'wb') as stream:stream.write(data)
-    copy_db('before.sqlite');started=False;recording=False;run=None;save()
+    copy_db('before.sqlite');started=False;recording=False;run=None;doze_requested=False;save()
     ui_dir=d.ui_path[:-4]
     try:
         d.shell('mkdir','-m','700',ui_dir);d.ui_path=ui_dir+'/screen.xml'
@@ -149,22 +169,32 @@ def main():
         wake_app(d)
         time.sleep(1);tap_enabled(d,'受信開始');started=True;tap_enabled(d,'記録開始');recording=True
         run=read_run(d,previous)
-        for name in ['foreground','home_screen','screen_off']:
+        names=['foreground','home_screen','screen_off']+(['forced_doze'] if args.include_forced_doze else [])
+        for name in names:
             if name=='home_screen':d.shell('input','keyevent','KEYCODE_HOME')
             if name=='screen_off':d.shell('input','keyevent','KEYCODE_SLEEP')
+            if name=='forced_doze':
+                doze_requested=True
+                d.shell('dumpsys','battery','unplug');response=d.shell('dumpsys','deviceidle','force-idle')
+                idle=d.shell('dumpsys','deviceidle');plan['forced_doze_response']=response;plan['forced_doze_state_verified']=doze_verified(idle)
+                if not plan['forced_doze_state_verified']:raise RuntimeError('Deep idle could not be verified; not a successful Doze test')
             phase=dict(name=name,start_us=d.time_us(),samples=[]);plan['phases'].append(phase);save()
             until=time.monotonic()+args.phase_seconds
             while time.monotonic()<until:
                 service=d.shell('dumpsys','activity','services',PKG)
                 memory=d.shell('dumpsys','meminfo',PKG)
                 phase['samples'].append(dict(us=d.time_us(),foreground_service='isForeground=true' in service,
-                    awake='mWakefulness=Awake' in d.shell('dumpsys','power'),pss_kib=pss_kib(memory)))
+                    awake='mWakefulness=Awake' in d.shell('dumpsys','power'),deep_idle=doze_verified(d.shell('dumpsys','deviceidle')),pss_kib=pss_kib(memory)))
                 save();time.sleep(min(5,max(0,until-time.monotonic())))
             phase['end_us']=d.time_us();save();print(name+' completed',flush=True)
         plan['completion']='phases_completed'
     except (Exception,KeyboardInterrupt) as exc:
         plan.update(completion='failed_or_interrupted',error_type=type(exc).__name__);raise
     finally:
+        if doze_requested:
+            try:
+                d.shell('dumpsys','deviceidle','unforce');d.shell('dumpsys','battery','reset');plan['forced_doze_cleanup']='unforce_and_battery_reset'
+            except Exception as exc:plan['forced_doze_cleanup']='UNCONFIRMED_'+type(exc).__name__
         if started:
             try:
                 wake_app(d);time.sleep(1)
@@ -179,7 +209,7 @@ def main():
                         store(name,d.run('exec-out','run-as',PKG,'cat',f'files/captures/{run}/{name}',binary=True))
                 d.shell('am','force-stop',PKG);d.shell('am','start','-n',PKG+'/.MainActivity');time.sleep(1)
                 copy_db('restarted.sqlite')
-                result=analyze_database(out/'before.sqlite',out/'after.sqlite',plan['phases'])
+                result=analyze_database(out/'before.sqlite',out/'after.sqlite',[p for p in plan['phases'] if 'end_us' in p],target_id=target)
                 with sqlite3.connect(out/'after.sqlite') as a,sqlite3.connect(out/'restarted.sqlite') as b:
                     result['all_rows_unchanged_after_restart']=a.execute('select * from observations order by id').fetchall()==b.execute('select * from observations order by id').fetchall()
                 store('validation.json',(json.dumps(result,indent=2)+'\n').encode())

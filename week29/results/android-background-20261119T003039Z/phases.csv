@@ -1,0 +1,9 @@
+node,phase,duration_s,scan_records,fresh_records,target_records,target_fresh_records,target_distinct_vendor_contents,target_distinct_observation_timestamps,target_rssi_present_records,attached_position_matched,standalone_fixes_stored,foreground_service_all_samples,deep_idle_all_samples,pss_max_kib
+Android-1,foreground,20.06,630,630,11,11,4,11,11,90,1,True,False,49767
+Android-1,home_screen,20.08,940,940,12,12,4,12,12,122,1,True,False,49539
+Android-1,screen_off,20.08,888,888,12,12,4,12,12,0,1,True,False,49566
+Android-1,forced_doze,20.08,121,121,2,2,1,2,2,0,1,True,True,49852
+Android-2,foreground,20.09,8,8,8,8,8,8,8,0,0,True,False,35767
+Android-2,home_screen,20.09,8,8,8,8,7,8,8,0,0,True,False,35394
+Android-2,screen_off,20.08,6,6,6,6,6,6,6,0,0,True,False,35418
+Android-2,forced_doze,20.09,2,2,2,2,2,2,2,0,0,True,True,35830

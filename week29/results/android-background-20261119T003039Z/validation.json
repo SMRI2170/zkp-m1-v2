@@ -1,0 +1,16 @@
+{
+  "android_python_tests": 25,
+  "new_background_tests": 6,
+  "week29_tests": 81,
+  "uav_tests": 50,
+  "go_tests": true,
+  "contracts_tests": 21,
+  "real_android_protocols_completed": 2,
+  "real_rf_source": "controlled Pi synthetic session ID, no Location",
+  "graphs_visually_checked": true,
+  "gnss_success_verified": false,
+  "natural_doze_tested": false,
+  "independent_position_truth_available": false,
+  "ci_status_at_commit": "verify_after_push",
+  "pre_update_observations_and_fixes_preserved": true
+}
