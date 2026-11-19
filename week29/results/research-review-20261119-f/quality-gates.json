@@ -1,0 +1,111 @@
+{
+  "stage": "issue89",
+  "status": "COMPLETED_CURRENT_FROZEN_DATA_SCOPE",
+  "target_rows": 324,
+  "selected_rows": 105,
+  "nodes": {
+    "Pixel": {
+      "target_rows": 132,
+      "selected_rows": 105,
+      "held_rows": 27,
+      "exclusive_hold_reasons": {
+        "ACCURACY_TO_CLAIM_DISTANCE_TOO_LARGE": 27
+      },
+      "raw_fresh_rows": 132,
+      "raw_nonmock_rows": 132,
+      "source_joined_rows": 132,
+      "calibrated_power_rows": 0,
+      "selected_distinct_contents": 105,
+      "height_type_counts": {
+        "0": 132
+      }
+    },
+    "ASUS-1": {
+      "target_rows": 146,
+      "selected_rows": 0,
+      "held_rows": 146,
+      "exclusive_hold_reasons": {
+        "ACCURACY_TO_CLAIM_DISTANCE_TOO_LARGE": 146
+      },
+      "raw_fresh_rows": 146,
+      "raw_nonmock_rows": 146,
+      "source_joined_rows": 146,
+      "calibrated_power_rows": 0,
+      "selected_distinct_contents": 0,
+      "height_type_counts": {
+        "0": 146
+      }
+    },
+    "ASUS-2": {
+      "target_rows": 46,
+      "selected_rows": 0,
+      "held_rows": 46,
+      "exclusive_hold_reasons": {
+        "ACCURACY_TO_CLAIM_DISTANCE_TOO_LARGE": 46
+      },
+      "raw_fresh_rows": 46,
+      "raw_nonmock_rows": 46,
+      "source_joined_rows": 46,
+      "calibrated_power_rows": 0,
+      "selected_distinct_contents": 0,
+      "height_type_counts": {
+        "0": 46
+      }
+    },
+    "Pixel8": {
+      "target_rows": 0,
+      "selected_rows": 0,
+      "held_rows": 0,
+      "exclusive_hold_reasons": {},
+      "raw_fresh_rows": 0,
+      "raw_nonmock_rows": 0,
+      "source_joined_rows": 0,
+      "calibrated_power_rows": 0,
+      "selected_distinct_contents": 0,
+      "height_type_counts": {}
+    }
+  },
+  "gates": [
+    {
+      "capability": "within_phone_horizontal_proxy",
+      "status": "EXECUTABLE_CONDITIONAL",
+      "reason": "same-boot association and exploratory accuracy gate only"
+    },
+    {
+      "capability": "cross_device_calendar_alignment",
+      "status": "NOT_EVALUABLE",
+      "reason": "no independent calendar anchors in supplied evidence"
+    },
+    {
+      "capability": "physical_3d_distance",
+      "status": "NOT_EVALUABLE",
+      "reason": "no independent vertical-reference ledger"
+    },
+    {
+      "capability": "same_physical_transmission_drss",
+      "status": "NOT_EVALUABLE",
+      "reason": "content equality is not verified physical packet identity"
+    },
+    {
+      "capability": "physical_position_fpr_tpr",
+      "status": "NOT_EVALUABLE",
+      "reason": "no independently labelled true positions or attacks"
+    },
+    {
+      "capability": "packet_delivery_ratio",
+      "status": "NOT_EVALUABLE",
+      "reason": "transmitted-packet denominator unavailable"
+    },
+    {
+      "capability": "independent_run_uncertainty",
+      "status": "NOT_EVALUABLE",
+      "reason": "independent flight/run labels not established"
+    }
+  ],
+  "independent_calendar_anchors": 0,
+  "source_db_hashes_verified": 4,
+  "input_unchanged": true,
+  "raw_gate_preserves_frozen_selection": true,
+  "scope": "Nov16 preserved target dataset only; not later lab-test records",
+  "physical_truth_verified": false
+}

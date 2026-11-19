@@ -1,0 +1,12 @@
+{
+  "week29_tests": 100,
+  "week29_skips": 0,
+  "uav_tests": 50,
+  "go": "passed",
+  "contracts_tests": 21,
+  "figure_series_checked": 7,
+  "paired_conditions_checked": 81,
+  "independent_truth": false,
+  "detector_adopted": false,
+  "ci": "check_after_push"
+}

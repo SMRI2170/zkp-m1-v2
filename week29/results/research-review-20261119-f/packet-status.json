@@ -1,0 +1,69 @@
+{
+  "source_summary_sha256": "6ec41195c5e51a4ca72982b10fdfc2d79b9c4e13310085cca3565bcc21027230",
+  "confirmed_physical_packets": 0,
+  "cross_device_clock_verified": false,
+  "row_level_mapping": "NOT_EVALUABLE_no_confirmed_join",
+  "pair_content_candidates": [
+    {
+      "pair": "B / Pixel",
+      "shared_content_types": 15,
+      "left_only_content_types": 488,
+      "right_only_content_types": 117
+    },
+    {
+      "pair": "B / ASUS-1",
+      "shared_content_types": 4,
+      "left_only_content_types": 499,
+      "right_only_content_types": 36
+    },
+    {
+      "pair": "B / ASUS-2",
+      "shared_content_types": 1,
+      "left_only_content_types": 502,
+      "right_only_content_types": 11
+    },
+    {
+      "pair": "B / Pixel8",
+      "shared_content_types": 0,
+      "left_only_content_types": 503,
+      "right_only_content_types": 0
+    },
+    {
+      "pair": "Pixel / ASUS-1",
+      "shared_content_types": 0,
+      "left_only_content_types": 132,
+      "right_only_content_types": 40
+    },
+    {
+      "pair": "Pixel / ASUS-2",
+      "shared_content_types": 1,
+      "left_only_content_types": 131,
+      "right_only_content_types": 11
+    },
+    {
+      "pair": "Pixel / Pixel8",
+      "shared_content_types": 0,
+      "left_only_content_types": 132,
+      "right_only_content_types": 0
+    },
+    {
+      "pair": "ASUS-1 / ASUS-2",
+      "shared_content_types": 0,
+      "left_only_content_types": 40,
+      "right_only_content_types": 12
+    },
+    {
+      "pair": "ASUS-1 / Pixel8",
+      "shared_content_types": 0,
+      "left_only_content_types": 40,
+      "right_only_content_types": 0
+    },
+    {
+      "pair": "ASUS-2 / Pixel8",
+      "shared_content_types": 0,
+      "left_only_content_types": 12,
+      "right_only_content_types": 0
+    }
+  ],
+  "cancellation": "NOT_EVALUABLE"
+}

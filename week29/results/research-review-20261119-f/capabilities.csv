@@ -1,0 +1,8 @@
+capability,status,reason
+within_phone_horizontal_proxy,EXECUTABLE_CONDITIONAL,same-boot association and exploratory accuracy gate only
+cross_device_calendar_alignment,NOT_EVALUABLE,no independent calendar anchors in supplied evidence
+physical_3d_distance,NOT_EVALUABLE,no independent vertical-reference ledger
+same_physical_transmission_drss,NOT_EVALUABLE,content equality is not verified physical packet identity
+physical_position_fpr_tpr,NOT_EVALUABLE,no independently labelled true positions or attacks
+packet_delivery_ratio,NOT_EVALUABLE,transmitted-packet denominator unavailable
+independent_run_uncertainty,NOT_EVALUABLE,independent flight/run labels not established

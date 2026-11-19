@@ -1,0 +1,176 @@
+week29
+test_timezones_and_invalid_time (test_a_audit.AuditTests.test_timezones_and_invalid_time) ... ok
+test_window_dedup_missing_time_and_bad_json (test_a_audit.AuditTests.test_window_dedup_missing_time_and_bad_json) ... ok
+test_receiver_reservation_and_reason_priority (test_a_stop_cause.CauseTests.test_receiver_reservation_and_reason_priority) ... ok
+test_sensor_predicate_selects_inner_raise_and_strict_boundary (test_a_stop_cause.CauseTests.test_sensor_predicate_selects_inner_raise_and_strict_boundary) ... ok
+test_tx_deployed_style_budget_keeps_disk_and_file_guards (test_a_stop_cause.CauseTests.test_tx_deployed_style_budget_keeps_disk_and_file_guards) ... ok
+test_empty_and_duplicate_manifests_are_rejected (test_android_permission_manifest.DeviceManifestTests.test_empty_and_duplicate_manifests_are_rejected) ... ok
+test_private_fields_and_path_escape_are_rejected (test_android_permission_manifest.DeviceManifestTests.test_private_fields_and_path_escape_are_rejected) ... ok
+test_two_os_generations_remain_separate_and_input_is_not_modified (test_android_permission_manifest.DeviceManifestTests.test_two_os_generations_remain_separate_and_input_is_not_modified) ... ok
+test_boot_or_fix_content_mismatch_is_held (test_android_position_audit.AndroidPositionAuditTests.test_boot_or_fix_content_mismatch_is_held) ... ok
+test_delta_boundary_invalid_accuracy_and_mock (test_android_position_audit.AndroidPositionAuditTests.test_delta_boundary_invalid_accuracy_and_mock) ... ok
+test_missing_stale_and_unknown_freshness (test_android_position_audit.AndroidPositionAuditTests.test_missing_stale_and_unknown_freshness) ... ok
+test_movement_never_bridges_boot_or_long_gap (test_android_position_audit.AndroidPositionAuditTests.test_movement_never_bridges_boot_or_long_gap) ... ok
+test_nonfinite_observation_clock_is_held (test_android_position_audit.AndroidPositionAuditTests.test_nonfinite_observation_clock_is_held) ... ok
+test_ratio_and_zero_distance (test_android_position_audit.AndroidPositionAuditTests.test_ratio_and_zero_distance) ... ok
+test_exact_duplicate_only (test_b_candidate.CandidateTests.test_exact_duplicate_only) ... ok
+test_gap_and_clock_boundary (test_b_candidate.CandidateTests.test_gap_and_clock_boundary) ... ok
+test_percentile_and_empty_intervals (test_b_reference.AggregateTests.test_percentile_and_empty_intervals) ... ok
+test_production_v2_still_decodes (test_b_reference.ReferenceTests.test_production_v2_still_decodes) ... ok
+test_reference_rejects_truncated_bad_count_and_unknown_version (test_b_reference.ReferenceTests.test_reference_rejects_truncated_bad_count_and_unknown_version) ... ok
+test_reference_v0_is_separate_from_production_admission (test_b_reference.ReferenceTests.test_reference_v0_is_separate_from_production_admission) ... ok
+test_distance_changes_and_no_silent_clipping (test_claim_attacks.ClaimAttacksTests.test_distance_changes_and_no_silent_clipping) ... ok
+test_known_model_and_flat_geometry_hold (test_claim_attacks.ClaimAttacksTests.test_known_model_and_flat_geometry_hold) ... ok
+test_matched_power_keeps_the_signed_residual (test_claim_attacks.ClaimAttacksTests.test_matched_power_keeps_the_signed_residual) ... ok
+test_temporal_split_embargo_and_no_boot_merging (test_claim_attacks.ClaimAttacksTests.test_temporal_split_embargo_and_no_boot_merging) ... ok
+test_empty_bins_and_distribution_not_confidence_intervals (test_claim_distance.ClaimDistanceTests.test_empty_bins_and_distribution_not_confidence_intervals) ... ok
+test_missing_nonfinite_values_stay_held (test_claim_distance.ClaimDistanceTests.test_missing_nonfinite_values_stay_held) ... ok
+test_quality_gate_does_not_admit_close_uncertain_fixes (test_claim_distance.ClaimDistanceTests.test_quality_gate_does_not_admit_close_uncertain_fixes) ... ok
+test_anchor_has_zero_model_offset_not_proven_clock (test_clock_candidates.ClockCandidateTests.test_anchor_has_zero_model_offset_not_proven_clock) ... ok
+test_paths_and_reversed_offsets (test_clock_candidates.ClockCandidateTests.test_paths_and_reversed_offsets) ... ok
+test_release_identity_survives_snapshot_root_change (test_clock_candidates.ClockCandidateTests.test_release_identity_survives_snapshot_root_change) ... ok
+test_window_boundary_and_uncertainty (test_clock_candidates.ClockCandidateTests.test_window_boundary_and_uncertainty) ... ok
+test_horizontal_distance (test_confirmed_drone.ConfirmedDroneTests.test_horizontal_distance) ... ok
+test_missing_or_nonfinite_measurements (test_confirmed_drone.ConfirmedDroneTests.test_missing_or_nonfinite_measurements) ... ok
+test_overlap_is_content_not_packet_or_rows (test_confirmed_drone.ConfirmedDroneTests.test_overlap_is_content_not_packet_or_rows) ... ok
+test_boot_and_clock_group_are_not_guessed (test_drone_android_3d.AndroidReplayTests.test_boot_and_clock_group_are_not_guessed) ... ok
+test_line_breaks_on_gap_and_segment_change (test_drone_android_3d.AndroidReplayTests.test_line_breaks_on_gap_and_segment_change) ... ok
+test_marker_has_no_stale_position_or_extrapolation (test_drone_android_3d.AndroidReplayTests.test_marker_has_no_stale_position_or_extrapolation) ... ok
+test_enu_origin_and_vertical (test_drone_trajectory.TrajectoryTests.test_enu_origin_and_vertical) ... ok
+test_unknown_altitude_and_invalid_coordinate (test_drone_trajectory.TrajectoryTests.test_unknown_altitude_and_invalid_coordinate) ... ok
+test_wgs84_equator_and_pole (test_drone_trajectory.TrajectoryTests.test_wgs84_equator_and_pole) ... ok
+test_changed_bar_height_is_detected (test_field_review.FigureEvidenceTests.test_changed_bar_height_is_detected) ... /Users/shivio/orca/workspaces/zkp-m1-v2/week29-research-gates/week29/scripts/validate_field_review.py:8: ResourceWarning: unclosed file <_io.TextIOWrapper name='/var/folders/kj/g7jx78rj2_j_2lxj85yc8kd80000gn/T/tmp0p3l1k51/results/paired-transitions.csv' mode='r' encoding='utf-8'>
+  rows=list(csv.DictReader((root/'paired-transitions.csv').open()));sensitivity=list(csv.DictReader((root/'claim-dependent-selection.csv').open()))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/shivio/orca/workspaces/zkp-m1-v2/week29-research-gates/week29/scripts/validate_field_review.py:8: ResourceWarning: unclosed file <_io.TextIOWrapper name='/var/folders/kj/g7jx78rj2_j_2lxj85yc8kd80000gn/T/tmp0p3l1k51/results/claim-dependent-selection.csv' mode='r' encoding='utf-8'>
+  rows=list(csv.DictReader((root/'paired-transitions.csv').open()));sensitivity=list(csv.DictReader((root/'claim-dependent-selection.csv').open()))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_non_native_artist_numbers_are_serializable (test_field_review.FigureEvidenceTests.test_non_native_artist_numbers_are_serializable) ... ok
+test_nonfinite_artist_values_stop_publication (test_field_review.FigureEvidenceTests.test_nonfinite_artist_values_stop_publication) ... ok
+test_public_chart_artists_match_aggregates_and_denominators (test_field_review.FigureEvidenceTests.test_public_chart_artists_match_aggregates_and_denominators) ... /Users/shivio/orca/workspaces/zkp-m1-v2/week29-research-gates/week29/scripts/validate_field_review.py:8: ResourceWarning: unclosed file <_io.TextIOWrapper name='/Users/shivio/orca/workspaces/zkp-m1-v2/week29-research-gates/week29/results/research-review-20261119-f/paired-transitions.csv' mode='r' encoding='utf-8'>
+  rows=list(csv.DictReader((root/'paired-transitions.csv').open()));sensitivity=list(csv.DictReader((root/'claim-dependent-selection.csv').open()))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Users/shivio/orca/workspaces/zkp-m1-v2/week29-research-gates/week29/scripts/validate_field_review.py:8: ResourceWarning: unclosed file <_io.TextIOWrapper name='/Users/shivio/orca/workspaces/zkp-m1-v2/week29-research-gates/week29/results/research-review-20261119-f/claim-dependent-selection.csv' mode='r' encoding='utf-8'>
+  rows=list(csv.DictReader((root/'paired-transitions.csv').open()));sensitivity=list(csv.DictReader((root/'claim-dependent-selection.csv').open()))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_claim_dependent_gate_changes_are_reported_without_mutating_selection (test_field_review.ProxyDiagnosisTests.test_claim_dependent_gate_changes_are_reported_without_mutating_selection) ... ok
+test_exact_threshold_does_not_trigger_alarm (test_field_review.ProxyDiagnosisTests.test_exact_threshold_does_not_trigger_alarm) ... ok
+test_matched_power_explanation_has_the_correct_sign_and_scope (test_field_review.ProxyDiagnosisTests.test_matched_power_explanation_has_the_correct_sign_and_scope) ... ok
+test_paired_transition_denominators_do_not_call_old_alarms_new_detections (test_field_review.ProxyDiagnosisTests.test_paired_transition_denominators_do_not_call_old_alarms_new_detections) ... ok
+test_single_rssi_two_physical_worlds_are_identical (test_field_review.ProxyDiagnosisTests.test_single_rssi_two_physical_worlds_are_identical) ... ok
+test_small_tail_blocks_are_merged_without_discarding_rows (test_field_review.ProxyDiagnosisTests.test_small_tail_blocks_are_merged_without_discarding_rows) ... ok
+test_too_few_rows_do_not_publish_a_single_event_block (test_field_review.ProxyDiagnosisTests.test_too_few_rows_do_not_publish_a_single_event_block) ... ok
+test_csv_claim_or_rssi_tamper_stops_audit (test_field_review.RawEvidenceTests.test_csv_claim_or_rssi_tamper_stops_audit) ... ok
+test_join_requires_independent_standalone_fix_agreement (test_field_review.RawEvidenceTests.test_join_requires_independent_standalone_fix_agreement) ... ok
+test_nonfinite_and_boolean_are_not_numbers (test_field_review.RawEvidenceTests.test_nonfinite_and_boolean_are_not_numbers) ... ok
+test_raw_mock_unknown_freshness_and_future_delivery_are_rejected (test_field_review.RawEvidenceTests.test_raw_mock_unknown_freshness_and_future_delivery_are_rejected) ... ok
+test_embedded_private_event_cannot_break_out_of_script (test_field_review.ViewerPrivacyTests.test_embedded_private_event_cannot_break_out_of_script) ... ok
+test_clock_jump_and_minute_bucket_boundary (test_field_time_audit.FieldTimeTests.test_clock_jump_and_minute_bucket_boundary) ... ok
+test_content_repetition_is_not_observation_duplication (test_field_time_audit.FieldTimeTests.test_content_repetition_is_not_observation_duplication) ... ok
+test_hour_wrap_is_not_calendar_recovery (test_field_time_audit.FieldTimeTests.test_hour_wrap_is_not_calendar_recovery) ... ok
+test_large_even_sample_median_and_mad (test_field_time_audit.FieldTimeTests.test_large_even_sample_median_and_mad) ... ok
+test_malformed_tail_and_nonobject (test_field_time_audit.FieldTimeTests.test_malformed_tail_and_nonobject) ... ok
+test_packet_shape_and_unsupported_version (test_field_time_audit.FieldTimeTests.test_packet_shape_and_unsupported_version) ... ok
+test_snapshot_db_and_jsonl_dedup_preserves_sources (test_field_time_audit.FieldTimeTests.test_snapshot_db_and_jsonl_dedup_preserves_sources) ... ok
+test_year_offset_timezone_and_unknown_clock (test_field_time_audit.FieldTimeTests.test_year_offset_timezone_and_unknown_clock) ... ok
+test_close_time_and_matching_wrapped_counter_never_confirm (test_packet_candidates.PacketCandidatesTests.test_close_time_and_matching_wrapped_counter_never_confirm) ... ok
+test_other_transmitter_does_not_match_by_content (test_packet_candidates.PacketCandidatesTests.test_other_transmitter_does_not_match_by_content) ... ok
+test_repeated_content_candidates_are_preserved_as_ambiguous (test_packet_candidates.PacketCandidatesTests.test_repeated_content_candidates_are_preserved_as_ambiguous) ... ok
+test_unknown_clock_and_clock_jump_do_not_confirm (test_packet_candidates.PacketCandidatesTests.test_unknown_clock_and_clock_jump_do_not_confirm) ... ok
+test_window_and_clock_sensitivity (test_packet_candidates.PacketCandidatesTests.test_window_and_clock_sensitivity) ... ok
+test_accepts_anonymous_aggregate_counts (test_publication_boundary.PublicationBoundaryTests.test_accepts_anonymous_aggregate_counts) ... ok
+test_rejects_accidentally_staged_capture_even_with_synthetic_input (test_publication_boundary.PublicationBoundaryTests.test_rejects_accidentally_staged_capture_even_with_synthetic_input) ... ok
+test_rejects_nested_geographic_location_fields (test_publication_boundary.PublicationBoundaryTests.test_rejects_nested_geographic_location_fields) ... ok
+test_rejects_private_columns_even_when_no_data_rows (test_publication_boundary.PublicationBoundaryTests.test_rejects_private_columns_even_when_no_data_rows) ... ok
+test_association_failure_is_retained_as_reason (test_quality_manifest.QualityManifestTests.test_association_failure_is_retained_as_reason) ... ok
+test_boundary_and_existing_gate (test_quality_manifest.QualityManifestTests.test_boundary_and_existing_gate) ... ok
+test_denominators_and_nonexclusive_reasons (test_quality_manifest.QualityManifestTests.test_denominators_and_nonexclusive_reasons) ... ok
+test_inconsistent_evidence_is_not_silently_reconciled (test_quality_manifest.QualityManifestTests.test_inconsistent_evidence_is_not_silently_reconciled) ... ok
+test_missing_clock_and_invalid_numeric_fail_closed (test_quality_manifest.QualityManifestTests.test_missing_clock_and_invalid_numeric_fail_closed) ... ok
+test_no_physical_guarantees_enabled_by_selection (test_quality_manifest.QualityManifestTests.test_no_physical_guarantees_enabled_by_selection) ... ok
+test_private_frozen_mask_rejects_tampering_and_changed_input (test_quality_manifest.QualityManifestTests.test_private_frozen_mask_rejects_tampering_and_changed_input) ... ok
+test_unknown_node_is_rejected (test_quality_manifest.QualityManifestTests.test_unknown_node_is_rejected) ... ok
+test_boot_and_clock_reset_never_bridge_intervals (test_rid_intervals.RidIntervalTests.test_boot_and_clock_reset_never_bridge_intervals) ... ok
+test_different_sender_streams_do_not_form_intervals (test_rid_intervals.RidIntervalTests.test_different_sender_streams_do_not_form_intervals) ... ok
+test_return_to_old_content_is_change_not_new_distinct_content (test_rid_intervals.RidIntervalTests.test_return_to_old_content_is_change_not_new_distinct_content) ... ok
+test_reused_observation_time_is_deduped_not_reception (test_rid_intervals.RidIntervalTests.test_reused_observation_time_is_deduped_not_reception) ... ok
+test_unknown_nonfinite_monotonic_is_held (test_rid_intervals.RidIntervalTests.test_unknown_nonfinite_monotonic_is_held) ... ok
+test_coordinate_reference_and_missing_rssi (test_rssi_tracks.RssiTrackTests.test_coordinate_reference_and_missing_rssi) ... ok
+test_gap_boundary_and_height_reference_change (test_rssi_tracks.RssiTrackTests.test_gap_boundary_and_height_reference_change) ... ok
+test_identical_audit_row_not_drawn_twice (test_rssi_tracks.RssiTrackTests.test_identical_audit_row_not_drawn_twice) ... ok
+test_active_study_stop_error_is_not_ignored (test_scan_busy_batch.RestoreReceiverTests.test_active_study_stop_error_is_not_ignored) ... ok
+test_unload_race_is_verified_before_accepting_stop_error (test_scan_busy_batch.RestoreReceiverTests.test_unload_race_is_verified_before_accepting_stop_error) ... ok
+test_unloaded_completed_unit_does_not_prevent_normal_restart (test_scan_busy_batch.RestoreReceiverTests.test_unloaded_completed_unit_does_not_prevent_normal_restart) ... ok
+test_busy_and_permission_are_separate_and_passive_denominator_is_unknown (test_scan_busy_batch.ScanBusyTests.test_busy_and_permission_are_separate_and_passive_denominator_is_unknown) ... ok
+test_old_cache_duplicate_and_unrelated_source_are_not_new_target (test_scan_busy_batch.ScanBusyTests.test_old_cache_duplicate_and_unrelated_source_are_not_new_target) ... ok
+test_two_rounds_are_counterbalanced_and_controls_are_passive (test_scan_busy_batch.ScanBusyTests.test_two_rounds_are_counterbalanced_and_controls_are_passive) ... ok
+test_ambiguous_and_reversed_events_are_reported_not_used (test_scan_busy_batch.ScanEventTests.test_ambiguous_and_reversed_events_are_reported_not_used) ... ok
+test_scan_event_duration_ignores_other_interfaces (test_scan_busy_batch.ScanEventTests.test_scan_event_duration_ignores_other_interfaces) ... ok
+test_failed_resource_query_is_unknown (test_storage_monitor.StorageMonitorTests.test_failed_resource_query_is_unknown) ... ok
+test_missing_cgroup_memory_remains_unknown_not_zero (test_storage_monitor.StorageMonitorTests.test_missing_cgroup_memory_remains_unknown_not_zero) ... ok
+test_receiver_only_waiting_does_not_require_sensor_or_transmitter (test_storage_monitor.StorageMonitorTests.test_receiver_only_waiting_does_not_require_sensor_or_transmitter) ... ok
+
+----------------------------------------------------------------------
+Ran 100 tests in 0.749s
+
+OK
+
+uav
+..................................................
+----------------------------------------------------------------------
+Ran 50 tests in 0.013s
+
+OK
+
+go
+?   	uav/aggregator	[no test files]
+?   	uav/aggregator/cmd/aggregate	[no test files]
+?   	uav/aggregator/cmd/chainpoc	[no test files]
+?   	uav/aggregator/cmd/deviceroot	[no test files]
+?   	uav/aggregator/cmd/verify1	[no test files]
+ok  	uav/aggregator/completeness	0.354s
+ok  	uav/aggregator/membership	0.386s
+?   	uav/aggregator/snarkimport	[no test files]
+
+contracts
+
+> uav-attestation-contracts@1.0.0 test
+> hardhat test
+
+Compiled 21 Solidity files successfully (evm target: paris).
+
+
+  Spike C+#3a: 集約証明のオンチェーン検証（定数gas / 登録Root束縛）
+      集約検証 gas = 354454  (N=3を1回で検証／台数非依存)
+    ✔ 正しい集約証明は1回の検証で通り、gas を計測 (39ms)
+    ✔ 公開入力(consistent/suspicious)を偽ると revert
+    ✔ #3a: 登録Root を偽ると revert（未登録端末の集約を弾く）
+    ✔ proof を改ざんすると revert
+
+  AttestationRegistry (M1, K=3)
+    ✔ M3: 未認証ドローン(drone_auth_ok=0)は拒否
+    ✔ M3: 未登録オペレータは拒否
+    ✔ M3: 古い freshness(リプレイ)は拒否
+    ✔ K 台の相異なる登録端末が揃うと consensus 成立
+    ✔ 同一端末の二重提出は計上されない
+    ✔ 未登録端末は拒否
+    ✔ within30_and_detected != 1 は拒否
+    ✔ 無効な証明は拒否（verifier=false）
+    ✔ 別ドローンは別グループとして数え、混ぜても consensus しない
+    ✔ K 台が矛盾(consistency_ok=0)を検出 → SpoofAlert
+    ✔ 整合と矛盾が混在: 整合K台で trusted, 矛盾は別カウント
+    ✔ 別時間窓は別グループ
+
+  E2E: 実証明 → 実 Groth16Verifier → AttestationRegistry (K=3)
+    ✔ 実証明: 整合2台で trusted 合意、詐称1台は suspicious
+    ✔ 改ざんした public signal は実 verifier が弾く
+
+  Governance: Ownable2Step + Timelock
+    ✔ 2段階の所有権移転（transfer→pending→accept）
+    ✔ 移転後、旧ownerは onlyOwner を呼べない
+    ✔ owner=Timelock: 方針変更は遅延を経てのみ実行できる
+
+
+  21 passing (1s)
