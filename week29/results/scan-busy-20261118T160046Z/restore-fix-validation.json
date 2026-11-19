@@ -1,0 +1,18 @@
+{
+  "code_sha256": "fa61d146facf360f20a2108161e8829644b15667c3f464efbc1abde229828706",
+  "nodes": [
+    {
+      "node": "C",
+      "receiver_active": true,
+      "temporary_unit_initially_unloaded": true,
+      "temporary_ap_absent": true
+    },
+    {
+      "node": "D",
+      "receiver_active": true,
+      "temporary_unit_initially_unloaded": true,
+      "temporary_ap_absent": true
+    }
+  ],
+  "configuration_changed": false
+}

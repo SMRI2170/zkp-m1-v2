@@ -1,0 +1,25 @@
+{
+  "experiment_completed": true,
+  "nodes": [
+    {
+      "node": "C",
+      "receiver_active": true,
+      "config_unchanged": true,
+      "new_normal_session_verified": true,
+      "temporary_ap_absent": true,
+      "temporary_unit_unloaded": true,
+      "restore_timer_cancelled": true
+    },
+    {
+      "node": "D",
+      "receiver_active": true,
+      "config_unchanged": true,
+      "new_normal_session_verified": true,
+      "temporary_ap_absent": true,
+      "temporary_unit_unloaded": true,
+      "restore_timer_cancelled": true
+    }
+  ],
+  "initial_cleanup_failure": "temporary completed transient unit already unloaded; strict stop exited before restart",
+  "manual_recovery_verified": true
+}
