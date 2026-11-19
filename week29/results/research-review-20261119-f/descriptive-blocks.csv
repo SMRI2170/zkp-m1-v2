@@ -1,0 +1,6 @@
+block,n,baseline_alarm_count,baseline_alarm_fraction,independent_run
+B1,5,0,0.0,False
+B2,6,3,0.5,False
+B3,5,3,0.6,False
+B4,6,5,0.8333333333333334,False
+B5,5,2,0.4,False

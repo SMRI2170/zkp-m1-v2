@@ -1,0 +1,122 @@
+[
+  {
+    "number": 71,
+    "title": "Week27 PR1: uli-net-simの環境構築と正常・位置偽装Beaconの再現",
+    "url": "https://github.com/SMRI2170/zkp-m1-v2/pull/71",
+    "state": "OPEN",
+    "merged_at": null,
+    "inspected_head_sha": "ef7046055dc826ed038dd5977ebe52c76828285f",
+    "head_ref_matched": true,
+    "changed_files": 35,
+    "files_present_in_current_checkout": 0,
+    "scope": "file presence is not completion or exact algorithm reproduction"
+  },
+  {
+    "number": 72,
+    "title": "Week27 PR2: パケット単位Tx電力をPHYへ反映し受信・干渉対照を実行",
+    "url": "https://github.com/SMRI2170/zkp-m1-v2/pull/72",
+    "state": "OPEN",
+    "merged_at": null,
+    "inspected_head_sha": "0ff7c9fe34d84c648692d35496bff489ce368068",
+    "head_ref_matched": true,
+    "changed_files": 44,
+    "files_present_in_current_checkout": 0,
+    "scope": "file presence is not completion or exact algorithm reproduction"
+  },
+  {
+    "number": 73,
+    "title": "Issue #70 PR3: 非同期1RSSI・同一送信多局の観測監査",
+    "url": "https://github.com/SMRI2170/zkp-m1-v2/pull/73",
+    "state": "OPEN",
+    "merged_at": null,
+    "inspected_head_sha": "e1700af36d3b0a22a2e62a414e30e9ca35a8eada",
+    "head_ref_matched": true,
+    "changed_files": 46,
+    "files_present_in_current_checkout": 0,
+    "scope": "file presence is not completion or exact algorithm reproduction"
+  },
+  {
+    "number": 74,
+    "title": "Issue #70 PR4: 正常校正・20seedの位置偽装評価と定量図",
+    "url": "https://github.com/SMRI2170/zkp-m1-v2/pull/74",
+    "state": "OPEN",
+    "merged_at": null,
+    "inspected_head_sha": "55db328520594f94b5e19bf126a62934d337dea7",
+    "head_ref_matched": true,
+    "changed_files": 100,
+    "files_present_in_current_checkout": 0,
+    "scope": "file presence is not completion or exact algorithm reproduction"
+  },
+  {
+    "number": 76,
+    "title": "Issue #75 PR5: 観測局適応電力補償・20seed評価とMLAT診断",
+    "url": "https://github.com/SMRI2170/zkp-m1-v2/pull/76",
+    "state": "OPEN",
+    "merged_at": null,
+    "inspected_head_sha": "48bd62428751ea22a714d1d2b1c23008b727b126",
+    "head_ref_matched": true,
+    "changed_files": 100,
+    "files_present_in_current_checkout": 0,
+    "scope": "file presence is not completion or exact algorithm reproduction"
+  },
+  {
+    "number": 78,
+    "title": "Issue #77 PR6a: 局配置・偽装方向・固定予算と後方互換",
+    "url": "https://github.com/SMRI2170/zkp-m1-v2/pull/78",
+    "state": "OPEN",
+    "merged_at": null,
+    "inspected_head_sha": "686d81ccc5f52b6892d55e2c65d36573b3586e2f",
+    "head_ref_matched": true,
+    "changed_files": 25,
+    "files_present_in_current_checkout": 0,
+    "scope": "file presence is not completion or exact algorithm reproduction"
+  },
+  {
+    "number": 79,
+    "title": "GhostBusterの式に沿った再実装と、偽装距離・雑音・電力操作の評価",
+    "url": "https://github.com/SMRI2170/zkp-m1-v2/pull/79",
+    "state": "OPEN",
+    "merged_at": null,
+    "inspected_head_sha": "319ca2ec3590552911f1a58ccf2f7fe67f8e6507",
+    "head_ref_matched": true,
+    "changed_files": 70,
+    "files_present_in_current_checkout": 3,
+    "scope": "file presence is not completion or exact algorithm reproduction"
+  },
+  {
+    "number": 80,
+    "title": "Week27：Dataset-21実ファイル監査と5局RSSの同一送信ゲート",
+    "url": "https://github.com/SMRI2170/zkp-m1-v2/pull/80",
+    "state": "OPEN",
+    "merged_at": null,
+    "inspected_head_sha": "3d7540b3f2a96f7fcd7682e046523deb5752b2fc",
+    "head_ref_matched": true,
+    "changed_files": 71,
+    "files_present_in_current_checkout": 68,
+    "scope": "file presence is not completion or exact algorithm reproduction"
+  },
+  {
+    "number": 81,
+    "title": "Week27：D1実測RSS評価アダプタと合成入力実験（検出率は座標待ち）",
+    "url": "https://github.com/SMRI2170/zkp-m1-v2/pull/81",
+    "state": "MERGED",
+    "merged_at": "2026-11-08T14:58:04Z",
+    "inspected_head_sha": "48ed29c855dda740b17343ebd177dc0891da372c",
+    "head_ref_matched": true,
+    "changed_files": 52,
+    "files_present_in_current_checkout": 50,
+    "scope": "file presence is not completion or exact algorithm reproduction"
+  },
+  {
+    "number": 82,
+    "title": "Week27：Dataset-21の監査・評価アダプタ・全10図をmainへ反映",
+    "url": "https://github.com/SMRI2170/zkp-m1-v2/pull/82",
+    "state": "MERGED",
+    "merged_at": "2026-11-08T15:04:52Z",
+    "inspected_head_sha": "1ed2aa264ac99cbbd0fd69eaad841002449403f4",
+    "head_ref_matched": true,
+    "changed_files": 70,
+    "files_present_in_current_checkout": 70,
+    "scope": "file presence is not completion or exact algorithm reproduction"
+  }
+]

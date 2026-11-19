@@ -1,0 +1,13 @@
+{
+  "source": "entirely_synthetic_explanation_not_field_result",
+  "intercept": -40.0,
+  "n": 2.0,
+  "distance": 10.0,
+  "modified_distance": 40.0,
+  "rssi": -60.0,
+  "threshold": 3.0,
+  "delta_power": -12.041199826559248,
+  "baseline_score": 0.0,
+  "claim_only_score": 12.04119982655925,
+  "compensated_score": 0.0
+}

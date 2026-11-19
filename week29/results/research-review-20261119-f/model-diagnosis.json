@@ -1,0 +1,104 @@
+{
+  "stage": "issue96",
+  "status": "EXECUTED_FAILURE_DIAGNOSIS",
+  "adoption": "NOT_SUPPORTED",
+  "scope": "real RSSI and unmodified RID claims; synthetic claim/power changes; no independently labelled FPR/TPR",
+  "counts": {
+    "eligible": 105,
+    "train": 52,
+    "calibration": 26,
+    "evaluation": 27,
+    "purged": 0
+  },
+  "frozen_model": {
+    "intercept_dbm": -30.175003061704714,
+    "horizontal_proxy_n": 3.110833061353868,
+    "threshold_db": 5.643584983424159,
+    "training_claimed_horizontal_distance_m": [
+      4.358853856845861,
+      38.19546086972607
+    ]
+  },
+  "evaluation_baseline_alarm_count": 13,
+  "evaluation_rows": 27,
+  "evaluation_baseline_alarm_fraction": 0.48148148148148145,
+  "partitions": [
+    {
+      "partition": "train",
+      "n": 52,
+      "alarm_count": 23,
+      "alarm_fraction": 0.4423076923076923,
+      "signed_residual_median_db": -0.23465914503425012,
+      "signed_residual_q25_db": -5.4201848302290365,
+      "signed_residual_q75_db": 5.255911720591403,
+      "absolute_residual_median_db": 5.4348790538209,
+      "outside_training_distance_count": 0
+    },
+    {
+      "partition": "calibration",
+      "n": 26,
+      "alarm_count": 2,
+      "alarm_fraction": 0.07692307692307693,
+      "signed_residual_median_db": 1.2674271841002565,
+      "signed_residual_q25_db": -0.40897860285719645,
+      "signed_residual_q75_db": 3.237508056284831,
+      "absolute_residual_median_db": 2.831125091995972,
+      "outside_training_distance_count": 20
+    },
+    {
+      "partition": "evaluation",
+      "n": 27,
+      "alarm_count": 13,
+      "alarm_fraction": 0.48148148148148145,
+      "signed_residual_median_db": 3.3488293474540853,
+      "signed_residual_q25_db": 0.8393435186481497,
+      "signed_residual_q75_db": 13.69722372596955,
+      "absolute_residual_median_db": 5.602303010843713,
+      "outside_training_distance_count": 4
+    }
+  ],
+  "descriptive_blocks": [
+    {
+      "block": "B1",
+      "n": 5,
+      "baseline_alarm_count": 0,
+      "baseline_alarm_fraction": 0.0,
+      "independent_run": false
+    },
+    {
+      "block": "B2",
+      "n": 6,
+      "baseline_alarm_count": 3,
+      "baseline_alarm_fraction": 0.5,
+      "independent_run": false
+    },
+    {
+      "block": "B3",
+      "n": 5,
+      "baseline_alarm_count": 3,
+      "baseline_alarm_fraction": 0.6,
+      "independent_run": false
+    },
+    {
+      "block": "B4",
+      "n": 6,
+      "baseline_alarm_count": 5,
+      "baseline_alarm_fraction": 0.8333333333333334,
+      "independent_run": false
+    },
+    {
+      "block": "B5",
+      "n": 5,
+      "baseline_alarm_count": 2,
+      "baseline_alarm_fraction": 0.4,
+      "independent_run": false
+    }
+  ],
+  "independent_runs_established": false,
+  "confidence_interval": "NOT_EVALUABLE_no_independent_runs",
+  "threshold_tuned_on_evaluation": false,
+  "frozen_selection_changed": false,
+  "synthetic_conditions": 81,
+  "rf_power_control_executed": false,
+  "physical_receive_loss_simulated": false
+}

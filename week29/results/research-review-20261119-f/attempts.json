@@ -1,0 +1,34 @@
+[
+  {
+    "attempt": "b",
+    "status": "completed",
+    "note": "font glyph warning; not selected for publication"
+  },
+  {
+    "attempt": "c",
+    "status": "completed",
+    "note": "initial tall viewer; later condensed to one screen"
+  },
+  {
+    "attempt": "d",
+    "status": "failed",
+    "stage": 93,
+    "failure_type": "TypeError",
+    "reason": "NumPy artist integer not JSON serializable; incomplete outputs not treated as success"
+  },
+  {
+    "attempt": "e",
+    "status": "completed",
+    "note": "figure series verified, before compact viewer"
+  },
+  {
+    "attempt": "f",
+    "status": "completed",
+    "note": "final ordered pipeline, validated figures and compact private viewer"
+  },
+  {
+    "attempt": "g",
+    "status": "completed",
+    "note": "post-formatting deterministic rerun; numeric/figure outputs identical to published f directory"
+  }
+]

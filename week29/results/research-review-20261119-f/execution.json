@@ -1,0 +1,32 @@
+{
+  "status": "completed",
+  "stages": [
+    {
+      "issue": 89,
+      "status": "completed_current_dataset",
+      "selected_rows": 105
+    },
+    {
+      "issue": 96,
+      "status": "completed_failure_diagnosis",
+      "detector_adopted": false
+    },
+    {
+      "issue": 93,
+      "status": "completed_visuals",
+      "real_events_public": false
+    }
+  ],
+  "code_sha256": {
+    "run_field_review.py": "feffe8743a3eff4c084e3739e08bde315f22aee3d366e7bc67541c5c31e7e545",
+    "audit_frozen_field_rows.py": "ee0e3d204f2f8f99f52cb68fa01e63a585a679ffc15d3a87835eec19db95f921",
+    "diagnose_frozen_proxy.py": "59c53afd5f96ad5192e018242b81ceabd23efb8256495bb992bf0be8bc131b07",
+    "render_field_review.py": "6b9389f46a699840f75c10ccde7fd69eaaedd7579fae49750f7eb2149dd7e1ca",
+    "evaluate_claim_attacks.py": "316528386425d028f898ca7e93e19afbf3a1cd5da1a09a17d335d01dbfe6ffa2",
+    "build_quality_manifest.py": "054963419aa404d47447f09284ecb6f9858d9840ee31592314409b83c0203dde",
+    "audit_android_position.py": "1399a32c12ad2ce511cac52bb2e6c991d3c325c4095f30ee5fff38110281e0ea"
+  },
+  "input_unchanged": true,
+  "real_fpr_tpr": "NOT_EVALUABLE",
+  "independent_truth": false
+}
