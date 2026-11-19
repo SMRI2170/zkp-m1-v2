@@ -76,7 +76,9 @@ python3 -m unittest discover -s experiments/kmp-rid-observer/tests -v
 
 Android補助Python36件、Week29 81件、UAV50件、Go、contracts21件が成功。APK/test APK、Android JVMテスト、Lintのビルドが成功。実機の隔離保存試験5件も成功。合成fixtureと実際の権限試験は別の証拠。
 
-公開先は[PR #101](https://github.com/SMRI2170/zkp-m1-v2/pull/101)。前回SHA `7108c6f` のActions成功を今回のコードのCI成功とは数えず、push後に新しいSHAの結果・ログを別途確認する。
+公開先は[PR #101](https://github.com/SMRI2170/zkp-m1-v2/pull/101)。コードSHA `006c647e687ce167778ffc9640332d8f46a29afc` をpush後、GitHub Actions 6 runs / 8 job checksすべて成功し、完了ログを確認した。Android補助36件・Week29 81件・UAV50件・contracts21件・Go・Androidビルドの成功をCIでも確認。外部CodeRabbitのSKIPPEDは実行済みレビューに数えない。
+
+[CI実行とjobの記録](results/android-permissions-20261119T012730Z/ci-code-006c647.json)。これはコードSHAに対する記録であり、実機の権限試験・隔離fixtureの実行証拠とは区別する。
 
 ## 残件
 
