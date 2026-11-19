@@ -89,3 +89,12 @@ python3 -m unittest discover -s experiments/kmp-rid-observer/tests -v
 ## テスト
 
 Android補助Pythonは新規6件を含む25件、Week29は81件、UAVは50件、Go、contracts21件が成功。新規テストはID形式差・一般Wi-Fiと対象IDの分離・鮮度不明/重複・light/deep idle・区間境界・独立保存測位のsnapshot保持を検証した。実端末2台の8フェーズ実施と、これらの合成テストの成功は別の証拠として扱う。
+
+
+## 送信側の継続確認（追記）
+
+Dのhostapdペイロード適用記録は433回、更新時刻の最初から最後まで約430.25秒、最大更新間隔約1.00007秒だった。上限640秒に達する前に手動停止した。これは送信側アプリケーションの更新記録であり、独立RF測定・送信パケット総数・受信率ではない。詳細ログと研究用IDは非公開。
+
+## 公開確認（追記）
+
+[PR #101](https://github.com/SMRI2170/zkp-m1-v2/pull/101)のコードSHA `7108c6fdd9f4974c0281c233d31d75a24fb9a114`で、GitHub Actions 6 runs / 8 job checksの成功と完了ログを確認した。後続の権限試験は報告33に分離する。

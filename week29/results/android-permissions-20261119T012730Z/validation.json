@@ -1,0 +1,13 @@
+{
+  "android_python": 36,
+  "week29_python": 81,
+  "uav_python": 50,
+  "contracts": 21,
+  "go": "passed",
+  "apk_test_apk_jvm_lint": "passed",
+  "device_fixture_instrumentation": 5,
+  "real_permission_protocols": 2,
+  "ci": "pending_after_push",
+  "original_first_device_verdict_retained": "failed_acceptance; reanalyzed from retained complete ASUS dump",
+  "real_drone_used": false
+}

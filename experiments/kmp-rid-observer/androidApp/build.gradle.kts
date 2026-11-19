@@ -6,8 +6,8 @@ android {
         applicationId = "org.smri.ridobserver.kmp"
         minSdk = 24
         targetSdk = 36
-        versionCode = 14
-        versionName = "0.14-segmented-storage"
+        versionCode = 15
+        versionName = "0.15-interrupted-recovery"
         testInstrumentationRunner = "org.smri.ridobserver.kmp.FieldTestInstrumentation"
     }
     buildFeatures { buildConfig = true }

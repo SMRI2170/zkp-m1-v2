@@ -56,7 +56,7 @@ def analyze_database(before,after,phases,target_id=None):
         for phase in phases:
             samples=[x['pss_kib'] for x in phase['samples'] if x['pss_kib'] is not None]
             result['phases'].append(dict(name=phase['name'],duration_s=(phase['end_us']-phase['start_us'])/1e6,
-                foreground_service_all_samples=all(x['foreground_service'] for x in phase['samples']),
+                foreground_service_all_samples=all(x['foreground_service'] for x in phase['samples']) if phase['samples'] else None,
                 samples=len(phase['samples']),pss_samples=len(samples),pss_mean_kib=sum(samples)/len(samples) if samples else None,
                 pss_max_kib=max(samples) if samples else None,**phase_counts(rows,phase['start_us'],phase['end_us'])))
             selected=[r for r in rows if r.get('monotonic_time_us') is not None and phase['start_us']+100000<=r['monotonic_time_us']<phase['end_us']-100000]

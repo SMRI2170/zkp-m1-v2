@@ -1,0 +1,110 @@
+{
+  "source": "real_android_permission_experiment",
+  "real_drone_used": false,
+  "controlled_rf_source": false,
+  "devices": "two ASUS_Z017DA Android 7.0 API24; v0.15",
+  "limitations": [
+    "No physical RF PDR or target RID comparison",
+    "No natural Doze or outdoor GNSS test",
+    "No proof that every queued write survives process death",
+    "UI guide, not system permission-dialog button, tested after revoke"
+  ],
+  "devices_results": [
+    {
+      "node": "Android-1",
+      "completion": "completed",
+      "original_execution_completion": "failed_acceptance",
+      "denial_reanalyzed_from_retained_dump": true,
+      "permission_flags_unchanged": null,
+      "external_play_store_dialogs_closed": null,
+      "permissions_denied": true,
+      "receiver_absent_after_revoke": true,
+      "permission_explanation_visible": true,
+      "receiver_absent_on_denied_ui": true,
+      "original_grants_restored": true,
+      "new_run_after_manual_restart": true,
+      "foreground_service_after_restore": true,
+      "new_stored_fix_providers": {
+        "network": 4
+      },
+      "cleanup": {
+        "permissions_restored": true,
+        "receiver_stopped": true,
+        "errors": []
+      },
+      "baseline_rows": 13180,
+      "final_rows": 15123,
+      "new_rows": 1943,
+      "baseline_rows_preserved_at_revoke": true,
+      "baseline_fixes_preserved_at_revoke": true,
+      "baseline_rows_preserved_at_finish": true,
+      "baseline_fixes_preserved_at_finish": true,
+      "integrity_check": "ok",
+      "phases": [
+        {
+          "name": "granted_before_revoke",
+          "duration_s": 20.15,
+          "active_location_requests": {
+            "gps": true,
+            "network": true
+          }
+        },
+        {
+          "name": "granted_after_restore",
+          "duration_s": 20.18,
+          "active_location_requests": {
+            "gps": true,
+            "network": true
+          }
+        }
+      ]
+    },
+    {
+      "node": "Android-2",
+      "completion": "completed",
+      "original_execution_completion": "completed",
+      "denial_reanalyzed_from_retained_dump": false,
+      "permission_flags_unchanged": null,
+      "external_play_store_dialogs_closed": null,
+      "permissions_denied": true,
+      "receiver_absent_after_revoke": true,
+      "permission_explanation_visible": true,
+      "receiver_absent_on_denied_ui": true,
+      "original_grants_restored": true,
+      "new_run_after_manual_restart": true,
+      "foreground_service_after_restore": true,
+      "new_stored_fix_providers": {},
+      "cleanup": {
+        "permissions_restored": true,
+        "receiver_stopped": true,
+        "errors": []
+      },
+      "baseline_rows": 212,
+      "final_rows": 212,
+      "new_rows": 0,
+      "baseline_rows_preserved_at_revoke": true,
+      "baseline_fixes_preserved_at_revoke": true,
+      "baseline_rows_preserved_at_finish": true,
+      "baseline_fixes_preserved_at_finish": true,
+      "integrity_check": "ok",
+      "phases": [
+        {
+          "name": "granted_before_revoke",
+          "duration_s": 20.16,
+          "active_location_requests": {
+            "gps": true,
+            "network": true
+          }
+        },
+        {
+          "name": "granted_after_restore",
+          "duration_s": 20.18,
+          "active_location_requests": {
+            "gps": true,
+            "network": true
+          }
+        }
+      ]
+    }
+  ]
+}
