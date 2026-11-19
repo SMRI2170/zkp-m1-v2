@@ -8,5 +8,9 @@
   "paired_conditions_checked": 81,
   "independent_truth": false,
   "detector_adopted": false,
-  "ci": "check_after_push"
+  "ci": "success",
+  "code_sha": "e8a5a74711142439e932359dfd6b78db46afa109",
+  "ci_workflow_runs": 4,
+  "ci_job_checks": 6,
+  "logs_reviewed": true
 }

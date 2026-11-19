@@ -51,3 +51,7 @@ WEEK29_REQUIRE_REFERENCE=1 python3 -m unittest discover -s week29/tests -v
 ```
 
 全段階の再現は[35](35_Issue89_元観測照合と評価可能範囲の確定.md)。入力条件・モデルの解釈は[36](36_Issue96_固定モデルの失敗診断と採用条件の感度.md)。研究PoCであり、申告ID・観測者署名・計算の一致から、機体認証・DRIP・センサ／観測ハードの真正性を導かない。
+
+## 公開・CI確認
+
+[PR #102](https://github.com/SMRI2170/zkp-m1-v2/pull/102)、コードSHA `e8a5a74`。push/PRのActions 4 runs・6 job checksがすべて成功し、完了ログを確認した。Week29 100件（参照必須・skip0）、UAV50件、Go、contracts21件、既存Dataset-21/数値テストの検証もCIで成功。[CI記録](results/research-review-20261119-f/ci-code-e8a5a74.json)。外部CodeRabbitのSKIPPEDは実行済みレビューではない。PR #101に依存し、未マージ。
