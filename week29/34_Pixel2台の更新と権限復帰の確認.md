@@ -38,6 +38,8 @@ Pixel 8の最初の試行は、アプリ初回の「GPS・Wi-Fi受信の許可�
 
 更新前tarの観測・測位と試験後DBを照合し、両台とも旧行の欠落・変更0件、integrity=okを確認した。[更新前からの保持](results/android-additional-20261119T053606Z/pre-update-preservation.json)。
 
+network由来4件は新規保存した測位レコードであり、独立GNSS測位・真位置・1Hz精度の証拠ではない。
+
 ## 解釈と限界
 
 - 両端末を同じ時刻・配置・受信対象・保存設定で統制した性能比較ではない。新規保存行数を機種の優劣、物理パケット数、PDRにしない。
@@ -58,4 +60,4 @@ python3 week29/scripts/summarize_android_permissions.py \
 python3 -m unittest discover -s week29/tests -v
 ```
 
-Week29の84件（新規manifest試験3件）、Android補助36件、UAV50件、Go、contracts21件が成功。APK本体は前報33で検証したv0.15と同一であり、今回も両実機で隔離保存fixture各5件が成功。公開先はPR #101。push後のCIは別途確認し、実機試験と区別して記録する。
+Week29の84件（新規manifest試験3件）、Android補助36件、UAV50件、Go、contracts21件が成功。APK本体は前報33で検証したv0.15と同一であり、今回も両実機で隔離保存fixture各5件が成功。公開先は[PR #101](https://github.com/SMRI2170/zkp-m1-v2/pull/101)。コードSHA `c67c526` のActions 5 runs / 7 job checksはすべて成功し、完了ログを確認した。[CI記録](results/android-additional-20261119T053606Z/ci-code-c67c526.json)。外部CodeRabbitのSKIPPEDを実行済みレビューに数えない。CIと実機試験は別の証拠。
