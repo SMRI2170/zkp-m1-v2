@@ -6,9 +6,25 @@ import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]/"experiments/kmp-rid-observer/scripts"))
 from permission_evidence import permission_granted
 
-def summarize(root):
+def device_specs(manifest):
+    if manifest is None:return [{'node':'Android-1'},{'node':'Android-2'}]
+    if set(manifest)!={'devices'} or not isinstance(manifest['devices'],list) or not manifest['devices']:
+        raise ValueError('Expected nonempty public device manifest')
+    specs=manifest['devices']
+    for spec in specs:
+        if set(spec)!={'node','model','sdk','android_release'}:raise ValueError('Unknown/private device metadata rejected')
+        if not isinstance(spec['node'],str) or not re.fullmatch('[A-Za-z0-9_-]{1,40}',spec['node']):raise ValueError('Unsafe node label')
+        if type(spec['sdk']) is not int or spec['sdk']<24:raise ValueError('Invalid SDK')
+        if not all(isinstance(spec[k],str) and 0<len(spec[k])<=80 for k in ('model','android_release')):raise ValueError('Invalid device description')
+    if len({x['node'] for x in specs})!=len(specs):raise ValueError('Duplicate node labels')
+    return specs
+
+
+def summarize(root,manifest=None):
     output=[]
-    for label in ('Android-1','Android-2'):
+    specs=device_specs(manifest)
+    for spec in specs:
+        label=spec['node']
         path=root/label
         raw=json.loads((path/'result-private.json').read_text())
         db=raw.get('database',{});denied=raw.get('preservation_at_revoke',{})
@@ -22,18 +38,18 @@ def summarize(root):
         for name in ('package-before.txt','package-final.txt'):
             text=(path/name).read_text()
             flags.append({p:(m.group(1) if (m:=re.search(r'android\.permission\.'+p+r': granted=\w+, flags=\[([^\]]*)\]',text)) else None) for p in ('ACCESS_FINE_LOCATION','ACCESS_COARSE_LOCATION')})
-        output.append(dict(node=label,completion=completion,original_execution_completion=initial_completion,denial_reanalyzed_from_retained_dump=initial_completion!=completion,permission_flags_unchanged=(flags[0]==flags[1] if all(v is not None for f in flags for v in f.values()) else None),
+        output.append(dict(node=label,**({k:spec[k] for k in ('model','sdk','android_release')} if manifest else {}),completion=completion,original_execution_completion=initial_completion,denial_reanalyzed_from_retained_dump=initial_completion!=completion,permission_flags_unchanged=(flags[0]==flags[1] if all(v is not None for f in flags for v in f.values()) else None),
             **{k:raw.get(k) for k in ('external_play_store_dialogs_closed','permissions_denied','receiver_absent_after_revoke','permission_explanation_visible','receiver_absent_on_denied_ui','original_grants_restored','new_run_after_manual_restart','foreground_service_after_restore','new_stored_fix_providers','cleanup')},
             baseline_rows=db.get('old_rows'),final_rows=db.get('total_rows'),new_rows=db.get('new_rows'),
             baseline_rows_preserved_at_revoke=denied.get('old_rows_unchanged'),baseline_fixes_preserved_at_revoke=denied.get('old_standalone_fixes_unchanged'),
             baseline_rows_preserved_at_finish=db.get('old_rows_unchanged'),baseline_fixes_preserved_at_finish=db.get('old_standalone_fixes_unchanged'),integrity_check=db.get('integrity_check'),
-            phases=[dict(name=p['name'],duration_s=(p['end_us']-p['start_us'])/1e6,active_location_requests=p['active_location_requests']) for p in raw['phases']]))
-    return dict(source='real_android_permission_experiment',real_drone_used=False,controlled_rf_source=False,devices='two ASUS_Z017DA Android 7.0 API24; v0.15',
+            phases=[dict(name=p['name'],duration_s=(p['end_us']-p['start_us'])/1e6,active_location_requests=p['active_location_requests'] if spec.get('sdk',24)==24 else None,request_selector='legacy_UpdateRecord_only' if spec.get('sdk',24)==24 else 'NOT_EVALUATED_modern_dump_format') for p in raw['phases']]))
+    return dict(source='real_android_permission_experiment',real_drone_used=False,controlled_rf_source=False,devices='two ASUS_Z017DA Android 7.0 API24; v0.15' if manifest is None else ' / '.join(x['model']+' Android '+x['android_release']+' API'+str(x['sdk']) for x in specs),
                 limitations=['No physical RF PDR or target RID comparison','No natural Doze or outdoor GNSS test','No proof that every queued write survives process death','UI guide, not system permission-dialog button, tested after revoke'],devices_results=output)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--private-input',required=True,type=Path);p.add_argument('--output',required=True,type=Path);a=p.parse_args()
-    result=summarize(a.private_input);a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+    p=argparse.ArgumentParser();p.add_argument('--private-input',required=True,type=Path);p.add_argument('--output',required=True,type=Path);p.add_argument('--device-manifest',type=Path);a=p.parse_args()
+    result=summarize(a.private_input,json.loads(a.device_manifest.read_text()) if a.device_manifest else None);a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     fields=('node','completion','permissions_denied','original_grants_restored','new_run_after_manual_restart','foreground_service_after_restore','baseline_rows','final_rows','baseline_rows_preserved_at_finish','baseline_fixes_preserved_at_finish','integrity_check','gps_fixes','network_fixes')
     with a.output.with_suffix('.csv').open('w',newline='') as f:
         writer=csv.DictWriter(f,fieldnames=fields,lineterminator="\n");writer.writeheader()

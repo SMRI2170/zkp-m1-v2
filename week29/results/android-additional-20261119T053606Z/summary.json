@@ -1,0 +1,108 @@
+{
+  "source": "real_android_permission_experiment",
+  "real_drone_used": false,
+  "controlled_rf_source": false,
+  "devices": "Pixel 6 Pro Android 12 API31 / Pixel 8 Android 17 API37",
+  "limitations": [
+    "No physical RF PDR or target RID comparison",
+    "No natural Doze or outdoor GNSS test",
+    "No proof that every queued write survives process death",
+    "UI guide, not system permission-dialog button, tested after revoke"
+  ],
+  "devices_results": [
+    {
+      "node": "Device-1",
+      "model": "Pixel 6 Pro",
+      "sdk": 31,
+      "android_release": "12",
+      "completion": "completed",
+      "original_execution_completion": "completed",
+      "denial_reanalyzed_from_retained_dump": false,
+      "permission_flags_unchanged": true,
+      "external_play_store_dialogs_closed": null,
+      "permissions_denied": true,
+      "receiver_absent_after_revoke": true,
+      "permission_explanation_visible": true,
+      "receiver_absent_on_denied_ui": true,
+      "original_grants_restored": true,
+      "new_run_after_manual_restart": true,
+      "foreground_service_after_restore": true,
+      "new_stored_fix_providers": {},
+      "cleanup": {
+        "permissions_restored": true,
+        "receiver_stopped": true,
+        "errors": []
+      },
+      "baseline_rows": 174,
+      "final_rows": 174,
+      "new_rows": 0,
+      "baseline_rows_preserved_at_revoke": true,
+      "baseline_fixes_preserved_at_revoke": true,
+      "baseline_rows_preserved_at_finish": true,
+      "baseline_fixes_preserved_at_finish": true,
+      "integrity_check": "ok",
+      "phases": [
+        {
+          "name": "granted_before_revoke",
+          "duration_s": 20.19,
+          "active_location_requests": null,
+          "request_selector": "NOT_EVALUATED_modern_dump_format"
+        },
+        {
+          "name": "granted_after_restore",
+          "duration_s": 20.14,
+          "active_location_requests": null,
+          "request_selector": "NOT_EVALUATED_modern_dump_format"
+        }
+      ]
+    },
+    {
+      "node": "Device-2-retry",
+      "model": "Pixel 8",
+      "sdk": 37,
+      "android_release": "17",
+      "completion": "completed",
+      "original_execution_completion": "completed",
+      "denial_reanalyzed_from_retained_dump": false,
+      "permission_flags_unchanged": true,
+      "external_play_store_dialogs_closed": null,
+      "permissions_denied": true,
+      "receiver_absent_after_revoke": true,
+      "permission_explanation_visible": true,
+      "receiver_absent_on_denied_ui": true,
+      "original_grants_restored": true,
+      "new_run_after_manual_restart": true,
+      "foreground_service_after_restore": true,
+      "new_stored_fix_providers": {
+        "network": 4
+      },
+      "cleanup": {
+        "permissions_restored": true,
+        "receiver_stopped": true,
+        "errors": []
+      },
+      "baseline_rows": 14674,
+      "final_rows": 16553,
+      "new_rows": 1879,
+      "baseline_rows_preserved_at_revoke": true,
+      "baseline_fixes_preserved_at_revoke": true,
+      "baseline_rows_preserved_at_finish": true,
+      "baseline_fixes_preserved_at_finish": true,
+      "integrity_check": "ok",
+      "phases": [
+        {
+          "name": "granted_before_revoke",
+          "duration_s": 20.25,
+          "active_location_requests": null,
+          "request_selector": "NOT_EVALUATED_modern_dump_format"
+        },
+        {
+          "name": "granted_after_restore",
+          "duration_s": 20.32,
+          "active_location_requests": null,
+          "request_selector": "NOT_EVALUATED_modern_dump_format"
+        }
+      ]
+    }
+  ]
+}
