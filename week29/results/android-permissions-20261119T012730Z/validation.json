@@ -1,0 +1,18 @@
+{
+  "android_python": 36,
+  "week29_python": 81,
+  "uav_python": 50,
+  "contracts": 21,
+  "go": "passed",
+  "apk_test_apk_jvm_lint": "passed",
+  "device_fixture_instrumentation": 5,
+  "real_permission_protocols": 2,
+  "ci": "success",
+  "original_first_device_verdict_retained": "failed_acceptance; reanalyzed from retained complete ASUS dump",
+  "real_drone_used": false,
+  "code_sha": "006c647e687ce167778ffc9640332d8f46a29afc",
+  "ci_runs": 6,
+  "ci_job_checks": 8,
+  "ci_logs_reviewed": true,
+  "apk_sha256": "74d39cbcd0b5256d06718ebcc921fab82ecceb4c2c5c609b4811abdb9fb04a1a"
+}

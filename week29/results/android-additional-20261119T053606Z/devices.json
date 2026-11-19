@@ -1,0 +1,16 @@
+{
+  "devices": [
+    {
+      "node": "Device-1",
+      "model": "Pixel 6 Pro",
+      "sdk": 31,
+      "android_release": "12"
+    },
+    {
+      "node": "Device-2-retry",
+      "model": "Pixel 8",
+      "sdk": 37,
+      "android_release": "17"
+    }
+  ]
+}

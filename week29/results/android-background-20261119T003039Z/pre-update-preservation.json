@@ -1,0 +1,20 @@
+[
+  {
+    "node": "Android-1",
+    "source_database_files": 1,
+    "observations_before_update": 7740,
+    "missing_or_modified_observations_after_update": 0,
+    "verified": true,
+    "standalone_fixes_before_update": 17762,
+    "missing_or_modified_standalone_fixes_after_update": 0
+  },
+  {
+    "node": "Android-2",
+    "source_database_files": 1,
+    "observations_before_update": 183,
+    "missing_or_modified_observations_after_update": 0,
+    "verified": true,
+    "standalone_fixes_before_update": 32879,
+    "missing_or_modified_standalone_fixes_after_update": 0
+  }
+]

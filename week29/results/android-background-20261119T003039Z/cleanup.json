@@ -1,0 +1,38 @@
+{
+  "phones": [
+    {
+      "node": "Android-1",
+      "receiver_stopped": true,
+      "forced_idle_released": true,
+      "battery_simulation_released": true,
+      "version": "0.14-segmented-storage",
+      "scan_settings": {
+        "scan_interval_ms": "1000",
+        "scan_fastest": "false"
+      },
+      "location_permission_retained": true,
+      "capture_unknown_wifi": true
+    },
+    {
+      "node": "Android-2",
+      "receiver_stopped": true,
+      "forced_idle_released": true,
+      "battery_simulation_released": true,
+      "version": "0.14-segmented-storage",
+      "scan_settings": {
+        "scan_interval_ms": "1000",
+        "scan_fastest": "false"
+      },
+      "location_permission_retained": true,
+      "capture_unknown_wifi": false
+    }
+  ],
+  "pi": {
+    "transmitter_stopped": true,
+    "temporary_ap_absent": true,
+    "receiver_active": true,
+    "config_unchanged": true,
+    "new_session_verified": true,
+    "restore_timer_cancelled": true
+  }
+}

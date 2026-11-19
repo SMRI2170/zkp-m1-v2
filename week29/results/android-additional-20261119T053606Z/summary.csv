@@ -1,0 +1,3 @@
+node,completion,permissions_denied,original_grants_restored,new_run_after_manual_restart,foreground_service_after_restore,baseline_rows,final_rows,baseline_rows_preserved_at_finish,baseline_fixes_preserved_at_finish,integrity_check,gps_fixes,network_fixes
+Device-1,completed,True,True,True,True,174,174,True,True,ok,0,0
+Device-2-retry,completed,True,True,True,True,14674,16553,True,True,ok,0,4

@@ -10,6 +10,7 @@ import android.os.SystemClock
 import org.json.JSONObject
 import java.io.File
 import java.io.FileOutputStream
+import java.io.FileInputStream
 import java.util.UUID
 
 internal data class DatabaseStorageLimits(
@@ -64,7 +65,48 @@ internal class DatabaseSegments(
                 .also {it.execSQL("PRAGMA cache_size=-512")}
         }
     }
-    fun readers():List<SQLiteDatabase> = paths().map {reader(it)}
+    private var recoveryChecked=false
+    /** Preserve exact interrupted-segment bytes before SQLite rolls back. Legacy stays immutable. */
+    private fun recoverInterruptedSegments() {
+        for(file in segmentFiles()) {
+            val journal=File(file.absolutePath+"-journal")
+            if(!journal.exists()) continue
+            check((Os.lstat(journal.absolutePath).st_mode and 61440)!=40960) {"Journal symlink rejected"}
+            if(journal.length()<=512) continue
+            val header=ByteArray(8)
+            val read=FileInputStream(journal).use {it.read(header)}
+            val magic=byteArrayOf(0xd9.toByte(),0xd5.toByte(),0x05,0xf9.toByte(),0x20,0xa1.toByte(),0x63,0xd7.toByte())
+            if(read!=8 || !header.contentEquals(magic)) continue
+            val bytes=file.length()+journal.length()+256*1024
+            if(directory.usableSpace<limits.freeBytes+bytes) throw StorageCapacityException("DEVICE_SPACE_LOW")
+            if(usedBytes()+bytes>limits.archiveBytes) throw StorageCapacityException("ARCHIVE_LIMIT_REACHED")
+            val root=File(directory,"recovery")
+            check(root.mkdirs() || root.isDirectory)
+            check((Os.lstat(root.absolutePath).st_mode and 61440)!=40960)
+            Os.chmod(root.absolutePath,448)
+            val backup=File(root,UUID.randomUUID().toString());check(backup.mkdir());Os.chmod(backup.absolutePath,448)
+            fun digest(f:File):ByteArray {
+                val md=java.security.MessageDigest.getInstance("SHA-256")
+                FileInputStream(f).use {input -> val buffer=ByteArray(65536);while(true) {val n=input.read(buffer);if(n<0) break;md.update(buffer,0,n)}}
+                return md.digest()
+            }
+            for(source in listOf(file,journal)) {
+                val target=File(backup,source.name);check(target.createNewFile());Os.chmod(target.absolutePath,384)
+                FileOutputStream(target).use {out -> FileInputStream(source).use {it.copyTo(out)};out.fd.sync()}
+                check(digest(source).contentEquals(digest(target))) {"Incomplete recovery evidence"}
+            }
+            // SQLite recovery only: no migration, record deletion or corruption fallback.
+            SQLiteDatabase.openDatabase(file.absolutePath,null,SQLiteDatabase.OPEN_READWRITE,
+                DatabaseErrorHandler {throw SQLiteDatabaseCorruptException("Interrupted database retained")}).use {db ->
+                db.rawQuery("PRAGMA integrity_check",null).use {c ->check(c.moveToFirst() && c.getString(0)=="ok") {"Recovery integrity failed"}}
+            }
+            state="RECOVERED_INTERRUPTED_TRANSACTION"
+        }
+    }
+    fun readers():List<SQLiteDatabase> {
+        if(!recoveryChecked) {recoverInterruptedSegments();recoveryChecked=true}
+        return paths().map {reader(it)}
+    }
     fun hasTable(db:SQLiteDatabase,table:String):Boolean = db.rawQuery(
         "SELECT 1 FROM sqlite_master WHERE type='table' AND name=?",arrayOf(table)).use {it.moveToFirst()}
     fun count(db:SQLiteDatabase,table:String):Long = if(hasTable(db,table)) DatabaseUtils.queryNumEntries(db,table) else 0

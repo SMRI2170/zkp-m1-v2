@@ -298,3 +298,17 @@ Pixel 8・Pixel 6 Pro・ASUS（Android 7）でv0.14への更新と4件ずつの�
 合成データの旧DB満杯、新規DB切替、跨DB/再起動重複排除、全件出力、容量停止・追加ログ境界を検査した。
 元の実験ファイルのハッシュは全件不変。通常画面からの収録Smoke testはPixel 8のロックで未実行。
 詳細：`week29/14_Androidの保存容量対策と3台への導入.md`。
+
+
+## v0.15：権限取消し・プロセス中断後のSQLite復帰
+
+書込み中断で有効なrollback journalが残ったsegmentは、従来の読み取り専用オープンでは復旧できない場合がある。v0.15は元segmentとjournalをowner-onlyの`captures/database/recovery/`へ保存し、SHA-256一致を確認してからSQLite標準rollbackとintegrity検査を行う。旧legacy DBは書込み可能にせず、破損DBの削除や容量制限の緩和も行わない。退避の空き容量が不足する場合は停止する。
+
+`test_device_permissions.py`は、受信停止・FINE/COARSE許可済みの端末を対象とする有限時間試験。権限を一時取消し、finallyで元の許可を復元する。生DB、journal、UI、位置dumpは非公開`captures/`へ保存する。試験中は端末を操作しない。新しい権限の追加取得やOS制限の迂回はしない。
+
+```sh
+python3 scripts/test_device_permissions.py --serial "$AUTHORIZED_DEVICE" \
+  --output "$NEW_PRIVATE_OUTPUT" --phase-seconds 20
+```
+
+実機結果と未確認事項は[Week29報告33](../../week29/33_Android権限取消しと復帰_GPS要求の実機確認.md)を参照。

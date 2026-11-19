@@ -1,0 +1,16 @@
+[
+  {
+    "node": "Device-1",
+    "old_rows": 174,
+    "old_rows_unchanged": true,
+    "old_fixes_unchanged": true,
+    "integrity_check": "ok"
+  },
+  {
+    "node": "Device-2",
+    "old_rows": 14674,
+    "old_rows_unchanged": true,
+    "old_fixes_unchanged": true,
+    "integrity_check": "ok"
+  }
+]

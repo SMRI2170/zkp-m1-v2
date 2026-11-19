@@ -1,0 +1,19 @@
+{
+  "week29_tests": 84,
+  "android_python_tests": 36,
+  "uav_tests": 50,
+  "go": "passed",
+  "contracts_tests": 21,
+  "pixel6pro_device_fixture_tests": 5,
+  "pixel8_device_fixture_tests": 5,
+  "pixel6pro_permission_protocol": "completed",
+  "pixel8_initial_protocol": "blocked_before_start_by_app_intro",
+  "pixel8_retry_protocol": "completed",
+  "real_drone_used": false,
+  "controlled_rf_source": false,
+  "ci": "success",
+  "code_sha": "c67c526726b3e09b65e765ced404773e0f4ccf7f",
+  "ci_runs": 5,
+  "ci_job_checks": 7,
+  "ci_logs_reviewed": true
+}

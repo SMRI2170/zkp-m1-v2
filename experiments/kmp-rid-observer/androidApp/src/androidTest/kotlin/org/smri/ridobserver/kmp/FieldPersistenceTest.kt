@@ -19,8 +19,8 @@ class FieldTestInstrumentation : Instrumentation() {
     override fun onStart() {
         val result=Bundle()
         try {
-            testMigrationLocationPersistenceAndCsv();testRotationAndDedup();testCapacityStop();testAdditionalCaptureBoundary()
-            result.putString("stream","OK (4 tests): full legacy retained, rotation/dedup/export/restart, capacity stop, additional log boundary, privacy")
+            testMigrationLocationPersistenceAndCsv();testRotationAndDedup();testCapacityStop();testAdditionalCaptureBoundary();testInterruptedSegmentRecovery()
+            result.putString("stream","OK (5 tests): full legacy retained, rotation/dedup/export/restart, capacity stop, additional log boundary, privacy")
             finish(Activity.RESULT_OK,result)
         }
         catch(e:Throwable) {result.putString("stream","FAIL: "+e.javaClass.simpleName+": "+e.message);finish(Activity.RESULT_CANCELED,result)}
@@ -37,6 +37,37 @@ class FieldTestInstrumentation : Instrumentation() {
         val deadline=SystemClock.elapsedRealtime()+15000
         while(db.pendingWrites>0 && SystemClock.elapsedRealtime()<deadline) SystemClock.sleep(20)
         assertEquals(0,db.pendingWrites)
+    }
+    fun testInterruptedSegmentRecovery() {
+        val seedName="test-seed-"+UUID.randomUUID().toString()
+        val seed=ObservationDatabase.forTest(targetContext,seedName)
+        seed.enqueueEvent("committed",emptyMap()) {error("seed write failed")};waitFor(seed);seed.closeTest()
+        val seedFile=File(targetContext.filesDir,"captures/$seedName/segments").listFiles()!!.single {it.name.endsWith(".sqlite")}
+        val name="test-recovery-"+UUID.randomUUID().toString()
+        val dest=File(targetContext.filesDir,"captures/$name/segments");check(dest.mkdirs())
+        val copied=File(dest,seedFile.name);val copiedJournal=File(copied.absolutePath+"-journal")
+        SQLiteDatabase.openDatabase(seedFile.absolutePath,null,SQLiteDatabase.OPEN_READWRITE).use {sql ->
+            sql.rawQuery("PRAGMA journal_mode=PERSIST",null).use {it.moveToFirst()}
+            sql.execSQL("PRAGMA cache_size=1");sql.beginTransaction()
+            try {
+                repeat(5) {sql.execSQL("INSERT INTO receiver_events(raw_json) VALUES(?)",arrayOf("x".repeat(200000)))}
+                seedFile.copyTo(copied);File(seedFile.absolutePath+"-journal").copyTo(copiedJournal)
+            } finally {sql.endTransaction()}
+        }
+        assertTrue(copiedJournal.length()>512)
+        val beforeDb=hash(copied);val beforeJournal=hash(copiedJournal)
+        val db=ObservationDatabase.forTest(targetContext,name)
+        assertEquals(0L,db.rowCount)
+        val backups=File(targetContext.filesDir,"captures/$name/recovery").listFiles()!!
+        assertEquals(1,backups.size)
+        assertEquals(beforeDb,hash(File(backups[0],copied.name)))
+        assertEquals(beforeJournal,hash(File(backups[0],copiedJournal.name)))
+        SQLiteDatabase.openDatabase(copied.absolutePath,null,SQLiteDatabase.OPEN_READONLY).use {sql ->
+            sql.rawQuery("SELECT COUNT(*) FROM receiver_events",null).use {c ->c.moveToFirst();assertEquals(1,c.getInt(0))}
+        }
+        db.closeTest()
+        val again=ObservationDatabase.forTest(targetContext,name);again.closeTest()
+        assertEquals(1,File(targetContext.filesDir,"captures/$name/recovery").listFiles()!!.size)
     }
     fun testMigrationLocationPersistenceAndCsv() {
         val name="test-"+UUID.randomUUID().toString()
