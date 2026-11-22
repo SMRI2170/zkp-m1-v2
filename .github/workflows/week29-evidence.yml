@@ -33,3 +33,6 @@ jobs:
         run: python3 -m unittest discover -s week29/tests -v
       - name: Check public artifact boundary
         run: python3 week29/scripts/check_publication.py
+
+      - name: Verify published slide chart values and native fields
+        run: python3 week29/slides/scripts/verify_story_deck.py
