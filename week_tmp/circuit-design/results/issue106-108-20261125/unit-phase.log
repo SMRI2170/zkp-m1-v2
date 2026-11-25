@@ -1,0 +1,52 @@
+=== RUN   TestSignedModelConstraints
+=== RUN   TestSignedModelConstraints/signed_current_model
+=== RUN   TestSignedModelConstraints/signed_time_unknown_hold
+=== RUN   TestSignedModelConstraints/rssi_replacement
+=== RUN   TestSignedModelConstraints/radius_replacement
+=== RUN   TestSignedModelConstraints/time_replacement
+=== RUN   TestSignedModelConstraints/clock_replacement
+=== RUN   TestSignedModelConstraints/source_replacement
+=== RUN   TestSignedModelConstraints/record_replacement
+=== RUN   TestSignedModelConstraints/expiry_replacement
+=== RUN   TestSignedModelConstraints/quality_cannot_be_lied_about
+=== RUN   TestSignedModelConstraints/invalid_quality
+=== RUN   TestSignedModelConstraints/policy_replacement
+=== RUN   TestSignedModelConstraints/old_model_domain
+=== RUN   TestSignedModelConstraints/nullifier_replacement
+=== RUN   TestSignedModelConstraints/source_empty
+=== RUN   TestSignedModelConstraints/source_oversized
+--- PASS: TestSignedModelConstraints (1.92s)
+    --- PASS: TestSignedModelConstraints/signed_current_model (0.10s)
+    --- PASS: TestSignedModelConstraints/signed_time_unknown_hold (0.10s)
+    --- PASS: TestSignedModelConstraints/rssi_replacement (0.07s)
+    --- PASS: TestSignedModelConstraints/radius_replacement (0.07s)
+    --- PASS: TestSignedModelConstraints/time_replacement (0.08s)
+    --- PASS: TestSignedModelConstraints/clock_replacement (0.08s)
+    --- PASS: TestSignedModelConstraints/source_replacement (0.07s)
+    --- PASS: TestSignedModelConstraints/record_replacement (0.08s)
+    --- PASS: TestSignedModelConstraints/expiry_replacement (0.08s)
+    --- PASS: TestSignedModelConstraints/quality_cannot_be_lied_about (0.06s)
+    --- PASS: TestSignedModelConstraints/invalid_quality (0.00s)
+    --- PASS: TestSignedModelConstraints/policy_replacement (0.05s)
+    --- PASS: TestSignedModelConstraints/old_model_domain (0.05s)
+    --- PASS: TestSignedModelConstraints/nullifier_replacement (0.07s)
+    --- PASS: TestSignedModelConstraints/source_empty (0.00s)
+    --- PASS: TestSignedModelConstraints/source_oversized (0.01s)
+=== RUN   TestSourceNullifierStability
+--- PASS: TestSourceNullifierStability (0.00s)
+=== RUN   TestStoreDurableAndDuplicate
+--- PASS: TestStoreDurableAndDuplicate (0.01s)
+=== RUN   TestStoreConcurrent
+--- PASS: TestStoreConcurrent (0.02s)
+=== RUN   TestStoreFailurePreservesLedger
+--- PASS: TestStoreFailurePreservesLedger (0.01s)
+=== RUN   TestStorePermissionsAndSymlink
+--- PASS: TestStorePermissionsAndSymlink (0.00s)
+=== RUN   TestStoreProcessHelper
+    receipt_store_test.go:143: subprocess fixture
+--- SKIP: TestStoreProcessHelper (0.00s)
+=== RUN   TestStoreCrossProcessAndCrash
+--- PASS: TestStoreCrossProcessAndCrash (0.06s)
+PASS
+ok  	uav/research/rssi-circuit-draft	2.424s
+?   	uav/research/rssi-circuit-draft/cmd/calibrated-check	[no test files]

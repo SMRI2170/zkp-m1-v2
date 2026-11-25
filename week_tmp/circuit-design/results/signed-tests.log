@@ -1,0 +1,48 @@
+=== RUN   TestSignedCircuit
+=== RUN   TestSignedCircuit/signed_consistent
+=== RUN   TestSignedCircuit/signed_alarm
+=== RUN   TestSignedCircuit/signed_hold
+=== RUN   TestSignedCircuit/alter_rssi_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_position_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_error_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_clock_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_known_flag_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_session_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_policy_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_claim_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_record_id
+=== RUN   TestSignedCircuit/zero_record_id
+=== RUN   TestSignedCircuit/alter_expiry
+=== RUN   TestSignedCircuit/signed_expiry_before_observation
+=== RUN   TestSignedCircuit/different_observer_keep_signature
+=== RUN   TestSignedCircuit/identity_public_key
+=== RUN   TestSignedCircuit/order2_public_key
+=== RUN   TestSignedCircuit/identity_R
+=== RUN   TestSignedCircuit/order2_R
+=== RUN   TestSignedCircuit/offcurve_public_key
+=== RUN   TestSignedCircuit/noncanonical_scalar
+--- PASS: TestSignedCircuit (0.92s)
+    --- PASS: TestSignedCircuit/signed_consistent (0.04s)
+    --- PASS: TestSignedCircuit/signed_alarm (0.04s)
+    --- PASS: TestSignedCircuit/signed_hold (0.04s)
+    --- PASS: TestSignedCircuit/alter_rssi_rebind_keep_signature (0.03s)
+    --- PASS: TestSignedCircuit/alter_position_rebind_keep_signature (0.04s)
+    --- PASS: TestSignedCircuit/alter_error_rebind_keep_signature (0.05s)
+    --- PASS: TestSignedCircuit/alter_clock_rebind_keep_signature (0.03s)
+    --- PASS: TestSignedCircuit/alter_known_flag_rebind_keep_signature (0.03s)
+    --- PASS: TestSignedCircuit/alter_session_rebind_keep_signature (0.04s)
+    --- PASS: TestSignedCircuit/alter_policy_rebind_keep_signature (0.03s)
+    --- PASS: TestSignedCircuit/alter_claim_rebind_keep_signature (0.03s)
+    --- PASS: TestSignedCircuit/alter_record_id (0.03s)
+    --- PASS: TestSignedCircuit/zero_record_id (0.00s)
+    --- PASS: TestSignedCircuit/alter_expiry (0.03s)
+    --- PASS: TestSignedCircuit/signed_expiry_before_observation (0.02s)
+    --- PASS: TestSignedCircuit/different_observer_keep_signature (0.03s)
+    --- PASS: TestSignedCircuit/identity_public_key (0.00s)
+    --- PASS: TestSignedCircuit/order2_public_key (0.02s)
+    --- PASS: TestSignedCircuit/identity_R (0.00s)
+    --- PASS: TestSignedCircuit/order2_R (0.02s)
+    --- PASS: TestSignedCircuit/offcurve_public_key (0.00s)
+    --- PASS: TestSignedCircuit/noncanonical_scalar (0.01s)
+PASS
+ok  	uav/research/rssi-circuit-draft	1.392s

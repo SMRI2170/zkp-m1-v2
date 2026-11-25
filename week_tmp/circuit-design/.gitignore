@@ -1,0 +1,20 @@
+# No setup/proof/witness material in the design deliverable.
+*.r1cs
+*.pk
+*.vk
+*.proof
+*.wtns
+*.ptau
+*.zkey
+setup/
+proof-cache/
+ci-results/
+__pycache__/
+*.pyc
+ledger.json
+.lock
+.pending-*
+*.sqlite
+*.db
+*.db-wal
+*.db-shm

@@ -1,0 +1,7 @@
+{
+  "future_claim_relative_to_now_accepted": false,
+  "independent_public_receipt_requires_external_proof_binding": true,
+  "new_record_id_not_detected_as_same_observation": true,
+  "scope": "preflight diagnostics; no proof/signature forgery",
+  "security_findings_resolved": false
+}

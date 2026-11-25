@@ -1,0 +1,51 @@
+name: Week32 private RSSI research PoC
+on:
+  push:
+    paths: ['week_tmp/**', '.github/workflows/week32-circuit-poc.yml']
+  pull_request:
+    paths: ['week_tmp/**', '.github/workflows/week32-circuit-poc.yml']
+permissions:
+  contents: read
+jobs:
+  synthetic-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GOMAXPROCS: '2'
+      GOMEMLIMIT: 1GiB
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: week_tmp/circuit-design/go.mod
+          cache-dependency-path: week_tmp/circuit-design/go.sum
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: contracts/package-lock.json
+      - name: Circuit, signature, admission, crash and persistence checks (no setup/proof)
+        working-directory: week_tmp/circuit-design
+        run: |
+          mkdir -p ci-results
+          DRAFT_SUMMARY_PATH=ci-results/constraint-summary.json go test -count=1 -v ./...
+          go test -race -count=1 -run 'TestStore|TestSourceNullifier|TestFutureSkew|TestPublicExtraction|TestModelPrivacy' ./...
+      - name: Offline arithmetic, geometry and envelope tests
+        run: |
+          python3 -m unittest discover -s week_tmp/circuit-design/uncertainty -p 'test_*.py' -v
+          python3 -m unittest discover -s week_tmp/circuit-design/calibrated -p 'test_*.py' -v
+          python3 -m unittest discover -s week_tmp/circuit-design/scripts -p 'test_*.py' -v
+          python3 week_tmp/circuit-design/scripts/check_publication.py
+      - name: Existing UAV checks
+        run: python3 -m unittest discover -s uav -p 'test_*.py'
+      - name: Existing aggregator checks
+        working-directory: aggregator
+        run: go test ./...
+      - name: Existing contracts checks
+        working-directory: contracts
+        run: |
+          npm ci
+          npm test

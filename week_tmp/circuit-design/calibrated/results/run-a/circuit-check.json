@@ -1,0 +1,14 @@
+{
+  "constraints": 339574,
+  "field_values_published": false,
+  "proof_generated": false,
+  "python_go_circuit_match": true,
+  "rows": 324,
+  "scope": "private field-derived geometry; conditional model constraints only, not a field proof",
+  "setup_executed": false,
+  "statuses_consistent_alarm_hold": [
+    2,
+    20,
+    302
+  ]
+}

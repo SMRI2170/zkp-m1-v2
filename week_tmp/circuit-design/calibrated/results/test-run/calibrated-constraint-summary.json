@@ -1,0 +1,11 @@
+{
+  "constraints": 339574,
+  "negative_cases": 6,
+  "proof_generated": false,
+  "statuses_consistent_alarm_hold": [
+    4,
+    16,
+    22
+  ],
+  "synthetic_positive_cases": 42
+}

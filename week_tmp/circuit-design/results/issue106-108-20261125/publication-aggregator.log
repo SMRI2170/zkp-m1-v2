@@ -1,0 +1,8 @@
+?   	uav/aggregator	[no test files]
+?   	uav/aggregator/cmd/aggregate	[no test files]
+?   	uav/aggregator/cmd/chainpoc	[no test files]
+?   	uav/aggregator/cmd/deviceroot	[no test files]
+?   	uav/aggregator/cmd/verify1	[no test files]
+ok  	uav/aggregator/completeness	0.349s
+ok  	uav/aggregator/membership	0.390s
+?   	uav/aggregator/snarkimport	[no test files]

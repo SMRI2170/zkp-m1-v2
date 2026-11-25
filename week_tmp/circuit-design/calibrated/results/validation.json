@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-25",
+  "scope": "frozen NOT-ADOPTED horizontal model conservative approximation; spatial constraints only",
+  "unique_evaluation_records": 27,
+  "conditions": 12,
+  "private_constraint_inputs": 324,
+  "python_go_r1cs_match": true,
+  "false_definite_against_same_geometry_continuous_reference": 0,
+  "geometric_reencoding_changed_original_alarm_labels": 0,
+  "field_detector_adopted": false,
+  "new_model_proof_generated": false,
+  "new_model_signature_or_joint_verifier_connected": false,
+  "constraints": 339574,
+  "synthetic_tests": {
+    "constraints": 339574,
+    "negative_cases": 6,
+    "proof_generated": false,
+    "statuses_consistent_alarm_hold": [
+      4,
+      16,
+      22
+    ],
+    "synthetic_positive_cases": 42
+  },
+  "python_tests": 6,
+  "monte_carlo_envelope_safety_samples": 500,
+  "uav_tests": 98,
+  "contract_tests": 48,
+  "aggregator": "passed; cached packages included",
+  "not_executed": [
+    "new model Groth16 setup/proof",
+    "3D or altitude-error detector",
+    "independent true-position/attack-label performance",
+    "Pi/Android",
+    "release",
+    "push",
+    "CI"
+  ],
+  "source_sha256": {
+    "calibrated.go": "dfca678044d4fb2ad23b4db218734195e9d056942afad10c48cb75957d616352",
+    "calibrated_test.go": "f47fa6664146e8f1d371a1172aa671fdea97e58ffdfa48992a4d35eb4b05a202",
+    "cmd/calibrated-check/main.go": "ef3887fda413fe91dff302b79dd4ac38e8ea9a48145c8dc57bbf0379abc4ecf8",
+    "profiles/frozen-log-envelope-2d-v1.json": "417dfbfada5b99baa622fb45bee802e82dd0ad024d0984b14148a665c31caf3b",
+    "calibrated/profile.py": "c56ed274389be7858295617e845719a624723e8fcda077d2268aa54d2efd222e",
+    "calibrated/test_profile.py": "17848cac41597a2f3babd8427212270816e48e064e514875cf4512fd39fa7ad9",
+    "calibrated/check_geometry_control.py": "7bc778c1297cd332384c4c570c949fed909b81cf2f6a4f7767d0d6c2c16446ab",
+    "calibrated/evaluate.py": "3d88ba73123b0b2ca907fb4ff1568682b74dff217b10a718ffeec4955b2ebc32",
+    "calibrated/README.md": "dc54387aeb80bb7b15dae15042b9bb1e0eb2dbc6493149323d5e6e5ebabfb76e"
+  }
+}

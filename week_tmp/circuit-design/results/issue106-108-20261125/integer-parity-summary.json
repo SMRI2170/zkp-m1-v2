@@ -1,0 +1,10 @@
+{
+  "deterministic_cases": 96,
+  "native_and_circuit_match": true,
+  "scope": "same integer model, synthetic only; not adoption of field log model",
+  "statuses_consistent_alarm_hold": [
+    42,
+    29,
+    25
+  ]
+}

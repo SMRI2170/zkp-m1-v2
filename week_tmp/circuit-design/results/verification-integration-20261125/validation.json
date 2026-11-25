@@ -1,0 +1,77 @@
+{
+  "date": "2026-11-25",
+  "scope": "synthetic integer parity and joint signed proof verification; not field detector adoption",
+  "native_parity": {
+    "deterministic_cases": 96,
+    "native_and_circuit_match": true,
+    "scope": "same integer model, synthetic only; not adoption of field log model",
+    "statuses_consistent_alarm_hold": [
+      42,
+      29,
+      25
+    ]
+  },
+  "joint_proof": {
+    "changed_public_inputs_rejected": 4,
+    "compile_ms": 363,
+    "constraints": 136526,
+    "curve": "BN254",
+    "evm_verification_executed": false,
+    "field_data_used": false,
+    "joint_gate_rejected_future_claim": true,
+    "keys_or_proof_written_to_disk": false,
+    "proof_generated": true,
+    "proof_serialized_bytes_count_only": 164,
+    "proof_verified": true,
+    "prove_ms": 981,
+    "receipt_extracted_from_public_witness": true,
+    "recursive_path_executed": false,
+    "replay_preflight_rejected_after_verify": true,
+    "scheme": "Groth16 disposable single-contributor test setup",
+    "setup_ms": 19503,
+    "status": "EXECUTED_SYNTHETIC_JOINT_VERIFICATION",
+    "verify_ms": 1,
+    "verify_us": 1044
+  },
+  "regression": "passed",
+  "uav_tests": 98,
+  "python_tests": 27,
+  "contracts_tests": 48,
+  "aggregator": "passed, cached packages included",
+  "future_claim_policy": "default zero future skew; explicit uint32 skew boundary tested",
+  "public_input_checks": [
+    "BN254 type",
+    "schema-derived count/order",
+    "public-only header",
+    "snapshot isolation",
+    "proof verification using same snapshot"
+  ],
+  "not_done": [
+    "field log model adoption",
+    "raw field-to-signed assignment binding",
+    "persistent atomic admission",
+    "same-observation reissue prevention",
+    "Pi/Android deployment",
+    "recursive proof",
+    "EVM",
+    "push",
+    "CI"
+  ],
+  "source_sha256": {
+    "verify_entry.go": "38c94f2bc198d255d20e05ab8d21216a5af67ed9798af82500c15a1ecbc3ca21",
+    "admission_test.go": "c843379f0b94694e6bb9eb6a88d7f130d5c6b54339f0293c62db6c5482773265",
+    "circuit.go": "576e7a6eea5acba1cefa164f4b7adccdd087752bb3df4f40222d47c0f66a9ce1",
+    "integer_model.go": "ea8bf23bd3b0f9a70638f91ae1588aade14d9bc99a500c4279048a13771ea197",
+    "circuit_test.go": "cbc86ac05e357b2beec9eaa85ed2ed30c2869b0d640307881e65e9b1aa5c25ec",
+    "signed_test.go": "d5b1b61e96bf2a4c0d25a75f687dc660adf524b29e2cf1ee433f600041f42fe5",
+    "integer_model_test.go": "469054b163785937c2aaff7bceca274e6041b1e7f198eca1617f78c22636f981",
+    "uncertainty_test.go": "823ac0c8480707ee4e96aa7ac14f7f1909d4c4d1e4afb2dbb6bf468c14e04b69",
+    "verify_entry_test.go": "7726a15f3995854e632629418ce4c7e56a068a6be0ef3e9e862a6e0cc3fed428",
+    "signed_proof_test.go": "96f5f8eb14711409d9d17e62eaf8fabd0665ad446126efdd170e875b2dfe1987",
+    "signed.go": "85daffcc60c1c62091264c0eb4f8a52795aedff934c7f50a1fc1942a105a7638",
+    "uncertainty.go": "dc1fb168f5037832f4ed05cc6f13051393f59c2b9e3f10259c3d9693a715e49d",
+    "review_test.go": "8b4b5b6d0b62982cce8e7c5b2cfa06ef291944db3f04f44fb502737874e37113",
+    "profiles/synthetic-four-band-v1.json": "cf89860f3ee7107af69e860f484427b1894fa581d4a268c1d9140f3bd5f6b338",
+    "INTEGRATION_20261125.md": "108a8dd746319a6c56fc2c50b33b94caf51a8d0a39411d167b309bb360c52104"
+  }
+}

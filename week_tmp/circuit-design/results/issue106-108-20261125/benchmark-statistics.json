@@ -1,0 +1,40 @@
+{
+  "scope": "three synthetic samples, shared setup, one Mac process; not independent field runs",
+  "stages": {
+    "assignment_and_sign_us": {
+      "n": 3,
+      "mean": 888.0,
+      "median": 833.0,
+      "min": 831.0,
+      "max": 1000.0
+    },
+    "prove_us": {
+      "n": 3,
+      "mean": 1927689.3333333333,
+      "median": 1930028.0,
+      "min": 1919177.0,
+      "max": 1933863.0
+    },
+    "joint_verify_us": {
+      "n": 3,
+      "mean": 1656.3333333333333,
+      "median": 1644.0,
+      "min": 1614.0,
+      "max": 1711.0
+    },
+    "durable_commit_us": {
+      "n": 3,
+      "mean": 7864.0,
+      "median": 7550.0,
+      "min": 6556.0,
+      "max": 9486.0
+    },
+    "full_flow_us": {
+      "n": 3,
+      "mean": 1938182.0,
+      "median": 1940115.0,
+      "min": 1928249.0,
+      "max": 1946182.0
+    }
+  }
+}

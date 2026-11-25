@@ -1,0 +1,12 @@
+=== RUN   TestSignedProof
+=== RUN   TestSignedProof/reject_changed_public_status
+=== RUN   TestSignedProof/reject_changed_public_session
+=== RUN   TestSignedProof/reject_changed_public_commitment
+=== RUN   TestSignedProof/reject_changed_public_observer
+--- PASS: TestSignedProof (20.85s)
+    --- PASS: TestSignedProof/reject_changed_public_status (0.00s)
+    --- PASS: TestSignedProof/reject_changed_public_session (0.00s)
+    --- PASS: TestSignedProof/reject_changed_public_commitment (0.00s)
+    --- PASS: TestSignedProof/reject_changed_public_observer (0.00s)
+PASS
+ok  	uav/research/rssi-circuit-draft	21.053s

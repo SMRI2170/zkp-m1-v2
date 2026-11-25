@@ -1,0 +1,232 @@
+{
+  "scope": "real RSSI/positions; synthetic claim/power changes; assumed uncertainty-radius sensitivity, not true spoof TPR/FPR",
+  "nodes": {
+    "Pixel": {
+      "fix_rows": 19418,
+      "fix_nonnull": {
+        "latitude": 19418,
+        "longitude": 19418,
+        "accuracy_m": 19418,
+        "altitude_ellipsoid_m": 19418,
+        "vertical_accuracy_m": 0,
+        "altitude_accuracy_m": 0,
+        "fix_elapsed_us": 19418
+      },
+      "target_rows": 132,
+      "target_nonnull": {
+        "latitude": 132,
+        "longitude": 132,
+        "accuracy_m": 132,
+        "altitude_ellipsoid_m": 132,
+        "vertical_accuracy_m": 0,
+        "altitude_accuracy_m": 0,
+        "fix_elapsed_us": 132
+      },
+      "rid_accuracy_codes": [
+        {
+          "horizontal": 10,
+          "vertical": 4,
+          "baro": 4,
+          "time": 1,
+          "rows": 132,
+          "reported": {
+            "horizontal_m": 10,
+            "vertical_m": 10,
+            "baro_m": 10,
+            "time_s": 0.1
+          }
+        }
+      ],
+      "target_receiver_horizontal_accuracy_m": {
+        "n": 132,
+        "min": 0.394886314868927,
+        "median": 0.9709149897098541,
+        "p90": 3.2481794357299805,
+        "max": 3.830596923828125
+      },
+      "fix_age_s": {
+        "n": 132,
+        "min": 0.106135,
+        "median": 0.500915,
+        "p90": 1.0135978,
+        "max": 1.116587
+      },
+      "clock_uncertainty_ms": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "p90": null,
+        "max": null
+      }
+    },
+    "ASUS-1": {
+      "fix_rows": 32879,
+      "fix_nonnull": {
+        "latitude": 32879,
+        "longitude": 32879,
+        "accuracy_m": 32879,
+        "altitude_ellipsoid_m": 32879,
+        "vertical_accuracy_m": 0,
+        "altitude_accuracy_m": 0,
+        "fix_elapsed_us": 32879
+      },
+      "target_rows": 146,
+      "target_nonnull": {
+        "latitude": 146,
+        "longitude": 146,
+        "accuracy_m": 146,
+        "altitude_ellipsoid_m": 146,
+        "vertical_accuracy_m": 0,
+        "altitude_accuracy_m": 0,
+        "fix_elapsed_us": 146
+      },
+      "rid_accuracy_codes": [
+        {
+          "horizontal": 10,
+          "vertical": 4,
+          "baro": 4,
+          "time": 1,
+          "rows": 146,
+          "reported": {
+            "horizontal_m": 10,
+            "vertical_m": 10,
+            "baro_m": 10,
+            "time_s": 0.1
+          }
+        }
+      ],
+      "target_receiver_horizontal_accuracy_m": {
+        "n": 146,
+        "min": 4.550999641418457,
+        "median": 6.067999839782715,
+        "p90": 7.585000038146973,
+        "max": 12.13599967956543
+      },
+      "fix_age_s": {
+        "n": 146,
+        "min": 0.00317,
+        "median": 0.4730825,
+        "p90": 0.8725805,
+        "max": 0.977528
+      },
+      "clock_uncertainty_ms": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "p90": null,
+        "max": null
+      }
+    },
+    "ASUS-2": {
+      "fix_rows": 17762,
+      "fix_nonnull": {
+        "latitude": 17762,
+        "longitude": 17762,
+        "accuracy_m": 17762,
+        "altitude_ellipsoid_m": 17762,
+        "vertical_accuracy_m": 0,
+        "altitude_accuracy_m": 0,
+        "fix_elapsed_us": 17762
+      },
+      "target_rows": 46,
+      "target_nonnull": {
+        "latitude": 46,
+        "longitude": 46,
+        "accuracy_m": 46,
+        "altitude_ellipsoid_m": 46,
+        "vertical_accuracy_m": 0,
+        "altitude_accuracy_m": 0,
+        "fix_elapsed_us": 46
+      },
+      "rid_accuracy_codes": [
+        {
+          "horizontal": 10,
+          "vertical": 4,
+          "baro": 4,
+          "time": 1,
+          "rows": 46,
+          "reported": {
+            "horizontal_m": 10,
+            "vertical_m": 10,
+            "baro_m": 10,
+            "time_s": 0.1
+          }
+        }
+      ],
+      "target_receiver_horizontal_accuracy_m": {
+        "n": 46,
+        "min": 4.550999641418457,
+        "median": 13.652999877929688,
+        "p90": 13.652999877929688,
+        "max": 16.687000274658203
+      },
+      "fix_age_s": {
+        "n": 46,
+        "min": 0.008049,
+        "median": 0.4886805,
+        "p90": 0.8913365,
+        "max": 0.942515
+      },
+      "clock_uncertainty_ms": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "p90": null,
+        "max": null
+      }
+    },
+    "Pixel8": {
+      "fix_rows": 2271,
+      "fix_nonnull": {
+        "latitude": 2271,
+        "longitude": 2271,
+        "accuracy_m": 2271,
+        "altitude_ellipsoid_m": 2134,
+        "vertical_accuracy_m": 0,
+        "altitude_accuracy_m": 0,
+        "fix_elapsed_us": 2271
+      },
+      "target_rows": 0,
+      "target_nonnull": {},
+      "rid_accuracy_codes": [],
+      "target_receiver_horizontal_accuracy_m": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "p90": null,
+        "max": null
+      },
+      "fix_age_s": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "p90": null,
+        "max": null
+      },
+      "clock_uncertainty_ms": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "p90": null,
+        "max": null
+      }
+    }
+  },
+  "reference_accuracy_code_rows": 324,
+  "reference_accuracy_code_matches": 324,
+  "reference_commit": "6b046f4af56b25ffc04dc5130c3308c697bab89c",
+  "frozen_split": [
+    52,
+    26,
+    27
+  ],
+  "unmodified_point_alarms": 13,
+  "actual_3d_error_evaluation": "NOT_EVALUABLE_receiver_vertical_accuracy_and_common_datum_unverified",
+  "actual_clock_error_evaluation": "NOT_EVALUABLE_RID_epoch_and_clock_offset_not_verified",
+  "independent_position_error": "NOT_EVALUABLE_no_independent_truth",
+  "conditional_sensitivity": "OS 68% radius multiplied by 1/2/3; not guaranteed confidence levels. RID radii self-reported, attacker-controlled.",
+  "geometry_scope": "hypothetical common altitude datum and assumed phone vertical radii; no RSSI classifier applied in 3D",
+  "original_hashes_unchanged": true,
+  "code_sha256": "e34fae8835a1ddb37a393605a0ae4cf49fcdf94024f28ed1aeca7eb7c9ad5608",
+  "baseline_summary_sha256": "dbbb8503a59e6824b743f4c0e19ed7fb65c20fef2fb346906482dda105e6f657"
+}

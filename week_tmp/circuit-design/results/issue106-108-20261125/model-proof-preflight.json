@@ -1,0 +1,12 @@
+{
+  "host_memory_bytes": 17179869184,
+  "free_percentage": 51,
+  "minimum_free_percentage": 40,
+  "allowed": true,
+  "benchmark_samples_predeclared": 3,
+  "extra_reissued_source_proof": 1,
+  "GOMAXPROCS": 2,
+  "GOMEMLIMIT": "1GiB soft target",
+  "timeout_seconds": 240,
+  "recursive_setup": false
+}
