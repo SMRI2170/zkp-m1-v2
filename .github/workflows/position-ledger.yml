@@ -1,0 +1,23 @@
+name: Position ledger quality gate
+on:
+  push:
+    paths:
+      - 'experiments/field-kit/**'
+      - '.github/workflows/position-ledger.yml'
+  pull_request:
+    paths:
+      - 'experiments/field-kit/**'
+      - '.github/workflows/position-ledger.yml'
+permissions:
+  contents: read
+jobs:
+  synthetic-ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Field-kit tests, synthetic only, no device or field captures
+        run: python3 -m unittest discover -s experiments/field-kit -p 'test_*.py' -v

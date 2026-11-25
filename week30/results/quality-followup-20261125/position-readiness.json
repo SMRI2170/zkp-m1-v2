@@ -1,0 +1,42 @@
+{
+  "scope": "supplied private bench plan, not proof no ledger exists elsewhere",
+  "nodes": [
+    {
+      "node": "A",
+      "position_record_present": false,
+      "track_record_present": false,
+      "status": "NOT_EVALUABLE_POSITION_LEDGER_UNCONFIRMED"
+    },
+    {
+      "node": "B",
+      "position_record_present": false,
+      "track_record_present": false,
+      "status": "NOT_EVALUABLE_POSITION_LEDGER_UNCONFIRMED"
+    },
+    {
+      "node": "C",
+      "position_record_present": false,
+      "track_record_present": false,
+      "status": "NOT_EVALUABLE_POSITION_LEDGER_UNCONFIRMED"
+    },
+    {
+      "node": "D",
+      "position_record_present": false,
+      "track_record_present": false,
+      "status": "NOT_EVALUABLE_POSITION_LEDGER_UNCONFIRMED"
+    },
+    {
+      "node": "E",
+      "position_record_present": false,
+      "track_record_present": false,
+      "status": "NOT_EVALUABLE_POSITION_LEDGER_UNCONFIRMED"
+    },
+    {
+      "node": "F",
+      "position_record_present": false,
+      "track_record_present": false,
+      "status": "NOT_EVALUABLE_POSITION_LEDGER_UNCONFIRMED"
+    }
+  ],
+  "claim_distance_not_computed": true
+}
