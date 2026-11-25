@@ -1,0 +1,241 @@
+=== RUN   TestAdmission
+=== RUN   TestAdmission/expected_context
+=== RUN   TestAdmission/unknown_session
+=== RUN   TestAdmission/unknown_frame
+=== RUN   TestAdmission/different_claim
+=== RUN   TestAdmission/unapproved_model
+=== RUN   TestAdmission/unknown_observer
+=== RUN   TestAdmission/identity_key
+=== RUN   TestAdmission/expired
+=== RUN   TestAdmission/future_session
+=== RUN   TestAdmission/session_ended
+=== RUN   TestAdmission/expiry_outside_session
+=== RUN   TestAdmission/claim_before_session
+=== RUN   TestAdmission/claim_after_expiry
+=== RUN   TestAdmission/duplicate_receipt
+=== RUN   TestAdmission/new_commitment_not_replay_escape
+=== RUN   TestAdmission/nil_record_id
+=== RUN   TestAdmission/oversized_record_id
+=== RUN   TestAdmission/nil_commitment
+=== RUN   TestAdmission/nil_context
+=== RUN   TestAdmission/session_interval_reversed
+--- PASS: TestAdmission (0.00s)
+    --- PASS: TestAdmission/expected_context (0.00s)
+    --- PASS: TestAdmission/unknown_session (0.00s)
+    --- PASS: TestAdmission/unknown_frame (0.00s)
+    --- PASS: TestAdmission/different_claim (0.00s)
+    --- PASS: TestAdmission/unapproved_model (0.00s)
+    --- PASS: TestAdmission/unknown_observer (0.00s)
+    --- PASS: TestAdmission/identity_key (0.00s)
+    --- PASS: TestAdmission/expired (0.00s)
+    --- PASS: TestAdmission/future_session (0.00s)
+    --- PASS: TestAdmission/session_ended (0.00s)
+    --- PASS: TestAdmission/expiry_outside_session (0.00s)
+    --- PASS: TestAdmission/claim_before_session (0.00s)
+    --- PASS: TestAdmission/claim_after_expiry (0.00s)
+    --- PASS: TestAdmission/duplicate_receipt (0.00s)
+    --- PASS: TestAdmission/new_commitment_not_replay_escape (0.00s)
+    --- PASS: TestAdmission/nil_record_id (0.00s)
+    --- PASS: TestAdmission/oversized_record_id (0.00s)
+    --- PASS: TestAdmission/nil_commitment (0.00s)
+    --- PASS: TestAdmission/nil_context (0.00s)
+    --- PASS: TestAdmission/session_interval_reversed (0.00s)
+=== RUN   TestSignatureMessageCanonical
+--- PASS: TestSignatureMessageCanonical (0.00s)
+=== RUN   TestCircuit
+=== RUN   TestCircuit/consistent_boundary_second_bin
+=== RUN   TestCircuit/alarm
+=== RUN   TestCircuit/lower_endpoint_inclusive
+=== RUN   TestCircuit/upper_endpoint_inclusive
+=== RUN   TestCircuit/one_below_interval
+=== RUN   TestCircuit/age_boundary
+=== RUN   TestCircuit/age_before_claim_boundary
+=== RUN   TestCircuit/stale_hold
+=== RUN   TestCircuit/stale_earlier_hold
+=== RUN   TestCircuit/inaccurate_hold
+=== RUN   TestCircuit/accuracy_boundary
+=== RUN   TestCircuit/max_coordinate_no_wrap
+=== RUN   TestCircuit/zero_distance
+=== RUN   TestCircuit/wrong_alarm
+=== RUN   TestCircuit/hide_alarm_as_consistent
+=== RUN   TestCircuit/hide_stale_as_consistent
+=== RUN   TestCircuit/false_hold
+=== RUN   TestCircuit/unrecognised_status
+=== RUN   TestCircuit/negative_coordinate
+=== RUN   TestCircuit/coordinate_overflow
+=== RUN   TestCircuit/time_overflow
+=== RUN   TestCircuit/accuracy_overflow
+=== RUN   TestCircuit/rssi_overflow
+=== RUN   TestCircuit/nonce_zero
+=== RUN   TestCircuit/nonce_overflow
+=== RUN   TestCircuit/unordered_bounds
+=== RUN   TestCircuit/empty_bin
+=== RUN   TestCircuit/incomplete_domain
+=== RUN   TestCircuit/invalid_interval
+=== RUN   TestCircuit/policy_endpoint_overflow
+=== RUN   TestCircuit/changed_session_old_commitment
+=== RUN   TestCircuit/changed_claim_old_commitment
+=== RUN   TestCircuit/changed_frame_old_commitment
+=== RUN   TestCircuit/changed_rid_token_old_commitment
+=== RUN   TestCircuit/changed_rssi_old_commitment
+=== RUN   TestCircuit/changed_policy_old_digest
+=== RUN   TestCircuit/below_first_bin_boundary
+=== RUN   TestCircuit/at_first_bin_boundary_alarm
+=== RUN   TestCircuit/at_second_bin_boundary
+=== RUN   TestCircuit/before_second_bin_boundary_alarm
+=== RUN   TestCircuit/at_third_bin_boundary
+=== RUN   TestCircuit/changed_observer_old_commitment
+=== RUN   TestCircuit/changed_time_old_commitment
+=== RUN   TestCircuit/changed_nonce_old_commitment
+--- PASS: TestCircuit (1.01s)
+    --- PASS: TestCircuit/consistent_boundary_second_bin (0.02s)
+    --- PASS: TestCircuit/alarm (0.02s)
+    --- PASS: TestCircuit/lower_endpoint_inclusive (0.02s)
+    --- PASS: TestCircuit/upper_endpoint_inclusive (0.02s)
+    --- PASS: TestCircuit/one_below_interval (0.02s)
+    --- PASS: TestCircuit/age_boundary (0.02s)
+    --- PASS: TestCircuit/age_before_claim_boundary (0.02s)
+    --- PASS: TestCircuit/stale_hold (0.02s)
+    --- PASS: TestCircuit/stale_earlier_hold (0.02s)
+    --- PASS: TestCircuit/inaccurate_hold (0.02s)
+    --- PASS: TestCircuit/accuracy_boundary (0.02s)
+    --- PASS: TestCircuit/max_coordinate_no_wrap (0.02s)
+    --- PASS: TestCircuit/zero_distance (0.02s)
+    --- PASS: TestCircuit/wrong_alarm (0.02s)
+    --- PASS: TestCircuit/hide_alarm_as_consistent (0.02s)
+    --- PASS: TestCircuit/hide_stale_as_consistent (0.02s)
+    --- PASS: TestCircuit/false_hold (0.02s)
+    --- PASS: TestCircuit/unrecognised_status (0.02s)
+    --- PASS: TestCircuit/negative_coordinate (0.00s)
+    --- PASS: TestCircuit/coordinate_overflow (0.00s)
+    --- PASS: TestCircuit/time_overflow (0.00s)
+    --- PASS: TestCircuit/accuracy_overflow (0.00s)
+    --- PASS: TestCircuit/rssi_overflow (0.00s)
+    --- PASS: TestCircuit/nonce_zero (0.00s)
+    --- PASS: TestCircuit/nonce_overflow (0.00s)
+    --- PASS: TestCircuit/unordered_bounds (0.01s)
+    --- PASS: TestCircuit/empty_bin (0.01s)
+    --- PASS: TestCircuit/incomplete_domain (0.00s)
+    --- PASS: TestCircuit/invalid_interval (0.01s)
+    --- PASS: TestCircuit/policy_endpoint_overflow (0.00s)
+    --- PASS: TestCircuit/changed_session_old_commitment (0.02s)
+    --- PASS: TestCircuit/changed_claim_old_commitment (0.02s)
+    --- PASS: TestCircuit/changed_frame_old_commitment (0.02s)
+    --- PASS: TestCircuit/changed_rid_token_old_commitment (0.02s)
+    --- PASS: TestCircuit/changed_rssi_old_commitment (0.02s)
+    --- PASS: TestCircuit/changed_policy_old_digest (0.02s)
+    --- PASS: TestCircuit/below_first_bin_boundary (0.02s)
+    --- PASS: TestCircuit/at_first_bin_boundary_alarm (0.02s)
+    --- PASS: TestCircuit/at_second_bin_boundary (0.02s)
+    --- PASS: TestCircuit/before_second_bin_boundary_alarm (0.02s)
+    --- PASS: TestCircuit/at_third_bin_boundary (0.02s)
+    --- PASS: TestCircuit/changed_observer_old_commitment (0.02s)
+    --- PASS: TestCircuit/changed_time_old_commitment (0.02s)
+    --- PASS: TestCircuit/changed_nonce_old_commitment (0.02s)
+=== RUN   TestSignedProof
+    signed_proof_test.go:27: opt-in single-proof test; preflight resources before enabling
+--- SKIP: TestSignedProof (0.00s)
+=== RUN   TestSignedCircuit
+=== RUN   TestSignedCircuit/signed_consistent
+=== RUN   TestSignedCircuit/other_observer_correct_signature_needs_external_admission
+=== RUN   TestSignedCircuit/static_circuit_does_not_know_verifier_now
+=== RUN   TestSignedCircuit/signed_alarm
+=== RUN   TestSignedCircuit/signed_hold
+=== RUN   TestSignedCircuit/alter_rssi_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_position_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_error_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_clock_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_known_flag_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_session_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_policy_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_claim_rebind_keep_signature
+=== RUN   TestSignedCircuit/alter_record_id
+=== RUN   TestSignedCircuit/zero_record_id
+=== RUN   TestSignedCircuit/alter_expiry
+=== RUN   TestSignedCircuit/signed_expiry_before_observation
+=== RUN   TestSignedCircuit/different_observer_keep_signature
+=== RUN   TestSignedCircuit/identity_public_key
+=== RUN   TestSignedCircuit/order2_public_key
+=== RUN   TestSignedCircuit/identity_R
+=== RUN   TestSignedCircuit/order2_R
+=== RUN   TestSignedCircuit/offcurve_public_key
+=== RUN   TestSignedCircuit/noncanonical_scalar
+--- PASS: TestSignedCircuit (0.96s)
+    --- PASS: TestSignedCircuit/signed_consistent (0.04s)
+    --- PASS: TestSignedCircuit/other_observer_correct_signature_needs_external_admission (0.04s)
+    --- PASS: TestSignedCircuit/static_circuit_does_not_know_verifier_now (0.04s)
+    --- PASS: TestSignedCircuit/signed_alarm (0.04s)
+    --- PASS: TestSignedCircuit/signed_hold (0.04s)
+    --- PASS: TestSignedCircuit/alter_rssi_rebind_keep_signature (0.03s)
+    --- PASS: TestSignedCircuit/alter_position_rebind_keep_signature (0.03s)
+    --- PASS: TestSignedCircuit/alter_error_rebind_keep_signature (0.03s)
+    --- PASS: TestSignedCircuit/alter_clock_rebind_keep_signature (0.04s)
+    --- PASS: TestSignedCircuit/alter_known_flag_rebind_keep_signature (0.03s)
+    --- PASS: TestSignedCircuit/alter_session_rebind_keep_signature (0.03s)
+    --- PASS: TestSignedCircuit/alter_policy_rebind_keep_signature (0.03s)
+    --- PASS: TestSignedCircuit/alter_claim_rebind_keep_signature (0.03s)
+    --- PASS: TestSignedCircuit/alter_record_id (0.03s)
+    --- PASS: TestSignedCircuit/zero_record_id (0.00s)
+    --- PASS: TestSignedCircuit/alter_expiry (0.03s)
+    --- PASS: TestSignedCircuit/signed_expiry_before_observation (0.01s)
+    --- PASS: TestSignedCircuit/different_observer_keep_signature (0.03s)
+    --- PASS: TestSignedCircuit/identity_public_key (0.00s)
+    --- PASS: TestSignedCircuit/order2_public_key (0.02s)
+    --- PASS: TestSignedCircuit/identity_R (0.00s)
+    --- PASS: TestSignedCircuit/order2_R (0.02s)
+    --- PASS: TestSignedCircuit/offcurve_public_key (0.00s)
+    --- PASS: TestSignedCircuit/noncanonical_scalar (0.01s)
+=== RUN   TestUncertaintyCircuit
+=== RUN   TestUncertaintyCircuit/2d_consistent_across_bins
+=== RUN   TestUncertaintyCircuit/uncertainty_causes_hold
+=== RUN   TestUncertaintyCircuit/all_possible_bins_alarm
+=== RUN   TestUncertaintyCircuit/zero_error_boundary_alarm
+=== RUN   TestUncertaintyCircuit/3d_unknown_vertical_hold
+=== RUN   TestUncertaintyCircuit/3d_known_vertical_consistent
+=== RUN   TestUncertaintyCircuit/3d_height_changes_bin
+=== RUN   TestUncertaintyCircuit/2d_ignores_height
+=== RUN   TestUncertaintyCircuit/unknown_horizontal_hold
+=== RUN   TestUncertaintyCircuit/unknown_clock_hold
+=== RUN   TestUncertaintyCircuit/stale_hold
+=== RUN   TestUncertaintyCircuit/ceil_motion_radius
+=== RUN   TestUncertaintyCircuit/exact_motion_radius
+=== RUN   TestUncertaintyCircuit/wrong_rounding_reject
+=== RUN   TestUncertaintyCircuit/oversized_rounding_reject
+=== RUN   TestUncertaintyCircuit/uncertain_cannot_claim_consistent
+=== RUN   TestUncertaintyCircuit/unknown_altitude_cannot_claim_3d
+=== RUN   TestUncertaintyCircuit/invalid_dimension_flag
+=== RUN   TestUncertaintyCircuit/nonboolean_known_flag
+=== RUN   TestUncertaintyCircuit/negative_error
+=== RUN   TestUncertaintyCircuit/error_overflow
+=== RUN   TestUncertaintyCircuit/changed_error_old_commitment
+=== RUN   TestUncertaintyCircuit/changed_clock_old_commitment
+=== RUN   TestUncertaintyCircuit/changed_mode_old_policy
+=== RUN   TestUncertaintyCircuit/changed_status
+--- PASS: TestUncertaintyCircuit (0.91s)
+    --- PASS: TestUncertaintyCircuit/2d_consistent_across_bins (0.03s)
+    --- PASS: TestUncertaintyCircuit/uncertainty_causes_hold (0.03s)
+    --- PASS: TestUncertaintyCircuit/all_possible_bins_alarm (0.03s)
+    --- PASS: TestUncertaintyCircuit/zero_error_boundary_alarm (0.03s)
+    --- PASS: TestUncertaintyCircuit/3d_unknown_vertical_hold (0.03s)
+    --- PASS: TestUncertaintyCircuit/3d_known_vertical_consistent (0.03s)
+    --- PASS: TestUncertaintyCircuit/3d_height_changes_bin (0.03s)
+    --- PASS: TestUncertaintyCircuit/2d_ignores_height (0.03s)
+    --- PASS: TestUncertaintyCircuit/unknown_horizontal_hold (0.03s)
+    --- PASS: TestUncertaintyCircuit/unknown_clock_hold (0.03s)
+    --- PASS: TestUncertaintyCircuit/stale_hold (0.03s)
+    --- PASS: TestUncertaintyCircuit/ceil_motion_radius (0.03s)
+    --- PASS: TestUncertaintyCircuit/exact_motion_radius (0.03s)
+    --- PASS: TestUncertaintyCircuit/wrong_rounding_reject (0.02s)
+    --- PASS: TestUncertaintyCircuit/oversized_rounding_reject (0.02s)
+    --- PASS: TestUncertaintyCircuit/uncertain_cannot_claim_consistent (0.03s)
+    --- PASS: TestUncertaintyCircuit/unknown_altitude_cannot_claim_3d (0.03s)
+    --- PASS: TestUncertaintyCircuit/invalid_dimension_flag (0.00s)
+    --- PASS: TestUncertaintyCircuit/nonboolean_known_flag (0.00s)
+    --- PASS: TestUncertaintyCircuit/negative_error (0.00s)
+    --- PASS: TestUncertaintyCircuit/error_overflow (0.00s)
+    --- PASS: TestUncertaintyCircuit/changed_error_old_commitment (0.03s)
+    --- PASS: TestUncertaintyCircuit/changed_clock_old_commitment (0.03s)
+    --- PASS: TestUncertaintyCircuit/changed_mode_old_policy (0.03s)
+    --- PASS: TestUncertaintyCircuit/changed_status (0.03s)
+PASS
+ok  	uav/research/rssi-circuit-draft	3.098s

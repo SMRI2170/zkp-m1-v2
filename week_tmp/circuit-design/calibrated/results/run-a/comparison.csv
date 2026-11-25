@@ -1,0 +1,13 @@
+scenario,attack,n,consistent,alarm,hold,oracle_consistent,oracle_alarm,oracle_hold,false_definite_against_continuous_reference,additional_hold_from_envelope
+nominal_point,unmodified,27,2,11,14,10,13,4,0,10
+nominal_point,away50,27,0,0,27,0,0,27,0,0
+nominal_point,away50_ideal_power,27,0,0,27,0,0,27,0,0
+phone_radius,unmodified,27,0,9,18,4,9,14,0,4
+phone_radius,away50,27,0,0,27,0,0,27,0,0
+phone_radius,away50_ideal_power,27,0,0,27,0,0,27,0,0
+phone_and_rid10,unmodified,27,0,0,27,0,0,27,0,0
+phone_and_rid10,away50,27,0,0,27,0,0,27,0,0
+phone_and_rid10,away50_ideal_power,27,0,0,27,0,0,27,0,0
+strict_unverified_time,unmodified,27,0,0,27,0,0,27,0,0
+strict_unverified_time,away50,27,0,0,27,0,0,27,0,0
+strict_unverified_time,away50_ideal_power,27,0,0,27,0,0,27,0,0

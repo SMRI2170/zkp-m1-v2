@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/week_tmp/circuit-design/uncertainty/evaluate.py", line 187, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/shivio/orca/workspaces/zkp-m1-v2/https-github.com-SMRI2170-zkp-m1-v2/week_tmp/circuit-design/uncertainty/evaluate.py", line 107, in main
+    if actual!=expected:raise ValueError('Accuracy extraction disagrees with pinned v0 C reference')
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Accuracy extraction disagrees with pinned v0 C reference

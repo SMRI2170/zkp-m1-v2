@@ -1,0 +1,5 @@
+{
+  "public_witness_persisted": false,
+  "public_witness_serialized_bytes_count_only": 972,
+  "scope": "gnark public witness encoding; excludes proof, protocol envelope and network overhead"
+}

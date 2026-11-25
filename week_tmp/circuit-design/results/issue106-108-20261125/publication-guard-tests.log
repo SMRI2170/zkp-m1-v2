@@ -1,0 +1,9 @@
+test_capture_values (test_check_publication.Tests.test_capture_values) ... ok
+test_count_not_coordinate (test_check_publication.Tests.test_count_not_coordinate) ... ok
+test_private_artifacts (test_check_publication.Tests.test_private_artifacts) ... ok
+test_public_summary (test_check_publication.Tests.test_public_summary) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.004s
+
+OK

@@ -1,0 +1,89 @@
+{
+  "format": "frozen_log_envelope_2d_v1",
+  "adoption": "NOT_ADOPTED_REFERENCE_MODEL",
+  "profile": {
+    "bounds": [
+      0,
+      189997,
+      391705,
+      807555,
+      1664888,
+      3432400,
+      7076373,
+      14588933,
+      52776457470001
+    ],
+    "outer_low": [
+      0,
+      9939,
+      9450,
+      8961,
+      8473,
+      7984,
+      7495,
+      0
+    ],
+    "outer_high": [
+      16000,
+      11559,
+      11071,
+      10582,
+      10093,
+      9604,
+      9116,
+      16000
+    ],
+    "inner_low": [
+      0,
+      10431,
+      9942,
+      9453,
+      8964,
+      8476,
+      7987,
+      0
+    ],
+    "inner_high": [
+      0,
+      11068,
+      10579,
+      10090,
+      9601,
+      9113,
+      8624,
+      0
+    ],
+    "supported": [
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0
+    ],
+    "inner_valid": [
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "baseline_sha256": "dbbb8503a59e6824b743f4c0e19ed7fb65c20fef2fb346906482dda105e6f657",
+  "a": "-30.175003061704714",
+  "n": "3.110833061353868",
+  "threshold_db": "5.643584983424159",
+  "arithmetic": "squared centimetres; RSSI=100*dBm+16000; integer inclusive RSSI endpoints; half-open distance bins",
+  "supported_squared_distance_cm2": [
+    189997,
+    14588933
+  ],
+  "coefficient_source": "frozen Week29 training/calibration only",
+  "numeric_margin_cdb": 1,
+  "domain": "horizontal integer geometry only; no time/altitude/source authentication"
+}

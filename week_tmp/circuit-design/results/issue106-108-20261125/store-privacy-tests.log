@@ -1,0 +1,20 @@
+=== RUN   TestModelPrivacySchema
+--- PASS: TestModelPrivacySchema (0.00s)
+=== RUN   TestStoreDurableAndDuplicate
+--- PASS: TestStoreDurableAndDuplicate (0.02s)
+=== RUN   TestStoreConcurrent
+--- PASS: TestStoreConcurrent (0.01s)
+=== RUN   TestStoreFailurePreservesLedger
+--- PASS: TestStoreFailurePreservesLedger (0.01s)
+=== RUN   TestStorePermissionsAndSymlink
+--- PASS: TestStorePermissionsAndSymlink (0.00s)
+=== RUN   TestStoreProcessHelper
+    receipt_store_test.go:144: subprocess fixture
+--- SKIP: TestStoreProcessHelper (0.00s)
+=== RUN   TestStoreCrossProcessAndCrash
+--- PASS: TestStoreCrossProcessAndCrash (0.07s)
+=== RUN   TestStoreReadOnlyCapacityAndVersion
+--- PASS: TestStoreReadOnlyCapacityAndVersion (0.08s)
+PASS
+ok  	uav/research/rssi-circuit-draft	0.565s
+?   	uav/research/rssi-circuit-draft/cmd/calibrated-check	[no test files]

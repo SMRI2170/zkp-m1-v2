@@ -1,0 +1,40 @@
+{
+  "model_constraints": {
+    "constraint_cases": 16,
+    "constraints": 368931,
+    "public_variables_including_constant": 74,
+    "research_profile_only": true,
+    "statement": "frozen-log-2d-signed-v1-research-only"
+  },
+  "new_model_proof": {
+    "accepted_unique_receipts_after_reopen": 3,
+    "additional_reissue_proof_checks": 1,
+    "benchmark_samples_shared_setup_same_process": 3,
+    "compile_us": 914755,
+    "constraints": 368931,
+    "evm_or_recursive_path": false,
+    "field_data_used": false,
+    "go_heap_inuse_bytes_at_end": 295976960,
+    "go_sys_bytes_at_end": 967764456,
+    "keys_proofs_witnesses_persisted": false,
+    "peak_process_rss_bytes": 968736768,
+    "real_proof_concurrent_requests": 8,
+    "research_opt_in_enforced": true,
+    "same_source_new_record_rejected": true,
+    "setup_us": 47457219,
+    "statement": "frozen-log-2d-signed-v1-research-only",
+    "status": "EXECUTED_SYNTHETIC_MODEL_FLOW"
+  },
+  "privacy_schema_checked": true,
+  "store_crash_concurrency_readonly_capacity_schema_checked": true,
+  "race_detector": "passed",
+  "publication_main_baseline_uav_tests": 50,
+  "publication_main_baseline_contract_tests": 21,
+  "python_geometry_tests": 27,
+  "python_envelope_tests": 6,
+  "publication_guard_tests": 4,
+  "main_worktree_kept_unchanged": true,
+  "model_adoption": "NOT_SUPPORTED_UNCHANGED",
+  "field_proof_or_devices": "NOT_EXECUTED",
+  "ci": "see GitHub Actions for the published commit"
+}

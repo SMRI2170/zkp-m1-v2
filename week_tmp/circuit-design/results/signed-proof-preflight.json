@@ -1,0 +1,16 @@
+{
+  "host_memory_bytes": 17179869184,
+  "memory_pressure_free_percentage": 51,
+  "swap_usage_at_preflight": "vm.swapusage: total = 5120.00M  used = 3967.31M  free = 1152.69M  (encrypted)",
+  "single_proof_allowed_by_local_threshold": true,
+  "thresholds": {
+    "host_total_min_gib": 12,
+    "memory_pressure_free_percentage_min": 40
+  },
+  "limits": {
+    "GOMAXPROCS": 2,
+    "GOMEMLIMIT": "1GiB (Go soft GC target)",
+    "go_test_timeout_seconds": 120
+  },
+  "recursive_setup_allowed": false
+}

@@ -1,0 +1,19 @@
+{
+  "changed_public_inputs_rejected": 4,
+  "compile_ms": 331,
+  "constraints": 136526,
+  "curve": "BN254",
+  "evm_verification_executed": false,
+  "field_data_used": false,
+  "keys_or_proof_written_to_disk": false,
+  "proof_generated": true,
+  "proof_serialized_bytes_count_only": 164,
+  "proof_verified": true,
+  "prove_ms": 992,
+  "recursive_path_executed": false,
+  "replay_preflight_rejected_after_verify": true,
+  "scheme": "Groth16 disposable single-contributor test setup",
+  "setup_ms": 19357,
+  "status": "EXECUTED_SYNTHETIC_SINGLE_PROOF",
+  "verify_ms": 0
+}

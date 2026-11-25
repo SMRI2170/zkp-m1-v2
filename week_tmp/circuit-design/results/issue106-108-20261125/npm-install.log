@@ -1,0 +1,19 @@
+
+added 62 packages, and audited 63 packages in 5s
+
+32 packages are looking for funding
+  run `npm fund` for details
+
+16 vulnerabilities (13 low, 2 moderate, 1 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+npm warn allow-scripts 1 package has install scripts not yet covered by allowScripts:
+npm warn allow-scripts   blake-hash@2.0.0 (install: node-gyp-build || exit 0)
+npm warn allow-scripts
+npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.

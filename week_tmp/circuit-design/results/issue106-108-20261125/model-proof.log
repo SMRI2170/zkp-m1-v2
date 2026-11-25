@@ -1,0 +1,5 @@
+=== RUN   TestModelEndToEnd
+--- PASS: TestModelEndToEnd (56.14s)
+PASS
+ok  	uav/research/rssi-circuit-draft	56.573s
+?   	uav/research/rssi-circuit-draft/cmd/calibrated-check	[no test files]

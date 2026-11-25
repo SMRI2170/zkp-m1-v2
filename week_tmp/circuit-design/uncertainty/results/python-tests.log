@@ -1,0 +1,32 @@
+test_ambiguous_location (test_evaluate.Tests.test_ambiguous_location) ... ok
+test_bad_version (test_evaluate.Tests.test_bad_version) ... ok
+test_codes_reported (test_evaluate.Tests.test_codes_reported) ... ok
+test_degenerate_geometry (test_evaluate.Tests.test_degenerate_geometry) ... ok
+test_height_sign_symmetry (test_evaluate.Tests.test_height_sign_symmetry) ... ok
+test_interval (test_evaluate.Tests.test_interval) ... ok
+test_invalid_radius (test_evaluate.Tests.test_invalid_radius) ... ok
+test_larger_error_does_not_add_alarm (test_evaluate.Tests.test_larger_error_does_not_add_alarm) ... ok
+test_mixed_hold (test_evaluate.Tests.test_mixed_hold) ... ok
+test_point (test_evaluate.Tests.test_point) ... ok
+test_point_alarm (test_evaluate.Tests.test_point_alarm) ... ok
+test_reserved_unknown (test_evaluate.Tests.test_reserved_unknown) ... ok
+test_unknown_not_zero_error (test_evaluate.Tests.test_unknown_not_zero_error) ... ok
+test_v0_accuracy_bytes (test_evaluate.Tests.test_v0_accuracy_bytes) ... ok
+test_vertical_interval (test_evaluate.Tests.test_vertical_interval) ... ok
+test_zero_nearfield_hold (test_evaluate.Tests.test_zero_nearfield_hold) ... ok
+test_2d_missing_altitude_allowed (test_geometry.Tests.test_2d_missing_altitude_allowed) ... ok
+test_3d (test_geometry.Tests.test_3d) ... ok
+test_ecef (test_geometry.Tests.test_ecef) ... ok
+test_ellipsoid_height (test_geometry.Tests.test_ellipsoid_height) ... ok
+test_invalid_lat (test_geometry.Tests.test_invalid_lat) ... ok
+test_missing_allowance (test_geometry.Tests.test_missing_allowance) ... ok
+test_missing_horizontal (test_geometry.Tests.test_missing_horizontal) ... ok
+test_origin (test_geometry.Tests.test_origin) ... ok
+test_outside_frame (test_geometry.Tests.test_outside_frame) ... ok
+test_unverified_datum (test_geometry.Tests.test_unverified_datum) ... ok
+test_vertical_missing_blocks_3d (test_geometry.Tests.test_vertical_missing_blocks_3d) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.001s
+
+OK

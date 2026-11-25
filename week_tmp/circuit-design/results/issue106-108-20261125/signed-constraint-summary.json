@@ -1,0 +1,10 @@
+{
+  "constraints": 136526,
+  "ephemeral_signer_keys_in_memory_only": true,
+  "field_signature_used": false,
+  "proof_generated": false,
+  "public_variables_including_constant": 31,
+  "secret_variables": 21,
+  "status": "SYNTHETIC_SIGNED_CONSTRAINTS_ONLY",
+  "test_cases": 24
+}

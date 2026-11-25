@@ -1,0 +1,1 @@
+{"n": 27, "original_unbounded_point_alarms": 13, "enu_cm_unbounded_point_alarms": 13, "changed_alarm_labels_due_to_geometry_and_quantization": 0, "scope": "same frozen coefficients/threshold, no domain guard; not real spoof performance", "input_unchanged": true, "code_sha256": "7bc778c1297cd332384c4c570c949fed909b81cf2f6a4f7767d0d6c2c16446ab"}

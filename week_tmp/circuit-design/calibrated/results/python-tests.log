@@ -1,0 +1,11 @@
+test_baseline_not_adopted (test_profile.Tests.test_baseline_not_adopted) ... ok
+test_false_definite_zero_on_500_samples (test_profile.Tests.test_false_definite_zero_on_500_samples) ... ok
+test_frozen_profile_exact (test_profile.Tests.test_frozen_profile_exact) ... ok
+test_interval_box (test_profile.Tests.test_interval_box) ... ok
+test_unknown_input_holds (test_profile.Tests.test_unknown_input_holds) ... ok
+test_unsupported_range_holds (test_profile.Tests.test_unsupported_range_holds) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.041s
+
+OK

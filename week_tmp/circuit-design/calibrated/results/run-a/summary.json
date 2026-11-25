@@ -1,0 +1,20 @@
+{
+  "scope": "fixed failed model; real RSSI and claim/phone geometry; synthetic attacks and assumed spatial radii. Not real spoof TPR/FPR.",
+  "adoption": "NOT_SUPPORTED_UNCHANGED",
+  "original_baseline_alarms": 13,
+  "original_evaluation_rows": 27,
+  "conditions": 12,
+  "field_derived_constraint_inputs": 324,
+  "continuous_reference_false_definite_total": 0,
+  "source_hashes_unchanged": true,
+  "profile_sha256": "417dfbfada5b99baa622fb45bee802e82dd0ad024d0984b14148a665c31caf3b",
+  "normalization_difference_from_old_horizontal_distance_m": {
+    "max": 0.03675703356860183,
+    "mean": 0.018062241984775237
+  },
+  "time_scope": "strict scenario holds all; conditional scenarios assume time/epoch validity, do not synthesize measurement timestamps",
+  "height_scope": "2D only; raw altitude retained privately, no 3D inference",
+  "signature_and_proof": "NOT_EXECUTED_NEW_MODEL",
+  "code_sha256": "3d88ba73123b0b2ca907fb4ff1568682b74dff217b10a718ffeec4955b2ebc32",
+  "r1cs_check_executed": true
+}

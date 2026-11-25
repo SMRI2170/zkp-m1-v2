@@ -1,0 +1,11 @@
+{
+  "constraints": 93772,
+  "evm_verification_executed": false,
+  "field_data_used": false,
+  "groth16_setup_executed": false,
+  "proof_generated": false,
+  "public_variables_including_constant": 26,
+  "secret_variables": 7,
+  "status": "CONSTRAINTS_ONLY_SYNTHETIC",
+  "test_cases": 44
+}

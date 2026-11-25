@@ -1,0 +1,6 @@
+=== RUN   TestReviewAdmissionBoundaries
+--- PASS: TestReviewAdmissionBoundaries (0.00s)
+=== RUN   TestReviewPublicInputSize
+--- PASS: TestReviewPublicInputSize (0.00s)
+PASS
+ok  	uav/research/rssi-circuit-draft	0.433s

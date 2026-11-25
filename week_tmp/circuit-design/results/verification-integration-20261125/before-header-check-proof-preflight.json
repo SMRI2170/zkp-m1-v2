@@ -1,0 +1,11 @@
+{
+  "local_threshold_permitted": true,
+  "memory_pressure_free_percentage": 42,
+  "host_memory_bytes": 17179869184,
+  "minimum_free_percentage": 40,
+  "swap": "vm.swapusage: total = 5120.00M  used = 3807.31M  free = 1312.69M  (encrypted)",
+  "recursive_setup_allowed": false,
+  "GOMAXPROCS": 2,
+  "GOMEMLIMIT": "1GiB soft target",
+  "test_timeout_seconds": 120
+}
