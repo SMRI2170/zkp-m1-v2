@@ -1,0 +1,38 @@
+[
+  {
+    "node": "A",
+    "connected": false,
+    "elapsed_s": 9.1,
+    "attempts": 2
+  },
+  {
+    "node": "B",
+    "connected": false,
+    "elapsed_s": 13.11,
+    "attempts": 3
+  },
+  {
+    "node": "C",
+    "connected": false,
+    "elapsed_s": 9.08,
+    "attempts": 2
+  },
+  {
+    "node": "D",
+    "connected": false,
+    "elapsed_s": 9.08,
+    "attempts": 2
+  },
+  {
+    "node": "E",
+    "connected": false,
+    "elapsed_s": 9.05,
+    "attempts": 2
+  },
+  {
+    "node": "F",
+    "connected": false,
+    "elapsed_s": 9.08,
+    "attempts": 2
+  }
+]

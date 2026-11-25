@@ -1,0 +1,12 @@
+{
+  "base": "6f3ca4e675d44e2d5b7978b8a155d93c8d506f79",
+  "field_kit_tests": 43,
+  "new_ledger_tests": 18,
+  "uav_tests": 50,
+  "contracts_tests": 21,
+  "aggregator": "PASS",
+  "synthetic_only_in_clean_checkout": true,
+  "first_attempt": "two test errors: ignored captures directory absent in fresh checkout; fixture now creates owner-only root",
+  "security_controls_relaxed": false,
+  "dependency_changes": false
+}
